@@ -169,7 +169,7 @@ s-a: (1, 0, 0)
 a-t: (0, 1, 0)
 ```
 
-Those two networks are not identified, because they have different support graphs and different one-port structure.
+Those two networks are counted separately.
 
 ## Examples of what is not counted separately
 
