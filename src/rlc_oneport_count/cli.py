@@ -16,41 +16,58 @@ def build_parser() -> argparse.ArgumentParser:
     )
     subparsers = parser.add_subparsers(dest="command")
 
-    count_parser = subparsers.add_parser("count", help="run the legacy component-bundle count")
-    _add_count_arguments(count_parser)
+    count_parser = subparsers.add_parser(
+        "count", help="run the legacy component-bundle count"
+    )
+    _add_count_arguments(count_parser, suppress_defaults=True)
 
-    supports_parser = subparsers.add_parser("supports", help="run the phase-1 support graph census")
-    supports_parser.add_argument("--max-edges", type=int, default=8, help="maximum support-edge count, default: 8")
+    supports_parser = subparsers.add_parser(
+        "supports", help="run the phase-1 support graph census"
+    )
+    supports_parser.add_argument(
+        "--max-edges",
+        type=int,
+        default=argparse.SUPPRESS,
+        help="maximum support-edge count, default: 8",
+    )
     supports_parser.add_argument(
         "--format",
         choices=("markdown", "json"),
-        default="markdown",
+        default=argparse.SUPPRESS,
         help="output format, default: markdown",
     )
 
     # Preserve the original no-subcommand interface for the legacy count.
-    _add_count_arguments(parser)
+    _add_count_arguments(parser, suppress_defaults=True)
     return parser
 
 
-def _add_count_arguments(parser: argparse.ArgumentParser) -> None:
-    parser.add_argument("--max-r", type=int, default=3, help="maximum number of resistors, default: 3")
+def _add_count_arguments(
+    parser: argparse.ArgumentParser, *, suppress_defaults: bool = False
+) -> None:
+    default = argparse.SUPPRESS if suppress_defaults else None
+    parser.add_argument(
+        "--max-r",
+        type=int,
+        default=default,
+        help="maximum number of resistors, default: 3",
+    )
     parser.add_argument(
         "--max-reactive",
         type=int,
-        default=5,
+        default=default,
         help="maximum total number of reactive elements, default: 5",
     )
     parser.add_argument(
         "--mode",
         choices=("lc", "generic"),
-        default="lc",
+        default=default,
         help="'lc' distinguishes L and C; 'generic' treats reactive elements as X",
     )
     parser.add_argument(
         "--format",
         choices=("markdown", "json"),
-        default="markdown",
+        default=default,
         help="output format, default: markdown",
     )
 
@@ -58,13 +75,18 @@ def _add_count_arguments(parser: argparse.ArgumentParser) -> None:
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
 
+    output_format = getattr(args, "format", "markdown")
+
     if args.command == "supports":
-        result = support_census(max_edges=args.max_edges)
-        if args.format == "json":
+        max_edges = getattr(args, "max_edges", 8)
+        result = support_census(max_edges=max_edges)
+        if output_format == "json":
             print(json.dumps(asdict(result), indent=2, sort_keys=True))
         else:
             print(f"Support census: max_edges <= {result.max_edges}")
-            print("| Support edges | Basic connected unlabelled graphs | Unordered two-terminal labelings | Terminal-relevant two-terminal graphs |")
+            print(
+                "| Support edges | Basic connected unlabelled graphs | Unordered two-terminal labelings | Terminal-relevant two-terminal graphs |"
+            )
             print("|---:|---:|---:|---:|")
             for edge_count in range(1, result.max_edges + 1):
                 print(
@@ -78,22 +100,29 @@ def main(argv: list[str] | None = None) -> int:
             )
         return 0
 
-    result = count_networks(max_r=args.max_r, max_reactive=args.max_reactive, mode=args.mode)
+    max_r = getattr(args, "max_r", 3)
+    max_reactive = getattr(args, "max_reactive", 5)
+    mode = getattr(args, "mode", "lc")
+    result = count_networks(max_r=max_r, max_reactive=max_reactive, mode=mode)
 
-    if args.format == "json":
+    if output_format == "json":
         print(json.dumps(asdict(result), indent=2, sort_keys=True))
     else:
-        reactive_label = "L+C" if args.mode == "lc" else "X"
-        print(f"Mode: {args.mode}  (reactive column is {reactive_label})")
-        print(f"Limits: R <= {args.max_r}, reactive <= {args.max_reactive}")
+        reactive_label = "L+C" if mode == "lc" else "X"
+        print(f"Mode: {mode}  (reactive column is {reactive_label})")
+        print(f"Limits: R <= {max_r}, reactive <= {max_reactive}")
         print(f"Terminal-relevant two-terminal support graphs: {result.support_count}")
-        print(f"Terminal-relevant support graphs by support-edge count: {result.support_count_by_edges}")
+        print(
+            f"Terminal-relevant support graphs by support-edge count: {result.support_count_by_edges}"
+        )
         print()
         print(result.as_markdown_table())
         print()
         print(f"Total: {result.total}")
-        if args.max_r >= 3:
-            print(f"Exactly R=3, reactive <= {args.max_reactive}: {result.exactly_r_total(3)}")
+        if max_r >= 3:
+            print(
+                f"Exactly R=3, reactive <= {max_reactive}: {result.exactly_r_total(3)}"
+            )
     return 0
 
 
