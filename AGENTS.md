@@ -4,12 +4,27 @@ Guidance for Codex or other coding agents working on this repository.
 
 ## Project purpose
 
-This repository counts small two-terminal RLC one-port network topology classes.  The reference case is `R <= 3` and `L + C <= 5`, with L and C distinct, unordered terminals, unlabelled internal nodes, parallel branches allowed, no self-loops, and every support edge required to lie on a simple terminal-to-terminal path.
+This repository counts small two-terminal RLC one-port topology classes. The
+reference problem is:
 
-The current reference result is:
+```text
+R <= 3
+L + C <= 5
+```
 
-- `mode=lc`: total `1,408,796`; exactly `R=3` total `1,268,282`.
-- `mode=generic`: total `57,945`; exactly `R=3` total `51,736`.
+The current source implements a legacy multiset-bundle count. The project is now
+moving toward a reduced-topology model. Treat the docs below as the normative
+specification for new work:
+
+1. `docs/model_decisions.md` — counting contract, reductions, boundary cases.
+2. `docs/support_graph_enumeration.md` — first implementation milestone.
+3. `docs/bundles_and_multiedges.md` — bundle/span terminology and legacy caveat.
+4. `docs/simple_path_coverage.md` — terminal relevance and whole-graph rejection.
+5. `docs/results.md` — legacy counts and support-census target counts.
+
+If code and docs disagree, do not silently preserve the old behaviour. Either
+update the code to the documented model or explicitly mark the old behaviour as
+`legacy`.
 
 ## Development environment
 
@@ -33,14 +48,16 @@ Do not commit `.venv/`, `__pycache__/`, build artefacts, or generated archives.
 A Codex cloud environment should need only:
 
 1. a Python 3.11+ runtime;
-2. network access for `pip install -e ".[dev]"` unless dependencies are pre-cached;
-3. enough CPU for NetworkX isomorphism checks on graphs with at most eight support edges.
+2. network access for `pip install -e ".[dev]"` unless dependencies are cached;
+3. enough CPU for NetworkX isomorphism checks on graphs with at most eight
+   support edges.
 
-No external graph-generation binaries such as nauty/Traces are required.  The implementation uses NetworkX only.
+No external graph-generation binaries such as nauty/Traces are required for the
+current project direction. The current implementation uses NetworkX only.
 
-## Validation commands
+## Current legacy validation commands
 
-Run before committing changes:
+These validate the current source as it stands:
 
 ```bash
 pytest
@@ -48,12 +65,123 @@ python -m rlc_oneport_count --mode lc --max-r 3 --max-reactive 5
 python -m rlc_oneport_count --mode generic --max-r 3 --max-reactive 5
 ```
 
-The tests assert the reference tables.  If a change intentionally changes the counting assumptions, update `README.md`, `docs/computation.md`, `docs/results.md`, and the tests together.
+Legacy reference totals:
 
-## Important implementation details
+- `mode=lc`: total `1,408,796`; exactly `R=3` total `1,268,282`.
+- `mode=generic`: total `57,945`; exactly `R=3` total `51,736`.
 
-- The terminal pair is unordered; terminal interchange is an allowed automorphism.
-- Terminal-pair validity is based on simple path edge coverage, not merely on connectivity after edge deletion.
-- Burnside's lemma is used for edge-bundle assignments.  Avoid replacing it with brute-force assignment enumeration unless the component budgets remain very small.
-- `mode=lc` counts L and C as distinct branch types, but reports columns by `X = L + C`.
-- `mode=generic` treats all reactive elements as a single type `X`.
+When the reduced model is implemented, tests and docs should be updated together
+and these figures should be labelled legacy.
+
+## Near-term implementation sequence
+
+Do not start by implementing full reduced signatures. First add a support-census
+layer that can be reviewed independently.
+
+### Phase 1: support graph census
+
+Implement and test:
+
+1. enumerate connected unlabelled simple support graphs up to a configurable
+   edge bound;
+2. enumerate distinct unordered two-terminal labellings of each support graph;
+3. filter terminal-relevant two-terminal support graphs;
+4. report counts by support-edge count for all three categories.
+
+Definitions for phase 1:
+
+- A **basic support graph** is connected, loopless, simple, and unlabelled.
+- A **two-terminal basic graph** is a basic support graph with an unordered pair
+  of distinct terminal nodes.
+- Terminal reversal must not create a distinct two-terminal graph.
+- Internal node renaming must not create a distinct graph.
+- A two-terminal basic graph is **terminal-relevant** iff every support edge lies
+  on at least one simple path between the two terminals.
+- If a terminal-labelled support graph has a dangling tree or pendant blob,
+  reject the whole terminal-labelled graph. Do not prune it into a smaller graph.
+
+For `max_edges=8`, the expected census is:
+
+| Support edges | Basic connected unlabelled graphs | Unordered two-terminal labelings | Terminal-relevant two-terminal graphs |
+|---:|---:|---:|---:|
+| 1 | 1 | 1 | 1 |
+| 2 | 1 | 2 | 1 |
+| 3 | 3 | 7 | 2 |
+| 4 | 5 | 21 | 4 |
+| 5 | 12 | 73 | 10 |
+| 6 | 30 | 255 | 27 |
+| 7 | 79 | 946 | 80 |
+| 8 | 227 | 3,618 | 258 |
+| **Total** | **358** | **4,923** | **383** |
+
+### Phase 2: simple bundle assignment
+
+After phase 1 is stable, assign only valid simple primitive bundles to support
+edges:
+
+```text
+R
+L
+C
+R||L
+R||C
+L||C
+R||L||C
+```
+
+Do not generate `R||R`, `L||L`, `C||C`, or other duplicate same-type primitive
+parallel branches in the reduced model.
+
+For `R <= 3, L+C <= 5`, the expected count of raw assignment leaves before
+isomorphism/signature merging is:
+
+| Support edges | Relevant supports | Valid bundle assignments per support | Leaf assignments |
+|---:|---:|---:|---:|
+| 1 | 1 | 7 | 7 |
+| 2 | 1 | 49 | 49 |
+| 3 | 2 | 335 | 670 |
+| 4 | 4 | 1,622 | 6,488 |
+| 5 | 10 | 4,602 | 46,020 |
+| 6 | 27 | 7,192 | 194,184 |
+| 7 | 80 | 5,712 | 456,960 |
+| 8 | 258 | 1,792 | 462,336 |
+| **Total** | **383** | — | **1,166,714** |
+
+### Phase 3: reduced signatures
+
+Only after phase 1 and phase 2 are tested, implement canonical reduced topology
+signatures.
+
+Required boundary tests:
+
+```text
+R--L == L--R
+R--L--C == C--R--L
+R--R--L == R--L
+R||R == R
+L||L == L
+C||C == C
+R||L != R--L
+(R--L)||C != R||L||C
+(R--L)||C reduces the R--L arm even though that arm is not on every terminal path
+(R--L)||(R--L) != R--L
+(R||L)--(R||L) != R||L
+terminal reversal gives the same signature
+internal node renaming gives the same signature
+dangling branches are rejected
+pendant blobs are rejected
+```
+
+## Counting model cautions
+
+- Terminal relevance is a filter on a terminal-labelled support graph. Reject the
+  whole object if it fails; do not prune dangling material.
+- Series spans are local two-valent runs. They need only lie on at least one
+  simple terminal-to-terminal path, not every terminal path.
+- Do not use terminal-separating articulation nodes as the only way to find
+  series spans; that would miss series arms inside parallel structures such as
+  `(R--L)||C`.
+- The reduced model is not a full electrical-equivalence solver. Do not attempt
+  Y-Delta transforms, bridge-balance simplifications, duality, Foster/Cauer
+  equivalence, or rational impedance equality unless a later task explicitly
+  asks for that.
