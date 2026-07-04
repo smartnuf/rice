@@ -26,6 +26,16 @@ If code and docs disagree, do not silently preserve the old behaviour. Either
 update the code to the documented model or explicitly mark the old behaviour as
 `legacy`.
 
+## Plan index maintenance
+
+Keep `docs/plan/00-index.md` grouped by its numbered subdirectories. Each top-level
+index heading must list all and only the task files in the matching subdirectory
+for that group. For example, `## 00 — ...` lists only files under
+`docs/plan/00-records/`, `## 07 — ...` lists only files under
+`docs/plan/07-tests/`, and `## 08 — ...` lists only files under
+`docs/plan/08-docs/`. If a task belongs in a different group, rename or move the
+file and update the index rather than cross-linking it from the wrong group.
+
 ## Development environment
 
 Use Python 3.11 or newer.

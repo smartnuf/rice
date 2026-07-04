@@ -1,4 +1,4 @@
-# 04-tests / 02 — Golden-count tests
+# 07-tests / 02 — Golden-count tests
 
 Status: `todo`
 
