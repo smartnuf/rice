@@ -1,4 +1,4 @@
-# Pynntt plan index
+# rlc_one_port_count plan index
 
 This is the top-level plan index. Keep this file short: it should show task structure, status, and links to detail files. Put substantive task descriptions in the linked files.
 
@@ -8,8 +8,8 @@ Status key: `done`, `doing`, `todo`, `blocked`, `later`.
 
 - `done` [Fix Makefile syntax](01-dev-env/01-make.md)
 - `done` [Make Codex use `.venv` explicitly](01-dev-env/02-codex-venv.md)
-- `doing` [Validate WSL2 Ubuntu path](01-dev-env/03-wsl.md)
-- `todo` [Run `make setup` and `make test`](01-dev-env/04-make-setup-test.md)
+- `done` [Validate WSL2 Ubuntu path](01-dev-env/03-wsl.md)
+- `done` [Run `make install` and `make test`](01-dev-env/04-make-setup-test.md)
 - `todo` [Create Windows/Linux scripts under `scripts/`](01-dev-env/05-scripts.md)
 - `todo` [Keep Makefile, scripts, README, and AGENTS.md aligned](01-dev-env/06-contract.md)
 
