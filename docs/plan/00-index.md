@@ -26,7 +26,7 @@ Status key: `done`, `doing`, `todo`, `blocked`, `later`.
 - `todo` [Define “distinct network” precisely](03-counting/02-distinct.md)
 - `todo` [Set enumeration scope: `R <= 3`, `L+C <= 5`](03-counting/03-scope.md)
 - `todo` [Implement small explicit subset: `R <= 2`, `L+C <= 3`](03-counting/04-small-slice.md)
-- `todo` [Implement Ladenheim comparison slice, including `3+2`](03-counting/05-ladenheim.md)
+- `todo` [Implement Ladenheim comparison slice: `R <= 3`, `L+C <= 2`, total `<= 5`](03-counting/05-ladenheim.md)
 - `todo` [Generate complete counts for the full planned scope](03-counting/06-full-counts.md)
 - `todo` [Store count outputs and supporting artefacts](03-counting/07-outputs.md)
 

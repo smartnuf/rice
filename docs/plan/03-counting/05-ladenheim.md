@@ -1,19 +1,26 @@
-# 03-counting / 05 — Implement Ladenheim comparison slice, including `3+2`
+# 03-counting / 05 — Implement the Ladenheim comparison slice
 
 Status: `todo`
 
 ## Goal
 
-Create a catalogue comparison slice that includes the historical `3+2` boundary case.
+Create a comparison slice for the Ladenheim catalogue of distinct RLC networks
+with no more than two reactances and three resistances. These networks are
+relevant because they are realised by biquadratic functions.
 
 ## Correct comparison target
 
-The comparison slice should include networks with:
+The comparison slice is the intersection of all three bounds:
 
 ```text
-total elements <= 5
-reactive elements L+C <= 2
+R <= 3
+L + C <= 2
+R + L + C <= 5
 ```
+
+The explicit resistor bound matters: the other two bounds alone would admit
+cases such as `R=4`, `L+C=1`, which are outside the catalogue's limit of three
+resistances.
 
 This includes the important `3+2` case:
 
@@ -31,13 +38,14 @@ Use `Ladenheim catalogue` in repository docs unless a specific source being quot
 
 ## Tasks
 
-- Encode the Ladenheim-style slice as a named count mode.
+- Encode the three Ladenheim-style bounds as a named count mode.
 - Generate counts for the slice.
 - Compare against known published counts only after our distinctness/reduction definition is aligned.
 - Record differences if our definition deliberately differs.
 
 ## Done means
 
+- The named slice enforces `R <= 3`, `L+C <= 2`, and total elements `<= 5`.
 - `3+2` is explicitly generated and tested.
 - The comparison slice is separate from the small smoke-test subset.
 - Documentation states exactly why any count agrees or disagrees with the historical catalogue.

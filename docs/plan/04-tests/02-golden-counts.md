@@ -10,7 +10,8 @@ Use stable generated counts to detect accidental changes.
 
 - Very small hand-checkable cases.
 - Explicit subset: `R <= 2`, `L+C <= 3`.
-- Ladenheim comparison slice, including `R=3`, `L+C=2`.
+- Ladenheim comparison slice: `R <= 3`, `L+C <= 2`, and `R+L+C <= 5`,
+  including the `R=3`, `L+C=2` boundary.
 
 ## Done means
 
