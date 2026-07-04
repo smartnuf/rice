@@ -1,0 +1,19 @@
+# 01-dev-env / 02 — Make Codex use `.venv` explicitly
+
+Status: `done`
+
+## Goal
+
+Stop Codex and humans from accidentally installing or testing with system Python.
+
+## Requirements
+
+- `AGENTS.md` must tell agents to use `.venv` explicitly.
+- Setup and maintenance commands must use `.venv` paths.
+- No test or install command should depend on an activated shell environment.
+
+## Done means
+
+- Codex has exact commands to run.
+- The documented commands use `.venv/bin/python` on Linux/WSL and `.venv\Scripts\python.exe` on Windows.
+- There is no instruction to use bare `pip`.
