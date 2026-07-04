@@ -1,4 +1,4 @@
-# 05-docs / 02 — Document counting methodology
+# 08-docs / 02 — Document counting methodology
 
 Status: `todo`
 

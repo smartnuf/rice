@@ -17,7 +17,7 @@ L + C <= 5
 - Assign R/L/C edge types subject to the scope.
 - Canonicalise candidates.
 - Reject invalid or reducible candidates according to the documented definition.
-- Convert accepted candidates to Pynntt descriptors where possible.
+- Convert accepted candidates to repository-supported descriptors where possible.
 - Count failures separately where descriptor conversion is not yet supported.
 - Produce summary tables.
 

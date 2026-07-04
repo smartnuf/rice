@@ -1,4 +1,4 @@
-# 04-tests / 03 — Descriptor and canonicalisation tests
+# 07-tests / 03 — Descriptor and canonicalisation tests
 
 Status: `todo`
 

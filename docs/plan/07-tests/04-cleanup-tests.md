@@ -1,4 +1,4 @@
-# 04-tests / 04 — Regression tests for cleanup
+# 07-tests / 04 — Regression tests for cleanup
 
 Status: `todo`
 

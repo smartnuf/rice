@@ -1,10 +1,10 @@
-# 05-docs / 04 — Document known limits and open questions
+# 08-docs / 04 — Document known limits and open questions
 
 Status: `todo`
 
 ## Goal
 
-Avoid overstating what Pynntt proves.
+Avoid overstating what rlc-one-port-count proves.
 
 ## Open questions
 

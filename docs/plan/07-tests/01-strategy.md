@@ -1,4 +1,4 @@
-# 04-tests / 01 — Test strategy for enumeration
+# 07-tests / 01 — Test strategy for enumeration
 
 Status: `todo`
 
