@@ -1,10 +1,14 @@
-"""Count small two-terminal RLC one-port network topologies.
+"""Enumerate small two-terminal RLC one-port support graphs and legacy counts.
 
-The counting model is graph-theoretic.  A network is represented by an
-undirected connected multigraph between two terminal nodes, with branches
-labelled by component type.  The implementation counts isomorphism classes by
-first enumerating simple support graphs and then using Burnside's lemma to
-count labelled parallel bundles on the support edges.
+The reduced-model work starts with a support-only census: connected unlabelled
+simple support graphs, unordered terminal-pair orbits, and terminal-relevant
+two-terminal supports.  Component assignment, simple bundles, series spans, and
+reduced signatures are intentionally outside that phase-1 census.
+
+The older :func:`count_networks` entry point remains as a legacy
+multiset-bundle counter.  It assigns non-empty component-count bundles to
+terminal-relevant support edges and uses Burnside's lemma only for that legacy
+bundle-orbit calculation.
 """
 
 from __future__ import annotations
@@ -21,8 +25,38 @@ Mode = Literal["lc", "generic"]
 
 
 @dataclass(frozen=True)
+class SupportCensusResult:
+    """Support-graph census for the phase-1 reduced-model milestone.
+
+    Counts are keyed by support-edge count. ``basic_by_edges`` counts
+    connected unlabelled simple graphs before terminal choice,
+    ``terminal_labelings_by_edges`` counts unordered terminal-pair orbits under
+    each support graph's automorphism group, and ``relevant_by_edges`` counts
+    the terminal-labelled graphs whose every edge lies on a simple path between
+    the terminals.
+    """
+
+    max_edges: int
+    basic_by_edges: dict[int, int]
+    terminal_labelings_by_edges: dict[int, int]
+    relevant_by_edges: dict[int, int]
+
+    @property
+    def basic_total(self) -> int:
+        return sum(self.basic_by_edges.values())
+
+    @property
+    def terminal_labelings_total(self) -> int:
+        return sum(self.terminal_labelings_by_edges.values())
+
+    @property
+    def relevant_total(self) -> int:
+        return sum(self.relevant_by_edges.values())
+
+
+@dataclass(frozen=True)
 class CountResult:
-    """Result returned by :func:`count_networks`.
+    """Legacy component-bundle result returned by :func:`count_networks`.
 
     Attributes:
         max_r: Maximum total number of resistors.
@@ -32,9 +66,10 @@ class CountResult:
         table: A rectangular table indexed by ``table[r][x]``, where ``x`` is
             total reactive count.  For ``mode="lc"`` the count sums over all
             L/C splittings with ``l + c == x``.
-        support_count: Number of distinct simple two-terminal support graphs.
-        support_count_by_edges: Counts of support graphs by number of support
-            edges.
+        support_count: Number of terminal-relevant two-terminal support graphs
+            used by the legacy bundle counter.
+        support_count_by_edges: Terminal-relevant support counts by number of
+            support edges.
     """
 
     max_r: int
@@ -158,31 +193,38 @@ def is_two_terminal_relevant(graph: nx.Graph, source: int, target: int) -> bool:
 def terminal_pair_orbit_representatives(
     graph: nx.Graph, graph_automorphisms: Iterable[dict[int, int]]
 ) -> list[tuple[int, int]]:
-    """Return unordered terminal-pair representatives for a support graph."""
+    """Return unordered terminal-pair orbit representatives for a support graph.
+
+    Terminal pairs are quotiented by support-graph automorphisms. Terminal
+    reversal is already removed by representing each pair as a sorted tuple.
+    No terminal-relevance filtering is applied here.
+    """
 
     autos = list(graph_automorphisms)
-    valid_pairs: list[tuple[int, int]] = []
-    for source, target in combinations(sorted(graph.nodes()), 2):
-        if is_two_terminal_relevant(graph, source, target):
-            valid_pairs.append((source, target))
-
-    valid_set = set(valid_pairs)
     representatives: list[tuple[int, int]] = []
     seen: set[tuple[int, int]] = set()
 
-    for pair in valid_pairs:
+    for pair in combinations(sorted(graph.nodes()), 2):
         if pair in seen:
             continue
         a, b = pair
-        orbit = {
-            tuple(sorted((mapping[a], mapping[b])))
-            for mapping in autos
-            if tuple(sorted((mapping[a], mapping[b]))) in valid_set
-        }
+        orbit = {tuple(sorted((mapping[a], mapping[b]))) for mapping in autos}
         seen |= orbit
         representatives.append(min(orbit))
 
     return representatives
+
+
+def relevant_terminal_pair_orbit_representatives(
+    graph: nx.Graph, graph_automorphisms: Iterable[dict[int, int]]
+) -> list[tuple[int, int]]:
+    """Return terminal-pair orbit representatives that pass relevance filtering."""
+
+    return [
+        (source, target)
+        for source, target in terminal_pair_orbit_representatives(graph, graph_automorphisms)
+        if is_two_terminal_relevant(graph, source, target)
+    ]
 
 
 def edge_permutations_preserving_terminal_set(
@@ -241,11 +283,11 @@ def fixed_assignments_by_total(
     max_reactive: int,
     mode: Mode,
 ) -> dict[tuple[int, int], int]:
-    """Count assignments fixed by an edge permutation with given cycle lengths.
+    """Count legacy bundle assignments fixed by an edge permutation.
 
-    Burnside's lemma reduces the orbit count to fixed assignments under each
-    automorphism.  An assignment fixed on a cycle of support edges must put the
-    same non-empty branch bundle on every edge in that cycle.
+    This helper is part of the legacy component-count bundle counter, not the
+    phase-1 support census.  For a fixed edge permutation, every edge in a cycle
+    must receive the same non-empty count bundle.
     """
 
     if mode == "generic":
@@ -296,18 +338,55 @@ def fixed_assignments_by_total(
 
 
 def iter_two_terminal_supports(max_edges: int):
-    """Yield ``(graph, terminal_pair, automorphisms)`` support representatives."""
+    """Yield terminal-relevant support representatives for legacy counting."""
 
     levels = generate_connected_unlabelled_simple_graphs(max_edges)
     for edge_count in range(1, max_edges + 1):
         for graph in levels[edge_count]:
             autos = automorphisms(graph)
-            for terminals in terminal_pair_orbit_representatives(graph, autos):
+            for terminals in relevant_terminal_pair_orbit_representatives(graph, autos):
                 yield graph, terminals, autos
 
 
+def support_census(max_edges: int = 8) -> SupportCensusResult:
+    """Enumerate the phase-1 support graph census up to ``max_edges``.
+
+    This deliberately stops before component assignment, simple bundles, series
+    spans, or reduced signatures.
+    """
+
+    if max_edges < 1:
+        raise ValueError("max_edges must be at least 1")
+
+    levels = generate_connected_unlabelled_simple_graphs(max_edges)
+    basic_by_edges: dict[int, int] = {}
+    terminal_labelings_by_edges: dict[int, int] = {}
+    relevant_by_edges: dict[int, int] = {}
+
+    for edge_count in range(1, max_edges + 1):
+        basic_by_edges[edge_count] = len(levels[edge_count])
+        terminal_labelings = 0
+        relevant = 0
+        for graph in levels[edge_count]:
+            autos = automorphisms(graph)
+            terminal_pairs = terminal_pair_orbit_representatives(graph, autos)
+            terminal_labelings += len(terminal_pairs)
+            relevant += sum(
+                1 for source, target in terminal_pairs if is_two_terminal_relevant(graph, source, target)
+            )
+        terminal_labelings_by_edges[edge_count] = terminal_labelings
+        relevant_by_edges[edge_count] = relevant
+
+    return SupportCensusResult(
+        max_edges=max_edges,
+        basic_by_edges=basic_by_edges,
+        terminal_labelings_by_edges=terminal_labelings_by_edges,
+        relevant_by_edges=relevant_by_edges,
+    )
+
+
 def count_networks(max_r: int = 3, max_reactive: int = 5, mode: Mode = "lc") -> CountResult:
-    """Count two-terminal network topologies under the documented assumptions."""
+    """Run the legacy multiset-bundle two-terminal network count."""
 
     if max_r < 0 or max_reactive < 0:
         raise ValueError("component limits must be non-negative")
