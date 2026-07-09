@@ -1,6 +1,8 @@
 import json
+import subprocess
+import sys
 
-from rlc_oneport_count.cli import main
+from rice.cli import main
 
 
 def test_top_level_format_is_preserved_before_supports_subcommand(capsys):
@@ -23,3 +25,15 @@ def test_top_level_count_options_are_preserved_before_count_subcommand(capsys):
 
     assert len(output["table"]) == 3
     assert all(len(row) == 1 for row in output["table"])
+
+
+def test_rice_module_help_smoke():
+    result = subprocess.run(
+        [sys.executable, "-m", "rice", "--help"],
+        check=True,
+        text=True,
+        capture_output=True,
+    )
+
+    assert "usage: rice" in result.stdout
+    assert "Resistor-Inductor-Capacitor Enumerator" in result.stdout
