@@ -171,23 +171,30 @@ isomorphism/signature merging is:
 This is small enough for a clear brute-force assignment pass before introducing
 more elaborate canonical-generation machinery.
 
-## Suggested CLI for phase 1
+## CLI for phase 1
 
-Add a command or option that reports the support census without running the full
-component count. Possible shapes:
-
-```bash
-python -m rice supports --max-edges 8
-```
-
-or:
+The support census is exposed as the `supports` subcommand. Subcommand options
+must go after `supports`:
 
 ```bash
-python -m rice census --max-r 3 --max-reactive 5
+.venv/bin/python -m rice supports --max-edges 8
 ```
 
-The exact CLI shape is less important than making the stage inspectable and
-testable.
+For the main component-budget problem, the CLI can derive the support-edge bound
+from `max_edges = max_r + max_reactive`:
+
+```bash
+.venv/bin/python -m rice supports --max-r 3 --max-reactive 5
+```
+
+Use either `--max-edges` or the `--max-r`/`--max-reactive` pair. Supplying
+`--max-edges` together with component-budget options is an error rather than an
+implicit precedence choice. Supplying only one of `--max-r` and
+`--max-reactive` is also an error.
+
+The legacy no-subcommand interface applies only to the component-bundle count;
+it is not a support-census form. For example, `rice --max-r 3 --max-reactive 5
+supports` is rejected so those count options cannot be silently ignored.
 
 ## Required phase-1 tests
 

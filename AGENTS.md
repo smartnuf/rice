@@ -90,6 +90,22 @@ Use `.venv/bin/python -m pip ...` or rerun the Codex setup script.
 
 Do not commit `.venv/`, `__pycache__/`, build artefacts, or generated archives.
 
+## CLI changes
+
+After changing argument parsing, run the relevant CLI help commands and check
+that the output is correct and reasonable. Check both top-level help and any
+changed subcommand help, for example:
+
+```bash
+.venv/bin/python -m rice --help
+.venv/bin/python -m rice supports --help
+.venv/bin/python -m rice count --help
+```
+
+Whenever CLI syntax changes, update README and docs examples in the same change.
+Keep examples explicit about option placement: subcommand options go after the
+subcommand, while the no-subcommand count form is legacy compatibility only.
+
 ## Codex cloud expectations
 
 A Codex Cloud environment should run the repository scripts:
