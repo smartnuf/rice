@@ -202,13 +202,6 @@ The primary installed console script can also be run explicitly from the venv:
 .venv/bin/rice --mode lc --max-r 3 --max-reactive 5
 ```
 
-A transitional backwards-compatible console alias is retained for existing
-automation, but new commands should prefer `rice`:
-
-```bash
-.venv/bin/rlc-oneport-count --help
-```
-
 ## Codex Cloud scripts
 
 Repository-local Codex setup scripts are provided in `.codex/`:

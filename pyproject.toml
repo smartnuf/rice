@@ -21,7 +21,6 @@ dev = [
 
 [project.scripts]
 rice = "rice.cli:main"
-rlc-oneport-count = "rice.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
