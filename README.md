@@ -188,6 +188,7 @@ python3 -m venv .venv
 .venv/bin/python -m pip install -e ".[dev]"
 .venv/bin/python -m pytest -q
 .venv/bin/python -m rice supports --max-edges 8
+.venv/bin/python -m rice supports --max-r 3 --max-reactive 5
 .venv/bin/python -m rice --mode lc --max-r 3 --max-reactive 5
 .venv/bin/python -m rice --mode generic --max-r 3 --max-reactive 5
 ```
@@ -196,11 +197,24 @@ python3 -m venv .venv
 A future generic-removal PR should remove that target from `make check` together
 with `--mode generic` and the matching documentation/results entries.
 
-The primary installed console script can also be run explicitly from the venv:
+The primary installed console script can also be run explicitly from the venv.
+Subcommand options go after the subcommand:
+
+```bash
+.venv/bin/rice supports --max-edges 8
+.venv/bin/rice supports --max-r 3 --max-reactive 5
+.venv/bin/rice count --mode lc --max-r 3 --max-reactive 5
+```
+
+The legacy no-subcommand count form is retained for compatibility only:
 
 ```bash
 .venv/bin/rice --mode lc --max-r 3 --max-reactive 5
 ```
+
+Do not put support-census options before `supports`; for example,
+`.venv/bin/rice --max-edges 8 supports` is not valid. Count-budget options
+before `supports` are rejected rather than silently ignored.
 
 ## Codex Cloud scripts
 

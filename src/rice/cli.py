@@ -4,16 +4,25 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from dataclasses import asdict
 from typing import Any
 
 from .core import CountResult, SupportCensusResult, count_networks, support_census
 
 
+_COUNT_OPTION_NAMES = ("--max-r", "--max-reactive", "--mode")
+_LEGACY_GLOBAL_OPTION_NAMES = (*_COUNT_OPTION_NAMES, "--format")
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="rice",
         description="RICE — Resistor-Inductor-Capacitor Enumerator for small two-terminal RLC one-port topology classes.",
+        epilog=(
+            "Subcommand options go after the subcommand. The no-subcommand "
+            "legacy count form is retained for compatibility."
+        ),
     )
     subparsers = parser.add_subparsers(dest="command")
 
@@ -32,44 +41,63 @@ def build_parser() -> argparse.ArgumentParser:
         help="maximum support-edge count, default: 8",
     )
     supports_parser.add_argument(
+        "--max-r",
+        type=int,
+        default=argparse.SUPPRESS,
+        help="component-budget resistor limit; with --max-reactive derives max_edges=max_r+max_reactive",
+    )
+    supports_parser.add_argument(
+        "--max-reactive",
+        type=int,
+        default=argparse.SUPPRESS,
+        help="component-budget reactive limit; with --max-r derives max_edges=max_r+max_reactive",
+    )
+    supports_parser.add_argument(
         "--format",
         choices=("markdown", "json"),
         default=argparse.SUPPRESS,
         help="output format, default: markdown",
     )
 
-    # Preserve the original no-subcommand interface for the legacy count.
-    _add_count_arguments(parser, suppress_defaults=True)
+    # Preserve the original no-subcommand interface for the legacy count, but
+    # hide these compatibility options from top-level help so they are not
+    # mistaken for options that apply to every subcommand.
+    _add_count_arguments(parser, suppress_defaults=True, hide_help=True)
     return parser
 
 
 def _add_count_arguments(
-    parser: argparse.ArgumentParser, *, suppress_defaults: bool = False
+    parser: argparse.ArgumentParser,
+    *,
+    suppress_defaults: bool = False,
+    hide_help: bool = False,
 ) -> None:
     default = argparse.SUPPRESS if suppress_defaults else None
+    help_text = argparse.SUPPRESS if hide_help else None
     parser.add_argument(
         "--max-r",
         type=int,
         default=default,
-        help="maximum number of resistors, default: 3",
+        help=help_text or "maximum number of resistors, default: 3",
     )
     parser.add_argument(
         "--max-reactive",
         type=int,
         default=default,
-        help="maximum total number of reactive elements, default: 5",
+        help=help_text or "maximum total number of reactive elements, default: 5",
     )
     parser.add_argument(
         "--mode",
         choices=("lc", "generic"),
         default=default,
-        help="'lc' distinguishes L and C; 'generic' treats reactive elements as X",
+        help=help_text
+        or "'lc' distinguishes L and C; 'generic' treats reactive elements as X",
     )
     parser.add_argument(
         "--format",
         choices=("markdown", "json"),
         default=default,
-        help="output format, default: markdown",
+        help=help_text or "output format, default: markdown",
     )
 
 
@@ -95,13 +123,60 @@ def _count_json(result: CountResult) -> dict[str, Any]:
     return payload
 
 
+def _option_name(token: str) -> str:
+    return token.split("=", 1)[0]
+
+
+def _reject_legacy_globals_before_supports(
+    parser: argparse.ArgumentParser, argv: list[str]
+) -> None:
+    """Reject compatibility global options that would otherwise be ignored."""
+
+    if "supports" not in argv:
+        return
+    supports_index = argv.index("supports")
+    legacy_options = {
+        _option_name(token)
+        for token in argv[:supports_index]
+        if token.startswith("--") and _option_name(token) in _LEGACY_GLOBAL_OPTION_NAMES
+    }
+    if legacy_options:
+        options = ", ".join(sorted(legacy_options))
+        parser.error(
+            f"options {options} must be placed after the 'supports' subcommand "
+            "when used with support census"
+        )
+
+
+def _resolve_support_max_edges(parser: argparse.ArgumentParser, args: argparse.Namespace) -> int:
+    has_max_edges = hasattr(args, "max_edges")
+    has_max_r = hasattr(args, "max_r")
+    has_max_reactive = hasattr(args, "max_reactive")
+
+    if has_max_edges and (has_max_r or has_max_reactive):
+        parser.error(
+            "supports --max-edges is mutually exclusive with supports "
+            "--max-r/--max-reactive component budgets"
+        )
+    if has_max_r != has_max_reactive:
+        parser.error("supports --max-r and --max-reactive must be provided together")
+    if has_max_r and has_max_reactive:
+        return args.max_r + args.max_reactive
+    if has_max_edges:
+        return args.max_edges
+    return 8
+
+
 def main(argv: list[str] | None = None) -> int:
-    args = build_parser().parse_args(argv)
+    argv = sys.argv[1:] if argv is None else argv
+    parser = build_parser()
+    _reject_legacy_globals_before_supports(parser, argv)
+    args = parser.parse_args(argv)
 
     output_format = getattr(args, "format", "markdown")
 
     if args.command == "supports":
-        max_edges = getattr(args, "max_edges", 8)
+        max_edges = _resolve_support_max_edges(parser, args)
         result = support_census(max_edges=max_edges)
         if output_format == "json":
             print(json.dumps(_support_census_json(result), indent=2, sort_keys=True))

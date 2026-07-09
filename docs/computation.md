@@ -65,6 +65,16 @@ For `max_edges = 8`, expected counts are:
 A terminal-irrelevant graph is rejected as a whole. It is not pruned into a
 smaller accepted graph.
 
+Run the census with subcommand options after `supports`:
+
+```bash
+.venv/bin/python -m rice supports --max-edges 8
+.venv/bin/python -m rice supports --max-r 3 --max-reactive 5
+```
+
+The second form derives `max_edges = max_r + max_reactive`. Do not use the
+legacy no-subcommand count form for support census commands.
+
 ## Stage 2: simple bundle assignment
 
 After support graph census is stable, assign only simple primitive bundles:
