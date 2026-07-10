@@ -12,7 +12,10 @@ run git diff --check
 
 echo
 echo "==> syntax compile tracked Python files under src/ and tests/"
-mapfile -t python_files < <(git ls-files 'src/*.py' 'tests/*.py')
+python_files=()
+while IFS= read -r python_file; do
+    python_files+=("${python_file}")
+done < <(git ls-files 'src/*.py' 'tests/*.py')
 
 if (( ${#python_files[@]} == 0 )); then
     echo "No tracked Python files found under src/ or tests/."

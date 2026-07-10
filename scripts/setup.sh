@@ -7,32 +7,77 @@ source "${SCRIPT_DIR}/_common.sh"
 
 require_repo_root
 
+python_candidate_is_usable() {
+    local candidate_path temp_dir status
+    candidate_path="$1"
+
+    case "${candidate_path}" in
+        "${PWD}/.venv/"*) return 1 ;;
+    esac
+
+    if ! "${candidate_path}" -c 'import sys; raise SystemExit(0 if sys.version_info >= (3, 11) else 1)' >/dev/null 2>&1; then
+        return 1
+    fi
+
+    temp_dir="$(mktemp -d "${TMPDIR:-/tmp}/rice-venv-check.XXXXXX")"
+    status=0
+    if ! "${candidate_path}" -m venv "${temp_dir}/venv" >/dev/null 2>&1; then
+        status=1
+    fi
+    rm -rf -- "${temp_dir}"
+    return "${status}"
+}
+
+find_base_python() {
+    local candidate candidate_path seen_paths selected
+    seen_paths=""
+    selected=""
+
+    for candidate in python3.14 python3.13 python3.12 python3.11 python3; do
+        while IFS= read -r candidate_path; do
+            [[ -n "${candidate_path}" ]] || continue
+            case "
+${seen_paths}
+" in
+                *"
+${candidate_path}
+"*) continue ;;
+            esac
+            seen_paths="${seen_paths}${candidate_path}
+"
+            if python_candidate_is_usable "${candidate_path}"; then
+                selected="${candidate_path}"
+                break
+            fi
+        done <<EOF_CANDIDATES
+$(type -P -a "${candidate}" 2>/dev/null || true)
+EOF_CANDIDATES
+        [[ -n "${selected}" ]] && break
+    done
+
+    [[ -n "${selected}" ]] || return 1
+    printf '%s\n' "${selected}"
+}
+
 echo "Setting up RICE development environment"
 
-PYTHON_BIN=""
-for candidate in python3.12 python3.11 python3; do
-    mapfile -t candidate_paths < <(type -P -a "${candidate}" 2>/dev/null | awk '!seen[$0]++')
-    for candidate_path in "${candidate_paths[@]}"; do
-        case "${candidate_path}" in
-            "${PWD}/.venv/"*) continue ;;
-        esac
-        if "${candidate_path}" -c 'import sys; raise SystemExit(0 if sys.version_info >= (3, 11) else 1)' >/dev/null 2>&1; then
-            PYTHON_BIN="${candidate_path}"
-            break
-        fi
-    done
-    [[ -n "${PYTHON_BIN}" ]] && break
-done
-
+PYTHON_BIN="$(find_base_python || true)"
 if [[ -z "${PYTHON_BIN}" ]]; then
-    echo "Error: Python 3.11 or newer is required, but no suitable interpreter was found." >&2
+    echo "Error: Python 3.11 or newer with working venv support is required, but no suitable interpreter was found." >&2
     exit 1
 fi
 
 echo "Selected base Python:"
 "${PYTHON_BIN}" -c 'import sys; print("  executable:", sys.executable); print("  version:", sys.version.split()[0])'
 
-run "${PYTHON_BIN}" -m venv .venv
+if [[ "${RICE_SETUP_ONLY_PRINT_PYTHON:-}" == "1" ]]; then
+    exit 0
+fi
+
+if ! run "${PYTHON_BIN}" -m venv .venv; then
+    echo "Error: selected Python failed to create .venv even though the capability probe succeeded: ${PYTHON_BIN}" >&2
+    exit 1
+fi
 run .venv/bin/python -m pip install --upgrade pip setuptools wheel
 run .venv/bin/python -m pip install -e ".[dev]"
 
