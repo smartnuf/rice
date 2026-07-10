@@ -197,9 +197,11 @@ through repository-root shell scripts:
 ./scripts/clean.sh
 ```
 
-These scripts validate that they are being run from the repository root, use
+These scripts validate that they are being run from the repository root, are
+kept compatible with Bash 3.2 for the system Bash on older macOS releases, use
 `.venv/bin/python` explicitly after setup, and print the Python executable in
-use.
+use. `setup.sh` selects Python 3.11 or newer only after verifying that the
+interpreter can create virtual environments.
 
 On native Windows PowerShell, use the repository-root PowerShell scripts:
 
@@ -211,8 +213,10 @@ On native Windows PowerShell, use the repository-root PowerShell scripts:
 .\scripts\clean.ps1
 ```
 
-The PowerShell path uses `.venv\Scripts\python.exe` explicitly and does not
-require Make, Bash, WSL, or virtual-environment activation. If local execution
+The PowerShell path uses `.venv\Scripts\python.exe` explicitly after setup,
+selects Python 3.11 or newer with working `venv` support through the Windows
+launcher or `python.exe`, and does not require Make, Bash, WSL, or
+virtual-environment activation. If local execution
 policy blocks a script, prefer a process-scoped policy for that shell:
 
 ```powershell

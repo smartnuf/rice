@@ -53,3 +53,10 @@ scripts/
   `clean.ps1`, `setup.ps1`, `test.ps1`, `lint.ps1`, and `check.ps1`.
 - Repeated `setup.ps1` and repeated `clean.ps1` were verified, followed by
   recreating the final `.venv` with `setup.ps1` and rerunning `test.ps1`.
+
+- 2026-07-10: Hardened setup and cleanup scripts after PR review: Bash scripts
+  avoid Bash-4-only helpers such as `mapfile`, setup probes require working
+  `venv` support before selecting Python, Windows setup accepts forward-compatible
+  `py -3` launcher runtimes, and Windows cleanup skips directory reparse points
+  before recursion. Added regression coverage for script parsing and selection
+  behavior.

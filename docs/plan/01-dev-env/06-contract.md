@@ -32,3 +32,10 @@ Ensure there is one development contract, not several subtly different ones.
   assignment census, labeling census, legacy LC count, and legacy generic count.
 - Evidence: the native Windows PowerShell path successfully ran `setup.ps1`,
   `test.ps1`, `lint.ps1`, and the complete `check.ps1` validation sequence.
+
+- 2026-07-10: Hardened setup and cleanup scripts after PR review: Bash scripts
+  avoid Bash-4-only helpers such as `mapfile`, setup probes require working
+  `venv` support before selecting Python, Windows setup accepts forward-compatible
+  `py -3` launcher runtimes, and Windows cleanup skips directory reparse points
+  before recursion. Added regression coverage for script parsing and selection
+  behavior.

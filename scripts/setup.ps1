@@ -32,6 +32,17 @@ print(sys.version.split()[0])
         return $null
     }
 
+    $tempRoot = Join-Path ([System.IO.Path]::GetTempPath()) ([System.IO.Path]::GetRandomFileName())
+    New-Item -ItemType Directory -Path $tempRoot | Out-Null
+    try {
+        & $FilePath @Arguments -m venv (Join-Path $tempRoot 'venv') *> $null
+        if ($LASTEXITCODE -ne 0) {
+            return $null
+        }
+    } finally {
+        Remove-Item -LiteralPath $tempRoot -Recurse -Force -ErrorAction SilentlyContinue
+    }
+
     return [pscustomobject]@{
         FilePath = $FilePath
         Arguments = $Arguments
@@ -41,19 +52,29 @@ print(sys.version.split()[0])
 }
 
 function Find-BasePython {
+    $seen = [System.Collections.Generic.HashSet[string]]::new([System.StringComparer]::OrdinalIgnoreCase)
+    $candidates = @()
+
     $py = Get-Command py.exe -ErrorAction SilentlyContinue
     if ($null -ne $py) {
-        foreach ($versionArg in @('-3.12', '-3.11')) {
-            $candidate = Test-PythonCandidate -FilePath $py.Source -Arguments @($versionArg)
-            if ($null -ne $candidate) {
-                return $candidate
-            }
-        }
+        $candidates += ,@($py.Source, @('-3'))
+        $candidates += ,@($py.Source, @('-3.14'))
+        $candidates += ,@($py.Source, @('-3.13'))
+        $candidates += ,@($py.Source, @('-3.12'))
+        $candidates += ,@($py.Source, @('-3.11'))
     }
 
     $python = Get-Command python.exe -ErrorAction SilentlyContinue
     if ($null -ne $python) {
-        $candidate = Test-PythonCandidate -FilePath $python.Source
+        $candidates += ,@($python.Source, @())
+    }
+
+    foreach ($entry in $candidates) {
+        $filePath = [string]$entry[0]
+        $arguments = [string[]]$entry[1]
+        $key = $filePath + ' ' + ($arguments -join ' ')
+        if (-not $seen.Add($key)) { continue }
+        $candidate = Test-PythonCandidate -FilePath $filePath -Arguments $arguments
         if ($null -ne $candidate) {
             return $candidate
         }
@@ -66,7 +87,7 @@ Write-Host 'Setting up RICE development environment'
 
 $basePython = Find-BasePython
 if ($null -eq $basePython) {
-    throw 'Error: Python 3.11 or newer is required, but no suitable Windows interpreter was found.'
+    throw 'Error: Python 3.11 or newer with working venv support is required, but no suitable Windows interpreter was found.'
 }
 
 Write-Host 'Selected base Python:'
