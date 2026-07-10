@@ -25,9 +25,7 @@ Use stable generated counts to detect accidental changes.
   `max_edges=8`, the phase-2 raw simple-bundle assignment table and
   `1,166,714` leaf total, the phase-3 canonical bundle-labeling table with total `830,094`, and the current legacy `lc` and `generic` count
   tables.
-- These tests are in source form rather than stored external machine-readable
-  artefacts, and reduced-model small-slice/Ladenheim golden outputs have not yet
-  been generated.
+- The reduced-model `R <= 2`, `L+C <= 3` golden output is now stored in `data/counts/small-r2-x3.json` and tested against the API and CLI JSON. Ladenheim golden outputs have not yet been generated.
 
 ## Near-term next steps
 

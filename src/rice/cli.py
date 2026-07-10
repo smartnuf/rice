@@ -12,9 +12,11 @@ from .core import (
     BundleAssignmentCensusResult,
     BundleLabelingCensusResult,
     CountResult,
+    ReducedTopologyCensusResult,
     SupportCensusResult,
     count_networks,
     simple_bundle_assignment_census,
+    reduced_topology_census,
     simple_bundle_labeling_census,
     support_census,
 )
@@ -125,6 +127,35 @@ def build_parser() -> argparse.ArgumentParser:
         help="output format, default: markdown",
     )
 
+    reduced_parser = subparsers.add_parser(
+        "reduced",
+        help="run the canonical reduced-topology census",
+    )
+    reduced_parser.add_argument(
+        "--max-r",
+        type=int,
+        default=argparse.SUPPRESS,
+        help="maximum number of resistors, default: 3",
+    )
+    reduced_parser.add_argument(
+        "--max-reactive",
+        type=int,
+        default=argparse.SUPPRESS,
+        help="maximum total number of reactive elements, default: 5",
+    )
+    reduced_parser.add_argument(
+        "--max-edges",
+        type=int,
+        default=argparse.SUPPRESS,
+        help="optional debugging/truncation support-edge count; default: max_r + max_reactive; cannot exceed that derived bound",
+    )
+    reduced_parser.add_argument(
+        "--format",
+        choices=("markdown", "json"),
+        default=argparse.SUPPRESS,
+        help="output format, default: markdown",
+    )
+
     # Preserve the original no-subcommand interface for the legacy count, but
     # hide these compatibility options from top-level help so they are not
     # mistaken for options that apply to every subcommand.
@@ -210,6 +241,32 @@ def _bundle_labeling_census_json(result: BundleLabelingCensusResult) -> dict[str
     return payload
 
 
+
+def _reduced_topology_census_json(result: ReducedTopologyCensusResult) -> dict[str, Any]:
+    """Return reduced-topology census data using a stable documented shape."""
+
+    return {
+        "format_version": 1,
+        "scope": {
+            "max_r": result.max_r,
+            "max_reactive": result.max_reactive,
+            "max_edges": result.max_edges,
+        },
+        "definition": "canonical-reduced-topology-local-series-parallel-v1",
+        "equivalence": (
+            "internal node renaming, terminal reversal, local commutative series/parallel "
+            "normalisation, and duplicate primitive singleton merging; not rational immittance equivalence"
+        ),
+        "exact_counts_by_r_x": [list(row) for row in result.exact_table],
+        "total": result.total,
+        "diagnostics": {
+            "raw_phase2_assignments_total": result.raw_leaf_assignments_total,
+            "phase3_assigned_support_labeling_orbits_total": result.canonical_labeling_orbits_total,
+            "canonical_reduced_signatures_total": result.total,
+        },
+        "canonical_signatures": list(result.canonical_signatures),
+    }
+
 def _count_json(result: CountResult) -> dict[str, Any]:
     """Return legacy count data including computed totals for JSON output."""
 
@@ -227,7 +284,7 @@ def _reject_legacy_globals_before_supports(
 ) -> None:
     """Reject compatibility global options that would otherwise be ignored."""
 
-    subcommands = {"supports", "bundles", "labelings"}
+    subcommands = {"supports", "bundles", "labelings", "reduced"}
     command_indexes = [i for i, token in enumerate(argv) if token in subcommands]
     if not command_indexes:
         return
@@ -377,6 +434,37 @@ def main(argv: list[str] | None = None) -> int:
                 f"| Total | {result.relevant_supports_total} | "
                 f"{result.raw_leaf_assignments_total} | "
                 f"{result.canonical_labeling_orbits_total} |"
+            )
+        return 0
+
+
+    if args.command == "reduced":
+        max_r = getattr(args, "max_r", 3)
+        max_reactive = getattr(args, "max_reactive", 5)
+        max_edges = getattr(args, "max_edges", None)
+        if max_edges is not None and max_edges > max_r + max_reactive:
+            parser.error("reduced --max-edges cannot exceed --max-r + --max-reactive")
+        result = reduced_topology_census(max_r=max_r, max_reactive=max_reactive, max_edges=max_edges)
+        if output_format == "json":
+            print(json.dumps(_reduced_topology_census_json(result), indent=2, sort_keys=True))
+        else:
+            print(
+                "Canonical reduced-topology census: "
+                f"R <= {result.max_r}, L+C <= {result.max_reactive}, "
+                f"max_edges <= {result.max_edges}"
+            )
+            print("Exact table entries are reduced primitive counts. L and C remain distinct topology labels, aggregated by L+C columns.")
+            print("Equivalence: internal node renaming, terminal reversal, local commutative series/parallel normalisation, and duplicate primitive singleton merging.")
+            print("This is not full rational-immittance equivalence.")
+            print()
+            print(result.as_markdown_table())
+            print()
+            print(f"Cumulative reduced-topology total: {result.total}")
+            print(
+                "Diagnostics: "
+                f"raw phase-2 assignments={result.raw_leaf_assignments_total}; "
+                f"phase-3 labeling orbits={result.canonical_labeling_orbits_total}; "
+                f"canonical reduced signatures={result.total}"
             )
         return 0
 

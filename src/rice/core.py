@@ -357,6 +357,42 @@ def canonical_reduced_signature(
     return ReducedSignature(best)
 
 
+
+@dataclass(frozen=True)
+class ReducedTopologyCensusResult:
+    """End-to-end reduced-topology census result.
+
+    ``exact_table`` is indexed as ``exact_table[r][x]`` where ``x = L+C`` in
+    the canonical reduced signatures. ``canonical_signatures`` is a
+    deterministic tuple of stable signature strings suitable for catalogue
+    generation and duplicate checks.
+    """
+
+    max_r: int
+    max_reactive: int
+    max_edges: int
+    exact_table: tuple[tuple[int, ...], ...]
+    canonical_signatures: tuple[str, ...]
+    raw_leaf_assignments_total: int
+    canonical_labeling_orbits_total: int
+
+    @property
+    def total(self) -> int:
+        return sum(sum(row) for row in self.exact_table)
+
+    def as_markdown_table(self) -> str:
+        headers = (
+            ["R \\ L+C"]
+            + [str(x) for x in range(self.max_reactive + 1)]
+            + ["Row total"]
+        )
+        lines = ["| " + " | ".join(headers) + " |"]
+        lines.append("|" + "---:|" * len(headers))
+        for r, row in enumerate(self.exact_table):
+            values = [str(r)] + [str(v) for v in row] + [str(sum(row))]
+            lines.append("| " + " | ".join(values) + " |")
+        return "\n".join(lines)
+
 @dataclass(frozen=True)
 class CountResult:
     """Legacy component-bundle result returned by :func:`count_networks`.
@@ -857,6 +893,144 @@ def simple_bundle_labeling_census(
         },
     )
 
+
+def _component_counts_for_factor(factor: ReducedFactor) -> tuple[int, int, int]:
+    if factor.kind == "primitive":
+        if factor.value == "R":
+            return (1, 0, 0)
+        if factor.value == "L":
+            return (0, 1, 0)
+        return (0, 0, 1)
+    r = l = c = 0
+    for operand in factor.operands:
+        rr, ll, cc = _component_counts_for_factor(operand)
+        r += rr
+        l += ll
+        c += cc
+    return r, l, c
+
+
+def reduced_signature_component_counts(
+    signature: ReducedSignature,
+) -> tuple[int, int, int]:
+    """Return exact primitive ``(R, L, C)`` counts present in a reduced signature."""
+
+    r = l = c = 0
+    for _u, _v, factor in signature.serialization:
+        rr, ll, cc = _component_counts_for_factor(factor)
+        r += rr
+        l += ll
+        c += cc
+    return r, l, c
+
+
+def _assignment_options_by_budget(
+    max_r: int, max_reactive: int
+) -> list[SimplePrimitiveBundle]:
+    return [
+        bundle
+        for bundle in SIMPLE_PRIMITIVE_BUNDLES
+        if bundle.r_count <= max_r and bundle.reactive_count <= max_reactive
+    ]
+
+
+def _iter_budgeted_edge_assignments(
+    edges: tuple[tuple[int, int], ...], max_r: int, max_reactive: int
+):
+    options = _assignment_options_by_budget(max_r, max_reactive)
+
+    def rec(
+        index: int,
+        used_r: int,
+        used_x: int,
+        current: dict[tuple[int, int], SimplePrimitiveBundle],
+    ):
+        if index == len(edges):
+            yield dict(current)
+            return
+        edge = edges[index]
+        for bundle in options:
+            new_r = used_r + bundle.r_count
+            new_x = used_x + bundle.reactive_count
+            if new_r <= max_r and new_x <= max_reactive:
+                current[edge] = bundle
+                yield from rec(index + 1, new_r, new_x, current)
+                del current[edge]
+
+    yield from rec(0, 0, 0, {})
+
+
+def iter_reduced_topology_signatures(
+    max_r: int = 3, max_reactive: int = 5, max_edges: int | None = None
+):
+    """Yield unique canonical reduced signatures deterministically for a budget slice."""
+
+    if max_r < 0 or max_reactive < 0:
+        raise ValueError("component limits must be non-negative")
+    natural_max_edges = max_r + max_reactive
+    resolved_max_edges = natural_max_edges if max_edges is None else max_edges
+    if resolved_max_edges < 1:
+        return
+    if resolved_max_edges > natural_max_edges:
+        raise ValueError("max_edges cannot exceed max_r + max_reactive")
+
+    signatures: dict[str, ReducedSignature] = {}
+    for graph, terminals, _autos in iter_two_terminal_supports(resolved_max_edges):
+        edges = tuple(tuple(sorted(edge)) for edge in graph.edges())
+        for assignment in _iter_budgeted_edge_assignments(edges, max_r, max_reactive):
+            signature = canonical_reduced_signature(graph, terminals, assignment)
+            r, l, c = reduced_signature_component_counts(signature)
+            if r <= max_r and l + c <= max_reactive:
+                signatures.setdefault(signature.stable_string(), signature)
+
+    for key in sorted(signatures):
+        yield signatures[key]
+
+
+def reduced_topology_census(
+    max_r: int = 3, max_reactive: int = 5, max_edges: int | None = None
+) -> ReducedTopologyCensusResult:
+    """Run the first end-to-end canonical reduced-topology census."""
+
+    if max_r < 0 or max_reactive < 0:
+        raise ValueError("component limits must be non-negative")
+    natural_max_edges = max_r + max_reactive
+    resolved_max_edges = natural_max_edges if max_edges is None else max_edges
+    if resolved_max_edges < 1:
+        raise ValueError("max_edges must be at least 1")
+    if resolved_max_edges > natural_max_edges:
+        raise ValueError("max_edges cannot exceed max_r + max_reactive")
+
+    raw = simple_bundle_assignment_census(
+        max_r=max_r, max_reactive=max_reactive, max_edges=resolved_max_edges
+    )
+    labelings = simple_bundle_labeling_census(
+        max_r=max_r, max_reactive=max_reactive, max_edges=resolved_max_edges
+    )
+    counts: DefaultDict[tuple[int, int], int] = defaultdict(int)
+    stable_strings: list[str] = []
+
+    for signature in iter_reduced_topology_signatures(
+        max_r=max_r, max_reactive=max_reactive, max_edges=resolved_max_edges
+    ):
+        r, l, c = reduced_signature_component_counts(signature)
+        x = l + c
+        counts[(r, x)] += 1
+        stable_strings.append(signature.stable_string())
+
+    table = tuple(
+        tuple(counts.get((r, x), 0) for x in range(max_reactive + 1))
+        for r in range(max_r + 1)
+    )
+    return ReducedTopologyCensusResult(
+        max_r=max_r,
+        max_reactive=max_reactive,
+        max_edges=resolved_max_edges,
+        exact_table=table,
+        canonical_signatures=tuple(stable_strings),
+        raw_leaf_assignments_total=raw.leaf_assignments_total,
+        canonical_labeling_orbits_total=labelings.canonical_labeling_orbits_total,
+    )
 
 def count_networks(max_r: int = 3, max_reactive: int = 5, mode: Mode = "lc") -> CountResult:
     """Run the legacy multiset-bundle two-terminal network count."""

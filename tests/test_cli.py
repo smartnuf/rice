@@ -65,6 +65,7 @@ def test_top_level_help_does_not_show_support_or_count_options_as_global():
     assert "count" in result.stdout
     assert "supports" in result.stdout
     assert "bundles" in result.stdout
+    assert "reduced" in result.stdout
     assert "--max-edges" not in result.stdout
     assert "--max-r" not in result.stdout
     assert "--max-reactive" not in result.stdout
@@ -216,3 +217,37 @@ def test_labelings_subcommand_help_shows_labeling_options():
     assert "--max-reactive" in result.stdout
     assert "--max-edges" in result.stdout
     assert "debugging/truncation" in result.stdout
+
+
+def test_reduced_subcommand_outputs_canonical_census(capsys):
+    assert main(["reduced", "--max-r", "2", "--max-reactive", "3"]) == 0
+
+    output = capsys.readouterr().out
+
+    assert "Canonical reduced-topology census: R <= 2, L+C <= 3, max_edges <= 5" in output
+    assert "Cumulative reduced-topology total: 313" in output
+    assert "raw phase-2 assignments=1830" in output
+
+
+def test_reduced_json_output(capsys):
+    assert main(["reduced", "--max-r", "2", "--max-reactive", "3", "--format", "json"]) == 0
+
+    output = json.loads(capsys.readouterr().out)
+
+    assert output["exact_counts_by_r_x"] == [[0, 2, 2, 4], [1, 4, 12, 40], [0, 4, 34, 210]]
+    assert output["total"] == 313
+    assert output["diagnostics"]["raw_phase2_assignments_total"] == 1830
+    assert output["diagnostics"]["phase3_assigned_support_labeling_orbits_total"] == 1112
+
+
+def test_reduced_subcommand_help_shows_reduced_options():
+    result = subprocess.run(
+        [sys.executable, "-m", "rice", "reduced", "--help"],
+        check=True,
+        text=True,
+        capture_output=True,
+    )
+
+    assert "--max-r" in result.stdout
+    assert "--max-reactive" in result.stdout
+    assert "--format" in result.stdout

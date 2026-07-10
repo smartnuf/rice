@@ -124,3 +124,42 @@ reduced-topology count. The code now also has local reduction and canonical
 reduced-signature machinery for individual assigned two-terminal networks, but
 no command currently enumerates the full standard slice, merges phase-3 orbits
 by those signatures, or claims a final reduced-topology total.
+
+## First complete reduced-topology golden slice
+
+The first end-to-end reduced-topology census is implemented for the deliberately
+small regression slice:
+
+```bash
+.venv/bin/python -m rice reduced --max-r 2 --max-reactive 3
+```
+
+The equivalence relation is the documented canonical reduced-topology relation:
+internal node renaming and terminal reversal are ignored; local series and
+parallel operands commute; duplicate primitive singleton `R`, `L`, and `C`
+factors merge; duplicate compound subnetworks do not merge. This is not full
+rational-immittance equivalence.
+
+Table entries are exact primitive counts in the final reduced signatures. `L`
+and `C` remain distinct topology labels, although columns aggregate by
+`x = L+C`.
+
+| R \ L+C | 0 | 1 | 2 | 3 | Row total |
+|---:|---:|---:|---:|---:|---:|
+| 0 | 0 | 2 | 2 | 4 | 8 |
+| 1 | 1 | 4 | 12 | 40 | 57 |
+| 2 | 0 | 4 | 34 | 210 | 248 |
+
+Cumulative reduced-topology total for `R <= 2`, `L+C <= 3`: **313**.
+
+Diagnostic totals for the same slice:
+
+| Stage | Total |
+|---|---:|
+| Raw phase-2 assignments | 1,830 |
+| Phase-3 assigned-support labeling orbits | 1,112 |
+| Final canonical reduced signatures | 313 |
+
+Machine-readable summary: `data/counts/small-r2-x3.json`. Human-readable summary:
+`docs/counts/small-r2-x3.md`. This slice is a golden regression target and is
+not presented as the full `R <= 3`, `L+C <= 5` project count.

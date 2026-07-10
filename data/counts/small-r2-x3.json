@@ -1,0 +1,37 @@
+{
+  "definition": "canonical-reduced-topology-local-series-parallel-v1",
+  "diagnostics": {
+    "canonical_reduced_signatures_total": 313,
+    "phase3_assigned_support_labeling_orbits_total": 1112,
+    "raw_phase2_assignments_total": 1830
+  },
+  "equivalence": "internal node renaming, terminal reversal, local commutative series/parallel normalisation, and duplicate primitive singleton merging; not rational immittance equivalence",
+  "exact_counts_by_r_x": [
+    [
+      0,
+      2,
+      2,
+      4
+    ],
+    [
+      1,
+      4,
+      12,
+      40
+    ],
+    [
+      0,
+      4,
+      34,
+      210
+    ]
+  ],
+  "format_version": 1,
+  "regeneration_command": ".venv/bin/python -m rice reduced --max-r 2 --max-reactive 3 --format json",
+  "scope": {
+    "max_edges": 5,
+    "max_r": 2,
+    "max_reactive": 3
+  },
+  "total": 313
+}

@@ -67,13 +67,10 @@ solver for general electrical equivalence.
   `1,166,714` raw leaves and counts `830,094` canonical bundle-labeling orbits.
   Local series-span signature machinery is now implemented for individual
   assigned two-terminal networks with deterministic recursive factor
-  normalisation and graph-core canonicalisation. Full census integration,
-  phase-3 orbit representative merging, and descriptor output remain unfinished,
-  so the overall distinct-network task is still `prog` rather than `done`.
+  normalisation and graph-core canonicalisation. Small-slice census integration is implemented by `reduced_topology_census` and `rice reduced`, with phase-3 orbit witnesses merged by canonical reduced signatures for the `R <= 2`, `L+C <= 3` golden slice. Full `R <= 3`, `L+C <= 5` census execution and descriptor output remain unfinished, so the overall distinct-network task is still `prog` rather than `done`.
 
 ## Near-term next steps
 
-1. Integrate phase-3 orbit representatives with `canonical_reduced_signature`
-   on a small explicit slice before attempting the full standard slice.
+1. Extend the reduced-signature census path from the committed small golden slice to the full standard slice after performance and output-size review.
 2. Keep the phase-2 raw leaf-assignment and phase-3 bundle-labeling-orbit totals
    as regression tests while adding signature merging.
