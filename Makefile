@@ -1,7 +1,7 @@
 PYTHON ?= python3
 VENV_PYTHON := .venv/bin/python
 
-.PHONY: setup install ensure-venv test supports bundles legacy-count legacy-generic check print-env clean
+.PHONY: setup install ensure-venv test supports bundles labelings legacy-count legacy-generic check print-env clean
 
 setup:
 	$(PYTHON) -m venv .venv
@@ -22,13 +22,16 @@ supports: ensure-venv
 bundles: ensure-venv
 	$(VENV_PYTHON) -m rice bundles --max-r 3 --max-reactive 5
 
+labelings: ensure-venv
+	$(VENV_PYTHON) -m rice labelings --max-r 3 --max-reactive 5
+
 legacy-count: ensure-venv
 	$(VENV_PYTHON) -m rice --mode lc --max-r 3 --max-reactive 5
 
 legacy-generic: ensure-venv
 	$(VENV_PYTHON) -m rice --mode generic --max-r 3 --max-reactive 5
 
-check: test supports bundles legacy-count legacy-generic
+check: test supports bundles labelings legacy-count legacy-generic
 
 print-env: ensure-venv
 	$(VENV_PYTHON) -c 'import sys, networkx, pytest, rice; print("python", sys.executable); print("networkx", networkx.__version__); print("pytest", pytest.__version__); print("rice", rice.__file__)'

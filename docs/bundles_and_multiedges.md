@@ -228,6 +228,9 @@ The current implementation is staged:
   `rice bundles`: it assigns the seven simple primitive bundles above to
   terminal-relevant supports under the component budgets and reports raw leaf
   assignments before assigned-support isomorphism or signature merging.
-- Local series spans, assigned-support canonicalisation, and reduced signatures
-  are still future work. Future phases should add them as described in
-  `docs/model_decisions.md`.
+- Phase 3 canonical bundle-labeling orbit census is implemented as
+  `rice labelings`: it quotients the simple-bundle assignments by
+  automorphisms of each terminal-relevant support that preserve the unordered
+  terminal pair, including terminal reversal.
+- Local series spans and recursive reduced signatures are still future work.
+  Future phases should add them as described in `docs/model_decisions.md`.

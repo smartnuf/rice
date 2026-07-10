@@ -10,10 +10,12 @@ from typing import Any
 
 from .core import (
     BundleAssignmentCensusResult,
+    BundleLabelingCensusResult,
     CountResult,
     SupportCensusResult,
     count_networks,
     simple_bundle_assignment_census,
+    simple_bundle_labeling_census,
     support_census,
 )
 
@@ -94,6 +96,35 @@ def build_parser() -> argparse.ArgumentParser:
         help="output format, default: markdown",
     )
 
+    labelings_parser = subparsers.add_parser(
+        "labelings",
+        help="run the phase-3 canonical simple-bundle labeling-orbit census",
+    )
+    labelings_parser.add_argument(
+        "--max-r",
+        type=int,
+        default=argparse.SUPPRESS,
+        help="maximum number of resistors, default: 3",
+    )
+    labelings_parser.add_argument(
+        "--max-reactive",
+        type=int,
+        default=argparse.SUPPRESS,
+        help="maximum total number of reactive elements, default: 5",
+    )
+    labelings_parser.add_argument(
+        "--max-edges",
+        type=int,
+        default=argparse.SUPPRESS,
+        help="optional debugging/truncation support-edge count; default: max_r + max_reactive; cannot exceed that derived bound",
+    )
+    labelings_parser.add_argument(
+        "--format",
+        choices=("markdown", "json"),
+        default=argparse.SUPPRESS,
+        help="output format, default: markdown",
+    )
+
     # Preserve the original no-subcommand interface for the legacy count, but
     # hide these compatibility options from top-level help so they are not
     # mistaken for options that apply to every subcommand.
@@ -165,6 +196,20 @@ def _bundle_assignment_census_json(
     return payload
 
 
+def _bundle_labeling_census_json(result: BundleLabelingCensusResult) -> dict[str, Any]:
+    """Return phase-3 bundle-labeling census data including totals."""
+
+    payload = asdict(result)
+    payload.update(
+        {
+            "relevant_supports_total": result.relevant_supports_total,
+            "raw_leaf_assignments_total": result.raw_leaf_assignments_total,
+            "canonical_labeling_orbits_total": result.canonical_labeling_orbits_total,
+        }
+    )
+    return payload
+
+
 def _count_json(result: CountResult) -> dict[str, Any]:
     """Return legacy count data including computed totals for JSON output."""
 
@@ -182,7 +227,7 @@ def _reject_legacy_globals_before_supports(
 ) -> None:
     """Reject compatibility global options that would otherwise be ignored."""
 
-    subcommands = {"supports", "bundles"}
+    subcommands = {"supports", "bundles", "labelings"}
     command_indexes = [i for i, token in enumerate(argv) if token in subcommands]
     if not command_indexes:
         return
@@ -289,6 +334,49 @@ def main(argv: list[str] | None = None) -> int:
             print(
                 f"| Total | {result.relevant_supports_total} | — | "
                 f"{result.leaf_assignments_total} |"
+            )
+        return 0
+
+    if args.command == "labelings":
+        max_r = getattr(args, "max_r", 3)
+        max_reactive = getattr(args, "max_reactive", 5)
+        max_edges = getattr(args, "max_edges", None)
+        if max_edges is not None and max_edges > max_r + max_reactive:
+            parser.error("labelings --max-edges cannot exceed --max-r + --max-reactive")
+        result = simple_bundle_labeling_census(
+            max_r=max_r, max_reactive=max_reactive, max_edges=max_edges
+        )
+        if output_format == "json":
+            print(
+                json.dumps(
+                    _bundle_labeling_census_json(result), indent=2, sort_keys=True
+                )
+            )
+        else:
+            print(
+                "Canonical simple-bundle labeling census: "
+                f"R <= {result.max_r}, L+C <= {result.max_reactive}, "
+                f"max_edges <= {result.max_edges}"
+            )
+            print(
+                "Raw leaves are phase-2 assignments; canonical labelings are "
+                "orbits under terminal-set-preserving support automorphisms."
+            )
+            print(
+                "| Support edges | Relevant supports | Raw assignment leaves | "
+                "Canonical bundle-labeling orbits |"
+            )
+            print("|---:|---:|---:|---:|")
+            for edge_count in range(1, result.max_edges + 1):
+                print(
+                    f"| {edge_count} | {result.relevant_supports_by_edges[edge_count]} | "
+                    f"{result.raw_leaf_assignments_by_edges[edge_count]} | "
+                    f"{result.canonical_labeling_orbits_by_edges[edge_count]} |"
+                )
+            print(
+                f"| Total | {result.relevant_supports_total} | "
+                f"{result.raw_leaf_assignments_total} | "
+                f"{result.canonical_labeling_orbits_total} |"
             )
         return 0
 

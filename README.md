@@ -88,6 +88,12 @@ phases have a clear target:
 - [`docs/simple_path_coverage.md`](docs/simple_path_coverage.md) documents the
   terminal-relevance test.
 
+Implemented reduced-model stages now include `rice supports` for phase 1
+terminal-relevant supports, `rice bundles` for phase 2 raw simple-bundle
+assignment leaves, and `rice labelings` for phase 3 canonical bundle-labeling
+orbits under internal-node renaming and reversal of the unordered terminal pair.
+Local series-span reductions and recursive reduced signatures remain future work.
+
 ## Current legacy results
 
 The current source counts raw graph-topology classes using support graphs and
@@ -190,6 +196,7 @@ python3 -m venv .venv
 .venv/bin/python -m rice supports --max-edges 8
 .venv/bin/python -m rice supports --max-r 3 --max-reactive 5
 .venv/bin/python -m rice bundles --max-r 3 --max-reactive 5
+.venv/bin/python -m rice labelings --max-r 3 --max-reactive 5
 .venv/bin/python -m rice --mode lc --max-r 3 --max-reactive 5
 .venv/bin/python -m rice --mode generic --max-r 3 --max-reactive 5
 ```
@@ -205,6 +212,7 @@ Subcommand options go after the subcommand:
 .venv/bin/rice supports --max-edges 8
 .venv/bin/rice supports --max-r 3 --max-reactive 5
 .venv/bin/rice bundles --max-r 3 --max-reactive 5
+.venv/bin/rice labelings --max-r 3 --max-reactive 5
 .venv/bin/rice count --mode lc --max-r 3 --max-reactive 5
 ```
 
@@ -264,3 +272,6 @@ Do not commit a real `.venv` directory. It is platform-specific, can be large,
 and is already excluded by `.gitignore`. Commit the source, tests,
 documentation, and `pyproject.toml`; recreate `.venv` in each development
 environment.
+
+
+The `labelings` command reports phase-3 canonical bundle-labeling orbits. It preserves the phase-2 raw leaf total and additionally quotients assignments by automorphisms of each terminal-relevant support that preserve the unordered terminal pair, including automorphisms that swap the terminals. For `R <= 3, L+C <= 5`, the standard slice has **1,166,714** raw leaves and **830,094** canonical bundle-labeling orbits. This is still not a final reduced-topology count: local series-span reductions and recursive reduced signatures remain deliberately deferred.

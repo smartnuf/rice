@@ -166,3 +166,53 @@ def test_count_subcommand_still_works(capsys):
 
     assert len(output["table"]) == 3
     assert all(len(row) == 1 for row in output["table"])
+
+
+def test_labelings_subcommand_outputs_phase_3_census(capsys):
+    assert main(["labelings", "--max-r", "3", "--max-reactive", "5"]) == 0
+
+    output = capsys.readouterr().out
+
+    assert "Canonical simple-bundle labeling census: R <= 3, L+C <= 5, max_edges <= 8" in output
+    assert "| Total | 383 | 1166714 | 830094 |" in output
+
+
+def test_labelings_json_output(capsys):
+    assert main(["labelings", "--format", "json"]) == 0
+
+    output = json.loads(capsys.readouterr().out)
+
+    assert output["raw_leaf_assignments_total"] == 1166714
+    assert output["canonical_labeling_orbits_total"] == 830094
+    assert output["canonical_labeling_orbits_by_edges"] == {
+        "1": 7,
+        "2": 28,
+        "3": 380,
+        "4": 3770,
+        "5": 28004,
+        "6": 127627,
+        "7": 323330,
+        "8": 346948,
+    }
+
+
+def test_labelings_max_edges_cannot_exceed_derived_budget(capsys):
+    with pytest.raises(SystemExit) as excinfo:
+        main(["labelings", "--max-r", "3", "--max-reactive", "5", "--max-edges", "9"])
+
+    assert excinfo.value.code == 2
+    assert "cannot exceed" in capsys.readouterr().err
+
+
+def test_labelings_subcommand_help_shows_labeling_options():
+    result = subprocess.run(
+        [sys.executable, "-m", "rice", "labelings", "--help"],
+        check=True,
+        text=True,
+        capture_output=True,
+    )
+
+    assert "--max-r" in result.stdout
+    assert "--max-reactive" in result.stdout
+    assert "--max-edges" in result.stdout
+    assert "debugging/truncation" in result.stdout

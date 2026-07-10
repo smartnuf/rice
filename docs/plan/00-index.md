@@ -63,7 +63,7 @@ Status key: `done`, `prog`, `todo`, `blocked`, `later`.
 
 - `prog` [Set up test strategy for catalogue enumeration](07-tests/01-strategy.md)
 - `prog` [Add golden count tests](07-tests/02-golden-counts.md)
-- `todo` [Add distinctness and reduction tests](07-tests/03-canon-tests.md)
+- `prog` [Add distinctness and reduction tests](07-tests/03-canon-tests.md)
 - `todo` [Add cleanup regression tests](07-tests/04-cleanup-tests.md)
 - `prog` [Add CI-friendly validation commands](07-tests/05-ci.md)
 
