@@ -1,6 +1,6 @@
 # 03-counting / 07 — Store count outputs and supporting artefacts
 
-Status: `todo`
+Status: `prog`
 
 ## Goal
 
@@ -11,17 +11,17 @@ Make generated counts auditable without turning the repository into a dumping gr
 ```text
 data/counts/
   README.md
-  small-r2-n3.json
+  small-r2-x3.json
   ladenheim.json
   full-r3-n5.json
 
-doc/counts/
-  small-r2-n3.md
+docs/counts/
+  small-r2-x3.md
   ladenheim.md
   full-r3-n5.md
 ```
 
-Here `n` means `L+C`.
+Use the repository-wide `docs/` directory and the established slice spelling `r2-x3`, where `x` means `L+C`.
 
 ## Requirements
 
@@ -34,3 +34,7 @@ Here `n` means `L+C`.
 - Count outputs can be regenerated.
 - Diffs are meaningful.
 - Documentation and data identify the same scope and definition.
+
+## Progress notes
+
+- Added the reviewable machine-readable summary `data/counts/small-r2-x3.json` and human summary `docs/counts/small-r2-x3.md`. Larger full and Ladenheim outputs remain future work, so this task is `prog`.

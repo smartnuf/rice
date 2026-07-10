@@ -33,15 +33,10 @@ Explain how counts are generated and what they mean.
   `count_networks` still uses multiset component-count bundles, `rice supports`
   implements phase 1, and `rice bundles` implements the phase-2 raw assignment
   census.
-- Full reduced counting methodology is not complete because local series spans,
-  assigned-support canonicalisation, reduced signatures, descriptor conversion,
-  and final output table interpretation are still pending.
+- Reduced counting methodology is documented for the first complete `R <= 2`, `L+C <= 3` golden slice in `docs/counts/small-r2-x3.md` and `docs/results.md`. Descriptor conversion, full standard-slice reporting, and Ladenheim comparison documentation remain pending.
 
 ## Near-term next steps
 
-1. Add assigned-support canonicalisation methodology after implementation and
-   tests exist.
-2. Add reduced-signature and local series/span reduction methodology only after
-   implementation and tests exist.
-3. Keep legacy, support-census, raw bundle-assignment, and future reduced-model
-   result tables clearly separated.
+1. Add descriptor conversion methodology after implementation and tests exist.
+2. Extend reduced-signature count-method documentation when the full standard slice is run.
+3. Keep legacy, support-census, raw bundle-assignment, assigned-support orbit, and reduced-topology result tables clearly separated.

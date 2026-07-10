@@ -92,7 +92,7 @@ Implemented reduced-model stages now include `rice supports` for phase 1
 terminal-relevant supports, `rice bundles` for phase 2 raw simple-bundle
 assignment leaves, and `rice labelings` for phase 3 canonical bundle-labeling
 orbits under internal-node renaming and reversal of the unordered terminal pair.
-Local series-span reductions and recursive reduced signatures are available as a focused API for individual assigned networks; full signature enumeration and merging remain future work.
+Local series-span reductions and recursive reduced signatures are available as a focused API for individual assigned networks. The first complete end-to-end reduced-topology census is implemented as `rice reduced` for the small golden slice `R <= 2`, `L+C <= 3`; the full `R <= 3`, `L+C <= 5` reduced catalogue remains future work.
 
 ## Current legacy results
 
@@ -180,7 +180,7 @@ Run the tests:
 make test
 ```
 
-Run the support-census smoke check, phase-2 raw bundle-assignment smoke check, and current legacy counts:
+Run the support-census smoke check, phase-2 raw bundle-assignment smoke check, phase-3 labeling smoke check, and current legacy counts:
 
 ```bash
 make check
@@ -235,6 +235,8 @@ python3 -m venv .venv
 .venv/bin/python -m rice supports --max-edges 8
 .venv/bin/python -m rice bundles --max-r 3 --max-reactive 5
 .venv/bin/python -m rice labelings --max-r 3 --max-reactive 5
+.venv/bin/python -m rice reduced --max-r 2 --max-reactive 3
+.venv/bin/python -m rice reduced --max-r 2 --max-reactive 3 --format json
 .venv/bin/python -m rice --mode lc --max-r 3 --max-reactive 5
 .venv/bin/python -m rice --mode generic --max-r 3 --max-reactive 5
 ```

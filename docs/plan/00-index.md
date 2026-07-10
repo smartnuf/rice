@@ -28,10 +28,10 @@ Status key: `done`, `prog`, `todo`, `blocked`, `later`.
 
 - `prog` [Define catalogue object model](03-counting/02-distinct.md)
 - `prog` [Define enumeration scope](03-counting/03-scope.md)
-- `todo` [Define small explicit catalogue slice](03-counting/04-small-slice.md)
+- `done` [Define small explicit catalogue slice](03-counting/04-small-slice.md)
 - `todo` [Define Ladenheim comparison slice](03-counting/05-ladenheim.md)
 - `todo` [Define full current project slice](03-counting/06-full-counts.md)
-- `todo` [Define output catalogue format](03-counting/07-outputs.md)
+- `prog` [Define output catalogue format](03-counting/07-outputs.md)
 
 ## 04 — Ladenheim reproduction
 
@@ -43,7 +43,7 @@ Status key: `done`, `prog`, `todo`, `blocked`, `later`.
 
 ## 05 — Enumeration slices and counts
 
-- `todo` [Small fast test slice: `R <= 2`, `L+C <= 3`](05-slices/01-r2-x3.md)
+- `done` [Small fast test slice: `R <= 2`, `L+C <= 3`](05-slices/01-r2-x3.md)
 - `todo` [Ladenheim slice: `R <= 3`, `L+C <= 2`, `R+L+C <= 5`](05-slices/02-ladenheim.md)
 - `todo` [Morelli next-class slice: `R <= 4`, `L+C <= 3`](05-slices/03-r4-x3.md)
 - `todo` [Full current project slice: `R <= 3`, `L+C <= 5`](05-slices/04-r3-x5.md)

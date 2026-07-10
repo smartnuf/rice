@@ -1,6 +1,6 @@
 # 03-counting / 04 — Implement small explicit subset: `R <= 2`, `L+C <= 3`
 
-Status: `todo`
+Status: `done`
 
 ## Goal
 
@@ -27,3 +27,9 @@ This subset should be treated as an explicit test point inside the larger `R <= 
 - It has stable count outputs.
 - Its counts are used as golden regression tests.
 - The subset is documented as a test slice, not the final catalogue target.
+
+## Progress notes
+
+- Implemented as the first complete reduced-topology golden slice using `rice reduced --max-r 2 --max-reactive 3`.
+- Machine-readable summary: `data/counts/small-r2-x3.json`; human summary: `docs/counts/small-r2-x3.md`.
+- Exact `(R, L+C)` table is `[[0, 2, 2, 4], [1, 4, 12, 40], [0, 4, 34, 210]]`, cumulative total `313`.
