@@ -1,6 +1,6 @@
 # 01-dev-env / 06 — Align Makefile, scripts, README, and AGENTS.md
 
-Status: `todo`
+Status: `prog`
 
 ## Goal
 
@@ -18,3 +18,12 @@ Ensure there is one development contract, not several subtly different ones.
 - A fresh contributor can follow README.
 - Codex can follow AGENTS.md.
 - Both paths run equivalent commands.
+
+## Progress notes
+
+- The Linux/WSL Make path and Bash script path are now aligned: Make delegates
+  setup, test, lint, check, and clean to `scripts/*.sh`.
+- README and AGENTS.md document the non-Make Bash path and continue to require
+  explicit `.venv` usage.
+- Native PowerShell scripts are still absent, so the cross-platform development
+  contract is not complete yet.

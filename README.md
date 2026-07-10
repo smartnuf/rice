@@ -186,6 +186,21 @@ Run the support-census smoke check, phase-2 raw bundle-assignment smoke check, a
 make check
 ```
 
+On Linux, macOS, and WSL, the same development path is available without Make
+through repository-root shell scripts:
+
+```bash
+./scripts/setup.sh
+./scripts/test.sh
+./scripts/lint.sh
+./scripts/check.sh
+./scripts/clean.sh
+```
+
+These scripts validate that they are being run from the repository root, use
+`.venv/bin/python` explicitly after setup, and print the Python executable in
+use. Native PowerShell scripts are planned but are not present yet.
+
 The equivalent explicit commands are:
 
 ```bash
@@ -194,7 +209,6 @@ python3 -m venv .venv
 .venv/bin/python -m pip install -e ".[dev]"
 .venv/bin/python -m pytest -q
 .venv/bin/python -m rice supports --max-edges 8
-.venv/bin/python -m rice supports --max-r 3 --max-reactive 5
 .venv/bin/python -m rice bundles --max-r 3 --max-reactive 5
 .venv/bin/python -m rice labelings --max-r 3 --max-reactive 5
 .venv/bin/python -m rice --mode lc --max-r 3 --max-reactive 5
