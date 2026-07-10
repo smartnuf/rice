@@ -1,6 +1,6 @@
 # 01-dev-env / 05 — Create scripts under `scripts/`
 
-Status: `todo`
+Status: `prog`
 
 ## Goal
 
@@ -35,3 +35,13 @@ scripts/
 - Windows users can run `./scripts/setup.ps1` and `./scripts/test.ps1` without installing Make.
 - Linux/WSL users can run `./scripts/setup.sh` and `./scripts/test.sh` without Make.
 - Make targets can delegate to these scripts where practical.
+
+## Progress notes
+
+- Bash/Linux/WSL scripts have been added: `setup.sh`, `test.sh`, `lint.sh`,
+  `check.sh`, and `clean.sh`.
+- The Bash scripts validate that they are run from the repository root, use the
+  repository-local `.venv` explicitly, and print the Python executable in use.
+- The Makefile delegates `setup`, `test`, `lint`, `check`, and `clean` to the
+  Bash scripts while keeping the existing named validation targets available.
+- Native PowerShell scripts remain pending, so this item stays `prog`.

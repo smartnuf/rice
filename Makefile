@@ -1,20 +1,20 @@
-PYTHON ?= python3
 VENV_PYTHON := .venv/bin/python
 
-.PHONY: setup install ensure-venv test supports bundles labelings legacy-count legacy-generic check print-env clean
+.PHONY: setup install ensure-venv test lint supports bundles labelings legacy-count legacy-generic check print-env clean
 
 setup:
-	$(PYTHON) -m venv .venv
-	$(VENV_PYTHON) -m pip install --upgrade pip setuptools wheel
-	$(VENV_PYTHON) -m pip install -e ".[dev]"
+	bash scripts/setup.sh
 
 install: setup
 
 ensure-venv:
 	@test -x $(VENV_PYTHON) || (echo "Missing $(VENV_PYTHON). Run 'make setup' first." >&2; exit 1)
 
-test: ensure-venv
-	$(VENV_PYTHON) -m pytest -q
+test:
+	bash scripts/test.sh
+
+lint:
+	bash scripts/lint.sh
 
 supports: ensure-venv
 	$(VENV_PYTHON) -m rice supports --max-edges 8
@@ -31,11 +31,11 @@ legacy-count: ensure-venv
 legacy-generic: ensure-venv
 	$(VENV_PYTHON) -m rice --mode generic --max-r 3 --max-reactive 5
 
-check: test supports bundles labelings legacy-count legacy-generic
+check:
+	bash scripts/check.sh
 
 print-env: ensure-venv
 	$(VENV_PYTHON) -c 'import sys, networkx, pytest, rice; print("python", sys.executable); print("networkx", networkx.__version__); print("pytest", pytest.__version__); print("rice", rice.__file__)'
 
 clean:
-	rm -rf .venv .pytest_cache build dist *.egg-info src/*.egg-info
-	find . -type d -name __pycache__ -prune -exec rm -rf {} +
+	bash scripts/clean.sh

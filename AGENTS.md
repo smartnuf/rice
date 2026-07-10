@@ -63,8 +63,23 @@ Preferred setup and validation commands:
 ```bash
 make setup
 make test
+make lint
 make check
 ```
+
+Supported non-Make Linux/WSL shell scripts are also available:
+
+```bash
+./scripts/setup.sh
+./scripts/test.sh
+./scripts/lint.sh
+./scripts/check.sh
+./scripts/clean.sh
+```
+
+The shell scripts must be run from the repository root. They validate that
+location before making environment-sensitive changes or deleting generated
+artefacts. Native PowerShell scripts are not available yet.
 
 Equivalent explicit commands:
 
@@ -77,6 +92,7 @@ python3 -m venv .venv
 .venv/bin/python -m rice bundles --max-r 3 --max-reactive 5
 .venv/bin/python -m rice labelings --max-r 3 --max-reactive 5
 .venv/bin/python -m rice --mode lc --max-r 3 --max-reactive 5
+.venv/bin/python -m rice --mode generic --max-r 3 --max-reactive 5
 ```
 
 Do not run these ambiguous commands in Codex tasks:
@@ -130,9 +146,10 @@ current project direction. The current implementation uses NetworkX only.
 
 ## Current legacy validation commands
 
-These validate the current source as it stands. `make check` is the full
-currently documented validation and runs `test`, `supports`, `bundles`,
-`labelings`, `legacy-count`, and `legacy-generic`:
+These validate the current source as it stands. `make check` and
+`./scripts/check.sh` are the full currently documented validation paths and run
+lint/static checks, tests, support census, bundle assignment census, labeling
+census, `legacy-count`, and `legacy-generic`.
 
 ```bash
 make check
