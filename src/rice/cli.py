@@ -24,6 +24,8 @@ from .core import (
 
 _COUNT_OPTION_NAMES = ("--max-r", "--max-reactive", "--mode")
 _LEGACY_GLOBAL_OPTION_NAMES = (*_COUNT_OPTION_NAMES, "--format")
+_REDUCED_DEFAULT_MAX_R = 2
+_REDUCED_DEFAULT_MAX_REACTIVE = 3
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -135,13 +137,16 @@ def build_parser() -> argparse.ArgumentParser:
         "--max-r",
         type=int,
         default=argparse.SUPPRESS,
-        help="maximum number of resistors, default: 3",
+        help=f"maximum number of resistors, default: {_REDUCED_DEFAULT_MAX_R}",
     )
     reduced_parser.add_argument(
         "--max-reactive",
         type=int,
         default=argparse.SUPPRESS,
-        help="maximum total number of reactive elements, default: 5",
+        help=(
+            "maximum total number of reactive elements, "
+            f"default: {_REDUCED_DEFAULT_MAX_REACTIVE}"
+        ),
     )
     reduced_parser.add_argument(
         "--max-edges",
@@ -245,6 +250,10 @@ def _bundle_labeling_census_json(result: BundleLabelingCensusResult) -> dict[str
 def _reduced_topology_census_json(result: ReducedTopologyCensusResult) -> dict[str, Any]:
     """Return reduced-topology census data using a stable documented shape."""
 
+    regeneration_command = (
+        ".venv/bin/python -m rice reduced "
+        f"--max-r {result.max_r} --max-reactive {result.max_reactive} --format json"
+    )
     return {
         "format_version": 1,
         "scope": {
@@ -264,7 +273,7 @@ def _reduced_topology_census_json(result: ReducedTopologyCensusResult) -> dict[s
             "phase3_assigned_support_labeling_orbits_total": result.canonical_labeling_orbits_total,
             "canonical_reduced_signatures_total": result.total,
         },
-        "canonical_signatures": list(result.canonical_signatures),
+        "regeneration_command": regeneration_command,
     }
 
 def _count_json(result: CountResult) -> dict[str, Any]:
@@ -439,8 +448,10 @@ def main(argv: list[str] | None = None) -> int:
 
 
     if args.command == "reduced":
-        max_r = getattr(args, "max_r", 3)
-        max_reactive = getattr(args, "max_reactive", 5)
+        max_r = getattr(args, "max_r", _REDUCED_DEFAULT_MAX_R)
+        max_reactive = getattr(
+            args, "max_reactive", _REDUCED_DEFAULT_MAX_REACTIVE
+        )
         max_edges = getattr(args, "max_edges", None)
         if max_edges is not None and max_edges > max_r + max_reactive:
             parser.error("reduced --max-edges cannot exceed --max-r + --max-reactive")

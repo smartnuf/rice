@@ -46,6 +46,7 @@ def test_small_r2_x3_api_cli_and_committed_json_agree():
     )
     payload = json.loads(cli.stdout)
 
+    assert payload == GOLDEN
     assert payload["exact_counts_by_r_x"] == [list(row) for row in EXPECTED_TABLE]
     assert payload["total"] == result.total == GOLDEN["total"]
     assert payload["diagnostics"] == GOLDEN["diagnostics"]
