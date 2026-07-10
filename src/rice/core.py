@@ -4,7 +4,9 @@ The reduced-model work starts with a support-only census: connected unlabelled
 simple support graphs, unordered terminal-pair orbits, and terminal-relevant
 two-terminal supports. Phase 2 adds a raw simple-bundle assignment census over
 those supports; series spans and reduced signatures are intentionally outside
-that census.
+that census. Phase 3 quotients those assigned supports by support
+automorphisms preserving the unordered terminal pair, without applying local
+series/parallel reductions.
 
 The older :func:`count_networks` entry point remains as a legacy
 multiset-bundle counter.  It assigns non-empty component-count bundles to
@@ -100,6 +102,38 @@ class BundleAssignmentCensusResult:
     @property
     def leaf_assignments_total(self) -> int:
         return sum(self.leaf_assignments_by_edges.values())
+
+
+@dataclass(frozen=True)
+class BundleLabelingCensusResult:
+    """Phase-3 canonical simple-bundle labeling-orbit census.
+
+    Counts are keyed by support-edge count. ``raw_leaf_assignments_by_edges``
+    preserves the phase-2 raw assignment leaves.
+    ``canonical_labeling_orbits_by_edges`` counts simple primitive bundle
+    assignments modulo automorphisms of each terminal-relevant support that
+    preserve the unordered terminal pair, including terminal reversal. No local
+    series-span or reduced-signature merging is applied.
+    """
+
+    max_r: int
+    max_reactive: int
+    max_edges: int
+    relevant_supports_by_edges: dict[int, int]
+    raw_leaf_assignments_by_edges: dict[int, int]
+    canonical_labeling_orbits_by_edges: dict[int, int]
+
+    @property
+    def relevant_supports_total(self) -> int:
+        return sum(self.relevant_supports_by_edges.values())
+
+    @property
+    def raw_leaf_assignments_total(self) -> int:
+        return sum(self.raw_leaf_assignments_by_edges.values())
+
+    @property
+    def canonical_labeling_orbits_total(self) -> int:
+        return sum(self.canonical_labeling_orbits_by_edges.values())
 
 
 @dataclass(frozen=True)
@@ -490,6 +524,116 @@ def simple_bundle_assignment_census(
         relevant_supports_by_edges=supports,
         assignments_per_support_by_edges=assignments,
         leaf_assignments_by_edges=leaves,
+    )
+
+
+def _fixed_simple_bundle_labelings_for_cycles(
+    cycle_lengths: tuple[int, ...], max_r: int, max_reactive: int
+) -> int:
+    """Count simple-bundle labelings fixed by an edge permutation.
+
+    A labeling fixed by a permutation is constant on each edge cycle. The
+    component-budget weight of a bundle assigned to a cycle is multiplied by
+    the cycle length, because every edge in that cycle receives that bundle.
+    """
+
+    dp: dict[tuple[int, int], int] = {(0, 0): 1}
+    for cycle_length in cycle_lengths:
+        next_dp: DefaultDict[tuple[int, int], int] = defaultdict(int)
+        for (old_r, old_x), count in dp.items():
+            for bundle in SIMPLE_PRIMITIVE_BUNDLES:
+                new_r = old_r + cycle_length * bundle.r_count
+                new_x = old_x + cycle_length * bundle.reactive_count
+                if new_r <= max_r and new_x <= max_reactive:
+                    next_dp[(new_r, new_x)] += count
+        dp = dict(next_dp)
+    return sum(dp.values())
+
+
+def simple_bundle_labeling_orbit_count(
+    graph: nx.Graph,
+    terminals: tuple[int, int],
+    max_r: int = 3,
+    max_reactive: int = 5,
+    graph_automorphisms: Iterable[dict[int, int]] | None = None,
+) -> int:
+    """Count canonical simple-bundle labelings of one two-terminal support.
+
+    The quotient group is the set of support automorphisms whose image of the
+    terminal pair is the same unordered pair; automorphisms may swap the two
+    terminals. The action permutes support edges, and Burnside's lemma counts
+    assignment orbits under the global ``R`` and ``L+C`` budgets.
+    """
+
+    if max_r < 0 or max_reactive < 0:
+        raise ValueError("component limits must be non-negative")
+    autos = (
+        automorphisms(graph)
+        if graph_automorphisms is None
+        else list(graph_automorphisms)
+    )
+    edge_permutations = edge_permutations_preserving_terminal_set(graph, terminals, autos)
+    if not edge_permutations:
+        raise ValueError("no automorphism preserves the terminal pair")
+
+    total_fixed = 0
+    fixed_cache: dict[tuple[int, ...], int] = {}
+    for permutation in edge_permutations:
+        cycle_lengths = permutation_cycle_lengths(permutation)
+        fixed = fixed_cache.get(cycle_lengths)
+        if fixed is None:
+            fixed = _fixed_simple_bundle_labelings_for_cycles(
+                cycle_lengths, max_r, max_reactive
+            )
+            fixed_cache[cycle_lengths] = fixed
+        total_fixed += fixed
+
+    group_size = len(edge_permutations)
+    if total_fixed % group_size != 0:
+        raise ArithmeticError(
+            f"Burnside sum {total_fixed} is not divisible by group size {group_size}"
+        )
+    return total_fixed // group_size
+
+
+def simple_bundle_labeling_census(
+    max_r: int = 3, max_reactive: int = 5, max_edges: int | None = None
+) -> BundleLabelingCensusResult:
+    """Run the phase-3 canonical simple-bundle labeling-orbit census."""
+
+    if max_r < 0 or max_reactive < 0:
+        raise ValueError("component limits must be non-negative")
+    natural_max_edges = max_r + max_reactive
+    resolved_max_edges = natural_max_edges if max_edges is None else max_edges
+    if resolved_max_edges < 1:
+        raise ValueError("max_edges must be at least 1")
+    if resolved_max_edges > natural_max_edges:
+        raise ValueError("max_edges cannot exceed max_r + max_reactive")
+
+    raw = simple_bundle_assignment_census(
+        max_r=max_r, max_reactive=max_reactive, max_edges=resolved_max_edges
+    )
+    canonical_by_edges: Counter[int] = Counter()
+
+    for graph, terminals, autos in iter_two_terminal_supports(resolved_max_edges):
+        canonical_by_edges[graph.number_of_edges()] += simple_bundle_labeling_orbit_count(
+            graph,
+            terminals,
+            max_r=max_r,
+            max_reactive=max_reactive,
+            graph_automorphisms=autos,
+        )
+
+    return BundleLabelingCensusResult(
+        max_r=max_r,
+        max_reactive=max_reactive,
+        max_edges=resolved_max_edges,
+        relevant_supports_by_edges=raw.relevant_supports_by_edges,
+        raw_leaf_assignments_by_edges=raw.leaf_assignments_by_edges,
+        canonical_labeling_orbits_by_edges={
+            edge_count: canonical_by_edges[edge_count]
+            for edge_count in range(1, resolved_max_edges + 1)
+        },
     )
 
 

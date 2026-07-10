@@ -62,14 +62,15 @@ solver for general electrical equivalence.
   and exposed through `rice bundles`, using only `R`, `L`, `C`, `R||L`,
   `R||C`, `L||C`, and `R||L||C`. The normal `R <= 3`, `L+C <= 5` interface derives `max_edges=8`
   and the leaf total is tested as `1,166,714`.
-- Assigned-support canonicalisation and reduced signatures remain unimplemented,
-  so the overall distinct-network task is still `prog` rather than `done`.
+- Assigned-support canonicalisation is implemented as `simple_bundle_labeling_census`
+  and exposed through `rice labelings`; for `R <= 3`, `L+C <= 5` it preserves
+  `1,166,714` raw leaves and counts `830,094` canonical bundle-labeling orbits.
+  Reduced series-span signatures remain unimplemented, so the overall
+  distinct-network task is still `prog` rather than `done`.
 
 ## Near-term next steps
 
-1. Add assigned-support canonicalisation under internal node renaming and
-   terminal reversal.
-2. Only after that, add reduced canonical signatures and the documented boundary
+1. Add reduced canonical signatures and the documented boundary
    tests for local series/parallel reductions.
-3. Keep the phase-2 raw leaf-assignment totals as regression tests while adding
+2. Keep the phase-2 raw leaf-assignment totals as regression tests while adding
    signature merging.

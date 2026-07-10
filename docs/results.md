@@ -92,3 +92,32 @@ This target is implemented by `rice bundles --max-r 3 --max-reactive 5`. The com
 
 These are not final reduced-topology counts. They are sizing and regression
 targets for the next implementation phases.
+
+
+## Canonical simple-bundle labeling orbit target
+
+The next reduced-model phase is implemented by
+`rice labelings --max-r 3 --max-reactive 5`. It preserves the phase-2 raw
+assignment leaves and counts canonical bundle labelings modulo automorphisms of
+each terminal-relevant support that preserve the unordered terminal pair. Such
+automorphisms may swap the two terminals. This phase removes only
+assigned-support graph isomorphism; it does not apply local series-span
+reduction, primitive series duplicate merging, recursive reduced signatures, or
+any electrical-equivalence transforms.
+
+For `R <= 3, L+C <= 5`, the phase-3 assigned-support count is:
+
+| Support edges | Relevant supports | Raw assignment leaves | Canonical bundle-labeling orbits |
+|---:|---:|---:|---:|
+| 1 | 1 | 7 | 7 |
+| 2 | 1 | 49 | 28 |
+| 3 | 2 | 670 | 380 |
+| 4 | 4 | 6,488 | 3,770 |
+| 5 | 10 | 46,020 | 28,004 |
+| 6 | 27 | 194,184 | 127,627 |
+| 7 | 80 | 456,960 | 323,330 |
+| 8 | 258 | 462,336 | 346,948 |
+| **Total** | **383** | **1,166,714** | **830,094** |
+
+This **830,094** total is a phase-3 assigned-support orbit count, not the final
+reduced-topology count.
