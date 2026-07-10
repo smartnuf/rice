@@ -469,17 +469,17 @@ def automorphisms(graph: nx.Graph) -> list[dict[int, int]]:
     return list(iso.GraphMatcher(graph, graph).isomorphisms_iter())
 
 
-def simple_path_edge_cover(graph: nx.Graph, source: int, target: int) -> set[tuple[int, int]]:
+def simple_path_edge_cover(graph: nx.Graph, source: object, target: object) -> set[frozenset[object]]:
     """Return the support edges lying on at least one simple source-target path."""
 
-    used: set[tuple[int, int]] = set()
+    used: set[frozenset[object]] = set()
     for path in nx.all_simple_paths(graph, source, target, cutoff=graph.number_of_nodes() - 1):
         for u, v in zip(path, path[1:]):
-            used.add(tuple(sorted((u, v))))
+            used.add(frozenset((u, v)))
     return used
 
 
-def is_two_terminal_relevant(graph: nx.Graph, source: int, target: int) -> bool:
+def is_two_terminal_relevant(graph: nx.Graph, source: object, target: object) -> bool:
     """Check whether every support edge lies on a simple terminal-terminal path.
 
     This removes dangling appendages and other branches that are not part of the
@@ -489,7 +489,7 @@ def is_two_terminal_relevant(graph: nx.Graph, source: int, target: int) -> bool:
     walks.
     """
 
-    all_edges = {tuple(sorted(edge)) for edge in graph.edges()}
+    all_edges = {frozenset(edge) for edge in graph.edges()}
     return simple_path_edge_cover(graph, source, target) == all_edges
 
 

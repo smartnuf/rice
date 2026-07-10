@@ -27,6 +27,7 @@ Ensure duplicate rejection and descriptor production are trustworthy.
 - Added focused local series/parallel reduction tests for primitive duplicate
   merging, compound duplicate preservation, terminal reversal, internal node
   renaming, series arms inside parallel networks, repeated reduction,
-  non-series-parallel bridge/core stability, non-collision examples, and malformed
+  non-series-parallel bridge/core stability, non-collision examples, mixed-type
+  hashable node labels on the reduced-signature validation path, and malformed
   or terminal-irrelevant input rejection. Descriptor-output and full census
   integration tests remain future work.

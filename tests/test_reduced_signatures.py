@@ -115,6 +115,39 @@ def test_repeated_reduction_after_series_suppression_creates_parallel_then_more_
     assert sig(graph, (0, 3), assignments).stable_string() == "0-1:R--(C||(L--R))"
 
 
+def test_mixed_node_label_types_are_supported_by_reduced_signature_validation():
+    mixed = nx.Graph()
+    mixed.add_edges_from([("s", 0), (0, "t")])
+    mixed_assignments = {("s", 0): "R", (0, "t"): "L"}
+
+    integer_graph, integer_assignments = path_graph(["R", "L"])
+
+    assert sig(mixed, ("s", "t"), mixed_assignments) == sig(
+        integer_graph, (0, 2), integer_assignments
+    )
+
+def test_mixed_node_label_signature_is_invariant_under_renaming_and_terminal_reversal():
+    graph = nx.Graph()
+    graph.add_edges_from([("s", 0), (0, "t")])
+    assignments = {("s", 0): "R", (0, "t"): "L"}
+
+    renamed = nx.relabel_nodes(graph, {"s": "right", "t": "left", 0: ("internal", 1)})
+    renamed_assignments = {("right", ("internal", 1)): "R", (("internal", 1), "left"): "L"}
+
+    assert sig(graph, ("s", "t"), assignments) == sig(
+        renamed, ("left", "right"), renamed_assignments
+    )
+
+
+def test_terminal_irrelevant_mixed_node_labels_raise_value_error_not_type_error():
+    dangling = nx.Graph()
+    dangling.add_edges_from([("s", 0), (0, "t"), (0, "dangling")])
+    assignments = {("s", 0): "R", (0, "t"): "L", (0, "dangling"): "C"}
+
+    with pytest.raises(ValueError, match="terminal-relevant"):
+        sig(dangling, ("s", "t"), assignments)
+
+
 def test_malformed_and_terminal_irrelevant_inputs_are_rejected():
     graph, assignments = path_graph(["R"])
     with pytest.raises(ValueError, match="distinct"):
