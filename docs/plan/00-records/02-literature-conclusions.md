@@ -32,15 +32,25 @@ The plan must frame the following as investigations, not established facts:
   immittances;
 - whether `R <= 5`, `L+C <= 3` suffices for all biquadratic immittances.
 
-## Ladenheim slice spelling
+## Ladenheim slice spelling (corrected 2026-07-10)
 
-Always write the Ladenheim comparison slice as:
+An earlier version of this section instructed always writing the Ladenheim
+comparison slice as `R <= 3 / L + C <= 2 / R + L + C <= 5`, treating that as
+the defining scope of the historical 148-network set. That was wrong: the
+148-network set's initial scope has no independent resistor bound; the
+`R <= 3` bound belongs to the later 108-network canonical set. This is
+preserved as a corrected entry, not deleted, so the earlier interpretation is
+not silently erased. See `docs/ladenheim_benchmark.md` for the full
+reassessment.
+
+Write the two Ladenheim-related slices as:
 
 ```text
-R <= 3
-L + C <= 2
-R + L + C <= 5
+148-scope slice:        L + C <= 2, R + L + C <= 5 (no independent R bound)
+Bounded R <= 3 slice:   R <= 3, L + C <= 2, R + L + C <= 5
 ```
+
+and do not use either spelling as a stand-in for the other.
 
 ## Done means
 
@@ -57,3 +67,9 @@ R + L + C <= 5
   equivalence.
 - This remains `prog` because final user-facing historical/literature claims
   still need proper citations before being promoted beyond planning context.
+- 2026-07-10: Corrected the "Ladenheim slice spelling" section above, which
+  had wrongly stated the `R <= 3` bound as part of the 148-network set's
+  defining scope. README.md now cites Morelli & Smith (2019) directly, and
+  `docs/ladenheim_benchmark.md` records the full reassessment. This section
+  remains `prog`, not `done`, because the Stage A-E reproduction in
+  `docs/plan/04-ladenheim/` is not yet started.

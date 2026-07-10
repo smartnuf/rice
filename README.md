@@ -22,21 +22,28 @@ rendered, compared with historical lists, converted to descriptors, tested for
 its immittance, and grouped into equivalence classes or generator sets.
 
 The immediate historical benchmark is the Ladenheim catalogue of RLC one-port
-networks with no more than two reactive elements and no more than three
-resistors. In the terminology used here, that comparison slice is:
-
-```text
-R <= 3
-L + C <= 2
-R + L + C <= 5
-```
+networks with at most five elements total and no more than two reactive
+elements. That initial scope, `L + C <= 2` with no separate resistor bound, is
+already reduced to 148 essentially distinct networks by identifying networks
+related by 2-isomorphism and excluding networks trivially simplifiable by
+same-type series/parallel connections; a further, separately-motivated
+reduction by electrical-network transformations and realizability arguments
+removes 40 more networks (including some with four resistors) to give the
+108-network canonical set, usually called the Ladenheim catalogue. Those 108
+networks are then classified into 62 equivalence classes by equality of
+realizability set — a grouping distinct from two other groupings of the same
+108 networks, into 35 group-action orbits and 24 subfamilies.
 
 The literature around Ladenheim, Kalman, Morelli, Hughes, and Smith motivates a
-deliberately enumerative approach. Morelli's reworking of the Ladenheim problem
-distinguishes an unabridged set of 148 candidate networks, the canonical
-108-network Ladenheim catalogue, and a further grouping into 62 equivalence
-classes. That separation is important for this project: different notions of
-"distinct" produce different valid catalogues.
+deliberately enumerative approach. See A. Morelli and M. C. Smith, *Passive
+Network Synthesis: An Approach to Classification*, SIAM, 2019 (Ch. 3 §3.1
+p. 19; Ch. 5 pp. 41-43 §5.1; Ch. 6; Thm. 7.4), and
+`docs/ladenheim_benchmark.md` for this project's corrected reading of that
+source and the resulting revised validation plan. That separation between 148,
+108, and 62 is important for this project: different notions of "distinct"
+produce different valid catalogues, and none of them is directly the same
+relation as this repository's own reduced-topology distinctness (see
+`docs/model_decisions.md` and `docs/ladenheim_benchmark.md`).
 
 The project will therefore keep the following ideas separate:
 

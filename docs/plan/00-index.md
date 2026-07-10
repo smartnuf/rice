@@ -6,6 +6,8 @@ Status key: `done`, `prog`, `todo`, `blocked`, `later`.
 
 - `done` [Bring plan records up to date](00-records/01-update-plan-records.md)
 - `prog` [Record literature conclusions from deep research](00-records/02-literature-conclusions.md)
+- See also `docs/ladenheim_benchmark.md` for the dated 2026-07-10 Ladenheim
+  benchmark interpretation reassessment.
 - `prog` [Update README motivation](00-records/03-readme-motivation.md)
 
 ## 01 — Development environment
@@ -35,22 +37,27 @@ files' numeric prefixes; the files were not renamed/renumbered to match):
 - `prog` [Define catalogue object model](03-counting/02-distinct.md)
 - `prog` [Define enumeration scope](03-counting/03-scope.md)
 - `done` [Define small explicit catalogue slice](03-counting/04-small-slice.md)
-- `todo` [Define Ladenheim comparison slice](03-counting/05-ladenheim.md)
+- `todo` [Define Ladenheim comparison slices](03-counting/05-ladenheim.md)
 - `todo` [Define full current project slice](03-counting/06-full-counts.md)
 - `prog` [Define output catalogue format](03-counting/07-outputs.md)
 
 ## 04 — Ladenheim reproduction
 
-- `todo` [Reproduce unabridged 148-candidate Ladenheim set](04-ladenheim/01-148.md)
-- `todo` [Reproduce canonical 108-network catalogue](04-ladenheim/02-108.md)
-- `todo` [Reproduce 62 equivalence classes](04-ladenheim/03-62.md)
+Revised 2026-07-10 into a five-stage sequence after correcting the benchmark
+interpretation (`docs/ladenheim_benchmark.md`): Stage A/B (148), Stage C
+(108), Stage D (62), Stage E (reconciliation with RICE's own reduction).
+Generator sets depend on Stage D.
+
+- `todo` [Stage A/B: define and reproduce the 148 essentially-distinct networks](04-ladenheim/01-148.md)
+- `todo` [Stage C: reproduce the 108-network canonical set](04-ladenheim/02-108.md)
+- `todo` [Stage D: reproduce the 62 realizability-set equivalence classes](04-ladenheim/03-62.md)
 - `todo` [Identify generator sets](04-ladenheim/04-generators.md)
-- `todo` [Compare with Morelli/Ladenheim numbering](04-ladenheim/05-numbering.md)
+- `todo` [Stage E: reconcile RICE reduction with the Ladenheim stages](04-ladenheim/05-numbering.md)
 
 ## 05 — Enumeration slices and counts
 
 - `done` [Small fast test slice: `R <= 2`, `L+C <= 3`](05-slices/01-r2-x3.md)
-- `todo` [Ladenheim slice: `R <= 3`, `L+C <= 2`, `R+L+C <= 5`](05-slices/02-ladenheim.md)
+- `todo` [Ladenheim slices: 148-scope (`L+C <= 2`, `R+L+C <= 5`) and bounded `R <= 3`](05-slices/02-ladenheim.md)
 - `todo` [Morelli next-class slice: `R <= 4`, `L+C <= 3`](05-slices/03-r4-x3.md)
 - `todo` [Full current project slice: `R <= 3`, `L+C <= 5`](05-slices/04-r3-x5.md)
 - `todo` [Two-resistor high-reactive slice: `R <= 2`, `L+C <= 5`](05-slices/05-r2-x5.md)

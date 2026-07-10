@@ -10,8 +10,12 @@ Use stable generated counts to detect accidental changes.
 
 - Very small hand-checkable cases.
 - Explicit subset: `R <= 2`, `L+C <= 3`.
-- Ladenheim comparison slice: `R <= 3`, `L+C <= 2`, and `R+L+C <= 5`,
-  including the `R=3`, `L+C=2` boundary.
+- Bounded `R <= 3` slice (see `docs/plan/03-counting/05-ladenheim.md`):
+  `R <= 3`, `L+C <= 2`, and `R+L+C <= 5`, including the `R=3`, `L+C=2`
+  boundary. This is a well-defined slice of the current reduced-topology
+  model in its own right; per `docs/ladenheim_benchmark.md` (2026-07-10), it
+  is not itself the defining scope of the historical 148-network set, so its
+  golden count is not to be described as a reproduction of 148, 108, or 62.
 
 ## Done means
 
