@@ -27,12 +27,18 @@ _REDUCED_DEFAULT_MAX_REACTIVE = 3
 
 _COUNT_OPTION_NAMES = ("--max-r", "--max-reactive", "--mode")
 _LEGACY_GLOBAL_OPTION_NAMES = (*_COUNT_OPTION_NAMES, "--format")
-_REDUCED_DEFAULT_MAX_R = 2
-_REDUCED_DEFAULT_MAX_REACTIVE = 3
+
+
+class RiceArgumentParser(argparse.ArgumentParser):
+    """ArgumentParser with repository-wide CLI parsing policy."""
+
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
+        kwargs.setdefault("allow_abbrev", False)
+        super().__init__(*args, **kwargs)
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(
+    parser = RiceArgumentParser(
         prog="rice",
         description="RICE — Resistor-Inductor-Capacitor Enumerator for small two-terminal RLC one-port topology classes.",
         epilog=(
@@ -40,7 +46,7 @@ def build_parser() -> argparse.ArgumentParser:
             "legacy count form is retained for compatibility."
         ),
     )
-    subparsers = parser.add_subparsers(dest="command")
+    subparsers = parser.add_subparsers(dest="command", parser_class=RiceArgumentParser)
 
     count_parser = subparsers.add_parser(
         "count", help="run the legacy component-bundle count"
@@ -319,6 +325,46 @@ def _reject_legacy_globals_before_supports(
         )
 
 
+def _validate_nonnegative(
+    parser: argparse.ArgumentParser, command: str, option: str, value: int
+) -> None:
+    if value < 0:
+        parser.error(f"{command} {option} must be nonnegative")
+
+
+def _validate_positive(
+    parser: argparse.ArgumentParser, command: str, option: str, value: int
+) -> None:
+    if value <= 0:
+        parser.error(f"{command} {option} must be a positive integer")
+
+
+def _resolve_component_census_limits(
+    parser: argparse.ArgumentParser,
+    command: str,
+    args: argparse.Namespace,
+    *,
+    default_max_r: int,
+    default_max_reactive: int,
+) -> tuple[int, int, int | None]:
+    max_r = getattr(args, "max_r", default_max_r)
+    max_reactive = getattr(args, "max_reactive", default_max_reactive)
+    max_edges = getattr(args, "max_edges", None)
+    _validate_nonnegative(parser, command, "--max-r", max_r)
+    _validate_nonnegative(parser, command, "--max-reactive", max_reactive)
+    natural_max_edges = max_r + max_reactive
+    if max_edges is not None:
+        if natural_max_edges > 0:
+            _validate_positive(parser, command, "--max-edges", max_edges)
+        elif max_edges < 0:
+            parser.error(
+                f"{command} --max-edges must be nonnegative when component budgets are zero"
+            )
+        if max_edges > natural_max_edges:
+            parser.error(f"{command} --max-edges cannot exceed --max-r + --max-reactive")
+    return max_r, max_reactive, max_edges
+
+
 def _resolve_support_max_edges(parser: argparse.ArgumentParser, args: argparse.Namespace) -> int:
     has_max_edges = hasattr(args, "max_edges")
     has_max_r = hasattr(args, "max_r")
@@ -332,8 +378,14 @@ def _resolve_support_max_edges(parser: argparse.ArgumentParser, args: argparse.N
     if has_max_r != has_max_reactive:
         parser.error("supports --max-r and --max-reactive must be provided together")
     if has_max_r and has_max_reactive:
-        return args.max_r + args.max_reactive
+        _validate_nonnegative(parser, "supports", "--max-r", args.max_r)
+        _validate_nonnegative(parser, "supports", "--max-reactive", args.max_reactive)
+        max_edges = args.max_r + args.max_reactive
+        if max_edges <= 0:
+            parser.error("supports --max-r + --max-reactive must be positive")
+        return max_edges
     if has_max_edges:
+        _validate_positive(parser, "supports", "--max-edges", args.max_edges)
         return args.max_edges
     return 8
 
@@ -370,11 +422,9 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     if args.command == "bundles":
-        max_r = getattr(args, "max_r", 3)
-        max_reactive = getattr(args, "max_reactive", 5)
-        max_edges = getattr(args, "max_edges", None)
-        if max_edges is not None and max_edges > max_r + max_reactive:
-            parser.error("bundles --max-edges cannot exceed --max-r + --max-reactive")
+        max_r, max_reactive, max_edges = _resolve_component_census_limits(
+            parser, "bundles", args, default_max_r=3, default_max_reactive=5
+        )
         result = simple_bundle_assignment_census(
             max_r=max_r, max_reactive=max_reactive, max_edges=max_edges
         )
@@ -412,11 +462,9 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     if args.command == "labelings":
-        max_r = getattr(args, "max_r", 3)
-        max_reactive = getattr(args, "max_reactive", 5)
-        max_edges = getattr(args, "max_edges", None)
-        if max_edges is not None and max_edges > max_r + max_reactive:
-            parser.error("labelings --max-edges cannot exceed --max-r + --max-reactive")
+        max_r, max_reactive, max_edges = _resolve_component_census_limits(
+            parser, "labelings", args, default_max_r=3, default_max_reactive=5
+        )
         result = simple_bundle_labeling_census(
             max_r=max_r, max_reactive=max_reactive, max_edges=max_edges
         )

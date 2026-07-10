@@ -71,3 +71,23 @@ def test_simple_bundle_assignment_census_allows_truncated_max_edges():
 def test_simple_bundle_assignment_census_rejects_max_edges_above_budget():
     with pytest.raises(ValueError, match="cannot exceed"):
         simple_bundle_assignment_census(max_r=3, max_reactive=5, max_edges=9)
+
+
+def test_simple_bundle_assignment_census_zero_budget_is_empty():
+    result = simple_bundle_assignment_census(max_r=0, max_reactive=0)
+
+    assert result.max_edges == 0
+    assert result.relevant_supports_by_edges == {}
+    assert result.assignments_per_support_by_edges == {}
+    assert result.leaf_assignments_by_edges == {}
+    assert result.relevant_supports_total == 0
+    assert result.leaf_assignments_total == 0
+
+
+def test_simple_bundle_assignment_census_rejects_negative_budgets_and_zero_edges_when_nonempty():
+    with pytest.raises(ValueError, match="non-negative"):
+        simple_bundle_assignment_census(max_r=-1, max_reactive=0)
+    with pytest.raises(ValueError, match="non-negative"):
+        simple_bundle_assignment_census(max_r=0, max_reactive=-1)
+    with pytest.raises(ValueError, match="at least 1"):
+        simple_bundle_assignment_census(max_r=1, max_reactive=0, max_edges=0)

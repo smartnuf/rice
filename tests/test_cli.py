@@ -7,6 +7,25 @@ import pytest
 from rice.cli import main
 
 
+def _assert_cli_error_without_traceback(capsys, argv, expected):
+    with pytest.raises(SystemExit) as excinfo:
+        main(argv)
+
+    assert excinfo.value.code == 2
+    err = capsys.readouterr().err
+    if isinstance(expected, tuple):
+        assert any(piece in err for piece in expected)
+    else:
+        assert expected in err
+    assert "Traceback" not in err
+
+
+def test_abbreviated_long_options_are_rejected(capsys):
+    _assert_cli_error_without_traceback(capsys, ["--mo", "generic", "supports"], ("unrecognized arguments", "invalid choice"))
+    _assert_cli_error_without_traceback(capsys, ["supports", "--max-e", "8"], "unrecognized arguments")
+    _assert_cli_error_without_traceback(capsys, ["bundles", "--max-re", "5"], "unrecognized arguments")
+
+
 def test_supports_max_edges_option_works(capsys):
     assert main(["supports", "--max-edges", "9"]) == 0
 
@@ -37,6 +56,25 @@ def test_supports_requires_complete_budget_pair(capsys):
 
     assert excinfo.value.code == 2
     assert "must be provided together" in capsys.readouterr().err
+
+
+def test_supports_rejects_invalid_limits_without_traceback(capsys):
+    cases = [
+        (["supports", "--max-edges", "0"], "must be a positive integer"),
+        (["supports", "--max-edges", "-1"], "must be a positive integer"),
+        (["supports", "--max-r", "-1", "--max-reactive", "2"], "must be nonnegative"),
+        (["supports", "--max-r", "1", "--max-reactive", "-2"], "must be nonnegative"),
+        (["supports", "--max-r", "0", "--max-reactive", "0"], "must be positive"),
+        (["supports", "--max-reactive", "1"], "must be provided together"),
+    ]
+    for argv, expected in cases:
+        _assert_cli_error_without_traceback(capsys, argv, expected)
+
+
+def test_supports_allows_one_zero_budget_when_sum_positive(capsys):
+    assert main(["supports", "--max-r", "0", "--max-reactive", "1"]) == 0
+
+    assert "Support census: max_edges <= 1" in capsys.readouterr().out
 
 
 def test_supports_subcommand_help_shows_max_edges():
@@ -113,6 +151,26 @@ def test_bundles_max_edges_cannot_exceed_derived_budget(capsys):
 
     assert excinfo.value.code == 2
     assert "cannot exceed" in capsys.readouterr().err
+
+
+def test_bundles_zero_zero_budget_is_empty_census(capsys):
+    assert main(["bundles", "--max-r", "0", "--max-reactive", "0"]) == 0
+
+    output = capsys.readouterr().out
+    assert "max_edges <= 0" in output
+    assert "| Total | 0 | — | 0 |" in output
+    assert "| 1 |" not in output
+
+
+def test_bundles_rejects_invalid_limits_without_traceback(capsys):
+    cases = [
+        (["bundles", "--max-r", "-1", "--max-reactive", "0"], "must be nonnegative"),
+        (["bundles", "--max-r", "0", "--max-reactive", "-1"], "must be nonnegative"),
+        (["bundles", "--max-r", "1", "--max-reactive", "0", "--max-edges", "0"], "must be a positive integer"),
+        (["bundles", "--max-r", "1", "--max-reactive", "0", "--max-edges", "-1"], "must be a positive integer"),
+    ]
+    for argv, expected in cases:
+        _assert_cli_error_without_traceback(capsys, argv, expected)
 
 
 def test_bundles_subcommand_help_shows_bundle_options():
@@ -203,6 +261,26 @@ def test_labelings_max_edges_cannot_exceed_derived_budget(capsys):
 
     assert excinfo.value.code == 2
     assert "cannot exceed" in capsys.readouterr().err
+
+
+def test_labelings_zero_zero_budget_is_empty_census(capsys):
+    assert main(["labelings", "--max-r", "0", "--max-reactive", "0"]) == 0
+
+    output = capsys.readouterr().out
+    assert "max_edges <= 0" in output
+    assert "| Total | 0 | 0 | 0 |" in output
+    assert "| 1 |" not in output
+
+
+def test_labelings_rejects_invalid_limits_without_traceback(capsys):
+    cases = [
+        (["labelings", "--max-r", "-1", "--max-reactive", "0"], "must be nonnegative"),
+        (["labelings", "--max-r", "0", "--max-reactive", "-1"], "must be nonnegative"),
+        (["labelings", "--max-r", "1", "--max-reactive", "0", "--max-edges", "0"], "must be a positive integer"),
+        (["labelings", "--max-r", "1", "--max-reactive", "0", "--max-edges", "-1"], "must be a positive integer"),
+    ]
+    for argv, expected in cases:
+        _assert_cli_error_without_traceback(capsys, argv, expected)
 
 
 def test_labelings_subcommand_help_shows_labeling_options():

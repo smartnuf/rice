@@ -25,3 +25,6 @@ Make the development workflow easy to follow.
 - 2026-07-09: Documented CLI argument-placement expectations in `AGENTS.md`,
   README examples, and support-census docs. Future argument-parsing changes
   should verify both top-level and subcommand help before handoff.
+
+- 2026-07-10: Documented exact long-option parsing, zero-budget census
+  boundary behaviour, and the tested `networkx>=3.2` dependency floor.
