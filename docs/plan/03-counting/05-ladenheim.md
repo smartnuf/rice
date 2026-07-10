@@ -1,51 +1,60 @@
-# 03-counting / 05 — Implement the Ladenheim comparison slice
+# 03-counting / 05 — Define the Ladenheim comparison contracts
 
 Status: `todo`
 
 ## Goal
 
-Create a comparison slice for the Ladenheim catalogue of distinct RLC networks
-with no more than two reactances and three resistances. These networks are
-relevant because they are realised by biquadratic functions.
+Replace the old single "Ladenheim slice" idea with precise comparison
+contracts for the historical stages and for the current RICE reduced diagnostic.
 
-## Correct comparison target
+## Correct historical scope
 
-The comparison slice is the intersection of all three bounds:
+The initial 148 stage uses:
+
+```text
+total elements <= 5
+L + C <= 2
+```
+
+It is not initially restricted to `R <= 3`. The 148 are already **essentially
+distinct networks** under graph 2-isomorphism-level structural distinctness
+(deformation, separation, and series interchange), after excluding same-kind
+series/parallel simplifications.
+
+## Current RICE diagnostic slice
+
+The old planned slice remains useful only as a RICE reduced-signature diagnostic:
 
 ```text
 R <= 3
 L + C <= 2
-R + L + C <= 5
+support edges <= 5
 ```
 
-The explicit resistor bound matters: the other two bounds alone would admit
-cases such as `R=4`, `L+C=1`, which are outside the catalogue's limit of three
-resistances.
+At commit `338ddec`, the repository-native command
 
-This includes the important `3+2` case:
-
-```text
-R = 3
-L + C = 2
-total = 5
+```bash
+.venv/bin/python -m rice reduced --max-r 3 --max-reactive 2 --max-edges 5 --format json
 ```
 
-This `3+2` point is inside the full `R <= 3`, `L+C <= 5` scope, but it is not inside the small `R <= 2`, `L+C <= 3` subset.
+reports 140 final RICE reduced signatures. Because `R <= 3` and `L+C <= 2`
+imply total primitive components `<= 5`, this command enforces the old coupled
+total bound only indirectly for this particular diagnostic.
 
-## Name and spelling
+## Capability gap
 
-Use `Ladenheim catalogue` in repository docs unless a specific source being quoted uses another spelling.
-
-## Tasks
-
-- Encode the three Ladenheim-style bounds as a named count mode.
-- Generate counts for the slice.
-- Compare against known published counts only after our distinctness/reduction definition is aligned.
-- Record differences if our definition deliberately differs.
+The corrected initial 148 scope cannot currently be expressed exactly by the
+CLI/API without imposing `R <= 3`. The implementation has independent `R` and
+`L+C` budgets plus an optional support-edge bound; it does not have a coupled
+`total elements <= 5` primitive-component budget. A future Ladenheim enumerator
+needs that contract explicitly.
 
 ## Done means
 
-- The named slice enforces `R <= 3`, `L+C <= 2`, and total elements `<= 5`.
-- `3+2` is explicitly generated and tested.
-- The comparison slice is separate from the small smoke-test subset.
-- Documentation states exactly why any count agrees or disagrees with the historical catalogue.
+- Stage A defines the historical 148 model contract before implementation.
+- Stage B reproduces 148 with a dedicated Ladenheim structural signature.
+- Stage C reproduces the 108-network canonical set as a separate removal stage.
+- Stage D reproduces the 62 realizability-set equivalence classes as behavioral
+  classification of the 108 members.
+- Stage E compares those historical results with the native RICE reduced
+  signature without pre-deciding that either model replaces the other.

@@ -35,4 +35,4 @@ At minimum, produce tables by:
 
 - Counts are reproducible from a clean checkout.
 - Outputs are stored in a predictable location.
-- Tests check at least the small subset and the Ladenheim comparison slice.
+- Tests check at least the small subset; historical Ladenheim checks are added only after the separate 148/108/62 contracts are defined and implemented.

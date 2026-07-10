@@ -32,15 +32,16 @@ The plan must frame the following as investigations, not established facts:
   immittances;
 - whether `R <= 5`, `L+C <= 3` suffices for all biquadratic immittances.
 
-## Ladenheim slice spelling
+## Ladenheim benchmark correction
 
-Always write the Ladenheim comparison slice as:
+The historical 148 scope is now recorded as:
 
 ```text
-R <= 3
+total elements <= 5
 L + C <= 2
-R + L + C <= 5
 ```
+
+Do not add an initial `R <= 3` restriction when describing the 148 essentially distinct networks. The older `R <= 3`, `L+C <= 2`, support-edge `<= 5` slice is retained only as a native RICE reduced-signature diagnostic, where it currently gives 140 signatures.
 
 ## Done means
 
@@ -55,5 +56,5 @@ R + L + C <= 5
 - Current model and README text preserve the key distinction between raw staged
   census outputs, reduced-topology distinctness, and stronger future immittance
   equivalence.
-- This remains `prog` because final user-facing historical/literature claims
-  still need proper citations before being promoted beyond planning context.
+- 2026-07-10: `docs/plan/00-records/04-ladenheim-reassessment.md` records the corrected meanings of 148, 108, and 62, plus the verified 140 RICE diagnostic and the current total-component-bound capability gap.
+- This remains `prog` because the historical 148 contract and implementation are not complete.

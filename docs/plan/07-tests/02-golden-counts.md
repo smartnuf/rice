@@ -10,8 +10,10 @@ Use stable generated counts to detect accidental changes.
 
 - Very small hand-checkable cases.
 - Explicit subset: `R <= 2`, `L+C <= 3`.
-- Ladenheim comparison slice: `R <= 3`, `L+C <= 2`, and `R+L+C <= 5`,
-  including the `R=3`, `L+C=2` boundary.
+- Historical Ladenheim stages: add golden diagnostics only after the 148
+  2-isomorphism-level structural contract is defined and implemented. The old
+  RICE diagnostic slice `R <= 3`, `L+C <= 2`, support edges `<= 5` currently
+  reports 140 RICE reduced signatures, but it is not the 148 acceptance target.
 
 ## Done means
 
@@ -34,7 +36,7 @@ Use stable generated counts to detect accidental changes.
 
 ## Near-term next steps
 
-1. Add Ladenheim-slice golden counts only after the reduced distinctness contract
-   is implemented enough to make those counts meaningful.
+1. Add Ladenheim 148/108/62 golden checks only after each historical contract
+   is settled; do not use the 140 RICE diagnostic as the 148 target.
 2. Keep any future reduced-model golden artifacts regenerable from documented
    commands without manual post-processing.

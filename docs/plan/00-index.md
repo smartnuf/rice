@@ -7,6 +7,7 @@ Status key: `done`, `prog`, `todo`, `blocked`, `later`.
 - `done` [Bring plan records up to date](00-records/01-update-plan-records.md)
 - `prog` [Record literature conclusions from deep research](00-records/02-literature-conclusions.md)
 - `prog` [Update README motivation](00-records/03-readme-motivation.md)
+- `prog` [Ladenheim benchmark interpretation and revised validation plan](00-records/04-ladenheim-reassessment.md)
 
 ## 01 — Development environment
 
@@ -35,13 +36,13 @@ files' numeric prefixes; the files were not renamed/renumbered to match):
 - `prog` [Define catalogue object model](03-counting/02-distinct.md)
 - `prog` [Define enumeration scope](03-counting/03-scope.md)
 - `done` [Define small explicit catalogue slice](03-counting/04-small-slice.md)
-- `todo` [Define Ladenheim comparison slice](03-counting/05-ladenheim.md)
+- `todo` [Define Ladenheim comparison contracts](03-counting/05-ladenheim.md)
 - `todo` [Define full current project slice](03-counting/06-full-counts.md)
 - `prog` [Define output catalogue format](03-counting/07-outputs.md)
 
 ## 04 — Ladenheim reproduction
 
-- `todo` [Reproduce unabridged 148-candidate Ladenheim set](04-ladenheim/01-148.md)
+- `todo` [Reproduce 148 essentially distinct Ladenheim networks](04-ladenheim/01-148.md)
 - `todo` [Reproduce canonical 108-network catalogue](04-ladenheim/02-108.md)
 - `todo` [Reproduce 62 equivalence classes](04-ladenheim/03-62.md)
 - `todo` [Identify generator sets](04-ladenheim/04-generators.md)
@@ -50,7 +51,7 @@ files' numeric prefixes; the files were not renamed/renumbered to match):
 ## 05 — Enumeration slices and counts
 
 - `done` [Small fast test slice: `R <= 2`, `L+C <= 3`](05-slices/01-r2-x3.md)
-- `todo` [Ladenheim slice: `R <= 3`, `L+C <= 2`, `R+L+C <= 5`](05-slices/02-ladenheim.md)
+- `todo` [Historical 148 scope and old RICE diagnostic slice](05-slices/02-ladenheim.md)
 - `todo` [Morelli next-class slice: `R <= 4`, `L+C <= 3`](05-slices/03-r4-x3.md)
 - `todo` [Full current project slice: `R <= 3`, `L+C <= 5`](05-slices/04-r3-x5.md)
 - `todo` [Two-resistor high-reactive slice: `R <= 2`, `L+C <= 5`](05-slices/05-r2-x5.md)

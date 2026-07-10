@@ -22,21 +22,25 @@ rendered, compared with historical lists, converted to descriptors, tested for
 its immittance, and grouped into equivalence classes or generator sets.
 
 The immediate historical benchmark is the Ladenheim catalogue of RLC one-port
-networks with no more than two reactive elements and no more than three
-resistors. In the terminology used here, that comparison slice is:
+networks. The corrected historical starting scope for the 148 essentially
+distinct networks is:
 
 ```text
-R <= 3
+total elements <= 5
 L + C <= 2
-R + L + C <= 5
 ```
 
+It is not initially restricted to `R <= 3`; eight four-resistor/one-reactive
+networks are removed later while constructing the 108-network canonical set.
+The older `R <= 3`, `L+C <= 2`, support-edge `<= 5` slice is now documented only
+as a native RICE reduced-signature diagnostic.
+
 The literature around Ladenheim, Kalman, Morelli, Hughes, and Smith motivates a
-deliberately enumerative approach. Morelli's reworking of the Ladenheim problem
-distinguishes an unabridged set of 148 candidate networks, the canonical
-108-network Ladenheim catalogue, and a further grouping into 62 equivalence
-classes. That separation is important for this project: different notions of
-"distinct" produce different valid catalogues.
+deliberately enumerative approach. Morelli and Smith distinguish 148 essentially
+distinct networks under graph 2-isomorphism-level structural distinctness, the
+108-network Ladenheim catalogue after forty additional removals, and 62
+realizability-set equivalence classes. That separation is important for this
+project: different notions of "distinct" produce different valid catalogues.
 
 The project will therefore keep the following ideas separate:
 
@@ -313,6 +317,10 @@ The immediate bibliography to document more fully is:
 - T. H. Hughes, A. Morelli, and M. C. Smith, "Electrical network synthesis: A
   survey of recent work", in *Emerging Applications of Control and Systems
   Theory*, Springer, 2018.
+- A. Morelli and M. C. Smith, *Passive Network Synthesis: An Approach to
+  Classification*, SIAM, 2019; especially Chapter 3, Section 3.1 (p. 19),
+  Chapter 5 (pp. 41--43 and Section 5.1), the Chapter 6 classification summary,
+  and Theorem 7.4 for the 148/108/62 interpretation.
 - T. H. Hughes, "Why RLC realizations of certain impedances need many more
   energy storage elements than expected", 2017.
 

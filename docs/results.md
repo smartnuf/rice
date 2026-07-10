@@ -168,3 +168,36 @@ Diagnostic totals for the same slice:
 Machine-readable summary: `data/counts/small-r2-x3.json`. Human-readable summary:
 `docs/counts/small-r2-x3.md`. This slice is a golden regression target and is
 not presented as the full `R <= 3`, `L+C <= 5` project count.
+
+## Current RICE diagnostic for the old Ladenheim-planning slice
+
+This diagnostic records the current **RICE reduced signature** behavior for the
+old planned comparison slice. It is not a reproduction of the historical
+**148 essentially distinct networks** because the historical 148 uses a different
+scope and graph 2-isomorphism-level structural relation.
+
+Verified at commit `338ddec` with:
+
+```bash
+.venv/bin/python -m rice reduced --max-r 3 --max-reactive 2 --max-edges 5 --format json
+```
+
+Interpretation: `R <= 3`, `L+C <= 2`, and support edges `<= 5` under the RICE
+reduced model. For this particular diagnostic, `R <= 3` and `L+C <= 2` imply
+`R+L+C <= 5`; the CLI does not expose a separate coupled total-component bound.
+
+| R \ X=L+C | 0 | 1 | 2 | Row total |
+|---:|---:|---:|---:|---:|
+| 0 | 0 | 2 | 2 | 4 |
+| 1 | 1 | 4 | 12 | 17 |
+| 2 | 0 | 4 | 34 | 38 |
+| 3 | 0 | 4 | 77 | 81 |
+| **Total** | **1** | **14** | **125** | **140** |
+
+Diagnostics: 906 raw phase-2 assignments, 562 phase-3 assigned-support labeling
+orbits, and 140 final canonical reduced signatures.
+
+The corrected initial 148 scope, `total elements <= 5` and `L+C <= 2` without an
+`R <= 3` limit, cannot currently be expressed exactly by the CLI/API. The
+command shape `--max-r 5 --max-reactive 2 --max-edges 5` is not exact because it
+can include reduced signatures with more than five total primitive components.

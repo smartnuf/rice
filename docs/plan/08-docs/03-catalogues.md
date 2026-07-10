@@ -8,17 +8,12 @@ Keep historical comparisons precise and sourced.
 
 ## Notes
 
-The relevant historical name appears to be the `Ladenheim catalogue`. It is
-described here as a catalogue of distinct RLC networks with no more than two
-reactances and three resistances, subject also to a five-element total limit.
-These networks are relevant because they are realised by biquadratic functions.
-
-Some sources report 108 networks in the catalogue. rice should compare against this number only after matching the same distinctness and reduction assumptions.
+The relevant historical name appears to be the `Ladenheim catalogue`. Morelli and Smith use a staged construction: 148 essentially distinct networks under graph 2-isomorphism-level structural distinctness for `total elements <= 5` and `L+C <= 2`; then a 108-network canonical set after forty additional removals; then 62 realizability-set equivalence classes as a behavioral classification of those 108 members. These must be cited and described separately.
 
 ## Planned comparison slices
 
-- Ladenheim-style slice: `R <= 3`, `L+C <= 2`, and `R+L+C <= 5`.
-- Explicit boundary point: `R=3`, `L+C=2`, total `5`.
+- Historical 148 scope: `total elements <= 5` and `L+C <= 2`, with no initial `R <= 3` restriction.
+- Old RICE diagnostic slice: `R <= 3`, `L+C <= 2`, support edges `<= 5`, currently 140 RICE reduced signatures.
 - rice smoke-test slice: `R <= 2`, `L+C <= 3`.
 - rice full planned scope: `R <= 3`, `L+C <= 5`.
 

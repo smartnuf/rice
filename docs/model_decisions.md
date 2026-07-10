@@ -259,3 +259,33 @@ counting contract.
    golden slice `R <= 2`, `L+C <= 3`. Running the full `R <= 3`, `L+C <= 5`
    scope through this same enumeration is remaining work
    (`docs/plan/05-slices/04-r3-x5.md`), not an unimplemented stage.
+
+## Ladenheim benchmark interpretation
+
+The Morelli-Smith/Ladenheim historical benchmarks are intentionally separate
+from the RICE reduced model above. Morelli and Smith report **148 essentially
+distinct networks** for connected two-terminal primitive `R`/`L`/`C` networks
+with at most five total elements and at most two reactive elements, after
+identifying deformation, separation, and series interchange via graph
+2-isomorphism and excluding trivially simplifiable same-kind series or parallel
+connections. See A. Morelli and M. C. Smith, *Passive Network Synthesis: An
+Approach to Classification*, SIAM, 2019, Chapter 3, Section 3.1 (p. 19) and
+Chapter 5 (pp. 41--43 and Section 5.1).
+
+That historical 148 scope is not `R <= 3`: it includes eight
+four-resistor/one-reactive networks that are later removed. The subsequent
+**108-network canonical set** or **Ladenheim catalogue** is obtained by forty
+additional removals involving bilinear simpler realizations, Zobel
+transformations, and Cauer-Foster/regularity/Y-Delta-related arguments. The
+**62 realizability-set equivalence classes** are a later behavioral
+classification of the 108 catalogue members by equality of realizability sets;
+they should not be confused with graph signatures, the 35 group-action orbits,
+or the 24 subfamilies discussed by Morelli and Smith (Chapter 6 and Theorem
+7.4).
+
+The RICE reduced signature remains a coherent project-specific local
+series/parallel reduction. It is not currently a graph 2-isomorphism
+implementation and should not be used as the acceptance contract for the
+historical 148 until a separate Ladenheim contract is implemented and compared.
+The detailed reassessment and revised validation sequence are recorded in
+`docs/plan/00-records/04-ladenheim-reassessment.md`.
