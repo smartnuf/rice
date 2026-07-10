@@ -190,7 +190,9 @@ from `max_edges = max_r + max_reactive`:
 Use either `--max-edges` or the `--max-r`/`--max-reactive` pair. Supplying
 `--max-edges` together with component-budget options is an error rather than an
 implicit precedence choice. Supplying only one of `--max-r` and
-`--max-reactive` is also an error.
+`--max-reactive` is also an error. `--max-edges` must be positive, component
+budgets must be nonnegative, and a supplied component-budget pair must have a
+positive sum.
 
 The legacy no-subcommand interface applies only to the component-bundle count;
 it is not a support-census form. For example, `rice --max-r 3 --max-reactive 5

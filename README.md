@@ -267,11 +267,18 @@ leaves before support-automorphism quotienting or reduced-signature merging; it
 is not a final reduced-topology count. Its normal interface derives the support
 edge bound as `max_edges = max_r + max_reactive`. An optional `--max-edges` flag
 may be supplied after `bundles` only for debugging/truncation, and values greater
-than the derived component-budget bound are rejected.
+than the derived component-budget bound are rejected. `bundles` and `labelings`
+treat `--max-r 0 --max-reactive 0` as a valid empty census with zero totals and
+no support-edge rows; negative budgets and zero/negative explicit edge bounds
+when the component budget is nonzero are rejected at the CLI boundary.
 
 Do not put support-census options before `supports`; for example,
 `.venv/bin/rice --max-edges 8 supports` is not valid. Count-budget options
-before `supports` are rejected rather than silently ignored.
+before `supports` are rejected rather than silently ignored. Long options must
+use their exact documented names; argparse abbreviation is disabled for the
+top-level parser and all subcommands.
+
+The declared runtime dependency floor is NetworkX 3.2 on Python 3.11 or newer; do not add an upper bound unless a tested incompatibility requires one.
 
 ## Codex Cloud scripts
 

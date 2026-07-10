@@ -760,10 +760,23 @@ def simple_bundle_assignment_census(
         raise ValueError("component limits must be non-negative")
     natural_max_edges = max_r + max_reactive
     resolved_max_edges = natural_max_edges if max_edges is None else max_edges
-    if resolved_max_edges < 1:
-        raise ValueError("max_edges must be at least 1")
+    if resolved_max_edges < 0:
+        raise ValueError("max_edges must be non-negative")
+    if natural_max_edges > 0 and resolved_max_edges < 1:
+        raise ValueError(
+            "max_edges must be at least 1 when component budgets are positive"
+        )
     if resolved_max_edges > natural_max_edges:
         raise ValueError("max_edges cannot exceed max_r + max_reactive")
+    if resolved_max_edges == 0:
+        return BundleAssignmentCensusResult(
+            max_r=max_r,
+            max_reactive=max_reactive,
+            max_edges=0,
+            relevant_supports_by_edges={},
+            assignments_per_support_by_edges={},
+            leaf_assignments_by_edges={},
+        )
 
     supports = support_census(max_edges=resolved_max_edges).relevant_by_edges
     assignments = simple_bundle_assignment_count_by_edge_count(
@@ -862,10 +875,23 @@ def simple_bundle_labeling_census(
         raise ValueError("component limits must be non-negative")
     natural_max_edges = max_r + max_reactive
     resolved_max_edges = natural_max_edges if max_edges is None else max_edges
-    if resolved_max_edges < 1:
-        raise ValueError("max_edges must be at least 1")
+    if resolved_max_edges < 0:
+        raise ValueError("max_edges must be non-negative")
+    if natural_max_edges > 0 and resolved_max_edges < 1:
+        raise ValueError(
+            "max_edges must be at least 1 when component budgets are positive"
+        )
     if resolved_max_edges > natural_max_edges:
         raise ValueError("max_edges cannot exceed max_r + max_reactive")
+    if resolved_max_edges == 0:
+        return BundleLabelingCensusResult(
+            max_r=max_r,
+            max_reactive=max_reactive,
+            max_edges=0,
+            relevant_supports_by_edges={},
+            raw_leaf_assignments_by_edges={},
+            canonical_labeling_orbits_by_edges={},
+        )
 
     raw = simple_bundle_assignment_census(
         max_r=max_r, max_reactive=max_reactive, max_edges=resolved_max_edges

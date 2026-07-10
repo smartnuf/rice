@@ -157,7 +157,7 @@ editable install without fetching dependencies, and runs the same venv-explicit
 checks.
 
 No external graph-generation binaries such as nauty/Traces are required for the
-current project direction. The current implementation uses NetworkX only.
+current project direction. The current implementation uses NetworkX only. The supported/tested runtime floor is `networkx>=3.2` on Python 3.11 or newer; do not add unnecessary upper bounds.
 
 ## Current legacy validation commands
 
