@@ -28,3 +28,10 @@ Make the development workflow easy to follow.
 
 - 2026-07-10: Documented exact long-option parsing, zero-budget census
   boundary behaviour, and the tested `networkx>=3.2` dependency floor.
+
+## Progress notes
+
+- 2026-07-11: Documented change-aware validation in README and AGENTS.md,
+  including lightweight documentation validation, full-validation escalation for
+  unknown/tooling changes, and the rule not to duplicate checks already included
+  in `make check`.

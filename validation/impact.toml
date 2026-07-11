@@ -1,0 +1,38 @@
+# Conservative validation-impact policy for scripts/validate_changes.py.
+# Profiles escalate in order: docs < code < full.
+
+[profiles]
+order = ["docs", "code", "full"]
+default = "full"
+
+[[rules]]
+profile = "docs"
+reason = "known public documentation path"
+patterns = [
+  "README.md",
+  "docs/**",
+]
+
+[[rules]]
+profile = "code"
+reason = "Python source or test path"
+patterns = [
+  "src/**",
+  "tests/**",
+]
+
+[[rules]]
+profile = "full"
+reason = "packaging, dependency, environment, build, script, CI, or validation machinery"
+patterns = [
+  "pyproject.toml",
+  "requirements*.txt",
+  "constraints*.txt",
+  "*lock*",
+  "Makefile",
+  "AGENTS.md",
+  ".codex/**",
+  "scripts/**",
+  ".github/**",
+  "validation/**",
+]

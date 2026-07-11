@@ -17,3 +17,10 @@ Stop Codex and humans from accidentally installing or testing with system Python
 - Codex has exact commands to run.
 - The documented commands use `.venv/bin/python` on Linux/WSL and `.venv\Scripts\python.exe` on Windows.
 - There is no instruction to use bare `pip`.
+
+## Progress notes
+
+- 2026-07-11: Codex setup and maintenance now prepare `.venv` and run only a
+  short import/version smoke test. Setup records a cache-local fingerprint under
+  `.venv/`; maintenance compares that fingerprint and skips editable-install
+  refreshes when Python/package inputs are unchanged.
