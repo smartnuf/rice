@@ -157,15 +157,19 @@ class ComponentConstraints:
         )
 
     def max_total_components(self) -> int | None:
-        total_bounds = []
+        upper_bounds = []
         if self.max_rlc is not None:
-            total_bounds.append(self.max_rlc)
-        if self.max_r is not None and self.max_lc is not None:
-            total_bounds.append(self.max_r + self.max_lc)
-        if self.max_r is not None and self.max_l is not None and self.max_c is not None:
-            total_bounds.append(self.max_r + self.max_l + self.max_c)
-        if total_bounds:
-            return min(total_bounds)
+            upper_bounds.append(self.max_rlc)
+        r_bound = self.max_r
+        lc_bound = self.max_lc
+        if lc_bound is None and self.max_l is not None and self.max_c is not None:
+            lc_bound = self.max_l + self.max_c
+        if r_bound is not None and lc_bound is not None:
+            upper_bounds.append(r_bound + lc_bound)
+        if self.max_l is not None and self.max_c is not None and r_bound is not None:
+            upper_bounds.append(r_bound + self.max_l + self.max_c)
+        if upper_bounds:
+            return min(upper_bounds)
         return None
 
 

@@ -87,7 +87,6 @@ def test_component_constraints_intersect_total_bounds_before_edge_cap(capsys):
     bundle_sets = cli_json(["count", "bundle-sets", "--max-rlc", "12", "--max-r", "0", "--max-lc", "1"], capsys)
     assert [row["support-edges"] for row in bundle_sets["records"]] == [1]
 
-
 def test_bundle_set_rejects_invalid_multiplicity_boundaries():
     for multiplicities in (
         (),
@@ -102,6 +101,27 @@ def test_bundle_set_rejects_invalid_multiplicity_boundaries():
 
     with pytest.raises(TypeError, match="integer"):
         BundleSet((1.5, 0, 0, 0, 0, 0, 0))
+        
+        
+def test_component_upper_bounds_are_intersected_before_support_edge_cap(capsys):
+    supports = cli_json(["count", "supports", "--max-rlc", "12", "--max-r", "0", "--max-lc", "1"], capsys)
+    assert supports["query"]["effective_support_edges"]["max"] == 1
+    assert [row["support_edges"] for row in supports["records"]] == [1]
+
+    bundle_sets = cli_json(["count", "bundle-sets", "--max-rlc", "12", "--max-r", "0", "--max-l", "1", "--max-c", "1"], capsys)
+    assert bundle_sets["query"]["effective_support_edges"]["max"] == 2
+    assert [row["support-edges"] for row in bundle_sets["records"]] == [1, 2]
+
+
+def test_bundle_set_rejects_invalid_multiplicity_shape():
+    with pytest.raises(ValueError, match="one entry per simple primitive bundle type"):
+        BundleSet((0,) * (len(SIMPLE_PRIMITIVE_BUNDLES) - 1))
+    with pytest.raises(ValueError, match="one entry per simple primitive bundle type"):
+        BundleSet((0,) * (len(SIMPLE_PRIMITIVE_BUNDLES) + 1))
+    with pytest.raises(ValueError, match="integers"):
+        BundleSet((0.5,) + (0,) * (len(SIMPLE_PRIMITIVE_BUNDLES) - 1))
+    with pytest.raises(ValueError, match="non-negative"):
+        BundleSet((-1,) + (0,) * (len(SIMPLE_PRIMITIVE_BUNDLES) - 1))
 
 
 def test_groupings_and_totals_only(capsys):
