@@ -93,16 +93,16 @@ def test_bundle_set_rejects_invalid_multiplicity_boundaries():
         (0, 0, 0, 0, 0, 0),
         (0, 0, 0, 0, 0, 0, 0, 0),
     ):
-        with pytest.raises(ValueError, match="exactly 7"):
+        with pytest.raises(ValueError, match="one entry per simple primitive bundle type"):
             BundleSet(multiplicities)
 
     with pytest.raises(ValueError, match="non-negative"):
         BundleSet((-1, 0, 0, 0, 0, 0, 0))
 
-    with pytest.raises(TypeError, match="integer"):
+    with pytest.raises(ValueError, match="integers"):
         BundleSet((1.5, 0, 0, 0, 0, 0, 0))
-        
-        
+
+
 def test_component_upper_bounds_are_intersected_before_support_edge_cap(capsys):
     supports = cli_json(["count", "supports", "--max-rlc", "12", "--max-r", "0", "--max-lc", "1"], capsys)
     assert supports["query"]["effective_support_edges"]["max"] == 1

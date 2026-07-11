@@ -260,11 +260,11 @@ class BundleSet:
     def __post_init__(self) -> None:
         if len(self.multiplicities) != len(SIMPLE_PRIMITIVE_BUNDLES):
             raise ValueError(
-                f"multiplicities must have exactly {len(SIMPLE_PRIMITIVE_BUNDLES)} entries"
+                "multiplicities must include one entry per simple primitive bundle type"
             )
         for index, value in enumerate(self.multiplicities):
             if not isinstance(value, int):
-                raise TypeError(f"multiplicities[{index}] must be an integer")
+                raise ValueError(f"multiplicities[{index}] must be integers")
             if value < 0:
                 raise ValueError(f"multiplicities[{index}] must be non-negative")
 
