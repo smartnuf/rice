@@ -4,9 +4,17 @@ Status: `todo`
 
 ## Goal
 
-Track generator-set claims separately from enumeration counts and equivalence classes.
+Track generator-set claims separately from enumeration counts, structural
+catalogues, and realizability-set classes.
+
+## Tasks
+
+- Identify which catalogue members or transformations are claimed to generate
+  broader families.
+- Record whether each generator claim is structural, electrical, or behavioural.
+- Link generator records to descriptors and historical numbering where known.
 
 ## Done means
 
-- The task has a documented method and validation path.
-- Counts, enumeration results, catalogues, equivalence classes, generator sets, and full immittance identity are not conflated.
+- Generator-set outputs are not conflated with the 148, 108, or 62 counts.
+- Each generator claim has a cited source or a repository proof artifact.

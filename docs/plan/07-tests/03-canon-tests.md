@@ -38,4 +38,4 @@ Ensure duplicate rejection and descriptor production are trustworthy.
   and API/CLI/committed-JSON agreement. Extending that integration test
   coverage to the full standard `R <= 3`, `L+C <= 5` slice, and
   descriptor-output tests, remain future work
-  (`docs/plan/05-slices/04-r3-x5.md`, `docs/plan/09-later/04-descriptors.md`).
+  (`docs/plan/05-slices/04-r3-x5.md`, `docs/plan/04-ladenheim/06-descriptors.md`).

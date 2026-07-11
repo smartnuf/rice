@@ -8,22 +8,32 @@ Keep historical comparisons precise and sourced.
 
 ## Notes
 
-The relevant historical name appears to be the `Ladenheim catalogue`. It is
-described here as a catalogue of distinct RLC networks with no more than two
-reactances and three resistances, subject also to a five-element total limit.
-These networks are relevant because they are realised by biquadratic functions.
+The relevant historical name is the Ladenheim catalogue. Repository
+Ladenheim documentation should distinguish:
 
-Some sources report 108 networks in the catalogue. rice should compare against this number only after matching the same distinctness and reduction assumptions.
+- the 148 structural primitive RLC networks in the scope `R+L+C <= 5`,
+  `L+C <= 2`, after colour-preserving graph 2-isomorphism and same-kind
+  series/parallel rejection;
+- the 108-network catalogue reached after further electrical-network
+  transformations and realizability considerations;
+- the later 62 realizability-set equivalence classes, distinct from the reported
+  35 group-action orbits and 24 subfamilies.
+
+Bibliographic source: A. Morelli and M. C. Smith, *Passive Network Synthesis: An
+Approach to Classification*, SIAM, 2019, including Chapter 3 Section 3.1,
+Chapter 5, the Chapter 6 classification discussion, and Theorem 7.4.
 
 ## Planned comparison slices
 
-- Ladenheim-style slice: `R <= 3`, `L+C <= 2`, and `R+L+C <= 5`.
-- Explicit boundary point: `R=3`, `L+C=2`, total `5`.
-- rice smoke-test slice: `R <= 2`, `L+C <= 3`.
-- rice full planned scope: `R <= 3`, `L+C <= 5`.
+- Historical Ladenheim structural scope: `R+L+C <= 5` and `L+C <= 2`.
+- RICE local series/parallel comparison point: `R <= 3`, `L+C <= 2`,
+  `max_edges = 5`, currently counting 140 reduced signatures.
+- RICE smoke-test slice: `R <= 2`, `L+C <= 3`.
+- RICE full planned scope: `R <= 3`, `L+C <= 5`.
 
 ## Done means
 
 - The repository cites the sources used.
-- Agreement or disagreement with historical counts is explained.
-- The spelling and scope of the catalogue are consistent throughout the docs.
+- Agreement or disagreement with historical counts is explained by named
+  contracts rather than by informal distinctness language.
+- The spelling and scope of each catalogue are consistent throughout the docs.

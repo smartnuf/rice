@@ -10,7 +10,7 @@ Use stable generated counts to detect accidental changes.
 
 - Very small hand-checkable cases.
 - Explicit subset: `R <= 2`, `L+C <= 3`.
-- Ladenheim comparison slice: `R <= 3`, `L+C <= 2`, and `R+L+C <= 5`,
+- Ladenheim structural slice: `R+L+C <= 5` and `L+C <= 2`,
   including the `R=3`, `L+C=2` boundary.
 
 ## Done means
@@ -34,7 +34,8 @@ Use stable generated counts to detect accidental changes.
 
 ## Near-term next steps
 
-1. Add Ladenheim-slice golden counts only after the reduced distinctness contract
-   is implemented enough to make those counts meaningful.
+1. Add Ladenheim-slice golden counts only after the 148 structural contract,
+   colour-preserving 2-isomorphism signature, and comparison fixtures are
+   implemented.
 2. Keep any future reduced-model golden artifacts regenerable from documented
    commands without manual post-processing.

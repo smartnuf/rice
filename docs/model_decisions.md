@@ -234,7 +234,7 @@ not counted separately.
 The reduced model is not intended to solve general electrical equivalence.
 Do not collapse networks using:
 
-- Y-Delta or Delta-Y transformations;
+- star-delta transformations, meaning Y-to-delta or delta-to-Y moves;
 - bridge-balance special cases;
 - duality;
 - Foster/Cauer transformations;
@@ -243,6 +243,58 @@ Do not collapse networks using:
 
 Those may be studied later, but they are not part of the present reduced
 counting contract.
+
+## Planned named relations
+
+The implemented relation is named **RICE local series/parallel reduction**. It
+remains a first-class project model even though it is not the historical
+Ladenheim graph 2-isomorphism relation. It can leave bridge and other
+non-series-parallel cores after local branches and spans have been normalised.
+
+The plan also tracks three future relations:
+
+- **RICE local series/parallel plus star-delta**: an augmentation of the current
+  relation after admissible star-delta and delta-star moves are precisely
+  defined.
+- **Colour-preserving two-terminal 2-isomorphism**: a structural relation for
+  primitive R/L/C edge-coloured graphs, with terminal reversal and internal
+  relabelling ignored and with a port-preserving formulation such as a
+  source-augmented graph if needed.
+- **Colour-preserving two-terminal 2-isomorphism plus star-delta**: the same
+  structural relation after the planned star-delta augmentation.
+
+None of these future relations is implemented by the current source. The local
+series/parallel and 2-isomorphism partitions should be compared empirically; the
+plan does not assume that either one is finer or coarser.
+
+Before any star-delta implementation, the contract must say whether the relation
+is structural or electrical, what component-value mapping is allowed, which
+positivity requirements apply, whether transformed branches must remain
+primitive R/L/C elements, whether equality means all-value equivalence, existence
+of a parameter mapping, or equality of realizability sets, how closure is
+computed and canonicalised, how termination and duplicate suppression work, and
+what happens when a move leaves the primitive RLC network class.
+
+## Historical Ladenheim benchmarks
+
+The historical structural Ladenheim starting scope is:
+
+```text
+R + L + C <= 5
+L + C <= 2
+```
+
+The 148-network structural catalogue is already quotiented by the historical
+structural treatment, including graph 2-isomorphism and rejection of trivially
+same-kind series/parallel-reducible candidates. The 108-network canonical
+Ladenheim catalogue is reached after further electrical-network transformations
+and realizability considerations. The 62 classes are later realizability-set
+equivalence classes of the 108 catalogue members, distinct from the reported 35
+group-action orbits and 24 subfamilies.
+
+Source context: A. Morelli and M. C. Smith, *Passive Network Synthesis: An
+Approach to Classification*, SIAM, 2019, especially Chapter 3 Section 3.1,
+Chapter 5, the Chapter 6 classification discussion, and Theorem 7.4.
 
 ## Implementation stages
 
