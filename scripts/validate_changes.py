@@ -110,18 +110,25 @@ def classify_paths(paths: Sequence[ChangedPath], policy: Policy) -> Classificati
         return Classification(profile="docs", reasons=("no changed paths; running lightweight checks",), paths=tuple())
 
     for changed in paths:
-        path_profile = policy.default
-        path_reason = "unclassified path; conservative full validation"
-        matched_pattern = "<default>"
+        path_profile = policy.order[0]
+        path_reason = ""
+        matched_pattern = ""
         for candidate in changed.classification_paths():
+            candidate_profile = policy.default
+            candidate_reason = "unclassified path; conservative full validation"
+            candidate_pattern = candidate
+            candidate_matched = False
             for rule in policy.rules:
                 pattern = next((p for p in rule.patterns if _matches(p, candidate)), None)
-                if pattern is not None and rank[rule.profile] >= rank[path_profile if path_profile != policy.default else policy.order[0]]:
-                    path_profile = rule.profile
-                    path_reason = rule.reason
-                    matched_pattern = pattern
-            if path_profile == policy.default and path_reason.startswith("unclassified"):
-                matched_pattern = candidate
+                if pattern is not None and (not candidate_matched or rank[rule.profile] >= rank[candidate_profile]):
+                    candidate_profile = rule.profile
+                    candidate_reason = rule.reason
+                    candidate_pattern = pattern
+                    candidate_matched = True
+            if not path_reason or rank[candidate_profile] >= rank[path_profile]:
+                path_profile = candidate_profile
+                path_reason = candidate_reason
+                matched_pattern = candidate_pattern
         if rank[path_profile] > rank[selected]:
             selected = path_profile
         reasons.append(f"{changed.display()}: {path_profile} ({path_reason}; matched {matched_pattern})")
