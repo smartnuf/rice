@@ -210,8 +210,9 @@ or explicitly:
 .venv/bin/python -m rice count networks --profile golden
 ```
 
-The legacy multiset-bundle counter (`count_networks`, `CountResult`,
-`rice count`, the no-subcommand form, and `--mode`) has been removed in full
+The legacy multiset-bundle counter (`count_networks`, `CountResult`, the old
+non-object `rice count` form, the no-subcommand form, and `--mode`) has been
+removed in full
 (`docs/plan/02-cleanup/02-legacy.md`); `legacy-count` is no longer a
 `make check`/script target. Its historical totals — `lc` mode total
 `1,408,796` (exactly `R=3` total `1,268,282`), and the previously-removed
@@ -341,7 +342,8 @@ Implemented as `canonical_reduced_signature` (per-network local series/parallel
 reduction) and `rice count networks` / `network_census` (full enumeration
 and signature merging across a budget slice). `rice count networks` currently
 enumerates and merges the committed small golden slice `R <= 2`, `L+C <= 3`
-by default (see `docs/results.md`); running it against the full `R <= 3`,
+when called with `--profile golden` (see `docs/results.md`); running it
+against the full `R <= 3`,
 `L+C <= 5` slice is tracked as remaining work
 (`docs/plan/05-slices/04-r3-x5.md`), not an unimplemented code path.
 
