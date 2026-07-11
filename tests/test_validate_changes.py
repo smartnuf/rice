@@ -36,6 +36,7 @@ def policy():
         ([ChangedPath("NOTES.md")], "full"),
         ([ChangedPath("docs/old.md", status="D")], "docs"),
         ([ChangedPath("docs/new.md", status="R100", old_path="docs/old.md")], "docs"),
+        ([ChangedPath("docs/notes.md", status="R100", old_path="NOTES.md")], "full"),
         ([ChangedPath("README.md"), ChangedPath("Makefile")], "full"),
     ],
 )
