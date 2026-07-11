@@ -14,12 +14,13 @@ cited project documentation.
 - Keep explicit cataloguing separate from reduced-topology distinctness: a
   catalogue may retain representatives, metadata, descriptors, and provenance,
   while reduced-topology distinctness defines which candidates collapse together.
-- Keep genericity and non-generic rejection separate from full immittance
-  identity: repeated same-kind local series/parallel primitives may be rejected
-  or reduced by the reduced-topology contract, but this is not a general symbolic
-  equality solver.
-- Keep equivalence classes and generator sets as explicit later analyses rather
-  than implied by raw counts.
+- Keep the implemented RICE local series/parallel relation separate from the
+  planned colour-preserving two-terminal 2-isomorphism relation.
+- Keep star-delta admissibility as an implementation question until the value
+  mapping, positivity, primitive-branch closure, equality notion, and closure
+  algorithm are defined.
+- Keep equivalence classes and generator sets as explicit analyses rather than
+  implied by catalogue counts.
 - Treat full immittance identity as a stronger possible future relation, not as
   the current reduced-topology count.
 
@@ -32,15 +33,19 @@ The plan must frame the following as investigations, not established facts:
   immittances;
 - whether `R <= 5`, `L+C <= 3` suffices for all biquadratic immittances.
 
-## Ladenheim slice spelling
+## Ladenheim layers
 
-Always write the Ladenheim comparison slice as:
+Use the following distinctions when promoting historical claims into public docs:
 
-```text
-R <= 3
-L + C <= 2
-R + L + C <= 5
-```
+- 148 structural primitive RLC networks in the scope `R+L+C <= 5`, `L+C <= 2`,
+  including eight four-resistor/one-reactive networks;
+- 108 canonical catalogue members, a subset of the 148 after forty further
+  exclusions, whose members satisfy `R <= 3`, `L+C <= 2`, and `R+L+C <= 5`;
+- 62 realizability-set equivalence classes of the 108 members, distinct from the
+  reported 35 group-action orbits and 24 subfamilies.
+
+Source context: A. Morelli and M. C. Smith, *Passive Network Synthesis: An
+Approach to Classification*, SIAM, 2019.
 
 ## Done means
 
@@ -49,11 +54,9 @@ R + L + C <= 5
   making historical claims.
 - Open sufficiency questions remain labelled as open investigations.
 
-
 ## Progress notes
 
-- Current model and README text preserve the key distinction between raw staged
-  census outputs, reduced-topology distinctness, and stronger future immittance
-  equivalence.
-- This remains `prog` because final user-facing historical/literature claims
-  still need proper citations before being promoted beyond planning context.
+- Current model and README text preserve the key distinction between staged
+  census outputs, RICE local series/parallel distinctness, planned
+  2-isomorphism, planned star-delta augmentation, and stronger future
+  realizability or immittance equivalence.

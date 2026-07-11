@@ -129,6 +129,44 @@ reduced-signature machinery for individual assigned two-terminal networks, but
 no command currently enumerates the full standard slice, merges phase-3 orbits
 by those signatures, or claims a final reduced-topology total.
 
+## RICE local series/parallel reduced count for `R <= 3`, `L+C <= 2`
+
+This is a current RICE local series/parallel reduced result, useful for the
+planned Ladenheim comparison because it uses the implemented relation on the
+component-budget region satisfied by the historical 108 catalogue: `R <= 3`,
+`L+C <= 2`, and `R+L+C <= 5`. It is not presented as the historical 148
+structural catalogue or the 108 canonical Ladenheim catalogue.
+
+Every historical 108 catalogue member lies within this budget region. Once
+historical representatives are imported, each can be assigned one of these RICE
+local series/parallel signatures; multiple historical members may map to one
+RICE signature, and that mapping has not yet been measured.
+
+Reproduced with:
+
+```bash
+.venv/bin/python -m rice reduced \
+    --max-r 3 \
+    --max-reactive 2 \
+    --max-edges 5 \
+    --format json
+```
+
+The total number of final canonical reduced signatures is **140**.
+
+Table entries are exact primitive counts in the final reduced signatures;
+columns aggregate by `x = L+C`.
+
+| R \ L+C | 0 | 1 | 2 | Row total |
+|---:|---:|---:|---:|---:|
+| 0 | 0 | 2 | 2 | 4 |
+| 1 | 1 | 4 | 12 | 17 |
+| 2 | 0 | 4 | 34 | 38 |
+| 3 | 0 | 4 | 77 | 81 |
+
+Cumulative RICE local series/parallel reduced total for `R <= 3`, `L+C <= 2`,
+`max_edges = 5`: **140**.
+
 ## First complete reduced-topology golden slice
 
 The first end-to-end reduced-topology census is implemented for the deliberately

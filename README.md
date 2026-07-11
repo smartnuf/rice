@@ -10,48 +10,48 @@ and counts small connected two-terminal RLC one-port topology classes. It was cr
 Classical network synthesis asks an inverse question: given a prescribed
 driving-point immittance, what passive network topologies can realise it? For
 RLC one-ports this links graph topology, component type, positive-real rational
-functions, and minimal realisation. Even for low-degree functions, the difficult
-question is often not merely whether a realisation exists, but which finite set
-of network forms must be considered before claims about minimality,
-sufficiency, or necessity are credible.
+functions, and minimal realisation. RICE therefore focuses on reproducible
+**catalogues**, not just totals. Counts act as checksums, while catalogues can be
+inspected, searched, rendered, compared with historical lists, converted to
+descriptors, tested for immittance, and grouped under explicitly named
+relations.
 
-This repository is therefore concerned with **catalogues**, not just totals.
-Counts are valuable because they act as reproducible checksums for a catalogue,
-but the catalogue itself is the useful object: it can be inspected, searched,
-rendered, compared with historical lists, converted to descriptors, tested for
-its immittance, and grouped into equivalence classes or generator sets.
+The implemented model is the **RICE local series/parallel reduced** model. It
+normalises local primitive series spans and parallel bundles inside arbitrary
+two-terminal RLC networks. The result is not restricted to series-parallel
+networks: bridge and other non-series-parallel cores may remain after their
+reducible branches and spans have been normalised.
 
-The immediate historical benchmark is the Ladenheim catalogue of RLC one-port
-networks with no more than two reactive elements and no more than three
-resistors. In the terminology used here, that comparison slice is:
+The immediate historical benchmark is the Ladenheim catalogue as discussed by
+A. Morelli and M. C. Smith, *Passive Network Synthesis: An Approach to
+Classification*, SIAM, 2019. RICE keeps three historical layers distinct:
 
-```text
-R <= 3
-L + C <= 2
-R + L + C <= 5
-```
+- **148** structural primitive RLC networks in the scope `R+L+C <= 5`,
+  `L+C <= 2`, after the historical structural treatment using graph
+  2-isomorphism and exclusion of trivially same-kind series/parallel-reducible
+  candidates;
+- **108** canonical Ladenheim catalogue members, a later subset of the 148 whose
+  members satisfy `R <= 3`, `L+C <= 2`, and `R+L+C <= 5`, after forty further
+  exclusions for simpler realizations, Zobel transformations, and related
+  source-specific realizability reasoning;
+- **62** realizability-set equivalence classes, a later behavioural
+  classification of the 108 members rather than a stronger graph signature.
 
-The literature around Ladenheim, Kalman, Morelli, Hughes, and Smith motivates a
-deliberately enumerative approach. Morelli's reworking of the Ladenheim problem
-distinguishes an unabridged set of 148 candidate networks, the canonical
-108-network Ladenheim catalogue, and a further grouping into 62 equivalence
-classes. That separation is important for this project: different notions of
-"distinct" produce different valid catalogues.
+Planned Ladenheim work has two complementary reduction tracks. The first keeps
+the current RICE local series/parallel relation as a first-class catalogue and
+will later augment it with admissible star-delta and delta-star transformations.
+The second will implement a colour-preserving, two-terminal graph
+2-isomorphism relation for primitive R/L/C networks, also with a planned
+star-delta augmentation. The two partitions are different operations and will be
+compared empirically rather than ranked in advance. The nearby implemented RICE
+comparison result for `R <= 3`, `L+C <= 2`, and `max_edges = 5` counts 140 local
+series/parallel signatures; historical 108 members lie in that budget region,
+but their mapping to those signatures has not yet been measured.
 
-The project will therefore keep the following ideas separate:
-
-- **counting**: producing totals for a specified class;
-- **enumeration**: generating every candidate object in that class;
-- **cataloguing**: storing stable representatives, identifiers, metadata, and
-  outputs;
-- **reduced-topology distinctness**: quotienting by graph isomorphism, terminal
-  reversal, and documented local reductions;
-- **genericity and rejection rules**: excluding forms that are trivial,
-  degenerate, or non-generic under a stated criterion;
-- **equivalence classes**: grouping catalogued networks under named
-  transformations or immittance equivalence;
-- **generator sets**: finding smaller sets from which larger families can be
-  produced.
+Catalogue descriptors are part of that plan. A textual SP/bridge descriptor
+language will provide stable fixtures, round-trippable representations, and
+cross-references to historical numbering. Existing descriptor work will be
+assessed before any syntax is redesigned.
 
 Several natural sufficiency questions are intentionally treated as open
 investigations here. In particular, this repository should not assume that any

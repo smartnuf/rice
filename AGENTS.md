@@ -220,8 +220,9 @@ detail):
 - the Ladenheim comparison slice (`docs/plan/03-counting/05-ladenheim.md`,
   `docs/plan/05-slices/02-ladenheim.md`);
 - full `R <= 3`, `L+C <= 5` execution (`docs/plan/05-slices/04-r3-x5.md`);
-- descriptor/catalogue outputs and stronger equivalence investigations
-  (`docs/plan/09-later/`).
+- Ladenheim descriptor/catalogue outputs and reduction comparisons
+  (`docs/plan/04-ladenheim/`);
+- later Bott-Duffin redundancy and other named features (`docs/plan/09-later/`).
 
 ### Phase 1: support graph census
 

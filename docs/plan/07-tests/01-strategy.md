@@ -47,6 +47,6 @@ Build confidence while the enumeration machinery evolves.
 ## Near-term next steps
 
 1. Add descriptor-conversion tests once a descriptor output format exists
-   (`docs/plan/09-later/04-descriptors.md`).
+   (`docs/plan/04-ladenheim/06-descriptors.md`).
 2. Add full-standard-slice (`R <= 3`, `L+C <= 5`) regression tests once that
    slice is computed (`docs/plan/05-slices/04-r3-x5.md`).

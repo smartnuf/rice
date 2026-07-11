@@ -35,22 +35,24 @@ files' numeric prefixes; the files were not renamed/renumbered to match):
 - `prog` [Define catalogue object model](03-counting/02-distinct.md)
 - `prog` [Define enumeration scope](03-counting/03-scope.md)
 - `done` [Define small explicit catalogue slice](03-counting/04-small-slice.md)
-- `todo` [Define Ladenheim comparison slice](03-counting/05-ladenheim.md)
+- `prog` [Define Ladenheim comparison contracts](03-counting/05-ladenheim.md)
 - `todo` [Define full current project slice](03-counting/06-full-counts.md)
 - `prog` [Define output catalogue format](03-counting/07-outputs.md)
 
 ## 04 — Ladenheim reproduction
 
-- `todo` [Reproduce unabridged 148-candidate Ladenheim set](04-ladenheim/01-148.md)
-- `todo` [Reproduce canonical 108-network catalogue](04-ladenheim/02-108.md)
-- `todo` [Reproduce 62 equivalence classes](04-ladenheim/03-62.md)
+- `todo` [Reproduce structural 148-network Ladenheim set](04-ladenheim/01-148.md)
+- `todo` [Compare with canonical 108-network Ladenheim catalogue](04-ladenheim/02-108.md)
+- `todo` [Reproduce 62 realizability-set classes](04-ladenheim/03-62.md)
 - `todo` [Identify generator sets](04-ladenheim/04-generators.md)
-- `todo` [Compare with Morelli/Ladenheim numbering](04-ladenheim/05-numbering.md)
+- `todo` [Map descriptors to Morelli/Ladenheim numbering](04-ladenheim/05-numbering.md)
+- `todo` [Integrate SP/bridge descriptors](04-ladenheim/06-descriptors.md)
+- `todo` [Compare local SP and 2-isomorphism reductions](04-ladenheim/07-compare-reductions.md)
 
 ## 05 — Enumeration slices and counts
 
 - `done` [Small fast test slice: `R <= 2`, `L+C <= 3`](05-slices/01-r2-x3.md)
-- `todo` [Ladenheim slice: `R <= 3`, `L+C <= 2`, `R+L+C <= 5`](05-slices/02-ladenheim.md)
+- `todo` [Ladenheim slice: `R+L+C <= 5`, `L+C <= 2`](05-slices/02-ladenheim.md)
 - `todo` [Morelli next-class slice: `R <= 4`, `L+C <= 3`](05-slices/03-r4-x3.md)
 - `todo` [Full current project slice: `R <= 3`, `L+C <= 5`](05-slices/04-r3-x5.md)
 - `todo` [Two-resistor high-reactive slice: `R <= 2`, `L+C <= 5`](05-slices/05-r2-x5.md)
@@ -85,7 +87,6 @@ files' numeric prefixes; the files were not renamed/renumbered to match):
 - `later` [Render schematics](09-later/01-schematics.md)
 - `later` [Identify quartets](09-later/02-quartets.md)
 - `later` [Identify bridge/core/non-SP structures](09-later/03-cores.md)
-- `later` [Export repository descriptors](09-later/04-descriptors.md)
 - `later` [Compute symbolic immittances](09-later/05-symbolic.md)
-- `later` [Classify equivalence and generator sets](09-later/06-equivalence.md)
+- `later` [Investigate Bott-Duffin redundancy](09-later/06-equivalence.md)
 - `later` [Catalogue browser/search tools](09-later/07-browser.md)

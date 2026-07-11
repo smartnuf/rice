@@ -1,51 +1,81 @@
-# 03-counting / 05 — Implement the Ladenheim comparison slice
+# 03-counting / 05 — Define Ladenheim comparison contracts
 
-Status: `todo`
+Status: `prog`
 
 ## Goal
 
-Create a comparison slice for the Ladenheim catalogue of distinct RLC networks
-with no more than two reactances and three resistances. These networks are
-relevant because they are realised by biquadratic functions.
+Define the historical Ladenheim scope and the named reduction contracts that the
+repository will compare without replacing the implemented RICE local
+series/parallel model.
 
-## Correct comparison target
+## Historical scope
 
-The comparison slice is the intersection of all three bounds:
+The structural starting scope for the 148-network Ladenheim set is:
 
 ```text
-R <= 3
-L + C <= 2
 R + L + C <= 5
+L + C <= 2
 ```
 
-The explicit resistor bound matters: the other two bounds alone would admit
-cases such as `R=4`, `L+C=1`, which are outside the catalogue's limit of three
-resistances.
+The 148 are essentially distinct primitive RLC networks obtained under the
+historical structural treatment, including graph 2-isomorphism and exclusion of
+trivially same-kind series/parallel-reducible candidates. This starting set
+includes eight networks with four resistors and one reactive element.
 
-This includes the important `3+2` case:
+The canonical 108-network Ladenheim catalogue is a subset of the 148 after forty
+further exclusions. Its members satisfy `R <= 3`, `L+C <= 2`, and
+`R+L+C <= 5`. The forty exclusions comprise eight four-resistor/one-reactive
+networks whose bilinear impedances have simpler realizations, four four-element
+networks reducible by Zobel transformation, twenty five-element series-parallel
+networks reducible by Zobel transformation, and eight further O/O-dual and
+bridge cases excluded using the source's Cauer-Foster, regularity,
+realizability, and related Y-delta reasoning. The 62 classes are a later
+realizability-set classification of the 108 catalogue members, not another graph
+signature count.
 
-```text
-R = 3
-L + C = 2
-total = 5
-```
+The documented RICE local series/parallel result for `R <= 3`, `L+C <= 2`, and
+`max_edges = 5` is 140 signatures. Every historical 108 catalogue member lies
+within that component-budget region; after historical representatives are
+imported, each can be assigned a RICE local series/parallel signature. Multiple
+historical members may map to one RICE signature, and the mapping has not yet
+been measured.
 
-This `3+2` point is inside the full `R <= 3`, `L+C <= 5` scope, but it is not inside the small `R <= 2`, `L+C <= 3` subset.
+Source context: A. Morelli and M. C. Smith, *Passive Network Synthesis: An
+Approach to Classification*, SIAM, 2019, especially Chapter 3 Section 3.1,
+Chapter 5, the Chapter 6 classification discussion, and Theorem 7.4.
 
-## Name and spelling
+## Named reduction contracts
 
-Use `Ladenheim catalogue` in repository docs unless a specific source being quoted uses another spelling.
+- **RICE local series/parallel reduction**: the implemented relation used by
+  `canonical_reduced_signature` and `rice reduced`. It normalises local
+  primitive series spans and parallel bundles inside arbitrary two-terminal
+  networks. Bridge and other non-series-parallel cores may remain.
+- **RICE local series/parallel plus star-delta**: a planned augmentation of the
+  implemented relation after an admissibility contract for star-delta and
+  delta-star moves is defined.
+- **Colour-preserving two-terminal 2-isomorphism**: a planned structural
+  relation on primitive R/L/C edge-coloured graphs, with terminal reversal and
+  internal relabelling ignored and with a port-preserving treatment such as a
+  source-augmented graph if needed.
+- **Colour-preserving two-terminal 2-isomorphism plus star-delta**: a planned
+  augmentation of the 2-isomorphism relation using the same admissibility
+  contract.
 
-## Tasks
+The RICE local series/parallel partition and the 2-isomorphism partition are not
+assumed to refine each other. Their relationship is an empirical comparison
+result.
 
-- Encode the three Ladenheim-style bounds as a named count mode.
-- Generate counts for the slice.
-- Compare against known published counts only after our distinctness/reduction definition is aligned.
-- Record differences if our definition deliberately differs.
+## Star-delta questions
+
+Use `star-delta` to mean both Y-to-delta and delta-to-Y directions where
+admissible. Before implementation, define whether the relation is structural or
+electrical, the component-value mapping, positivity requirements, whether the
+outputs must remain primitive R/L/C branches, the equality notion, closure and
+canonicalisation, termination and duplicate suppression, and how to handle moves
+that leave the primitive RLC network class.
 
 ## Done means
 
-- The named slice enforces `R <= 3`, `L+C <= 2`, and total elements `<= 5`.
-- `3+2` is explicitly generated and tested.
-- The comparison slice is separate from the small smoke-test subset.
-- Documentation states exactly why any count agrees or disagrees with the historical catalogue.
+- The four named contracts above are reflected in model, result, and plan docs.
+- The historical 148, 108, and 62 targets are stated without conflating them.
+- CLI/API design remains deferred until the contracts and outputs are precise.
