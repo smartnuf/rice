@@ -12,23 +12,30 @@ if [ ! -x .venv/bin/python ]; then
     exit 0
 fi
 
-# Cached environments may reuse a venv created against a previous checkout. The
-# package itself is editable, but refreshing without dependency resolution keeps
-# this maintenance step from trying to fetch packages during restricted phases.
-.venv/bin/python -m pip install --no-build-isolation --no-deps -e .
+FINGERPRINT_FILE=.venv/rice-env.fingerprint
+CURRENT_FINGERPRINT="$(.venv/bin/python .codex/env_fingerprint.py)"
+STORED_FINGERPRINT=""
+if [ -f "$FINGERPRINT_FILE" ]; then
+    STORED_FINGERPRINT="$(cat "$FINGERPRINT_FILE")"
+fi
+
+if [ "$CURRENT_FINGERPRINT" = "$STORED_FINGERPRINT" ]; then
+    echo "Environment inputs unchanged; skipping editable-install refresh."
+else
+    echo "Environment inputs changed; refreshing editable install."
+    .venv/bin/python -m pip install --upgrade pip setuptools wheel
+    .venv/bin/python -m pip install --no-build-isolation -e ".[dev]"
+    .venv/bin/python .codex/env_fingerprint.py > "$FINGERPRINT_FILE"
+fi
 
 echo "Environment smoke test:"
 .venv/bin/python - <<'PY'
 import sys
 import networkx
-import pytest
 import rice
 print("python", sys.executable)
 print("networkx", networkx.__version__)
-print("pytest", pytest.__version__)
 print("rice", rice.__file__)
 PY
 
-.venv/bin/python -m pytest -q
-
-echo "Codex maintenance complete. Use .venv/bin/python or make test/check for task commands."
+echo "Codex maintenance complete. Environment prepared; run task validation separately."

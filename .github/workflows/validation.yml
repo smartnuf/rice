@@ -1,0 +1,85 @@
+name: validation
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      full:
+        description: 'Force full validation'
+        type: boolean
+        default: false
+  schedule:
+    - cron: '17 3 * * 1'
+
+jobs:
+  validate:
+    name: validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Select validation profile
+        id: select
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            args=(--full)
+          elif [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.full }}" = "true" ]; then
+            args=(--full)
+          elif [ "${{ github.event_name }}" = "pull_request" ]; then
+            args=(--base "${{ github.event.pull_request.base.sha }}" --head "${{ github.event.pull_request.head.sha }}")
+          elif [ "${{ github.event_name }}" = "push" ] && [ "${{ github.event.before }}" != "0000000000000000000000000000000000000000" ]; then
+            args=(--base "${{ github.event.before }}" --head "${{ github.sha }}")
+          else
+            args=(--full)
+          fi
+          python3 scripts/validate_changes.py "${args[@]}" --dry-run | tee selection.txt
+          profile=$(awk -F': ' '/^Selected validation profile:/ {print $2}' selection.txt)
+          echo "profile=$profile" >> "$GITHUB_OUTPUT"
+          cat selection.txt >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Run documentation validation
+        if: steps.select.outputs.profile == 'docs'
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            python3 scripts/validate_changes.py --base "${{ github.event.pull_request.base.sha }}" --head "${{ github.event.pull_request.head.sha }}"
+          elif [ "${{ github.event_name }}" = "push" ] && [ "${{ github.event.before }}" != "0000000000000000000000000000000000000000" ]; then
+            python3 scripts/validate_changes.py --base "${{ github.event.before }}" --head "${{ github.sha }}"
+          else
+            python3 scripts/validate_changes.py --worktree
+          fi
+
+      - name: Set up Python for code/full validation
+        if: steps.select.outputs.profile != 'docs'
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install project environment
+        if: steps.select.outputs.profile != 'docs'
+        run: make setup
+
+      - name: Run selected validation
+        if: steps.select.outputs.profile != 'docs'
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            .venv/bin/python scripts/validate_changes.py --full
+          elif [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.full }}" = "true" ]; then
+            .venv/bin/python scripts/validate_changes.py --full
+          elif [ "${{ github.event_name }}" = "pull_request" ]; then
+            .venv/bin/python scripts/validate_changes.py --base "${{ github.event.pull_request.base.sha }}" --head "${{ github.event.pull_request.head.sha }}"
+          elif [ "${{ github.event_name }}" = "push" ] && [ "${{ github.event.before }}" != "0000000000000000000000000000000000000000" ]; then
+            .venv/bin/python scripts/validate_changes.py --base "${{ github.event.before }}" --head "${{ github.sha }}"
+          else
+            .venv/bin/python scripts/validate_changes.py --full
+          fi

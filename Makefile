@@ -1,6 +1,6 @@
 VENV_PYTHON := .venv/bin/python
 
-.PHONY: setup install ensure-venv test lint supports bundles labelings reduced check print-env clean
+.PHONY: setup install ensure-venv test lint supports bundles labelings reduced check validate-changed print-env clean
 
 setup:
 	bash scripts/setup.sh
@@ -30,6 +30,9 @@ reduced: ensure-venv
 
 check:
 	bash scripts/check.sh
+
+validate-changed: ensure-venv
+	$(VENV_PYTHON) scripts/validate_changes.py --worktree
 
 print-env: ensure-venv
 	$(VENV_PYTHON) -c 'import sys, networkx, pytest, rice; print("python", sys.executable); print("networkx", networkx.__version__); print("pytest", pytest.__version__); print("rice", rice.__file__)'

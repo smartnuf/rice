@@ -126,6 +126,32 @@ script.
 
 Do not commit `.venv/`, `__pycache__/`, build artefacts, or generated archives.
 
+
+## Proportionate validation
+
+Use the repository change-aware validation command by default after changes:
+
+```bash
+make validate-changed
+```
+
+This command is backed by `scripts/validate_changes.py` and
+`validation/impact.toml`. Documentation-only changes in known public
+documentation paths such as `README.md` and `docs/**` do not require pytest or
+`make check`; the docs profile runs whitespace checking and plan-index
+structural validation. If documentation changes a generated numerical result,
+executable CLI example, behavioural claim, or installation instruction, also run
+the targeted executable command needed to verify that claim, or force full
+validation with `.venv/bin/python scripts/validate_changes.py --full` when in
+doubt. Unknown or unclassified paths escalate to full validation.
+
+Do not run commands separately when a broader command already includes them. In
+particular, `make check` already includes the repository's normal lint/static
+checks, pytest suite, support census, bundle assignment census, labeling census,
+and small golden reduced-topology census. Codex setup and maintenance scripts
+prepare the environment and run only an import/version smoke test; they do not
+certify a task's changes.
+
 ## CLI changes
 
 After changing argument parsing, run the relevant CLI help commands and check
@@ -153,12 +179,14 @@ bash .codex/maintenance.sh
 ```
 
 The setup script creates `.venv`, installs the package and dev dependencies into
-that venv, appends a guarded activation stanza to `~/.bashrc`, and runs the test
-suite through `.venv/bin/python`.
+that venv, appends a guarded activation stanza to `~/.bashrc`, runs a short
+import/version smoke test, and records a cache-local environment fingerprint
+under `.venv/`.
 
-The maintenance script reuses `.venv` in cached environments, refreshes the
-editable install without fetching dependencies, and runs the same venv-explicit
-checks.
+The maintenance script reuses `.venv` in cached environments, compares the
+current Python/package-input fingerprint with the stored `.venv` fingerprint,
+skips the editable-install refresh when those inputs are unchanged, refreshes
+safely when they have changed, and runs only the same smoke test.
 
 No external graph-generation binaries such as nauty/Traces are required for the
 current project direction. The current implementation uses NetworkX only. The supported/tested runtime floor is `networkx>=3.2` on Python 3.11 or newer; do not add unnecessary upper bounds.

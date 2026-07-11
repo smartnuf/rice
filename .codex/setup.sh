@@ -51,14 +51,12 @@ echo "Environment smoke test:"
 .venv/bin/python - <<'PY'
 import sys
 import networkx
-import pytest
 import rice
 print("python", sys.executable)
 print("networkx", networkx.__version__)
-print("pytest", pytest.__version__)
 print("rice", rice.__file__)
 PY
 
-.venv/bin/python -m pytest -q
+.venv/bin/python .codex/env_fingerprint.py > .venv/rice-env.fingerprint
 
 echo "Codex setup complete. Use .venv/bin/python or make test/check for task commands."

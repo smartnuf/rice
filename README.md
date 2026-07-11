@@ -196,6 +196,34 @@ Run the support-census smoke check, phase-2 raw bundle-assignment smoke check, p
 make check
 ```
 
+### Change-aware validation
+
+Use the repository-carried validation selector for ordinary local validation:
+
+```bash
+make validate-changed
+```
+
+The selector reads [`validation/impact.toml`](validation/impact.toml), inspects
+staged and unstaged worktree changes, prints the selected profile, and runs the
+corresponding checks. You can also invoke it directly:
+
+```bash
+.venv/bin/python scripts/validate_changes.py --worktree
+.venv/bin/python scripts/validate_changes.py --base <sha-or-ref> --head <sha-or-ref>
+.venv/bin/python scripts/validate_changes.py --full
+```
+
+The policy is intentionally conservative. Known public documentation paths such
+as `README.md` and `docs/**` select the lightweight `docs` profile, which runs
+`git diff --check` and the plan-index structural checker rather than pytest or
+the census commands. Python source and tests select the `code` profile, which
+runs lint/static checks and pytest. Packaging, dependency, environment, build,
+script, CI, validation-policy, and unknown paths select the `full` profile,
+which delegates to `make check`. Use `--full` whenever in doubt or when a
+documentation change updates generated numerical results, executable CLI
+examples, behavioural claims, or installation instructions.
+
 On Linux, macOS, and WSL, the same development path is available without Make
 through repository-root shell scripts:
 
@@ -298,7 +326,10 @@ bash .codex/maintenance.sh
 
 Point the Codex Cloud environment setup command at `bash .codex/setup.sh` and,
 if using a cached environment, the maintenance command at
-`bash .codex/maintenance.sh`.
+`bash .codex/maintenance.sh`. These commands prepare or refresh `.venv` and run
+only a short import/version smoke test; they do not certify task changes. Run
+`make validate-changed` or a deliberately stronger validation command after
+making changes.
 
 ## Background references
 
