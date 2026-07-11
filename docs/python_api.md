@@ -350,11 +350,14 @@ network_census(query, relation="local-sp", group_by=("r", "lc"))
 ```
 
 They require an explicit finite `CountQuery`; no later-stage API applies an
-implicit component profile. Results retain exact sparse facts (`source_support_edges`,
-`r`, `l`, `c` for source assignment objects, and final reduced `r`, `l`, `c` for
-networks), deterministic grouped records, totals, and versioned JSON via
-`to_json()`. `NetworkCensusResult` also reports pipeline diagnostics without
-exposing a signature catalogue; catalogue enumeration remains future work.
+implicit component profile. `network_census` additionally requires a finite
+component budget/profile and rejects source-edge-only queries before enumerating
+concrete source assignments. Results retain exact sparse facts
+(`source_support_edges`, `r`, `l`, `c` for source assignment objects, and final
+reduced `r`, `l`, `c` for networks), deterministic grouped records whose keys
+match `group_by`, totals, and versioned JSON via `to_json()`.
+`NetworkCensusResult` also reports pipeline diagnostics without exposing a
+signature catalogue; catalogue enumeration remains future work.
 
 Compatibility APIs and commands (`simple_bundle_assignment_census`,
 `simple_bundle_labeling_census`, `reduced_topology_census`, `rice bundles`,

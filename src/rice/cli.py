@@ -499,7 +499,7 @@ def main(argv: list[str] | None = None) -> int:
                     print("| Support edges | Relevant supports | Distinct bundle sets | Assignments per support | Raw assignments |")
                     print("|---:|---:|---:|---:|---:|")
                     for row in result.records:
-                        print(f"| {row['source_support_edges']} | {row['relevant_supports']} | {row['distinct_bundle_sets']} | {row['assignments_per_support']} | {row['raw_assignments']} |")
+                        print(f"| {row['support-edges']} | {row['relevant_supports']} | {row['distinct_bundle_sets']} | {row['assignments_per_support']} | {row['raw_assignments']} |")
                     print(f"| Total | — | {result.distinct_bundle_sets_total} | — | {result.raw_assignments_total} |")
                 else:
                     headers = list(result.group_by) + ["Distinct bundle sets", "Raw assignments"]
@@ -508,7 +508,8 @@ def main(argv: list[str] | None = None) -> int:
                     for row in result.records:
                         values = [*(row[dim] for dim in result.group_by), row["distinct_bundle_sets"], row["raw_assignments"]]
                         print("| " + " | ".join(str(v) for v in values) + " |")
-                    print(f"| Total | {result.distinct_bundle_sets_total} | {result.raw_assignments_total} |")
+                    total_values = (["Total", *("—" for _ in result.group_by[1:])] if result.group_by else []) + [result.distinct_bundle_sets_total, result.raw_assignments_total]
+                    print("| " + " | ".join(str(v) for v in total_values) + " |")
             return 0
         if args.count_object == "assigned-supports":
             group_by = tuple(part.strip() for part in args.group_by.split(","))
@@ -525,7 +526,7 @@ def main(argv: list[str] | None = None) -> int:
                     print("| Support edges | Relevant supports | Raw assignments | Assigned-support classes |")
                     print("|---:|---:|---:|---:|")
                     for row in result.records:
-                        print(f"| {row['source_support_edges']} | {row['relevant_supports']} | {row['raw_assignments']} | {row['assigned_support_classes']} |")
+                        print(f"| {row['support-edges']} | {row['relevant_supports']} | {row['raw_assignments']} | {row['assigned_support_classes']} |")
                     print(f"| Total | — | {result.raw_assignments_total} | {result.assigned_support_classes_total} |")
                 else:
                     headers=list(result.group_by)+["Raw assignments","Assigned-support classes"]
@@ -534,7 +535,8 @@ def main(argv: list[str] | None = None) -> int:
                     for row in result.records:
                         values=[*(row[dim] for dim in result.group_by), row["raw_assignments"], row["assigned_support_classes"]]
                         print("| "+" | ".join(str(v) for v in values)+" |")
-                    print(f"| Total | {result.raw_assignments_total} | {result.assigned_support_classes_total} |")
+                    total_values = (["Total", *("—" for _ in result.group_by[1:])] if result.group_by else []) + [result.raw_assignments_total, result.assigned_support_classes_total]
+                    print("| " + " | ".join(str(v) for v in total_values) + " |")
             return 0
         if args.count_object == "networks":
             group_by = tuple(part.strip() for part in args.group_by.split(","))

@@ -478,7 +478,7 @@ class AssignmentCensusResult:
 
     @property
     def relevant_supports_total(self) -> int:
-        return sum(r.get("relevant_supports", 0) for r in self.records if isinstance(r.get("relevant_supports", 0), int))
+        return sum({f.source_support_edges: f.relevant_supports for f in self.facts}.values())
 
     def to_json(self) -> dict[str, object]:
         return {
@@ -660,7 +660,6 @@ def _group_assignment_facts(facts: tuple[AssignmentFact, ...], dims: tuple[str, 
         row["distinct_bundle_sets"]=sum(f.distinct_bundle_sets for f in bucket)
         row["raw_assignments"]=sum(f.raw_assignments for f in bucket)
         if dims == ("support-edges",):
-            row["source_support_edges"]=row.pop("support-edges")
             row["relevant_supports"]=bucket[0].relevant_supports if bucket else 0
             row["assignments_per_support"]=sum(f.assignments_per_support for f in bucket)
         records.append(row)
@@ -741,7 +740,6 @@ def assigned_support_census(query: CountQuery, group_by: tuple[str,...] = ("supp
         row["raw_assignments"]=sum(f.raw_assignments for f in bucket)
         row["assigned_support_classes"]=sum(f.assigned_support_classes for f in bucket)
         if dims == ("support-edges",):
-            row["source_support_edges"]=row.pop("support-edges")
             row["relevant_supports"]=bucket[0].relevant_supports if bucket else 0
         records.append(row)
     if not dims:
@@ -768,6 +766,8 @@ def _iter_query_edge_assignments(edges: tuple[tuple[int,int],...], query: CountQ
 
 def network_census(query: CountQuery, relation: str | NetworkRelation = "local-sp", group_by: tuple[str,...] = ("r","lc")) -> NetworkCensusResult:
     rel=validate_network_relation(relation)
+    if query.component_max_edges() is None:
+        raise ValueError("network census requires a finite component budget; add --max-rlc, --max-r with --max-lc, or a finite profile before enumerating source assignments")
     dims=_normalise_group_by(group_by,_COMPONENT_GROUPING_DIMS,"network")
     eff=query.effective_support_edge_range()
     max_edges=eff.maximum or 0

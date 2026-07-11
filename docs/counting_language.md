@@ -153,11 +153,16 @@ equivalence.
 For all three targets the `CountQuery` constrains generating source objects:
 source bundle inventories, source assignments, and source support-edge counts.
 For `assignments` and `assigned-supports`, component grouping dimensions are
-exact source `(R,L,C)` facts. For `networks`, accepted source assignments are
-reduced and deduplicated, so component grouping dimensions are exact final
-reduced-signature facts. Consequently `rice count networks --group-by
-support-edges` is intentionally unsupported until PR3 provenance/reduction
-analysis defines source-to-reduced attribution.
+exact source `(R,L,C)` facts, and grouped JSON records use the exact keys named
+in `group_by` (for example `support-edges`). For `networks`, accepted source
+assignments are reduced and deduplicated, so component grouping dimensions are
+exact final reduced-signature facts. Because `networks` enumerates concrete
+source assignments before reduction, it requires an explicit finite component
+budget/profile and rejects source-edge-only queries such as
+`rice count networks --max-support-edges 8` before enumeration begins.
+Consequently `rice count networks --group-by support-edges` is intentionally
+unsupported until PR3 provenance/reduction analysis defines source-to-reduced
+attribution.
 
 Examples:
 

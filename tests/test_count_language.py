@@ -10,7 +10,9 @@ from rice import (
     CountQuery,
     SIMPLE_PRIMITIVE_BUNDLES,
     bundle_set_census,
+    assignment_census,
     iter_bundle_sets,
+    network_census,
 )
 from rice.cli import main
 from rice.core import simple_bundle_assignment_count_by_edge_count
@@ -196,12 +198,12 @@ def test_help_and_compatibility_commands(capsys):
     assert main(["labelings", "--max-r", "1", "--max-reactive", "1"]) == 0
     assert main(["reduced", "--max-r", "1", "--max-reactive", "1"]) == 0
 
-from rice import assignment_census, assigned_support_census, network_census
-
 
 def test_assignment_assigned_support_and_network_pr2_golden_results(capsys):
     assignments = cli_json(["count", "assignments", "--profile", "main"], capsys)
-    assert [r["source_support_edges"] for r in assignments["records"]] == list(range(1, 9))
+    assert assignments["group_by"] == ["support-edges"]
+    assert [r["support-edges"] for r in assignments["records"]] == list(range(1, 9))
+    assert "source_support_edges" not in assignments["records"][0]
     assert [r["distinct_bundle_sets"] for r in assignments["records"]] == [7, 28, 80, 127, 120, 64, 25, 6]
     assert [r["assignments_per_support"] for r in assignments["records"]] == [7, 49, 335, 1622, 4602, 7192, 5712, 1792]
     assert [r["raw_assignments"] for r in assignments["records"]] == [7, 49, 670, 6488, 46020, 194184, 456960, 462336]
@@ -242,11 +244,54 @@ def test_pr2_ladenheim_nearby_local_sp_slice_and_grouping_errors(capsys):
     assert result.total == 140
     assert result.matrix() == ((0, 2, 2), (1, 4, 12), (0, 4, 34), (0, 4, 77))
     assert cli_json(["count", "networks", "--max-rlc", "0"], capsys)["totals"]["networks"] == 0
+    assert_error(capsys, ["count", "networks", "--max-support-edges", "8"], "network census requires a finite component budget")
+    with pytest.raises(ValueError, match="finite component budget"):
+        network_census(CountQuery(max_support_edges=8))
     edge_only = cli_json(["count", "assignments", "--support-edges", "4"], capsys)
     assert edge_only["query"]["effective_support_edges"] == {"min": 4, "max": 4}
     assert_error(capsys, ["count", "networks", "--profile", "golden", "--relation", "bogus"], "unknown network relation")
     assert_error(capsys, ["count", "networks", "--profile", "golden", "--group-by", "support-edges"], "unsupported network grouping dimension")
     assert cli_json(["count", "networks", "--profile", "golden", "--group-by", "none"], capsys)["records"] == [{"networks": 313}]
+
+
+def _markdown_rows(output: str) -> list[list[str]]:
+    return [
+        [cell.strip() for cell in line.strip().strip("|").split("|")]
+        for line in output.splitlines()
+        if line.startswith("|")
+    ]
+
+
+def test_pr2_grouped_json_keys_totals_and_markdown_alignment(capsys):
+    default_assignments = cli_json(["count", "assignments", "--max-rlc", "1"], capsys)
+    assert default_assignments["group_by"] == ["support-edges"]
+    assert all("support-edges" in row for row in default_assignments["records"])
+    assert all("source_support_edges" not in row for row in default_assignments["records"])
+
+    compound_assignments = cli_json(["count", "assignments", "--max-rlc", "1", "--group-by", "support-edges,r"], capsys)
+    assert compound_assignments["group_by"] == ["support-edges", "r"]
+    assert all("support-edges" in row and "r" in row for row in compound_assignments["records"])
+
+    default_assigned = cli_json(["count", "assigned-supports", "--max-rlc", "1"], capsys)
+    assert default_assigned["group_by"] == ["support-edges"]
+    assert all("support-edges" in row for row in default_assigned["records"])
+    assert all("source_support_edges" not in row for row in default_assigned["records"])
+
+    compound_assigned = cli_json(["count", "assigned-supports", "--max-rlc", "1", "--group-by", "support-edges,r"], capsys)
+    assert compound_assigned["group_by"] == ["support-edges", "r"]
+    assert all("support-edges" in row and "r" in row for row in compound_assigned["records"])
+
+    query = CountQuery(ComponentConstraints(max_r=3, max_lc=5))
+    expected = assignment_census(query, group_by=("support-edges",)).relevant_supports_total
+    assert expected == 383
+    assert assignment_census(query, group_by=("r",)).relevant_supports_total == expected
+    assert assignment_census(query, group_by=("none",)).relevant_supports_total == expected
+
+    for target, group_by in (("assignments", "none"), ("assignments", "r,lc"), ("assigned-supports", "none"), ("assigned-supports", "r,lc")):
+        assert main(["count", target, "--max-rlc", "1", "--group-by", group_by]) == 0
+        rows = _markdown_rows(capsys.readouterr().out)
+        header_width = len(rows[0])
+        assert len(rows[-1]) == header_width
 
 
 def test_pr2_help_lists_objects_without_reductions_or_enum():
