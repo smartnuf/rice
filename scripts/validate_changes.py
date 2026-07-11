@@ -136,13 +136,14 @@ def classify_paths(paths: Sequence[ChangedPath], policy: Policy) -> Classificati
                 candidate_reason = "validation machinery path; hard-coded full validation"
                 candidate_pattern = hardcoded_pattern
                 candidate_matched = True
-            for rule in policy.rules:
-                pattern = next((p for p in rule.patterns if _matches(p, candidate)), None)
-                if pattern is not None and (not candidate_matched or rank[rule.profile] >= rank[candidate_profile]):
-                    candidate_profile = rule.profile
-                    candidate_reason = rule.reason
-                    candidate_pattern = pattern
-                    candidate_matched = True
+            else:
+                for rule in policy.rules:
+                    pattern = next((p for p in rule.patterns if _matches(p, candidate)), None)
+                    if pattern is not None and (not candidate_matched or rank[rule.profile] >= rank[candidate_profile]):
+                        candidate_profile = rule.profile
+                        candidate_reason = rule.reason
+                        candidate_pattern = pattern
+                        candidate_matched = True
             if not path_reason or rank[candidate_profile] >= rank[path_profile]:
                 path_profile = candidate_profile
                 path_reason = candidate_reason

@@ -73,9 +73,10 @@ def test_incomplete_policy_rule_fails_safely(tmp_path: Path):
         validate_changes.load_policy(broken)
 
 
-def test_validation_machinery_paths_are_full_even_if_policy_downgrades_them():
+@pytest.mark.parametrize("order", [("docs", "code", "full"), ("full", "docs", "code")])
+def test_validation_machinery_paths_are_full_even_if_policy_downgrades_them(order):
     bad_policy = validate_changes.Policy(
-        order=("docs", "code", "full"),
+        order=order,
         default="full",
         rules=(
             validate_changes.Rule(
@@ -89,6 +90,7 @@ def test_validation_machinery_paths_are_full_even_if_policy_downgrades_them():
     result = validate_changes.classify_paths([ChangedPath("validation/impact.toml")], bad_policy)
 
     assert result.profile == "full"
+    assert "hard-coded full validation" in result.reasons[0]
 
 
 def write_plan_tree(root: Path, index_text: str) -> Path:

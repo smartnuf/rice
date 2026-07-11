@@ -42,10 +42,9 @@ jobs:
 
           trusted_profile=""
           if [ "${args[0]}" = "--base" ]; then
-            if git diff --name-only "${args[1]}" "${args[3]}" -- \
+            if ! git diff --quiet "${args[1]}" "${args[3]}" -- \
               pyproject.toml 'requirements*.txt' 'constraints*.txt' '*lock*' \
-              Makefile AGENTS.md .codex scripts .github validation \
-              | grep -q .; then
+              Makefile AGENTS.md .codex scripts .github validation; then
               trusted_profile="full"
             fi
           elif [ "${args[0]}" = "--full" ]; then
@@ -65,6 +64,7 @@ jobs:
           fi
           profile=$(awk -F': ' '/^Selected validation profile:/ {print $2}' selection.txt)
           echo "profile=$profile" >> "$GITHUB_OUTPUT"
+          echo "trusted_profile=$trusted_profile" >> "$GITHUB_OUTPUT"
           cat selection.txt >> "$GITHUB_STEP_SUMMARY"
 
       - name: Run documentation validation
@@ -95,7 +95,9 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          if [ "${{ github.event_name }}" = "schedule" ]; then
+          if [ "${{ steps.select.outputs.trusted_profile }}" = "full" ]; then
+            .venv/bin/python scripts/validate_changes.py --full
+          elif [ "${{ github.event_name }}" = "schedule" ]; then
             .venv/bin/python scripts/validate_changes.py --full
           elif [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.full }}" = "true" ]; then
             .venv/bin/python scripts/validate_changes.py --full
