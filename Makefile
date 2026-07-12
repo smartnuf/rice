@@ -9,7 +9,7 @@ test:
 	$(VENV_PYTHON) -m pytest -q
 
 lint:
-	$(VENV_PYTHON) -m ruff check .
+	./scripts/lint.sh
 
 count-supports:
 	$(VENV_PYTHON) -m rice count supports --max-support-edges 8
@@ -29,7 +29,8 @@ count-assigned-supports:
 count-networks:
 	$(VENV_PYTHON) -m rice count networks --profile golden
 
-check: lint test count-supports count-bundle-types count-bundle-sets count-assignments count-assigned-supports count-networks
+check:
+	./scripts/check.sh
 
 validate-changed:
 	$(VENV_PYTHON) scripts/validate_changes.py

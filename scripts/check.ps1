@@ -1,9 +1,13 @@
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
+
+. "$PSScriptRoot\_common.ps1"
+
 Set-Location (Split-Path -Parent $PSScriptRoot)
-$venvPython = Join-Path (Get-Location) '.venv\Scripts\python.exe'
-function Invoke-CheckedCommand { param([string]$FilePath, [string[]]$Arguments, [string]$Stage) Write-Host "+ $Stage"; & $FilePath @Arguments; if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE } }
-Invoke-CheckedCommand -FilePath $venvPython -Arguments @('-m','ruff','check','.') -Stage 'ruff'
+Assert-RiceRepoRoot -ScriptName 'check.ps1'
+$venvPython = Require-VenvPython
+
+Invoke-CheckedCommand -FilePath "$PSScriptRoot\lint.ps1" -Arguments @() -Stage 'lint'
 Invoke-CheckedCommand -FilePath $venvPython -Arguments @('-m','pytest','-q') -Stage 'pytest'
 Invoke-CheckedCommand -FilePath $venvPython -Arguments @('-m','rice','count','supports','--max-support-edges','8') -Stage 'count supports'
 Invoke-CheckedCommand -FilePath $venvPython -Arguments @('-m','rice','count','bundle-types') -Stage 'count bundle-types'

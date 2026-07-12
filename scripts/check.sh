@@ -1,8 +1,14 @@
 #!/usr/bin/env bash
-set -euo pipefail
-cd "$(dirname "$0")/.."
-run() { printf '+ %q ' "$@"; printf '\n'; "$@"; }
-run .venv/bin/python -m ruff check .
+set -Eeuo pipefail
+
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck source=scripts/_common.sh
+source "${SCRIPT_DIR}/_common.sh"
+
+require_repo_root
+require_venv_python
+
+run ./scripts/lint.sh
 run .venv/bin/python -m pytest -q
 run .venv/bin/python -m rice count supports --max-support-edges 8
 run .venv/bin/python -m rice count bundle-types
