@@ -135,3 +135,7 @@ function Resolve-PathUnderRepo {
 
     return $fullPath
 }
+
+function Get-PytestBaseTempPath {
+    return (Resolve-PathUnderRepo -RelativePath '.pytest-tmp')
+}

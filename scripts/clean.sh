@@ -20,6 +20,7 @@ remove_path() {
 
 remove_path .venv
 remove_path .pytest_cache
+remove_path .pytest-tmp
 remove_path build
 remove_path dist
 
