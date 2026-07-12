@@ -73,6 +73,13 @@ make check
 counts for the main support/assignment slices, and the golden network slice. It
 intentionally does not run the full `R <= 3`, `L+C <= 5` network census.
 
+On native Windows PowerShell, run the equivalent validation without Make or
+Bash:
+
+```powershell
+.\scripts\check.ps1
+```
+
 ## Current regression counts
 
 Important regression values include:

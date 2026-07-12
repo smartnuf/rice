@@ -5,5 +5,6 @@ $ErrorActionPreference = 'Stop'
 
 Assert-RiceRepoRoot -ScriptName 'test.ps1'
 $venvPython = Require-VenvPython
+$pytestBaseTemp = Get-PytestBaseTempPath
 
-Invoke-CheckedCommand -FilePath $venvPython -Arguments @('-m', 'pytest', '-q') -Stage 'pytest'
+Invoke-CheckedCommand -FilePath $venvPython -Arguments @('-m', 'pytest', '-q', '--basetemp', $pytestBaseTemp) -Stage 'pytest'
