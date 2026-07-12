@@ -63,3 +63,7 @@ scripts/
 - 2026-07-10: Kept Bash syntax coverage runnable through a Windows WSL Bash
   launcher by passing repository-relative POSIX paths, while restricting the
   isolated-POSIX-environment setup test to pytest sessions running on POSIX.
+- 2026-07-12: Native PowerShell test and check scripts now give pytest the
+  dedicated repository-local `.pytest-tmp` base directory, avoiding pytest's
+  shared numbered-temp and `pytest-current` cleanup path on Windows. Both
+  platform cleanup scripts remove the ignored disposable directory.

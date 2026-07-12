@@ -74,6 +74,7 @@ function Remove-PycacheDirectories {
 
 Remove-GeneratedPath -RelativePath '.venv'
 Remove-GeneratedPath -RelativePath '.pytest_cache'
+Remove-GeneratedPath -RelativePath '.pytest-tmp'
 Remove-GeneratedPath -RelativePath 'build'
 Remove-GeneratedPath -RelativePath 'dist'
 

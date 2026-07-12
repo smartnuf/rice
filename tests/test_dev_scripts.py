@@ -136,3 +136,22 @@ def test_powershell_clean_skips_reparse_points_before_recursing() -> None:
     reparse_check = "[System.IO.FileAttributes]::ReparsePoint"
     assert reparse_check in text
     assert text.index("Test-IsReparsePoint -Item $child") < text.index("Remove-PycacheDirectories -Directory $child.FullName")
+
+
+def test_powershell_pytest_uses_dedicated_repo_temp_directory() -> None:
+    common = (SCRIPTS / "_common.ps1").read_text(encoding="utf-8")
+    assert "Resolve-PathUnderRepo -RelativePath '.pytest-tmp'" in common
+
+    for script_name in ("test.ps1", "check.ps1"):
+        text = (SCRIPTS / script_name).read_text(encoding="utf-8")
+        assert "$pytestBaseTemp = Get-PytestBaseTempPath" in text
+        assert "'--basetemp', $pytestBaseTemp" in text
+
+
+def test_disposable_pytest_temp_directory_is_ignored_and_cleaned() -> None:
+    gitignore = (REPO_ROOT / ".gitignore").read_text(encoding="utf-8")
+    assert ".pytest-tmp/" in gitignore.splitlines()
+
+    for script_name in ("clean.ps1", "clean.sh"):
+        text = (SCRIPTS / script_name).read_text(encoding="utf-8")
+        assert ".pytest-tmp" in text
