@@ -53,3 +53,24 @@ def test_output_size_guard_fails_cleanly():
     assert proc.returncode == 2
     assert "exceeding --max-records" in proc.stderr
     assert "Traceback" not in proc.stderr
+
+
+def test_max_records_must_be_positive():
+    proc = subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "rice",
+            "enum",
+            "assignments",
+            "--max-r",
+            "1",
+            "--max-records",
+            "0",
+        ],
+        text=True,
+        capture_output=True,
+    )
+    assert proc.returncode == 2
+    assert "must be a positive integer" in proc.stderr
+    assert "Traceback" not in proc.stderr
