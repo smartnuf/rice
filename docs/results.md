@@ -125,9 +125,11 @@ For `R <= 3, L+C <= 5`, the phase-3 assigned-support count is:
 
 This **830,094** total is a phase-3 assigned-support orbit count, not the final
 reduced-topology count. The code now also has local reduction and canonical
-reduced-signature machinery for individual assigned two-terminal networks, but
-no command currently enumerates the full standard slice, merges phase-3 orbits
-by those signatures, or claims a final reduced-topology total.
+reduced-signature machinery for individual assigned two-terminal networks, plus
+`rice count networks` / `network_census` for finite reduced-network slices. The
+full standard `R <= 3`, `L+C <= 5` network slice is intentionally not claimed
+as complete; [`docs/plan/05-slices/04-r3-x5.md`](plan/05-slices/04-r3-x5.md)
+tracks that larger run.
 
 ## RICE local series/parallel reduced count for `R <= 3`, `L+C <= 2`
 

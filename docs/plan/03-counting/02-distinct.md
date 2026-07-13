@@ -54,23 +54,19 @@ solver for general electrical equivalence.
 
 - All five reduced-model stages are now implemented: connected unlabelled
   simple support graphs, unordered terminal-pair orbits, and
-  terminal-relevance filtering (`rice supports`); raw simple primitive bundle
-  assignment (`rice bundles`); assigned-support labeling-orbit
-  canonicalisation (`rice labelings`); local canonical reduced-signature
-  machinery (`canonical_reduced_signature`); and an end-to-end reduced-topology
-  census for the committed small golden slice (`rice reduced`). The legacy
+  terminal-relevance filtering (`rice count supports`); raw simple primitive bundle assignment (`rice count assignments`); assigned-support labeling-orbit canonicalisation (`rice count assigned-supports`); local canonical reduced-signature machinery (`canonical_reduced_signature`); and an end-to-end reduced-topology census for the committed small golden slice (`rice count networks --profile golden`). The legacy
   `count_networks` path, which used multiset component-count bundles, has
   been removed in full (`docs/plan/02-cleanup/02-legacy.md`).
 - Phase-2 raw simple primitive bundle assignment is implemented in `rice.core`
-  and exposed through `rice bundles`, using only `R`, `L`, `C`, `R||L`,
-  `R||C`, `L||C`, and `R||L||C`. The normal `R <= 3`, `L+C <= 5` interface derives `max_edges=8`
+  and exposed through `rice count assignments`, using only `R`, `L`, `C`, `R||L`,
+  `R||C`, `L||C`, and `R||L||C`. The normal `R <= 3`, `L+C <= 5` interface derives `max_support_edges=8`
   and the leaf total is tested as `1,166,714`.
 - Assigned-support canonicalisation is implemented as `simple_bundle_labeling_census`
-  and exposed through `rice labelings`; for `R <= 3`, `L+C <= 5` it preserves
+  and exposed through `rice count assigned-supports`; for `R <= 3`, `L+C <= 5` it preserves
   `1,166,714` raw leaves and counts `830,094` canonical bundle-labeling orbits.
   Local series-span signature machinery is now implemented for individual
   assigned two-terminal networks with deterministic recursive factor
-  normalisation and graph-core canonicalisation. Small-slice census integration is implemented by `reduced_topology_census` and `rice reduced`, with phase-3 orbit witnesses merged by canonical reduced signatures for the `R <= 2`, `L+C <= 3` golden slice. Full `R <= 3`, `L+C <= 5` census execution and descriptor output remain unfinished, so the overall distinct-network task is still `prog` rather than `done`.
+  normalisation and graph-core canonicalisation. Small-slice census integration is implemented by `network_census` and `rice count networks --profile golden`, with phase-3 orbit witnesses merged by canonical reduced signatures for the `R <= 2`, `L+C <= 3` golden slice. Full `R <= 3`, `L+C <= 5` census execution and descriptor output remain unfinished, so the overall distinct-network task is still `prog` rather than `done`.
 
 ## Near-term next steps
 

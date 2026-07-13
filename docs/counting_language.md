@@ -47,8 +47,9 @@ discriminator and is not a stability promise.
 
 Network source-query diagnostics (`raw_assignments`, `assigned_support_classes`)
 are distinct from final reduced-network facts. Network count output intentionally
-does not expose a full signature catalogue; enumeration and reduction-analysis
-commands remain PR3 work.
+does not expose a full signature catalogue. Use `rice enum networks` for the
+guarded provisional network catalogue and `rice count reductions` for
+source-to-reduced provenance analysis.
 
 ## Provisional enumeration language
 

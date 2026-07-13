@@ -20,7 +20,7 @@ and collision analysis.
 
 ## Boundary note
 
-PR2 intentionally did not add a superficial `rice count reductions` command. PR3 remains responsible for source-to-reduced provenance, fibre-size distributions, component/source-edge transitions, collision analysis, and `rice enum ...` catalogue commands.
+PR2 intentionally did not add a superficial `rice count reductions` command. This PR3 task is now complete for source-to-reduced provenance, fibre-size distributions, component/source-edge transitions, collision analysis, and `rice enum ...` catalogue commands.
 
 
 ## PR3 completion notes

@@ -25,17 +25,13 @@ Explain how counts are generated and what they mean.
 
 - The repository now has normative model docs for the reduced model and
   support-census phase, plus docs that explain the historical multiset-bundle
-  counter (now removed in full, `docs/plan/02-cleanup/02-legacy.md`) as
+  counter (now removed in full, [`docs/plan/02-cleanup/02-legacy.md`](../02-cleanup/02-legacy.md)) as
   clearly labelled historical background.
-- `docs/results.md`, `docs/computation.md`, and the README record the
+- [`docs/results.md`](../../results.md), [`docs/computation.md`](../../computation.md), and the [README](../../../README.md) record the
   historical legacy count results, the phase-1 support-census target table,
   and the phase-2 raw simple primitive bundle-assignment target table.
-- `docs/bundles_and_multiedges.md` documents the staged implementation status:
-  `rice supports` implements phase 1, `rice bundles` implements the phase-2
-  raw assignment census, `rice labelings` implements phase 3, and `rice
-  reduced` implements the end-to-end reduced-topology census for the
-  committed small golden slice.
-- Reduced counting methodology is documented for the first complete `R <= 2`, `L+C <= 3` golden slice in `docs/counts/small-r2-x3.md` and `docs/results.md`. Descriptor conversion, full standard-slice reporting, and Ladenheim comparison documentation remain pending.
+- [`docs/bundles_and_multiedges.md`](../../bundles_and_multiedges.md) documents bundle/span terminology; the live object-language commands are `rice count supports`, `rice count assignments`, `rice count assigned-supports`, and `rice count networks --profile golden` for the committed small golden slice.
+- Reduced counting methodology is documented for the first complete `R <= 2`, `L+C <= 3` golden slice in [`docs/counts/small-r2-x3.md`](../../counts/small-r2-x3.md) and [`docs/results.md`](../../results.md). Descriptor conversion, full standard-slice reporting, and Ladenheim comparison documentation remain pending.
 
 ## Near-term next steps
 

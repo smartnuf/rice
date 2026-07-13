@@ -6,7 +6,7 @@ implementation.
 
 ## Historical: legacy computation (removed)
 
-The legacy counter, now removed in full (`docs/plan/02-cleanup/02-legacy.md`),
+The legacy counter, now removed in full ([`docs/plan/02-cleanup/02-legacy.md`](plan/02-cleanup/02-legacy.md)),
 counted isomorphism classes of connected undirected two-terminal multigraphs
 by:
 
@@ -23,12 +23,12 @@ non-negative counts subject to the global budget. Thus the legacy model
 counted `R||R` separately from `R`.
 
 Historical legacy results are recorded, clearly labelled as historical, in
-`docs/results.md`.
+[`docs/results.md`](results.md).
 
 ## Reduced computation
 
 The reduced model counts reduced two-terminal RLC topology classes. See
-`docs/model_decisions.md` for the full contract.
+[`docs/model_decisions.md`](model_decisions.md) for the full contract.
 
 The main differences from the historical legacy model above are:
 
@@ -51,7 +51,7 @@ Implemented as `rice count supports` / `support_census`, a support-only census:
 3. reject terminal-irrelevant terminal labellings;
 4. report counts by support-edge number.
 
-For `max_edges = 8`, expected counts are:
+For `max_support_edges = 8`, expected counts are:
 
 | Support edges | Basic connected unlabelled graphs | Unordered two-terminal labelings | Terminal-relevant two-terminal graphs |
 |---:|---:|---:|---:|
@@ -75,7 +75,7 @@ Run the census with subcommand options after `supports`:
 .venv/bin/python -m rice count supports --profile main
 ```
 
-The second form derives `max_edges = max_r + max_reactive`. Subcommand
+The second form derives `max_support_edges = max_r + max_lc`. Subcommand
 options must go after `supports`; there is no no-subcommand form.
 
 ## Stage 2: simple bundle assignment
@@ -93,7 +93,7 @@ L||C
 R||L||C
 ```
 
-For `R <= 3, L+C <= 5`, run `.venv/bin/python -m rice count assignments --profile main`. The command derives `max_edges = max_r + max_reactive`; optional `--max-edges` is only for debugging/truncation and cannot exceed that derived bound. Zero/zero budgets are a valid empty bundle or labeling census with no support-edge rows; negative budgets are invalid. The raw assignment leaf bound before isomorphism or reduced-signature merging is **1,166,714**.
+For `R <= 3, L+C <= 5`, run `.venv/bin/python -m rice count assignments --profile main`. The command derives `max_support_edges = max_r + max_lc`; use `--max-support-edges` or `--support-edges` for explicit finite source support-edge ranges. Zero/zero budgets are a valid empty bundle or assigned-support census with no support-edge rows; negative budgets are invalid. The raw assignment leaf bound before isomorphism or reduced-signature merging is **1,166,714**.
 
 This is small enough to permit straightforward enumeration for the first reduced
 implementation.
@@ -105,7 +105,7 @@ assignment counts, implemented as `canonical_reduced_signature` for one
 assigned network and, for full enumeration and merging across a budget slice,
 `rice count networks` / `network_census` — currently computed and
 committed for the small golden slice `R <= 2`, `L+C <= 3`
-(`docs/plan/05-slices/04-r3-x5.md` tracks running the full `R <= 3`,
+([`docs/plan/05-slices/04-r3-x5.md`](plan/05-slices/04-r3-x5.md) tracks running the full `R <= 3`,
 `L+C <= 5` scope through the same enumeration).
 
 At minimum, the signature layer must satisfy:

@@ -35,8 +35,7 @@ census results, JSON report metadata, and Python API exports.
 - `BundleSet` validates that public API callers provide exactly one
   non-negative multiplicity for each simple primitive bundle type before any
   component counts, placement counts, or JSON records are derived.
-- The current staged commands remain compatibility interfaces: `supports`,
-  `bundles`, `labelings`, and `reduced`.
+- The staged compatibility commands were later removed; the live grammar is `rice count <object>` and `rice enum <object>`.
 
 ## Validation
 
