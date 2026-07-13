@@ -6,7 +6,14 @@ $ErrorActionPreference = 'Stop'
 Assert-RiceRepoRoot -ScriptName 'lint.ps1'
 $venvPython = Require-VenvPython
 
-Invoke-CheckedCommand -FilePath 'git' -Arguments @('diff', '--check') -Stage 'git diff --check'
+Invoke-CheckedCommand -FilePath 'git' -Arguments @(
+    'diff',
+    '--check'
+) -Stage 'git diff --check'
+Invoke-CheckedCommand -FilePath $venvPython -Arguments @(
+    'scripts/check_line_lengths.py',
+    '--changed'
+) -Stage 'line-length check'
 
 Write-Host ''
 Write-Host '==> syntax compile tracked Python files under src/ and tests/'

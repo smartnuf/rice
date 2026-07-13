@@ -9,6 +9,7 @@ require_repo_root
 require_venv_python
 
 run git diff --check
+run .venv/bin/python scripts/check_line_lengths.py --changed
 
 echo
 echo "==> syntax compile tracked Python files under src/ and tests/"

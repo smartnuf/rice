@@ -260,6 +260,7 @@ def command_for_profile(profile: str, diff_source: Sequence[str] | None = None) 
         return [
             *whitespace_check_commands(diff_source),
             [py, str(Path("scripts") / "validate_changes.py"), "--check-plan-index"],
+            [py, str(Path("scripts") / "check_line_lengths.py"), "--changed"],
         ]
     if profile == "code":
         return [["bash", "scripts/lint.sh"], ["bash", "scripts/test.sh"]]

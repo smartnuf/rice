@@ -52,6 +52,39 @@ and documented sufficiently. Not every task is intended to move an item to
 `done`. Add concise progress notes against the relevant plan document, and
 expand near-term plan steps as the implementation path becomes clearer.
 
+
+## Line-length policy
+
+Keep hand-maintained source, configuration, scripts, and Markdown source at
+79 characters or fewer per line. This applies across Python, Markdown, shell,
+PowerShell, TOML, YAML, Makefiles, CI configuration, and similar tracked text
+files. Wrap prose, comments, docstrings, command construction, collections,
+and examples first; refactor strings or use reference-style Markdown links
+before suppressing the check.
+
+Use narrow suppressions only for unavoidable exact content such as external
+URLs, hashes, exact command output, machine-required literals, or genuinely
+wide Markdown tables. Prefer an isolated next-line suppression over a disabled
+region. Avoid broad or file-wide suppressions. Each suppression that ignores
+content must include a non-empty reason. Supported forms are:
+
+```text
+# line-length: ignore-next-line -- reason
+# line-length: disable -- reason
+# line-length: enable
+```
+
+Markdown files use equivalent HTML comment-only directives:
+
+```markdown
+<!-- line-length: ignore-next-line -- reason -->
+<!-- line-length: disable -- reason -->
+<!-- line-length: enable -->
+```
+
+Run the appropriate lint or change-aware validation command after edits, such
+as `make lint`, `make validate-changed`, or the matching script wrapper.
+
 ## Development environment
 
 Use Python 3.11 or newer.
