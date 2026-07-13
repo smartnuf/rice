@@ -47,7 +47,7 @@ Chapter 5, the Chapter 6 classification discussion, and Theorem 7.4.
 ## Named reduction contracts
 
 - **RICE local series/parallel reduction**: the implemented relation used by
-  `canonical_reduced_signature` and `rice reduced`. It normalises local
+  `canonical_reduced_signature` and `rice count networks --profile golden`. It normalises local
   primitive series spans and parallel bundles inside arbitrary two-terminal
   networks. Bridge and other non-series-parallel cores may remain.
 - **RICE local series/parallel plus star-delta**: a planned augmentation of the

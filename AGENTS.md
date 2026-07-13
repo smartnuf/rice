@@ -177,9 +177,7 @@ changed subcommand help, for example:
 .venv/bin/python -m rice count networks --help
 ```
 
-Whenever CLI syntax changes, update README and docs examples in the same
-change. Keep examples explicit about option placement: subcommand options go
-after the subcommand name; a subcommand (`count <object>`) is always required, and there is no no-subcommand form.
+Whenever CLI syntax changes, update README, docs examples, CLI help text, default descriptions, Python API docstrings/guide examples, glossary links, and drift/example tests in the same change. Keep examples explicit about option placement: subcommand options go after the subcommand name; a subcommand (`count <object>` or `enum <object>`) is always required, and there is no no-subcommand count form.
 
 ## Codex cloud expectations
 

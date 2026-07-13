@@ -15,7 +15,7 @@ Status: done
   schema.
 - Declared the CLI, Python API and serialisations provisional in user-facing
   documentation.
-- Left PR3 work (`rice enum ...`, reduction provenance and fibre analysis) open.
+- Later PR3 work (`rice enum ...`, reduction provenance and fibre analysis) was subsequently completed; see [`03-enum-reductions.md`](03-enum-reductions.md).
 
 
 ## 2026-07 CLI language review

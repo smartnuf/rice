@@ -30,6 +30,6 @@ This subset should be treated as an explicit test point inside the larger `R <= 
 
 ## Progress notes
 
-- Implemented as the first complete reduced-topology golden slice using `rice reduced --max-r 2 --max-reactive 3`.
+- Implemented as the first complete reduced-topology golden slice using `rice count networks --profile golden`.
 - Machine-readable summary: `data/counts/small-r2-x3.json`; human summary: `docs/counts/small-r2-x3.md`.
 - Exact `(R, L+C)` table is `[[0, 2, 2, 4], [1, 4, 12, 40], [0, 4, 34, 210]]`, cumulative total `313`.
