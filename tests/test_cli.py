@@ -85,4 +85,45 @@ def test_auto_output_redirected_is_json_and_table_is_human_readable(capsys, monk
     assert main(["count", "supports", "--max-support-edges", "1"]) == 0
     tty = capsys.readouterr().out
     assert "Support object census" in tty
-    assert "| Support edges |" in tty
+    assert "Support edges  Basic supports" in tty
+    assert "|---" not in tty
+
+
+COUNT_FORMAT_CASES = (
+    ("supports", "--max-support-edges", "1"),
+    ("bundle-types",),
+    ("bundle-sets", "--max-rlc", "1"),
+    ("assignments", "--max-rlc", "1"),
+    ("assigned-supports", "--max-rlc", "1"),
+    ("networks", "--max-rlc", "1"),
+    ("reductions", "--max-rlc", "1"),
+)
+
+
+@pytest.mark.parametrize("args", COUNT_FORMAT_CASES)
+def test_count_table_and_markdown_are_distinct_formats(capsys, args):
+    assert main(["count", *args, "--format", "table"]) == 0
+    table = capsys.readouterr().out
+    assert main(["count", *args, "--format", "markdown"]) == 0
+    markdown = capsys.readouterr().out
+
+    assert table != markdown
+    assert "|---" not in table
+    assert "|---" in markdown
+
+
+def test_explicit_formats_override_stdout_tty_state(capsys, monkeypatch):
+    monkeypatch.setattr(sys.stdout, "isatty", lambda: False)
+    assert main(["count", "supports", "--max-support-edges", "1", "--format", "table"]) == 0
+    assert "|---" not in capsys.readouterr().out
+
+    monkeypatch.setattr(sys.stdout, "isatty", lambda: True)
+    assert main(["count", "supports", "--max-support-edges", "1", "--format", "markdown"]) == 0
+    assert "|---" in capsys.readouterr().out
+
+
+def test_table_renderer_handles_totals_only_grouping(capsys):
+    assert main(["count", "bundle-sets", "--max-rlc", "1", "--group-by", "none", "--format", "table"]) == 0
+    output = capsys.readouterr().out
+    assert "Distinct bundle sets  Raw placements represented" in output
+    assert "|---" not in output

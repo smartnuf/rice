@@ -44,3 +44,11 @@ Status: done
   construction, grouping, relations, JSON conversion, record navigation,
   failure cases, and the distinction between `support_census(max_edges=8)` and
   the query-based object-language API.
+
+## 2026-07 table-format correction
+
+- Separated the documented terminal `table` format from Markdown through a
+  shared aligned-text/Markdown renderer used by every count target.
+- Added semantic format regression tests across all count targets, explicit
+  format-versus-TTY tests, and totals-only grouping coverage.
+- Clarified the output contract in public documentation and agent guidance.
