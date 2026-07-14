@@ -207,14 +207,21 @@ def _bundle_types_json() -> dict[str, Any]:
     return {"format_version": 1, "object": "bundle-types", "records": records, "totals": {"bundle_types": len(records)}}
 
 
+def _markdown_cell(value: str) -> str:
+    """Escape Markdown table separator characters in a cell."""
+    return value.replace("|", "\\|")
+
+
 def _print_table(headers: list[str], rows: list[list[object]], output_format: str) -> None:
     """Print rows as either aligned terminal text or a Markdown table."""
     text_rows = [[str(value) for value in row] for row in rows]
     if output_format == "markdown":
-        print("| " + " | ".join(headers) + " |")
+        markdown_headers = [_markdown_cell(header) for header in headers]
+        print("| " + " | ".join(markdown_headers) + " |")
         print("|" + "---:|" * len(headers))
         for row in text_rows:
-            print("| " + " | ".join(row) + " |")
+            markdown_row = [_markdown_cell(cell) for cell in row]
+            print("| " + " | ".join(markdown_row) + " |")
         return
 
     widths = [len(header) for header in headers]
@@ -440,8 +447,9 @@ def main(argv: list[str] | None = None) -> int:
                 print()
                 if result.group_by == ("r", "lc"):
                     matrix = result.matrix()
-                    headers = ["R \\ L+C", *(str(x) for x in range(len(matrix[0]) if matrix else 0))]
-                    _print_table(headers, [[r, *row] for r, row in enumerate(matrix)], output_format)
+                    headers = ["R \\ L+C", *(str(x) for x in range(len(matrix[0]) if matrix else 0)), "Row total"]
+                    rows = [[r, *row, sum(row)] for r, row in enumerate(matrix)]
+                    _print_table(headers, rows, output_format)
                 else:
                     headers=list(result.group_by)+["Networks"]
                     rows = [[*(row[dim] for dim in result.group_by), row["networks"]] for row in result.records]

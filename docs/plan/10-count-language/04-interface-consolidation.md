@@ -52,3 +52,12 @@ Status: done
 - Added semantic format regression tests across all count targets, explicit
   format-versus-TTY tests, and totals-only grouping coverage.
 - Clarified the output contract in public documentation and agent guidance.
+
+## 2026-07 table-format review follow-up
+
+- Escaped Markdown table pipe characters in rendered cells so bundle labels such
+  as `R||L` remain single cells in `--format markdown` output.
+- Restored the `Row total` column for default `count networks` `(R, L+C)`
+  Markdown and terminal tables.
+- Added targeted regression coverage for Markdown escaping and network row
+  totals after PR review.
