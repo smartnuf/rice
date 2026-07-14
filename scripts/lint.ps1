@@ -12,7 +12,8 @@ Invoke-CheckedCommand -FilePath 'git' -Arguments @(
 ) -Stage 'git diff --check'
 Invoke-CheckedCommand -FilePath $venvPython -Arguments @(
     'scripts/check_line_lengths.py',
-    ) -Stage 'line-length check'
+    '--changed'
+) -Stage 'line-length check'
 
 Write-Host ''
 Write-Host '==> syntax compile tracked Python files under src/ and tests/'
