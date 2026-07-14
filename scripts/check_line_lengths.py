@@ -4,9 +4,7 @@
 from __future__ import annotations
 
 import argparse
-import fnmatch
 import subprocess
-from collections import Counter
 import sys
 from dataclasses import dataclass
 from pathlib import Path
@@ -102,50 +100,59 @@ def tracked_files(root: Path = REPO_ROOT) -> list[str]:
     ]
 
 
-def changed_files(root: Path = REPO_ROOT) -> list[str]:
+def _decode_nul_paths(data: bytes) -> list[str]:
+    return [item.decode("utf-8") for item in data.split(b"\0") if item]
+
+
+def _git_paths(args: Sequence[str], root: Path = REPO_ROOT) -> list[str]:
     completed = subprocess.run(
-        ["git", "status", "--porcelain=v1"],
+        ["git", *args],
         cwd=root,
-        text=True,
         check=True,
         capture_output=True,
     )
-    paths: list[str] = []
-    for line in completed.stdout.splitlines():
-        path = line[3:]
-        if " -> " in path:
-            path = path.split(" -> ", 1)[1]
-        if path:
-            paths.append(path)
-    return paths
+    return _decode_nul_paths(completed.stdout)
 
+
+def changed_files(root: Path = REPO_ROOT) -> list[str]:
+    staged = _git_paths(
+        [
+            "diff",
+            "--cached",
+            "--name-only",
+            "--diff-filter=ACMRT",
+            "-z",
+        ],
+        root,
+    )
+    unstaged = _git_paths(
+        [
+            "diff",
+            "--name-only",
+            "--diff-filter=ACMRT",
+            "-z",
+        ],
+        root,
+    )
+    return list(dict.fromkeys([*staged, *unstaged]))
 
 def changed_files_between(
     base: str,
     head: str,
     root: Path = REPO_ROOT,
 ) -> list[str]:
-    completed = subprocess.run(
-        ["git", "diff", "--name-status", "--find-renames", base, head],
-        cwd=root,
-        text=True,
-        check=True,
-        capture_output=True,
+    return _git_paths(
+        [
+            "diff",
+            "--name-only",
+            "--find-renames",
+            "--diff-filter=ACMRT",
+            "-z",
+            base,
+            head,
+        ],
+        root,
     )
-    paths: list[str] = []
-    for line in completed.stdout.splitlines():
-        parts = line.split("\t")
-        if not parts:
-            continue
-        status = parts[0]
-        if status.startswith("D"):
-            continue
-        if status.startswith("R") and len(parts) == 3:
-            paths.append(parts[2])
-        elif len(parts) >= 2:
-            paths.append(parts[-1])
-    return paths
-
 
 def _hash_comment_directive(stripped: str) -> str | None:
     if not stripped.startswith("#"):
@@ -286,29 +293,11 @@ def check_lines(
     return diagnostics
 
 
-def ref_line_counts(
-    path: str,
-    root: Path = REPO_ROOT,
-    ref: str = "HEAD",
-) -> Counter[str]:
-    completed = subprocess.run(
-        ["git", "show", f"{ref}:{path}"],
-        cwd=root,
-        text=True,
-        capture_output=True,
-    )
-    if completed.returncode != 0:
-        return Counter()
-    return Counter(completed.stdout.splitlines())
-
-
 def check_paths(
     paths: Iterable[str],
     *,
     root: Path = REPO_ROOT,
     max_columns: int = DEFAULT_MAX_COLUMNS,
-    ignore_existing: bool = False,
-    existing_ref: str = "HEAD",
 ) -> CheckResult:
     diagnostics: list[Diagnostic] = []
     for path in sorted(p for p in paths if is_included_path(p)):
@@ -326,21 +315,10 @@ def check_paths(
                 Diagnostic(path, 1, f"could not read file: {exc}")
             )
             continue
-        path_diagnostics = check_lines(path, data, max_columns=max_columns)
-        if ignore_existing:
-            old_lines = ref_line_counts(path, root, existing_ref)
-            kept: list[Diagnostic] = []
-            current_lines = [line.rstrip("\r\n") for line in data]
-            for diagnostic in path_diagnostics:
-                text = current_lines[diagnostic.line - 1]
-                if old_lines[text] > 0:
-                    old_lines[text] -= 1
-                    continue
-                kept.append(diagnostic)
-            path_diagnostics = kept
-        diagnostics.extend(path_diagnostics)
+        diagnostics.extend(
+            check_lines(path, data, max_columns=max_columns)
+        )
     return CheckResult(tuple(diagnostics))
-
 
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
@@ -369,12 +347,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         paths = changed_files()
     else:
         paths = tracked_files()
-    result = check_paths(
-        paths,
-        max_columns=args.max_columns,
-        ignore_existing=args.changed or bool(args.base),
-        existing_ref=args.base or "HEAD",
-    )
+    result = check_paths(paths, max_columns=args.max_columns)
     for diagnostic in result.diagnostics:
         print(diagnostic.format(), file=sys.stderr)
     return 0 if result.ok else 1

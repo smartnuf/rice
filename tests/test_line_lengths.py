@@ -4,10 +4,12 @@ from pathlib import Path
 
 from scripts.check_line_lengths import (
     DEFAULT_MAX_COLUMNS,
+    changed_files,
     changed_files_between,
     check_lines,
     check_paths,
     is_included_path,
+    tracked_files,
 )
 
 
@@ -155,3 +157,146 @@ def test_changed_files_between_ignores_untracked_worktree_files(
     (tmp_path / "selection.txt").write_text("x" * 100, encoding="utf-8")
 
     assert changed_files_between(base, head, tmp_path) == ["tracked.txt"]
+
+
+
+def git(cwd: Path, *args: str) -> str:
+    import subprocess
+
+    completed = subprocess.run(
+        ["git", *args],
+        cwd=cwd,
+        text=True,
+        check=True,
+        capture_output=True,
+    )
+    return completed.stdout.strip()
+
+
+def init_repo(path: Path) -> None:
+    git(path, "init")
+    git(path, "config", "user.email", "test@example.com")
+    git(path, "config", "user.name", "Test User")
+
+
+def test_default_tracked_files_ignore_untracked_selection_txt(
+    tmp_path: Path,
+) -> None:
+    init_repo(tmp_path)
+    (tmp_path / "tracked.py").write_text("ok = 1\n", encoding="utf-8")
+    git(tmp_path, "add", "tracked.py")
+    git(tmp_path, "commit", "-m", "base")
+    (tmp_path / "selection.txt").write_text("x" * 120, encoding="utf-8")
+
+    assert tracked_files(tmp_path) == ["tracked.py"]
+    assert check_paths(tracked_files(tmp_path), root=tmp_path).ok
+
+
+def test_default_clean_checkout_fails_tracked_overlong_file(
+    tmp_path: Path,
+) -> None:
+    init_repo(tmp_path)
+    (tmp_path / "tracked.py").write_text("x" * 80 + "\n", encoding="utf-8")
+    git(tmp_path, "add", "tracked.py")
+    git(tmp_path, "commit", "-m", "base")
+
+    result = check_paths(tracked_files(tmp_path), root=tmp_path)
+
+    assert not result.ok
+    assert result.diagnostics[0].path == "tracked.py"
+
+
+def test_changed_files_between_checks_range_overlong_markdown(
+    tmp_path: Path,
+) -> None:
+    init_repo(tmp_path)
+    (tmp_path / "docs.md").write_text("short\n", encoding="utf-8")
+    git(tmp_path, "add", "docs.md")
+    git(tmp_path, "commit", "-m", "base")
+    base = git(tmp_path, "rev-parse", "HEAD")
+    (tmp_path / "docs.md").write_text("x" * 80 + "\n", encoding="utf-8")
+    git(tmp_path, "add", "docs.md")
+    git(tmp_path, "commit", "-m", "head")
+    head = git(tmp_path, "rev-parse", "HEAD")
+
+    result = check_paths(
+        changed_files_between(base, head, tmp_path),
+        root=tmp_path,
+    )
+
+    assert not result.ok
+    assert result.diagnostics[0].path == "docs.md"
+
+
+def test_changed_files_between_skips_deletions_and_uses_rename_destination(
+    tmp_path: Path,
+) -> None:
+    init_repo(tmp_path)
+    (tmp_path / "deleted.md").write_text("short\n", encoding="utf-8")
+    (tmp_path / "old.md").write_text("short\n", encoding="utf-8")
+    git(tmp_path, "add", "deleted.md", "old.md")
+    git(tmp_path, "commit", "-m", "base")
+    base = git(tmp_path, "rev-parse", "HEAD")
+    (tmp_path / "deleted.md").unlink()
+    git(tmp_path, "mv", "old.md", "new.md")
+    git(tmp_path, "add", "-A")
+    git(tmp_path, "commit", "-m", "head")
+    head = git(tmp_path, "rev-parse", "HEAD")
+
+    assert changed_files_between(base, head, tmp_path) == ["new.md"]
+
+
+def test_changed_files_local_tracks_content_not_untracked(
+    tmp_path: Path,
+) -> None:
+    init_repo(tmp_path)
+    (tmp_path / "deleted.md").write_text("short\n", encoding="utf-8")
+    (tmp_path / "renamed.md").write_text("short\n", encoding="utf-8")
+    (tmp_path / "modified.md").write_text("short\n", encoding="utf-8")
+    git(tmp_path, "add", ".")
+    git(tmp_path, "commit", "-m", "base")
+    (tmp_path / "deleted.md").unlink()
+    git(tmp_path, "mv", "renamed.md", "rename dest.md")
+    (tmp_path / "modified.md").write_text("changed\n", encoding="utf-8")
+    (tmp_path / "staged new.md").write_text("new\n", encoding="utf-8")
+    git(tmp_path, "add", "deleted.md", "rename dest.md", "staged new.md")
+    (tmp_path / "selection.txt").write_text("x" * 120, encoding="utf-8")
+
+    assert changed_files(tmp_path) == [
+        "rename dest.md",
+        "staged new.md",
+        "modified.md",
+    ]
+
+
+def test_unmatched_disable_is_reported_after_enable_deleted(
+    tmp_path: Path,
+) -> None:
+    init_repo(tmp_path)
+    (tmp_path / "example.py").write_text(
+        "# line-length: disable -- generated table\n"
+        "x = 1\n"
+        "# line-length: enable\n",
+        encoding="utf-8",
+    )
+    git(tmp_path, "add", "example.py")
+    git(tmp_path, "commit", "-m", "base")
+    base = git(tmp_path, "rev-parse", "HEAD")
+    (tmp_path / "example.py").write_text(
+        "# line-length: disable -- generated table\n"
+        "x = 1\n",
+        encoding="utf-8",
+    )
+    git(tmp_path, "add", "example.py")
+    git(tmp_path, "commit", "-m", "head")
+    head = git(tmp_path, "rev-parse", "HEAD")
+
+    result = check_paths(
+        changed_files_between(base, head, tmp_path),
+        root=tmp_path,
+    )
+
+    assert not result.ok
+    assert result.diagnostics[0].message == (
+        "disable directive without matching enable"
+    )

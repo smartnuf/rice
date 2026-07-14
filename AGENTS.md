@@ -55,12 +55,15 @@ expand near-term plan steps as the implementation path becomes clearer.
 
 ## Line-length policy
 
-Keep hand-maintained source, configuration, scripts, and Markdown source at
-79 characters or fewer per line. This applies across Python, Markdown, shell,
-PowerShell, TOML, YAML, Makefiles, CI configuration, and similar tracked text
-files. Wrap prose, comments, docstrings, command construction, collections,
-and examples first; refactor strings or use reference-style Markdown links
-before suppressing the check.
+Keep tracked hand-maintained source, configuration, scripts, and Markdown
+source at 79 characters or fewer per line. This applies across Python,
+Markdown, shell, PowerShell, TOML, YAML, Makefiles, CI configuration, and
+similar tracked text files. Normal lint validates the full tracked tree.
+Change-aware range validation selects changed paths but validates each selected
+current file completely. Place transient generated reports outside the checkout
+rather than adding suppressions for them. Wrap prose, comments, docstrings,
+command construction, collections, and examples first; refactor strings or use
+reference-style Markdown links before suppressing the check.
 
 Use narrow suppressions only for unavoidable exact content such as external
 URLs, hashes, exact command output, machine-required literals, or genuinely
