@@ -16,7 +16,6 @@ COMPARISON_STATUSES = {
     "source-backed",
     "derived-unique-match",
     "working-hypothesis",
-    "ambiguous",
     "unresolved",
 }
 DISPOSITIONS = {"exclude", "retain", "unresolved"}
@@ -127,6 +126,49 @@ ASSERTION_FIELDS = (
     "notes",
     "open_questions",
 )
+ANNOTATION_FIELDS = {
+    "format_version", "sources", "evidence_records", "previous_workspace_records",
+    "computational_cross_checks", "target", "rules", "records",
+}
+SOURCE_REQUIRED_FIELDS = {"source_id", "source_type", "citation", "notes"}
+SOURCE_OPTIONAL_FIELDS = {"publication", "repository", "commit_sha"}
+PUBLICATION_FIELDS = {"publisher", "year"}
+EVIDENCE_REQUIRED_FIELDS = {
+    "evidence_id", "source_id", "provenance_level", "verification_state",
+    "locator", "paraphrase", "claim",
+}
+EVIDENCE_OPTIONAL_FIELDS = {"notes"}
+WORKSPACE_REQUIRED_FIELDS = {
+    "workspace_record_id", "source_id", "provenance_level", "repository_path",
+    "verification_state", "limitations", "notes",
+}
+WORKSPACE_OPTIONAL_FIELDS = {
+    "row", "image", "descriptor", "graph_label", "network_number",
+}
+COMPUTATION_FIELDS = {
+    "cross_check_id", "provenance_level", "implementation", "commit_sha", "input",
+    "operation", "result", "independently_reproduced", "limitations",
+    "verification_state",
+}
+TARGET_FIELDS = {
+    "source_population", "reported_members", "reported_exclusions",
+    "exclusion_category_targets", "evidence_record_ids",
+}
+RULE_FIELDS = set(ASSERTION_FIELDS) | {
+    "rule_id", "kind", "selector", "expected_matches",
+}
+def _validate_object_shape(
+    value: Any, name: str, required: set[str], optional: set[str] | None = None
+) -> None:
+    if not isinstance(value, dict):
+        raise ValueError(f"{name} must be an object")
+    allowed = required | (optional or set())
+    missing = required - value.keys()
+    unknown = value.keys() - allowed
+    if missing:
+        raise ValueError(f"{name} missing fields: {sorted(missing)}")
+    if unknown:
+        raise ValueError(f"{name} has unknown fields: {sorted(unknown)}")
 
 
 def _require_string_list(value: Any, field: str) -> None:
@@ -136,8 +178,18 @@ def _require_string_list(value: Any, field: str) -> None:
         raise ValueError(f"{field} must be a list of non-empty strings")
 
 
+def _require_unique_string_list(value: Any, field: str) -> None:
+    _require_string_list(value, field)
+    if len(set(value)) != len(value):
+        raise ValueError(f"{field} must not contain duplicates")
+
+
 def _is_int(value: Any) -> bool:
     return isinstance(value, int) and not isinstance(value, bool)
+
+
+def _is_controlled(value: Any, choices: set[str]) -> bool:
+    return isinstance(value, str) and value in choices
 
 
 def _is_machine_absolute_path(value: str) -> bool:
@@ -179,6 +231,26 @@ def _validate_subjects(
     if unknown:
         raise ValueError(
             f"evidence {evidence_id} has unknown catalogue subjects: {sorted(unknown)}"
+        )
+
+
+def _validate_historical_identifier_value(
+    scheme: Any, value: Any, field: str
+) -> None:
+    if not _is_controlled(scheme, HISTORICAL_IDENTIFIER_SCHEMES):
+        raise ValueError(f"{field} has invalid historical identifier scheme")
+    if scheme == "morelli-smith-canonical-network":
+        if not _is_int(value) or not 1 <= value <= 108:
+            raise ValueError(f"{field} canonical network must be an integer from 1 to 108")
+    elif scheme == "morelli-smith-basic-graph":
+        if not isinstance(value, str) or not value:
+            raise ValueError(f"{field} basic graph must be a non-empty string")
+    elif not (
+        (isinstance(value, str) and bool(value))
+        or (_is_int(value) and value > 0)
+    ):
+        raise ValueError(
+            f"{field} Ladenheim identifier must be a non-empty string or positive integer"
         )
 
 
@@ -234,7 +306,10 @@ def _objects_by_id(
 def _validate_sources(values: Any) -> dict[str, dict[str, Any]]:
     sources = _objects_by_id(values, "sources", "source_id")
     for source_id, source in sources.items():
-        if source.get("source_type") not in SOURCE_TYPES:
+        _validate_object_shape(
+            source, f"source {source_id}", SOURCE_REQUIRED_FIELDS, SOURCE_OPTIONAL_FIELDS
+        )
+        if not _is_controlled(source.get("source_type"), SOURCE_TYPES):
             raise ValueError(f"source {source_id} has invalid source_type")
         if not isinstance(source.get("citation"), str) or not source["citation"]:
             raise ValueError(f"source {source_id} requires non-empty citation")
@@ -242,8 +317,14 @@ def _validate_sources(values: Any) -> dict[str, dict[str, Any]]:
             raise ValueError(f"source {source_id} requires non-empty notes")
         publication = source.get("publication")
         if publication is not None:
-            if not isinstance(publication, dict):
-                raise ValueError(f"source {source_id} publication must be an object")
+            _validate_object_shape(
+                publication, f"source {source_id} publication", PUBLICATION_FIELDS
+            )
+            for field in set(publication) - {"year"}:
+                if not isinstance(publication[field], str) or not publication[field]:
+                    raise ValueError(
+                        f"source {source_id} publication {field} must be non-empty"
+                    )
             year = publication.get("year")
             if year is not None and (not _is_int(year) or year <= 0):
                 raise ValueError(f"source {source_id} publication year must be a positive integer")
@@ -254,6 +335,12 @@ def _validate_sources(values: Any) -> dict[str, dict[str, Any]]:
                 raise ValueError(f"source {source_id} requires repository")
             if not isinstance(commit_sha, str) or not commit_sha:
                 raise ValueError(f"source {source_id} requires commit_sha")
+        elif repository is not None or commit_sha is not None:
+            raise ValueError(
+                f"source {source_id} repository metadata requires workspace source type"
+            )
+        if source["source_type"] == "authoritative-publication" and publication is None:
+            raise ValueError(f"source {source_id} requires publication metadata")
     return sources
 
 
@@ -287,10 +374,16 @@ def _validate_locator(locator: Any, record_id: str) -> None:
 def _validate_claim(
     claim: Any, evidence_id: str, catalogue_ids: set[str]
 ) -> None:
-    if not isinstance(claim, dict) or claim.get("claim_type") not in CLAIM_TYPES:
+    if not isinstance(claim, dict) or not _is_controlled(
+        claim.get("claim_type"), CLAIM_TYPES
+    ):
         raise ValueError(f"evidence {evidence_id} requires a valid structured claim")
     claim_type = claim["claim_type"]
     if claim_type == "catalogue-target":
+        _validate_object_shape(
+            claim, f"evidence {evidence_id} catalogue-target claim",
+            {"claim_type", "supported_values"},
+        )
         expected = {"source_population", "reported_members", "reported_exclusions"}
         values = claim.get("supported_values")
         if not isinstance(values, dict) or set(values) != expected or not all(
@@ -298,6 +391,10 @@ def _validate_claim(
         ):
             raise ValueError(f"evidence {evidence_id} has invalid catalogue-target claim")
     elif claim_type == "exclusion-category-targets":
+        _validate_object_shape(
+            claim, f"evidence {evidence_id} category-target claim",
+            {"claim_type", "supported_values"},
+        )
         values = claim.get("supported_values")
         targets = values.get("exclusion_category_targets") if isinstance(values, dict) else None
         expected = EXCLUSION_CATEGORIES - {"none", "unresolved"}
@@ -306,10 +403,17 @@ def _validate_claim(
         ):
             raise ValueError(f"evidence {evidence_id} has invalid category-target claim")
     elif claim_type == "aggregate-exclusion-category":
+        _validate_object_shape(
+            claim, f"evidence {evidence_id} aggregate exclusion claim",
+            {"claim_type", "supported_exclusion_category", "supported_selector",
+             "source_population", "supported_disposition"},
+        )
         selector = claim.get("supported_selector")
         if (
-            claim.get("supported_exclusion_category")
-            not in EXCLUSION_CATEGORIES - {"none", "unresolved"}
+            not _is_controlled(
+                claim.get("supported_exclusion_category"),
+                EXCLUSION_CATEGORIES - {"none", "unresolved"},
+            )
             or not _is_structural_selector(selector)
             or not _is_int(claim.get("source_population"))
             or claim["source_population"] <= 0
@@ -317,6 +421,10 @@ def _validate_claim(
         ):
             raise ValueError(f"evidence {evidence_id} has invalid aggregate exclusion claim")
     elif claim_type == "rice-selector-count":
+        _validate_object_shape(
+            claim, f"evidence {evidence_id} selector/count claim",
+            {"claim_type", "supported_selector", "expected_matches"},
+        )
         selector = claim.get("supported_selector")
         if (
             not _is_structural_selector(selector)
@@ -325,6 +433,10 @@ def _validate_claim(
         ):
             raise ValueError(f"evidence {evidence_id} has invalid selector/count claim")
     elif claim_type == "individual-catalogue-record":
+        _validate_object_shape(
+            claim, f"evidence {evidence_id} individual-record claim",
+            {"claim_type", "subject_catalogue_ids", "supported_values"},
+        )
         subjects = claim.get("subject_catalogue_ids")
         _validate_subjects(subjects, evidence_id, catalogue_ids)
         values = claim.get("supported_values")
@@ -339,9 +451,9 @@ def _validate_claim(
         category = values.get("exclusion_category")
         reason_present = "exclusion_reason" in values
         reason = values.get("exclusion_reason")
-        if disposition is not None and disposition not in DISPOSITIONS:
+        if disposition is not None and not _is_controlled(disposition, DISPOSITIONS):
             raise ValueError(f"evidence {evidence_id} has invalid disposition")
-        if category is not None and category not in EXCLUSION_CATEGORIES:
+        if category is not None and not _is_controlled(category, EXCLUSION_CATEGORIES):
             raise ValueError(f"evidence {evidence_id} has invalid exclusion category")
         if reason_present and reason is not None and (
             not isinstance(reason, str) or not reason
@@ -361,8 +473,14 @@ def _validate_claim(
             raise ValueError(
                 f"evidence {evidence_id} non-exclusion claim cannot have exclusion reason"
             )
-        if disposition == "retain" and category not in {None, "none"}:
-            raise ValueError(f"evidence {evidence_id} retained claim has invalid category")
+        if disposition == "retain" and values != {
+            "proposed_disposition": "retain",
+            "exclusion_category": "none",
+            "exclusion_reason": None,
+        }:
+            raise ValueError(
+                f"evidence {evidence_id} retained claim requires complete retention tuple"
+            )
         if disposition == "unresolved" and category not in {None, "unresolved"}:
             raise ValueError(f"evidence {evidence_id} unresolved claim has invalid category")
         if disposition is None and reason_present and reason is not None:
@@ -370,16 +488,20 @@ def _validate_claim(
                 f"evidence {evidence_id} exclusion reason requires exclude disposition"
             )
     elif claim_type == "historical-identifier":
+        _validate_object_shape(
+            claim, f"evidence {evidence_id} identifier claim",
+            {"claim_type", "subject_catalogue_ids", "scheme", "value"},
+        )
         subjects = claim.get("subject_catalogue_ids")
         _validate_subjects(subjects, evidence_id, catalogue_ids)
-        if (
-            claim.get("scheme") not in HISTORICAL_IDENTIFIER_SCHEMES
-            or not isinstance(claim.get("value"), (str, int))
-            or isinstance(claim.get("value"), bool)
-            or claim.get("value") == ""
-        ):
-            raise ValueError(f"evidence {evidence_id} has invalid identifier claim")
+        _validate_historical_identifier_value(
+            claim.get("scheme"), claim.get("value"), f"evidence {evidence_id}"
+        )
     elif claim_type == "basic-graph-definition":
+        _validate_object_shape(
+            claim, f"evidence {evidence_id} graph-definition claim",
+            {"claim_type", "definition"},
+        )
         required = {
             "graph_label", "base_label", "is_dual", "fixture_id"
         }
@@ -395,6 +517,10 @@ def _validate_claim(
         ):
             raise ValueError(f"evidence {evidence_id} has invalid graph-definition claim")
     elif claim_type == "basic-graph-match":
+        _validate_object_shape(
+            claim, f"evidence {evidence_id} graph-match claim",
+            {"claim_type", "subject_catalogue_ids", "match"},
+        )
         subjects = claim.get("subject_catalogue_ids")
         _validate_subjects(subjects, evidence_id, catalogue_ids)
         required = {"fixture_id", "graph_label", "structural_relation", "matched"}
@@ -416,18 +542,30 @@ def _validate_evidence_records(
 ) -> dict[str, dict[str, Any]]:
     records = _objects_by_id(values, "evidence_records", "evidence_id")
     for evidence_id, record in records.items():
+        _validate_object_shape(
+            record, f"evidence {evidence_id}", EVIDENCE_REQUIRED_FIELDS,
+            EVIDENCE_OPTIONAL_FIELDS,
+        )
         source_id = record.get("source_id")
         if source_id not in sources:
             raise ValueError(f"evidence {evidence_id} has unknown source_id")
-        if record.get("provenance_level") not in EVIDENCE_PROVENANCE_LEVELS:
+        if not _is_controlled(record.get("provenance_level"), EVIDENCE_PROVENANCE_LEVELS):
             raise ValueError(f"evidence {evidence_id} has invalid provenance_level")
-        if record.get("verification_state") not in VERIFICATION_STATES:
+        if not _is_controlled(record.get("verification_state"), VERIFICATION_STATES):
             raise ValueError(f"evidence {evidence_id} has invalid verification_state")
         _validate_locator(record.get("locator"), evidence_id)
         if not isinstance(record.get("paraphrase"), str) or not record["paraphrase"]:
             raise ValueError(f"evidence {evidence_id} requires paraphrase")
+        if "notes" in record and (
+            not isinstance(record["notes"], str) or not record["notes"]
+        ):
+            raise ValueError(f"evidence {evidence_id} notes must be non-empty")
         _validate_claim(record.get("claim"), evidence_id, catalogue_ids)
         source = sources[source_id]
+        if source["source_type"] == "previous-workspace-repository":
+            raise ValueError(
+                f"evidence {evidence_id} cannot use a previous-workspace source"
+            )
         if record["provenance_level"] == "authoritative-source-transcription":
             if source["source_type"] != "authoritative-publication":
                 raise ValueError(f"evidence {evidence_id} is not from an authoritative source")
@@ -454,18 +592,31 @@ def _validate_workspace_records(
         values, "previous_workspace_records", "workspace_record_id"
     )
     for record_id, record in records.items():
+        _validate_object_shape(
+            record, f"workspace record {record_id}", WORKSPACE_REQUIRED_FIELDS,
+            WORKSPACE_OPTIONAL_FIELDS,
+        )
         source_id = record.get("source_id")
         if source_id not in sources or sources[source_id]["source_type"] != "previous-workspace-repository":
             raise ValueError(f"workspace record {record_id} requires a workspace source")
-        if record.get("provenance_level") not in WORKSPACE_PROVENANCE_LEVELS:
+        if not _is_controlled(record.get("provenance_level"), WORKSPACE_PROVENANCE_LEVELS):
             raise ValueError(f"workspace record {record_id} has invalid provenance_level")
-        if record.get("verification_state") not in VERIFICATION_STATES:
+        if not _is_controlled(record.get("verification_state"), VERIFICATION_STATES):
             raise ValueError(f"workspace record {record_id} has invalid verification_state")
-        for field in ("repository_path", "limitations"):
+        for field in ("repository_path", "limitations", "notes"):
             if not isinstance(record.get(field), str) or not record[field]:
                 raise ValueError(f"workspace record {record_id} requires {field}")
         if _is_machine_absolute_path(record["repository_path"]):
             raise ValueError(f"workspace record {record_id} path must be relative")
+        for field in WORKSPACE_OPTIONAL_FIELDS - {"network_number"}:
+            if field in record and (
+                not isinstance(record[field], str) or not record[field]
+            ):
+                raise ValueError(f"workspace record {record_id} has invalid {field}")
+        if "network_number" in record and (
+            not _is_int(record["network_number"]) or record["network_number"] <= 0
+        ):
+            raise ValueError(f"workspace record {record_id} has invalid network_number")
     return records
 
 
@@ -476,9 +627,12 @@ def _validate_computational_cross_checks(
         values, "computational_cross_checks", "cross_check_id"
     )
     for record_id, record in records.items():
-        if record.get("provenance_level") not in COMPUTATION_PROVENANCE_LEVELS:
+        _validate_object_shape(
+            record, f"cross-check {record_id}", COMPUTATION_FIELDS
+        )
+        if not _is_controlled(record.get("provenance_level"), COMPUTATION_PROVENANCE_LEVELS):
             raise ValueError(f"cross-check {record_id} has invalid provenance_level")
-        if record.get("verification_state") not in VERIFICATION_STATES:
+        if not _is_controlled(record.get("verification_state"), VERIFICATION_STATES):
             raise ValueError(f"cross-check {record_id} has invalid verification_state")
         for field in ("implementation", "commit_sha", "input", "operation", "result", "limitations"):
             if not isinstance(record.get(field), str) or not record[field]:
@@ -496,7 +650,7 @@ def _validate_computational_cross_checks(
 
 
 def _require_references(value: Any, field: str, known: dict[str, Any]) -> None:
-    _require_string_list(value, field)
+    _require_unique_string_list(value, field)
     unknown = set(value) - known.keys()
     if unknown:
         raise ValueError(f"unknown {field}: {sorted(unknown)}")
@@ -532,17 +686,26 @@ def _validate_historical_identifiers(
 ) -> None:
     if not isinstance(values, list):
         raise ValueError("historical_identifiers must be a list")
+    seen: set[tuple[str, str]] = set()
     for identifier in values:
-        if not isinstance(identifier, dict):
-            raise ValueError("historical identifier must be an object")
-        if identifier.get("scheme") not in HISTORICAL_IDENTIFIER_SCHEMES:
-            raise ValueError("historical identifier has invalid scheme")
-        if not isinstance(identifier.get("value"), (str, int)) or isinstance(
-            identifier.get("value"), bool
-        ) or identifier.get("value") == "":
-            raise ValueError("historical identifier requires a string or integer value")
-        if identifier.get("verification_state") not in VERIFICATION_STATES:
+        _validate_object_shape(
+            identifier, "historical identifier",
+            {"scheme", "value", "verification_state", "evidence_record_ids"},
+            {"notes"},
+        )
+        _validate_historical_identifier_value(
+            identifier.get("scheme"), identifier.get("value"), "historical identifier"
+        )
+        identity = (identifier["scheme"], repr(identifier["value"]))
+        if identity in seen:
+            raise ValueError("historical_identifiers must not contain duplicates")
+        seen.add(identity)
+        if not _is_controlled(identifier.get("verification_state"), VERIFICATION_STATES):
             raise ValueError("historical identifier has invalid verification_state")
+        if "notes" in identifier and (
+            not isinstance(identifier["notes"], str) or not identifier["notes"]
+        ):
+            raise ValueError("historical identifier notes must be non-empty")
         ids = identifier.get("evidence_record_ids")
         _require_references(ids, "historical identifier evidence_record_ids", evidence)
         if identifier["verification_state"] == "source-verified":
@@ -576,7 +739,7 @@ def _validate_basic_graph_assignment(
             raise ValueError(f"basic_graph_assignment requires {field}")
     if not isinstance(value["is_dual"], bool):
         raise ValueError("basic_graph_assignment requires boolean is_dual")
-    if value["verification_state"] not in VERIFICATION_STATES:
+    if not _is_controlled(value["verification_state"], VERIFICATION_STATES):
         raise ValueError("basic_graph_assignment has invalid verification_state")
     _require_references(value["evidence_record_ids"], "basic graph evidence_record_ids", evidence)
     expected_definition = {key: value[key] for key in (
@@ -623,15 +786,15 @@ def _validate_assertion(
     missing = set(ASSERTION_FIELDS) - assertion.keys()
     if missing:
         raise ValueError(f"assertion missing fields: {sorted(missing)}")
-    if assertion["comparison_status"] not in COMPARISON_STATUSES:
+    if not _is_controlled(assertion["comparison_status"], COMPARISON_STATUSES):
         raise ValueError("invalid comparison_status")
-    if assertion["proposed_disposition"] not in DISPOSITIONS:
+    if not _is_controlled(assertion["proposed_disposition"], DISPOSITIONS):
         raise ValueError("invalid proposed_disposition")
-    if assertion["exclusion_category"] not in EXCLUSION_CATEGORIES:
+    if not _is_controlled(assertion["exclusion_category"], EXCLUSION_CATEGORIES):
         raise ValueError("invalid exclusion_category")
-    if assertion["confidence"] not in CONFIDENCE_VALUES:
+    if not _is_controlled(assertion["confidence"], CONFIDENCE_VALUES):
         raise ValueError("invalid confidence")
-    _require_string_list(assertion["evidence_basis"], "evidence_basis")
+    _require_unique_string_list(assertion["evidence_basis"], "evidence_basis")
     if not set(assertion["evidence_basis"]) <= EVIDENCE_BASES:
         raise ValueError("invalid evidence_basis")
     basis = set(assertion["evidence_basis"])
@@ -641,6 +804,7 @@ def _validate_assertion(
         or assertion["exclusion_category"] != "unresolved"
         or assertion["exclusion_reason"] is not None
         or assertion["evidence_basis"] != ["no-evidence-yet"]
+        or assertion["confidence"] != "none"
     ):
         raise ValueError("unresolved status requires the default unresolved contract")
     if "no-evidence-yet" in basis and (
@@ -662,6 +826,19 @@ def _validate_assertion(
     }
     if status in required_basis and not required_basis[status] <= basis:
         raise ValueError(f"evidence_basis is inconsistent with {status}")
+    if status == "working-hypothesis" and assertion["proposed_disposition"] != "unresolved":
+        raise ValueError("working-hypothesis cannot assert retention or exclusion")
+    if status == "working-hypothesis" and (
+        assertion["exclusion_category"] != "unresolved"
+        or assertion["exclusion_reason"] is not None
+    ):
+        raise ValueError("working-hypothesis requires unresolved exclusion metadata")
+    if status == "source-backed" and assertion["proposed_disposition"] not in {
+        "exclude", "retain"
+    }:
+        raise ValueError("source-backed status requires a positive disposition")
+    if status != "unresolved" and assertion["confidence"] == "none":
+        raise ValueError("resolved comparison status requires non-none confidence")
     _require_references(assertion["evidence_record_ids"], "evidence_record_ids", evidence)
     _require_references(assertion["previous_workspace_record_ids"], "previous_workspace_record_ids", workspace)
     _require_references(assertion["computational_cross_check_ids"], "computational_cross_check_ids", computations)
@@ -746,12 +923,20 @@ def _validate_assertion(
                 "asserted exclusion requires claim-specific authoritative evidence"
             )
     elif disposition == "retain":
-        if status == "unresolved" or assertion["evidence_basis"] == ["no-evidence-yet"]:
+        if (
+            status == "unresolved"
+            or assertion["evidence_basis"] == ["no-evidence-yet"]
+            or category != "none"
+            or reason is not None
+        ):
             raise ValueError("retained disposition requires a resolved evidence basis")
         if not any(
             _is_authoritative(record)
-            and record["claim"]["supported_values"].get("proposed_disposition")
-            == "retain"
+            and record["claim"]["supported_values"] == {
+                "proposed_disposition": "retain",
+                "exclusion_category": "none",
+                "exclusion_reason": None,
+            }
             for record in matching_individual
         ):
             raise ValueError(
@@ -791,14 +976,21 @@ def _validate_target(
         "zobel-five-element-series-parallel": 20,
         "other-canonical-exclusion": 8,
     }
-    if not isinstance(target, dict):
-        raise ValueError("annotations require target")
+    _validate_object_shape(target, "annotation target", TARGET_FIELDS)
     expected = {
         "source_population": 148,
         "reported_members": 108,
         "reported_exclusions": 40,
         "exclusion_category_targets": expected_targets,
     }
+    numeric_fields = {"source_population", "reported_members", "reported_exclusions"}
+    if any(not _is_int(target.get(field)) or target[field] <= 0 for field in numeric_fields):
+        raise ValueError("annotation target counts must be positive integers")
+    category_targets = target.get("exclusion_category_targets")
+    if not isinstance(category_targets, dict) or any(
+        not _is_int(value) or value <= 0 for value in category_targets.values()
+    ):
+        raise ValueError("annotation category targets must be positive integers")
     if any(target.get(field) != value for field, value in expected.items()):
         raise ValueError("annotation target values differ from the comparison contract")
     ids = target.get("evidence_record_ids")
@@ -850,12 +1042,57 @@ def _validate_exclusion_counts(
             raise ValueError(f"mapped {category} exclusions exceed category target")
 
 
+def _validate_disposition_partition(
+    rows: list[dict[str, Any]], target: dict[str, Any], dispositions: Counter[str]
+) -> None:
+    recomputed = Counter(row["proposed_disposition"] for row in rows)
+    if dispositions != recomputed:
+        raise ValueError("disposition counters disagree with generated rows")
+    partition = sum(dispositions[value] for value in DISPOSITIONS)
+    if partition != len(rows) or len(rows) != 148:
+        raise ValueError("disposition partition must total 148 rows")
+    if dispositions["retain"] > target["reported_members"]:
+        raise ValueError("retained rows exceed reported membership target")
+
+
+def _validate_generated_ledger(
+    ledger: dict[str, Any], source_records: list[dict[str, Any]]
+) -> None:
+    rows = ledger["records"]
+    if len(rows) != 148 or len({row["catalogue_id"] for row in rows}) != 148:
+        raise ValueError("generated ledger must contain 148 unique catalogue IDs")
+    for row, source in zip(rows, source_records, strict=True):
+        if any(row[field] != source[field] for field in IMMUTABLE_FIELDS):
+            raise ValueError("generated rows must preserve source order and immutable fields")
+    if ledger["source_catalogue_relation"] != SOURCE_CATALOGUE_RELATION:
+        raise ValueError("generated ledger has unexpected structural relation")
+    if ledger["target"]["reproduction_claimed"] and any(
+        row["proposed_disposition"] == "unresolved" for row in rows
+    ):
+        raise ValueError("reproduction cannot be claimed while rows remain unresolved")
+    statuses = Counter(row["comparison_status"] for row in rows)
+    dispositions = Counter(row["proposed_disposition"] for row in rows)
+    categories = Counter(row["exclusion_category"] for row in rows)
+    expected_summary = {
+        "total_rows": len(rows),
+        "by_comparison_status": dict(sorted(statuses.items())),
+        "by_proposed_disposition": dict(sorted(dispositions.items())),
+        "by_exclusion_category": dict(sorted(categories.items())),
+        "mapped_exclusions": dispositions["exclude"],
+        "unresolved_dispositions": dispositions["unresolved"],
+    }
+    if ledger["summary"] != expected_summary:
+        raise ValueError("generated summary disagrees with records")
+    _validate_no_unstable_metadata(ledger, "generated ledger")
+
+
 def generate_evidence_ledger(
     catalogue: dict[str, Any], annotations: dict[str, Any]
 ) -> dict[str, Any]:
     """Validate annotations and join them to the committed 148 records."""
 
     _validate_no_unstable_metadata(annotations)
+    _validate_object_shape(annotations, "annotations", ANNOTATION_FIELDS)
     if catalogue.get("object") != "ladenheim-structural-148-catalogue":
         raise ValueError("unexpected structural catalogue object")
     relation = catalogue.get("relation")
@@ -893,8 +1130,10 @@ def generate_evidence_ledger(
         raise ValueError("annotation records must be a list")
     source_by_id = {row["catalogue_id"]: row for row in records}
     for annotation in annotation_records:
-        if not isinstance(annotation, dict):
-            raise ValueError("each annotation record must be an object")
+        _validate_object_shape(
+            annotation, "annotation record", set(ASSERTION_FIELDS) | {"catalogue_id"},
+            {"structural_assertions"},
+        )
         catalogue_id = annotation.get("catalogue_id")
         if catalogue_id in explicit:
             raise ValueError(f"duplicate annotation ID: {catalogue_id}")
@@ -918,8 +1157,7 @@ def generate_evidence_ledger(
         raise ValueError("annotation rules must be a list")
     rule_ids: set[str] = set()
     for rule in rules:
-        if not isinstance(rule, dict):
-            raise ValueError("each annotation rule must be an object")
+        _validate_object_shape(rule, "annotation rule", RULE_FIELDS)
         rule_id = rule.get("rule_id")
         if not isinstance(rule_id, str) or not rule_id:
             raise ValueError("each annotation rule requires rule_id")
@@ -973,7 +1211,8 @@ def generate_evidence_ledger(
     _validate_exclusion_counts(
         ledger_rows, target, dispositions["exclude"], mapped_categories
     )
-    return {
+    _validate_disposition_partition(ledger_rows, target, dispositions)
+    ledger = {
         "format_version": FORMAT_VERSION,
         "object": "ladenheim-148-to-108-evidence-ledger",
         "source_catalogue": "data/counts/ladenheim-148.json",
@@ -993,6 +1232,8 @@ def generate_evidence_ledger(
         },
         "records": ledger_rows,
     }
+    _validate_generated_ledger(ledger, records)
+    return ledger
 
 
 def load_and_generate(catalogue_path: Path, annotation_path: Path) -> dict[str, Any]:

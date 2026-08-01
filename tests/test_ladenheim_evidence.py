@@ -6,7 +6,9 @@ import pytest
 
 from rice.ladenheim_evidence import (
     _is_unstable_time_key,
+    _validate_disposition_partition,
     _validate_exclusion_counts,
+    _validate_generated_ledger,
     generate_evidence_ledger,
 )
 
@@ -203,6 +205,8 @@ def _source_backed_fixture(catalogue, annotations):
     row = _unresolved_annotation(catalogue["records"][0]["catalogue_id"])
     row.update(
         comparison_status="source-backed",
+        proposed_disposition="retain",
+        exclusion_category="none",
         confidence="medium",
         evidence_basis=["explicit-historical-entry-statement"],
     )
@@ -248,7 +252,7 @@ def test_exclusion_cannot_rely_on_non_authoritative_records(
     else:
         annotations["computational_cross_checks"] = [_cross_check()]
         row["computational_cross_check_ids"] = ["computation-record"]
-    with pytest.raises(ValueError, match="claim-specific authoritative"):
+    with pytest.raises(ValueError, match="working-hypothesis cannot"):
         generate_evidence_ledger(catalogue, annotations)
 
 
@@ -273,7 +277,7 @@ def test_exclusion_rejects_authoritative_unrelated_category(
         evidence_basis=["researcher-hypothesis"],
         evidence_record_ids=["ms-2019-eight-four-resistor-one-reactive"],
     )
-    with pytest.raises(ValueError, match="claim-specific authoritative"):
+    with pytest.raises(ValueError, match="working-hypothesis cannot"):
         generate_evidence_ledger(catalogue, annotations)
 
 
@@ -340,6 +344,13 @@ def test_rejected_rice_evidence_cannot_satisfy_unique_match(catalogue, annotatio
 def test_rice_derived_evidence_requires_rice_source(catalogue, annotations):
     annotations["evidence_records"][2]["source_id"] = "morelli-smith-2019"
     with pytest.raises(ValueError, match="requires a RICE source"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_evidence_cannot_use_previous_workspace_source(catalogue, annotations):
+    annotations["sources"].append(_workspace_source())
+    annotations["evidence_records"][2]["source_id"] = "workspace-source"
+    with pytest.raises(ValueError, match="previous-workspace source"):
         generate_evidence_ledger(catalogue, annotations)
 
 
@@ -434,7 +445,7 @@ def test_invalid_individual_claim_values_are_rejected(
             "exclusion_category": "unresolved",
             "exclusion_reason": None,
         },
-        {"proposed_disposition": "retain"},
+        {"exclusion_reason": None},
     ],
 )
 def test_valid_individual_claim_values_are_accepted(
@@ -482,7 +493,11 @@ def _retained_evidence(catalogue_id):
         "claim": {
             "claim_type": "individual-catalogue-record",
             "subject_catalogue_ids": [catalogue_id],
-            "supported_values": {"proposed_disposition": "retain"},
+            "supported_values": {
+                "proposed_disposition": "retain",
+                "exclusion_category": "none",
+                "exclusion_reason": None,
+            },
         },
     }
 
@@ -575,7 +590,7 @@ def test_working_hypothesis_retain_without_evidence_is_rejected(
         evidence_basis=["researcher-hypothesis"],
     )
     annotations["records"] = [row]
-    with pytest.raises(ValueError, match="individual-record evidence"):
+    with pytest.raises(ValueError, match="working-hypothesis cannot"):
         generate_evidence_ledger(catalogue, annotations)
 
 
@@ -595,10 +610,62 @@ def test_valid_source_backed_retained_fixture_is_accepted(catalogue, annotations
     row = _source_backed_fixture(catalogue, annotations)
     row.update(
         proposed_disposition="retain",
+        exclusion_category="none",
+        exclusion_reason=None,
         evidence_record_ids=["fixture-retained-record"],
     )
     generated = generate_evidence_ledger(catalogue, annotations)
     assert generated["records"][0]["proposed_disposition"] == "retain"
+
+
+@pytest.mark.parametrize(
+    ("category", "reason"),
+    [
+        ("unresolved", None),
+        ("other-canonical-exclusion", None),
+        ("none", "Contradictory reason."),
+    ],
+)
+def test_retained_row_requires_clear_exclusion_metadata(
+    catalogue, annotations, category, reason
+):
+    row_id = catalogue["records"][0]["catalogue_id"]
+    annotations["evidence_records"].append(_retained_evidence(row_id))
+    row = _source_backed_fixture(catalogue, annotations)
+    row.update(
+        exclusion_category=category,
+        exclusion_reason=reason,
+        evidence_record_ids=["fixture-retained-record"],
+    )
+    with pytest.raises(ValueError, match="retained disposition|claim-specific"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_retention_rejects_incomplete_or_rejected_claim(catalogue, annotations):
+    row_id = catalogue["records"][0]["catalogue_id"]
+    evidence = _retained_evidence(row_id)
+    evidence["verification_state"] = "rejected"
+    annotations["evidence_records"].append(evidence)
+    row = _source_backed_fixture(catalogue, annotations)
+    row["evidence_record_ids"] = [evidence["evidence_id"]]
+    with pytest.raises(ValueError, match="claim-specific authoritative"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize("basis", [["researcher-hypothesis"], []])
+def test_ambiguous_status_is_unavailable_in_version_two(
+    catalogue, annotations, basis
+):
+    annotations["rules"] = []
+    row = _unresolved_annotation(catalogue["records"][0]["catalogue_id"])
+    row.update(
+        comparison_status="ambiguous",
+        evidence_basis=basis,
+        notes=["Finite candidates are not represented in version 2."],
+    )
+    annotations["records"] = [row]
+    with pytest.raises(ValueError, match="comparison_status"):
+        generate_evidence_ledger(catalogue, annotations)
 
 
 def test_source_verified_identifier_requires_authoritative_evidence(
@@ -633,7 +700,9 @@ def test_source_verified_identifier_requires_identifier_specific_evidence(
         generate_evidence_ledger(catalogue, annotations)
 
 
-def _historical_identifier_evidence(catalogue_id):
+def _historical_identifier_evidence(
+    catalogue_id, *, scheme="morelli-smith-canonical-network", value=70
+):
     return {
         "evidence_id": "fixture-historical-identifier",
         "source_id": "morelli-smith-2019",
@@ -644,8 +713,8 @@ def _historical_identifier_evidence(catalogue_id):
         "claim": {
             "claim_type": "historical-identifier",
             "subject_catalogue_ids": [catalogue_id],
-            "scheme": "morelli-smith-canonical-network",
-            "value": 70,
+            "scheme": scheme,
+            "value": value,
         },
     }
 
@@ -707,6 +776,47 @@ def test_malformed_historical_identifiers_are_rejected(
     annotations["records"] = [row]
     with pytest.raises(ValueError, match="historical identifier"):
         generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize(
+    ("scheme", "value", "accepted"),
+    [
+        ("morelli-smith-canonical-network", 0, False),
+        ("morelli-smith-canonical-network", -1, False),
+        ("morelli-smith-canonical-network", True, False),
+        ("morelli-smith-canonical-network", "1", False),
+        ("morelli-smith-canonical-network", 1, True),
+        ("morelli-smith-canonical-network", 108, True),
+        ("morelli-smith-canonical-network", 109, False),
+        ("morelli-smith-basic-graph", 1, False),
+        ("morelli-smith-basic-graph", "", False),
+        ("morelli-smith-basic-graph", "G'", True),
+        ("ladenheim-original-identifier", 0, False),
+        ("ladenheim-original-identifier", "L-1", True),
+    ],
+)
+def test_historical_identifier_value_contract(
+    catalogue, annotations, scheme, value, accepted
+):
+    row_id = catalogue["records"][0]["catalogue_id"]
+    evidence = _historical_identifier_evidence(
+        row_id, scheme=scheme, value=value
+    )
+    annotations["evidence_records"].append(evidence)
+    row = _unresolved_annotation(row_id)
+    row["historical_identifiers"] = [{
+        "scheme": scheme,
+        "value": value,
+        "verification_state": "source-verified",
+        "evidence_record_ids": [evidence["evidence_id"]],
+    }]
+    annotations["rules"] = []
+    annotations["records"] = [row]
+    if accepted:
+        generate_evidence_ledger(catalogue, annotations)
+    else:
+        with pytest.raises(ValueError, match="identifier|canonical network|basic graph"):
+            generate_evidence_ledger(catalogue, annotations)
 
 
 def _graph_assignment(evidence_ids):
@@ -943,6 +1053,79 @@ def test_category_counter_must_agree_with_total(catalogue, annotations):
         )
 
 
+def _populate_retentions(catalogue, annotations, count):
+    annotations["rules"] = []
+    annotations["records"] = []
+    for index, source_row in enumerate(catalogue["records"][:count]):
+        row_id = source_row["catalogue_id"]
+        evidence = _retained_evidence(row_id)
+        evidence["evidence_id"] = f"fixture-retained-{index}"
+        evidence["locator"]["network_number"] = index % 108 + 1
+        annotations["evidence_records"].append(evidence)
+        row = _unresolved_annotation(row_id)
+        row.update(
+            comparison_status="source-backed",
+            proposed_disposition="retain",
+            exclusion_category="none",
+            exclusion_reason=None,
+            evidence_basis=["explicit-historical-entry-statement"],
+            evidence_record_ids=[evidence["evidence_id"]],
+            confidence="high",
+        )
+        annotations["records"].append(row)
+
+
+def test_109_retained_rows_exceed_membership_target(catalogue, annotations):
+    _populate_retentions(catalogue, annotations, 109)
+    with pytest.raises(ValueError, match="retained rows exceed"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_retained_count_respects_temporarily_reduced_target(catalogue, annotations):
+    ledger = generate_evidence_ledger(catalogue, annotations)
+    rows = ledger["records"][:2]
+    rows[0] = {**rows[0], "proposed_disposition": "retain"}
+    rows[1] = {**rows[1], "proposed_disposition": "retain"}
+    with pytest.raises(ValueError, match="retained rows exceed"):
+        _validate_disposition_partition(
+            rows + ledger["records"][2:],
+            {**ledger["target"], "reported_members": 1},
+            Counter(row["proposed_disposition"] for row in rows + ledger["records"][2:]),
+        )
+
+
+def test_disposition_partition_rejects_inconsistent_counters(catalogue, annotations):
+    ledger = generate_evidence_ledger(catalogue, annotations)
+    with pytest.raises(ValueError, match="counters disagree"):
+        _validate_disposition_partition(
+            ledger["records"], ledger["target"], Counter({"unresolved": 148})
+        )
+
+
+def test_disposition_partition_must_total_148(catalogue, annotations):
+    ledger = generate_evidence_ledger(catalogue, annotations)
+    rows = ledger["records"][:-1]
+    with pytest.raises(ValueError, match="partition must total 148"):
+        _validate_disposition_partition(
+            rows,
+            ledger["target"],
+            Counter(row["proposed_disposition"] for row in rows),
+        )
+
+
+def test_generated_summary_must_match_records(catalogue, annotations):
+    ledger = generate_evidence_ledger(catalogue, annotations)
+    ledger["summary"]["mapped_exclusions"] = 7
+    with pytest.raises(ValueError, match="summary disagrees"):
+        _validate_generated_ledger(ledger, catalogue["records"])
+
+
+def test_incomplete_retention_below_target_is_accepted(catalogue, annotations):
+    _populate_retentions(catalogue, annotations, 1)
+    ledger = generate_evidence_ledger(catalogue, annotations)
+    assert ledger["summary"]["by_proposed_disposition"]["retain"] == 1
+
+
 def test_unresolved_entry_needs_no_fabricated_evidence(catalogue, annotations):
     annotations["rules"] = []
     annotations["records"] = [
@@ -970,6 +1153,8 @@ def test_exact_eight_and_140_distribution(catalogue, annotations):
     assert len(mapped) == 8
     assert all(row["r"] == 4 and row["lc"] == 1 for row in mapped)
     assert all(row["comparison_status"] == "derived-unique-match" for row in mapped)
+    assert all(row["comparison_status"] != "ambiguous" for row in ledger["records"])
+    assert ledger["target"]["reproduction_claimed"] is False
     assert all(row["historical_identifiers"] == [] for row in ledger["records"])
     assert all(row["basic_graph_assignment"] is None for row in ledger["records"])
 
@@ -1059,7 +1244,7 @@ def test_stable_publication_and_locator_metadata_are_accepted(catalogue, annotat
     locator = annotations["evidence_records"][0]["locator"]
     locator["printed_page"] = 41
     locator["pdf_page_index"] = 47
-    annotations["sources"][1]["commit_sha"] = "abc123"
+    annotations["sources"].append(_workspace_source())
     generate_evidence_ledger(catalogue, annotations)
 
 
@@ -1195,6 +1380,192 @@ def test_alternate_or_missing_structural_relation_is_rejected(
     else:
         catalogue["relation"] = relation
     with pytest.raises(ValueError, match="structural catalogue relation"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize(
+    "object_type",
+    [
+        "annotations",
+        "source",
+        "publication",
+        "evidence",
+        "locator",
+        "catalogue-target-claim",
+        "category-target-claim",
+        "aggregate-claim",
+        "selector-claim",
+        "individual-claim",
+        "identifier-claim",
+        "graph-definition-claim",
+        "graph-definition",
+        "graph-match-claim",
+        "graph-match",
+        "workspace-record",
+        "computation",
+        "target",
+        "rule",
+        "annotation-record",
+        "historical-identifier",
+        "basic-graph-assignment",
+    ],
+)
+def test_version_two_closed_world_rejects_unknown_keys(
+    catalogue, annotations, object_type
+):
+    row_id = catalogue["records"][0]["catalogue_id"]
+    if object_type == "annotations":
+        target = annotations
+    elif object_type == "source":
+        target = annotations["sources"][0]
+    elif object_type == "publication":
+        target = annotations["sources"][0]["publication"]
+    elif object_type == "evidence":
+        target = annotations["evidence_records"][0]
+    elif object_type == "locator":
+        target = annotations["evidence_records"][0]["locator"]
+    elif object_type.endswith("-claim") and object_type in {
+        "catalogue-target-claim", "category-target-claim", "aggregate-claim",
+        "selector-claim",
+    }:
+        index = {
+            "catalogue-target-claim": 0,
+            "aggregate-claim": 1,
+            "selector-claim": 2,
+            "category-target-claim": 3,
+        }[object_type]
+        target = annotations["evidence_records"][index]["claim"]
+    elif object_type == "individual-claim":
+        evidence = _retained_evidence(row_id)
+        annotations["evidence_records"].append(evidence)
+        target = evidence["claim"]
+    elif object_type == "identifier-claim":
+        evidence = _historical_identifier_evidence(row_id)
+        annotations["evidence_records"].append(evidence)
+        target = evidence["claim"]
+    elif object_type in {"graph-definition-claim", "graph-definition"}:
+        evidence = _graph_definition_evidence()
+        annotations["evidence_records"].append(evidence)
+        target = evidence["claim"] if object_type.endswith("claim") else evidence["claim"]["definition"]
+    elif object_type in {"graph-match-claim", "graph-match"}:
+        evidence = _graph_match_evidence(row_id)
+        annotations["evidence_records"].append(evidence)
+        target = evidence["claim"] if object_type.endswith("claim") else evidence["claim"]["match"]
+    elif object_type == "workspace-record":
+        annotations["sources"].append(_workspace_source())
+        record = _workspace_record()
+        annotations["previous_workspace_records"] = [record]
+        target = record
+    elif object_type == "computation":
+        record = _cross_check()
+        annotations["computational_cross_checks"] = [record]
+        target = record
+    elif object_type == "target":
+        target = annotations["target"]
+    elif object_type == "rule":
+        target = annotations["rules"][0]
+    elif object_type == "annotation-record":
+        annotations["rules"] = []
+        record = _unresolved_annotation(row_id)
+        annotations["records"] = [record]
+        target = record
+    elif object_type == "historical-identifier":
+        annotations["rules"] = []
+        record = _unresolved_annotation(row_id)
+        identifier = {
+            "scheme": "morelli-smith-basic-graph",
+            "value": "G",
+            "verification_state": "parsed",
+            "evidence_record_ids": [],
+        }
+        record["historical_identifiers"] = [identifier]
+        annotations["records"] = [record]
+        target = identifier
+    else:
+        annotations["rules"] = []
+        annotations["evidence_records"].extend(
+            [_graph_definition_evidence(), _graph_match_evidence(row_id)]
+        )
+        record = _unresolved_annotation(row_id)
+        record["basic_graph_assignment"] = _graph_assignment(
+            ["fixture-graph-evidence", "fixture-graph-match"]
+        )
+        annotations["records"] = [record]
+        target = record["basic_graph_assignment"]
+    target["unexpected_contract_field"] = "rejected"
+    with pytest.raises(ValueError, match="unknown fields|locator|invalid fields|invalid graph"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize(
+    ("claim_type", "required_field"),
+    [
+        ("catalogue-target", "supported_values"),
+        ("exclusion-category-targets", "supported_values"),
+        ("aggregate-exclusion-category", "supported_selector"),
+        ("rice-selector-count", "expected_matches"),
+        ("individual-catalogue-record", "supported_values"),
+        ("historical-identifier", "value"),
+        ("basic-graph-definition", "definition"),
+        ("basic-graph-match", "match"),
+    ],
+)
+def test_claim_subtype_matrix_rejects_missing_required_fields(
+    catalogue, annotations, claim_type, required_field
+):
+    row_id = catalogue["records"][0]["catalogue_id"]
+    evidence_by_type = {
+        "catalogue-target": annotations["evidence_records"][0],
+        "aggregate-exclusion-category": annotations["evidence_records"][1],
+        "rice-selector-count": annotations["evidence_records"][2],
+        "exclusion-category-targets": annotations["evidence_records"][3],
+        "individual-catalogue-record": _retained_evidence(row_id),
+        "historical-identifier": _historical_identifier_evidence(row_id),
+        "basic-graph-definition": _graph_definition_evidence(),
+        "basic-graph-match": _graph_match_evidence(row_id),
+    }
+    evidence = evidence_by_type[claim_type]
+    if evidence not in annotations["evidence_records"]:
+        annotations["evidence_records"].append(evidence)
+    evidence["claim"].pop(required_field)
+    with pytest.raises(ValueError, match="missing fields"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize(
+    ("case_id", "mutation"),
+    [
+        ("source-missing-citation", "source"),
+        ("evidence-wrong-paraphrase-type", "evidence"),
+        ("publication-bool-year", "publication"),
+        ("target-duplicate-reference", "target-reference"),
+        ("rule-invalid-kind", "rule-kind"),
+        ("annotation-missing-notes", "annotation"),
+        ("claim-wrong-controlled-type", "claim-type"),
+    ],
+)
+def test_version_two_contract_mutation_matrix(
+    catalogue, annotations, case_id, mutation
+):
+    if mutation == "source":
+        annotations["sources"][0].pop("citation")
+    elif mutation == "evidence":
+        annotations["evidence_records"][0]["paraphrase"] = 1
+    elif mutation == "publication":
+        annotations["sources"][0]["publication"]["year"] = True
+    elif mutation == "target-reference":
+        ids = annotations["target"]["evidence_record_ids"]
+        ids.append(ids[0])
+    elif mutation == "rule-kind":
+        annotations["rules"][0]["kind"] = "unknown-rule-kind"
+    elif mutation == "annotation":
+        annotations["rules"] = []
+        row = _unresolved_annotation(catalogue["records"][0]["catalogue_id"])
+        row.pop("notes")
+        annotations["records"] = [row]
+    else:
+        annotations["evidence_records"][0]["claim"]["claim_type"] = []
+    with pytest.raises(ValueError, match="missing|requires|integer|duplicates|unsupported|valid"):
         generate_evidence_ledger(catalogue, annotations)
 
 

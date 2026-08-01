@@ -144,7 +144,6 @@ invalid.
 | `source-backed` | A source explicitly identifies this entry or its checked mapping. |
 | `derived-unique-match` | An aggregate historical category has one logically unique set of RICE matches, with the inference recorded. |
 | `working-hypothesis` | A researcher proposal not yet established by adequate source evidence. |
-| `ambiguous` | Evidence narrows the entry to multiple plausible mappings. |
 | `unresolved` | No adequate entry-level mapping is available. |
 
 `proposed_disposition` is `exclude`, `retain`, or `unresolved`. Unresolved does
@@ -154,6 +153,8 @@ catalogue ID and retained disposition. It is never inferred merely because an
 exclusion has not yet been found. An exclusion requires a controlled category,
 a reason, an evidence basis, and source references. No entries are currently
 marked `retain`.
+Any future retained row and its supporting individual claim must use category
+`none` and a null exclusion reason.
 An unresolved comparison status must use the complete default unresolved
 contract; it cannot carry either an exclusion or retention disposition.
 
@@ -172,6 +173,21 @@ must use the basis values appropriate to their source-backed, unique-match, or
 hypothesis contract.
 
 Confidence is controlled as `high`, `medium`, `low`, or `none`.
+
+## Version 2 validation boundary
+
+The version 2 validator is closed-world for every annotation object. It checks
+object shapes, controlled vocabularies, reference and catalogue-subject
+resolution, provenance and verification coherence, status/disposition/category
+tuples, numeric boundaries, target and count invariants, and deterministic-output
+hygiene. Unknown fields are rejected rather than copied into the ledger.
+
+Version 2 does not represent ambiguous candidate mappings. A later extension
+must record the finite candidate set, evidence for each candidate, the comparison
+relation, and why the evidence does not distinguish them. Also deferred are real
+basic-graph fixtures and assignments, the remaining thirty-two exclusions,
+retained canonical membership, canonical network numbering, and transformation
+proofs. Absence of those schema objects establishes none of those claims.
 
 ## Current population
 
