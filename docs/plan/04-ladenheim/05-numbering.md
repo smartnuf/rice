@@ -18,3 +18,11 @@ once the cited sources and reduction definitions are aligned.
 
 - Historical numbering is searchable from repository fixtures.
 - Descriptor, representative, and source references agree for every mapped item.
+
+## Progress notes
+
+- The version 2 evidence ledger reserves validated structured
+  `historical_identifiers`, per-assertion publication locators, and a nullable
+  basic-graph assignment for each record. A source-verified identifier must
+  cite precise authoritative evidence. No graph letter or historical network
+  number has been populated, so this task remains `todo`.

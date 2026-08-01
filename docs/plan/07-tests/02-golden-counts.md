@@ -42,10 +42,17 @@ Use stable generated counts to detect accidental changes.
   regeneration. The documented drift check is `.venv/bin/python
   scripts/generate_ladenheim_148.py --check`; intentional updates use the
   corresponding `--write` command followed by review of the generated diff.
+- `data/comparisons/ladenheim-148-to-108.json` is now an exact committed-artifact
+  regression for the partial canonical comparison. Tests require exact
+  regeneration, immutable structural-field equality with the structural 148
+  catalogue, and the current distribution of 8 derived exclusions, 140
+  unresolved rows, and 0 retained rows. This is partial comparison coverage:
+  the complete canonical 108 mapping and all forty entry-level exclusions
+  remain open work.
 
 ## Near-term next steps
 
-1. Add golden comparison coverage for the later canonical 108 catalogue when
-   its exclusions and historical mapping are implemented.
+1. Extend the partial comparison golden only when the remaining exclusions and
+   canonical 108 historical mapping are established with entry-level evidence.
 2. Keep future larger reduced-model golden artifacts regenerable from
    documented commands without manual post-processing.

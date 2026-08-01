@@ -1,6 +1,6 @@
 # 08-docs / 03 — Document catalogue comparisons and references
 
-Status: `todo`
+Status: `prog`
 
 ## Goal
 
@@ -43,3 +43,19 @@ Chapter 5, the Chapter 6 classification discussion, and Theorem 7.4.
 - Agreement or disagreement with historical counts is explained by named
   contracts rather than by informal distinctness language.
 - The spelling and scope of each catalogue are consistent throughout the docs.
+
+## Progress notes
+
+- Added `docs/comparisons/ladenheim-148-to-108.md` with the evidence-status and
+  disposition contract, current `8 mapped / 140 unresolved` population, source
+  inventory, explicit research gaps, and deterministic regeneration commands.
+  The comparison is not complete and the task remains open.
+- Documented the version 2 separation between authoritative evidence,
+  previous-workspace material, and computational cross-checks, including the
+  precise Morelli and Smith page/PDF-index locators currently used. Graph and
+  canonical-number mappings remain deferred.
+- The comparison document now describes the version 2 evidence and locator
+  contract, deterministic regeneration, and the partial `8 excluded / 140
+  unresolved` ledger. The remaining thirty-two exclusions, retained canonical
+  membership, basic-graph assignments, canonical numbering, and complete 108
+  reproduction remain open.
