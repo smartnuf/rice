@@ -37,4 +37,10 @@ Use the repository-wide `docs/` directory and the established slice spelling `r2
 
 ## Progress notes
 
-- Added the reviewable machine-readable summary `data/counts/small-r2-x3.json` and human summary `docs/counts/small-r2-x3.md`. Larger full and Ladenheim outputs remain future work, so this task is `prog`.
+- Added the reviewable machine-readable summary `data/counts/small-r2-x3.json`
+  and human summary `docs/counts/small-r2-x3.md`.
+- Added the deterministic 148-record structural catalogue
+  `data/counts/ladenheim-148.json`, its human contract summary
+  `docs/counts/ladenheim-148.md`, and a check/write regeneration script. The
+  full main-scope output and later Ladenheim outputs remain unfinished, so this
+  task remains `prog`.

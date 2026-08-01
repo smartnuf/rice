@@ -251,21 +251,23 @@ remains a first-class project model even though it is not the historical
 Ladenheim graph 2-isomorphism relation. It can leave bridge and other
 non-series-parallel cores after local branches and spans have been normalised.
 
-The plan also tracks three future relations:
+The plan also tracks three additional relations:
 
 - **RICE local series/parallel plus star-delta**: an augmentation of the current
   relation after admissible star-delta and delta-star moves are precisely
   defined.
-- **Colour-preserving two-terminal 2-isomorphism**: a structural relation for
-  primitive R/L/C edge-coloured graphs, with terminal reversal and internal
-  relabelling ignored and with a port-preserving formulation such as a
-  source-augmented graph if needed.
+- **Colour-preserving two-terminal 2-isomorphism**: implemented for the
+  structural Ladenheim 148 catalogue as
+  `colour-preserving-port-augmented-cycle-matroid-v1`. It adds a uniquely
+  coloured port edge and exactly canonicalizes the complete GF(2) cycle space
+  under colour-block edge permutations. It does not replace the RICE local-SP
+  relation and is not yet exposed as a public count/enum relation.
 - **Colour-preserving two-terminal 2-isomorphism plus star-delta**: the same
   structural relation after the planned star-delta augmentation.
 
-None of these future relations is implemented by the current source. The local
-series/parallel and 2-isomorphism partitions should be compared empirically; the
-plan does not assume that either one is finer or coarser.
+The star-delta variants remain unimplemented. The local series/parallel and
+2-isomorphism partitions should be compared empirically; the plan does not
+assume that either one is finer or coarser.
 
 Before any star-delta implementation, the contract must say whether the relation
 is structural or electrical, what component-value mapping is allowed, which

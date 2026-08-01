@@ -61,7 +61,7 @@ files' numeric prefixes; the files were not renamed/renumbered to match):
 
 ## 04 — Ladenheim reproduction
 
-- `todo` [Reproduce structural 148-network Ladenheim set](04-ladenheim/01-148.md)
+- `done` [Reproduce structural 148-network Ladenheim set](04-ladenheim/01-148.md)
 - `todo` [Compare with canonical 108-network Ladenheim catalogue](04-ladenheim/02-108.md)
 - `todo` [Reproduce 62 realizability-set classes](04-ladenheim/03-62.md)
 - `todo` [Identify generator sets](04-ladenheim/04-generators.md)
@@ -72,7 +72,7 @@ files' numeric prefixes; the files were not renamed/renumbered to match):
 ## 05 — Enumeration slices and counts
 
 - `done` [Small fast test slice: `R <= 2`, `L+C <= 3`](05-slices/01-r2-x3.md)
-- `todo` [Ladenheim slice: `R+L+C <= 5`, `L+C <= 2`](05-slices/02-ladenheim.md)
+- `done` [Ladenheim slice: `R+L+C <= 5`, `L+C <= 2`](05-slices/02-ladenheim.md)
 - `todo` [Morelli next-class slice: `R <= 4`, `L+C <= 3`](05-slices/03-r4-x3.md)
 - `todo` [Full current project slice: `R <= 3`, `L+C <= 5`](05-slices/04-r3-x5.md)
 - `todo` [Two-resistor high-reactive slice: `R <= 2`, `L+C <= 5`](05-slices/05-r2-x5.md)

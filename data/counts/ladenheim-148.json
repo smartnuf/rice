@@ -1,0 +1,6231 @@
+{
+  "format_version": 1,
+  "generation": {
+    "distinct_classes_by_exclusion_stage": {
+      "after_multi_element_all_resistor": 148,
+      "after_same_kind_parallel": 366,
+      "after_same_kind_series": 149,
+      "before_exclusions": 366
+    },
+    "distinct_graph_representative_forms_before_rejection": 664,
+    "distinct_structural_signatures_before_rejection": 366,
+    "rejected_source_candidates": {
+      "multi-element-all-resistor": 1,
+      "same-kind-series-pair": 622
+    },
+    "rejected_structural_classes": {
+      "multi-element-all-resistor": 1,
+      "same-kind-parallel-pair": 0,
+      "same-kind-series-pair": 217
+    },
+    "source_assignments": 1052
+  },
+  "object": "ladenheim-structural-148-catalogue",
+  "preliminary_rejections": [
+    "same-colour two-edge circuits among non-port edges",
+    "same-colour two-edge cocircuits among non-port edges in the port-augmented graph",
+    "multi-element all-resistor networks"
+  ],
+  "records": [
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R0L0C1P1|0,3",
+      "catalogue_id": "lh148-187ef8e981d523c3",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 1,
+      "l": 0,
+      "lc": 1,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 1
+        }
+      ],
+      "r": 0,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:C",
+      "rlc": 1,
+      "source_support_edges": 1,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 0,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R0L1C0P1|0,3",
+      "catalogue_id": "lh148-11e22e7cba30a62f",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 1,
+      "l": 1,
+      "lc": 1,
+      "primitive_edges": [
+        {
+          "type": "L",
+          "u": 0,
+          "v": 1
+        }
+      ],
+      "r": 0,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:L",
+      "rlc": 1,
+      "source_support_edges": 1,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 0,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R1L0C0P1|0,3",
+      "catalogue_id": "lh148-e6719ebfaa65ecc4",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 1,
+      "l": 0,
+      "lc": 0,
+      "primitive_edges": [
+        {
+          "type": "R",
+          "u": 0,
+          "v": 1
+        }
+      ],
+      "r": 1,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:R",
+      "rlc": 1,
+      "source_support_edges": 1,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R0L1C1P1|0,3,5,6",
+      "catalogue_id": "lh148-6c4acdd4ee210778",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 1,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "L",
+          "u": 0,
+          "v": 1
+        }
+      ],
+      "r": 0,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:C;0-1:L",
+      "rlc": 2,
+      "source_support_edges": 1,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R0L1C1P1|0,7",
+      "catalogue_id": "lh148-bc703386759e1fc4",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 2,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 1,
+          "v": 2
+        }
+      ],
+      "r": 0,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;1-2:L",
+      "rlc": 2,
+      "source_support_edges": 2,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R1L0C1P1|0,7",
+      "catalogue_id": "lh148-e5ab4cbd88b9cfcd",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 2,
+      "l": 0,
+      "lc": 1,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        }
+      ],
+      "r": 1,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;1-2:R",
+      "rlc": 2,
+      "source_support_edges": 2,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R1L0C1P1|0,3,5,6",
+      "catalogue_id": "lh148-e798eb374bc4314b",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 1,
+      "l": 0,
+      "lc": 1,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 1
+        }
+      ],
+      "r": 1,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:C;0-1:R",
+      "rlc": 2,
+      "source_support_edges": 1,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 0,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R1L1C0P1|0,3,5,6",
+      "catalogue_id": "lh148-33615cdca4d212bc",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 1,
+      "l": 1,
+      "lc": 1,
+      "primitive_edges": [
+        {
+          "type": "L",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 1
+        }
+      ],
+      "r": 1,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:L;0-1:R",
+      "rlc": 2,
+      "source_support_edges": 1,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 0,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R1L1C0P1|0,7",
+      "catalogue_id": "lh148-dacf11ef419be4ae",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 2,
+      "l": 1,
+      "lc": 1,
+      "primitive_edges": [
+        {
+          "type": "L",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        }
+      ],
+      "r": 1,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:L;1-2:R",
+      "rlc": 2,
+      "source_support_edges": 2,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 2,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R1L0C2P1|0,3,d,e",
+      "catalogue_id": "lh148-34b077a26df0d439",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 2,
+      "l": 0,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "C",
+          "u": 1,
+          "v": 2
+        }
+      ],
+      "r": 1,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;0-2:R;1-2:C",
+      "rlc": 3,
+      "source_support_edges": 2,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 2,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R1L0C2P1|0,7,a,d",
+      "catalogue_id": "lh148-4ec3374bd9f5ab9d",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 2,
+      "l": 0,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        }
+      ],
+      "r": 1,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:C;0-2:C;1-2:R",
+      "rlc": 3,
+      "source_support_edges": 3,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R1L1C1P1|0,7,9,e",
+      "catalogue_id": "lh148-0fa59ac63267cb6f",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 2,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "R",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 1,
+          "v": 2
+        }
+      ],
+      "r": 1,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:R;0-2:C;1-2:L",
+      "rlc": 3,
+      "source_support_edges": 3,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R1L1C1P1|0,7,a,d",
+      "catalogue_id": "lh148-6ab986b43f5cdc3d",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 2,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "L",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        }
+      ],
+      "r": 1,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:L;0-2:C;1-2:R",
+      "rlc": 3,
+      "source_support_edges": 3,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R1L1C1P1|0,7,b,c",
+      "catalogue_id": "lh148-7ad37b581984a1b6",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 2,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "L",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        }
+      ],
+      "r": 1,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:C;0-2:L;1-2:R",
+      "rlc": 3,
+      "source_support_edges": 3,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R1L1C1P1|0,5,b,e",
+      "catalogue_id": "lh148-81fbe344564bbcf0",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 2,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 1,
+          "v": 2
+        }
+      ],
+      "r": 1,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;0-2:R;1-2:L",
+      "rlc": 3,
+      "source_support_edges": 2,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R1L1C1P1|0,3,d,e",
+      "catalogue_id": "lh148-aecc406cd94c57bc",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 2,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 1,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        }
+      ],
+      "r": 1,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;1-2:L;1-2:R",
+      "rlc": 3,
+      "source_support_edges": 2,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R1L1C1P1|0,6,b,d",
+      "catalogue_id": "lh148-c4dd949e0cc0cb9a",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 2,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        }
+      ],
+      "r": 1,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;0-2:L;1-2:R",
+      "rlc": 3,
+      "source_support_edges": 2,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R1L1C1P1|0,f",
+      "catalogue_id": "lh148-ec2d91a9eb609e87",
+      "distinct_representative_forms": 3,
+      "generated_source_candidates": 6,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 1,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;1-3:L;2-3:R",
+      "rlc": 3,
+      "source_support_edges": 3,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R1L1C1P1|0,3,5,6,9,a,c,f",
+      "catalogue_id": "lh148-f6b0120a6632013a",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 1,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "L",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 1
+        }
+      ],
+      "r": 1,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:C;0-1:L;0-1:R",
+      "rlc": 3,
+      "source_support_edges": 1,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 0,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R1L2C0P1|0,3,d,e",
+      "catalogue_id": "lh148-9ce47e2e00e47d8a",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 2,
+      "l": 2,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "L",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 1,
+          "v": 2
+        }
+      ],
+      "r": 1,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:L;0-2:R;1-2:L",
+      "rlc": 3,
+      "source_support_edges": 2,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 0,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R1L2C0P1|0,7,a,d",
+      "catalogue_id": "lh148-ba7c48b07f29dd51",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 2,
+      "l": 2,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "L",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "L",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        }
+      ],
+      "r": 1,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:L;0-2:L;1-2:R",
+      "rlc": 3,
+      "source_support_edges": 3,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R2L0C1P1|0,7,9,e",
+      "catalogue_id": "lh148-2d28eb19a83067c3",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 2,
+      "l": 0,
+      "lc": 1,
+      "primitive_edges": [
+        {
+          "type": "R",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        }
+      ],
+      "r": 2,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:R;0-2:C;1-2:R",
+      "rlc": 3,
+      "source_support_edges": 3,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R2L0C1P1|0,5,b,e",
+      "catalogue_id": "lh148-f2ca341555f420ec",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 2,
+      "l": 0,
+      "lc": 1,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        }
+      ],
+      "r": 2,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;0-2:R;1-2:R",
+      "rlc": 3,
+      "source_support_edges": 2,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 0,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R2L1C0P1|0,7,9,e",
+      "catalogue_id": "lh148-26ab596fc1b6adf0",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 2,
+      "l": 1,
+      "lc": 1,
+      "primitive_edges": [
+        {
+          "type": "R",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "L",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        }
+      ],
+      "r": 2,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:R;0-2:L;1-2:R",
+      "rlc": 3,
+      "source_support_edges": 3,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 0,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R2L1C0P1|0,5,b,e",
+      "catalogue_id": "lh148-d0dd7ab06f8d9467",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 2,
+      "l": 1,
+      "lc": 1,
+      "primitive_edges": [
+        {
+          "type": "L",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        }
+      ],
+      "r": 2,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:L;0-2:R;1-2:R",
+      "rlc": 3,
+      "source_support_edges": 2,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 2,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R2L0C2P1|0,5,b,e,11,14,1a,1f",
+      "catalogue_id": "lh148-02b69ac8bc305a1f",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 2,
+      "l": 0,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        }
+      ],
+      "r": 2,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:C;0-1:R;0-2:C;1-2:R",
+      "rlc": 4,
+      "source_support_edges": 3,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 2,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R2L0C2P1|0,5,b,e,13,16,18,1d",
+      "catalogue_id": "lh148-102b49d775bd5eb8",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 2,
+      "l": 0,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        }
+      ],
+      "r": 2,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:C;0-2:C;0-2:R;1-2:R",
+      "rlc": 4,
+      "source_support_edges": 3,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 2,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R2L0C2P1|0,f,15,1a",
+      "catalogue_id": "lh148-40b10a9f485445a8",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 4,
+      "l": 0,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "C",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        }
+      ],
+      "r": 2,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;0-3:C;1-2:R;1-3:R",
+      "rlc": 4,
+      "source_support_edges": 4,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 2,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R2L0C2P1|0,7,19,1e",
+      "catalogue_id": "lh148-53e805bd81449a69",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 2,
+      "l": 0,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "C",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 2,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;0-3:R;1-3:C;2-3:R",
+      "rlc": 4,
+      "source_support_edges": 4,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 2,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R2L0C2P1|0,d,16,1b",
+      "catalogue_id": "lh148-79cf9dd24646a1a1",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 2,
+      "l": 0,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "C",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 2,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;0-3:C;1-2:R;2-3:R",
+      "rlc": 4,
+      "source_support_edges": 4,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 2,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R2L0C2P1|0,5,a,f,13,16,19,1c",
+      "catalogue_id": "lh148-c89875389584ae09",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 1,
+      "l": 0,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "C",
+          "u": 1,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        }
+      ],
+      "r": 2,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;0-2:R;1-2:C;1-2:R",
+      "rlc": 4,
+      "source_support_edges": 2,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 2,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R2L0C2P1|0,5,1b,1e",
+      "catalogue_id": "lh148-e4990ea5b5b75ace",
+      "distinct_representative_forms": 3,
+      "generated_source_candidates": 6,
+      "l": 0,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "C",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 2,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;0-2:R;1-3:C;2-3:R",
+      "rlc": 4,
+      "source_support_edges": 3,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 2,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R2L0C2P1|0,5,b,e,12,17,19,1c",
+      "catalogue_id": "lh148-fad884ca638a4191",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 2,
+      "l": 0,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "R",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "C",
+          "u": 1,
+          "v": 2
+        }
+      ],
+      "r": 2,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:R;0-2:C;0-2:R;1-2:C",
+      "rlc": 4,
+      "source_support_edges": 3,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R2L1C1P1|0,5,b,e,11,14,1a,1f",
+      "catalogue_id": "lh148-05ef035064872f96",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 2,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "L",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        }
+      ],
+      "r": 2,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:L;0-1:R;0-2:C;1-2:R",
+      "rlc": 4,
+      "source_support_edges": 3,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R2L1C1P1|0,7,19,1e",
+      "catalogue_id": "lh148-0f581053d03369e2",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 2,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 2,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;1-2:R;1-3:L;2-3:R",
+      "rlc": 4,
+      "source_support_edges": 4,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R2L1C1P1|0,5,9,c,13,16,1a,1f",
+      "catalogue_id": "lh148-21e4f9e2ce897b40",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 2,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        }
+      ],
+      "r": 2,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;0-2:L;0-2:R;1-2:R",
+      "rlc": 4,
+      "source_support_edges": 2,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R2L1C1P1|0,5,1b,1e",
+      "catalogue_id": "lh148-2fe78de797e54618",
+      "distinct_representative_forms": 3,
+      "generated_source_candidates": 6,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 2,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;1-3:L;1-3:R;2-3:R",
+      "rlc": 4,
+      "source_support_edges": 3,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R2L1C1P1|0,7,b,c,11,16,1a,1d",
+      "catalogue_id": "lh148-3419842c4cffff68",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 2,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "R",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        }
+      ],
+      "r": 2,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:R;0-2:C;0-2:L;1-2:R",
+      "rlc": 4,
+      "source_support_edges": 3,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R2L1C1P1|0,7,9,e,11,16,18,1f",
+      "catalogue_id": "lh148-343285fa13b9f794",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 2,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "L",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        }
+      ],
+      "r": 2,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:C;0-1:R;0-2:L;1-2:R",
+      "rlc": 4,
+      "source_support_edges": 3,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R2L1C1P1|0,d,16,1b",
+      "catalogue_id": "lh148-47aef84ec8f4741c",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 2,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 2,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;0-3:L;1-3:R;2-3:R",
+      "rlc": 4,
+      "source_support_edges": 4,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R2L1C1P1|0,b,15,1e",
+      "catalogue_id": "lh148-4d6ac6885b8efb8e",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 2,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "L",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 2,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;0-3:R;1-3:L;2-3:R",
+      "rlc": 4,
+      "source_support_edges": 4,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R2L1C1P1|0,d,13,1e",
+      "catalogue_id": "lh148-4fef33c7e96b6566",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 2,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "L",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 2,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;0-3:R;1-3:R;2-3:L",
+      "rlc": 4,
+      "source_support_edges": 4,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R2L1C1P1|0,5,b,e,13,16,18,1d",
+      "catalogue_id": "lh148-5a15c54aa65b57dc",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 2,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "L",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        }
+      ],
+      "r": 2,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:C;0-2:L;0-2:R;1-2:R",
+      "rlc": 4,
+      "source_support_edges": 3,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R2L1C1P1|0,5,a,f,13,16,19,1c",
+      "catalogue_id": "lh148-5cb1f71c6efaef26",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 2,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 1,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        }
+      ],
+      "r": 2,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;0-2:R;1-2:L;1-2:R",
+      "rlc": 4,
+      "source_support_edges": 2,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R2L1C1P1|0,f,11,1e",
+      "catalogue_id": "lh148-67980e5858742b26",
+      "distinct_representative_forms": 3,
+      "generated_source_candidates": 6,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "R",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 2,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:R;0-2:C;1-3:L;2-3:R",
+      "rlc": 4,
+      "source_support_edges": 4,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R2L1C1P1|0,d,17,1a",
+      "catalogue_id": "lh148-68712beedefbc0fa",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 2,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 2,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;0-3:L;1-2:R;2-3:R",
+      "rlc": 4,
+      "source_support_edges": 4,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R2L1C1P1|0,f,15,1a",
+      "catalogue_id": "lh148-74be9e435c3d69b8",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 8,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        }
+      ],
+      "r": 2,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;0-3:L;1-2:R;1-3:R",
+      "rlc": 4,
+      "source_support_edges": 4,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R2L1C1P1|0,5,b,e,12,17,19,1c",
+      "catalogue_id": "lh148-8a1860e27fc40c7f",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 2,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "R",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 1,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        }
+      ],
+      "r": 2,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:R;0-2:C;1-2:L;1-2:R",
+      "rlc": 4,
+      "source_support_edges": 3,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R2L1C1P1|0,7,9,e,12,15,1b,1c",
+      "catalogue_id": "lh148-b9495748ed67c6d6",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 2,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "R",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 1,
+          "v": 2
+        }
+      ],
+      "r": 2,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:R;0-2:C;0-2:R;1-2:L",
+      "rlc": 4,
+      "source_support_edges": 3,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R2L1C1P1|0,9,17,1e",
+      "catalogue_id": "lh148-c4a008c923682500",
+      "distinct_representative_forms": 3,
+      "generated_source_candidates": 6,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 2,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;0-2:R;1-3:L;2-3:R",
+      "rlc": 4,
+      "source_support_edges": 3,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R2L1C1P1|0,7,9,e,13,14,1a,1d",
+      "catalogue_id": "lh148-cdfcaba8001db4d0",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 2,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "L",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        }
+      ],
+      "r": 2,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:L;0-2:C;0-2:R;1-2:R",
+      "rlc": 4,
+      "source_support_edges": 3,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 0,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R2L2C0P1|0,f,15,1a",
+      "catalogue_id": "lh148-0b27d33003f81032",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 4,
+      "l": 2,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "L",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        }
+      ],
+      "r": 2,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:L;0-3:L;1-2:R;1-3:R",
+      "rlc": 4,
+      "source_support_edges": 4,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 0,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R2L2C0P1|0,5,1b,1e",
+      "catalogue_id": "lh148-354f03447076bf4a",
+      "distinct_representative_forms": 3,
+      "generated_source_candidates": 6,
+      "l": 2,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "L",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 2,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:L;0-2:R;1-3:L;2-3:R",
+      "rlc": 4,
+      "source_support_edges": 3,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 0,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R2L2C0P1|0,7,19,1e",
+      "catalogue_id": "lh148-366759d751e644ba",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 2,
+      "l": 2,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "L",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "L",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 2,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:L;0-3:R;1-3:L;2-3:R",
+      "rlc": 4,
+      "source_support_edges": 4,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 0,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R2L2C0P1|0,d,16,1b",
+      "catalogue_id": "lh148-867793e6aaaea530",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 2,
+      "l": 2,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "L",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 2,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:L;0-3:L;1-2:R;2-3:R",
+      "rlc": 4,
+      "source_support_edges": 4,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 0,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R2L2C0P1|0,5,b,e,11,14,1a,1f",
+      "catalogue_id": "lh148-a1a63778c0bb98e8",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 2,
+      "l": 2,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "L",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "L",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        }
+      ],
+      "r": 2,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:L;0-1:R;0-2:L;1-2:R",
+      "rlc": 4,
+      "source_support_edges": 3,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 0,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R2L2C0P1|0,5,b,e,12,17,19,1c",
+      "catalogue_id": "lh148-af3808b69e5fc54f",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 2,
+      "l": 2,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "R",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "L",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 1,
+          "v": 2
+        }
+      ],
+      "r": 2,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:R;0-2:L;0-2:R;1-2:L",
+      "rlc": 4,
+      "source_support_edges": 3,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 0,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R2L2C0P1|0,5,b,e,13,16,18,1d",
+      "catalogue_id": "lh148-e61bc7a989c01099",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 2,
+      "l": 2,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "L",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "L",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        }
+      ],
+      "r": 2,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:L;0-2:L;0-2:R;1-2:R",
+      "rlc": 4,
+      "source_support_edges": 3,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 0,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R2L2C0P1|0,5,a,f,13,16,19,1c",
+      "catalogue_id": "lh148-ff2aaae76070d52a",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 1,
+      "l": 2,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "L",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 1,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        }
+      ],
+      "r": 2,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:L;0-2:R;1-2:L;1-2:R",
+      "rlc": 4,
+      "source_support_edges": 2,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L0C1P1|0,7,9,e,12,15,1b,1c",
+      "catalogue_id": "lh148-5c74dc46f966ac91",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 2,
+      "l": 0,
+      "lc": 1,
+      "primitive_edges": [
+        {
+          "type": "R",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:R;0-2:C;0-2:R;1-2:R",
+      "rlc": 4,
+      "source_support_edges": 3,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L0C1P1|0,b,15,1e",
+      "catalogue_id": "lh148-92649d60cfda8308",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 2,
+      "l": 0,
+      "lc": 1,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;0-3:R;1-3:R;2-3:R",
+      "rlc": 4,
+      "source_support_edges": 4,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 0,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L1C0P1|0,7,9,e,12,15,1b,1c",
+      "catalogue_id": "lh148-13547be0432aeee6",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 2,
+      "l": 1,
+      "lc": 1,
+      "primitive_edges": [
+        {
+          "type": "R",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "L",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:R;0-2:L;0-2:R;1-2:R",
+      "rlc": 4,
+      "source_support_edges": 3,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 0,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L1C0P1|0,b,15,1e",
+      "catalogue_id": "lh148-d5533186cc51bbab",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 2,
+      "l": 1,
+      "lc": 1,
+      "primitive_edges": [
+        {
+          "type": "L",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:L;0-3:R;1-3:R;2-3:R",
+      "rlc": 4,
+      "source_support_edges": 4,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 2,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L0C2P1|0,b,17,1c,21,2a,36,3d",
+      "catalogue_id": "lh148-0c94f62def7dc462",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 2,
+      "l": 0,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "R",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "C",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:R;0-2:C;0-3:C;1-2:R;2-3:R",
+      "rlc": 5,
+      "source_support_edges": 5,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 2,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L0C2P1|0,9,13,1a,27,2e,34,3d",
+      "catalogue_id": "lh148-0d78e9c38dc5b94e",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 2,
+      "l": 0,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "C",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;0-2:R;0-3:C;1-3:R;2-3:R",
+      "rlc": 5,
+      "source_support_edges": 4,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 2,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L0C2P1|0,b,15,1e,21,2a,34,3f",
+      "catalogue_id": "lh148-3398b6c5b497ac1f",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 4,
+      "l": 0,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "R",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "C",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:R;0-2:C;0-3:C;1-2:R;1-3:R",
+      "rlc": 5,
+      "source_support_edges": 5,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 2,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L0C2P1|0,7,19,1e,2a,2d,33,34",
+      "catalogue_id": "lh148-47ee32380ab1b406",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 2,
+      "l": 0,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "C",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;0-3:C;1-2:R;1-3:R;2-3:R",
+      "rlc": 5,
+      "source_support_edges": 5,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 2,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L0C2P1|0,1b,2d,36",
+      "catalogue_id": "lh148-4a925dd55dc8da19",
+      "distinct_representative_forms": 3,
+      "generated_source_candidates": 4,
+      "l": 0,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "C",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 4
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 4
+        },
+        {
+          "type": "R",
+          "u": 3,
+          "v": 4
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;0-3:C;1-4:R;2-4:R;3-4:R",
+      "rlc": 5,
+      "source_support_edges": 5,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 2,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L0C2P1|0,b,15,1e,23,28,36,3d",
+      "catalogue_id": "lh148-4cf39db00710fb1c",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 2,
+      "l": 0,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:C;0-2:C;0-3:R;1-3:R;2-3:R",
+      "rlc": 5,
+      "source_support_edges": 5,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 2,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L0C2P1|0,7,9,e,12,15,1b,1c,23,24,2a,2d,31,36,38,3f",
+      "catalogue_id": "lh148-5278112fab778336",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 1,
+      "l": 0,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "R",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "C",
+          "u": 1,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:R;0-2:C;0-2:R;1-2:C;1-2:R",
+      "rlc": 5,
+      "source_support_edges": 3,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 2,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L0C2P1|0,9,12,1b,27,2e,35,3c",
+      "catalogue_id": "lh148-5af86517070376b6",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 3,
+      "l": 0,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "C",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;0-2:R;1-3:C;1-3:R;2-3:R",
+      "rlc": 5,
+      "source_support_edges": 3,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 2,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L0C2P1|0,9,13,1a,25,2c,36,3f",
+      "catalogue_id": "lh148-5c71fb151bc82017",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 2,
+      "l": 0,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "C",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;0-2:R;0-3:C;1-2:R;2-3:R",
+      "rlc": 5,
+      "source_support_edges": 4,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 2,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L0C2P1|0,b,15,1e,27,2c,32,39",
+      "catalogue_id": "lh148-5d2f2ceb56fb8299",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 2,
+      "l": 0,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        },
+        {
+          "type": "C",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;0-3:R;1-2:R;1-3:C;2-3:R",
+      "rlc": 5,
+      "source_support_edges": 5,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 2,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L0C2P1|0,7,9,e,12,15,1b,1c,21,26,28,2f,33,34,3a,3d",
+      "catalogue_id": "lh148-5d5fb848a810c9cb",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 2,
+      "l": 0,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:C;0-1:R;0-2:C;0-2:R;1-2:R",
+      "rlc": 5,
+      "source_support_edges": 3,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 2,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L0C2P1|0,b,15,1e,22,29,37,3c",
+      "catalogue_id": "lh148-90a706c48f568ac5",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 2,
+      "l": 0,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "R",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "C",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:R;0-2:C;0-3:R;1-3:C;2-3:R",
+      "rlc": 5,
+      "source_support_edges": 5,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 2,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L0C2P1|0,b,17,1c,25,2e,32,39",
+      "catalogue_id": "lh148-9c9bca1b4c7a5c48",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 4,
+      "l": 0,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "C",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;0-3:R;1-2:R;1-3:R;2-3:C",
+      "rlc": 5,
+      "source_support_edges": 5,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 2,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L0C2P1|0,9,13,1a,26,2f,35,3c",
+      "catalogue_id": "lh148-a99495648823d8f1",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 2,
+      "l": 0,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "C",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;0-2:R;0-3:R;1-3:R;2-3:C",
+      "rlc": 5,
+      "source_support_edges": 4,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 2,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L0C2P1|0,9,17,1e,23,2a,34,3d",
+      "catalogue_id": "lh148-cd4b770f5478f872",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 8,
+      "l": 0,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "C",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;0-2:R;0-3:C;1-2:R;1-3:R",
+      "rlc": 5,
+      "source_support_edges": 4,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 2,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L0C2P1|0,7,9,e,32,35,3b,3c",
+      "catalogue_id": "lh148-dffc6c65dc65c0ec",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 2,
+      "l": 0,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "C",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;0-2:R;0-3:R;1-3:C;2-3:R",
+      "rlc": 5,
+      "source_support_edges": 4,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 2,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L0C2P1|0,9,17,1e,22,2b,35,3c",
+      "catalogue_id": "lh148-e7e64ac1f0778b53",
+      "distinct_representative_forms": 3,
+      "generated_source_candidates": 6,
+      "l": 0,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "R",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "C",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:R;0-2:C;0-2:R;1-3:C;2-3:R",
+      "rlc": 5,
+      "source_support_edges": 4,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 2,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L0C2P1|0,9,16,1f,23,2a,35,3c",
+      "catalogue_id": "lh148-f54f327274744e9f",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 2,
+      "l": 0,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        },
+        {
+          "type": "C",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;0-2:R;1-2:R;1-3:C;2-3:R",
+      "rlc": 5,
+      "source_support_edges": 4,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 2,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L0C2P1|0,b,35,3e",
+      "catalogue_id": "lh148-f684b6a0ad3114c4",
+      "distinct_representative_forms": 6,
+      "generated_source_candidates": 8,
+      "l": 0,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "C",
+          "u": 1,
+          "v": 4
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 3,
+          "v": 4
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;0-3:R;1-4:C;2-3:R;3-4:R",
+      "rlc": 5,
+      "source_support_edges": 5,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 2,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L0C2P1|0,b,15,1e,26,2d,33,38",
+      "catalogue_id": "lh148-f942f37eed38400a",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 2,
+      "l": 0,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "C",
+          "u": 1,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;0-3:R;1-2:C;1-3:R;2-3:R",
+      "rlc": 5,
+      "source_support_edges": 5,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L1C1P1|0,1b,25,3e",
+      "catalogue_id": "lh148-045c192be4de396d",
+      "distinct_representative_forms": 6,
+      "generated_source_candidates": 6,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "L",
+          "u": 2,
+          "v": 4
+        },
+        {
+          "type": "R",
+          "u": 3,
+          "v": 4
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;0-3:R;1-3:R;2-4:L;3-4:R",
+      "rlc": 5,
+      "source_support_edges": 5,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L1C1P1|0,b,14,1f,25,2e,31,3a",
+      "catalogue_id": "lh148-061515c41719c7cc",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 2,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;0-2:R;1-2:R;1-3:L;2-3:R",
+      "rlc": 5,
+      "source_support_edges": 4,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L1C1P1|0,7,9,e,12,15,1b,1c,23,24,2a,2d,31,36,38,3f",
+      "catalogue_id": "lh148-0d128fdfe5562143",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 2,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "R",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 1,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:R;0-2:C;0-2:R;1-2:L;1-2:R",
+      "rlc": 5,
+      "source_support_edges": 3,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L1C1P1|0,b,15,1e,27,2c,32,39",
+      "catalogue_id": "lh148-11e619a8865be381",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 4,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;0-3:R;1-2:R;1-3:L;2-3:R",
+      "rlc": 5,
+      "source_support_edges": 5,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L1C1P1|0,b,15,1e,21,2a,34,3f",
+      "catalogue_id": "lh148-1c63245475d83fd7",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 8,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "R",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:R;0-2:C;0-3:L;1-2:R;1-3:R",
+      "rlc": 5,
+      "source_support_edges": 5,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L1C1P1|0,f,13,1c,25,2a,36,39",
+      "catalogue_id": "lh148-1ea888a6b965ac39",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 4,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "L",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "C",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:L;0-3:R;1-2:R;1-3:R;2-3:C",
+      "rlc": 5,
+      "source_support_edges": 5,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L1C1P1|0,b,15,1e,26,2d,33,38",
+      "catalogue_id": "lh148-226210ea8617797f",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 4,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "L",
+          "u": 1,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;0-3:R;1-2:L;1-3:R;2-3:R",
+      "rlc": 5,
+      "source_support_edges": 5,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L1C1P1|0,13,2d,3e",
+      "catalogue_id": "lh148-2a3f20a9bcd73817",
+      "distinct_representative_forms": 6,
+      "generated_source_candidates": 8,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "L",
+          "u": 1,
+          "v": 4
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 3,
+          "v": 4
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;0-3:R;1-4:L;2-3:R;3-4:R",
+      "rlc": 5,
+      "source_support_edges": 5,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L1C1P1|0,b,15,1e,25,2e,30,3b",
+      "catalogue_id": "lh148-3bf13e1a1ad41cd5",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 2,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "L",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:C;0-2:L;0-3:R;1-3:R;2-3:R",
+      "rlc": 5,
+      "source_support_edges": 5,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L1C1P1|0,b,13,18,25,2e,36,3d",
+      "catalogue_id": "lh148-45d19cefc5b496ce",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 2,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;0-2:L;0-3:R;1-3:R;2-3:R",
+      "rlc": 5,
+      "source_support_edges": 4,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L1C1P1|0,9,17,1e,23,2a,34,3d",
+      "catalogue_id": "lh148-4b5da2aa5cfac0cc",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 8,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;0-3:L;0-3:R;1-2:R;1-3:R",
+      "rlc": 5,
+      "source_support_edges": 4,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L1C1P1|0,7,19,1e,2a,2d,33,34",
+      "catalogue_id": "lh148-4ce178b19ddf0bc8",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 4,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;0-3:L;1-2:R;1-3:R;2-3:R",
+      "rlc": 5,
+      "source_support_edges": 5,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L1C1P1|0,7,11,16,2a,2d,3b,3c",
+      "catalogue_id": "lh148-53370c9917eea4d0",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 2,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "L",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;0-2:R;0-3:R;1-3:L;2-3:R",
+      "rlc": 5,
+      "source_support_edges": 4,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L1C1P1|0,7,9,e,12,15,1b,1c,22,25,2b,2c,30,37,39,3e",
+      "catalogue_id": "lh148-534a4f02579831e9",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 2,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "L",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:C;0-1:R;0-2:L;0-2:R;1-2:R",
+      "rlc": 5,
+      "source_support_edges": 3,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L1C1P1|0,1b,2d,36",
+      "catalogue_id": "lh148-539216b2b01390c9",
+      "distinct_representative_forms": 4,
+      "generated_source_candidates": 8,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 4
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 4
+        },
+        {
+          "type": "R",
+          "u": 3,
+          "v": 4
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;0-3:L;1-4:R;2-4:R;3-4:R",
+      "rlc": 5,
+      "source_support_edges": 5,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L1C1P1|0,7,9,e,32,35,3b,3c",
+      "catalogue_id": "lh148-5bdd1d37b2007a4c",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 2,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;1-2:R;1-3:L;1-3:R;2-3:R",
+      "rlc": 5,
+      "source_support_edges": 4,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L1C1P1|0,7,9,e,11,16,18,1f,22,25,2b,2c,33,34,3a,3d",
+      "catalogue_id": "lh148-635770ede187bca9",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 2,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "R",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:R;0-2:C;0-2:L;0-2:R;1-2:R",
+      "rlc": 5,
+      "source_support_edges": 3,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L1C1P1|0,b,15,1e,22,29,37,3c",
+      "catalogue_id": "lh148-6456494eb91d8897",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 2,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "R",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "L",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:R;0-2:C;0-3:R;1-3:L;2-3:R",
+      "rlc": 5,
+      "source_support_edges": 5,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L1C1P1|0,9,13,1a,26,2f,35,3c",
+      "catalogue_id": "lh148-6601ce95cb4866ea",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 2,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "L",
+          "u": 2,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;0-3:R;1-3:R;2-3:L;2-3:R",
+      "rlc": 5,
+      "source_support_edges": 4,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L1C1P1|0,b,11,1a,26,2d,37,3c",
+      "catalogue_id": "lh148-66a0391fd4dc6879",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 2,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "L",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;0-2:R;0-3:R;1-3:R;2-3:L",
+      "rlc": 5,
+      "source_support_edges": 4,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L1C1P1|0,9,13,1a,25,2c,36,3f",
+      "catalogue_id": "lh148-6bd2964e8fab676a",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 2,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;0-3:L;0-3:R;1-3:R;2-3:R",
+      "rlc": 5,
+      "source_support_edges": 4,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L1C1P1|0,b,17,1c,25,2e,32,39",
+      "catalogue_id": "lh148-6ce044778ba295df",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 4,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "L",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;0-3:R;1-2:R;1-3:R;2-3:L",
+      "rlc": 5,
+      "source_support_edges": 5,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L1C1P1|0,9,13,1a,27,2e,34,3d",
+      "catalogue_id": "lh148-75a667eae30e9bd2",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 2,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;0-3:L;0-3:R;1-2:R;2-3:R",
+      "rlc": 5,
+      "source_support_edges": 4,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L1C1P1|0,9,17,1e,22,2b,35,3c",
+      "catalogue_id": "lh148-7f69006023a9ba91",
+      "distinct_representative_forms": 3,
+      "generated_source_candidates": 6,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "R",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:R;0-2:C;1-3:L;1-3:R;2-3:R",
+      "rlc": 5,
+      "source_support_edges": 4,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L1C1P1|0,b,15,1e,23,28,36,3d",
+      "catalogue_id": "lh148-81ffdfa53c07c484",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 2,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "L",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:L;0-2:C;0-3:R;1-3:R;2-3:R",
+      "rlc": 5,
+      "source_support_edges": 5,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L1C1P1|0,f,11,1e,22,2d,33,3c",
+      "catalogue_id": "lh148-8324b82e90bde552",
+      "distinct_representative_forms": 3,
+      "generated_source_candidates": 6,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "R",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:R;0-2:C;0-2:R;1-3:L;2-3:R",
+      "rlc": 5,
+      "source_support_edges": 4,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L1C1P1|0,7,9,e,12,15,1b,1c,21,26,28,2f,33,34,3a,3d",
+      "catalogue_id": "lh148-9e140322bfd33a22",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 2,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "L",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:L;0-1:R;0-2:C;0-2:R;1-2:R",
+      "rlc": 5,
+      "source_support_edges": 3,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L1C1P1|0,b,35,3e",
+      "catalogue_id": "lh148-a124f387d970b947",
+      "distinct_representative_forms": 6,
+      "generated_source_candidates": 8,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 4
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 4
+        },
+        {
+          "type": "R",
+          "u": 3,
+          "v": 4
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;1-3:L;1-4:R;2-4:R;3-4:R",
+      "rlc": 5,
+      "source_support_edges": 5,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L1C1P1|0,7,19,1e,22,25,3b,3c",
+      "catalogue_id": "lh148-aefb4b8fe01749c6",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 2,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "R",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "L",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:R;0-2:C;0-3:R;1-3:R;2-3:L",
+      "rlc": 5,
+      "source_support_edges": 5,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L1C1P1|0,b,11,1a,25,2e,34,3f",
+      "catalogue_id": "lh148-cd27971291cfaf9a",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 2,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;0-2:R;0-3:L;1-2:R;2-3:R",
+      "rlc": 5,
+      "source_support_edges": 4,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L1C1P1|0,9,12,1b,27,2e,35,3c",
+      "catalogue_id": "lh148-ce4e4bbc3cb5bc7b",
+      "distinct_representative_forms": 3,
+      "generated_source_candidates": 6,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;0-2:R;1-3:L;1-3:R;2-3:R",
+      "rlc": 5,
+      "source_support_edges": 3,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L1C1P1|0,b,15,1e,24,2f,31,3a",
+      "catalogue_id": "lh148-d640e5a51b7f9267",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 2,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "R",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:R;0-2:C;1-2:R;1-3:L;2-3:R",
+      "rlc": 5,
+      "source_support_edges": 5,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L1C1P1|0,f,11,1e,23,2c,32,3d",
+      "catalogue_id": "lh148-d7f4be8bd126187c",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 8,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;0-2:R;0-3:L;1-2:R;1-3:R",
+      "rlc": 5,
+      "source_support_edges": 4,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L1C1P1|0,f,13,1c,21,2e,32,3d",
+      "catalogue_id": "lh148-d83685d4a7f0cd41",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 2,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "R",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:R;0-2:C;0-3:L;1-2:R;2-3:R",
+      "rlc": 5,
+      "source_support_edges": 5,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L1C1P1|0,b,11,1a,27,2c,36,3d",
+      "catalogue_id": "lh148-e5953a9cf3d9cfa6",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 2,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;0-2:R;0-3:L;1-3:R;2-3:R",
+      "rlc": 5,
+      "source_support_edges": 4,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L1C1P1|0,b,17,1c,21,2a,36,3d",
+      "catalogue_id": "lh148-e965ee7277ab24b2",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 2,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "R",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:R;0-2:C;0-3:L;1-3:R;2-3:R",
+      "rlc": 5,
+      "source_support_edges": 5,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L1C1P1|0,9,16,1f,23,2a,35,3c",
+      "catalogue_id": "lh148-ee8c722fe8f18278",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 2,
+      "l": 1,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "L",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;0-3:R;1-3:L;1-3:R;2-3:R",
+      "rlc": 5,
+      "source_support_edges": 4,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 0,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L2C0P1|0,9,13,1a,25,2c,36,3f",
+      "catalogue_id": "lh148-18bfb3d8c33bbf58",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 2,
+      "l": 2,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "L",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:L;0-2:R;0-3:L;1-2:R;2-3:R",
+      "rlc": 5,
+      "source_support_edges": 4,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 0,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L2C0P1|0,9,17,1e,22,2b,35,3c",
+      "catalogue_id": "lh148-1928fc6c03828cba",
+      "distinct_representative_forms": 3,
+      "generated_source_candidates": 6,
+      "l": 2,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "R",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "L",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:R;0-2:L;0-2:R;1-3:L;2-3:R",
+      "rlc": 5,
+      "source_support_edges": 4,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 0,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L2C0P1|0,b,17,1c,25,2e,32,39",
+      "catalogue_id": "lh148-2f4c974bc7831e4a",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 4,
+      "l": 2,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "L",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "L",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:L;0-3:R;1-2:R;1-3:R;2-3:L",
+      "rlc": 5,
+      "source_support_edges": 5,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 0,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L2C0P1|0,b,15,1e,21,2a,34,3f",
+      "catalogue_id": "lh148-369eb555ae634258",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 4,
+      "l": 2,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "R",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "L",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:R;0-2:L;0-3:L;1-2:R;1-3:R",
+      "rlc": 5,
+      "source_support_edges": 5,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 0,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L2C0P1|0,9,13,1a,27,2e,34,3d",
+      "catalogue_id": "lh148-3a5b171b0d2af32a",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 2,
+      "l": 2,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "L",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:L;0-2:R;0-3:L;1-3:R;2-3:R",
+      "rlc": 5,
+      "source_support_edges": 4,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 0,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L2C0P1|0,7,9,e,32,35,3b,3c",
+      "catalogue_id": "lh148-3a7ebfebce0db0a4",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 2,
+      "l": 2,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "L",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "L",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:L;0-2:R;0-3:R;1-3:L;2-3:R",
+      "rlc": 5,
+      "source_support_edges": 4,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 0,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L2C0P1|0,9,13,1a,26,2f,35,3c",
+      "catalogue_id": "lh148-3ae4767397da2b12",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 2,
+      "l": 2,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "L",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "L",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:L;0-2:R;0-3:R;1-3:R;2-3:L",
+      "rlc": 5,
+      "source_support_edges": 4,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 0,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L2C0P1|0,9,17,1e,23,2a,34,3d",
+      "catalogue_id": "lh148-44371b2082f84fcf",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 8,
+      "l": 2,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "L",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:L;0-2:R;0-3:L;1-2:R;1-3:R",
+      "rlc": 5,
+      "source_support_edges": 4,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 0,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L2C0P1|0,b,15,1e,22,29,37,3c",
+      "catalogue_id": "lh148-44baa015c7dbccf2",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 2,
+      "l": 2,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "R",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "L",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "L",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:R;0-2:L;0-3:R;1-3:L;2-3:R",
+      "rlc": 5,
+      "source_support_edges": 5,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 0,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L2C0P1|0,9,12,1b,27,2e,35,3c",
+      "catalogue_id": "lh148-4e1e2e1aa376f921",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 3,
+      "l": 2,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "L",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:L;0-2:R;1-3:L;1-3:R;2-3:R",
+      "rlc": 5,
+      "source_support_edges": 3,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 0,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L2C0P1|0,b,35,3e",
+      "catalogue_id": "lh148-5eb31698974d07f8",
+      "distinct_representative_forms": 6,
+      "generated_source_candidates": 8,
+      "l": 2,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "L",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "L",
+          "u": 1,
+          "v": 4
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 3,
+          "v": 4
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:L;0-3:R;1-4:L;2-3:R;3-4:R",
+      "rlc": 5,
+      "source_support_edges": 5,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 0,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L2C0P1|0,1b,2d,36",
+      "catalogue_id": "lh148-68430bbb448b9991",
+      "distinct_representative_forms": 3,
+      "generated_source_candidates": 4,
+      "l": 2,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "L",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 4
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 4
+        },
+        {
+          "type": "R",
+          "u": 3,
+          "v": 4
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:L;0-3:L;1-4:R;2-4:R;3-4:R",
+      "rlc": 5,
+      "source_support_edges": 5,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 0,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L2C0P1|0,7,19,1e,2a,2d,33,34",
+      "catalogue_id": "lh148-7e24311a6fea4531",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 2,
+      "l": 2,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "L",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:L;0-3:L;1-2:R;1-3:R;2-3:R",
+      "rlc": 5,
+      "source_support_edges": 5,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 0,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L2C0P1|0,b,15,1e,23,28,36,3d",
+      "catalogue_id": "lh148-84fedcab1cc7f77d",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 2,
+      "l": 2,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "L",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "L",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:L;0-2:L;0-3:R;1-3:R;2-3:R",
+      "rlc": 5,
+      "source_support_edges": 5,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 0,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L2C0P1|0,7,9,e,12,15,1b,1c,21,26,28,2f,33,34,3a,3d",
+      "catalogue_id": "lh148-a1e6c042c7d77e41",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 2,
+      "l": 2,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "L",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "L",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:L;0-1:R;0-2:L;0-2:R;1-2:R",
+      "rlc": 5,
+      "source_support_edges": 3,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 0,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L2C0P1|0,9,16,1f,23,2a,35,3c",
+      "catalogue_id": "lh148-a33c22b118699e51",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 2,
+      "l": 2,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "L",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:L;0-2:R;1-2:R;1-3:L;2-3:R",
+      "rlc": 5,
+      "source_support_edges": 4,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 0,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L2C0P1|0,b,15,1e,27,2c,32,39",
+      "catalogue_id": "lh148-c27124d195b882ef",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 2,
+      "l": 2,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "L",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:L;0-3:R;1-2:R;1-3:L;2-3:R",
+      "rlc": 5,
+      "source_support_edges": 5,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 0,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L2C0P1|0,b,17,1c,21,2a,36,3d",
+      "catalogue_id": "lh148-ceda8e624931aa86",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 2,
+      "l": 2,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "R",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "L",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:R;0-2:L;0-3:L;1-2:R;2-3:R",
+      "rlc": 5,
+      "source_support_edges": 5,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 0,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L2C0P1|0,7,9,e,12,15,1b,1c,23,24,2a,2d,31,36,38,3f",
+      "catalogue_id": "lh148-debfbc02c5650a94",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 1,
+      "l": 2,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "R",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "L",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "L",
+          "u": 1,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:R;0-2:L;0-2:R;1-2:L;1-2:R",
+      "rlc": 5,
+      "source_support_edges": 3,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 0,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R3L2C0P1|0,b,15,1e,26,2d,33,38",
+      "catalogue_id": "lh148-f40bfca59082ff8d",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 2,
+      "l": 2,
+      "lc": 2,
+      "primitive_edges": [
+        {
+          "type": "L",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "L",
+          "u": 1,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 3,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:L;0-3:R;1-2:L;1-3:R;2-3:R",
+      "rlc": 5,
+      "source_support_edges": 5,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R4L0C1P1|0,7,19,1e,22,25,3b,3c",
+      "catalogue_id": "lh148-42d941084ce5f049",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 2,
+      "l": 0,
+      "lc": 1,
+      "primitive_edges": [
+        {
+          "type": "R",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 4,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:R;0-2:C;0-3:R;1-3:R;2-3:R",
+      "rlc": 5,
+      "source_support_edges": 5,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R4L0C1P1|0,f,13,1c,25,2a,36,39",
+      "catalogue_id": "lh148-8e314b1dc699f2f3",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 1,
+      "l": 0,
+      "lc": 1,
+      "primitive_edges": [
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "C",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 4,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:R;0-3:R;1-2:R;1-3:R;2-3:C",
+      "rlc": 5,
+      "source_support_edges": 5,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R4L0C1P1|0,7,11,16,2a,2d,3b,3c",
+      "catalogue_id": "lh148-a134c33979433ce6",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 2,
+      "l": 0,
+      "lc": 1,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 4,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;0-2:R;0-3:R;1-3:R;2-3:R",
+      "rlc": 5,
+      "source_support_edges": 4,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 1,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R4L0C1P1|0,7,19,1e,2a,2d,33,34",
+      "catalogue_id": "lh148-f0ea8600831b22d5",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 4,
+      "l": 0,
+      "lc": 1,
+      "primitive_edges": [
+        {
+          "type": "C",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 4,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:C;0-3:R;1-2:R;1-3:R;2-3:R",
+      "rlc": 5,
+      "source_support_edges": 5,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 0,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R4L1C0P1|0,7,11,16,2a,2d,3b,3c",
+      "catalogue_id": "lh148-82299f914f077df2",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 2,
+      "l": 1,
+      "lc": 1,
+      "primitive_edges": [
+        {
+          "type": "L",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 4,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:L;0-2:R;0-3:R;1-3:R;2-3:R",
+      "rlc": 5,
+      "source_support_edges": 4,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 0,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R4L1C0P1|0,7,19,1e,2a,2d,33,34",
+      "catalogue_id": "lh148-932f408750ebae4c",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 4,
+      "l": 1,
+      "lc": 1,
+      "primitive_edges": [
+        {
+          "type": "L",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 4,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:L;0-3:R;1-2:R;1-3:R;2-3:R",
+      "rlc": 5,
+      "source_support_edges": 5,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 0,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R4L1C0P1|0,7,19,1e,22,25,3b,3c",
+      "catalogue_id": "lh148-f0feabf623eadb0d",
+      "distinct_representative_forms": 2,
+      "generated_source_candidates": 2,
+      "l": 1,
+      "lc": 1,
+      "primitive_edges": [
+        {
+          "type": "R",
+          "u": 0,
+          "v": 1
+        },
+        {
+          "type": "L",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 4,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-1:R;0-2:L;0-3:R;1-3:R;2-3:R",
+      "rlc": 5,
+      "source_support_edges": 5,
+      "terminals": [
+        0,
+        1
+      ]
+    },
+    {
+      "c": 0,
+      "canonical_structural_signature": "colour-preserving-port-augmented-cycle-matroid-v1|R4L1C0P1|0,f,13,1c,25,2a,36,39",
+      "catalogue_id": "lh148-f78bad46fde941ae",
+      "distinct_representative_forms": 1,
+      "generated_source_candidates": 1,
+      "l": 1,
+      "lc": 1,
+      "primitive_edges": [
+        {
+          "type": "R",
+          "u": 0,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 0,
+          "v": 3
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 2
+        },
+        {
+          "type": "R",
+          "u": 1,
+          "v": 3
+        },
+        {
+          "type": "L",
+          "u": 2,
+          "v": 3
+        }
+      ],
+      "r": 4,
+      "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+      "representative_descriptor": "0-2:R;0-3:R;1-2:R;1-3:R;2-3:L",
+      "rlc": 5,
+      "source_support_edges": 5,
+      "terminals": [
+        0,
+        1
+      ]
+    }
+  ],
+  "relation": {
+    "definition": "Equality of complete GF(2) cycle spaces of port-augmented primitive graphs under permutations within R, L, C, and uniquely fixed P colour blocks.",
+    "name": "colour-preserving-port-augmented-cycle-matroid-v1"
+  },
+  "source_scope": {
+    "max_lc": 2,
+    "max_rlc": 5,
+    "profile": "ladenheim-structural-region"
+  },
+  "total": 148,
+  "totals_by_composition": {
+    "R0L0C1": 1,
+    "R0L1C0": 1,
+    "R0L1C1": 2,
+    "R1L0C0": 1,
+    "R1L0C1": 2,
+    "R1L0C2": 2,
+    "R1L1C0": 2,
+    "R1L1C1": 8,
+    "R1L2C0": 2,
+    "R2L0C1": 2,
+    "R2L0C2": 8,
+    "R2L1C0": 2,
+    "R2L1C1": 18,
+    "R2L2C0": 8,
+    "R3L0C1": 2,
+    "R3L0C2": 20,
+    "R3L1C0": 2,
+    "R3L1C1": 37,
+    "R3L2C0": 20,
+    "R4L0C1": 4,
+    "R4L1C0": 4
+  },
+  "totals_by_primitive_elements": {
+    "1": 3,
+    "2": 6,
+    "3": 16,
+    "4": 38,
+    "5": 85
+  }
+}

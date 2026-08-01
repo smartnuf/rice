@@ -53,10 +53,14 @@ Chapter 5, the Chapter 6 classification discussion, and Theorem 7.4.
 - **RICE local series/parallel plus star-delta**: a planned augmentation of the
   implemented relation after an admissibility contract for star-delta and
   delta-star moves is defined.
-- **Colour-preserving two-terminal 2-isomorphism**: a planned structural
-  relation on primitive R/L/C edge-coloured graphs, with terminal reversal and
-  internal relabelling ignored and with a port-preserving treatment such as a
-  source-augmented graph if needed.
+- **Colour-preserving two-terminal 2-isomorphism**: implemented for the 148
+  starting catalogue as
+  `colour-preserving-port-augmented-cycle-matroid-v1`. Add one uniquely
+  P-coloured edge between the terminals, enumerate the complete GF(2) cycle
+  space, permute edge positions only within R, L, C, and P colour blocks, and
+  select the least encoding. The unique P edge fixes the port. This exact
+  augmented coloured-cycle-matroid equality is separate from the representative
+  graph descriptor and from RICE local-SP reduction.
 - **Colour-preserving two-terminal 2-isomorphism plus star-delta**: a planned
   augmentation of the 2-isomorphism relation using the same admissibility
   contract.
@@ -79,3 +83,11 @@ that leave the primitive RLC network class.
 - The four named contracts above are reflected in model, result, and plan docs.
 - The historical 148, 108, and 62 targets are stated without conflating them.
 - CLI/API design remains deferred until the contracts and outputs are precise.
+
+## Progress notes
+
+- The structural 148 relation, scope, preliminary circuit/cocircuit exclusions,
+  and deterministic output contract are now executable and documented. This
+  task remains `prog`: star-delta augmented contracts and the planned
+  cross-relation comparison are still open, and no public count/enum object has
+  been added.
