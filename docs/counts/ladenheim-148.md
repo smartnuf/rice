@@ -29,6 +29,12 @@ labels, terminal reversal, undirected edge orientation, and parallel-edge
 ordering. It selects an auditable primitive graph; it is not the structural
 identity signature.
 
+Each catalogue record also names the exact selected `source_assignment_id`,
+`source_support_id`, and source support-edge count. The representative is
+chosen by descriptor first, then by those stable source identifiers. These
+fields are audit provenance for the selected graph only; they do not define
+structural identity and do not contribute to the catalogue ID.
+
 ## Preliminary exclusions
 
 Before a structural class is accepted, the generator rejects a same-colour

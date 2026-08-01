@@ -18,7 +18,13 @@ from typing import Iterable
 
 import networkx as nx
 
-from .core import CountQuery, enum_assignments, enum_supports
+from .core import (
+    AssignmentRecord,
+    CountQuery,
+    SupportRecord,
+    enum_assignments,
+    enum_supports,
+)
 
 
 RELATION_NAME = "colour-preserving-port-augmented-cycle-matroid-v1"
@@ -274,6 +280,17 @@ def _expand_assignment(
     return PrimitiveNetwork((0, 1), tuple(edges))
 
 
+def _primitive_network_from_source(
+    assignment: AssignmentRecord, support: SupportRecord
+) -> PrimitiveNetwork:
+    """Expand one exact source assignment on its referenced support."""
+
+    if assignment.support_id != support.support_id:
+        raise ValueError("assignment and support identifiers do not match")
+    expanded = _expand_assignment(assignment.edge_assignments)
+    return PrimitiveNetwork(support.terminals, expanded.edges)
+
+
 def generate_ladenheim_148_catalogue() -> dict[str, object]:
     """Generate the deterministic structural catalogue and provenance."""
 
@@ -286,8 +303,7 @@ def generate_ladenheim_148_catalogue() -> dict[str, object]:
     signatures_by_rejection: defaultdict[str, set[str]] = defaultdict(set)
     for assignment in assignments:
         support = supports[assignment.support_id]
-        network = _expand_assignment(assignment.edge_assignments)
-        network = PrimitiveNetwork(support.terminals, network.edges)
+        network = _primitive_network_from_source(assignment, support)
         signature = canonical_structural_signature(network).stable_string()
         descriptor = representative_descriptor(network)
         generated_forms.add((signature, descriptor))
@@ -302,12 +318,17 @@ def generate_ladenheim_148_catalogue() -> dict[str, object]:
         bucket["candidates"] = int(bucket["candidates"]) + 1
         bucket["forms"].add(descriptor)  # type: ignore[union-attr]
         bucket["representatives"].append(  # type: ignore[union-attr]
-            (descriptor, assignment.source_support_edges)
+            (
+                descriptor,
+                assignment.assignment_id,
+                assignment.support_id,
+                assignment.source_support_edges,
+            )
         )
 
     records = []
     for signature, bucket in classes.items():
-        descriptor, support_edges = min(
+        descriptor, assignment_id, support_id, support_edges = min(
             bucket["representatives"]  # type: ignore[arg-type]
         )
         network = network_from_descriptor(descriptor)
@@ -330,6 +351,8 @@ def generate_ladenheim_148_catalogue() -> dict[str, object]:
                 "c": capacitors,
                 "lc": inductors + capacitors,
                 "rlc": resistors + inductors + capacitors,
+                "source_assignment_id": assignment_id,
+                "source_support_id": support_id,
                 "source_support_edges": support_edges,
                 "generated_source_candidates": bucket["candidates"],
                 "distinct_representative_forms": len(bucket["forms"]),

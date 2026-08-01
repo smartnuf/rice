@@ -46,7 +46,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:C",
       "rlc": 1,
+      "source_assignment_id": "assignment-c1ec96599d046a4b",
       "source_support_edges": 1,
+      "source_support_id": "support-4cdf42b00cd7dad6",
       "terminals": [
         0,
         1
@@ -71,7 +73,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:L",
       "rlc": 1,
+      "source_assignment_id": "assignment-9b9633c7cd491127",
       "source_support_edges": 1,
+      "source_support_id": "support-4cdf42b00cd7dad6",
       "terminals": [
         0,
         1
@@ -96,7 +100,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:R",
       "rlc": 1,
+      "source_assignment_id": "assignment-f40785680b7a4f20",
       "source_support_edges": 1,
+      "source_support_id": "support-4cdf42b00cd7dad6",
       "terminals": [
         0,
         1
@@ -126,7 +132,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:C;0-1:L",
       "rlc": 2,
+      "source_assignment_id": "assignment-c778dc2ee3d52570",
       "source_support_edges": 1,
+      "source_support_id": "support-4cdf42b00cd7dad6",
       "terminals": [
         0,
         1
@@ -156,7 +164,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;1-2:L",
       "rlc": 2,
+      "source_assignment_id": "assignment-1c5ff8ab2ef8f78d",
       "source_support_edges": 2,
+      "source_support_id": "support-a94ddacb3c3627a6",
       "terminals": [
         0,
         1
@@ -186,7 +196,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;1-2:R",
       "rlc": 2,
+      "source_assignment_id": "assignment-3f644f28bd3d8c13",
       "source_support_edges": 2,
+      "source_support_id": "support-a94ddacb3c3627a6",
       "terminals": [
         0,
         1
@@ -216,7 +228,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:C;0-1:R",
       "rlc": 2,
+      "source_assignment_id": "assignment-b46242de3d0e06af",
       "source_support_edges": 1,
+      "source_support_id": "support-4cdf42b00cd7dad6",
       "terminals": [
         0,
         1
@@ -246,7 +260,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:L;0-1:R",
       "rlc": 2,
+      "source_assignment_id": "assignment-7b8896598097416e",
       "source_support_edges": 1,
+      "source_support_id": "support-4cdf42b00cd7dad6",
       "terminals": [
         0,
         1
@@ -276,7 +292,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:L;1-2:R",
       "rlc": 2,
+      "source_assignment_id": "assignment-178eb15a3590afbc",
       "source_support_edges": 2,
+      "source_support_id": "support-a94ddacb3c3627a6",
       "terminals": [
         0,
         1
@@ -311,7 +329,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;0-2:R;1-2:C",
       "rlc": 3,
+      "source_assignment_id": "assignment-0663e11a3153385c",
       "source_support_edges": 2,
+      "source_support_id": "support-a94ddacb3c3627a6",
       "terminals": [
         0,
         1
@@ -346,7 +366,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:C;0-2:C;1-2:R",
       "rlc": 3,
+      "source_assignment_id": "assignment-9df30437cde81960",
       "source_support_edges": 3,
+      "source_support_id": "support-9defcf048b659b39",
       "terminals": [
         0,
         1
@@ -381,7 +403,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:R;0-2:C;1-2:L",
       "rlc": 3,
+      "source_assignment_id": "assignment-3494e45fa863ec08",
       "source_support_edges": 3,
+      "source_support_id": "support-9defcf048b659b39",
       "terminals": [
         0,
         1
@@ -416,7 +440,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:L;0-2:C;1-2:R",
       "rlc": 3,
+      "source_assignment_id": "assignment-14f89871143c3ee1",
       "source_support_edges": 3,
+      "source_support_id": "support-9defcf048b659b39",
       "terminals": [
         0,
         1
@@ -451,7 +477,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:C;0-2:L;1-2:R",
       "rlc": 3,
+      "source_assignment_id": "assignment-0993ad95aa91ad37",
       "source_support_edges": 3,
+      "source_support_id": "support-9defcf048b659b39",
       "terminals": [
         0,
         1
@@ -486,7 +514,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;0-2:R;1-2:L",
       "rlc": 3,
+      "source_assignment_id": "assignment-9c1d3c6a34af943f",
       "source_support_edges": 2,
+      "source_support_id": "support-a94ddacb3c3627a6",
       "terminals": [
         0,
         1
@@ -521,7 +551,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;1-2:L;1-2:R",
       "rlc": 3,
+      "source_assignment_id": "assignment-2c7753d36ad9025d",
       "source_support_edges": 2,
+      "source_support_id": "support-a94ddacb3c3627a6",
       "terminals": [
         0,
         1
@@ -556,7 +588,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;0-2:L;1-2:R",
       "rlc": 3,
+      "source_assignment_id": "assignment-9f6f50ed2e29b8d9",
       "source_support_edges": 2,
+      "source_support_id": "support-a94ddacb3c3627a6",
       "terminals": [
         0,
         1
@@ -591,7 +625,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;1-3:L;2-3:R",
       "rlc": 3,
+      "source_assignment_id": "assignment-2e3e5041c7fcb1c5",
       "source_support_edges": 3,
+      "source_support_id": "support-3188436e43990c12",
       "terminals": [
         0,
         1
@@ -626,7 +662,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:C;0-1:L;0-1:R",
       "rlc": 3,
+      "source_assignment_id": "assignment-bfe229766f7b5d40",
       "source_support_edges": 1,
+      "source_support_id": "support-4cdf42b00cd7dad6",
       "terminals": [
         0,
         1
@@ -661,7 +699,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:L;0-2:R;1-2:L",
       "rlc": 3,
+      "source_assignment_id": "assignment-356b9b1b9206df2a",
       "source_support_edges": 2,
+      "source_support_id": "support-a94ddacb3c3627a6",
       "terminals": [
         0,
         1
@@ -696,7 +736,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:L;0-2:L;1-2:R",
       "rlc": 3,
+      "source_assignment_id": "assignment-585861c29f0d6d43",
       "source_support_edges": 3,
+      "source_support_id": "support-9defcf048b659b39",
       "terminals": [
         0,
         1
@@ -731,7 +773,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:R;0-2:C;1-2:R",
       "rlc": 3,
+      "source_assignment_id": "assignment-53bed40ab8a89374",
       "source_support_edges": 3,
+      "source_support_id": "support-9defcf048b659b39",
       "terminals": [
         0,
         1
@@ -766,7 +810,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;0-2:R;1-2:R",
       "rlc": 3,
+      "source_assignment_id": "assignment-25681b002cb2c962",
       "source_support_edges": 2,
+      "source_support_id": "support-a94ddacb3c3627a6",
       "terminals": [
         0,
         1
@@ -801,7 +847,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:R;0-2:L;1-2:R",
       "rlc": 3,
+      "source_assignment_id": "assignment-a85e90682b4cf9fc",
       "source_support_edges": 3,
+      "source_support_id": "support-9defcf048b659b39",
       "terminals": [
         0,
         1
@@ -836,7 +884,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:L;0-2:R;1-2:R",
       "rlc": 3,
+      "source_assignment_id": "assignment-29e357effdc5a909",
       "source_support_edges": 2,
+      "source_support_id": "support-a94ddacb3c3627a6",
       "terminals": [
         0,
         1
@@ -876,7 +926,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:C;0-1:R;0-2:C;1-2:R",
       "rlc": 4,
+      "source_assignment_id": "assignment-16b58987a337dbfe",
       "source_support_edges": 3,
+      "source_support_id": "support-9defcf048b659b39",
       "terminals": [
         0,
         1
@@ -916,7 +968,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:C;0-2:C;0-2:R;1-2:R",
       "rlc": 4,
+      "source_assignment_id": "assignment-b76dc6e4f9a04ec1",
       "source_support_edges": 3,
+      "source_support_id": "support-9defcf048b659b39",
       "terminals": [
         0,
         1
@@ -956,7 +1010,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;0-3:C;1-2:R;1-3:R",
       "rlc": 4,
+      "source_assignment_id": "assignment-6679e49cf0aabff8",
       "source_support_edges": 4,
+      "source_support_id": "support-2b6bd40e6c860a15",
       "terminals": [
         0,
         1
@@ -996,7 +1052,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;0-3:R;1-3:C;2-3:R",
       "rlc": 4,
+      "source_assignment_id": "assignment-acc71911cc5001a7",
       "source_support_edges": 4,
+      "source_support_id": "support-f5983f285b660184",
       "terminals": [
         0,
         1
@@ -1036,7 +1094,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;0-3:C;1-2:R;2-3:R",
       "rlc": 4,
+      "source_assignment_id": "assignment-cd0bec50cb3ff0bd",
       "source_support_edges": 4,
+      "source_support_id": "support-f5983f285b660184",
       "terminals": [
         0,
         1
@@ -1076,7 +1136,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;0-2:R;1-2:C;1-2:R",
       "rlc": 4,
+      "source_assignment_id": "assignment-2bce2470366a3f07",
       "source_support_edges": 2,
+      "source_support_id": "support-a94ddacb3c3627a6",
       "terminals": [
         0,
         1
@@ -1116,7 +1178,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;0-2:R;1-3:C;2-3:R",
       "rlc": 4,
+      "source_assignment_id": "assignment-5ffebcb4dcf8f3e3",
       "source_support_edges": 3,
+      "source_support_id": "support-3188436e43990c12",
       "terminals": [
         0,
         1
@@ -1156,7 +1220,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:R;0-2:C;0-2:R;1-2:C",
       "rlc": 4,
+      "source_assignment_id": "assignment-b2e05182120dfd22",
       "source_support_edges": 3,
+      "source_support_id": "support-9defcf048b659b39",
       "terminals": [
         0,
         1
@@ -1196,7 +1262,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:L;0-1:R;0-2:C;1-2:R",
       "rlc": 4,
+      "source_assignment_id": "assignment-428ba911cba33823",
       "source_support_edges": 3,
+      "source_support_id": "support-9defcf048b659b39",
       "terminals": [
         0,
         1
@@ -1236,7 +1304,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;1-2:R;1-3:L;2-3:R",
       "rlc": 4,
+      "source_assignment_id": "assignment-2e074e90cdcab63f",
       "source_support_edges": 4,
+      "source_support_id": "support-f5983f285b660184",
       "terminals": [
         0,
         1
@@ -1276,7 +1346,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;0-2:L;0-2:R;1-2:R",
       "rlc": 4,
+      "source_assignment_id": "assignment-295cd0fc169af811",
       "source_support_edges": 2,
+      "source_support_id": "support-a94ddacb3c3627a6",
       "terminals": [
         0,
         1
@@ -1316,7 +1388,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;1-3:L;1-3:R;2-3:R",
       "rlc": 4,
+      "source_assignment_id": "assignment-1a775a22cf42c7f5",
       "source_support_edges": 3,
+      "source_support_id": "support-3188436e43990c12",
       "terminals": [
         0,
         1
@@ -1356,7 +1430,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:R;0-2:C;0-2:L;1-2:R",
       "rlc": 4,
+      "source_assignment_id": "assignment-7b74ee59d2dfa015",
       "source_support_edges": 3,
+      "source_support_id": "support-9defcf048b659b39",
       "terminals": [
         0,
         1
@@ -1396,7 +1472,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:C;0-1:R;0-2:L;1-2:R",
       "rlc": 4,
+      "source_assignment_id": "assignment-123c410cc9e9db67",
       "source_support_edges": 3,
+      "source_support_id": "support-9defcf048b659b39",
       "terminals": [
         0,
         1
@@ -1436,7 +1514,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;0-3:L;1-3:R;2-3:R",
       "rlc": 4,
+      "source_assignment_id": "assignment-f42ba7df62b81a85",
       "source_support_edges": 4,
+      "source_support_id": "support-f5983f285b660184",
       "terminals": [
         0,
         1
@@ -1476,7 +1556,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;0-3:R;1-3:L;2-3:R",
       "rlc": 4,
+      "source_assignment_id": "assignment-47bd67f098257ab7",
       "source_support_edges": 4,
+      "source_support_id": "support-f5983f285b660184",
       "terminals": [
         0,
         1
@@ -1516,7 +1598,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;0-3:R;1-3:R;2-3:L",
       "rlc": 4,
+      "source_assignment_id": "assignment-fb8a1b64245b3975",
       "source_support_edges": 4,
+      "source_support_id": "support-f5983f285b660184",
       "terminals": [
         0,
         1
@@ -1556,7 +1640,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:C;0-2:L;0-2:R;1-2:R",
       "rlc": 4,
+      "source_assignment_id": "assignment-42db0cec932ce9e7",
       "source_support_edges": 3,
+      "source_support_id": "support-9defcf048b659b39",
       "terminals": [
         0,
         1
@@ -1596,7 +1682,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;0-2:R;1-2:L;1-2:R",
       "rlc": 4,
+      "source_assignment_id": "assignment-4210be41d65360f6",
       "source_support_edges": 2,
+      "source_support_id": "support-a94ddacb3c3627a6",
       "terminals": [
         0,
         1
@@ -1636,7 +1724,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:R;0-2:C;1-3:L;2-3:R",
       "rlc": 4,
+      "source_assignment_id": "assignment-4d47eb2c20e2ebda",
       "source_support_edges": 4,
+      "source_support_id": "support-7071783cfa9e86eb",
       "terminals": [
         0,
         1
@@ -1676,7 +1766,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;0-3:L;1-2:R;2-3:R",
       "rlc": 4,
+      "source_assignment_id": "assignment-83be7070b61ab333",
       "source_support_edges": 4,
+      "source_support_id": "support-f5983f285b660184",
       "terminals": [
         0,
         1
@@ -1716,7 +1808,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;0-3:L;1-2:R;1-3:R",
       "rlc": 4,
+      "source_assignment_id": "assignment-12d5bc0f68f4edb7",
       "source_support_edges": 4,
+      "source_support_id": "support-2b6bd40e6c860a15",
       "terminals": [
         0,
         1
@@ -1756,7 +1850,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:R;0-2:C;1-2:L;1-2:R",
       "rlc": 4,
+      "source_assignment_id": "assignment-47256cd795be8cdf",
       "source_support_edges": 3,
+      "source_support_id": "support-9defcf048b659b39",
       "terminals": [
         0,
         1
@@ -1796,7 +1892,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:R;0-2:C;0-2:R;1-2:L",
       "rlc": 4,
+      "source_assignment_id": "assignment-5cc8a269d8638fa9",
       "source_support_edges": 3,
+      "source_support_id": "support-9defcf048b659b39",
       "terminals": [
         0,
         1
@@ -1836,7 +1934,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;0-2:R;1-3:L;2-3:R",
       "rlc": 4,
+      "source_assignment_id": "assignment-848db7ad20b199d7",
       "source_support_edges": 3,
+      "source_support_id": "support-3188436e43990c12",
       "terminals": [
         0,
         1
@@ -1876,7 +1976,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:L;0-2:C;0-2:R;1-2:R",
       "rlc": 4,
+      "source_assignment_id": "assignment-2ae33c2fb3b3d4c8",
       "source_support_edges": 3,
+      "source_support_id": "support-9defcf048b659b39",
       "terminals": [
         0,
         1
@@ -1916,7 +2018,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:L;0-3:L;1-2:R;1-3:R",
       "rlc": 4,
+      "source_assignment_id": "assignment-02cfeba1b22d30f2",
       "source_support_edges": 4,
+      "source_support_id": "support-2b6bd40e6c860a15",
       "terminals": [
         0,
         1
@@ -1956,7 +2060,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:L;0-2:R;1-3:L;2-3:R",
       "rlc": 4,
+      "source_assignment_id": "assignment-01fcc6a93c128253",
       "source_support_edges": 3,
+      "source_support_id": "support-3188436e43990c12",
       "terminals": [
         0,
         1
@@ -1996,7 +2102,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:L;0-3:R;1-3:L;2-3:R",
       "rlc": 4,
+      "source_assignment_id": "assignment-9b231404c4429523",
       "source_support_edges": 4,
+      "source_support_id": "support-f5983f285b660184",
       "terminals": [
         0,
         1
@@ -2036,7 +2144,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:L;0-3:L;1-2:R;2-3:R",
       "rlc": 4,
+      "source_assignment_id": "assignment-d339496fba06df69",
       "source_support_edges": 4,
+      "source_support_id": "support-f5983f285b660184",
       "terminals": [
         0,
         1
@@ -2076,7 +2186,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:L;0-1:R;0-2:L;1-2:R",
       "rlc": 4,
+      "source_assignment_id": "assignment-00c80abb77d60fe8",
       "source_support_edges": 3,
+      "source_support_id": "support-9defcf048b659b39",
       "terminals": [
         0,
         1
@@ -2116,7 +2228,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:R;0-2:L;0-2:R;1-2:L",
       "rlc": 4,
+      "source_assignment_id": "assignment-573a75760f736e70",
       "source_support_edges": 3,
+      "source_support_id": "support-9defcf048b659b39",
       "terminals": [
         0,
         1
@@ -2156,7 +2270,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:L;0-2:L;0-2:R;1-2:R",
       "rlc": 4,
+      "source_assignment_id": "assignment-1605e7efdc924dc7",
       "source_support_edges": 3,
+      "source_support_id": "support-9defcf048b659b39",
       "terminals": [
         0,
         1
@@ -2196,7 +2312,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:L;0-2:R;1-2:L;1-2:R",
       "rlc": 4,
+      "source_assignment_id": "assignment-a8697056bd5ee351",
       "source_support_edges": 2,
+      "source_support_id": "support-a94ddacb3c3627a6",
       "terminals": [
         0,
         1
@@ -2236,7 +2354,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:R;0-2:C;0-2:R;1-2:R",
       "rlc": 4,
+      "source_assignment_id": "assignment-07cabaa3954704dd",
       "source_support_edges": 3,
+      "source_support_id": "support-9defcf048b659b39",
       "terminals": [
         0,
         1
@@ -2276,7 +2396,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;0-3:R;1-3:R;2-3:R",
       "rlc": 4,
+      "source_assignment_id": "assignment-1e5d9a2028318f0f",
       "source_support_edges": 4,
+      "source_support_id": "support-f5983f285b660184",
       "terminals": [
         0,
         1
@@ -2316,7 +2438,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:R;0-2:L;0-2:R;1-2:R",
       "rlc": 4,
+      "source_assignment_id": "assignment-5032c20c5d6d22ee",
       "source_support_edges": 3,
+      "source_support_id": "support-9defcf048b659b39",
       "terminals": [
         0,
         1
@@ -2356,7 +2480,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:L;0-3:R;1-3:R;2-3:R",
       "rlc": 4,
+      "source_assignment_id": "assignment-72e560b6a3e981df",
       "source_support_edges": 4,
+      "source_support_id": "support-f5983f285b660184",
       "terminals": [
         0,
         1
@@ -2401,7 +2527,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:R;0-2:C;0-3:C;1-2:R;2-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-8f9e25818f9796bd",
       "source_support_edges": 5,
+      "source_support_id": "support-512149e3cd66bcb4",
       "terminals": [
         0,
         1
@@ -2446,7 +2574,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;0-2:R;0-3:C;1-3:R;2-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-3e62ebb934217512",
       "source_support_edges": 4,
+      "source_support_id": "support-f5983f285b660184",
       "terminals": [
         0,
         1
@@ -2491,7 +2621,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:R;0-2:C;0-3:C;1-2:R;1-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-510a6b96f1ade22d",
       "source_support_edges": 5,
+      "source_support_id": "support-c628a31a8c5b90bd",
       "terminals": [
         0,
         1
@@ -2536,7 +2668,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;0-3:C;1-2:R;1-3:R;2-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-a67aeacc7cab0a59",
       "source_support_edges": 5,
+      "source_support_id": "support-bea50b5cd065e186",
       "terminals": [
         0,
         1
@@ -2581,7 +2715,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;0-3:C;1-4:R;2-4:R;3-4:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-6fbbc6adf021e135",
       "source_support_edges": 5,
+      "source_support_id": "support-599e70e6844b1d00",
       "terminals": [
         0,
         1
@@ -2626,7 +2762,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:C;0-2:C;0-3:R;1-3:R;2-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-ed21f9d18e4bca1c",
       "source_support_edges": 5,
+      "source_support_id": "support-512149e3cd66bcb4",
       "terminals": [
         0,
         1
@@ -2671,7 +2809,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:R;0-2:C;0-2:R;1-2:C;1-2:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-028c94f471f15ad5",
       "source_support_edges": 3,
+      "source_support_id": "support-9defcf048b659b39",
       "terminals": [
         0,
         1
@@ -2716,7 +2856,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;0-2:R;1-3:C;1-3:R;2-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-cfe42cde44152eb6",
       "source_support_edges": 3,
+      "source_support_id": "support-3188436e43990c12",
       "terminals": [
         0,
         1
@@ -2761,7 +2903,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;0-2:R;0-3:C;1-2:R;2-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-6d160a32dbbea5fa",
       "source_support_edges": 4,
+      "source_support_id": "support-f5983f285b660184",
       "terminals": [
         0,
         1
@@ -2806,7 +2950,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;0-3:R;1-2:R;1-3:C;2-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-cfb4fa2bb99b57ee",
       "source_support_edges": 5,
+      "source_support_id": "support-bea50b5cd065e186",
       "terminals": [
         0,
         1
@@ -2851,7 +2997,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:C;0-1:R;0-2:C;0-2:R;1-2:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-35f8245d83d39490",
       "source_support_edges": 3,
+      "source_support_id": "support-9defcf048b659b39",
       "terminals": [
         0,
         1
@@ -2896,7 +3044,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:R;0-2:C;0-3:R;1-3:C;2-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-e84fe8de24d2b1a4",
       "source_support_edges": 5,
+      "source_support_id": "support-512149e3cd66bcb4",
       "terminals": [
         0,
         1
@@ -2941,7 +3091,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;0-3:R;1-2:R;1-3:R;2-3:C",
       "rlc": 5,
+      "source_assignment_id": "assignment-4e9f9c50a1ef1c4f",
       "source_support_edges": 5,
+      "source_support_id": "support-bea50b5cd065e186",
       "terminals": [
         0,
         1
@@ -2986,7 +3138,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;0-2:R;0-3:R;1-3:R;2-3:C",
       "rlc": 5,
+      "source_assignment_id": "assignment-8f82bb6313aea3b3",
       "source_support_edges": 4,
+      "source_support_id": "support-f5983f285b660184",
       "terminals": [
         0,
         1
@@ -3031,7 +3185,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;0-2:R;0-3:C;1-2:R;1-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-3b465aa33f3d79f0",
       "source_support_edges": 4,
+      "source_support_id": "support-2b6bd40e6c860a15",
       "terminals": [
         0,
         1
@@ -3076,7 +3232,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;0-2:R;0-3:R;1-3:C;2-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-aec44e8cb846a57c",
       "source_support_edges": 4,
+      "source_support_id": "support-f5983f285b660184",
       "terminals": [
         0,
         1
@@ -3121,7 +3279,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:R;0-2:C;0-2:R;1-3:C;2-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-655422c3c32dc5c5",
       "source_support_edges": 4,
+      "source_support_id": "support-7071783cfa9e86eb",
       "terminals": [
         0,
         1
@@ -3166,7 +3326,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;0-2:R;1-2:R;1-3:C;2-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-e1daa30ccf03f9ee",
       "source_support_edges": 4,
+      "source_support_id": "support-f5983f285b660184",
       "terminals": [
         0,
         1
@@ -3211,7 +3373,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;0-3:R;1-4:C;2-3:R;3-4:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-56b193a7efabb0c5",
       "source_support_edges": 5,
+      "source_support_id": "support-e46bdbdccd3227f4",
       "terminals": [
         0,
         1
@@ -3256,7 +3420,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;0-3:R;1-2:C;1-3:R;2-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-141fcecedc0f759b",
       "source_support_edges": 5,
+      "source_support_id": "support-bea50b5cd065e186",
       "terminals": [
         0,
         1
@@ -3301,7 +3467,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;0-3:R;1-3:R;2-4:L;3-4:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-9f4eeb66bbfb8290",
       "source_support_edges": 5,
+      "source_support_id": "support-054451b74652a492",
       "terminals": [
         0,
         1
@@ -3346,7 +3514,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;0-2:R;1-2:R;1-3:L;2-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-234c6cc6c4e91d91",
       "source_support_edges": 4,
+      "source_support_id": "support-f5983f285b660184",
       "terminals": [
         0,
         1
@@ -3391,7 +3561,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:R;0-2:C;0-2:R;1-2:L;1-2:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-0f6982cf202c46c3",
       "source_support_edges": 3,
+      "source_support_id": "support-9defcf048b659b39",
       "terminals": [
         0,
         1
@@ -3436,7 +3608,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;0-3:R;1-2:R;1-3:L;2-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-17b0ce0df8318e92",
       "source_support_edges": 5,
+      "source_support_id": "support-bea50b5cd065e186",
       "terminals": [
         0,
         1
@@ -3481,7 +3655,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:R;0-2:C;0-3:L;1-2:R;1-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-3c7959a7219e39a2",
       "source_support_edges": 5,
+      "source_support_id": "support-c628a31a8c5b90bd",
       "terminals": [
         0,
         1
@@ -3526,7 +3702,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:L;0-3:R;1-2:R;1-3:R;2-3:C",
       "rlc": 5,
+      "source_assignment_id": "assignment-9546ed9584f464e9",
       "source_support_edges": 5,
+      "source_support_id": "support-bea50b5cd065e186",
       "terminals": [
         0,
         1
@@ -3571,7 +3749,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;0-3:R;1-2:L;1-3:R;2-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-31f63be924c8f1ec",
       "source_support_edges": 5,
+      "source_support_id": "support-bea50b5cd065e186",
       "terminals": [
         0,
         1
@@ -3616,7 +3796,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;0-3:R;1-4:L;2-3:R;3-4:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-1ccaa15276c31552",
       "source_support_edges": 5,
+      "source_support_id": "support-e46bdbdccd3227f4",
       "terminals": [
         0,
         1
@@ -3661,7 +3843,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:C;0-2:L;0-3:R;1-3:R;2-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-0aa4d5a948164a71",
       "source_support_edges": 5,
+      "source_support_id": "support-512149e3cd66bcb4",
       "terminals": [
         0,
         1
@@ -3706,7 +3890,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;0-2:L;0-3:R;1-3:R;2-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-ebf352171250ee2c",
       "source_support_edges": 4,
+      "source_support_id": "support-f5983f285b660184",
       "terminals": [
         0,
         1
@@ -3751,7 +3937,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;0-3:L;0-3:R;1-2:R;1-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-831a878ab2668192",
       "source_support_edges": 4,
+      "source_support_id": "support-2b6bd40e6c860a15",
       "terminals": [
         0,
         1
@@ -3796,7 +3984,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;0-3:L;1-2:R;1-3:R;2-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-3ba427326d3b561f",
       "source_support_edges": 5,
+      "source_support_id": "support-bea50b5cd065e186",
       "terminals": [
         0,
         1
@@ -3841,7 +4031,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;0-2:R;0-3:R;1-3:L;2-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-ef41131197bc759e",
       "source_support_edges": 4,
+      "source_support_id": "support-f5983f285b660184",
       "terminals": [
         0,
         1
@@ -3886,7 +4078,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:C;0-1:R;0-2:L;0-2:R;1-2:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-42e40d250a1a7ddd",
       "source_support_edges": 3,
+      "source_support_id": "support-9defcf048b659b39",
       "terminals": [
         0,
         1
@@ -3931,7 +4125,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;0-3:L;1-4:R;2-4:R;3-4:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-61865ae37564478f",
       "source_support_edges": 5,
+      "source_support_id": "support-599e70e6844b1d00",
       "terminals": [
         0,
         1
@@ -3976,7 +4172,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;1-2:R;1-3:L;1-3:R;2-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-d27b9f0e9ee83813",
       "source_support_edges": 4,
+      "source_support_id": "support-f5983f285b660184",
       "terminals": [
         0,
         1
@@ -4021,7 +4219,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:R;0-2:C;0-2:L;0-2:R;1-2:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-1934f83e66920323",
       "source_support_edges": 3,
+      "source_support_id": "support-9defcf048b659b39",
       "terminals": [
         0,
         1
@@ -4066,7 +4266,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:R;0-2:C;0-3:R;1-3:L;2-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-64abeaef2ddfc24a",
       "source_support_edges": 5,
+      "source_support_id": "support-512149e3cd66bcb4",
       "terminals": [
         0,
         1
@@ -4111,7 +4313,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;0-3:R;1-3:R;2-3:L;2-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-26cc34db131f88d3",
       "source_support_edges": 4,
+      "source_support_id": "support-f5983f285b660184",
       "terminals": [
         0,
         1
@@ -4156,7 +4360,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;0-2:R;0-3:R;1-3:R;2-3:L",
       "rlc": 5,
+      "source_assignment_id": "assignment-bb6b156a9833a063",
       "source_support_edges": 4,
+      "source_support_id": "support-f5983f285b660184",
       "terminals": [
         0,
         1
@@ -4201,7 +4407,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;0-3:L;0-3:R;1-3:R;2-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-1e9082fd75b0ca8b",
       "source_support_edges": 4,
+      "source_support_id": "support-f5983f285b660184",
       "terminals": [
         0,
         1
@@ -4246,7 +4454,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;0-3:R;1-2:R;1-3:R;2-3:L",
       "rlc": 5,
+      "source_assignment_id": "assignment-1aa3be4fcaae95c6",
       "source_support_edges": 5,
+      "source_support_id": "support-bea50b5cd065e186",
       "terminals": [
         0,
         1
@@ -4291,7 +4501,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;0-3:L;0-3:R;1-2:R;2-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-7437a18eb9351a1c",
       "source_support_edges": 4,
+      "source_support_id": "support-f5983f285b660184",
       "terminals": [
         0,
         1
@@ -4336,7 +4548,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:R;0-2:C;1-3:L;1-3:R;2-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-272d829f6ec23fbb",
       "source_support_edges": 4,
+      "source_support_id": "support-7071783cfa9e86eb",
       "terminals": [
         0,
         1
@@ -4381,7 +4595,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:L;0-2:C;0-3:R;1-3:R;2-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-c906ba02f96de0b0",
       "source_support_edges": 5,
+      "source_support_id": "support-512149e3cd66bcb4",
       "terminals": [
         0,
         1
@@ -4426,7 +4642,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:R;0-2:C;0-2:R;1-3:L;2-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-687ba4b2960f9dfc",
       "source_support_edges": 4,
+      "source_support_id": "support-7071783cfa9e86eb",
       "terminals": [
         0,
         1
@@ -4471,7 +4689,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:L;0-1:R;0-2:C;0-2:R;1-2:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-0899751a9aa9a891",
       "source_support_edges": 3,
+      "source_support_id": "support-9defcf048b659b39",
       "terminals": [
         0,
         1
@@ -4516,7 +4736,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;1-3:L;1-4:R;2-4:R;3-4:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-65010e0101ba633a",
       "source_support_edges": 5,
+      "source_support_id": "support-e46bdbdccd3227f4",
       "terminals": [
         0,
         1
@@ -4561,7 +4783,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:R;0-2:C;0-3:R;1-3:R;2-3:L",
       "rlc": 5,
+      "source_assignment_id": "assignment-c33083e1662d2364",
       "source_support_edges": 5,
+      "source_support_id": "support-512149e3cd66bcb4",
       "terminals": [
         0,
         1
@@ -4606,7 +4830,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;0-2:R;0-3:L;1-2:R;2-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-85665baea01fb52e",
       "source_support_edges": 4,
+      "source_support_id": "support-f5983f285b660184",
       "terminals": [
         0,
         1
@@ -4651,7 +4877,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;0-2:R;1-3:L;1-3:R;2-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-32ce704f963a5357",
       "source_support_edges": 3,
+      "source_support_id": "support-3188436e43990c12",
       "terminals": [
         0,
         1
@@ -4696,7 +4924,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:R;0-2:C;1-2:R;1-3:L;2-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-0946d5979683b613",
       "source_support_edges": 5,
+      "source_support_id": "support-512149e3cd66bcb4",
       "terminals": [
         0,
         1
@@ -4741,7 +4971,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;0-2:R;0-3:L;1-2:R;1-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-005374d6100b1263",
       "source_support_edges": 4,
+      "source_support_id": "support-2b6bd40e6c860a15",
       "terminals": [
         0,
         1
@@ -4786,7 +5018,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:R;0-2:C;0-3:L;1-2:R;2-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-e01ef40b8aac3824",
       "source_support_edges": 5,
+      "source_support_id": "support-512149e3cd66bcb4",
       "terminals": [
         0,
         1
@@ -4831,7 +5065,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;0-2:R;0-3:L;1-3:R;2-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-cec55dece40abf84",
       "source_support_edges": 4,
+      "source_support_id": "support-f5983f285b660184",
       "terminals": [
         0,
         1
@@ -4876,7 +5112,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:R;0-2:C;0-3:L;1-3:R;2-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-aa4917b931b55b83",
       "source_support_edges": 5,
+      "source_support_id": "support-512149e3cd66bcb4",
       "terminals": [
         0,
         1
@@ -4921,7 +5159,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;0-3:R;1-3:L;1-3:R;2-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-81f5e7ddaa9677dc",
       "source_support_edges": 4,
+      "source_support_id": "support-f5983f285b660184",
       "terminals": [
         0,
         1
@@ -4966,7 +5206,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:L;0-2:R;0-3:L;1-2:R;2-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-fff03be8c100a834",
       "source_support_edges": 4,
+      "source_support_id": "support-f5983f285b660184",
       "terminals": [
         0,
         1
@@ -5011,7 +5253,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:R;0-2:L;0-2:R;1-3:L;2-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-67252b3d175f9291",
       "source_support_edges": 4,
+      "source_support_id": "support-7071783cfa9e86eb",
       "terminals": [
         0,
         1
@@ -5056,7 +5300,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:L;0-3:R;1-2:R;1-3:R;2-3:L",
       "rlc": 5,
+      "source_assignment_id": "assignment-250f99bb3d3d2043",
       "source_support_edges": 5,
+      "source_support_id": "support-bea50b5cd065e186",
       "terminals": [
         0,
         1
@@ -5101,7 +5347,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:R;0-2:L;0-3:L;1-2:R;1-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-ac228f8e953dba12",
       "source_support_edges": 5,
+      "source_support_id": "support-c628a31a8c5b90bd",
       "terminals": [
         0,
         1
@@ -5146,7 +5394,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:L;0-2:R;0-3:L;1-3:R;2-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-2dfe763babd18450",
       "source_support_edges": 4,
+      "source_support_id": "support-f5983f285b660184",
       "terminals": [
         0,
         1
@@ -5191,7 +5441,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:L;0-2:R;0-3:R;1-3:L;2-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-323e8fc87e9d1e3d",
       "source_support_edges": 4,
+      "source_support_id": "support-f5983f285b660184",
       "terminals": [
         0,
         1
@@ -5236,7 +5488,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:L;0-2:R;0-3:R;1-3:R;2-3:L",
       "rlc": 5,
+      "source_assignment_id": "assignment-17f669248efe1ff9",
       "source_support_edges": 4,
+      "source_support_id": "support-f5983f285b660184",
       "terminals": [
         0,
         1
@@ -5281,7 +5535,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:L;0-2:R;0-3:L;1-2:R;1-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-31cdce1fc74ddb40",
       "source_support_edges": 4,
+      "source_support_id": "support-2b6bd40e6c860a15",
       "terminals": [
         0,
         1
@@ -5326,7 +5582,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:R;0-2:L;0-3:R;1-3:L;2-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-c3817bdf0a82bd24",
       "source_support_edges": 5,
+      "source_support_id": "support-512149e3cd66bcb4",
       "terminals": [
         0,
         1
@@ -5371,7 +5629,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:L;0-2:R;1-3:L;1-3:R;2-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-10b7f496bcab3c18",
       "source_support_edges": 3,
+      "source_support_id": "support-3188436e43990c12",
       "terminals": [
         0,
         1
@@ -5416,7 +5676,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:L;0-3:R;1-4:L;2-3:R;3-4:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-6d38361654c0a738",
       "source_support_edges": 5,
+      "source_support_id": "support-e46bdbdccd3227f4",
       "terminals": [
         0,
         1
@@ -5461,7 +5723,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:L;0-3:L;1-4:R;2-4:R;3-4:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-91d44c4db2d77b07",
       "source_support_edges": 5,
+      "source_support_id": "support-599e70e6844b1d00",
       "terminals": [
         0,
         1
@@ -5506,7 +5770,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:L;0-3:L;1-2:R;1-3:R;2-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-8caa7f44cb5e618d",
       "source_support_edges": 5,
+      "source_support_id": "support-bea50b5cd065e186",
       "terminals": [
         0,
         1
@@ -5551,7 +5817,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:L;0-2:L;0-3:R;1-3:R;2-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-6b978c8346a1a469",
       "source_support_edges": 5,
+      "source_support_id": "support-512149e3cd66bcb4",
       "terminals": [
         0,
         1
@@ -5596,7 +5864,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:L;0-1:R;0-2:L;0-2:R;1-2:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-61adb58aab8b8553",
       "source_support_edges": 3,
+      "source_support_id": "support-9defcf048b659b39",
       "terminals": [
         0,
         1
@@ -5641,7 +5911,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:L;0-2:R;1-2:R;1-3:L;2-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-232305c7eb63d079",
       "source_support_edges": 4,
+      "source_support_id": "support-f5983f285b660184",
       "terminals": [
         0,
         1
@@ -5686,7 +5958,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:L;0-3:R;1-2:R;1-3:L;2-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-43fa9436ff5375c2",
       "source_support_edges": 5,
+      "source_support_id": "support-bea50b5cd065e186",
       "terminals": [
         0,
         1
@@ -5731,7 +6005,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:R;0-2:L;0-3:L;1-2:R;2-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-708bf8277acf6017",
       "source_support_edges": 5,
+      "source_support_id": "support-512149e3cd66bcb4",
       "terminals": [
         0,
         1
@@ -5776,7 +6052,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:R;0-2:L;0-2:R;1-2:L;1-2:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-032df459586efeb6",
       "source_support_edges": 3,
+      "source_support_id": "support-9defcf048b659b39",
       "terminals": [
         0,
         1
@@ -5821,7 +6099,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:L;0-3:R;1-2:L;1-3:R;2-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-21674c2b6141fccd",
       "source_support_edges": 5,
+      "source_support_id": "support-bea50b5cd065e186",
       "terminals": [
         0,
         1
@@ -5866,7 +6146,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:R;0-2:C;0-3:R;1-3:R;2-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-8991b869da672502",
       "source_support_edges": 5,
+      "source_support_id": "support-512149e3cd66bcb4",
       "terminals": [
         0,
         1
@@ -5911,7 +6193,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:R;0-3:R;1-2:R;1-3:R;2-3:C",
       "rlc": 5,
+      "source_assignment_id": "assignment-db18018fde5e77f8",
       "source_support_edges": 5,
+      "source_support_id": "support-bea50b5cd065e186",
       "terminals": [
         0,
         1
@@ -5956,7 +6240,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;0-2:R;0-3:R;1-3:R;2-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-e5dc77c443f85893",
       "source_support_edges": 4,
+      "source_support_id": "support-f5983f285b660184",
       "terminals": [
         0,
         1
@@ -6001,7 +6287,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:C;0-3:R;1-2:R;1-3:R;2-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-2691ef1d842c9971",
       "source_support_edges": 5,
+      "source_support_id": "support-bea50b5cd065e186",
       "terminals": [
         0,
         1
@@ -6046,7 +6334,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:L;0-2:R;0-3:R;1-3:R;2-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-974bbe2233358ed3",
       "source_support_edges": 4,
+      "source_support_id": "support-f5983f285b660184",
       "terminals": [
         0,
         1
@@ -6091,7 +6381,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:L;0-3:R;1-2:R;1-3:R;2-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-7d62b72fe6404851",
       "source_support_edges": 5,
+      "source_support_id": "support-bea50b5cd065e186",
       "terminals": [
         0,
         1
@@ -6136,7 +6428,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-1:R;0-2:L;0-3:R;1-3:R;2-3:R",
       "rlc": 5,
+      "source_assignment_id": "assignment-d5e8a6fa47f07207",
       "source_support_edges": 5,
+      "source_support_id": "support-512149e3cd66bcb4",
       "terminals": [
         0,
         1
@@ -6181,7 +6475,9 @@
       "relation": "colour-preserving-port-augmented-cycle-matroid-v1",
       "representative_descriptor": "0-2:R;0-3:R;1-2:R;1-3:R;2-3:L",
       "rlc": 5,
+      "source_assignment_id": "assignment-4940eae0a9f1aef0",
       "source_support_edges": 5,
+      "source_support_id": "support-bea50b5cd065e186",
       "terminals": [
         0,
         1

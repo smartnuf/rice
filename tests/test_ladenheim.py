@@ -3,10 +3,12 @@ from pathlib import Path
 
 import networkx as nx
 
+from rice import CountQuery, enum_assignments, enum_supports
 from rice.ladenheim import (
     RELATION_NAME,
     PrimitiveEdge,
     PrimitiveNetwork,
+    _primitive_network_from_source,
     canonical_structural_signature,
     generate_ladenheim_148_catalogue,
     has_same_kind_parallel_pair,
@@ -137,6 +139,44 @@ def test_full_structural_catalogue_regression_and_record_contract():
             row["catalogue_id"],
         ),
     )
+
+
+def test_selected_source_provenance_reconstructs_every_representative():
+    query = CountQuery(profile="ladenheim-structural-region")
+    assignments = {
+        item.assignment_id: item
+        for item in enum_assignments(query, max_records=2_000)
+    }
+    supports = {item.support_id: item for item in enum_supports(query)}
+    records = generate_ladenheim_148_catalogue()["records"]
+
+    for record in records:
+        assignment_id = record["source_assignment_id"]
+        support_id = record["source_support_id"]
+        assert assignment_id
+        assert support_id
+        assignment = assignments[assignment_id]
+        support = supports[support_id]
+        assert assignment.support_id == support_id
+        assert assignment.source_support_edges == record[
+            "source_support_edges"
+        ]
+        reconstructed = _primitive_network_from_source(assignment, support)
+        assert representative_descriptor(reconstructed) == record[
+            "representative_descriptor"
+        ]
+        assert signature(reconstructed) == record[
+            "canonical_structural_signature"
+        ]
+
+    repeated = generate_ladenheim_148_catalogue()["records"]
+    assert [
+        (row["source_assignment_id"], row["source_support_id"])
+        for row in records
+    ] == [
+        (row["source_assignment_id"], row["source_support_id"])
+        for row in repeated
+    ]
 
 
 def test_committed_catalogue_is_exact_deterministic_generation():
