@@ -20,10 +20,12 @@ series-parallel forms cease to suffice and bridge-like structures become
 relevant, and later work on completeness, realisability, and minimality.
 
 The current software reproducibly enumerates and counts the reduced-topology
-stages and small golden catalogue described below. The historical comparisons
-and the mathematical investigations they motivate remain planned work: RICE has
-not established completeness, minimality, universal biquadratic realisability,
-or agreement with the Ladenheim catalogues.
+stages and small golden catalogue described below. It also reproduces the
+structural 148-network Ladenheim starting set under a separately named
+port-augmented coloured 2-isomorphism contract. Later historical exclusions and
+mathematical comparisons remain planned work: RICE has not established
+completeness, minimality, universal biquadratic realisability, or agreement with
+the canonical 108- or 62-class Ladenheim results.
 
 ## Development status: provisional interfaces
 
@@ -155,5 +157,6 @@ Important regression values include:
 
 The golden network table for `R <= 2`, `L+C <= 3` is committed in
 `data/counts/small-r2-x3.json` and described in `docs/counts/small-r2-x3.md`.
-RICE local-SP counts are not Ladenheim rational-immittance classes; literature
-benchmarks such as 148, 108 and 62 remain research context for later analysis.
+RICE local-SP counts are not Ladenheim rational-immittance classes. The separate
+structural 148 catalogue is committed in `data/counts/ladenheim-148.json`; the
+later 108 and 62 results remain research context for future analysis.

@@ -10,16 +10,24 @@ records identify the state of each task.
 
 ## Current direction
 
-The next substantive milestone is to reproduce the explicit structural
-[148-network Ladenheim set](04-ladenheim/01-148.md) with traceable catalogue
-records and provenance. Likely following work is to compare it with the
-[canonical 108-network catalogue](04-ladenheim/02-108.md), reproduce and
-distinguish the [62 realizability-set classes](04-ladenheim/03-62.md),
-[map descriptors](04-ladenheim/05-numbering.md), and compare the
-[named equivalence and reduction contracts](04-ladenheim/07-compare-reductions.md).
-Larger slices, including the [full `R <= 3`, `L+C <= 5` census](05-slices/04-r3-x5.md),
-then remain subject to performance and output-size review, with catalogue
-results feeding the later
+The structural [148-network Ladenheim catalogue](04-ladenheim/01-148.md) has
+now been reproduced with traceable records and provenance. The next substantive
+milestone is the still-open comparison with the
+[canonical 108-network catalogue](04-ladenheim/02-108.md). Starting from the
+reproduced 148 set, that work must account for the forty exclusions with
+per-entry evidence and distinguish star-delta effects from Zobel
+transformations, simpler bilinear realizations, Cauer-Foster relationships,
+regularity, and other realizability arguments.
+
+Subsequent work includes the
+[62 realizability-set classes](04-ladenheim/03-62.md),
+[historical descriptor and number mapping](04-ladenheim/05-numbering.md), and
+comparison of the
+[named structural and reduction contracts](04-ladenheim/07-compare-reductions.md).
+Larger slices, including the
+[full `R <= 3`, `L+C <= 5` census](05-slices/04-r3-x5.md), remain later work
+subject to performance and output-size review. Those catalogue results will
+feed the later
 [biquadratic investigations](06-biquad/05-impedance-classes.md).
 
 ## 00 — Plan records and literature alignment
@@ -61,7 +69,7 @@ files' numeric prefixes; the files were not renamed/renumbered to match):
 
 ## 04 — Ladenheim reproduction
 
-- `todo` [Reproduce structural 148-network Ladenheim set](04-ladenheim/01-148.md)
+- `done` [Reproduce structural 148-network Ladenheim set](04-ladenheim/01-148.md)
 - `todo` [Compare with canonical 108-network Ladenheim catalogue](04-ladenheim/02-108.md)
 - `todo` [Reproduce 62 realizability-set classes](04-ladenheim/03-62.md)
 - `todo` [Identify generator sets](04-ladenheim/04-generators.md)
@@ -72,7 +80,7 @@ files' numeric prefixes; the files were not renamed/renumbered to match):
 ## 05 — Enumeration slices and counts
 
 - `done` [Small fast test slice: `R <= 2`, `L+C <= 3`](05-slices/01-r2-x3.md)
-- `todo` [Ladenheim slice: `R+L+C <= 5`, `L+C <= 2`](05-slices/02-ladenheim.md)
+- `done` [Ladenheim slice: `R+L+C <= 5`, `L+C <= 2`](05-slices/02-ladenheim.md)
 - `todo` [Morelli next-class slice: `R <= 4`, `L+C <= 3`](05-slices/03-r4-x3.md)
 - `todo` [Full current project slice: `R <= 3`, `L+C <= 5`](05-slices/04-r3-x5.md)
 - `todo` [Two-resistor high-reactive slice: `R <= 2`, `L+C <= 5`](05-slices/05-r2-x5.md)
