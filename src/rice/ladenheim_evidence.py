@@ -204,10 +204,11 @@ def _is_machine_absolute_path(value: str) -> bool:
 
     without_urls = re.sub(r"\bhttps?://[^\s\]\[(){}<>\"']+", "", value)
     boundary = r"(?:^|[^A-Za-z0-9])"
+    posix_boundary = r"(?:^|[^A-Za-z0-9.])"
     return any(
         re.search(pattern, without_urls) is not None
         for pattern in (
-            boundary + r"/(?!/)(?=[^\s])",
+            posix_boundary + r"/(?!/)(?=[^\s])",
             boundary + r"//[^/\s]+/",
             boundary + r"\\\\[^\\\s]+\\",
             boundary + r"[A-Za-z]:[\\/]",
@@ -397,13 +398,24 @@ def _validate_claim(
             _is_int(values[field]) and values[field] > 0 for field in expected
         ):
             raise ValueError(f"evidence {evidence_id} has invalid catalogue-target claim")
+        if values["source_population"] != (
+            values["reported_members"] + values["reported_exclusions"]
+        ):
+            raise ValueError(
+                f"evidence {evidence_id} has inconsistent catalogue-target arithmetic"
+            )
     elif claim_type == "exclusion-category-targets":
         _validate_object_shape(
             claim, f"evidence {evidence_id} category-target claim",
             {"claim_type", "supported_values"},
         )
         values = claim.get("supported_values")
-        targets = values.get("exclusion_category_targets") if isinstance(values, dict) else None
+        targets = (
+            values.get("exclusion_category_targets")
+            if isinstance(values, dict)
+            and set(values) == {"exclusion_category_targets"}
+            else None
+        )
         expected = EXCLUSION_CATEGORIES - {"none", "unresolved"}
         if not isinstance(targets, dict) or set(targets) != expected or not all(
             _is_int(value) and value > 0 for value in targets.values()

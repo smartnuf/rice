@@ -1406,6 +1406,33 @@ def test_repository_relative_paths_and_slash_prose_are_accepted(
 
 
 @pytest.mark.parametrize(
+    "path",
+    [
+        "data/counts/ladenheim-148.json",
+        "./data/counts/ladenheim-148.json",
+        "../fixtures/graph.json",
+    ],
+)
+def test_repository_relative_path_forms_are_accepted(catalogue, annotations, path):
+    annotations["evidence_records"][2]["locator"]["repository_path"] = path
+    generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize(
+    "text",
+    [
+        "Local copy: ./data/counts/ladenheim-148.json",
+        "Fixture path,../fixtures/graph.json",
+    ],
+)
+def test_dot_relative_paths_embedded_in_prose_are_accepted(
+    catalogue, annotations, text
+):
+    annotations["sources"][0]["notes"] = text
+    generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize(
     "text",
     [
         "chapter/section",
@@ -1441,6 +1468,97 @@ def test_machine_absolute_paths_embedded_in_prose_are_rejected(
 ):
     annotations["sources"][0]["notes"] = path
     with pytest.raises(ValueError, match="absolute paths"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_category_target_claim_accepts_exact_supported_values_shape(
+    catalogue, annotations
+):
+    generate_evidence_ledger(catalogue, annotations)
+
+
+def test_category_target_claim_rejects_extra_supported_value(
+    catalogue, annotations
+):
+    values = annotations["evidence_records"][3]["claim"]["supported_values"]
+    values["bogus_claim"] = 123
+    with pytest.raises(ValueError, match="invalid category-target claim"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_category_target_claim_requires_target_map(catalogue, annotations):
+    values = annotations["evidence_records"][3]["claim"]["supported_values"]
+    values.pop("exclusion_category_targets")
+    with pytest.raises(ValueError, match="invalid category-target claim"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize("mutation", ["extra", "missing"])
+def test_category_target_claim_requires_exact_categories(
+    catalogue, annotations, mutation
+):
+    targets = annotations["evidence_records"][3]["claim"]["supported_values"][
+        "exclusion_category_targets"
+    ]
+    if mutation == "extra":
+        targets["none"] = 1
+    else:
+        targets.pop("other-canonical-exclusion")
+    with pytest.raises(ValueError, match="invalid category-target claim"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize("count", [True, False, 0, -1])
+def test_category_target_claim_requires_positive_genuine_counts(
+    catalogue, annotations, count
+):
+    targets = annotations["evidence_records"][3]["claim"]["supported_values"][
+        "exclusion_category_targets"
+    ]
+    targets["zobel-four-element"] = count
+    with pytest.raises(ValueError, match="invalid category-target claim"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_catalogue_target_claim_accepts_consistent_arithmetic(catalogue, annotations):
+    values = annotations["evidence_records"][0]["claim"]["supported_values"]
+    assert values == {
+        "source_population": 148,
+        "reported_members": 108,
+        "reported_exclusions": 40,
+    }
+    generate_evidence_ledger(catalogue, annotations)
+
+
+def test_catalogue_target_claim_rejects_inconsistent_arithmetic(
+    catalogue, annotations
+):
+    annotations["evidence_records"][0]["claim"]["supported_values"][
+        "reported_exclusions"
+    ] = 41
+    with pytest.raises(ValueError, match="inconsistent catalogue-target arithmetic"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_unreferenced_catalogue_target_claim_rejects_inconsistent_arithmetic(
+    catalogue, annotations
+):
+    annotations["evidence_records"][4]["claim"]["supported_values"][
+        "reported_exclusions"
+    ] = 41
+    with pytest.raises(ValueError, match="inconsistent catalogue-target arithmetic"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize("field", [
+    "source_population", "reported_members", "reported_exclusions"
+])
+@pytest.mark.parametrize("value", [True, False])
+def test_catalogue_target_claim_rejects_boolean_values(
+    catalogue, annotations, field, value
+):
+    annotations["evidence_records"][0]["claim"]["supported_values"][field] = value
+    with pytest.raises(ValueError, match="invalid catalogue-target claim"):
         generate_evidence_ledger(catalogue, annotations)
 
 
