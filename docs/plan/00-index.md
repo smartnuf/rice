@@ -2,11 +2,31 @@
 
 Status key: `done`, `prog`, `todo`, `blocked`, `later`.
 
+## Orientation
+
+The numbered groups organize work by subject and dependency; they are not a
+strict chronological queue. Status labels in this index and the individual task
+records identify the state of each task.
+
+## Current direction
+
+The next substantive milestone is to reproduce the explicit structural
+[148-network Ladenheim set](04-ladenheim/01-148.md) with traceable catalogue
+records and provenance. Likely following work is to compare it with the
+[canonical 108-network catalogue](04-ladenheim/02-108.md), reproduce and
+distinguish the [62 realizability-set classes](04-ladenheim/03-62.md),
+[map descriptors](04-ladenheim/05-numbering.md), and compare the
+[named equivalence and reduction contracts](04-ladenheim/07-compare-reductions.md).
+Larger slices, including the [full `R <= 3`, `L+C <= 5` census](05-slices/04-r3-x5.md),
+then remain subject to performance and output-size review, with catalogue
+results feeding the later
+[biquadratic investigations](06-biquad/05-impedance-classes.md).
+
 ## 00 — Plan records and literature alignment
 
 - `done` [Bring plan records up to date](00-records/01-update-plan-records.md)
 - `prog` [Record literature conclusions from deep research](00-records/02-literature-conclusions.md)
-- `prog` [Update README motivation](00-records/03-readme-motivation.md)
+- `done` [Update README motivation](00-records/03-readme-motivation.md)
 
 ## 01 — Development environment
 

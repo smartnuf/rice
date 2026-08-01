@@ -8,6 +8,10 @@ Keep historical comparisons precise and sourced.
 
 ## Notes
 
+Detailed historical catalogue comparisons, bibliographic support, and
+contract-by-contract explanations belong to this task rather than blocking the
+general README motivation task.
+
 The relevant historical name is the Ladenheim catalogue. Repository
 Ladenheim documentation should distinguish:
 

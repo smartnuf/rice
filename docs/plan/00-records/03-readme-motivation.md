@@ -1,6 +1,6 @@
 # 00-records / 03 — Update README motivation for enumeration
 
-Status: `prog`
+Status: `done`
 
 ## Goal
 
@@ -22,15 +22,19 @@ For rice specifically, enumeration can help to:
 
 ## Done means
 
-- The repository has a clear plan for a README motivation note.
+- The README has a concise motivation section useful to a new reader.
 - The note distinguishes practical software motivation from mathematical claims.
-- Any historical catalogue comparisons are cited in the documentation.
+- Detailed historical catalogue comparisons and citations remain tracked
+  separately in [`08-docs/03-catalogues.md`](../08-docs/03-catalogues.md).
 
 
 ## Progress notes
 
-- `README.md` now has a motivation section that explains reproducible catalogues,
-  descriptor testing, canonicalisation evidence, golden examples, and careful
-  separation from stronger mathematical claims.
-- This remains `prog` until historical catalogue comparisons and any stronger
-  claims are cited in dedicated documentation.
+- `README.md` now explains how reproducible catalogues support object and
+  descriptor coverage, duplicate detection, canonicalisation, golden cases,
+  named-contract comparisons, SP/bridge investigation, and later mathematical
+  work.
+- The section distinguishes current reproducible software capabilities from
+  unproved completeness, minimality, realisability, and historical-agreement
+  claims. Completing the separate historical comparison and citation task is
+  not a blocker for this general motivation record.
