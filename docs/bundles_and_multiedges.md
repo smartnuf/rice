@@ -1,37 +1,10 @@
 # Bundles, multi-edges, and series spans
 
-This document explains the historical legacy bundle model and the reduced
-model that replaced it.
-
-## Historical: legacy bundle model (removed)
-
-The legacy counter, now removed in full (`docs/plan/02-cleanup/02-legacy.md`),
-represented parallel branches by assigning a component-count bundle to each
-edge of a simple support graph.
-
-In legacy `lc` mode, a bundle was:
-
-```text
-(r, l, c)
-```
-
-where `r`, `l`, and `c` are arbitrary non-negative counts subject to the global
-component budget.
-
-Therefore the legacy counter treated these as distinct:
-
-```text
-(r=1, l=0, c=0)   one resistor
-(r=2, l=0, c=0)   two parallel resistors
-```
-
-and similarly for repeated inductors or capacitors. This was a legacy
-overcount relative to the reduced-topology model, and is documented here only
-as historical background.
+This document explains the bundle model we use.
 
 ## Simple primitive bundles
 
-The reduced model uses only simple primitive bundles. Phase 2 implements these
+The model uses only simple primitive bundles. Phase 2 implements these
 bundles for the raw assignment census exposed as `rice count assignments`. A bundle is a
 non-empty subset of `{R, L, C}` between the same two support nodes.
 
@@ -47,7 +20,7 @@ L || C
 R || L || C
 ```
 
-Not generated in the reduced model:
+Not generated:
 
 ```text
 R || R
@@ -78,6 +51,7 @@ A parallel `R` and `L` between the same two nodes is:
 
 ```text
   R
+ / \
 a---b
  \ /
   L
