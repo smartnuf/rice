@@ -5,7 +5,8 @@ from __future__ import annotations
 from collections import Counter
 from copy import deepcopy
 import json
-from pathlib import Path, PurePath
+from pathlib import Path
+import re
 from typing import Any
 
 
@@ -88,6 +89,15 @@ PUBLICATION_LOCATOR_FIELDS = {
     "table",
     "network_number",
 }
+CLAIM_TYPES = {
+    "catalogue-target",
+    "exclusion-category-targets",
+    "aggregate-exclusion-category",
+    "rice-selector-count",
+    "individual-catalogue-record",
+    "historical-identifier",
+    "basic-graph-assignment",
+}
 IMMUTABLE_FIELDS = (
     "catalogue_id",
     "representative_descriptor",
@@ -124,6 +134,17 @@ def _require_string_list(value: Any, field: str) -> None:
         raise ValueError(f"{field} must be a list of non-empty strings")
 
 
+def _is_machine_absolute_path(value: str) -> bool:
+    """Recognize portable machine-absolute paths without rejecting prose."""
+
+    return (
+        value.startswith("/")
+        or value.startswith("\\\\")
+        or value.startswith("//")
+        or re.match(r"^[A-Za-z]:[\\/]", value) is not None
+    )
+
+
 def _validate_no_unstable_metadata(value: Any, field: str = "annotations") -> None:
     if isinstance(value, dict):
         for key, item in value.items():
@@ -134,10 +155,7 @@ def _validate_no_unstable_metadata(value: Any, field: str = "annotations") -> No
         for index, item in enumerate(value):
             _validate_no_unstable_metadata(item, f"{field}[{index}]")
     elif isinstance(value, str):
-        lower = value.lower()
-        if lower.startswith("/home/") or lower.startswith("/users/"):
-            raise ValueError(f"absolute paths are not allowed in {field}")
-        if len(value) >= 3 and value[1:3] in {":\\", ":/"}:
+        if _is_machine_absolute_path(value):
             raise ValueError(f"absolute paths are not allowed in {field}")
 
 
@@ -192,13 +210,90 @@ def _validate_locator(locator: Any, record_id: str) -> None:
             raise ValueError(f"{record_id} locator {field} must be a non-negative integer")
     path = locator.get("repository_path")
     if path is not None:
-        if not isinstance(path, str) or not path or PurePath(path).is_absolute():
+        if not isinstance(path, str) or not path or _is_machine_absolute_path(path):
             raise ValueError(f"{record_id} repository_path must be relative")
     for field, value in locator.items():
         if field not in {"printed_page", "pdf_page_index", "network_number"} and (
             value is not None and (not isinstance(value, str) or not value)
         ):
             raise ValueError(f"{record_id} locator {field} must be a non-empty string")
+
+
+def _validate_claim(claim: Any, evidence_id: str) -> None:
+    if not isinstance(claim, dict) or claim.get("claim_type") not in CLAIM_TYPES:
+        raise ValueError(f"evidence {evidence_id} requires a valid structured claim")
+    claim_type = claim["claim_type"]
+    if claim_type == "catalogue-target":
+        expected = {"source_population", "reported_members", "reported_exclusions"}
+        values = claim.get("supported_values")
+        if not isinstance(values, dict) or set(values) != expected or not all(
+            isinstance(values[field], int) and values[field] > 0 for field in expected
+        ):
+            raise ValueError(f"evidence {evidence_id} has invalid catalogue-target claim")
+    elif claim_type == "exclusion-category-targets":
+        values = claim.get("supported_values")
+        targets = values.get("exclusion_category_targets") if isinstance(values, dict) else None
+        expected = EXCLUSION_CATEGORIES - {"none", "unresolved"}
+        if not isinstance(targets, dict) or set(targets) != expected or not all(
+            isinstance(value, int) and value > 0 for value in targets.values()
+        ):
+            raise ValueError(f"evidence {evidence_id} has invalid category-target claim")
+    elif claim_type == "aggregate-exclusion-category":
+        if (
+            claim.get("supported_exclusion_category")
+            not in EXCLUSION_CATEGORIES - {"none", "unresolved"}
+            or not isinstance(claim.get("source_population"), int)
+            or claim["source_population"] <= 0
+            or claim.get("supported_disposition") != "exclude"
+        ):
+            raise ValueError(f"evidence {evidence_id} has invalid aggregate exclusion claim")
+    elif claim_type == "rice-selector-count":
+        selector = claim.get("supported_selector")
+        if (
+            not isinstance(selector, dict)
+            or not selector
+            or any(field not in {"r", "l", "c", "lc", "rlc"} for field in selector)
+            or not all(isinstance(value, int) and value >= 0 for value in selector.values())
+            or not isinstance(claim.get("expected_matches"), int)
+            or claim["expected_matches"] <= 0
+        ):
+            raise ValueError(f"evidence {evidence_id} has invalid selector/count claim")
+    elif claim_type == "individual-catalogue-record":
+        subjects = claim.get("subject_catalogue_ids")
+        values = claim.get("supported_values")
+        allowed = {"proposed_disposition", "exclusion_category", "exclusion_reason"}
+        if (
+            not isinstance(subjects, list)
+            or not subjects
+            or not all(isinstance(item, str) and item.startswith("lh148-") for item in subjects)
+            or not isinstance(values, dict)
+            or not values
+            or not set(values) <= allowed
+        ):
+            raise ValueError(f"evidence {evidence_id} has invalid individual-record claim")
+    elif claim_type == "historical-identifier":
+        if (
+            claim.get("scheme") not in HISTORICAL_IDENTIFIER_SCHEMES
+            or not isinstance(claim.get("value"), (str, int))
+            or isinstance(claim.get("value"), bool)
+            or claim.get("value") == ""
+        ):
+            raise ValueError(f"evidence {evidence_id} has invalid identifier claim")
+    elif claim_type == "basic-graph-assignment":
+        required = {
+            "graph_label", "base_label", "is_dual", "fixture_id", "structural_relation"
+        }
+        assignment = claim.get("assignment")
+        if (
+            not isinstance(assignment, dict)
+            or set(assignment) != required
+            or not all(
+                isinstance(assignment[field], str) and assignment[field]
+                for field in required - {"is_dual"}
+            )
+            or not isinstance(assignment["is_dual"], bool)
+        ):
+            raise ValueError(f"evidence {evidence_id} has invalid graph-assignment claim")
 
 
 def _validate_evidence_records(
@@ -216,7 +311,7 @@ def _validate_evidence_records(
         _validate_locator(record.get("locator"), evidence_id)
         if not isinstance(record.get("paraphrase"), str) or not record["paraphrase"]:
             raise ValueError(f"evidence {evidence_id} requires paraphrase")
-        _require_string_list(record.get("asserted_fields"), f"{evidence_id}.asserted_fields")
+        _validate_claim(record.get("claim"), evidence_id)
         source = sources[source_id]
         if record["provenance_level"] == "authoritative-source-transcription":
             if source["source_type"] != "authoritative-publication":
@@ -248,7 +343,7 @@ def _validate_workspace_records(
         for field in ("repository_path", "limitations"):
             if not isinstance(record.get(field), str) or not record[field]:
                 raise ValueError(f"workspace record {record_id} requires {field}")
-        if PurePath(record["repository_path"]).is_absolute():
+        if _is_machine_absolute_path(record["repository_path"]):
             raise ValueError(f"workspace record {record_id} path must be relative")
     return records
 
@@ -279,21 +374,29 @@ def _require_references(value: Any, field: str, known: dict[str, Any]) -> None:
         raise ValueError(f"unknown {field}: {sorted(unknown)}")
 
 
-def _authoritative_verified(
-    evidence_ids: list[str], evidence: dict[str, dict[str, Any]]
-) -> bool:
-    return any(
-        evidence[item]["provenance_level"] == "authoritative-source-transcription"
-        and evidence[item]["verification_state"] == "source-verified"
-        for item in evidence_ids
+def _is_authoritative(record: dict[str, Any]) -> bool:
+    return (
+        record["provenance_level"] == "authoritative-source-transcription"
+        and record["verification_state"] == "source-verified"
     )
 
 
-def _rice_derived(evidence_ids: list[str], evidence: dict[str, dict[str, Any]]) -> bool:
-    return any(
-        evidence[item]["provenance_level"] == "rice-derived-structural-fact"
-        for item in evidence_ids
+def _is_positive_rice_derived(record: dict[str, Any]) -> bool:
+    return (
+        record["provenance_level"] == "rice-derived-structural-fact"
+        and record["verification_state"] in {"cross-checked", "source-verified"}
     )
+
+
+def _matching_evidence(
+    evidence_ids: list[str], evidence: dict[str, dict[str, Any]], claim_type: str
+) -> list[dict[str, Any]]:
+    return [
+        evidence[item]
+        for item in evidence_ids
+        if evidence[item]["verification_state"] != "rejected"
+        and evidence[item]["claim"]["claim_type"] == claim_type
+    ]
 
 
 def _validate_historical_identifiers(
@@ -315,13 +418,13 @@ def _validate_historical_identifiers(
         ids = identifier.get("evidence_record_ids")
         _require_references(ids, "historical identifier evidence_record_ids", evidence)
         if identifier["verification_state"] == "source-verified":
-            suitable = [
-                item
-                for item in ids
-                if "historical_identifiers" in evidence[item]["asserted_fields"]
-                or identifier["scheme"] in evidence[item]["asserted_fields"]
-            ]
-            if not _authoritative_verified(suitable, evidence):
+            suitable = _matching_evidence(ids, evidence, "historical-identifier")
+            if not any(
+                _is_authoritative(record)
+                and record["claim"]["scheme"] == identifier["scheme"]
+                and record["claim"]["value"] == identifier["value"]
+                for record in suitable
+            ):
                 raise ValueError(
                     "source-verified historical identifier requires appropriate "
                     "authoritative evidence"
@@ -347,11 +450,33 @@ def _validate_basic_graph_assignment(
     if value["verification_state"] not in VERIFICATION_STATES:
         raise ValueError("basic_graph_assignment has invalid verification_state")
     _require_references(value["evidence_record_ids"], "basic graph evidence_record_ids", evidence)
+    expected = {key: value[key] for key in (
+        "graph_label", "base_label", "is_dual", "fixture_id", "structural_relation"
+    )}
+    suitable = _matching_evidence(
+        value["evidence_record_ids"], evidence, "basic-graph-assignment"
+    )
+    exact = [record for record in suitable if record["claim"]["assignment"] == expected]
+    if value["verification_state"] == "source-verified" and not any(
+        _is_authoritative(record) for record in exact
+    ):
+        raise ValueError(
+            "source-verified basic_graph_assignment requires exact authoritative evidence"
+        )
+    if value["verification_state"] == "cross-checked" and not any(
+        _is_positive_rice_derived(record) for record in exact
+    ):
+        raise ValueError(
+            "cross-checked basic_graph_assignment requires exact RICE-derived evidence"
+        )
 
 
 def _validate_assertion(
     assertion: dict[str, Any], evidence: dict[str, dict[str, Any]],
     workspace: dict[str, dict[str, Any]], computations: dict[str, dict[str, Any]],
+    *, catalogue_id: str | None = None,
+    rule_selector: dict[str, int] | None = None,
+    expected_matches: int | None = None,
 ) -> None:
     missing = set(ASSERTION_FIELDS) - assertion.keys()
     if missing:
@@ -380,18 +505,71 @@ def _validate_assertion(
     category = assertion["exclusion_category"]
     reason = assertion["exclusion_reason"]
     evidence_ids = assertion["evidence_record_ids"]
-    if status == "source-backed" and not _authoritative_verified(evidence_ids, evidence):
-        raise ValueError("source-backed assertion requires authoritative source-verified evidence")
+    individual = _matching_evidence(
+        evidence_ids, evidence, "individual-catalogue-record"
+    )
+    matching_individual = [
+        record
+        for record in individual
+        if catalogue_id in record["claim"]["subject_catalogue_ids"]
+        and all(
+            assertion[field] == value
+            for field, value in record["claim"]["supported_values"].items()
+        )
+    ]
+    if status == "source-backed" and not any(
+        _is_authoritative(record) for record in matching_individual
+    ):
+        raise ValueError(
+            "source-backed assertion requires claim-specific authoritative evidence"
+        )
     if status == "derived-unique-match":
-        if not _authoritative_verified(evidence_ids, evidence):
-            raise ValueError("derived-unique-match requires aggregate authoritative evidence")
-        if not _rice_derived(evidence_ids, evidence):
-            raise ValueError("derived-unique-match requires a mechanical RICE basis")
+        aggregate = _matching_evidence(
+            evidence_ids, evidence, "aggregate-exclusion-category"
+        )
+        if not any(
+            _is_authoritative(record)
+            and record["claim"]["supported_exclusion_category"] == category
+            and record["claim"]["source_population"] == expected_matches
+            and record["claim"]["supported_disposition"] == disposition
+            for record in aggregate
+        ):
+            raise ValueError(
+                "derived-unique-match requires matching aggregate authoritative evidence"
+            )
+        derived = _matching_evidence(evidence_ids, evidence, "rice-selector-count")
+        if not any(
+            _is_positive_rice_derived(record)
+            and record["claim"]["supported_selector"] == rule_selector
+            and record["claim"]["expected_matches"] == expected_matches
+            for record in derived
+        ):
+            raise ValueError(
+                "derived-unique-match requires a matching mechanical RICE basis"
+            )
     if disposition == "exclude":
         if category in {"none", "unresolved"} or not isinstance(reason, str) or not reason:
             raise ValueError("asserted exclusion requires category and reason")
-        if not _authoritative_verified(evidence_ids, evidence):
-            raise ValueError("asserted exclusion requires authoritative evidence")
+        aggregate_match = any(
+            _is_authoritative(record)
+            and record["claim"]["supported_exclusion_category"] == category
+            and record["claim"]["source_population"] == expected_matches
+            and record["claim"]["supported_disposition"] == disposition
+            for record in _matching_evidence(
+                evidence_ids, evidence, "aggregate-exclusion-category"
+            )
+        )
+        if not aggregate_match and not any(
+            _is_authoritative(record)
+            and record["claim"]["supported_values"].get("proposed_disposition")
+            == disposition
+            and record["claim"]["supported_values"].get("exclusion_category")
+            == category
+            for record in matching_individual
+        ):
+            raise ValueError(
+                "asserted exclusion requires claim-specific authoritative evidence"
+            )
     elif category not in {"none", "unresolved"}:
         raise ValueError("non-exclusion cannot assert an exclusion category")
 
@@ -415,6 +593,48 @@ def _default_assertion() -> dict[str, Any]:
             "What entry-specific evidence establishes exclusion or retention?",
         ],
     }
+
+
+def _validate_target(
+    target: Any, evidence: dict[str, dict[str, Any]]
+) -> dict[str, Any]:
+    expected_targets = {
+        "simpler-bilinear-realisation": 8,
+        "zobel-four-element": 4,
+        "zobel-five-element-series-parallel": 20,
+        "other-canonical-exclusion": 8,
+    }
+    if not isinstance(target, dict):
+        raise ValueError("annotations require target")
+    expected = {
+        "source_population": 148,
+        "reported_members": 108,
+        "reported_exclusions": 40,
+        "exclusion_category_targets": expected_targets,
+    }
+    if any(target.get(field) != value for field, value in expected.items()):
+        raise ValueError("annotation target values differ from the comparison contract")
+    ids = target.get("evidence_record_ids")
+    _require_references(ids, "target evidence_record_ids", evidence)
+    catalogue_claim = {
+        "source_population": 148,
+        "reported_members": 108,
+        "reported_exclusions": 40,
+    }
+    if not any(
+        _is_authoritative(record)
+        and record["claim"]["supported_values"] == catalogue_claim
+        for record in _matching_evidence(ids, evidence, "catalogue-target")
+    ):
+        raise ValueError("target requires matching authoritative aggregate evidence")
+    if not any(
+        _is_authoritative(record)
+        and record["claim"]["supported_values"]["exclusion_category_targets"]
+        == expected_targets
+        for record in _matching_evidence(ids, evidence, "exclusion-category-targets")
+    ):
+        raise ValueError("target requires matching authoritative category-target evidence")
+    return {**expected, "evidence_record_ids": list(ids), "reproduction_claimed": False}
 
 
 def generate_evidence_ledger(
@@ -442,6 +662,7 @@ def generate_evidence_ledger(
     namespaces = [set(sources), set(evidence), set(workspace), set(computations)]
     if sum(len(items) for items in namespaces) != len(set().union(*namespaces)):
         raise ValueError("record IDs must occupy separate namespaces")
+    target = _validate_target(annotations.get("target"), evidence)
 
     explicit: dict[str, dict[str, Any]] = {}
     annotation_records = annotations.get("records")
@@ -463,7 +684,9 @@ def generate_evidence_ledger(
             if source_by_id[catalogue_id][field] != value:
                 raise ValueError(f"annotation contradicts immutable {field} for {catalogue_id}")
         assertion = {key: annotation.get(key) for key in ASSERTION_FIELDS}
-        _validate_assertion(assertion, evidence, workspace, computations)
+        _validate_assertion(
+            assertion, evidence, workspace, computations, catalogue_id=catalogue_id
+        )
         explicit[catalogue_id] = assertion
 
     resolved = dict(explicit)
@@ -496,7 +719,14 @@ def generate_evidence_ledger(
         if any(row["catalogue_id"] in resolved for row in matches):
             raise ValueError("annotation rule overlaps another assertion")
         assertion = {key: rule.get(key) for key in ASSERTION_FIELDS}
-        _validate_assertion(assertion, evidence, workspace, computations)
+        _validate_assertion(
+            assertion,
+            evidence,
+            workspace,
+            computations,
+            rule_selector=selector,
+            expected_matches=rule.get("expected_matches"),
+        )
         if assertion["comparison_status"] != "derived-unique-match":
             raise ValueError("unique-component-match must be derived-unique-match")
         for row in matches:
@@ -516,17 +746,7 @@ def generate_evidence_ledger(
         "object": "ladenheim-148-to-108-evidence-ledger",
         "source_catalogue": "data/counts/ladenheim-148.json",
         "source_catalogue_relation": catalogue["relation"]["name"],
-        "target": {
-            "reported_members": 108,
-            "reported_exclusions": 40,
-            "exclusion_category_targets": {
-                "simpler-bilinear-realisation": 8,
-                "zobel-four-element": 4,
-                "zobel-five-element-series-parallel": 20,
-                "other-canonical-exclusion": 8,
-            },
-            "reproduction_claimed": False,
-        },
+        "target": target,
         "sources": list(sources.values()),
         "evidence_records": list(evidence.values()),
         "previous_workspace_records": list(workspace.values()),

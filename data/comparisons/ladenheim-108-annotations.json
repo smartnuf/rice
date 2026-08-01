@@ -2,10 +2,14 @@
   "computational_cross_checks": [],
   "evidence_records": [
     {
-      "asserted_fields": [
-        "target.reported_members",
-        "target.reported_exclusions"
-      ],
+      "claim": {
+        "claim_type": "catalogue-target",
+        "supported_values": {
+          "reported_exclusions": 40,
+          "reported_members": 108,
+          "source_population": 148
+        }
+      },
       "evidence_id": "ms-2019-reported-148-to-108",
       "locator": {
         "chapter": "5",
@@ -18,12 +22,12 @@
       "verification_state": "source-verified"
     },
     {
-      "asserted_fields": [
-        "comparison_status",
-        "proposed_disposition",
-        "exclusion_category",
-        "exclusion_reason"
-      ],
+      "claim": {
+        "claim_type": "aggregate-exclusion-category",
+        "source_population": 8,
+        "supported_disposition": "exclude",
+        "supported_exclusion_category": "simpler-bilinear-realisation"
+      },
       "evidence_id": "ms-2019-eight-four-resistor-one-reactive",
       "locator": {
         "chapter": "5",
@@ -38,10 +42,14 @@
       "verification_state": "source-verified"
     },
     {
-      "asserted_fields": [
-        "selector",
-        "expected_matches"
-      ],
+      "claim": {
+        "claim_type": "rice-selector-count",
+        "expected_matches": 8,
+        "supported_selector": {
+          "lc": 1,
+          "r": 4
+        }
+      },
       "evidence_id": "rice-lh148-r4-lc1-count",
       "locator": {
         "repository_path": "data/counts/ladenheim-148.json"
@@ -52,9 +60,38 @@
       "verification_state": "cross-checked"
     },
     {
-      "asserted_fields": [
-        "target.exclusion_category_targets"
-      ],
+      "claim": {
+        "claim_type": "exclusion-category-targets",
+        "supported_values": {
+          "exclusion_category_targets": {
+            "other-canonical-exclusion": 8,
+            "simpler-bilinear-realisation": 8,
+            "zobel-five-element-series-parallel": 20,
+            "zobel-four-element": 4
+          }
+        }
+      },
+      "evidence_id": "ms-2019-four-exclusion-category-targets",
+      "locator": {
+        "chapter": "5",
+        "pdf_page_index": 48,
+        "printed_page": 42,
+        "section": "5.1"
+      },
+      "paraphrase": "The four reported exclusion categories contain 8, 4, 20, and 8 networks respectively, totalling forty exclusions.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "claim_type": "catalogue-target",
+        "supported_values": {
+          "reported_exclusions": 40,
+          "reported_members": 108,
+          "source_population": 148
+        }
+      },
       "evidence_id": "ms-2019-appendix-b-catalogue-totals",
       "locator": {
         "appendix": "B",
@@ -123,5 +160,20 @@
       "source_id": "rice-ladenheim-148-catalogue",
       "source_type": "rice-generated-artefact"
     }
-  ]
+  ],
+  "target": {
+    "evidence_record_ids": [
+      "ms-2019-reported-148-to-108",
+      "ms-2019-four-exclusion-category-targets"
+    ],
+    "exclusion_category_targets": {
+      "other-canonical-exclusion": 8,
+      "simpler-bilinear-realisation": 8,
+      "zobel-five-element-series-parallel": 20,
+      "zobel-four-element": 4
+    },
+    "reported_exclusions": 40,
+    "reported_members": 108,
+    "source_population": 148
+  }
 }

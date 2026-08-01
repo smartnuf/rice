@@ -80,12 +80,34 @@ objects with controlled page, PDF index, chapter, section, figure, appendix,
 table, network-number, repository-path, and commit fields; absolute machine
 paths and timestamps are forbidden.
 
+Each evidence record also has a structured `claim`. Claim types distinguish
+the overall catalogue target, exclusion-category totals, an aggregate
+exclusion category, a RICE selector/count result, an individual catalogue
+record, a historical identifier, and a basic-graph assignment. Validation
+matches evidence to the actual assertion: its subject record, disposition,
+category, selector, expected population, identifier, or graph assignment must
+agree as applicable. Provenance and verification state are necessary but not
+sufficient. Thus evidence for the general 148-to-108 total cannot support an
+individual exclusion, and evidence for one exclusion category cannot support a
+different category.
+
+The generated `target` is supplied by the annotation contract rather than
+being an unevidenced generator constant. It references separate authoritative,
+source-verified evidence for the `148 - 40 = 108` target and for the precise
+`8 + 4 + 20 + 8` category populations. The generator validates those values
+and carries their evidence-record IDs into the output.
+
 Historical identifiers are structured by scheme, value, verification state,
 and evidence-record IDs. A source-verified identifier requires precise
 authoritative evidence. The nullable `basic_graph_assignment` contract can
 later record a label, base label, dual designation, fixture, matching relation,
 verification state, and evidence references. Every current identifier list is
 empty and every basic-graph assignment is null.
+
+A future source-verified basic-graph assignment must cite authoritative
+evidence for that exact assignment. A cross-checked assignment must cite an
+exact matching RICE-derived fixture or matching record. Unrelated or rejected
+evidence, and positive verification with no evidence, are invalid.
 
 `comparison_status` has these meanings:
 
@@ -164,9 +186,10 @@ From the repository root:
 ```
 
 The generator validates the source catalogue, controlled values, every record
-namespace and cross-reference, structured locators and historical identifiers,
+namespace and cross-reference, structured claims and locators, historical
+identifiers, claim-specific evidence suitability, the evidence-linked target,
 the separation of authoritative and non-authoritative evidence, structural
-assertions, row count, and ordering. Output has no timestamps, absolute machine
+assertions, row count, and ordering. Output has no timestamps, machine-absolute
 paths, or unstable metadata. `--check` fails if the committed ledger differs.
 
 ## Next evidence work

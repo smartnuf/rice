@@ -169,7 +169,7 @@ def test_source_backed_cannot_rely_on_previous_workspace(
     annotations["previous_workspace_records"] = [_workspace_record()]
     row = _source_backed_fixture(catalogue, annotations)
     row["previous_workspace_record_ids"] = ["workspace-record"]
-    with pytest.raises(ValueError, match="requires authoritative"):
+    with pytest.raises(ValueError, match="claim-specific authoritative"):
         generate_evidence_ledger(catalogue, annotations)
 
 
@@ -177,7 +177,7 @@ def test_source_backed_cannot_rely_on_computation(catalogue, annotations):
     annotations["computational_cross_checks"] = [_cross_check()]
     row = _source_backed_fixture(catalogue, annotations)
     row["computational_cross_check_ids"] = ["computation-record"]
-    with pytest.raises(ValueError, match="requires authoritative"):
+    with pytest.raises(ValueError, match="claim-specific authoritative"):
         generate_evidence_ledger(catalogue, annotations)
 
 
@@ -200,8 +200,79 @@ def test_exclusion_cannot_rely_on_non_authoritative_records(
     else:
         annotations["computational_cross_checks"] = [_cross_check()]
         row["computational_cross_check_ids"] = ["computation-record"]
-    with pytest.raises(ValueError, match="exclusion requires authoritative"):
+    with pytest.raises(ValueError, match="claim-specific authoritative"):
         generate_evidence_ledger(catalogue, annotations)
+
+
+def test_source_backed_rejects_general_catalogue_target_evidence(
+    catalogue, annotations
+):
+    row = _source_backed_fixture(catalogue, annotations)
+    row["evidence_record_ids"] = ["ms-2019-reported-148-to-108"]
+    with pytest.raises(ValueError, match="claim-specific authoritative"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_exclusion_rejects_authoritative_unrelated_category(
+    catalogue, annotations
+):
+    row = _source_backed_fixture(catalogue, annotations)
+    row.update(
+        comparison_status="working-hypothesis",
+        proposed_disposition="exclude",
+        exclusion_category="zobel-four-element",
+        exclusion_reason="Fixture claim.",
+        evidence_basis=["researcher-hypothesis"],
+        evidence_record_ids=["ms-2019-eight-four-resistor-one-reactive"],
+    )
+    with pytest.raises(ValueError, match="claim-specific authoritative"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize("mismatch", ["selector", "category"])
+def test_unique_match_rejects_mismatched_claim_metadata(
+    catalogue, annotations, mismatch
+):
+    if mismatch == "selector":
+        annotations["evidence_records"][2]["claim"]["supported_selector"] = {"r": 3}
+        message = "matching mechanical RICE basis"
+    else:
+        annotations["evidence_records"][1]["claim"][
+            "supported_exclusion_category"
+        ] = "zobel-four-element"
+        message = "matching aggregate authoritative evidence"
+    with pytest.raises(ValueError, match=message):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_rejected_rice_evidence_cannot_satisfy_unique_match(catalogue, annotations):
+    annotations["evidence_records"][2]["verification_state"] = "rejected"
+    with pytest.raises(ValueError, match="matching mechanical RICE basis"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_target_requires_aggregate_evidence(catalogue, annotations):
+    annotations["target"]["evidence_record_ids"].remove(
+        "ms-2019-reported-148-to-108"
+    )
+    with pytest.raises(ValueError, match="aggregate evidence"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_target_requires_category_target_evidence(catalogue, annotations):
+    annotations["target"]["evidence_record_ids"].remove(
+        "ms-2019-four-exclusion-category-targets"
+    )
+    with pytest.raises(ValueError, match="category-target evidence"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_generated_target_references_its_evidence(catalogue, annotations):
+    target = generate_evidence_ledger(catalogue, annotations)["target"]
+    assert target["evidence_record_ids"] == [
+        "ms-2019-reported-148-to-108",
+        "ms-2019-four-exclusion-category-targets",
+    ]
 
 
 def test_source_verified_identifier_requires_authoritative_evidence(
@@ -254,6 +325,75 @@ def test_malformed_historical_identifiers_are_rejected(
     annotations["records"] = [row]
     with pytest.raises(ValueError, match="historical identifier"):
         generate_evidence_ledger(catalogue, annotations)
+
+
+def _graph_assignment(evidence_ids):
+    return {
+        "graph_label": "Fixture-G",
+        "base_label": "Fixture-G",
+        "is_dual": False,
+        "fixture_id": "fixture-g",
+        "structural_relation": "fixture-port-relation",
+        "verification_state": "source-verified",
+        "evidence_record_ids": evidence_ids,
+    }
+
+
+def _graph_evidence():
+    return {
+        "evidence_id": "fixture-graph-evidence",
+        "source_id": "morelli-smith-2019",
+        "provenance_level": "authoritative-source-transcription",
+        "verification_state": "source-verified",
+        "locator": {"printed_page": 125, "appendix": "B"},
+        "paraphrase": "Synthetic graph-assignment test fixture.",
+        "claim": {
+            "claim_type": "basic-graph-assignment",
+            "assignment": {
+                "graph_label": "Fixture-G",
+                "base_label": "Fixture-G",
+                "is_dual": False,
+                "fixture_id": "fixture-g",
+                "structural_relation": "fixture-port-relation",
+            },
+        },
+    }
+
+
+def test_source_verified_graph_assignment_requires_evidence(catalogue, annotations):
+    annotations["rules"] = []
+    row = _unresolved_annotation(catalogue["records"][0]["catalogue_id"])
+    row["basic_graph_assignment"] = _graph_assignment([])
+    annotations["records"] = [row]
+    with pytest.raises(ValueError, match="exact authoritative evidence"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_source_verified_graph_assignment_rejects_unrelated_evidence(
+    catalogue, annotations
+):
+    annotations["rules"] = []
+    row = _unresolved_annotation(catalogue["records"][0]["catalogue_id"])
+    row["basic_graph_assignment"] = _graph_assignment(
+        ["ms-2019-reported-148-to-108"]
+    )
+    annotations["records"] = [row]
+    with pytest.raises(ValueError, match="exact authoritative evidence"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_valid_source_verified_graph_assignment_fixture_is_accepted(
+    catalogue, annotations
+):
+    annotations["rules"] = []
+    annotations["evidence_records"].append(_graph_evidence())
+    row = _unresolved_annotation(catalogue["records"][0]["catalogue_id"])
+    row["basic_graph_assignment"] = _graph_assignment(["fixture-graph-evidence"])
+    annotations["records"] = [row]
+    generated = generate_evidence_ledger(catalogue, annotations)
+    assert generated["records"][0]["basic_graph_assignment"] == row[
+        "basic_graph_assignment"
+    ]
 
 
 @pytest.mark.parametrize(
@@ -339,14 +479,37 @@ def test_committed_ledger_is_exact_and_has_no_unstable_metadata(catalogue, annot
     assert "\\users\\" not in serialized
 
 
-def test_absolute_paths_and_timestamps_rejected(catalogue, annotations):
+def test_timestamps_are_rejected(catalogue, annotations):
     annotations["sources"][0]["timestamp"] = "2026-01-01"
     with pytest.raises(ValueError, match="timestamps"):
         generate_evidence_ledger(catalogue, annotations)
-    annotations["sources"][0].pop("timestamp")
-    annotations["sources"][0]["notes"] = "/home/person/source.pdf"
+
+
+@pytest.mark.parametrize(
+    "path",
+    [
+        "/tmp/example",
+        "/mnt/data/example",
+        "/var/example",
+        "C:\\Users\\example",
+        "C:/Users/example",
+        "\\\\server\\share\\example",
+    ],
+)
+def test_machine_absolute_paths_are_rejected(catalogue, annotations, path):
+    annotations["sources"][0]["notes"] = path
     with pytest.raises(ValueError, match="absolute paths"):
         generate_evidence_ledger(catalogue, annotations)
+
+
+def test_repository_relative_paths_and_slash_prose_are_accepted(
+    catalogue, annotations
+):
+    annotations["sources"][0]["notes"] = "See chapter/section references."
+    annotations["evidence_records"][2]["locator"]["repository_path"] = (
+        "data/counts/ladenheim-148.json"
+    )
+    generate_evidence_ledger(catalogue, annotations)
 
 
 def test_original_catalogue_ids_and_file_are_unchanged(catalogue):
