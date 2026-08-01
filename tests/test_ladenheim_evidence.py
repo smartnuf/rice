@@ -151,6 +151,18 @@ def test_structured_locators_are_validated(catalogue, annotations, locator):
         generate_evidence_ledger(catalogue, annotations)
 
 
+@pytest.mark.parametrize("field", ["printed_page", "network_number"])
+def test_one_based_locator_fields_reject_zero(catalogue, annotations, field):
+    annotations["evidence_records"][0]["locator"][field] = 0
+    with pytest.raises(ValueError, match="positive integer"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_pdf_page_index_accepts_zero(catalogue, annotations):
+    annotations["evidence_records"][0]["locator"]["pdf_page_index"] = 0
+    generate_evidence_ledger(catalogue, annotations)
+
+
 @pytest.mark.parametrize("boolean", [True, False])
 @pytest.mark.parametrize(
     "location",
@@ -809,6 +821,39 @@ def test_repository_relative_paths_and_slash_prose_are_accepted(
         "data/counts/ladenheim-148.json"
     )
     generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize(
+    "path",
+    [
+        "Local copy: /workspace/rice/private/source.pdf",
+        "Output at C:\\Users\\example\\result.json",
+        "Output at C:/Users/example/result.json",
+        "Share: \\\\server\\share\\example",
+    ],
+)
+def test_machine_absolute_paths_embedded_in_prose_are_rejected(
+    catalogue, annotations, path
+):
+    annotations["sources"][0]["notes"] = path
+    with pytest.raises(ValueError, match="absolute paths"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_no_evidence_basis_cannot_describe_positive_assertion(catalogue, annotations):
+    annotations["rules"][0]["evidence_basis"] = ["no-evidence-yet"]
+    with pytest.raises(ValueError, match="exclusive to unresolved"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_derived_unique_match_requires_both_matching_basis_values(
+    catalogue, annotations
+):
+    annotations["rules"][0]["evidence_basis"] = [
+        "aggregate-historical-category-plus-logically-unique-rice-match"
+    ]
+    with pytest.raises(ValueError, match="inconsistent with derived-unique-match"):
+        generate_evidence_ledger(catalogue, annotations)
 
 
 def test_original_catalogue_ids_and_file_are_unchanged(catalogue):

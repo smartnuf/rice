@@ -80,6 +80,10 @@ objects with controlled page, PDF index, chapter, section, figure, appendix,
 table, network-number, repository-path, and commit fields; absolute machine
 paths and timestamps are forbidden.
 
+Absolute paths are rejected even when embedded in prose. Printed-page and
+historical-network locators are positive one-based integers; only the explicitly
+zero-based PDF page index may be zero.
+
 Each evidence record also has a structured `claim`. Claim types distinguish
 the overall catalogue target, exclusion-category totals, an aggregate
 exclusion category, a RICE selector/count result, an individual catalogue
@@ -141,6 +145,9 @@ explicit table/figure mapping, an aggregate category plus a logically unique
 RICE match, a mechanically derived RICE structural fact, a researcher
 hypothesis, or no evidence yet. Mechanically derived facts establish only the
 stated RICE property; they are not historical evidence by themselves.
+`no-evidence-yet` is exclusive to unresolved assertions, and positive statuses
+must use the basis values appropriate to their source-backed, unique-match, or
+hypothesis contract.
 
 Confidence is controlled as `high`, `medium`, `low`, or `none`.
 

@@ -140,13 +140,17 @@ def _is_int(value: Any) -> bool:
 
 
 def _is_machine_absolute_path(value: str) -> bool:
-    """Recognize portable machine-absolute paths without rejecting prose."""
+    """Recognize machine-absolute path tokens, including paths within prose."""
 
-    return (
-        value.startswith("/")
-        or value.startswith("\\\\")
-        or value.startswith("//")
-        or re.match(r"^[A-Za-z]:[\\/]", value) is not None
+    boundary = r"(?:^|[\s\"'(`=])"
+    return any(
+        re.search(pattern, value) is not None
+        for pattern in (
+            boundary + r"/(?!/)(?=[^\s])",
+            boundary + r"//[^/\s]+/",
+            boundary + r"\\\\[^\\\s]+\\",
+            boundary + r"[A-Za-z]:[\\/]",
+        )
     )
 
 
@@ -218,8 +222,12 @@ def _validate_locator(locator: Any, record_id: str) -> None:
         raise ValueError(f"{record_id} locator requires a meaningful field")
     for field in {"printed_page", "pdf_page_index", "network_number"}:
         value = locator.get(field)
-        if value is not None and (not _is_int(value) or value < 0):
-            raise ValueError(f"{record_id} locator {field} must be a non-negative integer")
+        minimum = 0 if field == "pdf_page_index" else 1
+        if value is not None and (not _is_int(value) or value < minimum):
+            qualifier = "non-negative" if minimum == 0 else "positive"
+            raise ValueError(
+                f"{record_id} locator {field} must be a {qualifier} integer"
+            )
     path = locator.get("repository_path")
     if path is not None:
         if not isinstance(path, str) or not path or _is_machine_absolute_path(path):
@@ -545,6 +553,27 @@ def _validate_assertion(
     _require_string_list(assertion["evidence_basis"], "evidence_basis")
     if not set(assertion["evidence_basis"]) <= EVIDENCE_BASES:
         raise ValueError("invalid evidence_basis")
+    basis = set(assertion["evidence_basis"])
+    status = assertion["comparison_status"]
+    if "no-evidence-yet" in basis and (
+        status != "unresolved" or basis != {"no-evidence-yet"}
+    ):
+        raise ValueError("no-evidence-yet is exclusive to unresolved assertions")
+    historical_bases = {
+        "explicit-historical-entry-statement",
+        "explicit-historical-table-or-figure-mapping",
+    }
+    if status == "source-backed" and not basis & historical_bases:
+        raise ValueError(f"evidence_basis is inconsistent with {status}")
+    required_basis = {
+        "derived-unique-match": {
+            "aggregate-historical-category-plus-logically-unique-rice-match",
+            "mechanically-derived-rice-structural-fact",
+        },
+        "working-hypothesis": {"researcher-hypothesis"},
+    }
+    if status in required_basis and not required_basis[status] <= basis:
+        raise ValueError(f"evidence_basis is inconsistent with {status}")
     _require_references(assertion["evidence_record_ids"], "evidence_record_ids", evidence)
     _require_references(assertion["previous_workspace_record_ids"], "previous_workspace_record_ids", workspace)
     _require_references(assertion["computational_cross_check_ids"], "computational_cross_check_ids", computations)
@@ -557,7 +586,6 @@ def _validate_assertion(
     _require_string_list(assertion["notes"], "notes")
     _require_string_list(assertion["open_questions"], "open_questions")
 
-    status = assertion["comparison_status"]
     disposition = assertion["proposed_disposition"]
     category = assertion["exclusion_category"]
     reason = assertion["exclusion_reason"]
