@@ -1,9 +1,10 @@
 import json
+from collections import Counter
 from pathlib import Path
 
 import pytest
 
-from rice.ladenheim_evidence import generate_evidence_ledger
+from rice.ladenheim_evidence import _validate_exclusion_counts, generate_evidence_ledger
 
 
 CATALOGUE_PATH = Path("data/counts/ladenheim-148.json")
@@ -150,6 +151,30 @@ def test_structured_locators_are_validated(catalogue, annotations, locator):
         generate_evidence_ledger(catalogue, annotations)
 
 
+@pytest.mark.parametrize("boolean", [True, False])
+@pytest.mark.parametrize(
+    "location",
+    ["locator", "target", "category", "selector", "expected_matches"],
+)
+def test_booleans_are_rejected_in_numeric_schema_fields(
+    catalogue, annotations, location, boolean
+):
+    if location == "locator":
+        annotations["evidence_records"][0]["locator"]["printed_page"] = boolean
+    elif location == "target":
+        annotations["target"]["reported_members"] = boolean
+    elif location == "category":
+        annotations["evidence_records"][3]["claim"]["supported_values"][
+            "exclusion_category_targets"
+        ]["zobel-four-element"] = boolean
+    elif location == "selector":
+        annotations["evidence_records"][2]["claim"]["supported_selector"]["r"] = boolean
+    else:
+        annotations["evidence_records"][2]["claim"]["expected_matches"] = boolean
+    with pytest.raises(ValueError, match="integer|target|claim"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
 def _source_backed_fixture(catalogue, annotations):
     annotations["rules"] = []
     row = _unresolved_annotation(catalogue["records"][0]["catalogue_id"])
@@ -275,6 +300,68 @@ def test_generated_target_references_its_evidence(catalogue, annotations):
     ]
 
 
+def _retained_evidence(catalogue_id):
+    return {
+        "evidence_id": "fixture-retained-record",
+        "source_id": "morelli-smith-2019",
+        "provenance_level": "authoritative-source-transcription",
+        "verification_state": "source-verified",
+        "locator": {"appendix": "C", "printed_page": 129, "network_number": 1},
+        "paraphrase": "Synthetic retained-record test fixture.",
+        "claim": {
+            "claim_type": "individual-catalogue-record",
+            "subject_catalogue_ids": [catalogue_id],
+            "supported_values": {"proposed_disposition": "retain"},
+        },
+    }
+
+
+def test_unresolved_retain_without_evidence_is_rejected(catalogue, annotations):
+    annotations["rules"] = []
+    row = _unresolved_annotation(catalogue["records"][0]["catalogue_id"])
+    row["proposed_disposition"] = "retain"
+    annotations["records"] = [row]
+    with pytest.raises(ValueError, match="resolved evidence basis"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_working_hypothesis_retain_without_evidence_is_rejected(
+    catalogue, annotations
+):
+    annotations["rules"] = []
+    row = _unresolved_annotation(catalogue["records"][0]["catalogue_id"])
+    row.update(
+        comparison_status="working-hypothesis",
+        proposed_disposition="retain",
+        evidence_basis=["researcher-hypothesis"],
+    )
+    annotations["records"] = [row]
+    with pytest.raises(ValueError, match="individual-record evidence"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_retain_rejects_unrelated_authoritative_evidence(catalogue, annotations):
+    row = _source_backed_fixture(catalogue, annotations)
+    row.update(
+        proposed_disposition="retain",
+        evidence_record_ids=["ms-2019-reported-148-to-108"],
+    )
+    with pytest.raises(ValueError, match="claim-specific|individual-record"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_valid_source_backed_retained_fixture_is_accepted(catalogue, annotations):
+    row_id = catalogue["records"][0]["catalogue_id"]
+    annotations["evidence_records"].append(_retained_evidence(row_id))
+    row = _source_backed_fixture(catalogue, annotations)
+    row.update(
+        proposed_disposition="retain",
+        evidence_record_ids=["fixture-retained-record"],
+    )
+    generated = generate_evidence_ledger(catalogue, annotations)
+    assert generated["records"][0]["proposed_disposition"] == "retain"
+
+
 def test_source_verified_identifier_requires_authoritative_evidence(
     catalogue, annotations
 ):
@@ -339,7 +426,7 @@ def _graph_assignment(evidence_ids):
     }
 
 
-def _graph_evidence():
+def _graph_definition_evidence():
     return {
         "evidence_id": "fixture-graph-evidence",
         "source_id": "morelli-smith-2019",
@@ -348,13 +435,33 @@ def _graph_evidence():
         "locator": {"printed_page": 125, "appendix": "B"},
         "paraphrase": "Synthetic graph-assignment test fixture.",
         "claim": {
-            "claim_type": "basic-graph-assignment",
-            "assignment": {
+            "claim_type": "basic-graph-definition",
+            "definition": {
                 "graph_label": "Fixture-G",
                 "base_label": "Fixture-G",
                 "is_dual": False,
                 "fixture_id": "fixture-g",
+            },
+        },
+    }
+
+
+def _graph_match_evidence(catalogue_id):
+    return {
+        "evidence_id": "fixture-graph-match",
+        "source_id": "rice-ladenheim-148-catalogue",
+        "provenance_level": "rice-derived-structural-fact",
+        "verification_state": "cross-checked",
+        "locator": {"repository_path": "tests/fixtures/basic-graph.json"},
+        "paraphrase": "Synthetic subject-bound graph-match test fixture.",
+        "claim": {
+            "claim_type": "basic-graph-match",
+            "subject_catalogue_ids": [catalogue_id],
+            "match": {
+                "fixture_id": "fixture-g",
+                "graph_label": "Fixture-G",
                 "structural_relation": "fixture-port-relation",
+                "matched": True,
             },
         },
     }
@@ -365,7 +472,7 @@ def test_source_verified_graph_assignment_requires_evidence(catalogue, annotatio
     row = _unresolved_annotation(catalogue["records"][0]["catalogue_id"])
     row["basic_graph_assignment"] = _graph_assignment([])
     annotations["records"] = [row]
-    with pytest.raises(ValueError, match="exact authoritative evidence"):
+    with pytest.raises(ValueError, match="graph-definition evidence"):
         generate_evidence_ledger(catalogue, annotations)
 
 
@@ -378,17 +485,67 @@ def test_source_verified_graph_assignment_rejects_unrelated_evidence(
         ["ms-2019-reported-148-to-108"]
     )
     annotations["records"] = [row]
-    with pytest.raises(ValueError, match="exact authoritative evidence"):
+    with pytest.raises(ValueError, match="graph-definition evidence"):
         generate_evidence_ledger(catalogue, annotations)
 
 
-def test_valid_source_verified_graph_assignment_fixture_is_accepted(
+def test_graph_definition_alone_cannot_assign_rice_row(catalogue, annotations):
+    annotations["rules"] = []
+    annotations["evidence_records"].append(_graph_definition_evidence())
+    row = _unresolved_annotation(catalogue["records"][0]["catalogue_id"])
+    row["basic_graph_assignment"] = _graph_assignment(["fixture-graph-evidence"])
+    annotations["records"] = [row]
+    with pytest.raises(ValueError, match="subject-bound RICE graph-match"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_graph_match_for_another_catalogue_id_is_rejected(catalogue, annotations):
+    annotations["rules"] = []
+    row_id = catalogue["records"][0]["catalogue_id"]
+    other_id = catalogue["records"][1]["catalogue_id"]
+    annotations["evidence_records"].extend(
+        [_graph_definition_evidence(), _graph_match_evidence(other_id)]
+    )
+    row = _unresolved_annotation(row_id)
+    row["basic_graph_assignment"] = _graph_assignment(
+        ["fixture-graph-evidence", "fixture-graph-match"]
+    )
+    annotations["records"] = [row]
+    with pytest.raises(ValueError, match="subject-bound RICE graph-match"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize("field", ["graph_label", "fixture_id", "structural_relation", "is_dual"])
+def test_graph_assignment_mismatches_are_rejected(catalogue, annotations, field):
+    annotations["rules"] = []
+    row_id = catalogue["records"][0]["catalogue_id"]
+    annotations["evidence_records"].extend(
+        [_graph_definition_evidence(), _graph_match_evidence(row_id)]
+    )
+    row = _unresolved_annotation(row_id)
+    row["basic_graph_assignment"] = _graph_assignment(
+        ["fixture-graph-evidence", "fixture-graph-match"]
+    )
+    row["basic_graph_assignment"][field] = (
+        True if field == "is_dual" else f"mismatched-{field}"
+    )
+    annotations["records"] = [row]
+    with pytest.raises(ValueError, match="graph-definition|graph-match"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_valid_two_layer_graph_assignment_fixture_is_accepted(
     catalogue, annotations
 ):
     annotations["rules"] = []
-    annotations["evidence_records"].append(_graph_evidence())
-    row = _unresolved_annotation(catalogue["records"][0]["catalogue_id"])
-    row["basic_graph_assignment"] = _graph_assignment(["fixture-graph-evidence"])
+    row_id = catalogue["records"][0]["catalogue_id"]
+    annotations["evidence_records"].extend(
+        [_graph_definition_evidence(), _graph_match_evidence(row_id)]
+    )
+    row = _unresolved_annotation(row_id)
+    row["basic_graph_assignment"] = _graph_assignment(
+        ["fixture-graph-evidence", "fixture-graph-match"]
+    )
     annotations["records"] = [row]
     generated = generate_evidence_ledger(catalogue, annotations)
     assert generated["records"][0]["basic_graph_assignment"] == row[
@@ -409,6 +566,85 @@ def test_derived_unique_match_requires_historical_and_mechanical_evidence(
     annotations["rules"][0]["evidence_record_ids"].remove(remove_id)
     with pytest.raises(ValueError, match=message):
         generate_evidence_ledger(catalogue, annotations)
+
+
+def _populate_exclusions(catalogue, annotations, category_counts):
+    annotations["rules"] = []
+    annotations["records"] = []
+    offset = 0
+    for category, count in category_counts.items():
+        for index in range(count):
+            row_id = catalogue["records"][offset]["catalogue_id"]
+            evidence_id = f"fixture-exclusion-{offset}"
+            annotations["evidence_records"].append({
+                "evidence_id": evidence_id,
+                "source_id": "morelli-smith-2019",
+                "provenance_level": "authoritative-source-transcription",
+                "verification_state": "source-verified",
+                "locator": {"printed_page": 42, "section": "5.1"},
+                "paraphrase": "Synthetic exclusion-bound test fixture.",
+                "claim": {
+                    "claim_type": "individual-catalogue-record",
+                    "subject_catalogue_ids": [row_id],
+                    "supported_values": {
+                        "proposed_disposition": "exclude",
+                        "exclusion_category": category,
+                    },
+                },
+            })
+            row = _unresolved_annotation(row_id)
+            row.update(
+                comparison_status="source-backed",
+                proposed_disposition="exclude",
+                exclusion_category=category,
+                exclusion_reason="Synthetic exclusion-bound fixture.",
+                evidence_basis=["explicit-historical-entry-statement"],
+                evidence_record_ids=[evidence_id],
+                confidence="high",
+            )
+            annotations["records"].append(row)
+            offset += 1
+
+
+@pytest.mark.parametrize(
+    ("category", "count"),
+    [
+        ("simpler-bilinear-realisation", 9),
+        ("zobel-four-element", 5),
+    ],
+)
+def test_mapped_exclusions_cannot_exceed_category_target(
+    catalogue, annotations, category, count
+):
+    _populate_exclusions(catalogue, annotations, {category: count})
+    with pytest.raises(ValueError, match="exceed category target"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_mapped_exclusions_cannot_exceed_total_target(catalogue, annotations):
+    _populate_exclusions(
+        catalogue,
+        annotations,
+        {
+            "simpler-bilinear-realisation": 8,
+            "zobel-four-element": 4,
+            "zobel-five-element-series-parallel": 20,
+            "other-canonical-exclusion": 9,
+        },
+    )
+    with pytest.raises(ValueError, match="exceed reported exclusion target"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_category_counter_must_agree_with_total(catalogue, annotations):
+    ledger = generate_evidence_ledger(catalogue, annotations)
+    with pytest.raises(ValueError, match="categories disagree"):
+        _validate_exclusion_counts(
+            ledger["records"],
+            ledger["target"],
+            8,
+            Counter({"simpler-bilinear-realisation": 7}),
+        )
 
 
 def test_unresolved_entry_needs_no_fabricated_evidence(catalogue, annotations):
@@ -433,6 +669,7 @@ def test_exact_eight_and_140_distribution(catalogue, annotations):
         "exclude": 8,
         "unresolved": 140,
     }
+    assert all(row["proposed_disposition"] != "retain" for row in ledger["records"])
     mapped = [row for row in ledger["records"] if row["proposed_disposition"] == "exclude"]
     assert len(mapped) == 8
     assert all(row["r"] == 4 and row["lc"] == 1 for row in mapped)

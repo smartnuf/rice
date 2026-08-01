@@ -83,7 +83,8 @@ paths and timestamps are forbidden.
 Each evidence record also has a structured `claim`. Claim types distinguish
 the overall catalogue target, exclusion-category totals, an aggregate
 exclusion category, a RICE selector/count result, an individual catalogue
-record, a historical identifier, and a basic-graph assignment. Validation
+record, a historical identifier, a historical basic-graph definition, and a
+RICE-derived basic-graph match. Validation
 matches evidence to the actual assertion: its subject record, disposition,
 category, selector, expected population, identifier, or graph assignment must
 agree as applicable. Provenance and verification state are necessary but not
@@ -105,9 +106,12 @@ verification state, and evidence references. Every current identifier list is
 empty and every basic-graph assignment is null.
 
 A future source-verified basic-graph assignment must cite authoritative
-evidence for that exact assignment. A cross-checked assignment must cite an
-exact matching RICE-derived fixture or matching record. Unrelated or rejected
-evidence, and positive verification with no evidence, are invalid.
+evidence for the exact historical graph definition and fixture. It must also
+cite an exact RICE-derived match naming the receiving `lh148-*` catalogue ID,
+fixture, graph label, and structural relation. A historical definition alone
+does not establish that a RICE row matches it. Unrelated, subject-mismatched, or
+rejected evidence, and positive verification with either layer absent, are
+invalid.
 
 `comparison_status` has these meanings:
 
@@ -120,9 +124,12 @@ evidence, and positive verification with no evidence, are invalid.
 | `unresolved` | No adequate entry-level mapping is available. |
 
 `proposed_disposition` is `exclude`, `retain`, or `unresolved`. Unresolved does
-not mean retained. An exclusion requires a controlled category, a reason, an
-evidence basis, and source references. No entries are currently marked
-`retain`.
+not mean retained. Retention requires a resolved status and evidence basis plus
+authoritative, source-verified individual-record evidence for that exact
+catalogue ID and retained disposition. It is never inferred merely because an
+exclusion has not yet been found. An exclusion requires a controlled category,
+a reason, an evidence basis, and source references. No entries are currently
+marked `retain`.
 
 `exclusion_category` is one of
 `simpler-bilinear-realisation`, `zobel-four-element`,
@@ -173,7 +180,14 @@ because no exclusion has yet been established.
 
 Basic-graph fixtures and assignments, all remaining exclusions, and canonical
 network numbers are intentionally deferred to later focused changes. No graph
-letter or historical network number is asserted by this ledger.
+letter or historical network number is asserted by this ledger, every
+`basic_graph_assignment` remains null, and no record is retained.
+
+Mapped exclusion counts are consistency-checked against the evidence-linked
+historical targets. The total may not exceed forty, and no controlled category
+may exceed its declared `8`, `4`, `20`, or `8` target. Category counts must sum
+to the mapped exclusion total. These are upper bounds while the ledger is
+incomplete; equality is not required and the current mapping remains eight.
 
 ## Regeneration and validation
 

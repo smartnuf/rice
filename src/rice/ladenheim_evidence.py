@@ -96,7 +96,8 @@ CLAIM_TYPES = {
     "rice-selector-count",
     "individual-catalogue-record",
     "historical-identifier",
-    "basic-graph-assignment",
+    "basic-graph-definition",
+    "basic-graph-match",
 }
 IMMUTABLE_FIELDS = (
     "catalogue_id",
@@ -132,6 +133,10 @@ def _require_string_list(value: Any, field: str) -> None:
         isinstance(item, str) and item for item in value
     ):
         raise ValueError(f"{field} must be a list of non-empty strings")
+
+
+def _is_int(value: Any) -> bool:
+    return isinstance(value, int) and not isinstance(value, bool)
 
 
 def _is_machine_absolute_path(value: str) -> bool:
@@ -186,6 +191,13 @@ def _validate_sources(values: Any) -> dict[str, dict[str, Any]]:
             raise ValueError(f"source {source_id} requires non-empty citation")
         if not isinstance(source.get("notes"), str) or not source["notes"]:
             raise ValueError(f"source {source_id} requires non-empty notes")
+        publication = source.get("publication")
+        if publication is not None:
+            if not isinstance(publication, dict):
+                raise ValueError(f"source {source_id} publication must be an object")
+            year = publication.get("year")
+            if year is not None and (not _is_int(year) or year <= 0):
+                raise ValueError(f"source {source_id} publication year must be a positive integer")
         repository = source.get("repository")
         commit_sha = source.get("commit_sha")
         if source["source_type"] == "previous-workspace-repository":
@@ -206,7 +218,7 @@ def _validate_locator(locator: Any, record_id: str) -> None:
         raise ValueError(f"{record_id} locator requires a meaningful field")
     for field in {"printed_page", "pdf_page_index", "network_number"}:
         value = locator.get(field)
-        if value is not None and (not isinstance(value, int) or value < 0):
+        if value is not None and (not _is_int(value) or value < 0):
             raise ValueError(f"{record_id} locator {field} must be a non-negative integer")
     path = locator.get("repository_path")
     if path is not None:
@@ -227,7 +239,7 @@ def _validate_claim(claim: Any, evidence_id: str) -> None:
         expected = {"source_population", "reported_members", "reported_exclusions"}
         values = claim.get("supported_values")
         if not isinstance(values, dict) or set(values) != expected or not all(
-            isinstance(values[field], int) and values[field] > 0 for field in expected
+            _is_int(values[field]) and values[field] > 0 for field in expected
         ):
             raise ValueError(f"evidence {evidence_id} has invalid catalogue-target claim")
     elif claim_type == "exclusion-category-targets":
@@ -235,14 +247,14 @@ def _validate_claim(claim: Any, evidence_id: str) -> None:
         targets = values.get("exclusion_category_targets") if isinstance(values, dict) else None
         expected = EXCLUSION_CATEGORIES - {"none", "unresolved"}
         if not isinstance(targets, dict) or set(targets) != expected or not all(
-            isinstance(value, int) and value > 0 for value in targets.values()
+            _is_int(value) and value > 0 for value in targets.values()
         ):
             raise ValueError(f"evidence {evidence_id} has invalid category-target claim")
     elif claim_type == "aggregate-exclusion-category":
         if (
             claim.get("supported_exclusion_category")
             not in EXCLUSION_CATEGORIES - {"none", "unresolved"}
-            or not isinstance(claim.get("source_population"), int)
+            or not _is_int(claim.get("source_population"))
             or claim["source_population"] <= 0
             or claim.get("supported_disposition") != "exclude"
         ):
@@ -253,8 +265,8 @@ def _validate_claim(claim: Any, evidence_id: str) -> None:
             not isinstance(selector, dict)
             or not selector
             or any(field not in {"r", "l", "c", "lc", "rlc"} for field in selector)
-            or not all(isinstance(value, int) and value >= 0 for value in selector.values())
-            or not isinstance(claim.get("expected_matches"), int)
+            or not all(_is_int(value) and value >= 0 for value in selector.values())
+            or not _is_int(claim.get("expected_matches"))
             or claim["expected_matches"] <= 0
         ):
             raise ValueError(f"evidence {evidence_id} has invalid selector/count claim")
@@ -279,21 +291,38 @@ def _validate_claim(claim: Any, evidence_id: str) -> None:
             or claim.get("value") == ""
         ):
             raise ValueError(f"evidence {evidence_id} has invalid identifier claim")
-    elif claim_type == "basic-graph-assignment":
+    elif claim_type == "basic-graph-definition":
         required = {
-            "graph_label", "base_label", "is_dual", "fixture_id", "structural_relation"
+            "graph_label", "base_label", "is_dual", "fixture_id"
         }
-        assignment = claim.get("assignment")
+        definition = claim.get("definition")
         if (
-            not isinstance(assignment, dict)
-            or set(assignment) != required
+            not isinstance(definition, dict)
+            or set(definition) != required
             or not all(
-                isinstance(assignment[field], str) and assignment[field]
+                isinstance(definition[field], str) and definition[field]
                 for field in required - {"is_dual"}
             )
-            or not isinstance(assignment["is_dual"], bool)
+            or not isinstance(definition["is_dual"], bool)
         ):
-            raise ValueError(f"evidence {evidence_id} has invalid graph-assignment claim")
+            raise ValueError(f"evidence {evidence_id} has invalid graph-definition claim")
+    elif claim_type == "basic-graph-match":
+        subjects = claim.get("subject_catalogue_ids")
+        required = {"fixture_id", "graph_label", "structural_relation", "matched"}
+        match = claim.get("match")
+        if (
+            not isinstance(subjects, list)
+            or not subjects
+            or not all(isinstance(item, str) and item.startswith("lh148-") for item in subjects)
+            or not isinstance(match, dict)
+            or set(match) != required
+            or not all(
+                isinstance(match[field], str) and match[field]
+                for field in required - {"matched"}
+            )
+            or not isinstance(match["matched"], bool)
+        ):
+            raise ValueError(f"evidence {evidence_id} has invalid graph-match claim")
 
 
 def _validate_evidence_records(
@@ -432,7 +461,7 @@ def _validate_historical_identifiers(
 
 
 def _validate_basic_graph_assignment(
-    value: Any, evidence: dict[str, dict[str, Any]]
+    value: Any, evidence: dict[str, dict[str, Any]], catalogue_id: str | None
 ) -> None:
     if value is None:
         return
@@ -450,24 +479,37 @@ def _validate_basic_graph_assignment(
     if value["verification_state"] not in VERIFICATION_STATES:
         raise ValueError("basic_graph_assignment has invalid verification_state")
     _require_references(value["evidence_record_ids"], "basic graph evidence_record_ids", evidence)
-    expected = {key: value[key] for key in (
-        "graph_label", "base_label", "is_dual", "fixture_id", "structural_relation"
+    expected_definition = {key: value[key] for key in (
+        "graph_label", "base_label", "is_dual", "fixture_id"
     )}
-    suitable = _matching_evidence(
-        value["evidence_record_ids"], evidence, "basic-graph-assignment"
+    definitions = _matching_evidence(
+        value["evidence_record_ids"], evidence, "basic-graph-definition"
     )
-    exact = [record for record in suitable if record["claim"]["assignment"] == expected]
-    if value["verification_state"] == "source-verified" and not any(
-        _is_authoritative(record) for record in exact
+    if not any(
+        _is_authoritative(record)
+        and record["claim"]["definition"] == expected_definition
+        for record in definitions
     ):
         raise ValueError(
-            "source-verified basic_graph_assignment requires exact authoritative evidence"
+            "basic_graph_assignment requires exact authoritative graph-definition evidence"
         )
-    if value["verification_state"] == "cross-checked" and not any(
-        _is_positive_rice_derived(record) for record in exact
+    expected_match = {
+        "fixture_id": value["fixture_id"],
+        "graph_label": value["graph_label"],
+        "structural_relation": value["structural_relation"],
+        "matched": True,
+    }
+    matches = _matching_evidence(
+        value["evidence_record_ids"], evidence, "basic-graph-match"
+    )
+    if not any(
+        _is_positive_rice_derived(record)
+        and catalogue_id in record["claim"]["subject_catalogue_ids"]
+        and record["claim"]["match"] == expected_match
+        for record in matches
     ):
         raise ValueError(
-            "cross-checked basic_graph_assignment requires exact RICE-derived evidence"
+            "basic_graph_assignment requires exact subject-bound RICE graph-match evidence"
         )
 
 
@@ -496,7 +538,9 @@ def _validate_assertion(
     _require_references(assertion["previous_workspace_record_ids"], "previous_workspace_record_ids", workspace)
     _require_references(assertion["computational_cross_check_ids"], "computational_cross_check_ids", computations)
     _validate_historical_identifiers(assertion["historical_identifiers"], evidence)
-    _validate_basic_graph_assignment(assertion["basic_graph_assignment"], evidence)
+    _validate_basic_graph_assignment(
+        assertion["basic_graph_assignment"], evidence, catalogue_id
+    )
     _require_string_list(assertion["notes"], "notes")
     _require_string_list(assertion["open_questions"], "open_questions")
 
@@ -570,6 +614,18 @@ def _validate_assertion(
             raise ValueError(
                 "asserted exclusion requires claim-specific authoritative evidence"
             )
+    elif disposition == "retain":
+        if status == "unresolved" or assertion["evidence_basis"] == ["no-evidence-yet"]:
+            raise ValueError("retained disposition requires a resolved evidence basis")
+        if not any(
+            _is_authoritative(record)
+            and record["claim"]["supported_values"].get("proposed_disposition")
+            == "retain"
+            for record in matching_individual
+        ):
+            raise ValueError(
+                "retained disposition requires exact authoritative individual-record evidence"
+            )
     elif category not in {"none", "unresolved"}:
         raise ValueError("non-exclusion cannot assert an exclusion category")
 
@@ -635,6 +691,32 @@ def _validate_target(
     ):
         raise ValueError("target requires matching authoritative category-target evidence")
     return {**expected, "evidence_record_ids": list(ids), "reproduction_claimed": False}
+
+
+def _validate_exclusion_counts(
+    rows: list[dict[str, Any]],
+    target: dict[str, Any],
+    mapped_total: int,
+    mapped_categories: Counter[str],
+) -> None:
+    exclusion_rows = [row for row in rows if row["proposed_disposition"] == "exclude"]
+    if mapped_total != len(exclusion_rows):
+        raise ValueError("mapped exclusion total disagrees with exclusion rows")
+    if mapped_total > target["reported_exclusions"]:
+        raise ValueError("mapped exclusions exceed reported exclusion target")
+    if sum(mapped_categories.values()) != mapped_total:
+        raise ValueError("mapped exclusion categories disagree with total exclusions")
+    for row in rows:
+        category = row["exclusion_category"]
+        excluded = row["proposed_disposition"] == "exclude"
+        if excluded and category in {"none", "unresolved"}:
+            raise ValueError("excluded row lacks a mapped exclusion category")
+        if not excluded and category not in {"none", "unresolved"}:
+            raise ValueError("non-exclusion row contributes to a mapped category")
+    for category, count in mapped_categories.items():
+        category_target = target["exclusion_category_targets"].get(category)
+        if category_target is None or count > category_target:
+            raise ValueError(f"mapped {category} exclusions exceed category target")
 
 
 def generate_evidence_ledger(
@@ -708,13 +790,16 @@ def generate_evidence_ledger(
         selector = rule.get("selector")
         if not isinstance(selector, dict) or not selector or any(
             field not in {"r", "l", "c", "lc", "rlc"} for field in selector
-        ):
+        ) or not all(_is_int(value) and value >= 0 for value in selector.values()):
             raise ValueError("invalid unique-component-match selector")
+        expected_match_count = rule.get("expected_matches")
+        if not _is_int(expected_match_count) or expected_match_count <= 0:
+            raise ValueError("invalid unique-component-match expected_matches")
         matches = [
             row for row in records
             if all(row[field] == value for field, value in selector.items())
         ]
-        if len(matches) != rule.get("expected_matches"):
+        if len(matches) != expected_match_count:
             raise ValueError("unique-component-match count differs from expectation")
         if any(row["catalogue_id"] in resolved for row in matches):
             raise ValueError("annotation rule overlaps another assertion")
@@ -725,7 +810,7 @@ def generate_evidence_ledger(
             workspace,
             computations,
             rule_selector=selector,
-            expected_matches=rule.get("expected_matches"),
+            expected_matches=expected_match_count,
         )
         if assertion["comparison_status"] != "derived-unique-match":
             raise ValueError("unique-component-match must be derived-unique-match")
@@ -741,6 +826,14 @@ def generate_evidence_ledger(
     statuses = Counter(row["comparison_status"] for row in ledger_rows)
     dispositions = Counter(row["proposed_disposition"] for row in ledger_rows)
     categories = Counter(row["exclusion_category"] for row in ledger_rows)
+    mapped_categories = Counter(
+        row["exclusion_category"]
+        for row in ledger_rows
+        if row["proposed_disposition"] == "exclude"
+    )
+    _validate_exclusion_counts(
+        ledger_rows, target, dispositions["exclude"], mapped_categories
+    )
     return {
         "format_version": FORMAT_VERSION,
         "object": "ladenheim-148-to-108-evidence-ledger",
