@@ -5,7 +5,25 @@ topology classes.
 
 We were inspired by reading a book by
 [Morelli and Smith](https://www.google.co.uk/books/edition/Passive_Network_Synthesis_An_Approach_to/IdyZDwAAQBAJ?hl=en&gbpv=0),
-and some of the references they site in their bibliography.
+and some of the references they cite in their bibliography.
+
+## Why enumeration?
+
+Finite, reproducible catalogues turn questions about possible circuit forms into
+explicit examples that can be searched, counted, and compared. For RICE, they
+help test whether the object and descriptor language covers the intended network
+classes, identify duplicate or equivalent descriptions, develop and test
+canonicalisation rules, and provide golden cases for enumeration, reduction,
+and later immittance work. They also support comparisons between clearly named
+RICE equivalence contracts and historical catalogues, investigation of where
+series-parallel forms cease to suffice and bridge-like structures become
+relevant, and later work on completeness, realisability, and minimality.
+
+The current software reproducibly enumerates and counts the reduced-topology
+stages and small golden catalogue described below. The historical comparisons
+and the mathematical investigations they motivate remain planned work: RICE has
+not established completeness, minimality, universal biquadratic realisability,
+or agreement with the Ladenheim catalogues.
 
 ## Development status: provisional interfaces
 
