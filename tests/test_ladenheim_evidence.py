@@ -80,6 +80,13 @@ def _cross_check():
     }
 
 
+def _previous_workspace_cross_check():
+    record = _cross_check()
+    record["provenance_level"] = "previous-workspace-generated"
+    record["independently_reproduced"] = False
+    return record
+
+
 def test_format_version_two_is_required(catalogue, annotations):
     annotations["format_version"] = 1
     with pytest.raises(ValueError, match="format_version must be 2"):
@@ -282,6 +289,44 @@ def test_unique_match_rejects_mismatched_claim_metadata(
         generate_evidence_ledger(catalogue, annotations)
 
 
+def test_unique_match_cannot_replace_historical_component_predicate(
+    catalogue, annotations
+):
+    annotations["rules"][0]["selector"] = {"r": 2, "l": 2}
+    annotations["evidence_records"][2]["claim"]["supported_selector"] = {
+        "r": 2,
+        "l": 2,
+    }
+    with pytest.raises(ValueError, match="matching aggregate authoritative"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize("mismatch", ["selector", "population", "category", "disposition"])
+def test_unique_match_requires_exact_aggregate_claim(catalogue, annotations, mismatch):
+    claim = annotations["evidence_records"][1]["claim"]
+    if mismatch == "selector":
+        claim["supported_selector"] = {"r": 3, "lc": 1}
+    elif mismatch == "population":
+        claim["source_population"] = 7
+    elif mismatch == "category":
+        claim["supported_exclusion_category"] = "zobel-four-element"
+    else:
+        claim["supported_disposition"] = "retain"
+    with pytest.raises(ValueError, match="aggregate exclusion|aggregate authoritative"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_unique_match_accepts_exact_historical_and_mechanical_predicate(
+    catalogue, annotations
+):
+    ledger = generate_evidence_ledger(catalogue, annotations)
+    assert annotations["evidence_records"][1]["claim"]["supported_selector"] == {
+        "r": 4,
+        "lc": 1,
+    }
+    assert ledger["summary"]["mapped_exclusions"] == 8
+
+
 def test_rejected_rice_evidence_cannot_satisfy_unique_match(catalogue, annotations):
     annotations["evidence_records"][2]["verification_state"] = "rejected"
     with pytest.raises(ValueError, match="matching mechanical RICE basis"):
@@ -292,6 +337,38 @@ def test_rice_derived_evidence_requires_rice_source(catalogue, annotations):
     annotations["evidence_records"][2]["source_id"] = "morelli-smith-2019"
     with pytest.raises(ValueError, match="requires a RICE source"):
         generate_evidence_ledger(catalogue, annotations)
+
+
+def test_unreferenced_evidence_subject_must_exist(catalogue, annotations):
+    evidence = _retained_evidence("lh148-does-not-exist")
+    annotations["evidence_records"].append(evidence)
+    with pytest.raises(ValueError, match="unknown catalogue subjects"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_referenced_evidence_subject_must_exist(catalogue, annotations):
+    evidence = _retained_evidence("lh148-does-not-exist")
+    annotations["evidence_records"].append(evidence)
+    row = _source_backed_fixture(catalogue, annotations)
+    row["proposed_disposition"] = "retain"
+    row["evidence_record_ids"] = [evidence["evidence_id"]]
+    with pytest.raises(ValueError, match="unknown catalogue subjects"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_duplicate_evidence_subjects_are_rejected(catalogue, annotations):
+    row_id = catalogue["records"][0]["catalogue_id"]
+    evidence = _retained_evidence(row_id)
+    evidence["claim"]["subject_catalogue_ids"] = [row_id, row_id]
+    annotations["evidence_records"].append(evidence)
+    with pytest.raises(ValueError, match="invalid catalogue subjects"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_exact_existing_evidence_subject_is_accepted(catalogue, annotations):
+    row_id = catalogue["records"][0]["catalogue_id"]
+    annotations["evidence_records"].append(_retained_evidence(row_id))
+    generate_evidence_ledger(catalogue, annotations)
 
 
 def test_target_requires_aggregate_evidence(catalogue, annotations):
@@ -824,9 +901,31 @@ def test_repository_relative_paths_and_slash_prose_are_accepted(
 
 
 @pytest.mark.parametrize(
+    "text",
+    [
+        "chapter/section",
+        "R/L/C",
+        "ratio 1/2",
+        "https://example.com/reference",
+        "A. Morelli and M. C. Smith, 2019.",
+    ],
+)
+def test_non_path_slash_prose_and_urls_are_accepted(catalogue, annotations, text):
+    annotations["sources"][0]["notes"] = text
+    generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize(
     "path",
     [
         "Local copy: /workspace/rice/private/source.pdf",
+        "Local copy:/workspace/rice/private.pdf",
+        "[/workspace/rice/private.pdf]",
+        "path,/tmp/result.json",
+        "(/var/tmp/result.json)",
+        "[C:\\tmp\\result.json]",
+        'source="C:/Users/example/file.pdf"',
+        "location:\\\\server\\share\\file.json",
         "Output at C:\\Users\\example\\result.json",
         "Output at C:/Users/example/result.json",
         "Share: \\\\server\\share\\example",
@@ -853,6 +952,59 @@ def test_derived_unique_match_requires_both_matching_basis_values(
         "aggregate-historical-category-plus-logically-unique-rice-match"
     ]
     with pytest.raises(ValueError, match="inconsistent with derived-unique-match"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_independent_computation_requires_reproduced_flag(catalogue, annotations):
+    record = _cross_check()
+    record["independently_reproduced"] = False
+    annotations["computational_cross_checks"] = [record]
+    with pytest.raises(ValueError, match="provenance contradicts"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_previous_workspace_computation_requires_unreproduced_flag(
+    catalogue, annotations
+):
+    record = _previous_workspace_cross_check()
+    record["independently_reproduced"] = True
+    annotations["computational_cross_checks"] = [record]
+    with pytest.raises(ValueError, match="provenance contradicts"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize("record_factory", [_cross_check, _previous_workspace_cross_check])
+def test_consistent_computational_provenance_is_accepted(
+    catalogue, annotations, record_factory
+):
+    annotations["computational_cross_checks"] = [record_factory()]
+    generate_evidence_ledger(catalogue, annotations)
+
+
+def test_committed_structural_relation_is_required(catalogue, annotations):
+    ledger = generate_evidence_ledger(catalogue, annotations)
+    assert ledger["source_catalogue_relation"] == (
+        "colour-preserving-port-augmented-cycle-matroid-v1"
+    )
+
+
+@pytest.mark.parametrize(
+    "relation",
+    [
+        {"name": "colour-preserving-port-augmented-cycle-matroid-v2"},
+        {"name": "colour-preserving-port-augmented-cycle-matroid-v1 "},
+        {},
+        None,
+    ],
+)
+def test_alternate_or_missing_structural_relation_is_rejected(
+    catalogue, annotations, relation
+):
+    if relation is None:
+        catalogue.pop("relation")
+    else:
+        catalogue["relation"] = relation
+    with pytest.raises(ValueError, match="structural catalogue relation"):
         generate_evidence_ledger(catalogue, annotations)
 
 

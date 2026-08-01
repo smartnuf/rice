@@ -63,6 +63,10 @@ contains reviewed assertions and structural matching rules without duplicating
 all 148 structural records. The generated file
 `data/comparisons/ladenheim-148-to-108.json` joins those assertions to the
 structural catalogue and carries exactly one row per stable `lh148-*` ID.
+Generation accepts only the exact
+`colour-preserving-port-augmented-cycle-matroid-v1` source-catalogue relation;
+the evidence rules cannot be applied to a catalogue using another distinctness
+contract.
 
 The provenance layers are deliberately separate:
 
@@ -72,6 +76,10 @@ The provenance layers are deliberately separate:
 | `evidence_records` | A specific assertion, structured locator, paraphrase, provenance level, verification state, and asserted fields. | Only an authoritative, source-verified record with a precise publication locator |
 | `previous_workspace_records` | Repository-relative earlier transcriptions, generated artefacts, or visual cross-checks, with commit and limitations. | No |
 | `computational_cross_checks` | A recorded implementation, input, operation, result, reproducibility state, and limitations. | No |
+
+Computational provenance and the `independently_reproduced` flag must agree:
+an independently reproduced computation is `true`, while a
+previous-workspace-generated result is `false`.
 
 Entries and rules reference these collections through separately validated
 `evidence_record_ids`, `previous_workspace_record_ids`, and
@@ -95,6 +103,13 @@ agree as applicable. Provenance and verification state are necessary but not
 sufficient. Thus evidence for the general 148-to-108 total cannot support an
 individual exclusion, and evidence for one exclusion category cannot support a
 different category.
+
+Aggregate historical exclusion claims include their controlled component
+predicate. For the currently mapped group, the authoritative predicate, rule
+selector, and mechanical RICE selector agree exactly on `r=4`, `lc=1`, with
+population and expected match count both eight. Every claim carrying
+`subject_catalogue_ids` is checked against the exact ID set in the committed
+148 catalogue, including evidence not yet referenced by a row or rule.
 
 The generated `target` is supplied by the annotation contract rather than
 being an unevidenced generator constant. It references separate authoritative,

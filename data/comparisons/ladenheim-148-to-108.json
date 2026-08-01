@@ -26,7 +26,11 @@
         "claim_type": "aggregate-exclusion-category",
         "source_population": 8,
         "supported_disposition": "exclude",
-        "supported_exclusion_category": "simpler-bilinear-realisation"
+        "supported_exclusion_category": "simpler-bilinear-realisation",
+        "supported_selector": {
+          "lc": 1,
+          "r": 4
+        }
       },
       "evidence_id": "ms-2019-eight-four-resistor-one-reactive",
       "locator": {

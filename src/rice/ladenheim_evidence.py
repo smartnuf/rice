@@ -11,6 +11,7 @@ from typing import Any
 
 
 FORMAT_VERSION = 2
+SOURCE_CATALOGUE_RELATION = "colour-preserving-port-augmented-cycle-matroid-v1"
 COMPARISON_STATUSES = {
     "source-backed",
     "derived-unique-match",
@@ -142,9 +143,10 @@ def _is_int(value: Any) -> bool:
 def _is_machine_absolute_path(value: str) -> bool:
     """Recognize machine-absolute path tokens, including paths within prose."""
 
-    boundary = r"(?:^|[\s\"'(`=])"
+    without_urls = re.sub(r"\bhttps?://[^\s\]\[(){}<>\"']+", "", value)
+    boundary = r"(?:^|[^A-Za-z0-9])"
     return any(
-        re.search(pattern, value) is not None
+        re.search(pattern, without_urls) is not None
         for pattern in (
             boundary + r"/(?!/)(?=[^\s])",
             boundary + r"//[^/\s]+/",
@@ -152,6 +154,32 @@ def _is_machine_absolute_path(value: str) -> bool:
             boundary + r"[A-Za-z]:[\\/]",
         )
     )
+
+
+def _is_structural_selector(value: Any) -> bool:
+    return (
+        isinstance(value, dict)
+        and bool(value)
+        and all(field in {"r", "l", "c", "lc", "rlc"} for field in value)
+        and all(_is_int(item) and item >= 0 for item in value.values())
+    )
+
+
+def _validate_subjects(
+    subjects: Any, evidence_id: str, catalogue_ids: set[str]
+) -> None:
+    if (
+        not isinstance(subjects, list)
+        or not subjects
+        or not all(isinstance(item, str) for item in subjects)
+        or len(set(subjects)) != len(subjects)
+    ):
+        raise ValueError(f"evidence {evidence_id} has invalid catalogue subjects")
+    unknown = set(subjects) - catalogue_ids
+    if unknown:
+        raise ValueError(
+            f"evidence {evidence_id} has unknown catalogue subjects: {sorted(unknown)}"
+        )
 
 
 def _validate_no_unstable_metadata(value: Any, field: str = "annotations") -> None:
@@ -239,7 +267,9 @@ def _validate_locator(locator: Any, record_id: str) -> None:
             raise ValueError(f"{record_id} locator {field} must be a non-empty string")
 
 
-def _validate_claim(claim: Any, evidence_id: str) -> None:
+def _validate_claim(
+    claim: Any, evidence_id: str, catalogue_ids: set[str]
+) -> None:
     if not isinstance(claim, dict) or claim.get("claim_type") not in CLAIM_TYPES:
         raise ValueError(f"evidence {evidence_id} requires a valid structured claim")
     claim_type = claim["claim_type"]
@@ -259,9 +289,11 @@ def _validate_claim(claim: Any, evidence_id: str) -> None:
         ):
             raise ValueError(f"evidence {evidence_id} has invalid category-target claim")
     elif claim_type == "aggregate-exclusion-category":
+        selector = claim.get("supported_selector")
         if (
             claim.get("supported_exclusion_category")
             not in EXCLUSION_CATEGORIES - {"none", "unresolved"}
+            or not _is_structural_selector(selector)
             or not _is_int(claim.get("source_population"))
             or claim["source_population"] <= 0
             or claim.get("supported_disposition") != "exclude"
@@ -270,34 +302,27 @@ def _validate_claim(claim: Any, evidence_id: str) -> None:
     elif claim_type == "rice-selector-count":
         selector = claim.get("supported_selector")
         if (
-            not isinstance(selector, dict)
-            or not selector
-            or any(field not in {"r", "l", "c", "lc", "rlc"} for field in selector)
-            or not all(_is_int(value) and value >= 0 for value in selector.values())
+            not _is_structural_selector(selector)
             or not _is_int(claim.get("expected_matches"))
             or claim["expected_matches"] <= 0
         ):
             raise ValueError(f"evidence {evidence_id} has invalid selector/count claim")
     elif claim_type == "individual-catalogue-record":
         subjects = claim.get("subject_catalogue_ids")
+        _validate_subjects(subjects, evidence_id, catalogue_ids)
         values = claim.get("supported_values")
         allowed = {"proposed_disposition", "exclusion_category", "exclusion_reason"}
         if (
-            not isinstance(subjects, list)
-            or not subjects
-            or not all(isinstance(item, str) and item.startswith("lh148-") for item in subjects)
-            or not isinstance(values, dict)
+            not isinstance(values, dict)
             or not values
             or not set(values) <= allowed
         ):
             raise ValueError(f"evidence {evidence_id} has invalid individual-record claim")
     elif claim_type == "historical-identifier":
         subjects = claim.get("subject_catalogue_ids")
+        _validate_subjects(subjects, evidence_id, catalogue_ids)
         if (
-            not isinstance(subjects, list)
-            or not subjects
-            or not all(isinstance(item, str) and item.startswith("lh148-") for item in subjects)
-            or claim.get("scheme") not in HISTORICAL_IDENTIFIER_SCHEMES
+            claim.get("scheme") not in HISTORICAL_IDENTIFIER_SCHEMES
             or not isinstance(claim.get("value"), (str, int))
             or isinstance(claim.get("value"), bool)
             or claim.get("value") == ""
@@ -320,13 +345,11 @@ def _validate_claim(claim: Any, evidence_id: str) -> None:
             raise ValueError(f"evidence {evidence_id} has invalid graph-definition claim")
     elif claim_type == "basic-graph-match":
         subjects = claim.get("subject_catalogue_ids")
+        _validate_subjects(subjects, evidence_id, catalogue_ids)
         required = {"fixture_id", "graph_label", "structural_relation", "matched"}
         match = claim.get("match")
         if (
-            not isinstance(subjects, list)
-            or not subjects
-            or not all(isinstance(item, str) and item.startswith("lh148-") for item in subjects)
-            or not isinstance(match, dict)
+            not isinstance(match, dict)
             or set(match) != required
             or not all(
                 isinstance(match[field], str) and match[field]
@@ -338,7 +361,7 @@ def _validate_claim(claim: Any, evidence_id: str) -> None:
 
 
 def _validate_evidence_records(
-    values: Any, sources: dict[str, dict[str, Any]]
+    values: Any, sources: dict[str, dict[str, Any]], catalogue_ids: set[str]
 ) -> dict[str, dict[str, Any]]:
     records = _objects_by_id(values, "evidence_records", "evidence_id")
     for evidence_id, record in records.items():
@@ -352,7 +375,7 @@ def _validate_evidence_records(
         _validate_locator(record.get("locator"), evidence_id)
         if not isinstance(record.get("paraphrase"), str) or not record["paraphrase"]:
             raise ValueError(f"evidence {evidence_id} requires paraphrase")
-        _validate_claim(record.get("claim"), evidence_id)
+        _validate_claim(record.get("claim"), evidence_id, catalogue_ids)
         source = sources[source_id]
         if record["provenance_level"] == "authoritative-source-transcription":
             if source["source_type"] != "authoritative-publication":
@@ -411,6 +434,13 @@ def _validate_computational_cross_checks(
                 raise ValueError(f"cross-check {record_id} requires {field}")
         if not isinstance(record.get("independently_reproduced"), bool):
             raise ValueError(f"cross-check {record_id} requires independently_reproduced")
+        expected_reproduced = (
+            record["provenance_level"] == "independently-reproduced-computation"
+        )
+        if record["independently_reproduced"] is not expected_reproduced:
+            raise ValueError(
+                f"cross-check {record_id} provenance contradicts independently_reproduced"
+            )
     return records
 
 
@@ -615,6 +645,7 @@ def _validate_assertion(
         if not any(
             _is_authoritative(record)
             and record["claim"]["supported_exclusion_category"] == category
+            and record["claim"]["supported_selector"] == rule_selector
             and record["claim"]["source_population"] == expected_matches
             and record["claim"]["supported_disposition"] == disposition
             for record in aggregate
@@ -638,6 +669,7 @@ def _validate_assertion(
         aggregate_match = any(
             _is_authoritative(record)
             and record["claim"]["supported_exclusion_category"] == category
+            and record["claim"]["supported_selector"] == rule_selector
             and record["claim"]["source_population"] == expected_matches
             and record["claim"]["supported_disposition"] == disposition
             for record in _matching_evidence(
@@ -768,6 +800,14 @@ def generate_evidence_ledger(
     _validate_no_unstable_metadata(annotations)
     if catalogue.get("object") != "ladenheim-structural-148-catalogue":
         raise ValueError("unexpected structural catalogue object")
+    relation = catalogue.get("relation")
+    if (
+        not isinstance(relation, dict)
+        or relation.get("name") != SOURCE_CATALOGUE_RELATION
+    ):
+        raise ValueError(
+            f"structural catalogue relation must be {SOURCE_CATALOGUE_RELATION}"
+        )
     records = catalogue.get("records")
     if not isinstance(records, list) or len(records) != 148:
         raise ValueError("structural catalogue must contain exactly 148 records")
@@ -779,7 +819,9 @@ def generate_evidence_ledger(
     if annotations.get("format_version") != FORMAT_VERSION:
         raise ValueError(f"annotation format_version must be {FORMAT_VERSION}")
     sources = _validate_sources(annotations.get("sources"))
-    evidence = _validate_evidence_records(annotations.get("evidence_records"), sources)
+    evidence = _validate_evidence_records(
+        annotations.get("evidence_records"), sources, set(ids)
+    )
     workspace = _validate_workspace_records(annotations.get("previous_workspace_records"), sources)
     computations = _validate_computational_cross_checks(annotations.get("computational_cross_checks"))
     namespaces = [set(sources), set(evidence), set(workspace), set(computations)]
@@ -829,9 +871,7 @@ def generate_evidence_ledger(
         if rule.get("kind") != "unique-component-match":
             raise ValueError("unsupported annotation rule")
         selector = rule.get("selector")
-        if not isinstance(selector, dict) or not selector or any(
-            field not in {"r", "l", "c", "lc", "rlc"} for field in selector
-        ) or not all(_is_int(value) and value >= 0 for value in selector.values()):
+        if not _is_structural_selector(selector):
             raise ValueError("invalid unique-component-match selector")
         expected_match_count = rule.get("expected_matches")
         if not _is_int(expected_match_count) or expected_match_count <= 0:
@@ -879,7 +919,7 @@ def generate_evidence_ledger(
         "format_version": FORMAT_VERSION,
         "object": "ladenheim-148-to-108-evidence-ledger",
         "source_catalogue": "data/counts/ladenheim-148.json",
-        "source_catalogue_relation": catalogue["relation"]["name"],
+        "source_catalogue_relation": SOURCE_CATALOGUE_RELATION,
         "target": target,
         "sources": list(sources.values()),
         "evidence_records": list(evidence.values()),
