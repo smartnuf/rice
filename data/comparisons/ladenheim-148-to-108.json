@@ -1,15 +1,88 @@
 {
-  "format_version": 1,
+  "computational_cross_checks": [],
+  "evidence_records": [
+    {
+      "asserted_fields": [
+        "target.reported_members",
+        "target.reported_exclusions"
+      ],
+      "evidence_id": "ms-2019-reported-148-to-108",
+      "locator": {
+        "chapter": "5",
+        "pdf_page_index": 47,
+        "printed_page": 41
+      },
+      "paraphrase": "The classification starts with 148 networks and reports that forty further eliminations leave 108 canonical networks.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "asserted_fields": [
+        "comparison_status",
+        "proposed_disposition",
+        "exclusion_category",
+        "exclusion_reason"
+      ],
+      "evidence_id": "ms-2019-eight-four-resistor-one-reactive",
+      "locator": {
+        "chapter": "5",
+        "pdf_page_index": 48,
+        "printed_page": 42,
+        "section": "5.1"
+      },
+      "notes": "This is an aggregate category statement, not an explicit mapping to eight individual RICE records.",
+      "paraphrase": "The first exclusion group contains eight networks with four resistors and one reactive element whose bilinear impedances have simpler realizations.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "asserted_fields": [
+        "selector",
+        "expected_matches"
+      ],
+      "evidence_id": "rice-lh148-r4-lc1-count",
+      "locator": {
+        "repository_path": "data/counts/ladenheim-148.json"
+      },
+      "paraphrase": "Mechanical filtering of the committed structural catalogue by R=4 and L+C=1 returns exactly eight records and no others.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-ladenheim-148-catalogue",
+      "verification_state": "cross-checked"
+    },
+    {
+      "asserted_fields": [
+        "target.exclusion_category_targets"
+      ],
+      "evidence_id": "ms-2019-appendix-b-catalogue-totals",
+      "locator": {
+        "appendix": "B",
+        "pdf_page_index": 131,
+        "printed_page": 125,
+        "table": "Ladenheim catalogue table, continued through printed page 127 / PDF index 133"
+      },
+      "paraphrase": "Appendix B tabulates the basic-graph catalogue structure, bracketed eliminations, and totals used in the reported reduction.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    }
+  ],
+  "format_version": 2,
   "object": "ladenheim-148-to-108-evidence-ledger",
+  "previous_workspace_records": [],
   "records": [
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-187ef8e981d523c3",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -22,23 +95,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 0,
       "representative_descriptor": "0-1:C",
       "rlc": 1,
       "source_assignment_id": "assignment-c1ec96599d046a4b",
-      "source_references": [],
       "source_support_edges": 1,
       "source_support_id": "support-4cdf42b00cd7dad6"
     },
     {
+      "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-11e22e7cba30a62f",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -51,23 +127,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 0,
       "representative_descriptor": "0-1:L",
       "rlc": 1,
       "source_assignment_id": "assignment-9b9633c7cd491127",
-      "source_references": [],
       "source_support_edges": 1,
       "source_support_id": "support-4cdf42b00cd7dad6"
     },
     {
+      "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-e6719ebfaa65ecc4",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -80,23 +159,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 1,
       "representative_descriptor": "0-1:R",
       "rlc": 1,
       "source_assignment_id": "assignment-f40785680b7a4f20",
-      "source_references": [],
       "source_support_edges": 1,
       "source_support_id": "support-4cdf42b00cd7dad6"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-6c4acdd4ee210778",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -109,23 +191,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 0,
       "representative_descriptor": "0-1:C;0-1:L",
       "rlc": 2,
       "source_assignment_id": "assignment-c778dc2ee3d52570",
-      "source_references": [],
       "source_support_edges": 1,
       "source_support_id": "support-4cdf42b00cd7dad6"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-bc703386759e1fc4",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -138,23 +223,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 0,
       "representative_descriptor": "0-2:C;1-2:L",
       "rlc": 2,
       "source_assignment_id": "assignment-1c5ff8ab2ef8f78d",
-      "source_references": [],
       "source_support_edges": 2,
       "source_support_id": "support-a94ddacb3c3627a6"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-e5ab4cbd88b9cfcd",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -167,23 +255,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 1,
       "representative_descriptor": "0-2:C;1-2:R",
       "rlc": 2,
       "source_assignment_id": "assignment-3f644f28bd3d8c13",
-      "source_references": [],
       "source_support_edges": 2,
       "source_support_id": "support-a94ddacb3c3627a6"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-e798eb374bc4314b",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -196,23 +287,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 1,
       "representative_descriptor": "0-1:C;0-1:R",
       "rlc": 2,
       "source_assignment_id": "assignment-b46242de3d0e06af",
-      "source_references": [],
       "source_support_edges": 1,
       "source_support_id": "support-4cdf42b00cd7dad6"
     },
     {
+      "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-33615cdca4d212bc",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -225,23 +319,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 1,
       "representative_descriptor": "0-1:L;0-1:R",
       "rlc": 2,
       "source_assignment_id": "assignment-7b8896598097416e",
-      "source_references": [],
       "source_support_edges": 1,
       "source_support_id": "support-4cdf42b00cd7dad6"
     },
     {
+      "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-dacf11ef419be4ae",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -254,23 +351,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 1,
       "representative_descriptor": "0-2:L;1-2:R",
       "rlc": 2,
       "source_assignment_id": "assignment-178eb15a3590afbc",
-      "source_references": [],
       "source_support_edges": 2,
       "source_support_id": "support-a94ddacb3c3627a6"
     },
     {
+      "basic_graph_assignment": null,
       "c": 2,
       "catalogue_id": "lh148-34b077a26df0d439",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -283,23 +383,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 1,
       "representative_descriptor": "0-2:C;0-2:R;1-2:C",
       "rlc": 3,
       "source_assignment_id": "assignment-0663e11a3153385c",
-      "source_references": [],
       "source_support_edges": 2,
       "source_support_id": "support-a94ddacb3c3627a6"
     },
     {
+      "basic_graph_assignment": null,
       "c": 2,
       "catalogue_id": "lh148-4ec3374bd9f5ab9d",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -312,23 +415,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 1,
       "representative_descriptor": "0-1:C;0-2:C;1-2:R",
       "rlc": 3,
       "source_assignment_id": "assignment-9df30437cde81960",
-      "source_references": [],
       "source_support_edges": 3,
       "source_support_id": "support-9defcf048b659b39"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-0fa59ac63267cb6f",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -341,23 +447,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 1,
       "representative_descriptor": "0-1:R;0-2:C;1-2:L",
       "rlc": 3,
       "source_assignment_id": "assignment-3494e45fa863ec08",
-      "source_references": [],
       "source_support_edges": 3,
       "source_support_id": "support-9defcf048b659b39"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-6ab986b43f5cdc3d",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -370,23 +479,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 1,
       "representative_descriptor": "0-1:L;0-2:C;1-2:R",
       "rlc": 3,
       "source_assignment_id": "assignment-14f89871143c3ee1",
-      "source_references": [],
       "source_support_edges": 3,
       "source_support_id": "support-9defcf048b659b39"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-7ad37b581984a1b6",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -399,23 +511,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 1,
       "representative_descriptor": "0-1:C;0-2:L;1-2:R",
       "rlc": 3,
       "source_assignment_id": "assignment-0993ad95aa91ad37",
-      "source_references": [],
       "source_support_edges": 3,
       "source_support_id": "support-9defcf048b659b39"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-81fbe344564bbcf0",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -428,23 +543,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 1,
       "representative_descriptor": "0-2:C;0-2:R;1-2:L",
       "rlc": 3,
       "source_assignment_id": "assignment-9c1d3c6a34af943f",
-      "source_references": [],
       "source_support_edges": 2,
       "source_support_id": "support-a94ddacb3c3627a6"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-aecc406cd94c57bc",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -457,23 +575,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 1,
       "representative_descriptor": "0-2:C;1-2:L;1-2:R",
       "rlc": 3,
       "source_assignment_id": "assignment-2c7753d36ad9025d",
-      "source_references": [],
       "source_support_edges": 2,
       "source_support_id": "support-a94ddacb3c3627a6"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-c4dd949e0cc0cb9a",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -486,23 +607,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 1,
       "representative_descriptor": "0-2:C;0-2:L;1-2:R",
       "rlc": 3,
       "source_assignment_id": "assignment-9f6f50ed2e29b8d9",
-      "source_references": [],
       "source_support_edges": 2,
       "source_support_id": "support-a94ddacb3c3627a6"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-ec2d91a9eb609e87",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -515,23 +639,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 1,
       "representative_descriptor": "0-2:C;1-3:L;2-3:R",
       "rlc": 3,
       "source_assignment_id": "assignment-2e3e5041c7fcb1c5",
-      "source_references": [],
       "source_support_edges": 3,
       "source_support_id": "support-3188436e43990c12"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-f6b0120a6632013a",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -544,23 +671,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 1,
       "representative_descriptor": "0-1:C;0-1:L;0-1:R",
       "rlc": 3,
       "source_assignment_id": "assignment-bfe229766f7b5d40",
-      "source_references": [],
       "source_support_edges": 1,
       "source_support_id": "support-4cdf42b00cd7dad6"
     },
     {
+      "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-9ce47e2e00e47d8a",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -573,23 +703,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 1,
       "representative_descriptor": "0-2:L;0-2:R;1-2:L",
       "rlc": 3,
       "source_assignment_id": "assignment-356b9b1b9206df2a",
-      "source_references": [],
       "source_support_edges": 2,
       "source_support_id": "support-a94ddacb3c3627a6"
     },
     {
+      "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-ba7c48b07f29dd51",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -602,23 +735,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 1,
       "representative_descriptor": "0-1:L;0-2:L;1-2:R",
       "rlc": 3,
       "source_assignment_id": "assignment-585861c29f0d6d43",
-      "source_references": [],
       "source_support_edges": 3,
       "source_support_id": "support-9defcf048b659b39"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-2d28eb19a83067c3",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -631,23 +767,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 2,
       "representative_descriptor": "0-1:R;0-2:C;1-2:R",
       "rlc": 3,
       "source_assignment_id": "assignment-53bed40ab8a89374",
-      "source_references": [],
       "source_support_edges": 3,
       "source_support_id": "support-9defcf048b659b39"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-f2ca341555f420ec",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -660,23 +799,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 2,
       "representative_descriptor": "0-2:C;0-2:R;1-2:R",
       "rlc": 3,
       "source_assignment_id": "assignment-25681b002cb2c962",
-      "source_references": [],
       "source_support_edges": 2,
       "source_support_id": "support-a94ddacb3c3627a6"
     },
     {
+      "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-26ab596fc1b6adf0",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -689,23 +831,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 2,
       "representative_descriptor": "0-1:R;0-2:L;1-2:R",
       "rlc": 3,
       "source_assignment_id": "assignment-a85e90682b4cf9fc",
-      "source_references": [],
       "source_support_edges": 3,
       "source_support_id": "support-9defcf048b659b39"
     },
     {
+      "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-d0dd7ab06f8d9467",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -718,23 +863,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 2,
       "representative_descriptor": "0-2:L;0-2:R;1-2:R",
       "rlc": 3,
       "source_assignment_id": "assignment-29e357effdc5a909",
-      "source_references": [],
       "source_support_edges": 2,
       "source_support_id": "support-a94ddacb3c3627a6"
     },
     {
+      "basic_graph_assignment": null,
       "c": 2,
       "catalogue_id": "lh148-02b69ac8bc305a1f",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -747,23 +895,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 2,
       "representative_descriptor": "0-1:C;0-1:R;0-2:C;1-2:R",
       "rlc": 4,
       "source_assignment_id": "assignment-16b58987a337dbfe",
-      "source_references": [],
       "source_support_edges": 3,
       "source_support_id": "support-9defcf048b659b39"
     },
     {
+      "basic_graph_assignment": null,
       "c": 2,
       "catalogue_id": "lh148-102b49d775bd5eb8",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -776,23 +927,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 2,
       "representative_descriptor": "0-1:C;0-2:C;0-2:R;1-2:R",
       "rlc": 4,
       "source_assignment_id": "assignment-b76dc6e4f9a04ec1",
-      "source_references": [],
       "source_support_edges": 3,
       "source_support_id": "support-9defcf048b659b39"
     },
     {
+      "basic_graph_assignment": null,
       "c": 2,
       "catalogue_id": "lh148-40b10a9f485445a8",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -805,23 +959,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 2,
       "representative_descriptor": "0-2:C;0-3:C;1-2:R;1-3:R",
       "rlc": 4,
       "source_assignment_id": "assignment-6679e49cf0aabff8",
-      "source_references": [],
       "source_support_edges": 4,
       "source_support_id": "support-2b6bd40e6c860a15"
     },
     {
+      "basic_graph_assignment": null,
       "c": 2,
       "catalogue_id": "lh148-53e805bd81449a69",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -834,23 +991,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 2,
       "representative_descriptor": "0-2:C;0-3:R;1-3:C;2-3:R",
       "rlc": 4,
       "source_assignment_id": "assignment-acc71911cc5001a7",
-      "source_references": [],
       "source_support_edges": 4,
       "source_support_id": "support-f5983f285b660184"
     },
     {
+      "basic_graph_assignment": null,
       "c": 2,
       "catalogue_id": "lh148-79cf9dd24646a1a1",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -863,23 +1023,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 2,
       "representative_descriptor": "0-2:C;0-3:C;1-2:R;2-3:R",
       "rlc": 4,
       "source_assignment_id": "assignment-cd0bec50cb3ff0bd",
-      "source_references": [],
       "source_support_edges": 4,
       "source_support_id": "support-f5983f285b660184"
     },
     {
+      "basic_graph_assignment": null,
       "c": 2,
       "catalogue_id": "lh148-c89875389584ae09",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -892,23 +1055,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 2,
       "representative_descriptor": "0-2:C;0-2:R;1-2:C;1-2:R",
       "rlc": 4,
       "source_assignment_id": "assignment-2bce2470366a3f07",
-      "source_references": [],
       "source_support_edges": 2,
       "source_support_id": "support-a94ddacb3c3627a6"
     },
     {
+      "basic_graph_assignment": null,
       "c": 2,
       "catalogue_id": "lh148-e4990ea5b5b75ace",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -921,23 +1087,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 2,
       "representative_descriptor": "0-2:C;0-2:R;1-3:C;2-3:R",
       "rlc": 4,
       "source_assignment_id": "assignment-5ffebcb4dcf8f3e3",
-      "source_references": [],
       "source_support_edges": 3,
       "source_support_id": "support-3188436e43990c12"
     },
     {
+      "basic_graph_assignment": null,
       "c": 2,
       "catalogue_id": "lh148-fad884ca638a4191",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -950,23 +1119,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 2,
       "representative_descriptor": "0-1:R;0-2:C;0-2:R;1-2:C",
       "rlc": 4,
       "source_assignment_id": "assignment-b2e05182120dfd22",
-      "source_references": [],
       "source_support_edges": 3,
       "source_support_id": "support-9defcf048b659b39"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-05ef035064872f96",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -979,23 +1151,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 2,
       "representative_descriptor": "0-1:L;0-1:R;0-2:C;1-2:R",
       "rlc": 4,
       "source_assignment_id": "assignment-428ba911cba33823",
-      "source_references": [],
       "source_support_edges": 3,
       "source_support_id": "support-9defcf048b659b39"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-0f581053d03369e2",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -1008,23 +1183,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 2,
       "representative_descriptor": "0-2:C;1-2:R;1-3:L;2-3:R",
       "rlc": 4,
       "source_assignment_id": "assignment-2e074e90cdcab63f",
-      "source_references": [],
       "source_support_edges": 4,
       "source_support_id": "support-f5983f285b660184"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-21e4f9e2ce897b40",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -1037,23 +1215,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 2,
       "representative_descriptor": "0-2:C;0-2:L;0-2:R;1-2:R",
       "rlc": 4,
       "source_assignment_id": "assignment-295cd0fc169af811",
-      "source_references": [],
       "source_support_edges": 2,
       "source_support_id": "support-a94ddacb3c3627a6"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-2fe78de797e54618",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -1066,23 +1247,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 2,
       "representative_descriptor": "0-2:C;1-3:L;1-3:R;2-3:R",
       "rlc": 4,
       "source_assignment_id": "assignment-1a775a22cf42c7f5",
-      "source_references": [],
       "source_support_edges": 3,
       "source_support_id": "support-3188436e43990c12"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-3419842c4cffff68",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -1095,23 +1279,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 2,
       "representative_descriptor": "0-1:R;0-2:C;0-2:L;1-2:R",
       "rlc": 4,
       "source_assignment_id": "assignment-7b74ee59d2dfa015",
-      "source_references": [],
       "source_support_edges": 3,
       "source_support_id": "support-9defcf048b659b39"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-343285fa13b9f794",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -1124,23 +1311,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 2,
       "representative_descriptor": "0-1:C;0-1:R;0-2:L;1-2:R",
       "rlc": 4,
       "source_assignment_id": "assignment-123c410cc9e9db67",
-      "source_references": [],
       "source_support_edges": 3,
       "source_support_id": "support-9defcf048b659b39"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-47aef84ec8f4741c",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -1153,23 +1343,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 2,
       "representative_descriptor": "0-2:C;0-3:L;1-3:R;2-3:R",
       "rlc": 4,
       "source_assignment_id": "assignment-f42ba7df62b81a85",
-      "source_references": [],
       "source_support_edges": 4,
       "source_support_id": "support-f5983f285b660184"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-4d6ac6885b8efb8e",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -1182,23 +1375,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 2,
       "representative_descriptor": "0-2:C;0-3:R;1-3:L;2-3:R",
       "rlc": 4,
       "source_assignment_id": "assignment-47bd67f098257ab7",
-      "source_references": [],
       "source_support_edges": 4,
       "source_support_id": "support-f5983f285b660184"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-4fef33c7e96b6566",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -1211,23 +1407,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 2,
       "representative_descriptor": "0-2:C;0-3:R;1-3:R;2-3:L",
       "rlc": 4,
       "source_assignment_id": "assignment-fb8a1b64245b3975",
-      "source_references": [],
       "source_support_edges": 4,
       "source_support_id": "support-f5983f285b660184"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-5a15c54aa65b57dc",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -1240,23 +1439,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 2,
       "representative_descriptor": "0-1:C;0-2:L;0-2:R;1-2:R",
       "rlc": 4,
       "source_assignment_id": "assignment-42db0cec932ce9e7",
-      "source_references": [],
       "source_support_edges": 3,
       "source_support_id": "support-9defcf048b659b39"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-5cb1f71c6efaef26",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -1269,23 +1471,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 2,
       "representative_descriptor": "0-2:C;0-2:R;1-2:L;1-2:R",
       "rlc": 4,
       "source_assignment_id": "assignment-4210be41d65360f6",
-      "source_references": [],
       "source_support_edges": 2,
       "source_support_id": "support-a94ddacb3c3627a6"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-67980e5858742b26",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -1298,23 +1503,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 2,
       "representative_descriptor": "0-1:R;0-2:C;1-3:L;2-3:R",
       "rlc": 4,
       "source_assignment_id": "assignment-4d47eb2c20e2ebda",
-      "source_references": [],
       "source_support_edges": 4,
       "source_support_id": "support-7071783cfa9e86eb"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-68712beedefbc0fa",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -1327,23 +1535,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 2,
       "representative_descriptor": "0-2:C;0-3:L;1-2:R;2-3:R",
       "rlc": 4,
       "source_assignment_id": "assignment-83be7070b61ab333",
-      "source_references": [],
       "source_support_edges": 4,
       "source_support_id": "support-f5983f285b660184"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-74be9e435c3d69b8",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -1356,23 +1567,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 2,
       "representative_descriptor": "0-2:C;0-3:L;1-2:R;1-3:R",
       "rlc": 4,
       "source_assignment_id": "assignment-12d5bc0f68f4edb7",
-      "source_references": [],
       "source_support_edges": 4,
       "source_support_id": "support-2b6bd40e6c860a15"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-8a1860e27fc40c7f",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -1385,23 +1599,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 2,
       "representative_descriptor": "0-1:R;0-2:C;1-2:L;1-2:R",
       "rlc": 4,
       "source_assignment_id": "assignment-47256cd795be8cdf",
-      "source_references": [],
       "source_support_edges": 3,
       "source_support_id": "support-9defcf048b659b39"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-b9495748ed67c6d6",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -1414,23 +1631,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 2,
       "representative_descriptor": "0-1:R;0-2:C;0-2:R;1-2:L",
       "rlc": 4,
       "source_assignment_id": "assignment-5cc8a269d8638fa9",
-      "source_references": [],
       "source_support_edges": 3,
       "source_support_id": "support-9defcf048b659b39"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-c4a008c923682500",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -1443,23 +1663,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 2,
       "representative_descriptor": "0-2:C;0-2:R;1-3:L;2-3:R",
       "rlc": 4,
       "source_assignment_id": "assignment-848db7ad20b199d7",
-      "source_references": [],
       "source_support_edges": 3,
       "source_support_id": "support-3188436e43990c12"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-cdfcaba8001db4d0",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -1472,23 +1695,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 2,
       "representative_descriptor": "0-1:L;0-2:C;0-2:R;1-2:R",
       "rlc": 4,
       "source_assignment_id": "assignment-2ae33c2fb3b3d4c8",
-      "source_references": [],
       "source_support_edges": 3,
       "source_support_id": "support-9defcf048b659b39"
     },
     {
+      "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-0b27d33003f81032",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -1501,23 +1727,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 2,
       "representative_descriptor": "0-2:L;0-3:L;1-2:R;1-3:R",
       "rlc": 4,
       "source_assignment_id": "assignment-02cfeba1b22d30f2",
-      "source_references": [],
       "source_support_edges": 4,
       "source_support_id": "support-2b6bd40e6c860a15"
     },
     {
+      "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-354f03447076bf4a",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -1530,23 +1759,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 2,
       "representative_descriptor": "0-2:L;0-2:R;1-3:L;2-3:R",
       "rlc": 4,
       "source_assignment_id": "assignment-01fcc6a93c128253",
-      "source_references": [],
       "source_support_edges": 3,
       "source_support_id": "support-3188436e43990c12"
     },
     {
+      "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-366759d751e644ba",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -1559,23 +1791,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 2,
       "representative_descriptor": "0-2:L;0-3:R;1-3:L;2-3:R",
       "rlc": 4,
       "source_assignment_id": "assignment-9b231404c4429523",
-      "source_references": [],
       "source_support_edges": 4,
       "source_support_id": "support-f5983f285b660184"
     },
     {
+      "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-867793e6aaaea530",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -1588,23 +1823,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 2,
       "representative_descriptor": "0-2:L;0-3:L;1-2:R;2-3:R",
       "rlc": 4,
       "source_assignment_id": "assignment-d339496fba06df69",
-      "source_references": [],
       "source_support_edges": 4,
       "source_support_id": "support-f5983f285b660184"
     },
     {
+      "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-a1a63778c0bb98e8",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -1617,23 +1855,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 2,
       "representative_descriptor": "0-1:L;0-1:R;0-2:L;1-2:R",
       "rlc": 4,
       "source_assignment_id": "assignment-00c80abb77d60fe8",
-      "source_references": [],
       "source_support_edges": 3,
       "source_support_id": "support-9defcf048b659b39"
     },
     {
+      "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-af3808b69e5fc54f",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -1646,23 +1887,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 2,
       "representative_descriptor": "0-1:R;0-2:L;0-2:R;1-2:L",
       "rlc": 4,
       "source_assignment_id": "assignment-573a75760f736e70",
-      "source_references": [],
       "source_support_edges": 3,
       "source_support_id": "support-9defcf048b659b39"
     },
     {
+      "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-e61bc7a989c01099",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -1675,23 +1919,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 2,
       "representative_descriptor": "0-1:L;0-2:L;0-2:R;1-2:R",
       "rlc": 4,
       "source_assignment_id": "assignment-1605e7efdc924dc7",
-      "source_references": [],
       "source_support_edges": 3,
       "source_support_id": "support-9defcf048b659b39"
     },
     {
+      "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-ff2aaae76070d52a",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -1704,23 +1951,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 2,
       "representative_descriptor": "0-2:L;0-2:R;1-2:L;1-2:R",
       "rlc": 4,
       "source_assignment_id": "assignment-a8697056bd5ee351",
-      "source_references": [],
       "source_support_edges": 2,
       "source_support_id": "support-a94ddacb3c3627a6"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-5c74dc46f966ac91",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -1733,23 +1983,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-1:R;0-2:C;0-2:R;1-2:R",
       "rlc": 4,
       "source_assignment_id": "assignment-07cabaa3954704dd",
-      "source_references": [],
       "source_support_edges": 3,
       "source_support_id": "support-9defcf048b659b39"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-92649d60cfda8308",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -1762,23 +2015,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-2:C;0-3:R;1-3:R;2-3:R",
       "rlc": 4,
       "source_assignment_id": "assignment-1e5d9a2028318f0f",
-      "source_references": [],
       "source_support_edges": 4,
       "source_support_id": "support-f5983f285b660184"
     },
     {
+      "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-13547be0432aeee6",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -1791,23 +2047,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-1:R;0-2:L;0-2:R;1-2:R",
       "rlc": 4,
       "source_assignment_id": "assignment-5032c20c5d6d22ee",
-      "source_references": [],
       "source_support_edges": 3,
       "source_support_id": "support-9defcf048b659b39"
     },
     {
+      "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-d5533186cc51bbab",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -1820,23 +2079,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-2:L;0-3:R;1-3:R;2-3:R",
       "rlc": 4,
       "source_assignment_id": "assignment-72e560b6a3e981df",
-      "source_references": [],
       "source_support_edges": 4,
       "source_support_id": "support-f5983f285b660184"
     },
     {
+      "basic_graph_assignment": null,
       "c": 2,
       "catalogue_id": "lh148-0c94f62def7dc462",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -1849,23 +2111,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-1:R;0-2:C;0-3:C;1-2:R;2-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-8f9e25818f9796bd",
-      "source_references": [],
       "source_support_edges": 5,
       "source_support_id": "support-512149e3cd66bcb4"
     },
     {
+      "basic_graph_assignment": null,
       "c": 2,
       "catalogue_id": "lh148-0d78e9c38dc5b94e",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -1878,23 +2143,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-2:C;0-2:R;0-3:C;1-3:R;2-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-3e62ebb934217512",
-      "source_references": [],
       "source_support_edges": 4,
       "source_support_id": "support-f5983f285b660184"
     },
     {
+      "basic_graph_assignment": null,
       "c": 2,
       "catalogue_id": "lh148-3398b6c5b497ac1f",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -1907,23 +2175,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-1:R;0-2:C;0-3:C;1-2:R;1-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-510a6b96f1ade22d",
-      "source_references": [],
       "source_support_edges": 5,
       "source_support_id": "support-c628a31a8c5b90bd"
     },
     {
+      "basic_graph_assignment": null,
       "c": 2,
       "catalogue_id": "lh148-47ee32380ab1b406",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -1936,23 +2207,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-2:C;0-3:C;1-2:R;1-3:R;2-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-a67aeacc7cab0a59",
-      "source_references": [],
       "source_support_edges": 5,
       "source_support_id": "support-bea50b5cd065e186"
     },
     {
+      "basic_graph_assignment": null,
       "c": 2,
       "catalogue_id": "lh148-4a925dd55dc8da19",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -1965,23 +2239,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-2:C;0-3:C;1-4:R;2-4:R;3-4:R",
       "rlc": 5,
       "source_assignment_id": "assignment-6fbbc6adf021e135",
-      "source_references": [],
       "source_support_edges": 5,
       "source_support_id": "support-599e70e6844b1d00"
     },
     {
+      "basic_graph_assignment": null,
       "c": 2,
       "catalogue_id": "lh148-4cf39db00710fb1c",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -1994,23 +2271,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-1:C;0-2:C;0-3:R;1-3:R;2-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-ed21f9d18e4bca1c",
-      "source_references": [],
       "source_support_edges": 5,
       "source_support_id": "support-512149e3cd66bcb4"
     },
     {
+      "basic_graph_assignment": null,
       "c": 2,
       "catalogue_id": "lh148-5278112fab778336",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -2023,23 +2303,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-1:R;0-2:C;0-2:R;1-2:C;1-2:R",
       "rlc": 5,
       "source_assignment_id": "assignment-028c94f471f15ad5",
-      "source_references": [],
       "source_support_edges": 3,
       "source_support_id": "support-9defcf048b659b39"
     },
     {
+      "basic_graph_assignment": null,
       "c": 2,
       "catalogue_id": "lh148-5af86517070376b6",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -2052,23 +2335,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-2:C;0-2:R;1-3:C;1-3:R;2-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-cfe42cde44152eb6",
-      "source_references": [],
       "source_support_edges": 3,
       "source_support_id": "support-3188436e43990c12"
     },
     {
+      "basic_graph_assignment": null,
       "c": 2,
       "catalogue_id": "lh148-5c71fb151bc82017",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -2081,23 +2367,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-2:C;0-2:R;0-3:C;1-2:R;2-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-6d160a32dbbea5fa",
-      "source_references": [],
       "source_support_edges": 4,
       "source_support_id": "support-f5983f285b660184"
     },
     {
+      "basic_graph_assignment": null,
       "c": 2,
       "catalogue_id": "lh148-5d2f2ceb56fb8299",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -2110,23 +2399,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-2:C;0-3:R;1-2:R;1-3:C;2-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-cfb4fa2bb99b57ee",
-      "source_references": [],
       "source_support_edges": 5,
       "source_support_id": "support-bea50b5cd065e186"
     },
     {
+      "basic_graph_assignment": null,
       "c": 2,
       "catalogue_id": "lh148-5d5fb848a810c9cb",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -2139,23 +2431,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-1:C;0-1:R;0-2:C;0-2:R;1-2:R",
       "rlc": 5,
       "source_assignment_id": "assignment-35f8245d83d39490",
-      "source_references": [],
       "source_support_edges": 3,
       "source_support_id": "support-9defcf048b659b39"
     },
     {
+      "basic_graph_assignment": null,
       "c": 2,
       "catalogue_id": "lh148-90a706c48f568ac5",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -2168,23 +2463,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-1:R;0-2:C;0-3:R;1-3:C;2-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-e84fe8de24d2b1a4",
-      "source_references": [],
       "source_support_edges": 5,
       "source_support_id": "support-512149e3cd66bcb4"
     },
     {
+      "basic_graph_assignment": null,
       "c": 2,
       "catalogue_id": "lh148-9c9bca1b4c7a5c48",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -2197,23 +2495,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-2:C;0-3:R;1-2:R;1-3:R;2-3:C",
       "rlc": 5,
       "source_assignment_id": "assignment-4e9f9c50a1ef1c4f",
-      "source_references": [],
       "source_support_edges": 5,
       "source_support_id": "support-bea50b5cd065e186"
     },
     {
+      "basic_graph_assignment": null,
       "c": 2,
       "catalogue_id": "lh148-a99495648823d8f1",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -2226,23 +2527,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-2:C;0-2:R;0-3:R;1-3:R;2-3:C",
       "rlc": 5,
       "source_assignment_id": "assignment-8f82bb6313aea3b3",
-      "source_references": [],
       "source_support_edges": 4,
       "source_support_id": "support-f5983f285b660184"
     },
     {
+      "basic_graph_assignment": null,
       "c": 2,
       "catalogue_id": "lh148-cd4b770f5478f872",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -2255,23 +2559,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-2:C;0-2:R;0-3:C;1-2:R;1-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-3b465aa33f3d79f0",
-      "source_references": [],
       "source_support_edges": 4,
       "source_support_id": "support-2b6bd40e6c860a15"
     },
     {
+      "basic_graph_assignment": null,
       "c": 2,
       "catalogue_id": "lh148-dffc6c65dc65c0ec",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -2284,23 +2591,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-2:C;0-2:R;0-3:R;1-3:C;2-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-aec44e8cb846a57c",
-      "source_references": [],
       "source_support_edges": 4,
       "source_support_id": "support-f5983f285b660184"
     },
     {
+      "basic_graph_assignment": null,
       "c": 2,
       "catalogue_id": "lh148-e7e64ac1f0778b53",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -2313,23 +2623,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-1:R;0-2:C;0-2:R;1-3:C;2-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-655422c3c32dc5c5",
-      "source_references": [],
       "source_support_edges": 4,
       "source_support_id": "support-7071783cfa9e86eb"
     },
     {
+      "basic_graph_assignment": null,
       "c": 2,
       "catalogue_id": "lh148-f54f327274744e9f",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -2342,23 +2655,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-2:C;0-2:R;1-2:R;1-3:C;2-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-e1daa30ccf03f9ee",
-      "source_references": [],
       "source_support_edges": 4,
       "source_support_id": "support-f5983f285b660184"
     },
     {
+      "basic_graph_assignment": null,
       "c": 2,
       "catalogue_id": "lh148-f684b6a0ad3114c4",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -2371,23 +2687,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-2:C;0-3:R;1-4:C;2-3:R;3-4:R",
       "rlc": 5,
       "source_assignment_id": "assignment-56b193a7efabb0c5",
-      "source_references": [],
       "source_support_edges": 5,
       "source_support_id": "support-e46bdbdccd3227f4"
     },
     {
+      "basic_graph_assignment": null,
       "c": 2,
       "catalogue_id": "lh148-f942f37eed38400a",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -2400,23 +2719,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-2:C;0-3:R;1-2:C;1-3:R;2-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-141fcecedc0f759b",
-      "source_references": [],
       "source_support_edges": 5,
       "source_support_id": "support-bea50b5cd065e186"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-045c192be4de396d",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -2429,23 +2751,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-2:C;0-3:R;1-3:R;2-4:L;3-4:R",
       "rlc": 5,
       "source_assignment_id": "assignment-9f4eeb66bbfb8290",
-      "source_references": [],
       "source_support_edges": 5,
       "source_support_id": "support-054451b74652a492"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-061515c41719c7cc",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -2458,23 +2783,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-2:C;0-2:R;1-2:R;1-3:L;2-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-234c6cc6c4e91d91",
-      "source_references": [],
       "source_support_edges": 4,
       "source_support_id": "support-f5983f285b660184"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-0d128fdfe5562143",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -2487,23 +2815,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-1:R;0-2:C;0-2:R;1-2:L;1-2:R",
       "rlc": 5,
       "source_assignment_id": "assignment-0f6982cf202c46c3",
-      "source_references": [],
       "source_support_edges": 3,
       "source_support_id": "support-9defcf048b659b39"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-11e619a8865be381",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -2516,23 +2847,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-2:C;0-3:R;1-2:R;1-3:L;2-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-17b0ce0df8318e92",
-      "source_references": [],
       "source_support_edges": 5,
       "source_support_id": "support-bea50b5cd065e186"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-1c63245475d83fd7",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -2545,23 +2879,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-1:R;0-2:C;0-3:L;1-2:R;1-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-3c7959a7219e39a2",
-      "source_references": [],
       "source_support_edges": 5,
       "source_support_id": "support-c628a31a8c5b90bd"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-1ea888a6b965ac39",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -2574,23 +2911,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-2:L;0-3:R;1-2:R;1-3:R;2-3:C",
       "rlc": 5,
       "source_assignment_id": "assignment-9546ed9584f464e9",
-      "source_references": [],
       "source_support_edges": 5,
       "source_support_id": "support-bea50b5cd065e186"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-226210ea8617797f",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -2603,23 +2943,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-2:C;0-3:R;1-2:L;1-3:R;2-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-31f63be924c8f1ec",
-      "source_references": [],
       "source_support_edges": 5,
       "source_support_id": "support-bea50b5cd065e186"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-2a3f20a9bcd73817",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -2632,23 +2975,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-2:C;0-3:R;1-4:L;2-3:R;3-4:R",
       "rlc": 5,
       "source_assignment_id": "assignment-1ccaa15276c31552",
-      "source_references": [],
       "source_support_edges": 5,
       "source_support_id": "support-e46bdbdccd3227f4"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-3bf13e1a1ad41cd5",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -2661,23 +3007,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-1:C;0-2:L;0-3:R;1-3:R;2-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-0aa4d5a948164a71",
-      "source_references": [],
       "source_support_edges": 5,
       "source_support_id": "support-512149e3cd66bcb4"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-45d19cefc5b496ce",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -2690,23 +3039,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-2:C;0-2:L;0-3:R;1-3:R;2-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-ebf352171250ee2c",
-      "source_references": [],
       "source_support_edges": 4,
       "source_support_id": "support-f5983f285b660184"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-4b5da2aa5cfac0cc",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -2719,23 +3071,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-2:C;0-3:L;0-3:R;1-2:R;1-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-831a878ab2668192",
-      "source_references": [],
       "source_support_edges": 4,
       "source_support_id": "support-2b6bd40e6c860a15"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-4ce178b19ddf0bc8",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -2748,23 +3103,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-2:C;0-3:L;1-2:R;1-3:R;2-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-3ba427326d3b561f",
-      "source_references": [],
       "source_support_edges": 5,
       "source_support_id": "support-bea50b5cd065e186"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-53370c9917eea4d0",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -2777,23 +3135,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-2:C;0-2:R;0-3:R;1-3:L;2-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-ef41131197bc759e",
-      "source_references": [],
       "source_support_edges": 4,
       "source_support_id": "support-f5983f285b660184"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-534a4f02579831e9",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -2806,23 +3167,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-1:C;0-1:R;0-2:L;0-2:R;1-2:R",
       "rlc": 5,
       "source_assignment_id": "assignment-42e40d250a1a7ddd",
-      "source_references": [],
       "source_support_edges": 3,
       "source_support_id": "support-9defcf048b659b39"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-539216b2b01390c9",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -2835,23 +3199,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-2:C;0-3:L;1-4:R;2-4:R;3-4:R",
       "rlc": 5,
       "source_assignment_id": "assignment-61865ae37564478f",
-      "source_references": [],
       "source_support_edges": 5,
       "source_support_id": "support-599e70e6844b1d00"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-5bdd1d37b2007a4c",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -2864,23 +3231,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-2:C;1-2:R;1-3:L;1-3:R;2-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-d27b9f0e9ee83813",
-      "source_references": [],
       "source_support_edges": 4,
       "source_support_id": "support-f5983f285b660184"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-635770ede187bca9",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -2893,23 +3263,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-1:R;0-2:C;0-2:L;0-2:R;1-2:R",
       "rlc": 5,
       "source_assignment_id": "assignment-1934f83e66920323",
-      "source_references": [],
       "source_support_edges": 3,
       "source_support_id": "support-9defcf048b659b39"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-6456494eb91d8897",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -2922,23 +3295,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-1:R;0-2:C;0-3:R;1-3:L;2-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-64abeaef2ddfc24a",
-      "source_references": [],
       "source_support_edges": 5,
       "source_support_id": "support-512149e3cd66bcb4"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-6601ce95cb4866ea",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -2951,23 +3327,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-2:C;0-3:R;1-3:R;2-3:L;2-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-26cc34db131f88d3",
-      "source_references": [],
       "source_support_edges": 4,
       "source_support_id": "support-f5983f285b660184"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-66a0391fd4dc6879",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -2980,23 +3359,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-2:C;0-2:R;0-3:R;1-3:R;2-3:L",
       "rlc": 5,
       "source_assignment_id": "assignment-bb6b156a9833a063",
-      "source_references": [],
       "source_support_edges": 4,
       "source_support_id": "support-f5983f285b660184"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-6bd2964e8fab676a",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -3009,23 +3391,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-2:C;0-3:L;0-3:R;1-3:R;2-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-1e9082fd75b0ca8b",
-      "source_references": [],
       "source_support_edges": 4,
       "source_support_id": "support-f5983f285b660184"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-6ce044778ba295df",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -3038,23 +3423,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-2:C;0-3:R;1-2:R;1-3:R;2-3:L",
       "rlc": 5,
       "source_assignment_id": "assignment-1aa3be4fcaae95c6",
-      "source_references": [],
       "source_support_edges": 5,
       "source_support_id": "support-bea50b5cd065e186"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-75a667eae30e9bd2",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -3067,23 +3455,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-2:C;0-3:L;0-3:R;1-2:R;2-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-7437a18eb9351a1c",
-      "source_references": [],
       "source_support_edges": 4,
       "source_support_id": "support-f5983f285b660184"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-7f69006023a9ba91",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -3096,23 +3487,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-1:R;0-2:C;1-3:L;1-3:R;2-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-272d829f6ec23fbb",
-      "source_references": [],
       "source_support_edges": 4,
       "source_support_id": "support-7071783cfa9e86eb"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-81ffdfa53c07c484",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -3125,23 +3519,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-1:L;0-2:C;0-3:R;1-3:R;2-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-c906ba02f96de0b0",
-      "source_references": [],
       "source_support_edges": 5,
       "source_support_id": "support-512149e3cd66bcb4"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-8324b82e90bde552",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -3154,23 +3551,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-1:R;0-2:C;0-2:R;1-3:L;2-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-687ba4b2960f9dfc",
-      "source_references": [],
       "source_support_edges": 4,
       "source_support_id": "support-7071783cfa9e86eb"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-9e140322bfd33a22",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -3183,23 +3583,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-1:L;0-1:R;0-2:C;0-2:R;1-2:R",
       "rlc": 5,
       "source_assignment_id": "assignment-0899751a9aa9a891",
-      "source_references": [],
       "source_support_edges": 3,
       "source_support_id": "support-9defcf048b659b39"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-a124f387d970b947",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -3212,23 +3615,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-2:C;1-3:L;1-4:R;2-4:R;3-4:R",
       "rlc": 5,
       "source_assignment_id": "assignment-65010e0101ba633a",
-      "source_references": [],
       "source_support_edges": 5,
       "source_support_id": "support-e46bdbdccd3227f4"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-aefb4b8fe01749c6",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -3241,23 +3647,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-1:R;0-2:C;0-3:R;1-3:R;2-3:L",
       "rlc": 5,
       "source_assignment_id": "assignment-c33083e1662d2364",
-      "source_references": [],
       "source_support_edges": 5,
       "source_support_id": "support-512149e3cd66bcb4"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-cd27971291cfaf9a",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -3270,23 +3679,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-2:C;0-2:R;0-3:L;1-2:R;2-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-85665baea01fb52e",
-      "source_references": [],
       "source_support_edges": 4,
       "source_support_id": "support-f5983f285b660184"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-ce4e4bbc3cb5bc7b",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -3299,23 +3711,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-2:C;0-2:R;1-3:L;1-3:R;2-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-32ce704f963a5357",
-      "source_references": [],
       "source_support_edges": 3,
       "source_support_id": "support-3188436e43990c12"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-d640e5a51b7f9267",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -3328,23 +3743,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-1:R;0-2:C;1-2:R;1-3:L;2-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-0946d5979683b613",
-      "source_references": [],
       "source_support_edges": 5,
       "source_support_id": "support-512149e3cd66bcb4"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-d7f4be8bd126187c",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -3357,23 +3775,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-2:C;0-2:R;0-3:L;1-2:R;1-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-005374d6100b1263",
-      "source_references": [],
       "source_support_edges": 4,
       "source_support_id": "support-2b6bd40e6c860a15"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-d83685d4a7f0cd41",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -3386,23 +3807,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-1:R;0-2:C;0-3:L;1-2:R;2-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-e01ef40b8aac3824",
-      "source_references": [],
       "source_support_edges": 5,
       "source_support_id": "support-512149e3cd66bcb4"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-e5953a9cf3d9cfa6",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -3415,23 +3839,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-2:C;0-2:R;0-3:L;1-3:R;2-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-cec55dece40abf84",
-      "source_references": [],
       "source_support_edges": 4,
       "source_support_id": "support-f5983f285b660184"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-e965ee7277ab24b2",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -3444,23 +3871,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-1:R;0-2:C;0-3:L;1-3:R;2-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-aa4917b931b55b83",
-      "source_references": [],
       "source_support_edges": 5,
       "source_support_id": "support-512149e3cd66bcb4"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-ee8c722fe8f18278",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -3473,23 +3903,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-2:C;0-3:R;1-3:L;1-3:R;2-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-81f5e7ddaa9677dc",
-      "source_references": [],
       "source_support_edges": 4,
       "source_support_id": "support-f5983f285b660184"
     },
     {
+      "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-18bfb3d8c33bbf58",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -3502,23 +3935,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-2:L;0-2:R;0-3:L;1-2:R;2-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-fff03be8c100a834",
-      "source_references": [],
       "source_support_edges": 4,
       "source_support_id": "support-f5983f285b660184"
     },
     {
+      "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-1928fc6c03828cba",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -3531,23 +3967,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-1:R;0-2:L;0-2:R;1-3:L;2-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-67252b3d175f9291",
-      "source_references": [],
       "source_support_edges": 4,
       "source_support_id": "support-7071783cfa9e86eb"
     },
     {
+      "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-2f4c974bc7831e4a",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -3560,23 +3999,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-2:L;0-3:R;1-2:R;1-3:R;2-3:L",
       "rlc": 5,
       "source_assignment_id": "assignment-250f99bb3d3d2043",
-      "source_references": [],
       "source_support_edges": 5,
       "source_support_id": "support-bea50b5cd065e186"
     },
     {
+      "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-369eb555ae634258",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -3589,23 +4031,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-1:R;0-2:L;0-3:L;1-2:R;1-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-ac228f8e953dba12",
-      "source_references": [],
       "source_support_edges": 5,
       "source_support_id": "support-c628a31a8c5b90bd"
     },
     {
+      "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-3a5b171b0d2af32a",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -3618,23 +4063,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-2:L;0-2:R;0-3:L;1-3:R;2-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-2dfe763babd18450",
-      "source_references": [],
       "source_support_edges": 4,
       "source_support_id": "support-f5983f285b660184"
     },
     {
+      "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-3a7ebfebce0db0a4",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -3647,23 +4095,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-2:L;0-2:R;0-3:R;1-3:L;2-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-323e8fc87e9d1e3d",
-      "source_references": [],
       "source_support_edges": 4,
       "source_support_id": "support-f5983f285b660184"
     },
     {
+      "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-3ae4767397da2b12",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -3676,23 +4127,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-2:L;0-2:R;0-3:R;1-3:R;2-3:L",
       "rlc": 5,
       "source_assignment_id": "assignment-17f669248efe1ff9",
-      "source_references": [],
       "source_support_edges": 4,
       "source_support_id": "support-f5983f285b660184"
     },
     {
+      "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-44371b2082f84fcf",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -3705,23 +4159,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-2:L;0-2:R;0-3:L;1-2:R;1-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-31cdce1fc74ddb40",
-      "source_references": [],
       "source_support_edges": 4,
       "source_support_id": "support-2b6bd40e6c860a15"
     },
     {
+      "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-44baa015c7dbccf2",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -3734,23 +4191,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-1:R;0-2:L;0-3:R;1-3:L;2-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-c3817bdf0a82bd24",
-      "source_references": [],
       "source_support_edges": 5,
       "source_support_id": "support-512149e3cd66bcb4"
     },
     {
+      "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-4e1e2e1aa376f921",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -3763,23 +4223,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-2:L;0-2:R;1-3:L;1-3:R;2-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-10b7f496bcab3c18",
-      "source_references": [],
       "source_support_edges": 3,
       "source_support_id": "support-3188436e43990c12"
     },
     {
+      "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-5eb31698974d07f8",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -3792,23 +4255,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-2:L;0-3:R;1-4:L;2-3:R;3-4:R",
       "rlc": 5,
       "source_assignment_id": "assignment-6d38361654c0a738",
-      "source_references": [],
       "source_support_edges": 5,
       "source_support_id": "support-e46bdbdccd3227f4"
     },
     {
+      "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-68430bbb448b9991",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -3821,23 +4287,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-2:L;0-3:L;1-4:R;2-4:R;3-4:R",
       "rlc": 5,
       "source_assignment_id": "assignment-91d44c4db2d77b07",
-      "source_references": [],
       "source_support_edges": 5,
       "source_support_id": "support-599e70e6844b1d00"
     },
     {
+      "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-7e24311a6fea4531",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -3850,23 +4319,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-2:L;0-3:L;1-2:R;1-3:R;2-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-8caa7f44cb5e618d",
-      "source_references": [],
       "source_support_edges": 5,
       "source_support_id": "support-bea50b5cd065e186"
     },
     {
+      "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-84fedcab1cc7f77d",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -3879,23 +4351,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-1:L;0-2:L;0-3:R;1-3:R;2-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-6b978c8346a1a469",
-      "source_references": [],
       "source_support_edges": 5,
       "source_support_id": "support-512149e3cd66bcb4"
     },
     {
+      "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-a1e6c042c7d77e41",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -3908,23 +4383,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-1:L;0-1:R;0-2:L;0-2:R;1-2:R",
       "rlc": 5,
       "source_assignment_id": "assignment-61adb58aab8b8553",
-      "source_references": [],
       "source_support_edges": 3,
       "source_support_id": "support-9defcf048b659b39"
     },
     {
+      "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-a33c22b118699e51",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -3937,23 +4415,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-2:L;0-2:R;1-2:R;1-3:L;2-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-232305c7eb63d079",
-      "source_references": [],
       "source_support_edges": 4,
       "source_support_id": "support-f5983f285b660184"
     },
     {
+      "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-c27124d195b882ef",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -3966,23 +4447,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-2:L;0-3:R;1-2:R;1-3:L;2-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-43fa9436ff5375c2",
-      "source_references": [],
       "source_support_edges": 5,
       "source_support_id": "support-bea50b5cd065e186"
     },
     {
+      "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-ceda8e624931aa86",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -3995,23 +4479,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-1:R;0-2:L;0-3:L;1-2:R;2-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-708bf8277acf6017",
-      "source_references": [],
       "source_support_edges": 5,
       "source_support_id": "support-512149e3cd66bcb4"
     },
     {
+      "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-debfbc02c5650a94",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -4024,23 +4511,26 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-1:R;0-2:L;0-2:R;1-2:L;1-2:R",
       "rlc": 5,
       "source_assignment_id": "assignment-032df459586efeb6",
-      "source_references": [],
       "source_support_edges": 3,
       "source_support_id": "support-9defcf048b659b39"
     },
     {
+      "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-f40bfca59082ff8d",
       "comparison_status": "unresolved",
+      "computational_cross_check_ids": [],
       "confidence": "none",
       "evidence_basis": [
         "no-evidence-yet"
       ],
+      "evidence_record_ids": [],
       "exclusion_category": "unresolved",
       "exclusion_reason": null,
       "historical_identifiers": [],
@@ -4053,276 +4543,300 @@
         "Which historical network or figure, if any, corresponds to this record?",
         "What entry-specific evidence establishes exclusion or retention?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "unresolved",
       "r": 3,
       "representative_descriptor": "0-2:L;0-3:R;1-2:L;1-3:R;2-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-21674c2b6141fccd",
-      "source_references": [],
       "source_support_edges": 5,
       "source_support_id": "support-bea50b5cd065e186"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-42d941084ce5f049",
       "comparison_status": "derived-unique-match",
+      "computational_cross_check_ids": [],
       "confidence": "high",
       "evidence_basis": [
         "aggregate-historical-category-plus-logically-unique-rice-match",
         "mechanically-derived-rice-structural-fact"
       ],
+      "evidence_record_ids": [
+        "ms-2019-eight-four-resistor-one-reactive",
+        "rice-lh148-r4-lc1-count"
+      ],
       "exclusion_category": "simpler-bilinear-realisation",
-      "exclusion_reason": "The cited aggregate category contains eight four-resistor/one-reactive networks, and exactly eight structural catalogue records satisfy R=4 and L+C=1.",
+      "exclusion_reason": "The authoritative aggregate category contains eight four-resistor/one-reactive networks, and exactly eight structural catalogue records satisfy R=4 and L+C=1.",
       "historical_identifiers": [],
       "l": 0,
       "lc": 1,
       "notes": [
-        "This is a component-count unique-match inference, not an explicit historical figure or network-number mapping."
+        "This is an aggregate source statement combined with a logically unique RICE component-count match, not an explicit historical figure or network-number mapping."
       ],
       "open_questions": [
         "Which historical figures or network numbers correspond to these eight records?",
         "Where does the primary source state the simpler bilinear realization for each individual network?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "exclude",
       "r": 4,
       "representative_descriptor": "0-1:R;0-2:C;0-3:R;1-3:R;2-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-8991b869da672502",
-      "source_references": [
-        "morelli-smith-2019-ladenheim-synthesis",
-        "rice-literature-conclusions"
-      ],
       "source_support_edges": 5,
       "source_support_id": "support-512149e3cd66bcb4"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-8e314b1dc699f2f3",
       "comparison_status": "derived-unique-match",
+      "computational_cross_check_ids": [],
       "confidence": "high",
       "evidence_basis": [
         "aggregate-historical-category-plus-logically-unique-rice-match",
         "mechanically-derived-rice-structural-fact"
       ],
+      "evidence_record_ids": [
+        "ms-2019-eight-four-resistor-one-reactive",
+        "rice-lh148-r4-lc1-count"
+      ],
       "exclusion_category": "simpler-bilinear-realisation",
-      "exclusion_reason": "The cited aggregate category contains eight four-resistor/one-reactive networks, and exactly eight structural catalogue records satisfy R=4 and L+C=1.",
+      "exclusion_reason": "The authoritative aggregate category contains eight four-resistor/one-reactive networks, and exactly eight structural catalogue records satisfy R=4 and L+C=1.",
       "historical_identifiers": [],
       "l": 0,
       "lc": 1,
       "notes": [
-        "This is a component-count unique-match inference, not an explicit historical figure or network-number mapping."
+        "This is an aggregate source statement combined with a logically unique RICE component-count match, not an explicit historical figure or network-number mapping."
       ],
       "open_questions": [
         "Which historical figures or network numbers correspond to these eight records?",
         "Where does the primary source state the simpler bilinear realization for each individual network?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "exclude",
       "r": 4,
       "representative_descriptor": "0-2:R;0-3:R;1-2:R;1-3:R;2-3:C",
       "rlc": 5,
       "source_assignment_id": "assignment-db18018fde5e77f8",
-      "source_references": [
-        "morelli-smith-2019-ladenheim-synthesis",
-        "rice-literature-conclusions"
-      ],
       "source_support_edges": 5,
       "source_support_id": "support-bea50b5cd065e186"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-a134c33979433ce6",
       "comparison_status": "derived-unique-match",
+      "computational_cross_check_ids": [],
       "confidence": "high",
       "evidence_basis": [
         "aggregate-historical-category-plus-logically-unique-rice-match",
         "mechanically-derived-rice-structural-fact"
       ],
+      "evidence_record_ids": [
+        "ms-2019-eight-four-resistor-one-reactive",
+        "rice-lh148-r4-lc1-count"
+      ],
       "exclusion_category": "simpler-bilinear-realisation",
-      "exclusion_reason": "The cited aggregate category contains eight four-resistor/one-reactive networks, and exactly eight structural catalogue records satisfy R=4 and L+C=1.",
+      "exclusion_reason": "The authoritative aggregate category contains eight four-resistor/one-reactive networks, and exactly eight structural catalogue records satisfy R=4 and L+C=1.",
       "historical_identifiers": [],
       "l": 0,
       "lc": 1,
       "notes": [
-        "This is a component-count unique-match inference, not an explicit historical figure or network-number mapping."
+        "This is an aggregate source statement combined with a logically unique RICE component-count match, not an explicit historical figure or network-number mapping."
       ],
       "open_questions": [
         "Which historical figures or network numbers correspond to these eight records?",
         "Where does the primary source state the simpler bilinear realization for each individual network?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "exclude",
       "r": 4,
       "representative_descriptor": "0-2:C;0-2:R;0-3:R;1-3:R;2-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-e5dc77c443f85893",
-      "source_references": [
-        "morelli-smith-2019-ladenheim-synthesis",
-        "rice-literature-conclusions"
-      ],
       "source_support_edges": 4,
       "source_support_id": "support-f5983f285b660184"
     },
     {
+      "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-f0ea8600831b22d5",
       "comparison_status": "derived-unique-match",
+      "computational_cross_check_ids": [],
       "confidence": "high",
       "evidence_basis": [
         "aggregate-historical-category-plus-logically-unique-rice-match",
         "mechanically-derived-rice-structural-fact"
       ],
+      "evidence_record_ids": [
+        "ms-2019-eight-four-resistor-one-reactive",
+        "rice-lh148-r4-lc1-count"
+      ],
       "exclusion_category": "simpler-bilinear-realisation",
-      "exclusion_reason": "The cited aggregate category contains eight four-resistor/one-reactive networks, and exactly eight structural catalogue records satisfy R=4 and L+C=1.",
+      "exclusion_reason": "The authoritative aggregate category contains eight four-resistor/one-reactive networks, and exactly eight structural catalogue records satisfy R=4 and L+C=1.",
       "historical_identifiers": [],
       "l": 0,
       "lc": 1,
       "notes": [
-        "This is a component-count unique-match inference, not an explicit historical figure or network-number mapping."
+        "This is an aggregate source statement combined with a logically unique RICE component-count match, not an explicit historical figure or network-number mapping."
       ],
       "open_questions": [
         "Which historical figures or network numbers correspond to these eight records?",
         "Where does the primary source state the simpler bilinear realization for each individual network?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "exclude",
       "r": 4,
       "representative_descriptor": "0-2:C;0-3:R;1-2:R;1-3:R;2-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-2691ef1d842c9971",
-      "source_references": [
-        "morelli-smith-2019-ladenheim-synthesis",
-        "rice-literature-conclusions"
-      ],
       "source_support_edges": 5,
       "source_support_id": "support-bea50b5cd065e186"
     },
     {
+      "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-82299f914f077df2",
       "comparison_status": "derived-unique-match",
+      "computational_cross_check_ids": [],
       "confidence": "high",
       "evidence_basis": [
         "aggregate-historical-category-plus-logically-unique-rice-match",
         "mechanically-derived-rice-structural-fact"
       ],
+      "evidence_record_ids": [
+        "ms-2019-eight-four-resistor-one-reactive",
+        "rice-lh148-r4-lc1-count"
+      ],
       "exclusion_category": "simpler-bilinear-realisation",
-      "exclusion_reason": "The cited aggregate category contains eight four-resistor/one-reactive networks, and exactly eight structural catalogue records satisfy R=4 and L+C=1.",
+      "exclusion_reason": "The authoritative aggregate category contains eight four-resistor/one-reactive networks, and exactly eight structural catalogue records satisfy R=4 and L+C=1.",
       "historical_identifiers": [],
       "l": 1,
       "lc": 1,
       "notes": [
-        "This is a component-count unique-match inference, not an explicit historical figure or network-number mapping."
+        "This is an aggregate source statement combined with a logically unique RICE component-count match, not an explicit historical figure or network-number mapping."
       ],
       "open_questions": [
         "Which historical figures or network numbers correspond to these eight records?",
         "Where does the primary source state the simpler bilinear realization for each individual network?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "exclude",
       "r": 4,
       "representative_descriptor": "0-2:L;0-2:R;0-3:R;1-3:R;2-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-974bbe2233358ed3",
-      "source_references": [
-        "morelli-smith-2019-ladenheim-synthesis",
-        "rice-literature-conclusions"
-      ],
       "source_support_edges": 4,
       "source_support_id": "support-f5983f285b660184"
     },
     {
+      "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-932f408750ebae4c",
       "comparison_status": "derived-unique-match",
+      "computational_cross_check_ids": [],
       "confidence": "high",
       "evidence_basis": [
         "aggregate-historical-category-plus-logically-unique-rice-match",
         "mechanically-derived-rice-structural-fact"
       ],
+      "evidence_record_ids": [
+        "ms-2019-eight-four-resistor-one-reactive",
+        "rice-lh148-r4-lc1-count"
+      ],
       "exclusion_category": "simpler-bilinear-realisation",
-      "exclusion_reason": "The cited aggregate category contains eight four-resistor/one-reactive networks, and exactly eight structural catalogue records satisfy R=4 and L+C=1.",
+      "exclusion_reason": "The authoritative aggregate category contains eight four-resistor/one-reactive networks, and exactly eight structural catalogue records satisfy R=4 and L+C=1.",
       "historical_identifiers": [],
       "l": 1,
       "lc": 1,
       "notes": [
-        "This is a component-count unique-match inference, not an explicit historical figure or network-number mapping."
+        "This is an aggregate source statement combined with a logically unique RICE component-count match, not an explicit historical figure or network-number mapping."
       ],
       "open_questions": [
         "Which historical figures or network numbers correspond to these eight records?",
         "Where does the primary source state the simpler bilinear realization for each individual network?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "exclude",
       "r": 4,
       "representative_descriptor": "0-2:L;0-3:R;1-2:R;1-3:R;2-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-7d62b72fe6404851",
-      "source_references": [
-        "morelli-smith-2019-ladenheim-synthesis",
-        "rice-literature-conclusions"
-      ],
       "source_support_edges": 5,
       "source_support_id": "support-bea50b5cd065e186"
     },
     {
+      "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-f0feabf623eadb0d",
       "comparison_status": "derived-unique-match",
+      "computational_cross_check_ids": [],
       "confidence": "high",
       "evidence_basis": [
         "aggregate-historical-category-plus-logically-unique-rice-match",
         "mechanically-derived-rice-structural-fact"
       ],
+      "evidence_record_ids": [
+        "ms-2019-eight-four-resistor-one-reactive",
+        "rice-lh148-r4-lc1-count"
+      ],
       "exclusion_category": "simpler-bilinear-realisation",
-      "exclusion_reason": "The cited aggregate category contains eight four-resistor/one-reactive networks, and exactly eight structural catalogue records satisfy R=4 and L+C=1.",
+      "exclusion_reason": "The authoritative aggregate category contains eight four-resistor/one-reactive networks, and exactly eight structural catalogue records satisfy R=4 and L+C=1.",
       "historical_identifiers": [],
       "l": 1,
       "lc": 1,
       "notes": [
-        "This is a component-count unique-match inference, not an explicit historical figure or network-number mapping."
+        "This is an aggregate source statement combined with a logically unique RICE component-count match, not an explicit historical figure or network-number mapping."
       ],
       "open_questions": [
         "Which historical figures or network numbers correspond to these eight records?",
         "Where does the primary source state the simpler bilinear realization for each individual network?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "exclude",
       "r": 4,
       "representative_descriptor": "0-1:R;0-2:L;0-3:R;1-3:R;2-3:R",
       "rlc": 5,
       "source_assignment_id": "assignment-d5e8a6fa47f07207",
-      "source_references": [
-        "morelli-smith-2019-ladenheim-synthesis",
-        "rice-literature-conclusions"
-      ],
       "source_support_edges": 5,
       "source_support_id": "support-512149e3cd66bcb4"
     },
     {
+      "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-f78bad46fde941ae",
       "comparison_status": "derived-unique-match",
+      "computational_cross_check_ids": [],
       "confidence": "high",
       "evidence_basis": [
         "aggregate-historical-category-plus-logically-unique-rice-match",
         "mechanically-derived-rice-structural-fact"
       ],
+      "evidence_record_ids": [
+        "ms-2019-eight-four-resistor-one-reactive",
+        "rice-lh148-r4-lc1-count"
+      ],
       "exclusion_category": "simpler-bilinear-realisation",
-      "exclusion_reason": "The cited aggregate category contains eight four-resistor/one-reactive networks, and exactly eight structural catalogue records satisfy R=4 and L+C=1.",
+      "exclusion_reason": "The authoritative aggregate category contains eight four-resistor/one-reactive networks, and exactly eight structural catalogue records satisfy R=4 and L+C=1.",
       "historical_identifiers": [],
       "l": 1,
       "lc": 1,
       "notes": [
-        "This is a component-count unique-match inference, not an explicit historical figure or network-number mapping."
+        "This is an aggregate source statement combined with a logically unique RICE component-count match, not an explicit historical figure or network-number mapping."
       ],
       "open_questions": [
         "Which historical figures or network numbers correspond to these eight records?",
         "Where does the primary source state the simpler bilinear realization for each individual network?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "exclude",
       "r": 4,
       "representative_descriptor": "0-2:R;0-3:R;1-2:R;1-3:R;2-3:L",
       "rlc": 5,
       "source_assignment_id": "assignment-4940eae0a9f1aef0",
-      "source_references": [
-        "morelli-smith-2019-ladenheim-synthesis",
-        "rice-literature-conclusions"
-      ],
       "source_support_edges": 5,
       "source_support_id": "support-bea50b5cd065e186"
     }
@@ -4332,15 +4846,19 @@
   "sources": [
     {
       "citation": "A. Morelli and M. C. Smith, Passive Network Synthesis: An Approach to Classification, SIAM, 2019.",
-      "locator": "Chapter 3, Section 3.1; Chapter 5; Chapter 6 classification discussion; Theorem 7.4 (no page or per-network locator recorded in this repository)",
-      "source_id": "morelli-smith-2019-ladenheim-synthesis",
-      "summary": "Repository-cited source context for the reported 148, 108, and exclusion-group claims; it does not provide a checked-in per-entry mapping."
+      "notes": "Authoritative publication. The ledger stores short paraphrases and precise locators, not copied source pages.",
+      "publication": {
+        "publisher": "SIAM",
+        "year": 2019
+      },
+      "source_id": "morelli-smith-2019",
+      "source_type": "authoritative-publication"
     },
     {
-      "citation": "RICE planning synthesis of the Ladenheim literature conclusions.",
-      "locator": "docs/plan/03-counting/05-ladenheim.md, Historical scope; docs/plan/00-records/02-literature-conclusions.md, Ladenheim layers",
-      "source_id": "rice-literature-conclusions",
-      "summary": "Records the aggregate group of eight four-resistor/one-reactive exclusions and explicitly separates it from the later 108 and 62 layers."
+      "citation": "RICE committed structural Ladenheim 148 catalogue.",
+      "notes": "Generated RICE artefact supplying immutable structural fields and mechanically testable component populations.",
+      "source_id": "rice-ladenheim-148-catalogue",
+      "source_type": "rice-generated-artefact"
     }
   ],
   "summary": {

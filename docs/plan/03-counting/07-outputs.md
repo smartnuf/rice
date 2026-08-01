@@ -49,3 +49,6 @@ Use the repository-wide `docs/` directory and the established slice spelling `r2
   generated 148-row ledger in
   `data/comparisons/ladenheim-148-to-108.json`. This is an evidence worklist,
   not a completed canonical 108 catalogue.
+- Version 2 of that output validates distinct authoritative-evidence,
+  previous-workspace, and computational-cross-check namespaces while preserving
+  the same eight proposed exclusions and 140 unresolved dispositions.

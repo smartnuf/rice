@@ -34,33 +34,58 @@ The four aggregate comparison targets are:
 The last three rows are aggregate gaps, not identifications of particular RICE
 records. Their 32 individual mappings remain wholly unresolved.
 
-## Repository source inventory
+## Evidence material and provenance
 
-The repository contains:
+The comparison now has access to the authoritative Morelli and Smith
+publication outside the repository. The annotation file records only precise
+citations and short paraphrases; it does not copy PDF pages or depend on that
+local file at generation or test time. The checked locations used here are:
 
-- the full generated 148 structural catalogue, representative descriptors,
-  structural signatures, and assignment/support provenance;
-- planning summaries citing A. Morelli and M. C. Smith, *Passive Network
-  Synthesis: An Approach to Classification* (SIAM, 2019), with chapter/section
-  context for the 148, 108, 62, and aggregate exclusion claims;
-- the aggregate `8 + 4 + 20 + 8` exclusion grouping; and
-- explicit warnings that historical numbering, transformations, and individual
-  realizability mappings remain open.
+- Chapter 5 introduction, printed page 41 / zero-based PDF page index 47, for
+  the reported 148-to-108 reduction;
+- Chapter 5, Section 5.1, printed page 42 / PDF index 48, for the aggregate
+  group of eight four-resistor/one-reactive exclusions; and
+- Appendix B, printed pages 125--127 / PDF indices 131--133, for the tabulated
+  catalogue structure and exclusion totals.
 
-The repository search found no book extract, scan, copied figure, checked-in
-historical table, Morelli/Ladenheim number mapping, or individual record-level
-statement for the Zobel, O/O-dual, Cauer-Foster, regularity, realizability, or
-Y-delta exclusions. No page number or historical network number has therefore
-been guessed. The ledger stores citations and short paraphrases only.
+Previous research workspaces contain useful graph descriptions, images,
+descriptor transcriptions, and computational results. Those artefacts can help
+later transcription and cross-checking, but they are not authoritative
+historical evidence. In particular, computational agreement can corroborate a
+transcription without converting an uncited workspace assertion into a
+source-backed mapping.
 
-## Evidence contract
+## Version 2 evidence contract
 
 The manual file
-`data/comparisons/ladenheim-108-annotations.json` contains reviewed assertions,
-source definitions, and structural matching rules. It does not duplicate all
-148 structural records. The generated file
+`data/comparisons/ladenheim-108-annotations.json` uses `format_version: 2` and
+contains reviewed assertions and structural matching rules without duplicating
+all 148 structural records. The generated file
 `data/comparisons/ladenheim-148-to-108.json` joins those assertions to the
 structural catalogue and carries exactly one row per stable `lh148-*` ID.
+
+The provenance layers are deliberately separate:
+
+| Layer | Meaning | Can establish historical source evidence? |
+|---|---|---|
+| `sources` | Publications, RICE artefacts or documentation, and previous-workspace repositories. A source describes an origin but does not itself support an assertion. | No |
+| `evidence_records` | A specific assertion, structured locator, paraphrase, provenance level, verification state, and asserted fields. | Only an authoritative, source-verified record with a precise publication locator |
+| `previous_workspace_records` | Repository-relative earlier transcriptions, generated artefacts, or visual cross-checks, with commit and limitations. | No |
+| `computational_cross_checks` | A recorded implementation, input, operation, result, reproducibility state, and limitations. | No |
+
+Entries and rules reference these collections through separately validated
+`evidence_record_ids`, `previous_workspace_record_ids`, and
+`computational_cross_check_ids`. IDs cannot cross namespaces. Locators are
+objects with controlled page, PDF index, chapter, section, figure, appendix,
+table, network-number, repository-path, and commit fields; absolute machine
+paths and timestamps are forbidden.
+
+Historical identifiers are structured by scheme, value, verification state,
+and evidence-record IDs. A source-verified identifier requires precise
+authoritative evidence. The nullable `basic_graph_assignment` contract can
+later record a label, base label, dual designation, fixture, matching relation,
+verification state, and evidence references. Every current identifier list is
+empty and every basic-graph assignment is null.
 
 `comparison_status` has these meanings:
 
@@ -88,10 +113,7 @@ RICE match, a mechanically derived RICE structural fact, a researcher
 hypothesis, or no evidence yet. Mechanically derived facts establish only the
 stated RICE property; they are not historical evidence by themselves.
 
-Source references resolve to structured source records with a citation,
-locator, and project-authored summary. Historical identifiers are separate and
-remain empty unless a checked source mapping supplies them. Confidence is
-controlled as `high`, `medium`, `low`, or `none`.
+Confidence is controlled as `high`, `medium`, `low`, or `none`.
 
 ## Current population
 
@@ -114,18 +136,22 @@ controlled as `high`, `medium`, `low`, or `none`.
 | **Total** | **148** |
 
 The structural catalogue contains exactly eight records with `R=4` and
-`L+C=1`, and no other record satisfies that description. The repository's
-cited literature synthesis reports exactly eight four-resistor/one-reactive
-exclusions whose bilinear impedances have simpler realizations. The annotation
-rule therefore proposes those eight records for exclusion with status
-`derived-unique-match`. This is not an explicit historical figure or number
-mapping, and the missing per-network primary-source locators are recorded as
-open questions.
+`L+C=1`, and no other record satisfies that description. Morelli and Smith,
+Chapter 5, Section 5.1, printed page 42 / PDF index 48, reports exactly eight
+four-resistor/one-reactive exclusions whose bilinear impedances have simpler
+realizations. The rule combines that aggregate authoritative statement with a
+separate mechanically derived RICE component-count fact. It therefore remains
+`derived-unique-match`, not `source-backed`: the source does not explicitly map
+each of the eight individual RICE records to a historical figure or number.
 
 All four Zobel four-element mappings, all twenty Zobel five-element
 series-parallel mappings, and all eight other O/O-dual or bridge mappings are
 deliberately unassigned. The remaining entries are not called retained merely
 because no exclusion has yet been established.
+
+Basic-graph fixtures and assignments, all remaining exclusions, and canonical
+network numbers are intentionally deferred to later focused changes. No graph
+letter or historical network number is asserted by this ledger.
 
 ## Regeneration and validation
 
@@ -137,21 +163,24 @@ From the repository root:
 .venv/bin/python -m pytest -q tests/test_ladenheim_evidence.py
 ```
 
-The generator validates the source catalogue, controlled values, citations,
-annotation IDs, structural assertions, evidence requirements, row count, and
-ordering. Output has no timestamps, absolute machine paths, or unstable
-metadata. `--check` fails if the committed ledger differs.
+The generator validates the source catalogue, controlled values, every record
+namespace and cross-reference, structured locators and historical identifiers,
+the separation of authoritative and non-authoritative evidence, structural
+assertions, row count, and ordering. Output has no timestamps, absolute machine
+paths, or unstable metadata. `--check` fails if the committed ledger differs.
 
 ## Next evidence work
 
-1. Consult the cited source and record exact page, figure, table, network
-   number, or paragraph locators for each proposed mapping.
+1. Add independently checked basic-graph fixtures and map the 148 structural
+   records without treating previous-workspace graph files as authoritative.
 2. Establish the four individual four-element Zobel mappings without inferring
    them from graph appearance.
 3. Establish the twenty individual five-element series-parallel Zobel mappings
    with source-backed transformations.
 4. Identify the final eight O/O-dual and bridge cases and record each distinct
    Cauer-Foster, regularity, realizability, Y-delta, or other argument.
-5. Only after all forty exclusions are established, review whether evidence
+5. Transcribe and validate the surviving canonical network numbers from the
+   authoritative catalogue diagrams.
+6. Only after all forty exclusions are established, review whether evidence
    also warrants marking the complementary 108 records retained and claiming
    reproduction of the canonical catalogue.

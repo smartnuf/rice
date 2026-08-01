@@ -21,7 +21,8 @@ once the cited sources and reduction definitions are aligned.
 
 ## Progress notes
 
-- The 148-to-108 evidence ledger now reserves structured
-  `historical_identifiers` and source-reference locator fields for each record.
-  No historical number has been populated because the repository contains no
-  checked per-entry number or figure mapping. This task remains `todo`.
+- The version 2 evidence ledger reserves validated structured
+  `historical_identifiers`, per-assertion publication locators, and a nullable
+  basic-graph assignment for each record. A source-verified identifier must
+  cite precise authoritative evidence. No graph letter or historical network
+  number has been populated, so this task remains `todo`.

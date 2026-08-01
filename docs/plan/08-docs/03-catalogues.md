@@ -50,3 +50,7 @@ Chapter 5, the Chapter 6 classification discussion, and Theorem 7.4.
   disposition contract, current `8 mapped / 140 unresolved` population, source
   inventory, explicit research gaps, and deterministic regeneration commands.
   The comparison is not complete and the task remains open.
+- Documented the version 2 separation between authoritative evidence,
+  previous-workspace material, and computational cross-checks, including the
+  precise Morelli and Smith page/PDF-index locators currently used. Graph and
+  canonical-number mappings remain deferred.

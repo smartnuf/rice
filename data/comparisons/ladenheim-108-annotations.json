@@ -1,49 +1,127 @@
 {
-  "format_version": 1,
+  "computational_cross_checks": [],
+  "evidence_records": [
+    {
+      "asserted_fields": [
+        "target.reported_members",
+        "target.reported_exclusions"
+      ],
+      "evidence_id": "ms-2019-reported-148-to-108",
+      "locator": {
+        "chapter": "5",
+        "pdf_page_index": 47,
+        "printed_page": 41
+      },
+      "paraphrase": "The classification starts with 148 networks and reports that forty further eliminations leave 108 canonical networks.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "asserted_fields": [
+        "comparison_status",
+        "proposed_disposition",
+        "exclusion_category",
+        "exclusion_reason"
+      ],
+      "evidence_id": "ms-2019-eight-four-resistor-one-reactive",
+      "locator": {
+        "chapter": "5",
+        "pdf_page_index": 48,
+        "printed_page": 42,
+        "section": "5.1"
+      },
+      "notes": "This is an aggregate category statement, not an explicit mapping to eight individual RICE records.",
+      "paraphrase": "The first exclusion group contains eight networks with four resistors and one reactive element whose bilinear impedances have simpler realizations.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "asserted_fields": [
+        "selector",
+        "expected_matches"
+      ],
+      "evidence_id": "rice-lh148-r4-lc1-count",
+      "locator": {
+        "repository_path": "data/counts/ladenheim-148.json"
+      },
+      "paraphrase": "Mechanical filtering of the committed structural catalogue by R=4 and L+C=1 returns exactly eight records and no others.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-ladenheim-148-catalogue",
+      "verification_state": "cross-checked"
+    },
+    {
+      "asserted_fields": [
+        "target.exclusion_category_targets"
+      ],
+      "evidence_id": "ms-2019-appendix-b-catalogue-totals",
+      "locator": {
+        "appendix": "B",
+        "pdf_page_index": 131,
+        "printed_page": 125,
+        "table": "Ladenheim catalogue table, continued through printed page 127 / PDF index 133"
+      },
+      "paraphrase": "Appendix B tabulates the basic-graph catalogue structure, bracketed eliminations, and totals used in the reported reduction.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    }
+  ],
+  "format_version": 2,
+  "previous_workspace_records": [],
   "records": [],
   "rules": [
     {
+      "basic_graph_assignment": null,
       "comparison_status": "derived-unique-match",
+      "computational_cross_check_ids": [],
       "confidence": "high",
       "evidence_basis": [
         "aggregate-historical-category-plus-logically-unique-rice-match",
         "mechanically-derived-rice-structural-fact"
       ],
+      "evidence_record_ids": [
+        "ms-2019-eight-four-resistor-one-reactive",
+        "rice-lh148-r4-lc1-count"
+      ],
       "exclusion_category": "simpler-bilinear-realisation",
-      "exclusion_reason": "The cited aggregate category contains eight four-resistor/one-reactive networks, and exactly eight structural catalogue records satisfy R=4 and L+C=1.",
+      "exclusion_reason": "The authoritative aggregate category contains eight four-resistor/one-reactive networks, and exactly eight structural catalogue records satisfy R=4 and L+C=1.",
       "expected_matches": 8,
       "historical_identifiers": [],
       "kind": "unique-component-match",
       "notes": [
-        "This is a component-count unique-match inference, not an explicit historical figure or network-number mapping."
+        "This is an aggregate source statement combined with a logically unique RICE component-count match, not an explicit historical figure or network-number mapping."
       ],
       "open_questions": [
         "Which historical figures or network numbers correspond to these eight records?",
         "Where does the primary source state the simpler bilinear realization for each individual network?"
       ],
+      "previous_workspace_record_ids": [],
       "proposed_disposition": "exclude",
+      "rule_id": "unique-r4-lc1-eight",
       "selector": {
         "lc": 1,
         "r": 4
-      },
-      "source_references": [
-        "morelli-smith-2019-ladenheim-synthesis",
-        "rice-literature-conclusions"
-      ]
+      }
     }
   ],
   "sources": [
     {
       "citation": "A. Morelli and M. C. Smith, Passive Network Synthesis: An Approach to Classification, SIAM, 2019.",
-      "locator": "Chapter 3, Section 3.1; Chapter 5; Chapter 6 classification discussion; Theorem 7.4 (no page or per-network locator recorded in this repository)",
-      "source_id": "morelli-smith-2019-ladenheim-synthesis",
-      "summary": "Repository-cited source context for the reported 148, 108, and exclusion-group claims; it does not provide a checked-in per-entry mapping."
+      "notes": "Authoritative publication. The ledger stores short paraphrases and precise locators, not copied source pages.",
+      "publication": {
+        "publisher": "SIAM",
+        "year": 2019
+      },
+      "source_id": "morelli-smith-2019",
+      "source_type": "authoritative-publication"
     },
     {
-      "citation": "RICE planning synthesis of the Ladenheim literature conclusions.",
-      "locator": "docs/plan/03-counting/05-ladenheim.md, Historical scope; docs/plan/00-records/02-literature-conclusions.md, Ladenheim layers",
-      "source_id": "rice-literature-conclusions",
-      "summary": "Records the aggregate group of eight four-resistor/one-reactive exclusions and explicitly separates it from the later 108 and 62 layers."
+      "citation": "RICE committed structural Ladenheim 148 catalogue.",
+      "notes": "Generated RICE artefact supplying immutable structural fields and mechanically testable component populations.",
+      "source_id": "rice-ladenheim-148-catalogue",
+      "source_type": "rice-generated-artefact"
     }
   ]
 }
