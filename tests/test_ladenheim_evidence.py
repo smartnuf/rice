@@ -703,12 +703,20 @@ def test_source_verified_identifier_requires_identifier_specific_evidence(
 def _historical_identifier_evidence(
     catalogue_id, *, scheme="morelli-smith-canonical-network", value=70
 ):
+    locator = {"appendix": "C", "printed_page": 129, "network_number": 70}
+    if (
+        scheme == "morelli-smith-canonical-network"
+        and isinstance(value, int)
+        and not isinstance(value, bool)
+        and 1 <= value <= 108
+    ):
+        locator["network_number"] = value
     return {
         "evidence_id": "fixture-historical-identifier",
         "source_id": "morelli-smith-2019",
         "provenance_level": "authoritative-source-transcription",
         "verification_state": "source-verified",
-        "locator": {"appendix": "C", "printed_page": 129, "network_number": 70},
+        "locator": locator,
         "paraphrase": "Synthetic historical-identifier test fixture.",
         "claim": {
             "claim_type": "historical-identifier",
@@ -756,6 +764,128 @@ def test_exact_subject_historical_identifier_fixture_is_accepted(
     assert generated["records"][0]["historical_identifiers"] == row[
         "historical_identifiers"
     ]
+
+
+def _parsed_historical_identifier(scheme, value):
+    return {
+        "scheme": scheme,
+        "value": value,
+        "verification_state": "parsed",
+        "evidence_record_ids": [],
+    }
+
+
+def test_canonical_network_numbers_are_unique_across_rows(catalogue, annotations):
+    annotations["rules"] = []
+    rows = [
+        _unresolved_annotation(record["catalogue_id"])
+        for record in catalogue["records"][:2]
+    ]
+    for row in rows:
+        row["historical_identifiers"] = [
+            _parsed_historical_identifier("morelli-smith-canonical-network", 70)
+        ]
+    annotations["records"] = rows
+    with pytest.raises(
+        ValueError,
+        match=r"morelli-smith-canonical-network 70.*lh148-.*lh148-",
+    ):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_different_canonical_network_numbers_are_accepted(catalogue, annotations):
+    annotations["rules"] = []
+    rows = [
+        _unresolved_annotation(record["catalogue_id"])
+        for record in catalogue["records"][:2]
+    ]
+    for number, row in enumerate(rows, start=70):
+        row["historical_identifiers"] = [
+            _parsed_historical_identifier("morelli-smith-canonical-network", number)
+        ]
+    annotations["records"] = rows
+    generate_evidence_ledger(catalogue, annotations)
+
+
+def test_non_global_identifier_scheme_may_repeat_across_rows(catalogue, annotations):
+    annotations["rules"] = []
+    rows = [
+        _unresolved_annotation(record["catalogue_id"])
+        for record in catalogue["records"][:2]
+    ]
+    for row in rows:
+        row["historical_identifiers"] = [
+            _parsed_historical_identifier("ladenheim-original-identifier", "L-1")
+        ]
+    annotations["records"] = rows
+    generate_evidence_ledger(catalogue, annotations)
+
+
+def test_boolean_cannot_bypass_canonical_number_uniqueness(catalogue, annotations):
+    annotations["rules"] = []
+    rows = [
+        _unresolved_annotation(record["catalogue_id"])
+        for record in catalogue["records"][:2]
+    ]
+    rows[0]["historical_identifiers"] = [
+        _parsed_historical_identifier("morelli-smith-canonical-network", True)
+    ]
+    rows[1]["historical_identifiers"] = [
+        _parsed_historical_identifier("morelli-smith-canonical-network", 1)
+    ]
+    annotations["records"] = rows
+    with pytest.raises(ValueError, match="canonical network must be an integer"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_committed_ledger_has_no_historical_identifiers():
+    ledger = json.loads(LEDGER_PATH.read_text(encoding="utf-8"))
+    assert all(not row["historical_identifiers"] for row in ledger["records"])
+
+
+def test_canonical_identifier_locator_must_match_claim(catalogue, annotations):
+    row_id = catalogue["records"][0]["catalogue_id"]
+    evidence = _historical_identifier_evidence(row_id, value=70)
+    evidence["locator"]["network_number"] = 1
+    annotations["evidence_records"].append(evidence)
+    with pytest.raises(ValueError, match="network_number locator does not match"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_canonical_identifier_matching_locator_is_accepted(catalogue, annotations):
+    row_id = catalogue["records"][0]["catalogue_id"]
+    evidence = _historical_identifier_evidence(row_id, value=70)
+    annotations["evidence_records"].append(evidence)
+    generate_evidence_ledger(catalogue, annotations)
+
+
+def test_canonical_identifier_locator_may_omit_network_number(catalogue, annotations):
+    row_id = catalogue["records"][0]["catalogue_id"]
+    evidence = _historical_identifier_evidence(row_id, value=70)
+    del evidence["locator"]["network_number"]
+    annotations["evidence_records"].append(evidence)
+    generate_evidence_ledger(catalogue, annotations)
+
+
+def test_basic_graph_identifier_is_unaffected_by_network_locator(catalogue, annotations):
+    row_id = catalogue["records"][0]["catalogue_id"]
+    evidence = _historical_identifier_evidence(
+        row_id, scheme="morelli-smith-basic-graph", value="G"
+    )
+    annotations["evidence_records"].append(evidence)
+    generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize(("claim_value", "locator_value"), [(True, 1), (1, True)])
+def test_canonical_identifier_and_locator_reject_booleans(
+    catalogue, annotations, claim_value, locator_value
+):
+    row_id = catalogue["records"][0]["catalogue_id"]
+    evidence = _historical_identifier_evidence(row_id, value=claim_value)
+    evidence["locator"]["network_number"] = locator_value
+    annotations["evidence_records"].append(evidence)
+    with pytest.raises(ValueError, match="locator|canonical network"):
+        generate_evidence_ledger(catalogue, annotations)
 
 
 @pytest.mark.parametrize(

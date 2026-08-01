@@ -69,6 +69,13 @@ HISTORICAL_IDENTIFIER_SCHEMES = {
     "morelli-smith-canonical-network",
     "ladenheim-original-identifier",
 }
+GLOBALLY_UNIQUE_HISTORICAL_IDENTIFIER_SCHEMES = {
+    "morelli-smith-canonical-network",
+}
+REUSABLE_HISTORICAL_IDENTIFIER_SCHEMES = {
+    "morelli-smith-basic-graph",
+    "ladenheim-original-identifier",
+}
 LOCATOR_FIELDS = {
     "chapter",
     "section",
@@ -561,6 +568,17 @@ def _validate_evidence_records(
         ):
             raise ValueError(f"evidence {evidence_id} notes must be non-empty")
         _validate_claim(record.get("claim"), evidence_id, catalogue_ids)
+        claim = record["claim"]
+        if (
+            claim["claim_type"] == "historical-identifier"
+            and claim["scheme"] == "morelli-smith-canonical-network"
+            and "network_number" in record["locator"]
+            and record["locator"]["network_number"] != claim["value"]
+        ):
+            raise ValueError(
+                f"evidence {evidence_id} network_number locator does not match "
+                "the claimed canonical network"
+            )
         source = sources[source_id]
         if source["source_type"] == "previous-workspace-repository":
             raise ValueError(
@@ -1064,6 +1082,26 @@ def _validate_generated_ledger(
     for row, source in zip(rows, source_records, strict=True):
         if any(row[field] != source[field] for field in IMMUTABLE_FIELDS):
             raise ValueError("generated rows must preserve source order and immutable fields")
+    globally_assigned: dict[tuple[str, Any], str] = {}
+    for row in rows:
+        for identifier in row["historical_identifiers"]:
+            scheme = identifier["scheme"]
+            if scheme in REUSABLE_HISTORICAL_IDENTIFIER_SCHEMES:
+                continue
+            if scheme not in GLOBALLY_UNIQUE_HISTORICAL_IDENTIFIER_SCHEMES:
+                raise ValueError(
+                    "historical identifier scheme lacks uniqueness policy: "
+                    f"{scheme}"
+                )
+            identity = (scheme, identifier["value"])
+            previous_catalogue_id = globally_assigned.get(identity)
+            if previous_catalogue_id is not None:
+                raise ValueError(
+                    f"globally unique historical identifier {scheme} "
+                    f"{identifier['value']!r} is assigned to both "
+                    f"{previous_catalogue_id} and {row['catalogue_id']}"
+                )
+            globally_assigned[identity] = row["catalogue_id"]
     if ledger["source_catalogue_relation"] != SOURCE_CATALOGUE_RELATION:
         raise ValueError("generated ledger has unexpected structural relation")
     if ledger["target"]["reproduction_claimed"] and any(

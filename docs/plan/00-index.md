@@ -107,7 +107,7 @@ files' numeric prefixes; the files were not renamed/renumbered to match):
 
 - `todo` [Document developer workflow](08-docs/01-dev-workflow.md)
 - `prog` [Document counting methodology](08-docs/02-count-method.md)
-- `todo` [Document catalogue comparisons and references](08-docs/03-catalogues.md)
+- `prog` [Document catalogue comparisons and references](08-docs/03-catalogues.md)
 - `prog` [Document known limits and open questions](08-docs/04-open.md)
 
 ## 09 — Later named features

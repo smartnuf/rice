@@ -1,6 +1,6 @@
 # 08-docs / 03 — Document catalogue comparisons and references
 
-Status: `todo`
+Status: `prog`
 
 ## Goal
 
@@ -54,3 +54,8 @@ Chapter 5, the Chapter 6 classification discussion, and Theorem 7.4.
   previous-workspace material, and computational cross-checks, including the
   precise Morelli and Smith page/PDF-index locators currently used. Graph and
   canonical-number mappings remain deferred.
+- The comparison document now describes the version 2 evidence and locator
+  contract, deterministic regeneration, and the partial `8 excluded / 140
+  unresolved` ledger. The remaining thirty-two exclusions, retained canonical
+  membership, basic-graph assignments, canonical numbering, and complete 108
+  reproduction remain open.
