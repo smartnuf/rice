@@ -18,3 +18,10 @@ once the cited sources and reduction definitions are aligned.
 
 - Historical numbering is searchable from repository fixtures.
 - Descriptor, representative, and source references agree for every mapped item.
+
+## Progress notes
+
+- The 148-to-108 evidence ledger now reserves structured
+  `historical_identifiers` and source-reference locator fields for each record.
+  No historical number has been populated because the repository contains no
+  checked per-entry number or figure mapping. This task remains `todo`.

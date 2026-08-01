@@ -43,3 +43,10 @@ Chapter 5, the Chapter 6 classification discussion, and Theorem 7.4.
 - Agreement or disagreement with historical counts is explained by named
   contracts rather than by informal distinctness language.
 - The spelling and scope of each catalogue are consistent throughout the docs.
+
+## Progress notes
+
+- Added `docs/comparisons/ladenheim-148-to-108.md` with the evidence-status and
+  disposition contract, current `8 mapped / 140 unresolved` population, source
+  inventory, explicit research gaps, and deterministic regeneration commands.
+  The comparison is not complete and the task remains open.

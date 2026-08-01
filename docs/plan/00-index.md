@@ -11,11 +11,11 @@ records identify the state of each task.
 ## Current direction
 
 The structural [148-network Ladenheim catalogue](04-ladenheim/01-148.md) has
-now been reproduced with traceable records and provenance. The next substantive
-milestone is the still-open comparison with the
-[canonical 108-network catalogue](04-ladenheim/02-108.md). Starting from the
-reproduced 148 set, that work must account for the forty exclusions with
-per-entry evidence and distinguish star-delta effects from Zobel
+now been reproduced with traceable records and provenance. Comparison with the
+[canonical 108-network catalogue](04-ladenheim/02-108.md) is now in progress
+through a deterministic evidence ledger. Starting from the reproduced 148 set,
+that work must account for the forty exclusions with per-entry evidence and
+distinguish star-delta effects from Zobel
 transformations, simpler bilinear realizations, Cauer-Foster relationships,
 regularity, and other realizability arguments.
 
@@ -70,7 +70,7 @@ files' numeric prefixes; the files were not renamed/renumbered to match):
 ## 04 — Ladenheim reproduction
 
 - `done` [Reproduce structural 148-network Ladenheim set](04-ladenheim/01-148.md)
-- `todo` [Compare with canonical 108-network Ladenheim catalogue](04-ladenheim/02-108.md)
+- `prog` [Compare with canonical 108-network Ladenheim catalogue](04-ladenheim/02-108.md)
 - `todo` [Reproduce 62 realizability-set classes](04-ladenheim/03-62.md)
 - `todo` [Identify generator sets](04-ladenheim/04-generators.md)
 - `todo` [Map descriptors to Morelli/Ladenheim numbering](04-ladenheim/05-numbering.md)

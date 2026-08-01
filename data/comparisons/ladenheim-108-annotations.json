@@ -1,0 +1,49 @@
+{
+  "format_version": 1,
+  "records": [],
+  "rules": [
+    {
+      "comparison_status": "derived-unique-match",
+      "confidence": "high",
+      "evidence_basis": [
+        "aggregate-historical-category-plus-logically-unique-rice-match",
+        "mechanically-derived-rice-structural-fact"
+      ],
+      "exclusion_category": "simpler-bilinear-realisation",
+      "exclusion_reason": "The cited aggregate category contains eight four-resistor/one-reactive networks, and exactly eight structural catalogue records satisfy R=4 and L+C=1.",
+      "expected_matches": 8,
+      "historical_identifiers": [],
+      "kind": "unique-component-match",
+      "notes": [
+        "This is a component-count unique-match inference, not an explicit historical figure or network-number mapping."
+      ],
+      "open_questions": [
+        "Which historical figures or network numbers correspond to these eight records?",
+        "Where does the primary source state the simpler bilinear realization for each individual network?"
+      ],
+      "proposed_disposition": "exclude",
+      "selector": {
+        "lc": 1,
+        "r": 4
+      },
+      "source_references": [
+        "morelli-smith-2019-ladenheim-synthesis",
+        "rice-literature-conclusions"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "citation": "A. Morelli and M. C. Smith, Passive Network Synthesis: An Approach to Classification, SIAM, 2019.",
+      "locator": "Chapter 3, Section 3.1; Chapter 5; Chapter 6 classification discussion; Theorem 7.4 (no page or per-network locator recorded in this repository)",
+      "source_id": "morelli-smith-2019-ladenheim-synthesis",
+      "summary": "Repository-cited source context for the reported 148, 108, and exclusion-group claims; it does not provide a checked-in per-entry mapping."
+    },
+    {
+      "citation": "RICE planning synthesis of the Ladenheim literature conclusions.",
+      "locator": "docs/plan/03-counting/05-ladenheim.md, Historical scope; docs/plan/00-records/02-literature-conclusions.md, Ladenheim layers",
+      "source_id": "rice-literature-conclusions",
+      "summary": "Records the aggregate group of eight four-resistor/one-reactive exclusions and explicitly separates it from the later 108 and 62 layers."
+    }
+  ]
+}

@@ -44,3 +44,8 @@ Use the repository-wide `docs/` directory and the established slice spelling `r2
   `docs/counts/ladenheim-148.md`, and a check/write regeneration script. The
   full main-scope output and later Ladenheim outputs remain unfinished, so this
   task remains `prog`.
+- Added the two-layer 148-to-108 comparison output: compact reviewed annotations
+  in `data/comparisons/ladenheim-108-annotations.json` and the deterministic
+  generated 148-row ledger in
+  `data/comparisons/ladenheim-148-to-108.json`. This is an evidence worklist,
+  not a completed canonical 108 catalogue.
