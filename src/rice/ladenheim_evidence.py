@@ -182,10 +182,27 @@ def _validate_subjects(
         )
 
 
+def _is_unstable_time_key(key: Any) -> bool:
+    if not isinstance(key, str):
+        return False
+    normalized = re.sub(r"(?<!^)(?=[A-Z])", "_", key).replace("-", "_").lower()
+    return normalized == "timestamp" or normalized.endswith("_timestamp") or normalized in {
+        "generated_at",
+        "created_at",
+        "updated_at",
+        "modified_at",
+        "recorded_at",
+        "checked_at",
+        "processed_at",
+        "exported_at",
+        "written_at",
+    }
+
+
 def _validate_no_unstable_metadata(value: Any, field: str = "annotations") -> None:
     if isinstance(value, dict):
         for key, item in value.items():
-            if "timestamp" in key.lower():
+            if _is_unstable_time_key(key):
                 raise ValueError(f"timestamps are not allowed in {field}")
             _validate_no_unstable_metadata(item, f"{field}.{key}")
     elif isinstance(value, list):
@@ -318,6 +335,40 @@ def _validate_claim(
             or not set(values) <= allowed
         ):
             raise ValueError(f"evidence {evidence_id} has invalid individual-record claim")
+        disposition = values.get("proposed_disposition")
+        category = values.get("exclusion_category")
+        reason_present = "exclusion_reason" in values
+        reason = values.get("exclusion_reason")
+        if disposition is not None and disposition not in DISPOSITIONS:
+            raise ValueError(f"evidence {evidence_id} has invalid disposition")
+        if category is not None and category not in EXCLUSION_CATEGORIES:
+            raise ValueError(f"evidence {evidence_id} has invalid exclusion category")
+        if reason_present and reason is not None and (
+            not isinstance(reason, str) or not reason
+        ):
+            raise ValueError(f"evidence {evidence_id} has invalid exclusion reason")
+        concrete_category = category not in {None, "none", "unresolved"}
+        if disposition == "exclude":
+            if not concrete_category or not reason_present or not reason:
+                raise ValueError(
+                    f"evidence {evidence_id} exclusion claim requires disposition, category, and reason"
+                )
+        elif concrete_category:
+            raise ValueError(
+                f"evidence {evidence_id} concrete exclusion category requires exclude disposition"
+            )
+        if disposition in {"retain", "unresolved"} and reason_present and reason is not None:
+            raise ValueError(
+                f"evidence {evidence_id} non-exclusion claim cannot have exclusion reason"
+            )
+        if disposition == "retain" and category not in {None, "none"}:
+            raise ValueError(f"evidence {evidence_id} retained claim has invalid category")
+        if disposition == "unresolved" and category not in {None, "unresolved"}:
+            raise ValueError(f"evidence {evidence_id} unresolved claim has invalid category")
+        if disposition is None and reason_present and reason is not None:
+            raise ValueError(
+                f"evidence {evidence_id} exclusion reason requires exclude disposition"
+            )
     elif claim_type == "historical-identifier":
         subjects = claim.get("subject_catalogue_ids")
         _validate_subjects(subjects, evidence_id, catalogue_ids)
@@ -585,6 +636,13 @@ def _validate_assertion(
         raise ValueError("invalid evidence_basis")
     basis = set(assertion["evidence_basis"])
     status = assertion["comparison_status"]
+    if status == "unresolved" and (
+        assertion["proposed_disposition"] != "unresolved"
+        or assertion["exclusion_category"] != "unresolved"
+        or assertion["exclusion_reason"] is not None
+        or assertion["evidence_basis"] != ["no-evidence-yet"]
+    ):
+        raise ValueError("unresolved status requires the default unresolved contract")
     if "no-evidence-yet" in basis and (
         status != "unresolved" or basis != {"no-evidence-yet"}
     ):

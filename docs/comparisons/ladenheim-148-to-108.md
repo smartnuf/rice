@@ -87,6 +87,8 @@ Entries and rules reference these collections through separately validated
 objects with controlled page, PDF index, chapter, section, figure, appendix,
 table, network-number, repository-path, and commit fields; absolute machine
 paths and timestamps are forbidden.
+Conventional timestamp metadata keys such as `generated_at`, `createdAt`, and
+`source_timestamp` are rejected recursively throughout the annotation tree.
 
 Absolute paths are rejected even when embedded in prose. Printed-page and
 historical-network locators are positive one-based integers; only the explicitly
@@ -110,6 +112,9 @@ selector, and mechanical RICE selector agree exactly on `r=4`, `lc=1`, with
 population and expected match count both eight. Every claim carrying
 `subject_catalogue_ids` is checked against the exact ID set in the committed
 148 catalogue, including evidence not yet referenced by a row or rule.
+Individual-record claim values are validated when evidence is loaded, so even
+an unreferenced claim cannot carry an uncontrolled disposition, category, or
+incoherent exclusion tuple.
 
 The generated `target` is supplied by the annotation contract rather than
 being an unevidenced generator constant. It references separate authoritative,
@@ -149,6 +154,8 @@ catalogue ID and retained disposition. It is never inferred merely because an
 exclusion has not yet been found. An exclusion requires a controlled category,
 a reason, an evidence basis, and source references. No entries are currently
 marked `retain`.
+An unresolved comparison status must use the complete default unresolved
+contract; it cannot carry either an exclusion or retention disposition.
 
 `exclusion_category` is one of
 `simpler-bilinear-realisation`, `zobel-four-element`,

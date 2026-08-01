@@ -4,7 +4,11 @@ from pathlib import Path
 
 import pytest
 
-from rice.ladenheim_evidence import _validate_exclusion_counts, generate_evidence_ledger
+from rice.ladenheim_evidence import (
+    _is_unstable_time_key,
+    _validate_exclusion_counts,
+    generate_evidence_ledger,
+)
 
 
 CATALOGUE_PATH = Path("data/counts/ladenheim-148.json")
@@ -371,6 +375,78 @@ def test_exact_existing_evidence_subject_is_accepted(catalogue, annotations):
     generate_evidence_ledger(catalogue, annotations)
 
 
+@pytest.mark.parametrize("referenced", [False, True])
+@pytest.mark.parametrize(
+    "supported_values",
+    [
+        {"proposed_disposition": "banana"},
+        {"exclusion_category": "unknown-category"},
+        {"exclusion_reason": 123},
+        {"exclusion_reason": True},
+        {"exclusion_reason": ""},
+        {"proposed_disposition": "exclude", "exclusion_reason": "Reason."},
+        {
+            "proposed_disposition": "exclude",
+            "exclusion_category": "other-canonical-exclusion",
+        },
+        {"exclusion_category": "other-canonical-exclusion"},
+        {
+            "proposed_disposition": "retain",
+            "exclusion_category": "other-canonical-exclusion",
+        },
+        {
+            "proposed_disposition": "unresolved",
+            "exclusion_category": "other-canonical-exclusion",
+        },
+        {"proposed_disposition": "unresolved", "exclusion_reason": "Reason."},
+    ],
+)
+def test_invalid_individual_claim_values_are_rejected(
+    catalogue, annotations, supported_values, referenced
+):
+    row_id = catalogue["records"][0]["catalogue_id"]
+    evidence = _individual_evidence(row_id, supported_values)
+    annotations["evidence_records"].append(evidence)
+    if referenced:
+        annotations["rules"] = []
+        row = _unresolved_annotation(row_id)
+        row["evidence_record_ids"] = [evidence["evidence_id"]]
+        annotations["records"] = [row]
+    with pytest.raises(ValueError, match="evidence fixture-individual"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize(
+    "supported_values",
+    [
+        {
+            "proposed_disposition": "exclude",
+            "exclusion_category": "other-canonical-exclusion",
+            "exclusion_reason": "Complete exclusion fixture.",
+        },
+        {
+            "proposed_disposition": "retain",
+            "exclusion_category": "none",
+            "exclusion_reason": None,
+        },
+        {
+            "proposed_disposition": "unresolved",
+            "exclusion_category": "unresolved",
+            "exclusion_reason": None,
+        },
+        {"proposed_disposition": "retain"},
+    ],
+)
+def test_valid_individual_claim_values_are_accepted(
+    catalogue, annotations, supported_values
+):
+    row_id = catalogue["records"][0]["catalogue_id"]
+    annotations["evidence_records"].append(
+        _individual_evidence(row_id, supported_values)
+    )
+    generate_evidence_ledger(catalogue, annotations)
+
+
 def test_target_requires_aggregate_evidence(catalogue, annotations):
     annotations["target"]["evidence_record_ids"].remove(
         "ms-2019-reported-148-to-108"
@@ -411,13 +487,81 @@ def _retained_evidence(catalogue_id):
     }
 
 
+def _individual_evidence(catalogue_id, supported_values, evidence_id="fixture-individual"):
+    evidence = _retained_evidence(catalogue_id)
+    evidence["evidence_id"] = evidence_id
+    evidence["claim"]["supported_values"] = supported_values
+    return evidence
+
+
 def test_unresolved_retain_without_evidence_is_rejected(catalogue, annotations):
     annotations["rules"] = []
     row = _unresolved_annotation(catalogue["records"][0]["catalogue_id"])
     row["proposed_disposition"] = "retain"
     annotations["records"] = [row]
-    with pytest.raises(ValueError, match="resolved evidence basis"):
+    with pytest.raises(ValueError, match="default unresolved contract"):
         generate_evidence_ledger(catalogue, annotations)
+
+
+def test_unresolved_individual_exclusion_is_rejected(catalogue, annotations):
+    row_id = catalogue["records"][0]["catalogue_id"]
+    evidence = _individual_evidence(
+        row_id,
+        {
+            "proposed_disposition": "exclude",
+            "exclusion_category": "other-canonical-exclusion",
+            "exclusion_reason": "Synthetic complete exclusion.",
+        },
+    )
+    annotations["evidence_records"].append(evidence)
+    annotations["rules"] = []
+    row = _unresolved_annotation(row_id)
+    row.update(
+        proposed_disposition="exclude",
+        exclusion_category="other-canonical-exclusion",
+        exclusion_reason="Synthetic complete exclusion.",
+        evidence_record_ids=[evidence["evidence_id"]],
+    )
+    annotations["records"] = [row]
+    with pytest.raises(ValueError, match="default unresolved contract"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_unresolved_aggregate_exclusion_is_rejected(catalogue, annotations):
+    annotations["rules"][0]["comparison_status"] = "unresolved"
+    with pytest.raises(ValueError, match="default unresolved contract"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_exact_default_unresolved_contract_is_accepted(catalogue, annotations):
+    annotations["rules"] = []
+    row = _unresolved_annotation(catalogue["records"][0]["catalogue_id"])
+    annotations["records"] = [row]
+    generated = generate_evidence_ledger(catalogue, annotations)
+    assert generated["records"][0]["comparison_status"] == "unresolved"
+
+
+def test_valid_source_backed_individual_exclusion_is_accepted(catalogue, annotations):
+    row_id = catalogue["records"][0]["catalogue_id"]
+    reason = "Synthetic complete exclusion."
+    evidence = _individual_evidence(
+        row_id,
+        {
+            "proposed_disposition": "exclude",
+            "exclusion_category": "other-canonical-exclusion",
+            "exclusion_reason": reason,
+        },
+    )
+    annotations["evidence_records"].append(evidence)
+    row = _source_backed_fixture(catalogue, annotations)
+    row.update(
+        proposed_disposition="exclude",
+        exclusion_category="other-canonical-exclusion",
+        exclusion_reason=reason,
+        evidence_record_ids=[evidence["evidence_id"]],
+    )
+    generated = generate_evidence_ledger(catalogue, annotations)
+    assert generated["records"][0]["proposed_disposition"] == "exclude"
 
 
 def test_working_hypothesis_retain_without_evidence_is_rejected(
@@ -740,6 +884,7 @@ def _populate_exclusions(catalogue, annotations, category_counts):
                     "supported_values": {
                         "proposed_disposition": "exclude",
                         "exclusion_category": category,
+                        "exclusion_reason": "Synthetic exclusion-bound fixture.",
                     },
                 },
             })
@@ -861,8 +1006,17 @@ def test_committed_ledger_is_exact_and_has_no_unstable_metadata(catalogue, annot
     committed = json.loads(LEDGER_PATH.read_text(encoding="utf-8"))
     generated = generate_evidence_ledger(catalogue, annotations)
     assert committed == generated
+    def keys(value):
+        if isinstance(value, dict):
+            for key, item in value.items():
+                yield key
+                yield from keys(item)
+        elif isinstance(value, list):
+            for item in value:
+                yield from keys(item)
+
+    assert not [key for key in keys(committed) if _is_unstable_time_key(key)]
     serialized = json.dumps(generated, sort_keys=True).lower()
-    assert "timestamp" not in serialized
     assert "/home/" not in serialized
     assert "\\users\\" not in serialized
 
@@ -871,6 +1025,42 @@ def test_timestamps_are_rejected(catalogue, annotations):
     annotations["sources"][0]["timestamp"] = "2026-01-01"
     with pytest.raises(ValueError, match="timestamps"):
         generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize(
+    "key",
+    [
+        "generated_at",
+        "created_at",
+        "updated_at",
+        "modified-at",
+        "recordedAt",
+        "source_timestamp",
+        "Timestamp",
+        "checked_at",
+        "processed_at",
+        "exported_at",
+        "written_at",
+    ],
+)
+@pytest.mark.parametrize("nested", [False, True])
+def test_conventional_timestamp_metadata_keys_are_rejected(
+    catalogue, annotations, key, nested
+):
+    target = annotations["sources"][0]["publication"] if nested else annotations
+    target[key] = "2026-08-01"
+    with pytest.raises(ValueError, match="timestamps"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_stable_publication_and_locator_metadata_are_accepted(catalogue, annotations):
+    annotations["sources"][0]["publication"]["year"] = 2019
+    annotations["sources"][0]["citation"] += " Published in 2019."
+    locator = annotations["evidence_records"][0]["locator"]
+    locator["printed_page"] = 41
+    locator["pdf_page_index"] = 47
+    annotations["sources"][1]["commit_sha"] = "abc123"
+    generate_evidence_ledger(catalogue, annotations)
 
 
 @pytest.mark.parametrize(
