@@ -276,6 +276,12 @@ def test_rejected_rice_evidence_cannot_satisfy_unique_match(catalogue, annotatio
         generate_evidence_ledger(catalogue, annotations)
 
 
+def test_rice_derived_evidence_requires_rice_source(catalogue, annotations):
+    annotations["evidence_records"][2]["source_id"] = "morelli-smith-2019"
+    with pytest.raises(ValueError, match="requires a RICE source"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
 def test_target_requires_aggregate_evidence(catalogue, annotations):
     annotations["target"]["evidence_record_ids"].remove(
         "ms-2019-reported-148-to-108"
@@ -392,6 +398,62 @@ def test_source_verified_identifier_requires_identifier_specific_evidence(
     annotations["records"] = [row]
     with pytest.raises(ValueError, match="appropriate authoritative evidence"):
         generate_evidence_ledger(catalogue, annotations)
+
+
+def _historical_identifier_evidence(catalogue_id):
+    return {
+        "evidence_id": "fixture-historical-identifier",
+        "source_id": "morelli-smith-2019",
+        "provenance_level": "authoritative-source-transcription",
+        "verification_state": "source-verified",
+        "locator": {"appendix": "C", "printed_page": 129, "network_number": 70},
+        "paraphrase": "Synthetic historical-identifier test fixture.",
+        "claim": {
+            "claim_type": "historical-identifier",
+            "subject_catalogue_ids": [catalogue_id],
+            "scheme": "morelli-smith-canonical-network",
+            "value": 70,
+        },
+    }
+
+
+def test_historical_identifier_evidence_is_bound_to_catalogue_row(
+    catalogue, annotations
+):
+    annotations["rules"] = []
+    first_id = catalogue["records"][0]["catalogue_id"]
+    other_id = catalogue["records"][1]["catalogue_id"]
+    annotations["evidence_records"].append(_historical_identifier_evidence(other_id))
+    row = _unresolved_annotation(first_id)
+    row["historical_identifiers"] = [{
+        "scheme": "morelli-smith-canonical-network",
+        "value": 70,
+        "verification_state": "source-verified",
+        "evidence_record_ids": ["fixture-historical-identifier"],
+    }]
+    annotations["records"] = [row]
+    with pytest.raises(ValueError, match="appropriate authoritative evidence"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_exact_subject_historical_identifier_fixture_is_accepted(
+    catalogue, annotations
+):
+    annotations["rules"] = []
+    row_id = catalogue["records"][0]["catalogue_id"]
+    annotations["evidence_records"].append(_historical_identifier_evidence(row_id))
+    row = _unresolved_annotation(row_id)
+    row["historical_identifiers"] = [{
+        "scheme": "morelli-smith-canonical-network",
+        "value": 70,
+        "verification_state": "source-verified",
+        "evidence_record_ids": ["fixture-historical-identifier"],
+    }]
+    annotations["records"] = [row]
+    generated = generate_evidence_ledger(catalogue, annotations)
+    assert generated["records"][0]["historical_identifiers"] == row[
+        "historical_identifiers"
+    ]
 
 
 @pytest.mark.parametrize(

@@ -284,8 +284,12 @@ def _validate_claim(claim: Any, evidence_id: str) -> None:
         ):
             raise ValueError(f"evidence {evidence_id} has invalid individual-record claim")
     elif claim_type == "historical-identifier":
+        subjects = claim.get("subject_catalogue_ids")
         if (
-            claim.get("scheme") not in HISTORICAL_IDENTIFIER_SCHEMES
+            not isinstance(subjects, list)
+            or not subjects
+            or not all(isinstance(item, str) and item.startswith("lh148-") for item in subjects)
+            or claim.get("scheme") not in HISTORICAL_IDENTIFIER_SCHEMES
             or not isinstance(claim.get("value"), (str, int))
             or isinstance(claim.get("value"), bool)
             or claim.get("value") == ""
@@ -352,6 +356,12 @@ def _validate_evidence_records(
                 raise ValueError(
                     f"source-verified evidence {evidence_id} requires a precise publication locator"
                 )
+        elif record["provenance_level"] == "rice-derived-structural-fact" and source[
+            "source_type"
+        ] not in {"rice-generated-artefact", "rice-documentation"}:
+            raise ValueError(
+                f"RICE-derived evidence {evidence_id} requires a RICE source"
+            )
     return records
 
 
@@ -429,7 +439,7 @@ def _matching_evidence(
 
 
 def _validate_historical_identifiers(
-    values: Any, evidence: dict[str, dict[str, Any]]
+    values: Any, evidence: dict[str, dict[str, Any]], catalogue_id: str | None
 ) -> None:
     if not isinstance(values, list):
         raise ValueError("historical_identifiers must be a list")
@@ -450,6 +460,7 @@ def _validate_historical_identifiers(
             suitable = _matching_evidence(ids, evidence, "historical-identifier")
             if not any(
                 _is_authoritative(record)
+                and catalogue_id in record["claim"]["subject_catalogue_ids"]
                 and record["claim"]["scheme"] == identifier["scheme"]
                 and record["claim"]["value"] == identifier["value"]
                 for record in suitable
@@ -537,7 +548,9 @@ def _validate_assertion(
     _require_references(assertion["evidence_record_ids"], "evidence_record_ids", evidence)
     _require_references(assertion["previous_workspace_record_ids"], "previous_workspace_record_ids", workspace)
     _require_references(assertion["computational_cross_check_ids"], "computational_cross_check_ids", computations)
-    _validate_historical_identifiers(assertion["historical_identifiers"], evidence)
+    _validate_historical_identifiers(
+        assertion["historical_identifiers"], evidence, catalogue_id
+    )
     _validate_basic_graph_assignment(
         assertion["basic_graph_assignment"], evidence, catalogue_id
     )
