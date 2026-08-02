@@ -67,7 +67,7 @@ The reviewed graph-`M` report at
 `docs/comparisons/ladenheim-five-element-zobel-graph-m-evidence.md` independently
 reproduces the complete five-element census, the unique graph-`M` coloured
 match, the target fixture, and the exact Zobel reduction to canonical network
-#72. It likewise supplies repository evidence rather than an individual
+canonical network 72. It likewise supplies repository evidence rather than an individual
 source-stated RICE correspondence.
 
 Previous research workspaces contain useful graph descriptions, images,
@@ -294,9 +294,9 @@ destinations only; they are not historical identities of the excluded rows.
 
 The reviewed one-member graph-`M` group is also applied through version 3: one
 authoritative aggregate claim and graph definition, one exclusive subject-bound
-graph match, one reduction-target match to canonical network #72, and one
+graph match, one reduction-target match to canonical network 72, and one
 independently reproduced computation bound exactly to those two evidence
-records. Network #72 is a reduction destination, not a historical identity.
+records. Network 72 is a reduction destination, not a historical identity.
 
 Fifteen Zobel five-element series-parallel mappings and all eight other
 O/O-dual or bridge mappings remain deliberately unassigned. The remaining

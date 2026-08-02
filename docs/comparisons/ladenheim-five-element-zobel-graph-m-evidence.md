@@ -391,7 +391,7 @@ any other family. The production update containing this revision applies the
 graph-`M` exclusion through the complete version 3 subject-bound route. The
 ledger now has 17 excluded, 131 unresolved, and 0 retained; fifteen other
 five-element Zobel exclusions and eight final exclusions remain unresolved.
-Canonical network #72 remains a reduction target rather than a historical
+Canonical network 72 remains a reduction target rather than a historical
 identity of the excluded record.
 
 ## 16. Complete runnable reproduction commands
