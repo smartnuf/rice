@@ -49,6 +49,17 @@ GRAPH_M_DEFINITION_ID = "ms-2019-basic-graph-m-definition"
 GRAPH_M_GRAPH_MATCH_ID = "rice-lh148-045c192be4de396d-graph-m-match"
 GRAPH_M_TARGET_MATCH_ID = "rice-lh148-045c192be4de396d-target-72"
 GRAPH_M_COMPUTATION_ID = "rice-five-element-zobel-graph-m-report-reproduction"
+ZOBEL_GRAPH_M_DUAL_ID = "lh148-635770ede187bca9"
+GRAPH_M_DUAL_TARGET = 73
+GRAPH_M_DUAL_AGGREGATE_ID = "ms-2019-five-element-zobel-graph-m-dual-group"
+GRAPH_M_DUAL_DEFINITION_ID = "ms-2019-basic-graph-m-dual-definition"
+GRAPH_M_DUAL_GRAPH_MATCH_ID = (
+    "rice-lh148-635770ede187bca9-graph-m-dual-match"
+)
+GRAPH_M_DUAL_TARGET_MATCH_ID = "rice-lh148-635770ede187bca9-target-73"
+GRAPH_M_DUAL_COMPUTATION_ID = (
+    "rice-five-element-zobel-graph-m-dual-report-reproduction"
+)
 
 
 @pytest.fixture
@@ -527,7 +538,7 @@ def test_unique_match_accepts_exact_historical_and_mechanical_predicate(
         "r": 4,
         "lc": 1,
     }
-    assert ledger["summary"]["mapped_exclusions"] == 17
+    assert ledger["summary"]["mapped_exclusions"] == 18
 
 
 def test_rejected_rice_evidence_cannot_satisfy_unique_match(catalogue, annotations):
@@ -1373,7 +1384,7 @@ def test_category_counter_must_agree_with_total(catalogue, annotations):
         _validate_exclusion_counts(
             ledger["records"],
             ledger["target"],
-            17,
+            18,
             Counter(
                 {
                     "simpler-bilinear-realisation": 8,
@@ -1468,28 +1479,28 @@ def test_unresolved_entry_needs_no_fabricated_evidence(catalogue, annotations):
     assert row["computational_cross_check_ids"] == []
 
 
-def test_exact_seventeen_and_131_distribution(catalogue, annotations):
+def test_exact_eighteen_and_130_distribution(catalogue, annotations):
     ledger = generate_evidence_ledger(catalogue, annotations)
     assert ledger["summary"]["by_comparison_status"] == {
-        "derived-structural-match": 5,
+        "derived-structural-match": 6,
         "derived-unique-match": 12,
-        "unresolved": 131,
+        "unresolved": 130,
     }
     assert ledger["summary"]["by_proposed_disposition"] == {
-        "exclude": 17,
-        "unresolved": 131,
+        "exclude": 18,
+        "unresolved": 130,
     }
     assert ledger["summary"]["by_exclusion_category"] == {
         "simpler-bilinear-realisation": 8,
-        "unresolved": 131,
-        "zobel-five-element-series-parallel": 5,
+        "unresolved": 130,
+        "zobel-five-element-series-parallel": 6,
         "zobel-four-element": 4,
     }
-    assert ledger["summary"]["mapped_exclusions"] == 17
-    assert ledger["summary"]["unresolved_dispositions"] == 131
+    assert ledger["summary"]["mapped_exclusions"] == 18
+    assert ledger["summary"]["unresolved_dispositions"] == 130
     assert all(row["proposed_disposition"] != "retain" for row in ledger["records"])
     mapped = [row for row in ledger["records"] if row["proposed_disposition"] == "exclude"]
-    assert len(mapped) == 17
+    assert len(mapped) == 18
     assert all(row["comparison_status"] != "ambiguous" for row in ledger["records"])
     assert ledger["target"]["reproduction_claimed"] is False
     assert all(row["historical_identifiers"] == [] for row in ledger["records"])
@@ -2384,13 +2395,95 @@ def test_exact_graph_m_five_element_zobel_exclusion(catalogue, annotations):
     )
 
 
+def test_exact_graph_m_dual_five_element_zobel_exclusion(catalogue, annotations):
+    ledger = generate_evidence_ledger(catalogue, annotations)
+    row = next(
+        record for record in ledger["records"]
+        if record["catalogue_id"] == ZOBEL_GRAPH_M_DUAL_ID
+    )
+    assert row["comparison_status"] == "derived-structural-match"
+    assert row["proposed_disposition"] == "exclude"
+    assert row["exclusion_category"] == "zobel-five-element-series-parallel"
+    assert row["basic_graph_assignment"] is None
+    assert row["historical_identifiers"] == []
+    assert row["previous_workspace_record_ids"] == []
+    assert row["computational_cross_check_ids"] == [GRAPH_M_DUAL_COMPUTATION_ID]
+
+    evidence = {
+        record["evidence_id"]: record
+        for record in annotations["evidence_records"]
+    }
+    aggregate = evidence[GRAPH_M_DUAL_AGGREGATE_ID]
+    definition = evidence[GRAPH_M_DUAL_DEFINITION_ID]
+    graph_match = evidence[GRAPH_M_DUAL_GRAPH_MATCH_ID]
+    target_match = evidence[GRAPH_M_DUAL_TARGET_MATCH_ID]
+    assert aggregate["claim"] == {
+        "claim_type": "aggregate-basic-graph-exclusion",
+        "graph_label": "M^d",
+        "source_population": 1,
+        "supported_disposition": "exclude",
+        "supported_exclusion_category": "zobel-five-element-series-parallel",
+        "supported_reduction_targets": [GRAPH_M_DUAL_TARGET],
+    }
+    assert definition["claim"]["definition"] == {
+        "base_label": "M",
+        "fixture_id": "morelli-smith-Md-five-edge",
+        "graph_label": "M^d",
+        "is_dual": True,
+    }
+    assert graph_match["claim"] == {
+        "claim_type": "basic-graph-match",
+        "match": {
+            "fixture_id": "morelli-smith-Md-five-edge",
+            "graph_label": "M^d",
+            "matched": True,
+            "structural_relation": (
+                "colour-preserving-port-augmented-cycle-matroid-v1"
+            ),
+        },
+        "subject_catalogue_ids": [ZOBEL_GRAPH_M_DUAL_ID],
+    }
+    assert graph_match["verification_state"] == "cross-checked"
+    assert target_match["claim"] == {
+        "claim_type": "reduction-target-match",
+        "subject_catalogue_ids": [ZOBEL_GRAPH_M_DUAL_ID],
+        "target_network_number": GRAPH_M_DUAL_TARGET,
+    }
+    assert target_match["locator"]["network_number"] == GRAPH_M_DUAL_TARGET
+    assert target_match["verification_state"] == "cross-checked"
+    assert set(row["evidence_record_ids"]) == {
+        GRAPH_M_DUAL_AGGREGATE_ID,
+        GRAPH_M_DUAL_DEFINITION_ID,
+        GRAPH_M_DUAL_GRAPH_MATCH_ID,
+        GRAPH_M_DUAL_TARGET_MATCH_ID,
+    }
+
+    computation = next(
+        record
+        for record in annotations["computational_cross_checks"]
+        if record["cross_check_id"] == GRAPH_M_DUAL_COMPUTATION_ID
+    )
+    assert computation["subject_catalogue_ids"] == [ZOBEL_GRAPH_M_DUAL_ID]
+    assert computation["reduction_target_network_numbers"] == [
+        GRAPH_M_DUAL_TARGET
+    ]
+    assert set(computation["verified_evidence_record_ids"]) == {
+        GRAPH_M_DUAL_GRAPH_MATCH_ID,
+        GRAPH_M_DUAL_TARGET_MATCH_ID,
+    }
+    assert not any(
+        identifier.get("value") == GRAPH_M_DUAL_TARGET
+        for identifier in row["historical_identifiers"]
+    )
+
+
 def test_only_reviewed_exclusions_are_resolved(catalogue, annotations):
     ledger = generate_evidence_ledger(catalogue, annotations)
     expected = (
         SIMPLER_BILINEAR_IDS
         | ZOBEL_FOUR_ELEMENT_IDS
         | set(ZOBEL_GRAPH_L_TARGETS)
-        | {ZOBEL_GRAPH_M_ID}
+        | {ZOBEL_GRAPH_M_ID, ZOBEL_GRAPH_M_DUAL_ID}
     )
     resolved = {
         row["catalogue_id"]
@@ -2430,9 +2523,9 @@ def test_exclusion_category_population_and_empty_identifiers(catalogue, annotati
     categories = Counter(row["exclusion_category"] for row in ledger["records"])
     assert categories["simpler-bilinear-realisation"] == 8
     assert categories["zobel-four-element"] == 4
-    assert categories["zobel-five-element-series-parallel"] == 5
+    assert categories["zobel-five-element-series-parallel"] == 6
     assert categories["other-canonical-exclusion"] == 0
-    assert categories["unresolved"] == 131
+    assert categories["unresolved"] == 130
     assert all(row["basic_graph_assignment"] is None for row in ledger["records"])
     assert all(row["historical_identifiers"] == [] for row in ledger["records"])
     assert all(
@@ -2458,6 +2551,14 @@ def test_exclusion_category_population_and_empty_identifiers(catalogue, annotati
         )
         for row in ledger["records"]
         if row["catalogue_id"] == ZOBEL_GRAPH_M_ID
+    )
+    assert all(
+        not any(
+            identifier.get("value") == GRAPH_M_DUAL_TARGET
+            for identifier in row["historical_identifiers"]
+        )
+        for row in ledger["records"]
+        if row["catalogue_id"] == ZOBEL_GRAPH_M_DUAL_ID
     )
 
 
