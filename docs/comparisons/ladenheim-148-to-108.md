@@ -3,8 +3,8 @@
 This is an evidence ledger for comparing RICE's reproduced structural
 148-record catalogue with the reported canonical 108-network catalogue. It is
 not a reproduction of the 108 catalogue. The committed evidence currently maps
-eight proposed exclusions by a logically unique component-count match and
-leaves the other 140 records unresolved.
+twelve proposed exclusions by logically unique component and structural
+matches and leaves the other 136 records unresolved.
 
 ## Two different catalogue layers
 
@@ -26,13 +26,14 @@ The four aggregate comparison targets are:
 | Reported exclusion group | Target | Mapped here | Still requiring individual mapping |
 |---|---:|---:|---:|
 | Simpler bilinear realization: four resistors and one reactive | 8 | 8 | 0 |
-| Zobel-reducible four-element | 4 | 0 | 4 |
+| Zobel-reducible four-element | 4 | 4 | 0 |
 | Zobel-reducible five-element series-parallel | 20 | 0 | 20 |
 | Other O/O-dual and bridge exclusions | 8 | 0 | 8 |
-| **Total** | **40** | **8** | **32** |
+| **Total** | **40** | **12** | **28** |
 
-The last three rows are aggregate gaps, not identifications of particular RICE
-records. Their 32 individual mappings remain wholly unresolved.
+The five-element and final O/O-dual or bridge rows are aggregate gaps, not
+identifications of particular RICE records. Their 28 individual mappings remain
+wholly unresolved.
 
 ## Evidence material and provenance
 
@@ -44,9 +45,18 @@ local file at generation or test time. The checked locations used here are:
 - Chapter 5 introduction, printed page 41 / zero-based PDF page index 47, for
   the reported 148-to-108 reduction;
 - Chapter 5, Section 5.1, printed page 42 / PDF index 48, for the aggregate
-  group of eight four-resistor/one-reactive exclusions; and
+  groups of eight four-resistor/one-reactive exclusions and four four-element
+  G/G-dual Zobel exclusions, with targets #15 and #17 stated collectively;
+- Appendix B, printed page 126 / PDF index 132, for two exclusions in the
+  combined `3R-L / 3R-C` column for `G` and two in the same column for `G^d`;
+  and
 - Appendix B, printed pages 125--127 / PDF indices 131--133, for the tabulated
   catalogue structure and exclusion totals.
+
+The reviewed repository report
+`docs/comparisons/ladenheim-four-element-zobel-evidence.md` independently
+reproduces the four RICE graph/composition correspondences and their algebraic
+reductions. It is repository evidence, not the authoritative historical source.
 
 Previous research workspaces contain useful graph descriptions, images,
 descriptor transcriptions, and computational results. Those artefacts can help
@@ -107,9 +117,11 @@ individual exclusion, and evidence for one exclusion category cannot support a
 different category.
 
 Aggregate historical exclusion claims include their controlled component
-predicate. For the currently mapped group, the authoritative predicate, rule
+predicate. For the simpler-bilinear group, the authoritative predicate, rule
 selector, and mechanical RICE selector agree exactly on `r=4`, `lc=1`, with
-population and expected match count both eight. Every claim carrying
+population and expected match count both eight. For the four-element Zobel
+group, they agree on `r=3`, `lc=1`, `rlc=4`, with population and expected match
+count both four. Every claim carrying
 `subject_catalogue_ids` is checked against the exact ID set in the committed
 148 catalogue, including evidence not yet referenced by a row or rule.
 Individual-record claim values are validated when evidence is loaded, so even
@@ -185,28 +197,32 @@ hygiene. Unknown fields are rejected rather than copied into the ledger.
 Version 2 does not represent ambiguous candidate mappings. A later extension
 must record the finite candidate set, evidence for each candidate, the comparison
 relation, and why the evidence does not distinguish them. Also deferred are real
-basic-graph fixtures and assignments, the remaining thirty-two exclusions,
+basic-graph assignments, the remaining twenty-eight exclusions,
 retained canonical membership, canonical network numbering, and transformation
-proofs. Absence of those schema objects establishes none of those claims.
+proofs beyond the reviewed four-element Zobel report. Absence of those schema
+objects establishes none of those claims.
 
 ## Current population
 
 | Comparison status | Rows |
 |---|---:|
-| `derived-unique-match` | 8 |
-| `unresolved` | 140 |
+| `derived-unique-match` | 12 |
+| `unresolved` | 136 |
 | **Total** | **148** |
 
 | Proposed disposition | Rows |
 |---|---:|
-| `exclude` | 8 |
-| `unresolved` | 140 |
+| `exclude` | 12 |
+| `unresolved` | 136 |
 | **Total** | **148** |
 
 | Exclusion category | Rows |
 |---|---:|
 | `simpler-bilinear-realisation` | 8 |
-| `unresolved` | 140 |
+| `zobel-four-element` | 4 |
+| `zobel-five-element-series-parallel` | 0 |
+| `other-canonical-exclusion` | 0 |
+| `unresolved` | 136 |
 | **Total** | **148** |
 
 The structural catalogue contains exactly eight records with `R=4` and
@@ -218,10 +234,17 @@ separate mechanically derived RICE component-count fact. It therefore remains
 `derived-unique-match`, not `source-backed`: the source does not explicitly map
 each of the eight individual RICE records to a historical figure or number.
 
-All four Zobel four-element mappings, all twenty Zobel five-element
-series-parallel mappings, and all eight other O/O-dual or bridge mappings are
-deliberately unassigned. The remaining entries are not called retained merely
-because no exclusion has yet been established.
+The four Zobel four-element mappings are now applied through the aggregate
+Section 5.1 statement, Appendix B's combined composition counts, and the
+independently reproduced RICE evidence report. Exactly four catalogue records
+satisfy the rule's `R=3`, `L+C=1`, four-element selector; the report separately
+checks their G/G-dual coloured structural matches and reductions to #15 or #17.
+The source does not state the individual RICE-ID correspondences, so these rows
+remain `derived-unique-match`, not `source-backed`.
+
+All twenty Zobel five-element series-parallel mappings and all eight other
+O/O-dual or bridge mappings remain deliberately unassigned. The remaining
+entries are not called retained merely because no exclusion has yet been found.
 
 Basic-graph fixtures and assignments, all remaining exclusions, and canonical
 network numbers are intentionally deferred to later focused changes. No graph
@@ -232,7 +255,7 @@ Mapped exclusion counts are consistency-checked against the evidence-linked
 historical targets. The total may not exceed forty, and no controlled category
 may exceed its declared `8`, `4`, `20`, or `8` target. Category counts must sum
 to the mapped exclusion total. These are upper bounds while the ledger is
-incomplete; equality is not required and the current mapping remains eight.
+incomplete; equality is not required and the current mapping is twelve.
 
 ## Regeneration and validation
 
@@ -255,14 +278,12 @@ paths, or unstable metadata. `--check` fails if the committed ledger differs.
 
 1. Add independently checked basic-graph fixtures and map the 148 structural
    records without treating previous-workspace graph files as authoritative.
-2. Establish the four individual four-element Zobel mappings without inferring
-   them from graph appearance.
-3. Establish the twenty individual five-element series-parallel Zobel mappings
+2. Establish the twenty individual five-element series-parallel Zobel mappings
    with source-backed transformations.
-4. Identify the final eight O/O-dual and bridge cases and record each distinct
+3. Identify the final eight O/O-dual and bridge cases and record each distinct
    Cauer-Foster, regularity, realizability, Y-delta, or other argument.
-5. Transcribe and validate the surviving canonical network numbers from the
+4. Transcribe and validate the surviving canonical network numbers from the
    authoritative catalogue diagrams.
-6. Only after all forty exclusions are established, review whether evidence
+5. Only after all forty exclusions are established, review whether evidence
    also warrants marking the complementary 108 records retained and claiming
    reproduction of the canonical catalogue.

@@ -1,5 +1,18 @@
 {
-  "computational_cross_checks": [],
+  "computational_cross_checks": [
+    {
+      "commit_sha": "e77270ff6d41324bb414c65b5d90d10206590555",
+      "cross_check_id": "rice-four-element-zobel-report-reproduction",
+      "implementation": "Reproduction commands in docs/comparisons/ladenheim-four-element-zobel-evidence.md",
+      "independently_reproduced": true,
+      "input": "The 148-record catalogue, transcribed coloured G/G-dual fixtures, and positive exact-arithmetic Zobel parameters",
+      "limitations": "This corroborates the RICE correspondence and transformation algebra; it is not an entry-specific statement by the historical source.",
+      "operation": "Enumerate the 22 G/G-dual candidates, assert the four unique graph/composition IDs and coloured signatures, and verify the Zobel equalities with fractions.Fraction",
+      "provenance_level": "independently-reproduced-computation",
+      "result": "The four selected records match the reviewed fixtures uniquely; the inductive records reduce to #15 and the capacitive records reduce to #17 with exact positive coefficients.",
+      "verification_state": "cross-checked"
+    }
+  ],
   "evidence_records": [
     {
       "claim": {
@@ -107,6 +120,164 @@
       "provenance_level": "authoritative-source-transcription",
       "source_id": "morelli-smith-2019",
       "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "claim_type": "aggregate-exclusion-category",
+        "source_population": 4,
+        "supported_disposition": "exclude",
+        "supported_exclusion_category": "zobel-four-element",
+        "supported_selector": {
+          "lc": 1,
+          "r": 3,
+          "rlc": 4
+        }
+      },
+      "evidence_id": "ms-2019-four-element-zobel-category",
+      "locator": {
+        "chapter": "5",
+        "pdf_page_index": 48,
+        "printed_page": 42,
+        "section": "5.1"
+      },
+      "notes": "This is an aggregate graph/category/target statement. It does not identify individual RICE records or assign the inductive and capacitive cases separately.",
+      "paraphrase": "Four four-element networks with basic graph G or G-dual are excluded by Zobel reduction to canonical networks #15 and #17 collectively.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "claim_type": "aggregate-exclusion-category",
+        "source_population": 4,
+        "supported_disposition": "exclude",
+        "supported_exclusion_category": "zobel-four-element",
+        "supported_selector": {
+          "lc": 1,
+          "r": 3,
+          "rlc": 4
+        }
+      },
+      "evidence_id": "ms-2019-appendix-b-four-element-g-gd-exclusions",
+      "locator": {
+        "appendix": "B",
+        "pdf_page_index": 132,
+        "printed_page": 126,
+        "table": "Four-element networks, rows G and G-dual"
+      },
+      "notes": "Appendix B gives combined composition counts, not one separately stated inductive and one separately stated capacitive exclusion for each graph. The category and targets come from Section 5.1.",
+      "paraphrase": "The combined 3R-L / 3R-C column records two exclusions for G and two exclusions for G-dual.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "claim_type": "rice-selector-count",
+        "expected_matches": 4,
+        "supported_selector": {
+          "lc": 1,
+          "r": 3,
+          "rlc": 4
+        }
+      },
+      "evidence_id": "rice-lh148-four-element-r3-lc1-count",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-four-element-zobel-evidence.md"
+      },
+      "notes": "The reviewed report checks the complete 22-record G/G-dual candidate set, the unique composition matches, and the exact coloured structural signatures.",
+      "paraphrase": "The independently reproduced RICE census contains exactly four four-element records with R=3 and L+C=1: the reviewed G-L, G-C, G-dual-L, and G-dual-C matches.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-four-element-zobel-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "basic-graph-match",
+        "match": {
+          "fixture_id": "morelli-smith-G-four-edge",
+          "graph_label": "G",
+          "matched": true,
+          "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1"
+        },
+        "subject_catalogue_ids": [
+          "lh148-d5533186cc51bbab"
+        ]
+      },
+      "evidence_id": "rice-lh148-d5533186cc51bbab-g-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-four-element-zobel-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture comparison uniquely matches the R3L1C0 G network to this catalogue record.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-four-element-zobel-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "basic-graph-match",
+        "match": {
+          "fixture_id": "morelli-smith-G-four-edge",
+          "graph_label": "G",
+          "matched": true,
+          "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1"
+        },
+        "subject_catalogue_ids": [
+          "lh148-92649d60cfda8308"
+        ]
+      },
+      "evidence_id": "rice-lh148-92649d60cfda8308-g-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-four-element-zobel-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture comparison uniquely matches the R3L0C1 G network to this catalogue record.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-four-element-zobel-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "basic-graph-match",
+        "match": {
+          "fixture_id": "morelli-smith-Gd-four-edge",
+          "graph_label": "Gd",
+          "matched": true,
+          "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1"
+        },
+        "subject_catalogue_ids": [
+          "lh148-13547be0432aeee6"
+        ]
+      },
+      "evidence_id": "rice-lh148-13547be0432aeee6-gd-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-four-element-zobel-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture comparison uniquely matches the R3L1C0 G-dual network to this catalogue record.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-four-element-zobel-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "basic-graph-match",
+        "match": {
+          "fixture_id": "morelli-smith-Gd-four-edge",
+          "graph_label": "Gd",
+          "matched": true,
+          "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1"
+        },
+        "subject_catalogue_ids": [
+          "lh148-5c74dc46f966ac91"
+        ]
+      },
+      "evidence_id": "rice-lh148-5c74dc46f966ac91-gd-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-four-element-zobel-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture comparison uniquely matches the R3L0C1 G-dual network to this catalogue record.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-four-element-zobel-report",
+      "verification_state": "cross-checked"
     }
   ],
   "format_version": 2,
@@ -2005,27 +2176,38 @@
       "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-5c74dc46f966ac91",
-      "comparison_status": "unresolved",
-      "computational_cross_check_ids": [],
-      "confidence": "none",
-      "evidence_basis": [
-        "no-evidence-yet"
+      "comparison_status": "derived-unique-match",
+      "computational_cross_check_ids": [
+        "rice-four-element-zobel-report-reproduction"
       ],
-      "evidence_record_ids": [],
-      "exclusion_category": "unresolved",
-      "exclusion_reason": null,
+      "confidence": "high",
+      "evidence_basis": [
+        "aggregate-historical-category-plus-logically-unique-rice-match",
+        "mechanically-derived-rice-structural-fact"
+      ],
+      "evidence_record_ids": [
+        "ms-2019-four-element-zobel-category",
+        "ms-2019-appendix-b-four-element-g-gd-exclusions",
+        "rice-lh148-four-element-r3-lc1-count",
+        "rice-lh148-d5533186cc51bbab-g-match",
+        "rice-lh148-92649d60cfda8308-g-match",
+        "rice-lh148-13547be0432aeee6-gd-match",
+        "rice-lh148-5c74dc46f966ac91-gd-match"
+      ],
+      "exclusion_category": "zobel-four-element",
+      "exclusion_reason": "The aggregate source states four G/G-dual Zobel exclusions to #15 or #17, Appendix B gives four exclusions in the combined 3R-L / 3R-C columns, and the reviewed RICE census uniquely matches these four graph/composition records and checks their reductions algebraically.",
       "historical_identifiers": [],
       "l": 0,
       "lc": 1,
       "notes": [
-        "No individual canonical-catalogue mapping is established."
+        "The publication states the graph/category/targets collectively; the individual RICE-ID and inductive/capacitive target correspondences are independently checked in the reviewed report.",
+        "Canonical networks #15 and #17 are reduction targets, not historical identifiers of these excluded four-element records."
       ],
       "open_questions": [
-        "Which historical network or figure, if any, corresponds to this record?",
-        "What entry-specific evidence establishes exclusion or retention?"
+        "Does the source provide an entry-specific parameter derivation beyond the aggregate statement?"
       ],
       "previous_workspace_record_ids": [],
-      "proposed_disposition": "unresolved",
+      "proposed_disposition": "exclude",
       "r": 3,
       "representative_descriptor": "0-1:R;0-2:C;0-2:R;1-2:R",
       "rlc": 4,
@@ -2037,27 +2219,38 @@
       "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-92649d60cfda8308",
-      "comparison_status": "unresolved",
-      "computational_cross_check_ids": [],
-      "confidence": "none",
-      "evidence_basis": [
-        "no-evidence-yet"
+      "comparison_status": "derived-unique-match",
+      "computational_cross_check_ids": [
+        "rice-four-element-zobel-report-reproduction"
       ],
-      "evidence_record_ids": [],
-      "exclusion_category": "unresolved",
-      "exclusion_reason": null,
+      "confidence": "high",
+      "evidence_basis": [
+        "aggregate-historical-category-plus-logically-unique-rice-match",
+        "mechanically-derived-rice-structural-fact"
+      ],
+      "evidence_record_ids": [
+        "ms-2019-four-element-zobel-category",
+        "ms-2019-appendix-b-four-element-g-gd-exclusions",
+        "rice-lh148-four-element-r3-lc1-count",
+        "rice-lh148-d5533186cc51bbab-g-match",
+        "rice-lh148-92649d60cfda8308-g-match",
+        "rice-lh148-13547be0432aeee6-gd-match",
+        "rice-lh148-5c74dc46f966ac91-gd-match"
+      ],
+      "exclusion_category": "zobel-four-element",
+      "exclusion_reason": "The aggregate source states four G/G-dual Zobel exclusions to #15 or #17, Appendix B gives four exclusions in the combined 3R-L / 3R-C columns, and the reviewed RICE census uniquely matches these four graph/composition records and checks their reductions algebraically.",
       "historical_identifiers": [],
       "l": 0,
       "lc": 1,
       "notes": [
-        "No individual canonical-catalogue mapping is established."
+        "The publication states the graph/category/targets collectively; the individual RICE-ID and inductive/capacitive target correspondences are independently checked in the reviewed report.",
+        "Canonical networks #15 and #17 are reduction targets, not historical identifiers of these excluded four-element records."
       ],
       "open_questions": [
-        "Which historical network or figure, if any, corresponds to this record?",
-        "What entry-specific evidence establishes exclusion or retention?"
+        "Does the source provide an entry-specific parameter derivation beyond the aggregate statement?"
       ],
       "previous_workspace_record_ids": [],
-      "proposed_disposition": "unresolved",
+      "proposed_disposition": "exclude",
       "r": 3,
       "representative_descriptor": "0-2:C;0-3:R;1-3:R;2-3:R",
       "rlc": 4,
@@ -2069,27 +2262,38 @@
       "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-13547be0432aeee6",
-      "comparison_status": "unresolved",
-      "computational_cross_check_ids": [],
-      "confidence": "none",
-      "evidence_basis": [
-        "no-evidence-yet"
+      "comparison_status": "derived-unique-match",
+      "computational_cross_check_ids": [
+        "rice-four-element-zobel-report-reproduction"
       ],
-      "evidence_record_ids": [],
-      "exclusion_category": "unresolved",
-      "exclusion_reason": null,
+      "confidence": "high",
+      "evidence_basis": [
+        "aggregate-historical-category-plus-logically-unique-rice-match",
+        "mechanically-derived-rice-structural-fact"
+      ],
+      "evidence_record_ids": [
+        "ms-2019-four-element-zobel-category",
+        "ms-2019-appendix-b-four-element-g-gd-exclusions",
+        "rice-lh148-four-element-r3-lc1-count",
+        "rice-lh148-d5533186cc51bbab-g-match",
+        "rice-lh148-92649d60cfda8308-g-match",
+        "rice-lh148-13547be0432aeee6-gd-match",
+        "rice-lh148-5c74dc46f966ac91-gd-match"
+      ],
+      "exclusion_category": "zobel-four-element",
+      "exclusion_reason": "The aggregate source states four G/G-dual Zobel exclusions to #15 or #17, Appendix B gives four exclusions in the combined 3R-L / 3R-C columns, and the reviewed RICE census uniquely matches these four graph/composition records and checks their reductions algebraically.",
       "historical_identifiers": [],
       "l": 1,
       "lc": 1,
       "notes": [
-        "No individual canonical-catalogue mapping is established."
+        "The publication states the graph/category/targets collectively; the individual RICE-ID and inductive/capacitive target correspondences are independently checked in the reviewed report.",
+        "Canonical networks #15 and #17 are reduction targets, not historical identifiers of these excluded four-element records."
       ],
       "open_questions": [
-        "Which historical network or figure, if any, corresponds to this record?",
-        "What entry-specific evidence establishes exclusion or retention?"
+        "Does the source provide an entry-specific parameter derivation beyond the aggregate statement?"
       ],
       "previous_workspace_record_ids": [],
-      "proposed_disposition": "unresolved",
+      "proposed_disposition": "exclude",
       "r": 3,
       "representative_descriptor": "0-1:R;0-2:L;0-2:R;1-2:R",
       "rlc": 4,
@@ -2101,27 +2305,38 @@
       "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-d5533186cc51bbab",
-      "comparison_status": "unresolved",
-      "computational_cross_check_ids": [],
-      "confidence": "none",
-      "evidence_basis": [
-        "no-evidence-yet"
+      "comparison_status": "derived-unique-match",
+      "computational_cross_check_ids": [
+        "rice-four-element-zobel-report-reproduction"
       ],
-      "evidence_record_ids": [],
-      "exclusion_category": "unresolved",
-      "exclusion_reason": null,
+      "confidence": "high",
+      "evidence_basis": [
+        "aggregate-historical-category-plus-logically-unique-rice-match",
+        "mechanically-derived-rice-structural-fact"
+      ],
+      "evidence_record_ids": [
+        "ms-2019-four-element-zobel-category",
+        "ms-2019-appendix-b-four-element-g-gd-exclusions",
+        "rice-lh148-four-element-r3-lc1-count",
+        "rice-lh148-d5533186cc51bbab-g-match",
+        "rice-lh148-92649d60cfda8308-g-match",
+        "rice-lh148-13547be0432aeee6-gd-match",
+        "rice-lh148-5c74dc46f966ac91-gd-match"
+      ],
+      "exclusion_category": "zobel-four-element",
+      "exclusion_reason": "The aggregate source states four G/G-dual Zobel exclusions to #15 or #17, Appendix B gives four exclusions in the combined 3R-L / 3R-C columns, and the reviewed RICE census uniquely matches these four graph/composition records and checks their reductions algebraically.",
       "historical_identifiers": [],
       "l": 1,
       "lc": 1,
       "notes": [
-        "No individual canonical-catalogue mapping is established."
+        "The publication states the graph/category/targets collectively; the individual RICE-ID and inductive/capacitive target correspondences are independently checked in the reviewed report.",
+        "Canonical networks #15 and #17 are reduction targets, not historical identifiers of these excluded four-element records."
       ],
       "open_questions": [
-        "Which historical network or figure, if any, corresponds to this record?",
-        "What entry-specific evidence establishes exclusion or retention?"
+        "Does the source provide an entry-specific parameter derivation beyond the aggregate statement?"
       ],
       "previous_workspace_record_ids": [],
-      "proposed_disposition": "unresolved",
+      "proposed_disposition": "exclude",
       "r": 3,
       "representative_descriptor": "0-2:L;0-3:R;1-3:R;2-3:R",
       "rlc": 4,
@@ -4900,24 +5115,31 @@
       "notes": "Generated RICE artefact supplying immutable structural fields and mechanically testable component populations.",
       "source_id": "rice-ladenheim-148-catalogue",
       "source_type": "rice-generated-artefact"
+    },
+    {
+      "citation": "RICE four-element Zobel exclusion evidence report.",
+      "notes": "Reviewed repository documentation recording independently reproduced graph/composition correspondences and algebraic Zobel checks; it is not the authoritative historical publication.",
+      "source_id": "rice-four-element-zobel-report",
+      "source_type": "rice-documentation"
     }
   ],
   "summary": {
     "by_comparison_status": {
-      "derived-unique-match": 8,
-      "unresolved": 140
+      "derived-unique-match": 12,
+      "unresolved": 136
     },
     "by_exclusion_category": {
       "simpler-bilinear-realisation": 8,
-      "unresolved": 140
+      "unresolved": 136,
+      "zobel-four-element": 4
     },
     "by_proposed_disposition": {
-      "exclude": 8,
-      "unresolved": 140
+      "exclude": 12,
+      "unresolved": 136
     },
-    "mapped_exclusions": 8,
+    "mapped_exclusions": 12,
     "total_rows": 148,
-    "unresolved_dispositions": 140
+    "unresolved_dispositions": 136
   },
   "target": {
     "evidence_record_ids": [
