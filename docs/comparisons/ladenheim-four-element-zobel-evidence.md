@@ -44,11 +44,15 @@ transformation to three-element networks #15 and #17 (printed p. 42, PDF index
 Appendix B explains that a superscript `d` denotes the graph dual and that
 parenthesized values are networks eliminated from the canonical total (printed
 p. 125, PDF index 131). Its four-element table gives both `G` and `G^d` a total
-of 11 assignments and a canonical total of 9. For each row, the parenthesized
-`(2)` occupies the stacked `3R-L / 3R-C` composition column (printed p. 126,
-PDF index 132). Read together with Section 5.1, this identifies one `3R-L` and
-one `3R-C` exclusion on each of `G` and `G^d`; the remaining `G`/`G^d`
-assignments are not members of this four-network exclusion group.
+of 11 assignments and a canonical total of 9. The parenthesized `(2)` in the
+combined, stacked `3R-L / 3R-C` column records two exclusions for `G`, and the
+same combined column records two for `G^d` (printed p. 126, PDF index 132).
+Appendix B does not separately allocate either pair between the inductive and
+capacitive compositions. The independently reproduced RICE census in Section 6
+contains exactly one `3R-L` and one `3R-C` candidate for each graph. Therefore
+the source's combined counts plus that census identify the four records
+uniquely; the remaining `G`/`G^d` assignments are not members of this
+four-network exclusion group.
 
 Section 5.3.1 defines the Zobel equivalence for any two impedances `Z1` and
 `Z2`. In normalized topology notation, its Figure 5.2 states
@@ -214,13 +218,16 @@ ID. Each RICE structural match below is separately independently checked.
 
 | RICE catalogue ID | Historical graph | Proposed target network | Source support | Structural match | Zobel check | Overall status | Notes |
 |---|---|---:|---|---|---|---|---|
-| `lh148-d5533186cc51bbab` | G | #15 | source-stated | independently-checked | independently-checked | independently-checked | Unique G / R3L1C0 record; direct one-Zobel reduction followed by series-R merge |
-| `lh148-92649d60cfda8308` | G | #17 | source-stated | independently-checked | independently-checked | independently-checked | Unique G / R3L0C1 record; direct one-Zobel reduction followed by series-R merge |
-| `lh148-13547be0432aeee6` | G^d | #15 | source-stated | independently-checked | independently-checked | independently-checked | Unique G^d / R3L1C0 record; two uses of the source identity with a parallel-R merge |
-| `lh148-5c74dc46f966ac91` | G^d | #17 | source-stated | independently-checked | independently-checked | independently-checked | Unique G^d / R3L0C1 record; two uses of the source identity with a parallel-R merge |
+| `lh148-d5533186cc51bbab` | G | #15 | aggregate source-stated | independently-checked | independently-checked | independently-checked | Unique G / R3L1C0 record; direct one-Zobel reduction followed by series-R merge |
+| `lh148-92649d60cfda8308` | G | #17 | aggregate source-stated | independently-checked | independently-checked | independently-checked | Unique G / R3L0C1 record; direct one-Zobel reduction followed by series-R merge |
+| `lh148-13547be0432aeee6` | G^d | #15 | aggregate source-stated | independently-checked | independently-checked | independently-checked | Unique G^d / R3L1C0 record; two uses of the source identity with a parallel-R merge |
+| `lh148-5c74dc46f966ac91` | G^d | #17 | aggregate source-stated | independently-checked | independently-checked | independently-checked | Unique G^d / R3L0C1 record; two uses of the source identity with a parallel-R merge |
 
-The publication does not print these `lh148-*` identifiers. Their overall
-status is therefore `independently-checked`, not `source-stated`.
+Section 5.1 states the graph/category/target relationship collectively. The
+publication does not print these `lh148-*` identifiers or allocate the L/C
+cases to individual targets. Those correspondences are independently checked,
+so every overall status is `independently-checked`, not entry-specific
+`source-stated`.
 
 ## 9. Zobel-reduction evidence
 
@@ -270,10 +277,12 @@ parameter derivation on p. 42. The result is checked, but this report does not
 claim that its two-step path is the authors' unstated intended single-step
 construction.
 
-No numerical component values were needed: the source formulas are bijective
-on positive finite coefficients. No source page directly states which RICE ID
-maps to which target; that part is independently established by the diagram,
-composition, structural-signature, and algebra checks above.
+No fixed numerical component values are needed for the principal argument: the
+source formulas are bijective on positive finite coefficients. The reproduction
+block adds exact-arithmetic substitutions only as corroboration. No source page
+directly states which RICE ID maps to which target; that part is independently
+established by the diagram, composition, structural-signature, and algebra
+checks above.
 
 ## 10. Conclusions
 
@@ -325,6 +334,7 @@ sha256sum \
 .venv/bin/python - <<'PY'
 import json
 from collections import Counter, defaultdict
+from fractions import Fraction
 from rice.ladenheim import (
     PrimitiveEdge,
     PrimitiveNetwork,
@@ -350,7 +360,8 @@ source_shapes = {
     ),
 }
 
-catalogue = json.load(open("data/counts/ladenheim-148.json"))
+with open("data/counts/ladenheim-148.json", encoding="utf-8") as stream:
+    catalogue = json.load(stream)
 matches = defaultdict(list)
 four_element = [row for row in catalogue["records"] if row["rlc"] == 4]
 for row in four_element:
@@ -362,15 +373,137 @@ for row in four_element:
         if signature == source_signature:
             matches[graph_name].append(row)
 
+assert len(four_element) == 38, len(four_element)
 print("four-element records", len(four_element))
 for graph_name in ("G", "Gd"):
     rows = matches[graph_name]
+    assert len(rows) == 11, (graph_name, len(rows))
     print(graph_name, len(rows), Counter((r["r"], r["l"], r["c"]) for r in rows))
-    for row in rows:
-        print(
-            row["catalogue_id"], row["r"], row["l"], row["c"],
-            row["representative_descriptor"],
-        )
+
+fixtures = {
+    ("G", (3, 1, 0)): PrimitiveNetwork(
+        ("s", "t"),
+        (
+            PrimitiveEdge("s", "u", "R"),
+            PrimitiveEdge("u", "v", "R"),
+            PrimitiveEdge("v", "t", "L"),
+            PrimitiveEdge("u", "t", "R"),
+        ),
+    ),
+    ("G", (3, 0, 1)): PrimitiveNetwork(
+        ("s", "t"),
+        (
+            PrimitiveEdge("s", "u", "R"),
+            PrimitiveEdge("u", "v", "R"),
+            PrimitiveEdge("v", "t", "C"),
+            PrimitiveEdge("u", "t", "R"),
+        ),
+    ),
+    ("Gd", (3, 1, 0)): PrimitiveNetwork(
+        ("s", "t"),
+        (
+            PrimitiveEdge("s", "u", "R"),
+            PrimitiveEdge("u", "t", "L"),
+            PrimitiveEdge("u", "t", "R"),
+            PrimitiveEdge("s", "t", "R"),
+        ),
+    ),
+    ("Gd", (3, 0, 1)): PrimitiveNetwork(
+        ("s", "t"),
+        (
+            PrimitiveEdge("s", "u", "R"),
+            PrimitiveEdge("u", "t", "C"),
+            PrimitiveEdge("u", "t", "R"),
+            PrimitiveEdge("s", "t", "R"),
+        ),
+    ),
+}
+expected_ids = {
+    ("G", (3, 1, 0)): "lh148-d5533186cc51bbab",
+    ("G", (3, 0, 1)): "lh148-92649d60cfda8308",
+    ("Gd", (3, 1, 0)): "lh148-13547be0432aeee6",
+    ("Gd", (3, 0, 1)): "lh148-5c74dc46f966ac91",
+}
+for key, expected_id in expected_ids.items():
+    graph_name, composition = key
+    selected = [
+        row
+        for row in matches[graph_name]
+        if (row["r"], row["l"], row["c"]) == composition
+    ]
+    assert len(selected) == 1, (
+        key,
+        [row["catalogue_id"] for row in selected],
+    )
+    row = selected[0]
+    assert row["catalogue_id"] == expected_id, (key, row["catalogue_id"])
+    record = network_from_descriptor(row["representative_descriptor"])
+    fixture_signature = canonical_structural_signature(fixtures[key])
+    record_signature = canonical_structural_signature(record)
+    assert fixture_signature == record_signature, (
+        key,
+        fixture_signature,
+        record_signature,
+    )
+    composition_text = (
+        f"R{composition[0]}L{composition[1]}C{composition[2]}"
+    )
+    print(
+        f"mapping {graph_name} {composition_text} -> {expected_id}: "
+        "structural OK"
+    )
+
+def parallel(left, right):
+    return left * right / (left + right)
+
+def positive(*values):
+    assert all(value > 0 for value in values), values
+
+reactive_values = {"L": Fraction(7, 5), "C": Fraction(5, 7)}
+for reactive, x in reactive_values.items():
+    # G: r0 + [b' || (a' + c'X)] -> (r0+a) + [b || cX].
+    r0, a_prime, b_prime, c_prime = map(Fraction, (2, 3, 5, 7))
+    a = a_prime * b_prime / (a_prime + b_prime)
+    b = b_prime**2 / (a_prime + b_prime)
+    c = c_prime * (b_prime / (a_prime + b_prime)) ** 2
+    positive(r0, a_prime, b_prime, c_prime, a, b, c, r0 + a)
+    g_original = r0 + parallel(b_prime, a_prime + c_prime * x)
+    g_target = (r0 + a) + parallel(b, c * x)
+    assert g_original == g_target, (reactive, g_original, g_target)
+    print(f"Zobel G-{reactive}: exact OK")
+
+    # Gd: d || [a + (b || cX)] -> R || (R+c'X) -> R + (R || c''X).
+    d, a, b, c = map(Fraction, (11, 13, 17, 19))
+    a_prime = a * (a + b) / b
+    b_prime = a + b
+    c_prime = c * ((a + b) / b) ** 2
+    merged = parallel(d, b_prime)
+    a_second = a_prime * merged / (a_prime + merged)
+    b_second = merged**2 / (a_prime + merged)
+    c_second = c_prime * (merged / (a_prime + merged)) ** 2
+    positive(
+        d,
+        a,
+        b,
+        c,
+        a_prime,
+        b_prime,
+        c_prime,
+        merged,
+        a_second,
+        b_second,
+        c_second,
+    )
+    gd_original = parallel(d, a + parallel(b, c * x))
+    gd_intermediate = parallel(merged, a_prime + c_prime * x)
+    gd_target = a_second + parallel(b_second, c_second * x)
+    assert gd_original == gd_intermediate == gd_target, (
+        reactive,
+        gd_original,
+        gd_intermediate,
+        gd_target,
+    )
+    print(f"Zobel Gd-{reactive}: exact OK")
 PY
 
 make validate-changed
