@@ -15,8 +15,8 @@ production, assign a historical number or basic graph to an excluded record,
 investigate another graph family, or claim to reproduce the canonical
 108-network catalogue. The production update containing this revision applies
 the four reviewed mappings through the version 3 subject-bound evidence route.
-On this branch, the ledger has 22 excluded, 126 unresolved, and 0 retained
-records.
+At the graph-`L^d` production-application milestone, the ledger had 22 excluded,
+126 unresolved, and 0 retained records.
 
 The publication states the four-member graph-family/target relationship only
 in aggregate. It does not print RICE catalogue IDs or pair individual
@@ -354,8 +354,9 @@ All four mappings are `independently-checked`, not individually
 destinations rather than historical identities of the excluded five-element
 records. This report originally supplied evidence for a separate ledger
 review; the production update containing this revision now applies all four
-mappings without changing their evidential conclusions. Production on this
-branch has 22 excluded, 126 unresolved, and 0 retained records.
+mappings without changing their evidential conclusions. At the graph-`L^d`
+production-application milestone, the ledger had 22 excluded, 126 unresolved,
+and 0 retained records.
 
 ## 13. Remaining uncertainties
 
