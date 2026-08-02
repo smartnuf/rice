@@ -10,10 +10,13 @@ graph-`S` RICE census under
 `colour-preserving-port-augmented-cycle-matroid-v1`, and checks every proposed
 candidate-to-target correspondence structurally and algebraically.
 
-This is evidence-only work. It does not change production, assign a historical
-number or basic graph to a RICE record, investigate graph `S^d`, or claim to
-reproduce the canonical 108-network catalogue. Production remains 22 excluded,
-126 unresolved, and 0 retained records.
+This report was originally prepared as evidence-only work and did not itself
+change production. The production update containing this revision applies the
+five reviewed mappings through the version 3 subject-bound evidence route. On
+this branch, production has 27 excluded, 121 unresolved, and 0 retained
+records. It still assigns no historical number or basic graph to these RICE
+records, does not investigate graph `S^d`, and does not claim to reproduce the
+canonical 108-network catalogue.
 
 The publication states the five-member graph-family/target relationship only
 in aggregate. It does not print RICE catalogue IDs or pair individual graph-`S`
@@ -378,17 +381,17 @@ The publication does not print RICE IDs or entry-specific target allocations.
 That historical limitation remains explicit even though the structural and
 algebraic checks select the five mappings uniquely.
 
-This report does not apply the mappings. Production remains 22 excluded, 126
+This report originally did not apply the mappings. The production update
+containing this revision now applies all five through the complete version 3
+subject-bound evidence route. On this branch, production has 27 excluded, 121
 unresolved, and 0 retained; all graph assignments remain null and all
-historical identifier lists remain empty. A separate reviewed production PR is
-required. The five graph-`S^d` Zobel exclusions and final eight exclusions are
-outside this milestone.
+historical identifier lists remain empty. The five graph-`S^d` Zobel exclusions
+and final eight exclusions remain outside this milestone.
 
 ## 15. Reproduction commands
 
-Run from the RICE repository root at merge commit
-`98be55f2918076848c7a2a836cbbc83aff35bc6c` or a descendant that has not yet
-applied the graph-`S` findings:
+Run from the RICE repository root on this production-application branch, or
+from a descendant containing this application:
 
 ```bash
 sha256sum \
@@ -743,8 +746,8 @@ with open(
     production = json.load(stream)
 assert production["format_version"] == 3
 assert production["summary"]["by_proposed_disposition"] == {
-    "exclude": 22,
-    "unresolved": 126,
+    "exclude": 27,
+    "unresolved": 121,
 }
 assert all(row["basic_graph_assignment"] is None for row in production["records"])
 assert all(not row["historical_identifiers"] for row in production["records"])
@@ -754,18 +757,18 @@ assert all(
         for row in production["records"]
         if row["catalogue_id"] == catalogue_id
     )["comparison_status"]
-    == "unresolved"
+    == "derived-structural-match"
     for catalogue_id in fixtures
 )
 print("exact Figure 5.2 and immittance checks: 5 pathways OK")
-print("production unchanged: 22 excluded / 126 unresolved / 0 retained")
+print("production: 27 excluded / 121 unresolved / 0 retained")
 PY
 ```
 
 Observed deterministic output is recorded by the script itself: 85
 five-element records, 15 graph-`S` candidates, the complete candidate rows,
 five successful coloured source/target checks, five exact Figure 5.2 pathways,
-and unchanged production at 22 excluded / 126 unresolved / 0 retained.
+and production at 27 excluded / 121 unresolved / 0 retained.
 
 The observed summary was:
 
@@ -778,5 +781,5 @@ lh148-3a7ebfebce0db0a4 -> canonical network 30 (L, L): coloured source and targe
 lh148-53370c9917eea4d0 -> canonical network 33 (L, C): coloured source and target fixtures OK
 lh148-45d19cefc5b496ce -> canonical network 73 (R, L||C): coloured source and target fixtures OK
 exact Figure 5.2 and immittance checks: 5 pathways OK
-production unchanged: 22 excluded / 126 unresolved / 0 retained
+production: 27 excluded / 121 unresolved / 0 retained
 ```
