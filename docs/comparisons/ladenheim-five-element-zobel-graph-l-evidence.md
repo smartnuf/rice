@@ -69,7 +69,7 @@ positive finite coefficients in either direction.
 
 ## 3. Source locators
 
-The authoritative source is P. Morelli and B. Smith, *Passive Network
+The authoritative source is A. Morelli and M. C. Smith, *Passive Network
 Synthesis: An Approach to Classification* (2019). The inspected local copy was
 
 ```text
