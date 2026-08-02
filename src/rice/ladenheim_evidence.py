@@ -165,6 +165,7 @@ COMPUTATION_FIELDS = {
 COMPUTATION_OPTIONAL_FIELDS = {
     "subject_catalogue_ids",
     "reduction_target_network_numbers",
+    "verified_evidence_record_ids",
 }
 TARGET_FIELDS = {
     "source_population", "reported_members", "reported_exclusions",
@@ -727,7 +728,9 @@ def _validate_workspace_records(
 
 
 def _validate_computational_cross_checks(
-    values: Any, catalogue_ids: set[str],
+    values: Any,
+    catalogue_ids: set[str],
+    evidence: dict[str, dict[str, Any]],
 ) -> dict[str, dict[str, Any]]:
     records = _objects_by_id(
         values, "computational_cross_checks", "cross_check_id"
@@ -755,15 +758,15 @@ def _validate_computational_cross_checks(
             raise ValueError(
                 f"cross-check {record_id} provenance contradicts independently_reproduced"
             )
-        has_subjects = "subject_catalogue_ids" in record
-        has_targets = "reduction_target_network_numbers" in record
-        if has_subjects is not has_targets:
+        present_scope_fields = COMPUTATION_OPTIONAL_FIELDS & record.keys()
+        if present_scope_fields and present_scope_fields != COMPUTATION_OPTIONAL_FIELDS:
             raise ValueError(
                 f"cross-check {record_id} scope fields must be present together"
             )
-        if has_subjects:
+        if present_scope_fields:
             subjects = record["subject_catalogue_ids"]
             targets = record["reduction_target_network_numbers"]
+            verified_evidence_ids = record["verified_evidence_record_ids"]
             _require_unique_string_list(
                 subjects, f"cross-check {record_id} subject_catalogue_ids"
             )
@@ -785,6 +788,16 @@ def _validate_computational_cross_checks(
             if len(subjects) != len(targets):
                 raise ValueError(
                     f"cross-check {record_id} scope lists must have equal lengths"
+                )
+            _require_references(
+                verified_evidence_ids,
+                f"cross-check {record_id} verified_evidence_record_ids",
+                evidence,
+            )
+            if not verified_evidence_ids:
+                raise ValueError(
+                    f"cross-check {record_id} verified_evidence_record_ids "
+                    "must not be empty"
                 )
     return records
 
@@ -815,6 +828,31 @@ def _is_positive_rice_equivalence(record: dict[str, Any]) -> bool:
         record["provenance_level"] == "rice-derived-network-equivalence-fact"
         and record["verification_state"] == "cross-checked"
     )
+
+
+def _positive_matched_graph_evidence(
+    evidence_ids: list[str], evidence: dict[str, dict[str, Any]]
+) -> list[tuple[str, dict[str, Any]]]:
+    return [
+        (evidence_id, record)
+        for evidence_id in evidence_ids
+        if (record := evidence[evidence_id])["claim"]["claim_type"]
+        == "basic-graph-match"
+        and _is_positive_rice_derived(record)
+        and record["claim"]["match"]["matched"] is True
+    ]
+
+
+def _positive_reduction_target_evidence(
+    evidence_ids: list[str], evidence: dict[str, dict[str, Any]]
+) -> list[tuple[str, dict[str, Any]]]:
+    return [
+        (evidence_id, record)
+        for evidence_id in evidence_ids
+        if (record := evidence[evidence_id])["claim"]["claim_type"]
+        == "reduction-target-match"
+        and _is_positive_rice_equivalence(record)
+    ]
 
 
 def _matching_evidence(
@@ -1064,40 +1102,34 @@ def _validate_assertion(
                 "basic-graph definition"
             )
         fixture_id = definition_records[0]["claim"]["definition"]["fixture_id"]
-        graph_matches = [
-            record
-            for record in _matching_evidence(
-                evidence_ids, evidence, "basic-graph-match"
-            )
-            if _is_positive_rice_derived(record)
-            and record["claim"]["subject_catalogue_ids"] == [catalogue_id]
-            and record["claim"]["match"]["matched"] is True
-            and record["claim"]["match"]["graph_label"]
-            == aggregate["graph_label"]
-            and record["claim"]["match"]["fixture_id"] == fixture_id
-            and record["claim"]["match"]["structural_relation"]
-            == SOURCE_CATALOGUE_RELATION
-        ]
-        if len(graph_matches) != 1:
+        graph_matches = _positive_matched_graph_evidence(evidence_ids, evidence)
+        if (
+            len(graph_matches) != 1
+            or graph_matches[0][1]["claim"]["subject_catalogue_ids"]
+            != [catalogue_id]
+            or graph_matches[0][1]["claim"]["match"] != {
+                "fixture_id": fixture_id,
+                "graph_label": aggregate["graph_label"],
+                "structural_relation": SOURCE_CATALOGUE_RELATION,
+                "matched": True,
+            }
+        ):
             raise ValueError(
                 "derived-structural-match requires one exact subject-bound graph match"
             )
-        target_matches = [
-            record
-            for record in _matching_evidence(
-                evidence_ids, evidence, "reduction-target-match"
-            )
-            if _is_positive_rice_equivalence(record)
-            and record["claim"]["subject_catalogue_ids"] == [catalogue_id]
-            and record["claim"]["target_network_number"]
-            in aggregate["supported_reduction_targets"]
-        ]
-        if len(target_matches) != 1:
+        target_matches = _positive_reduction_target_evidence(evidence_ids, evidence)
+        if (
+            len(target_matches) != 1
+            or target_matches[0][1]["claim"]["subject_catalogue_ids"]
+            != [catalogue_id]
+            or target_matches[0][1]["claim"]["target_network_number"]
+            not in aggregate["supported_reduction_targets"]
+        ):
             raise ValueError(
                 "derived-structural-match requires one exact subject-bound "
                 "reduction-target match"
             )
-        reduction_target = target_matches[0]["claim"]["target_network_number"]
+        reduction_target = target_matches[0][1]["claim"]["target_network_number"]
         for identifier in assertion["historical_identifiers"]:
             if (
                 identifier["scheme"] == "morelli-smith-canonical-network"
@@ -1308,46 +1340,78 @@ def _validate_derived_structural_groups(
             )
         fixture_id = definition["fixture_id"]
         allocated_targets = []
+        selected_evidence_ids: set[str] = set()
         for catalogue_id, assertion in members:
-            graph_matches = [
-                record
-                for record in _matching_evidence(
-                    assertion["evidence_record_ids"],
-                    evidence,
-                    "basic-graph-match",
-                )
-                if _is_positive_rice_derived(record)
-                and record["claim"]["subject_catalogue_ids"] == [catalogue_id]
-                and record["claim"]["match"] == {
+            graph_matches = _positive_matched_graph_evidence(
+                assertion["evidence_record_ids"], evidence
+            )
+            if (
+                len(graph_matches) != 1
+                or graph_matches[0][1]["claim"]["subject_catalogue_ids"]
+                != [catalogue_id]
+                or graph_matches[0][1]["claim"]["match"] != {
                     "fixture_id": fixture_id,
                     "graph_label": aggregate["graph_label"],
                     "structural_relation": SOURCE_CATALOGUE_RELATION,
                     "matched": True,
                 }
-            ]
-            if len(graph_matches) != 1:
+            ):
                 raise ValueError(
                     "derived structural group member must match the common "
                     "authoritative graph fixture"
                 )
-            target_matches = [
-                record
-                for record in _matching_evidence(
-                    assertion["evidence_record_ids"],
-                    evidence,
-                    "reduction-target-match",
-                )
-                if _is_positive_rice_equivalence(record)
-                and record["claim"]["subject_catalogue_ids"] == [catalogue_id]
-            ]
-            if len(target_matches) != 1:
+            graph_evidence_id = graph_matches[0][0]
+            target_matches = _positive_reduction_target_evidence(
+                assertion["evidence_record_ids"], evidence
+            )
+            if (
+                len(target_matches) != 1
+                or target_matches[0][1]["claim"]["subject_catalogue_ids"]
+                != [catalogue_id]
+                or target_matches[0][1]["claim"]["target_network_number"]
+                not in aggregate["supported_reduction_targets"]
+            ):
                 raise ValueError(
                     "derived structural group member requires exactly one "
                     "subject-bound reduction target"
                 )
+            target_evidence_id = target_matches[0][0]
             allocated_targets.append(
-                target_matches[0]["claim"]["target_network_number"]
+                target_matches[0][1]["claim"]["target_network_number"]
             )
+            selected_evidence_ids.update({graph_evidence_id, target_evidence_id})
+            assignment = assertion["basic_graph_assignment"]
+            if assignment is not None:
+                expected_assignment = {
+                    **definition,
+                    "structural_relation": SOURCE_CATALOGUE_RELATION,
+                }
+                actual_assignment = {
+                    field: assignment[field]
+                    for field in expected_assignment
+                }
+                assignment_evidence_ids = assignment["evidence_record_ids"]
+                assignment_definition_ids = {
+                    evidence_id
+                    for evidence_id in assignment_evidence_ids
+                    if evidence[evidence_id]["claim"]["claim_type"]
+                    == "basic-graph-definition"
+                }
+                assignment_graph_match_ids = {
+                    evidence_id
+                    for evidence_id, _record in _positive_matched_graph_evidence(
+                        assignment_evidence_ids, evidence
+                    )
+                }
+                if (
+                    actual_assignment != expected_assignment
+                    or assignment_definition_ids != {definition_id}
+                    or assignment_graph_match_ids != {graph_evidence_id}
+                ):
+                    raise ValueError(
+                        "derived structural group graph assignment must use its "
+                        "common definition and selected subject-bound graph match"
+                    )
         if len(set(allocated_targets)) != len(allocated_targets):
             raise ValueError("derived structural group reduction targets must be unique")
         if set(allocated_targets) != set(aggregate["supported_reduction_targets"]):
@@ -1372,6 +1436,12 @@ def _validate_derived_structural_groups(
                     )
                 )
                 == target_set
+                and set(
+                    computations[computation_id].get(
+                        "verified_evidence_record_ids", []
+                    )
+                )
+                == selected_evidence_ids
             })
         if not set.intersection(*qualifying_computation_ids):
             raise ValueError(
@@ -1552,7 +1622,7 @@ def generate_evidence_ledger(
     )
     workspace = _validate_workspace_records(annotations.get("previous_workspace_records"), sources)
     computations = _validate_computational_cross_checks(
-        annotations.get("computational_cross_checks"), set(ids)
+        annotations.get("computational_cross_checks"), set(ids), evidence
     )
     namespaces = [set(sources), set(evidence), set(workspace), set(computations)]
     if sum(len(items) for items in namespaces) != len(set().union(*namespaces)):

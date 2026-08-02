@@ -194,8 +194,12 @@ computation. Every member of an aggregate group must cite the same single
 authoritative graph-definition record and use its fixture under the committed
 structural relation. The common computation must carry machine-readable scope
 equal to the group's complete catalogue-subject and reduction-target sets, and
-every member must cite that computation; an unscoped or unrelated computation
-cannot satisfy this route. Reduction-target evidence uses
+must verify exactly the graph-match and reduction-target evidence records
+selected for those subjects. Every member must cite that computation; an
+unscoped or unrelated computation cannot satisfy this route. Positive graph and
+target evidence is exclusive to its subject row. If a member carries a graph
+assignment, it must use the group's common definition, fixture, selected graph
+match, and structural relation. Reduction-target evidence uses
 `rice-derived-network-equivalence-fact` provenance; a target is a reduction
 destination and does not become a historical identifier of the excluded row.
 This route does not require `basic_graph_assignment` or a historical identifier.
