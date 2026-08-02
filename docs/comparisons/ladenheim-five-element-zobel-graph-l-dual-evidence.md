@@ -10,11 +10,13 @@ graph-`L^d` candidate census under
 `colour-preserving-port-augmented-cycle-matroid-v1`, and checks every proposed
 candidate-to-target correspondence structurally and algebraically.
 
-This is an evidence-only report. It does not change production, assign a
-historical number or basic graph to an excluded record, investigate another
-graph family, or claim to reproduce the canonical 108-network catalogue. At
-the time of this report, the production ledger remains 18 excluded, 130
-unresolved, and 0 retained records.
+This report was originally prepared as evidence only and did not itself change
+production, assign a historical number or basic graph to an excluded record,
+investigate another graph family, or claim to reproduce the canonical
+108-network catalogue. The production update containing this revision applies
+the four reviewed mappings through the version 3 subject-bound evidence route.
+On this branch, the ledger has 22 excluded, 126 unresolved, and 0 retained
+records.
 
 The publication states the four-member graph-family/target relationship only
 in aggregate. It does not print RICE catalogue IDs or pair individual
@@ -350,9 +352,10 @@ lh148-a1e6c042c7d77e41 -> #35
 All four mappings are `independently-checked`, not individually
 `source-stated`. Canonical networks #35, #39, #43, and #47 are reduction
 destinations rather than historical identities of the excluded five-element
-records. This report supplies evidence for a later, separately reviewed ledger
-application; it does not apply the mappings. Production remains 18 excluded,
-130 unresolved, and 0 retained.
+records. This report originally supplied evidence for a separate ledger
+review; the production update containing this revision now applies all four
+mappings without changing their evidential conclusions. Production on this
+branch has 22 excluded, 126 unresolved, and 0 retained records.
 
 ## 13. Remaining uncertainties
 
@@ -362,10 +365,10 @@ publication does not state individual RICE-ID correspondences, so those remain
 independently reproduced computational conclusions rather than direct
 historical statements.
 
-Fourteen five-element Zobel exclusions remain unapplied at the start and end of
-this evidence-only investigation. A later graph-`L^d` application would apply
-four and leave the ten graph-`S`/`S^d` exclusions, while the final eight
-O/O-dual and bridge exclusions remain outside this goal milestone.
+Fourteen five-element Zobel exclusions were unapplied when this evidence-only
+investigation was prepared. This production update applies the four graph-`L^d`
+findings and leaves the ten graph-`S`/`S^d` exclusions unresolved. The final
+eight O/O-dual and bridge exclusions remain outside this goal milestone.
 
 ## 14. Previous-workspace audit
 
@@ -392,8 +395,8 @@ All three sibling worktrees were clean and remained unchanged.
 
 ## 15. Reproduction commands
 
-Run from the RICE repository root at commit
-`deefccfd8732b1d35fa5b978a4de38d92d33f1dd` or a descendant:
+Run from the RICE repository root on this production-application branch, or
+from a descendant containing this application:
 
 ```bash
 sha256sum \
@@ -674,21 +677,30 @@ with open(
     production = json.load(stream)
 assert production["format_version"] == 3
 assert production["summary"]["by_proposed_disposition"] == {
-    "exclude": 18,
-    "unresolved": 130,
+    "exclude": 22,
+    "unresolved": 126,
 }
 assert all(
     row["basic_graph_assignment"] is None for row in production["records"]
 )
 assert all(not row["historical_identifiers"] for row in production["records"])
 assert all(
-    next(
-        row for row in production["records"] if row["catalogue_id"] == cid
-    )["comparison_status"]
-    == "unresolved"
+    (
+        next(
+            row
+            for row in production["records"]
+            if row["catalogue_id"] == cid
+        )["comparison_status"],
+        next(
+            row
+            for row in production["records"]
+            if row["catalogue_id"] == cid
+        )["proposed_disposition"],
+    )
+    == ("derived-structural-match", "exclude")
     for cid in fixtures
 )
-print("production unchanged: 18 excluded / 130 unresolved / 0 retained")
+print("production: 22 excluded / 126 unresolved / 0 retained")
 PY
 ```
 
@@ -708,5 +720,5 @@ lh148-5d5fb848a810c9cb -> canonical network 43: coloured structural and exact Zo
 lh148-534a4f02579831e9 -> canonical network 47: coloured structural and exact Zobel checks OK
 lh148-9e140322bfd33a22 -> canonical network 39: coloured structural and exact Zobel checks OK
 lh148-a1e6c042c7d77e41 -> canonical network 35: coloured structural and exact Zobel checks OK
-production unchanged: 18 excluded / 130 unresolved / 0 retained
+production: 22 excluded / 126 unresolved / 0 retained
 ```
