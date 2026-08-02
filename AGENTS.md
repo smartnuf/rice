@@ -54,29 +54,19 @@ expand near-term plan steps as the implementation path becomes clearer.
 
 ### GitHub number references
 
-In GitHub-facing text—including pull-request descriptions, issue comments,
-review comments, review replies, commit messages, and Markdown rendered on
-GitHub—reserve `#<number>` exclusively for actual GitHub issue or pull-request
-references.
+In GitHub conversations and metadata—including pull-request descriptions, issue
+comments, review comments, review replies, and commit messages—reserve
+`#<number>` exclusively for actual GitHub issue or pull-request references.
 
-Do not use hash-prefixed numbers for canonical networks, basic graphs, figures,
-targets, catalogue entries, equations, or other domain identifiers. GitHub may
-incorrectly expand them into issue or pull-request links.
+Do not use hash-prefixed numbers there for canonical networks, basic graphs,
+figures, targets, catalogue entries, equations, or other domain identifiers.
+Use explicit wording such as `canonical network 72`, `basic graph 3`, or
+`target 20`.
 
-Use explicit wording instead, for example:
-
-- `canonical network 72`
-- `network 15`
-- `basic graph 3`
-- `Figure 5.2`
-- `target 20`
-
-Use `PR 65` or `issue 12` when plain text is intended, and `#65` or `#12` only
-when deliberately referring to that GitHub pull request or issue.
-
-Apply this convention prospectively. Do not perform repository-wide cleanup of
-existing domain-number references unless a task explicitly requests it; use the
-explicit form for all new or deliberately revised references.
+This restriction does not apply to committed repository files, where GitHub does
+not create issue or pull-request autolinks. Explicit wording may still be
+preferred there for clarity, but existing domain-number references need not be
+migrated.
 
 ## Development environment
 
