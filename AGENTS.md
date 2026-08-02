@@ -52,6 +52,22 @@ and documented sufficiently. Not every task is intended to move an item to
 `done`. Add concise progress notes against the relevant plan document, and
 expand near-term plan steps as the implementation path becomes clearer.
 
+### GitHub number references
+
+In GitHub conversations and metadata—including pull-request descriptions, issue
+comments, review comments, review replies, and commit messages—reserve
+`#<number>` exclusively for actual GitHub issue or pull-request references.
+
+Do not use hash-prefixed numbers there for canonical networks, basic graphs,
+figures, targets, catalogue entries, equations, or other domain identifiers.
+Use explicit wording such as `canonical network 72`, `basic graph 3`, or
+`target 20`.
+
+This restriction does not apply to committed repository files, where GitHub does
+not create issue or pull-request autolinks. Explicit wording may still be
+preferred there for clarity, but existing domain-number references need not be
+migrated.
+
 ## Development environment
 
 Use Python 3.11 or newer.
