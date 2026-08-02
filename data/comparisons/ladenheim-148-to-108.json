@@ -11,6 +11,40 @@
       "provenance_level": "independently-reproduced-computation",
       "result": "The four selected records match the reviewed fixtures uniquely; the inductive records reduce to #15 and the capacitive records reduce to #17 with exact positive coefficients.",
       "verification_state": "cross-checked"
+    },
+    {
+      "commit_sha": "b095878f2b10246302b4cf1c9a170ce8f7985c56",
+      "cross_check_id": "rice-five-element-zobel-graph-l-report-reproduction",
+      "implementation": "Reproduction commands in docs/comparisons/ladenheim-five-element-zobel-graph-l-evidence.md",
+      "independently_reproduced": true,
+      "input": "The 148-record catalogue, the transcribed graph-L and coloured circuit fixtures, the four target fixtures, and generic positive exact-arithmetic Zobel parameters",
+      "limitations": "This independently checks the RICE graph and reduction-target correspondences; it is not an individual historical source statement or a canonical identity assignment.",
+      "operation": "Enumerate all 85 five-element records and the four graph-L matches, compare exact coloured structural signatures and target fixtures, and verify the inverse Zobel substitutions and positive finite coefficients with fractions.Fraction",
+      "provenance_level": "independently-reproduced-computation",
+      "reduction_target_network_numbers": [
+        20,
+        32,
+        25,
+        28
+      ],
+      "result": "Exactly four graph-L subjects match the reviewed coloured fixtures and reduce respectively to canonical networks 20, 32, 25, and 28 with exact positive coefficients.",
+      "subject_catalogue_ids": [
+        "lh148-f684b6a0ad3114c4",
+        "lh148-2a3f20a9bcd73817",
+        "lh148-a124f387d970b947",
+        "lh148-5eb31698974d07f8"
+      ],
+      "verification_state": "cross-checked",
+      "verified_evidence_record_ids": [
+        "rice-lh148-f684b6a0ad3114c4-graph-l-match",
+        "rice-lh148-2a3f20a9bcd73817-graph-l-match",
+        "rice-lh148-a124f387d970b947-graph-l-match",
+        "rice-lh148-5eb31698974d07f8-graph-l-match",
+        "rice-lh148-f684b6a0ad3114c4-target-20",
+        "rice-lh148-2a3f20a9bcd73817-target-32",
+        "rice-lh148-a124f387d970b947-target-25",
+        "rice-lh148-5eb31698974d07f8-target-28"
+      ]
     }
   ],
   "evidence_records": [
@@ -277,6 +311,214 @@
       "paraphrase": "The reviewed coloured fixture comparison uniquely matches the R3L0C1 G-dual network to this catalogue record.",
       "provenance_level": "rice-derived-structural-fact",
       "source_id": "rice-four-element-zobel-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "aggregate-basic-graph-exclusion",
+        "graph_label": "L",
+        "source_population": 4,
+        "supported_disposition": "exclude",
+        "supported_exclusion_category": "zobel-five-element-series-parallel",
+        "supported_reduction_targets": [
+          20,
+          25,
+          28,
+          32
+        ]
+      },
+      "evidence_id": "ms-2019-five-element-zobel-graph-l-group",
+      "locator": {
+        "pdf_page_index": 48,
+        "printed_page": 42,
+        "section": "5.1"
+      },
+      "notes": "This is a collective graph-family, population, category, and target-set statement; it does not identify RICE subjects or allocate individual targets.",
+      "paraphrase": "Four five-element series-parallel networks with basic graph L are excluded by Zobel reduction to canonical networks 20, 25, 28, and 32 collectively.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "claim_type": "basic-graph-definition",
+        "definition": {
+          "base_label": "L",
+          "fixture_id": "morelli-smith-L-five-edge",
+          "graph_label": "L",
+          "is_dual": false
+        }
+      },
+      "evidence_id": "ms-2019-basic-graph-l-definition",
+      "locator": {
+        "appendix": "B",
+        "pdf_page_index": 132,
+        "printed_page": 126
+      },
+      "notes": "Normalized fixture: vertices A,B,C,D,E; terminals A,E; edges AB,BC,CD,DE,CE; no parallel edges.",
+      "paraphrase": "The rendered Appendix B diagram defines graph L as AB--BC--(CE parallel to CD--DE), with terminals A and E.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "claim_type": "basic-graph-match",
+        "match": {
+          "fixture_id": "morelli-smith-L-five-edge",
+          "graph_label": "L",
+          "matched": true,
+          "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1"
+        },
+        "subject_catalogue_ids": [
+          "lh148-f684b6a0ad3114c4"
+        ]
+      },
+      "evidence_id": "rice-lh148-f684b6a0ad3114c4-graph-l-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-five-element-zobel-graph-l-evidence.md"
+      },
+      "paraphrase": "The independently reproduced coloured signature matches C--R--(R parallel to C--R) on graph L uniquely to this R3L0C2 record.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-five-element-zobel-graph-l-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "basic-graph-match",
+        "match": {
+          "fixture_id": "morelli-smith-L-five-edge",
+          "graph_label": "L",
+          "matched": true,
+          "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1"
+        },
+        "subject_catalogue_ids": [
+          "lh148-2a3f20a9bcd73817"
+        ]
+      },
+      "evidence_id": "rice-lh148-2a3f20a9bcd73817-graph-l-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-five-element-zobel-graph-l-evidence.md"
+      },
+      "paraphrase": "The independently reproduced coloured signature matches L--R--(R parallel to C--R) on graph L uniquely to this R3L1C1 record.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-five-element-zobel-graph-l-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "basic-graph-match",
+        "match": {
+          "fixture_id": "morelli-smith-L-five-edge",
+          "graph_label": "L",
+          "matched": true,
+          "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1"
+        },
+        "subject_catalogue_ids": [
+          "lh148-a124f387d970b947"
+        ]
+      },
+      "evidence_id": "rice-lh148-a124f387d970b947-graph-l-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-five-element-zobel-graph-l-evidence.md"
+      },
+      "paraphrase": "The independently reproduced coloured signature matches C--R--(R parallel to L--R) on graph L uniquely to this R3L1C1 record.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-five-element-zobel-graph-l-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "basic-graph-match",
+        "match": {
+          "fixture_id": "morelli-smith-L-five-edge",
+          "graph_label": "L",
+          "matched": true,
+          "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1"
+        },
+        "subject_catalogue_ids": [
+          "lh148-5eb31698974d07f8"
+        ]
+      },
+      "evidence_id": "rice-lh148-5eb31698974d07f8-graph-l-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-five-element-zobel-graph-l-evidence.md"
+      },
+      "paraphrase": "The independently reproduced coloured signature matches L--R--(R parallel to L--R) on graph L uniquely to this R3L2C0 record.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-five-element-zobel-graph-l-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "reduction-target-match",
+        "subject_catalogue_ids": [
+          "lh148-f684b6a0ad3114c4"
+        ],
+        "target_network_number": 20
+      },
+      "evidence_id": "rice-lh148-f684b6a0ad3114c4-target-20",
+      "locator": {
+        "network_number": 20,
+        "repository_path": "docs/comparisons/ladenheim-five-element-zobel-graph-l-evidence.md"
+      },
+      "paraphrase": "The reviewed inverse Zobel step and resistor merge reduce this leading-C, transformed-arm-C record to canonical network 20 with positive finite coefficients.",
+      "provenance_level": "rice-derived-network-equivalence-fact",
+      "source_id": "rice-five-element-zobel-graph-l-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "reduction-target-match",
+        "subject_catalogue_ids": [
+          "lh148-2a3f20a9bcd73817"
+        ],
+        "target_network_number": 32
+      },
+      "evidence_id": "rice-lh148-2a3f20a9bcd73817-target-32",
+      "locator": {
+        "network_number": 32,
+        "repository_path": "docs/comparisons/ladenheim-five-element-zobel-graph-l-evidence.md"
+      },
+      "paraphrase": "The reviewed inverse Zobel step and resistor merge reduce this leading-L, transformed-arm-C record to canonical network 32 with positive finite coefficients.",
+      "provenance_level": "rice-derived-network-equivalence-fact",
+      "source_id": "rice-five-element-zobel-graph-l-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "reduction-target-match",
+        "subject_catalogue_ids": [
+          "lh148-a124f387d970b947"
+        ],
+        "target_network_number": 25
+      },
+      "evidence_id": "rice-lh148-a124f387d970b947-target-25",
+      "locator": {
+        "network_number": 25,
+        "repository_path": "docs/comparisons/ladenheim-five-element-zobel-graph-l-evidence.md"
+      },
+      "paraphrase": "The reviewed inverse Zobel step and resistor merge reduce this leading-C, transformed-arm-L record to canonical network 25 with positive finite coefficients.",
+      "provenance_level": "rice-derived-network-equivalence-fact",
+      "source_id": "rice-five-element-zobel-graph-l-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "reduction-target-match",
+        "subject_catalogue_ids": [
+          "lh148-5eb31698974d07f8"
+        ],
+        "target_network_number": 28
+      },
+      "evidence_id": "rice-lh148-5eb31698974d07f8-target-28",
+      "locator": {
+        "network_number": 28,
+        "repository_path": "docs/comparisons/ladenheim-five-element-zobel-graph-l-evidence.md"
+      },
+      "paraphrase": "The reviewed inverse Zobel step and resistor merge reduce this leading-L, transformed-arm-L record to canonical network 28 with positive finite coefficients.",
+      "provenance_level": "rice-derived-network-equivalence-fact",
+      "source_id": "rice-five-element-zobel-graph-l-report",
       "verification_state": "cross-checked"
     }
   ],
@@ -2924,27 +3166,34 @@
       "basic_graph_assignment": null,
       "c": 2,
       "catalogue_id": "lh148-f684b6a0ad3114c4",
-      "comparison_status": "unresolved",
-      "computational_cross_check_ids": [],
-      "confidence": "none",
-      "evidence_basis": [
-        "no-evidence-yet"
+      "comparison_status": "derived-structural-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-zobel-graph-l-report-reproduction"
       ],
-      "evidence_record_ids": [],
-      "exclusion_category": "unresolved",
-      "exclusion_reason": null,
+      "confidence": "high",
+      "evidence_basis": [
+        "aggregate-historical-graph-group-plus-subject-bound-rice-match",
+        "mechanically-derived-rice-structural-fact"
+      ],
+      "evidence_record_ids": [
+        "ms-2019-five-element-zobel-graph-l-group",
+        "ms-2019-basic-graph-l-definition",
+        "rice-lh148-f684b6a0ad3114c4-graph-l-match",
+        "rice-lh148-f684b6a0ad3114c4-target-20"
+      ],
+      "exclusion_category": "zobel-five-element-series-parallel",
+      "exclusion_reason": "The source collectively excludes four graph-L networks to the stated target set; the complete RICE census independently selects this R3L0C2 subject, and the reviewed inverse Zobel derivation checks its reduction to canonical network 20.",
       "historical_identifiers": [],
       "l": 0,
       "lc": 2,
       "notes": [
-        "No individual canonical-catalogue mapping is established."
+        "The RICE-ID correspondence and individual target allocation are independently checked repository evidence, not an individual historical source statement."
       ],
       "open_questions": [
-        "Which historical network or figure, if any, corresponds to this record?",
-        "What entry-specific evidence establishes exclusion or retention?"
+        "Which of the remaining sixteen five-element series-parallel Zobel exclusions can be established through complete graph-family groups?"
       ],
       "previous_workspace_record_ids": [],
-      "proposed_disposition": "unresolved",
+      "proposed_disposition": "exclude",
       "r": 3,
       "representative_descriptor": "0-2:C;0-3:R;1-4:C;2-3:R;3-4:R",
       "rlc": 5,
@@ -3212,27 +3461,34 @@
       "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-2a3f20a9bcd73817",
-      "comparison_status": "unresolved",
-      "computational_cross_check_ids": [],
-      "confidence": "none",
-      "evidence_basis": [
-        "no-evidence-yet"
+      "comparison_status": "derived-structural-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-zobel-graph-l-report-reproduction"
       ],
-      "evidence_record_ids": [],
-      "exclusion_category": "unresolved",
-      "exclusion_reason": null,
+      "confidence": "high",
+      "evidence_basis": [
+        "aggregate-historical-graph-group-plus-subject-bound-rice-match",
+        "mechanically-derived-rice-structural-fact"
+      ],
+      "evidence_record_ids": [
+        "ms-2019-five-element-zobel-graph-l-group",
+        "ms-2019-basic-graph-l-definition",
+        "rice-lh148-2a3f20a9bcd73817-graph-l-match",
+        "rice-lh148-2a3f20a9bcd73817-target-32"
+      ],
+      "exclusion_category": "zobel-five-element-series-parallel",
+      "exclusion_reason": "The source collectively excludes four graph-L networks to the stated target set; the complete RICE census independently selects this leading-L, transformed-arm-C subject, and the reviewed inverse Zobel derivation checks its reduction to canonical network 32.",
       "historical_identifiers": [],
       "l": 1,
       "lc": 2,
       "notes": [
-        "No individual canonical-catalogue mapping is established."
+        "The RICE-ID correspondence and individual target allocation are independently checked repository evidence, not an individual historical source statement."
       ],
       "open_questions": [
-        "Which historical network or figure, if any, corresponds to this record?",
-        "What entry-specific evidence establishes exclusion or retention?"
+        "Which of the remaining sixteen five-element series-parallel Zobel exclusions can be established through complete graph-family groups?"
       ],
       "previous_workspace_record_ids": [],
-      "proposed_disposition": "unresolved",
+      "proposed_disposition": "exclude",
       "r": 3,
       "representative_descriptor": "0-2:C;0-3:R;1-4:L;2-3:R;3-4:R",
       "rlc": 5,
@@ -3852,27 +4108,34 @@
       "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-a124f387d970b947",
-      "comparison_status": "unresolved",
-      "computational_cross_check_ids": [],
-      "confidence": "none",
-      "evidence_basis": [
-        "no-evidence-yet"
+      "comparison_status": "derived-structural-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-zobel-graph-l-report-reproduction"
       ],
-      "evidence_record_ids": [],
-      "exclusion_category": "unresolved",
-      "exclusion_reason": null,
+      "confidence": "high",
+      "evidence_basis": [
+        "aggregate-historical-graph-group-plus-subject-bound-rice-match",
+        "mechanically-derived-rice-structural-fact"
+      ],
+      "evidence_record_ids": [
+        "ms-2019-five-element-zobel-graph-l-group",
+        "ms-2019-basic-graph-l-definition",
+        "rice-lh148-a124f387d970b947-graph-l-match",
+        "rice-lh148-a124f387d970b947-target-25"
+      ],
+      "exclusion_category": "zobel-five-element-series-parallel",
+      "exclusion_reason": "The source collectively excludes four graph-L networks to the stated target set; the complete RICE census independently selects this leading-C, transformed-arm-L subject, and the reviewed inverse Zobel derivation checks its reduction to canonical network 25.",
       "historical_identifiers": [],
       "l": 1,
       "lc": 2,
       "notes": [
-        "No individual canonical-catalogue mapping is established."
+        "The RICE-ID correspondence and individual target allocation are independently checked repository evidence, not an individual historical source statement."
       ],
       "open_questions": [
-        "Which historical network or figure, if any, corresponds to this record?",
-        "What entry-specific evidence establishes exclusion or retention?"
+        "Which of the remaining sixteen five-element series-parallel Zobel exclusions can be established through complete graph-family groups?"
       ],
       "previous_workspace_record_ids": [],
-      "proposed_disposition": "unresolved",
+      "proposed_disposition": "exclude",
       "r": 3,
       "representative_descriptor": "0-2:C;1-3:L;1-4:R;2-4:R;3-4:R",
       "rlc": 5,
@@ -4492,27 +4755,34 @@
       "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-5eb31698974d07f8",
-      "comparison_status": "unresolved",
-      "computational_cross_check_ids": [],
-      "confidence": "none",
-      "evidence_basis": [
-        "no-evidence-yet"
+      "comparison_status": "derived-structural-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-zobel-graph-l-report-reproduction"
       ],
-      "evidence_record_ids": [],
-      "exclusion_category": "unresolved",
-      "exclusion_reason": null,
+      "confidence": "high",
+      "evidence_basis": [
+        "aggregate-historical-graph-group-plus-subject-bound-rice-match",
+        "mechanically-derived-rice-structural-fact"
+      ],
+      "evidence_record_ids": [
+        "ms-2019-five-element-zobel-graph-l-group",
+        "ms-2019-basic-graph-l-definition",
+        "rice-lh148-5eb31698974d07f8-graph-l-match",
+        "rice-lh148-5eb31698974d07f8-target-28"
+      ],
+      "exclusion_category": "zobel-five-element-series-parallel",
+      "exclusion_reason": "The source collectively excludes four graph-L networks to the stated target set; the complete RICE census independently selects this R3L2C0 subject, and the reviewed inverse Zobel derivation checks its reduction to canonical network 28.",
       "historical_identifiers": [],
       "l": 2,
       "lc": 2,
       "notes": [
-        "No individual canonical-catalogue mapping is established."
+        "The RICE-ID correspondence and individual target allocation are independently checked repository evidence, not an individual historical source statement."
       ],
       "open_questions": [
-        "Which historical network or figure, if any, corresponds to this record?",
-        "What entry-specific evidence establishes exclusion or retention?"
+        "Which of the remaining sixteen five-element series-parallel Zobel exclusions can be established through complete graph-family groups?"
       ],
       "previous_workspace_record_ids": [],
-      "proposed_disposition": "unresolved",
+      "proposed_disposition": "exclude",
       "r": 3,
       "representative_descriptor": "0-2:L;0-3:R;1-4:L;2-3:R;3-4:R",
       "rlc": 5,
@@ -5121,25 +5391,33 @@
       "notes": "Reviewed repository documentation recording independently reproduced graph/composition correspondences and algebraic Zobel checks; it is not the authoritative historical publication.",
       "source_id": "rice-four-element-zobel-report",
       "source_type": "rice-documentation"
+    },
+    {
+      "citation": "RICE graph-L five-element Zobel exclusion evidence report.",
+      "notes": "Reviewed repository documentation recording the complete graph-L census, coloured structural matches, target allocation, and exact Zobel checks; it is not the authoritative historical publication.",
+      "source_id": "rice-five-element-zobel-graph-l-report",
+      "source_type": "rice-documentation"
     }
   ],
   "summary": {
     "by_comparison_status": {
+      "derived-structural-match": 4,
       "derived-unique-match": 12,
-      "unresolved": 136
+      "unresolved": 132
     },
     "by_exclusion_category": {
       "simpler-bilinear-realisation": 8,
-      "unresolved": 136,
+      "unresolved": 132,
+      "zobel-five-element-series-parallel": 4,
       "zobel-four-element": 4
     },
     "by_proposed_disposition": {
-      "exclude": 12,
-      "unresolved": 136
+      "exclude": 16,
+      "unresolved": 132
     },
-    "mapped_exclusions": 12,
+    "mapped_exclusions": 16,
     "total_rows": 148,
-    "unresolved_dispositions": 136
+    "unresolved_dispositions": 132
   },
   "target": {
     "evidence_record_ids": [
