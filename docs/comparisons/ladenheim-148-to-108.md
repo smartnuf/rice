@@ -65,10 +65,10 @@ historical evidence. In particular, computational agreement can corroborate a
 transcription without converting an uncited workspace assertion into a
 source-backed mapping.
 
-## Version 2 evidence contract
+## Version 3 evidence contract
 
 The manual file
-`data/comparisons/ladenheim-108-annotations.json` uses `format_version: 2` and
+`data/comparisons/ladenheim-108-annotations.json` uses `format_version: 3` and
 contains reviewed assertions and structural matching rules without duplicating
 all 148 structural records. The generated file
 `data/comparisons/ladenheim-148-to-108.json` joins those assertions to the
@@ -177,24 +177,53 @@ contract; it cannot carry either an exclusion or retention disposition.
 
 `evidence_basis` distinguishes an explicit historical entry statement, an
 explicit table/figure mapping, an aggregate category plus a logically unique
-RICE match, a mechanically derived RICE structural fact, a researcher
-hypothesis, or no evidence yet. Mechanically derived facts establish only the
-stated RICE property; they are not historical evidence by themselves.
+RICE match, an aggregate historical graph group plus subject-bound RICE
+matches, a mechanically derived RICE structural fact, a researcher hypothesis,
+or no evidence yet. Mechanically derived facts establish only the stated RICE
+property; they are not historical evidence by themselves.
 `no-evidence-yet` is exclusive to unresolved assertions, and positive statuses
 must use the basis values appropriate to their source-backed, unique-match, or
 hypothesis contract.
 
+Version 3 adds `derived-structural-match` for explicit exclusion annotations
+that cannot be selected by component counts. It joins an authoritative,
+source-verified `aggregate-basic-graph-exclusion` claim to an authoritative
+basic-graph definition, a subject-bound RICE `basic-graph-match`, a
+cross-checked `reduction-target-match`, and an independently reproduced
+computation. Every member of an aggregate group must cite the same single
+authoritative graph-definition record and use its fixture under the committed
+structural relation. The common computation must carry machine-readable scope
+equal to the group's complete catalogue-subject and reduction-target sets, and
+must verify exactly the graph-match and reduction-target evidence records
+selected for those subjects. Every member must cite that computation; an
+unscoped or unrelated computation cannot satisfy this route. Positive graph and
+target evidence is exclusive to its subject row. If a member carries a graph
+assignment, it must use the group's common definition, fixture, selected graph
+match, and structural relation. Reduction-target evidence uses
+`rice-derived-network-equivalence-fact` provenance; a target is a reduction
+destination and does not become a historical identifier of the excluded row.
+This route does not require `basic_graph_assignment` or a historical identifier.
+
+Every aggregate graph-group claim used by this route is complete or invalid.
+Exactly its stated population of explicit derived records must cite it; every
+record must match the claimed graph and exactly one target; allocated targets
+must be unique and equal the complete authoritative target set; and no rule or
+row with another status may cite the claim as support. The status is invalid in
+rules and cannot assert retention. Existing `source-backed`,
+`derived-unique-match`, retention, historical-identifier, graph-assignment, and
+component-selector contracts are unchanged.
+
 Confidence is controlled as `high`, `medium`, `low`, or `none`.
 
-## Version 2 validation boundary
+## Version 3 validation boundary
 
-The version 2 validator is closed-world for every annotation object. It checks
+The version 3 validator is closed-world for every annotation object. It checks
 object shapes, controlled vocabularies, reference and catalogue-subject
 resolution, provenance and verification coherence, status/disposition/category
 tuples, numeric boundaries, target and count invariants, and deterministic-output
 hygiene. Unknown fields are rejected rather than copied into the ledger.
 
-Version 2 does not represent ambiguous candidate mappings. A later extension
+Version 3 does not represent ambiguous candidate mappings. A later extension
 must record the finite candidate set, evidence for each candidate, the comparison
 relation, and why the evidence does not distinguish them. Also deferred are real
 basic-graph assignments, the remaining twenty-eight exclusions,
@@ -207,6 +236,7 @@ objects establishes none of those claims.
 | Comparison status | Rows |
 |---|---:|
 | `derived-unique-match` | 12 |
+| `derived-structural-match` | 0 |
 | `unresolved` | 136 |
 | **Total** | **148** |
 
@@ -246,6 +276,11 @@ All twenty Zobel five-element series-parallel mappings and all eight other
 O/O-dual or bridge mappings remain deliberately unassigned. The remaining
 entries are not called retained merely because no exclusion has yet been found.
 
+The reviewed graph-`L` report establishes four subject-bound five-element
+matches and target reductions. Version 3 can represent that evidence, but this
+contract-only change does not apply it: production remains 12 excluded, 136
+unresolved, and 0 retained.
+
 Basic-graph fixtures and assignments, all remaining exclusions, and canonical
 network numbers are intentionally deferred to later focused changes. No graph
 letter or historical network number is asserted by this ledger, every
@@ -278,8 +313,9 @@ paths, or unstable metadata. `--check` fails if the committed ledger differs.
 
 1. Add independently checked basic-graph fixtures and map the 148 structural
    records without treating previous-workspace graph files as authoritative.
-2. Establish the twenty individual five-element series-parallel Zobel mappings
-   with source-backed transformations.
+2. Apply the four reviewed graph-`L` mappings through the version 3
+   subject-bound route, then establish the remaining sixteen individual
+   five-element series-parallel Zobel mappings.
 3. Identify the final eight O/O-dual and bridge cases and record each distinct
    Cauer-Foster, regularity, realizability, Y-delta, or other argument.
 4. Transcribe and validate the surviving canonical network numbers from the
