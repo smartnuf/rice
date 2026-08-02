@@ -3,8 +3,8 @@
 This is an evidence ledger for comparing RICE's reproduced structural
 148-record catalogue with the reported canonical 108-network catalogue. It is
 not a reproduction of the 108 catalogue. The committed evidence currently maps
-seventeen proposed exclusions through reviewed unique and subject-bound
-structural evidence and leaves the other 131 records unresolved.
+eighteen proposed exclusions through reviewed unique and subject-bound
+structural evidence and leaves the other 130 records unresolved.
 
 ## Two different catalogue layers
 
@@ -27,12 +27,12 @@ The four aggregate comparison targets are:
 |---|---:|---:|---:|
 | Simpler bilinear realization: four resistors and one reactive | 8 | 8 | 0 |
 | Zobel-reducible four-element | 4 | 4 | 0 |
-| Zobel-reducible five-element series-parallel | 20 | 5 | 15 |
+| Zobel-reducible five-element series-parallel | 20 | 6 | 14 |
 | Other O/O-dual and bridge exclusions | 8 | 0 | 8 |
-| **Total** | **40** | **17** | **23** |
+| **Total** | **40** | **18** | **22** |
 
-Fifteen five-element and all final O/O-dual or bridge rows remain aggregate
-gaps rather than identifications of particular RICE records. Their 23
+Fourteen five-element and all final O/O-dual or bridge rows remain aggregate
+gaps rather than identifications of particular RICE records. Their 22
 individual mappings remain unresolved.
 
 ## Evidence material and provenance
@@ -68,6 +68,12 @@ The reviewed graph-`M` report at
 reproduces the complete five-element census, the unique graph-`M` coloured
 match, the target fixture, and the exact Zobel reduction to canonical network
 canonical network 72. It likewise supplies repository evidence rather than an individual
+source-stated RICE correspondence.
+The reviewed graph-`M^d` report at
+`docs/comparisons/ladenheim-five-element-zobel-graph-m-dual-evidence.md`
+independently reproduces the complete 85-record census, unique coloured match,
+graph-`H^d` target fixture, derived dual Zobel map, and exact reduction to
+canonical network 73. It is repository evidence rather than an individual
 source-stated RICE correspondence.
 
 Previous research workspaces contain useful graph descriptions, images,
@@ -238,7 +244,7 @@ hygiene. Unknown fields are rejected rather than copied into the ledger.
 Version 3 does not represent ambiguous candidate mappings. A later extension
 must record the finite candidate set, evidence for each candidate, the comparison
 relation, and why the evidence does not distinguish them. Also deferred are real
-basic-graph assignments, the remaining twenty-three exclusions,
+basic-graph assignments, the remaining twenty-two exclusions,
 retained canonical membership, canonical network numbering, and transformation
 proofs beyond the reviewed Zobel reports. Absence of those schema
 objects establishes none of those claims.
@@ -248,24 +254,24 @@ objects establishes none of those claims.
 | Comparison status | Rows |
 |---|---:|
 | `derived-unique-match` | 12 |
-| `derived-structural-match` | 5 |
-| `unresolved` | 131 |
+| `derived-structural-match` | 6 |
+| `unresolved` | 130 |
 | **Total** | **148** |
 
 | Proposed disposition | Rows |
 |---|---:|
-| `exclude` | 17 |
+| `exclude` | 18 |
 | `retain` | 0 |
-| `unresolved` | 131 |
+| `unresolved` | 130 |
 | **Total** | **148** |
 
 | Exclusion category | Rows |
 |---|---:|
 | `simpler-bilinear-realisation` | 8 |
 | `zobel-four-element` | 4 |
-| `zobel-five-element-series-parallel` | 5 |
+| `zobel-five-element-series-parallel` | 6 |
 | `other-canonical-exclusion` | 0 |
-| `unresolved` | 131 |
+| `unresolved` | 130 |
 | **Total** | **148** |
 
 The structural catalogue contains exactly eight records with `R=4` and
@@ -298,7 +304,13 @@ graph match, one reduction-target match to canonical network 72, and one
 independently reproduced computation bound exactly to those two evidence
 records. Network 72 is a reduction destination, not a historical identity.
 
-Fifteen Zobel five-element series-parallel mappings and all eight other
+The reviewed one-member graph-`M^d` group is applied through the same complete
+version 3 route. Its subject-bound graph match and reduction-target match to
+canonical network 73 are verified by the exact scoped computation from the
+merged evidence report. Network 73 is a reduction destination, not a historical
+identity.
+
+Fourteen Zobel five-element series-parallel mappings and all eight other
 O/O-dual or bridge mappings remain deliberately unassigned. The remaining
 entries are not called retained merely because no exclusion has yet been found.
 
@@ -311,7 +323,7 @@ Mapped exclusion counts are consistency-checked against the evidence-linked
 historical targets. The total may not exceed forty, and no controlled category
 may exceed its declared `8`, `4`, `20`, or `8` target. Category counts must sum
 to the mapped exclusion total. These are upper bounds while the ledger is
-incomplete; equality is not required and the current mapping is seventeen.
+incomplete; equality is not required and the current mapping is eighteen.
 
 ## Regeneration and validation
 
@@ -334,7 +346,7 @@ paths, or unstable metadata. `--check` fails if the committed ledger differs.
 
 1. Add independently checked basic-graph fixtures and map the 148 structural
    records without treating previous-workspace graph files as authoritative.
-2. Establish the remaining fifteen individual five-element series-parallel
+2. Establish the remaining fourteen individual five-element series-parallel
    Zobel mappings through complete reviewed evidence groups.
 3. Identify the final eight O/O-dual and bridge cases and record each distinct
    Cauer-Foster, regularity, realizability, Y-delta, or other argument.

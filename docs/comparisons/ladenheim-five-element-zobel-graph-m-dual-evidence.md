@@ -8,10 +8,12 @@ by a Zobel transformation to canonical network 73. It transcribes the rendered
 source diagrams, searches all 85 five-element RICE records under the committed
 structural relation, and checks the resulting coloured topology and reduction.
 
-This is evidence only. It does not update the production ledger, assign a basic
-graph or historical identity, reproduce the canonical 108 catalogue, or make a
-claim about any other graph family. Production remains 17 excluded, 131
-unresolved, and 0 retained.
+This report was originally prepared as evidence only and did not itself update
+the production ledger, assign a basic graph or historical identity, reproduce
+the canonical 108 catalogue, or make a claim about another family. The
+production update containing this revision applies the reviewed mapping through
+the complete version 3 subject-bound route. With that update, production has 18
+excluded, 130 unresolved, and 0 retained.
 
 ## 2. Authoritative statements and production baseline
 
@@ -27,7 +29,8 @@ Thus the publication establishes the graph family, population, composition,
 exclusion mechanism, and target; the RICE correspondence remains an
 independently reproduced conclusion.
 
-The committed production ledger at the start and end of this investigation has:
+The committed production ledger when this evidence investigation was prepared
+had:
 
 ```text
 excluded:   17
@@ -35,8 +38,9 @@ unresolved: 131
 retained:    0
 ```
 
-All production `basic_graph_assignment` values remain null and all historical
-identifier lists remain empty.
+The production update containing this revision changes only this subject's
+status and disposition. All production `basic_graph_assignment` values remain
+null and all historical identifier lists remain empty.
 
 ## 3. Source identity, checksum, and locators
 
@@ -350,11 +354,11 @@ individual correspondence is independently reproduced rather than individually
 source-stated. Duality informed the identity to derive but did not select or
 prove the catalogue subject.
 
-This report does not apply the mapping. The target number is not a historical
-identity, no graph assignment is populated, and no conclusion is made about
-another family or the eight final exclusions. All fifteen five-element Zobel
-exclusions that were unapplied at the start, including this subject, remain
-unapplied. A separate reviewed production change is required.
+The production update containing this revision applies this mapping through the
+complete version 3 route. The target number is not a historical identity, no
+graph assignment is populated, and no conclusion is made about another family
+or the eight final exclusions. Fourteen five-element Zobel exclusions remain
+unapplied.
 
 ## 18. Complete reproduction commands and observed output
 
@@ -540,11 +544,11 @@ row = next(
     record for record in ledger["records"]
     if record["catalogue_id"] == EXPECTED_ID
 )
-assert row["comparison_status"] == "unresolved"
-assert row["proposed_disposition"] == "unresolved"
+assert row["comparison_status"] == "derived-structural-match"
+assert row["proposed_disposition"] == "exclude"
 assert ledger["summary"]["by_proposed_disposition"] == {
-    "exclude": 17,
-    "unresolved": 131,
+    "exclude": 18,
+    "unresolved": 130,
 }
 assert all(record["basic_graph_assignment"] is None for record in ledger["records"])
 assert all(record["historical_identifiers"] == [] for record in ledger["records"])
@@ -570,7 +574,7 @@ print("coloured graph-M-dual signature: pass")
 print("graph-H-dual and canonical network 73 signatures: pass")
 print("dual Zobel exact checks: 4 tuples x 5 W values pass")
 print("forward/inverse positivity and recovery: pass")
-print("production unchanged: 17 excluded / 131 unresolved / 0 retained")
+print("production updated: 18 excluded / 130 unresolved / 0 retained")
 print("all graph assignments null; all historical identifiers empty")
 PY
 ```
@@ -590,6 +594,6 @@ coloured graph-M-dual signature: pass
 graph-H-dual and canonical network 73 signatures: pass
 dual Zobel exact checks: 4 tuples x 5 W values pass
 forward/inverse positivity and recovery: pass
-production unchanged: 17 excluded / 131 unresolved / 0 retained
+production updated: 18 excluded / 130 unresolved / 0 retained
 all graph assignments null; all historical identifiers empty
 ```

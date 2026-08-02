@@ -67,6 +67,28 @@
         "rice-lh148-045c192be4de396d-graph-m-match",
         "rice-lh148-045c192be4de396d-target-72"
       ]
+    },
+    {
+      "commit_sha": "6bc0862eb4bd6e457aed41f97939eb6cbf6ab78d",
+      "cross_check_id": "rice-five-element-zobel-graph-m-dual-report-reproduction",
+      "implementation": "Reproduction commands in docs/comparisons/ladenheim-five-element-zobel-graph-m-dual-evidence.md",
+      "independently_reproduced": true,
+      "input": "The 148-record catalogue, the transcribed graph-M-dual coloured fixture, the canonical network 73 target fixture, and positive exact-arithmetic dual Zobel parameters",
+      "limitations": "This independently checks the RICE graph-M-dual correspondence and reduction target; it is not an individual historical source statement or a canonical identity assignment.",
+      "operation": "Enumerate all 85 five-element records and the unique graph-M-dual match, compare exact coloured structural and target signatures, derive the dual Zobel coefficient maps, and check exact Fraction substitutions and positive finite coefficients in both directions",
+      "provenance_level": "independently-reproduced-computation",
+      "reduction_target_network_numbers": [
+        73
+      ],
+      "result": "Exactly one R3L1C1 graph-M-dual subject matches the reviewed coloured fixture and reduces to canonical network 73 through one dual Zobel step and a parallel resistor merge with positive finite coefficients.",
+      "subject_catalogue_ids": [
+        "lh148-635770ede187bca9"
+      ],
+      "verification_state": "cross-checked",
+      "verified_evidence_record_ids": [
+        "rice-lh148-635770ede187bca9-graph-m-dual-match",
+        "rice-lh148-635770ede187bca9-target-73"
+      ]
     }
   ],
   "evidence_records": [
@@ -627,6 +649,91 @@
       "provenance_level": "rice-derived-network-equivalence-fact",
       "source_id": "rice-five-element-zobel-graph-m-report",
       "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "aggregate-basic-graph-exclusion",
+        "graph_label": "M^d",
+        "source_population": 1,
+        "supported_disposition": "exclude",
+        "supported_exclusion_category": "zobel-five-element-series-parallel",
+        "supported_reduction_targets": [
+          73
+        ]
+      },
+      "evidence_id": "ms-2019-five-element-zobel-graph-m-dual-group",
+      "locator": {
+        "pdf_page_index": 48,
+        "printed_page": 42,
+        "section": "5.1"
+      },
+      "notes": "This is a one-member graph-family, population, category, and target statement; it does not print or identify a RICE catalogue subject.",
+      "paraphrase": "One five-element series-parallel network with basic graph M-dual is excluded by Zobel reduction to canonical network 73.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "claim_type": "basic-graph-definition",
+        "definition": {
+          "base_label": "M",
+          "fixture_id": "morelli-smith-Md-five-edge",
+          "graph_label": "M^d",
+          "is_dual": true
+        }
+      },
+      "evidence_id": "ms-2019-basic-graph-m-dual-definition",
+      "locator": {
+        "appendix": "B",
+        "pdf_page_index": 133,
+        "printed_page": 127
+      },
+      "notes": "Normalized fixture: vertices A,B,E; terminals A,E; edges AE,AB and three distinct parallel BE edges.",
+      "paraphrase": "The rendered Appendix B diagram defines graph M-dual as AE in parallel with AB followed by three parallel B-E branches.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "claim_type": "basic-graph-match",
+        "match": {
+          "fixture_id": "morelli-smith-Md-five-edge",
+          "graph_label": "M^d",
+          "matched": true,
+          "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1"
+        },
+        "subject_catalogue_ids": [
+          "lh148-635770ede187bca9"
+        ]
+      },
+      "evidence_id": "rice-lh148-635770ede187bca9-graph-m-dual-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-five-element-zobel-graph-m-dual-evidence.md"
+      },
+      "paraphrase": "The complete 85-record census and coloured signature comparison uniquely match R parallel to R--(R parallel L parallel C) on graph M-dual to this R3L1C1 catalogue record.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-five-element-zobel-graph-m-dual-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "reduction-target-match",
+        "subject_catalogue_ids": [
+          "lh148-635770ede187bca9"
+        ],
+        "target_network_number": 73
+      },
+      "evidence_id": "rice-lh148-635770ede187bca9-target-73",
+      "locator": {
+        "network_number": 73,
+        "repository_path": "docs/comparisons/ladenheim-five-element-zobel-graph-m-dual-evidence.md"
+      },
+      "paraphrase": "The reviewed dual Zobel step and same-kind parallel resistor merge reduce this graph-M-dual record to the independently transcribed canonical network 73 topology with positive finite coefficients.",
+      "provenance_level": "rice-derived-network-equivalence-fact",
+      "source_id": "rice-five-element-zobel-graph-m-dual-report",
+      "verification_state": "cross-checked"
     }
   ],
   "format_version": 3,
@@ -781,6 +888,36 @@
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "exclude"
+    },
+    {
+      "basic_graph_assignment": null,
+      "catalogue_id": "lh148-635770ede187bca9",
+      "comparison_status": "derived-structural-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-zobel-graph-m-dual-report-reproduction"
+      ],
+      "confidence": "high",
+      "evidence_basis": [
+        "aggregate-historical-graph-group-plus-subject-bound-rice-match",
+        "mechanically-derived-rice-structural-fact"
+      ],
+      "evidence_record_ids": [
+        "ms-2019-five-element-zobel-graph-m-dual-group",
+        "ms-2019-basic-graph-m-dual-definition",
+        "rice-lh148-635770ede187bca9-graph-m-dual-match",
+        "rice-lh148-635770ede187bca9-target-73"
+      ],
+      "exclusion_category": "zobel-five-element-series-parallel",
+      "exclusion_reason": "The source states the one-member graph-M-dual Zobel exclusion and target; the complete RICE census independently selects this R3L1C1 subject, and the reviewed structural and dual Zobel derivation checks its reduction to canonical network 73.",
+      "historical_identifiers": [],
+      "notes": [
+        "The RICE-ID correspondence is independently checked repository evidence, not an individual RICE mapping printed by the historical source; canonical network 73 is a reduction target only."
+      ],
+      "open_questions": [
+        "Which of the remaining fourteen five-element series-parallel Zobel exclusions can be established through complete graph-family groups?"
+      ],
+      "previous_workspace_record_ids": [],
+      "proposed_disposition": "exclude"
     }
   ],
   "rules": [
@@ -892,6 +1029,12 @@
       "citation": "RICE graph-M five-element Zobel exclusion evidence report.",
       "notes": "Reviewed repository documentation recording the complete graph-M candidate census, coloured structural match, target allocation, symbolic derivation, and exact Zobel checks; it is not the authoritative historical publication.",
       "source_id": "rice-five-element-zobel-graph-m-report",
+      "source_type": "rice-documentation"
+    },
+    {
+      "citation": "RICE graph-M-dual five-element Zobel exclusion evidence report.",
+      "notes": "Reviewed repository documentation recording the complete graph-M-dual candidate census, coloured structural match, target allocation, dual Zobel derivation, and exact checks; it is not the authoritative historical publication.",
+      "source_id": "rice-five-element-zobel-graph-m-dual-report",
       "source_type": "rice-documentation"
     }
   ],
