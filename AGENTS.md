@@ -74,6 +74,10 @@ Use explicit wording instead, for example:
 Use `PR 65` or `issue 12` when plain text is intended, and `#65` or `#12` only
 when deliberately referring to that GitHub pull request or issue.
 
+Apply this convention prospectively. Do not perform repository-wide cleanup of
+existing domain-number references unless a task explicitly requests it; use the
+explicit form for all new or deliberately revised references.
+
 ## Development environment
 
 Use Python 3.11 or newer.
