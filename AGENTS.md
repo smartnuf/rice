@@ -52,6 +52,28 @@ and documented sufficiently. Not every task is intended to move an item to
 `done`. Add concise progress notes against the relevant plan document, and
 expand near-term plan steps as the implementation path becomes clearer.
 
+### GitHub number references
+
+In GitHub-facing text—including pull-request descriptions, issue comments,
+review comments, review replies, commit messages, and Markdown rendered on
+GitHub—reserve `#<number>` exclusively for actual GitHub issue or pull-request
+references.
+
+Do not use hash-prefixed numbers for canonical networks, basic graphs, figures,
+targets, catalogue entries, equations, or other domain identifiers. GitHub may
+incorrectly expand them into issue or pull-request links.
+
+Use explicit wording instead, for example:
+
+- `canonical network 72`
+- `network 15`
+- `basic graph 3`
+- `Figure 5.2`
+- `target 20`
+
+Use `PR 65` or `issue 12` when plain text is intended, and `#65` or `#12` only
+when deliberately referring to that GitHub pull request or issue.
+
 ## Development environment
 
 Use Python 3.11 or newer.
