@@ -16,6 +16,22 @@ from rice.ladenheim_evidence import (
 CATALOGUE_PATH = Path("data/counts/ladenheim-148.json")
 ANNOTATION_PATH = Path("data/comparisons/ladenheim-108-annotations.json")
 LEDGER_PATH = Path("data/comparisons/ladenheim-148-to-108.json")
+ZOBEL_FOUR_ELEMENT_IDS = {
+    "lh148-d5533186cc51bbab",
+    "lh148-92649d60cfda8308",
+    "lh148-13547be0432aeee6",
+    "lh148-5c74dc46f966ac91",
+}
+SIMPLER_BILINEAR_IDS = {
+    "lh148-42d941084ce5f049",
+    "lh148-8e314b1dc699f2f3",
+    "lh148-a134c33979433ce6",
+    "lh148-f0ea8600831b22d5",
+    "lh148-82299f914f077df2",
+    "lh148-932f408750ebae4c",
+    "lh148-f0feabf623eadb0d",
+    "lh148-f78bad46fde941ae",
+}
 
 
 @pytest.fixture
@@ -332,7 +348,7 @@ def test_unique_match_accepts_exact_historical_and_mechanical_predicate(
         "r": 4,
         "lc": 1,
     }
-    assert ledger["summary"]["mapped_exclusions"] == 8
+    assert ledger["summary"]["mapped_exclusions"] == 12
 
 
 def test_rejected_rice_evidence_cannot_satisfy_unique_match(catalogue, annotations):
@@ -1178,8 +1194,13 @@ def test_category_counter_must_agree_with_total(catalogue, annotations):
         _validate_exclusion_counts(
             ledger["records"],
             ledger["target"],
-            8,
-            Counter({"simpler-bilinear-realisation": 7}),
+            12,
+            Counter(
+                {
+                    "simpler-bilinear-realisation": 8,
+                    "zobel-four-element": 3,
+                }
+            ),
         )
 
 
@@ -1268,25 +1289,86 @@ def test_unresolved_entry_needs_no_fabricated_evidence(catalogue, annotations):
     assert row["computational_cross_check_ids"] == []
 
 
-def test_exact_eight_and_140_distribution(catalogue, annotations):
+def test_exact_twelve_and_136_distribution(catalogue, annotations):
     ledger = generate_evidence_ledger(catalogue, annotations)
     assert ledger["summary"]["by_comparison_status"] == {
-        "derived-unique-match": 8,
-        "unresolved": 140,
+        "derived-unique-match": 12,
+        "unresolved": 136,
     }
     assert ledger["summary"]["by_proposed_disposition"] == {
-        "exclude": 8,
-        "unresolved": 140,
+        "exclude": 12,
+        "unresolved": 136,
     }
+    assert ledger["summary"]["by_exclusion_category"] == {
+        "simpler-bilinear-realisation": 8,
+        "unresolved": 136,
+        "zobel-four-element": 4,
+    }
+    assert ledger["summary"]["mapped_exclusions"] == 12
+    assert ledger["summary"]["unresolved_dispositions"] == 136
     assert all(row["proposed_disposition"] != "retain" for row in ledger["records"])
     mapped = [row for row in ledger["records"] if row["proposed_disposition"] == "exclude"]
-    assert len(mapped) == 8
-    assert all(row["r"] == 4 and row["lc"] == 1 for row in mapped)
+    assert len(mapped) == 12
     assert all(row["comparison_status"] == "derived-unique-match" for row in mapped)
     assert all(row["comparison_status"] != "ambiguous" for row in ledger["records"])
     assert ledger["target"]["reproduction_claimed"] is False
     assert all(row["historical_identifiers"] == [] for row in ledger["records"])
     assert all(row["basic_graph_assignment"] is None for row in ledger["records"])
+
+
+def test_exact_four_element_zobel_exclusions(catalogue, annotations):
+    ledger = generate_evidence_ledger(catalogue, annotations)
+    rows = {
+        row["catalogue_id"]: row
+        for row in ledger["records"]
+        if row["exclusion_category"] == "zobel-four-element"
+    }
+    assert set(rows) == ZOBEL_FOUR_ELEMENT_IDS
+    assert all(row["proposed_disposition"] == "exclude" for row in rows.values())
+    assert all(row["comparison_status"] == "derived-unique-match" for row in rows.values())
+    assert {
+        (row["r"], row["l"], row["c"], row["rlc"])
+        for row in rows.values()
+    } == {(3, 1, 0, 4), (3, 0, 1, 4)}
+
+
+def test_four_element_zobel_generation_is_deterministic(catalogue, annotations):
+    first = generate_evidence_ledger(catalogue, annotations)
+    second = generate_evidence_ledger(catalogue, annotations)
+    assert first == second
+    assert json.loads(LEDGER_PATH.read_text(encoding="utf-8")) == first
+
+
+def test_existing_simpler_bilinear_exclusions_are_unchanged(catalogue, annotations):
+    ledger = generate_evidence_ledger(catalogue, annotations)
+    rows = {
+        row["catalogue_id"]: row
+        for row in ledger["records"]
+        if row["exclusion_category"] == "simpler-bilinear-realisation"
+    }
+    assert set(rows) == SIMPLER_BILINEAR_IDS
+    assert all(row["r"] == 4 and row["lc"] == 1 for row in rows.values())
+    assert all(row["proposed_disposition"] == "exclude" for row in rows.values())
+
+
+def test_exclusion_category_population_and_empty_identifiers(catalogue, annotations):
+    ledger = generate_evidence_ledger(catalogue, annotations)
+    categories = Counter(row["exclusion_category"] for row in ledger["records"])
+    assert categories["simpler-bilinear-realisation"] == 8
+    assert categories["zobel-four-element"] == 4
+    assert categories["zobel-five-element-series-parallel"] == 0
+    assert categories["other-canonical-exclusion"] == 0
+    assert categories["unresolved"] == 136
+    assert all(row["basic_graph_assignment"] is None for row in ledger["records"])
+    assert all(row["historical_identifiers"] == [] for row in ledger["records"])
+    assert all(
+        not any(
+            identifier.get("value") in {15, 17}
+            for identifier in row["historical_identifiers"]
+        )
+        for row in ledger["records"]
+        if row["catalogue_id"] in ZOBEL_FOUR_ELEMENT_IDS
+    )
 
 
 def test_ledger_has_every_source_id_once_in_source_order(catalogue, annotations):
@@ -1600,7 +1682,7 @@ def test_previous_workspace_computation_requires_unreproduced_flag(
 def test_consistent_computational_provenance_is_accepted(
     catalogue, annotations, record_factory
 ):
-    annotations["computational_cross_checks"] = [record_factory()]
+    annotations["computational_cross_checks"].append(record_factory())
     generate_evidence_ledger(catalogue, annotations)
 
 
