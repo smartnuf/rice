@@ -162,6 +162,10 @@ COMPUTATION_FIELDS = {
     "operation", "result", "independently_reproduced", "limitations",
     "verification_state",
 }
+COMPUTATION_OPTIONAL_FIELDS = {
+    "subject_catalogue_ids",
+    "reduction_target_network_numbers",
+}
 TARGET_FIELDS = {
     "source_population", "reported_members", "reported_exclusions",
     "exclusion_category_targets", "evidence_record_ids",
@@ -713,14 +717,17 @@ def _validate_workspace_records(
 
 
 def _validate_computational_cross_checks(
-    values: Any,
+    values: Any, catalogue_ids: set[str],
 ) -> dict[str, dict[str, Any]]:
     records = _objects_by_id(
         values, "computational_cross_checks", "cross_check_id"
     )
     for record_id, record in records.items():
         _validate_object_shape(
-            record, f"cross-check {record_id}", COMPUTATION_FIELDS
+            record,
+            f"cross-check {record_id}",
+            COMPUTATION_FIELDS,
+            COMPUTATION_OPTIONAL_FIELDS,
         )
         if not _is_controlled(record.get("provenance_level"), COMPUTATION_PROVENANCE_LEVELS):
             raise ValueError(f"cross-check {record_id} has invalid provenance_level")
@@ -738,6 +745,37 @@ def _validate_computational_cross_checks(
             raise ValueError(
                 f"cross-check {record_id} provenance contradicts independently_reproduced"
             )
+        has_subjects = "subject_catalogue_ids" in record
+        has_targets = "reduction_target_network_numbers" in record
+        if has_subjects is not has_targets:
+            raise ValueError(
+                f"cross-check {record_id} scope fields must be present together"
+            )
+        if has_subjects:
+            subjects = record["subject_catalogue_ids"]
+            targets = record["reduction_target_network_numbers"]
+            _require_unique_string_list(
+                subjects, f"cross-check {record_id} subject_catalogue_ids"
+            )
+            unknown = set(subjects) - catalogue_ids
+            if unknown:
+                raise ValueError(
+                    f"cross-check {record_id} has unknown catalogue subjects: "
+                    f"{sorted(unknown)}"
+                )
+            if (
+                not isinstance(targets, list)
+                or not targets
+                or not all(_is_int(value) and 1 <= value <= 108 for value in targets)
+                or len(set(targets)) != len(targets)
+            ):
+                raise ValueError(
+                    f"cross-check {record_id} has invalid reduction target scope"
+                )
+            if len(subjects) != len(targets):
+                raise ValueError(
+                    f"cross-check {record_id} scope lists must have equal lengths"
+                )
     return records
 
 
@@ -1002,23 +1040,20 @@ def _validate_assertion(
                 "aggregate basic-graph exclusion"
             )
         aggregate = aggregates[0]["claim"]
-        definitions = [
-            record
-            for record in _matching_evidence(
-                evidence_ids, evidence, "basic-graph-definition"
-            )
-            if _is_authoritative(record)
-            and record["claim"]["definition"]["graph_label"]
-            == aggregate["graph_label"]
-        ]
-        if not definitions:
+        definition_records = _matching_evidence(
+            evidence_ids, evidence, "basic-graph-definition"
+        )
+        if (
+            len(definition_records) != 1
+            or not _is_authoritative(definition_records[0])
+            or definition_records[0]["claim"]["definition"]["graph_label"]
+            != aggregate["graph_label"]
+        ):
             raise ValueError(
-                "derived-structural-match requires authoritative basic-graph definition"
+                "derived-structural-match requires exactly one matching authoritative "
+                "basic-graph definition"
             )
-        fixture_ids = {
-            record["claim"]["definition"]["fixture_id"]
-            for record in definitions
-        }
+        fixture_id = definition_records[0]["claim"]["definition"]["fixture_id"]
         graph_matches = [
             record
             for record in _matching_evidence(
@@ -1029,7 +1064,7 @@ def _validate_assertion(
             and record["claim"]["match"]["matched"] is True
             and record["claim"]["match"]["graph_label"]
             == aggregate["graph_label"]
-            and record["claim"]["match"]["fixture_id"] in fixture_ids
+            and record["claim"]["match"]["fixture_id"] == fixture_id
             and record["claim"]["match"]["structural_relation"]
             == SOURCE_CATALOGUE_RELATION
         ]
@@ -1202,6 +1237,7 @@ def _validate_derived_structural_groups(
     explicit: dict[str, dict[str, Any]],
     rules: list[dict[str, Any]],
     evidence: dict[str, dict[str, Any]],
+    computations: dict[str, dict[str, Any]],
 ) -> None:
     aggregate_ids = {
         evidence_id
@@ -1231,8 +1267,59 @@ def _validate_derived_structural_groups(
             raise ValueError(
                 "derived structural group population differs from authoritative claim"
             )
+        member_ids = {catalogue_id for catalogue_id, _assertion in members}
+        definition_ids_by_member = []
+        for _catalogue_id, assertion in members:
+            definition_ids_by_member.append({
+                evidence_id
+                for evidence_id in assertion["evidence_record_ids"]
+                if evidence[evidence_id]["claim"]["claim_type"]
+                == "basic-graph-definition"
+            })
+        if (
+            not definition_ids_by_member
+            or any(len(ids) != 1 for ids in definition_ids_by_member)
+            or any(ids != definition_ids_by_member[0] for ids in definition_ids_by_member)
+        ):
+            raise ValueError(
+                "derived structural group requires one common authoritative "
+                "graph-definition evidence record"
+            )
+        definition_id = next(iter(definition_ids_by_member[0]))
+        definition_record = evidence[definition_id]
+        definition = definition_record["claim"]["definition"]
+        if (
+            not _is_authoritative(definition_record)
+            or definition["graph_label"] != aggregate["graph_label"]
+        ):
+            raise ValueError(
+                "derived structural group common graph definition must be authoritative "
+                "and match the aggregate graph label"
+            )
+        fixture_id = definition["fixture_id"]
         allocated_targets = []
         for catalogue_id, assertion in members:
+            graph_matches = [
+                record
+                for record in _matching_evidence(
+                    assertion["evidence_record_ids"],
+                    evidence,
+                    "basic-graph-match",
+                )
+                if _is_positive_rice_derived(record)
+                and record["claim"]["subject_catalogue_ids"] == [catalogue_id]
+                and record["claim"]["match"] == {
+                    "fixture_id": fixture_id,
+                    "graph_label": aggregate["graph_label"],
+                    "structural_relation": SOURCE_CATALOGUE_RELATION,
+                    "matched": True,
+                }
+            ]
+            if len(graph_matches) != 1:
+                raise ValueError(
+                    "derived structural group member must match the common "
+                    "authoritative graph fixture"
+                )
             target_matches = [
                 record
                 for record in _matching_evidence(
@@ -1256,6 +1343,30 @@ def _validate_derived_structural_groups(
         if set(allocated_targets) != set(aggregate["supported_reduction_targets"]):
             raise ValueError(
                 "derived structural group target set differs from authoritative claim"
+            )
+        target_set = set(aggregate["supported_reduction_targets"])
+        qualifying_computation_ids = []
+        for _catalogue_id, assertion in members:
+            qualifying_computation_ids.append({
+                computation_id
+                for computation_id in assertion["computational_cross_check_ids"]
+                if computations[computation_id]["provenance_level"]
+                == "independently-reproduced-computation"
+                and computations[computation_id]["independently_reproduced"] is True
+                and computations[computation_id]["verification_state"] == "cross-checked"
+                and set(computations[computation_id].get("subject_catalogue_ids", []))
+                == member_ids
+                and set(
+                    computations[computation_id].get(
+                        "reduction_target_network_numbers", []
+                    )
+                )
+                == target_set
+            })
+        if not set.intersection(*qualifying_computation_ids):
+            raise ValueError(
+                "derived structural group requires one common independently reproduced "
+                "computation scoped to its exact subjects and reduction targets"
             )
 
 
@@ -1430,7 +1541,9 @@ def generate_evidence_ledger(
         annotations.get("evidence_records"), sources, set(ids)
     )
     workspace = _validate_workspace_records(annotations.get("previous_workspace_records"), sources)
-    computations = _validate_computational_cross_checks(annotations.get("computational_cross_checks"))
+    computations = _validate_computational_cross_checks(
+        annotations.get("computational_cross_checks"), set(ids)
+    )
     namespaces = [set(sources), set(evidence), set(workspace), set(computations)]
     if sum(len(items) for items in namespaces) != len(set().union(*namespaces)):
         raise ValueError("record IDs must occupy separate namespaces")
@@ -1506,7 +1619,7 @@ def generate_evidence_ledger(
         for row in matches:
             resolved[row["catalogue_id"]] = deepcopy(assertion)
 
-    _validate_derived_structural_groups(explicit, rules, evidence)
+    _validate_derived_structural_groups(explicit, rules, evidence, computations)
 
     ledger_rows = []
     for source_row in records:

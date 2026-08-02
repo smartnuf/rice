@@ -190,7 +190,12 @@ that cannot be selected by component counts. It joins an authoritative,
 source-verified `aggregate-basic-graph-exclusion` claim to an authoritative
 basic-graph definition, a subject-bound RICE `basic-graph-match`, a
 cross-checked `reduction-target-match`, and an independently reproduced
-computation. Reduction-target evidence uses
+computation. Every member of an aggregate group must cite the same single
+authoritative graph-definition record and use its fixture under the committed
+structural relation. The common computation must carry machine-readable scope
+equal to the group's complete catalogue-subject and reduction-target sets, and
+every member must cite that computation; an unscoped or unrelated computation
+cannot satisfy this route. Reduction-target evidence uses
 `rice-derived-network-equivalence-fact` provenance; a target is a reduction
 destination and does not become a historical identifier of the excluded row.
 This route does not require `basic_graph_assignment` or a historical identifier.

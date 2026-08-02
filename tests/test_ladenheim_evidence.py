@@ -171,6 +171,8 @@ def _populate_derived_structural_group(catalogue, annotations):
         "implementation": "fixture graph-group reproduction",
         "operation": "match coloured fixtures and exact reductions",
         "result": "four unique subject and target matches",
+        "subject_catalogue_ids": list(unresolved_ids),
+        "reduction_target_network_numbers": list(targets),
     })
     annotations["computational_cross_checks"].append(computation)
     for catalogue_id, target in zip(unresolved_ids, targets):
@@ -1480,6 +1482,29 @@ def _fixture_evidence(annotations, claim_type, subject_id=None):
     return matches[0]
 
 
+def _fixture_computation(annotations, computation_id):
+    matches = [
+        record
+        for record in annotations["computational_cross_checks"]
+        if record["cross_check_id"] == computation_id
+    ]
+    assert len(matches) == 1
+    return matches[0]
+
+
+def _append_graph_definition(
+    annotations, *, evidence_id, fixture_id, graph_label="L"
+):
+    definition = deepcopy(
+        _fixture_evidence(annotations, "basic-graph-definition")
+    )
+    definition["evidence_id"] = evidence_id
+    definition["claim"]["definition"]["graph_label"] = graph_label
+    definition["claim"]["definition"]["fixture_id"] = fixture_id
+    annotations["evidence_records"].append(definition)
+    return definition
+
+
 def test_complete_derived_structural_group_is_accepted(catalogue, annotations):
     fixture = _populate_derived_structural_group(catalogue, annotations)
     ledger = generate_evidence_ledger(catalogue, annotations)
@@ -1586,6 +1611,49 @@ def test_derived_structural_group_rejects_graph_or_fixture_mismatch(
         generate_evidence_ledger(catalogue, annotations)
 
 
+def test_derived_structural_group_rejects_split_authoritative_fixtures(
+    catalogue, annotations
+):
+    fixture = _populate_derived_structural_group(catalogue, annotations)
+    second = _append_graph_definition(
+        annotations,
+        evidence_id="fixture-graph-l-second-definition",
+        fixture_id="fixture-L-alternate-five-edge",
+    )
+    for catalogue_id, row in zip(fixture["subject_ids"][2:], annotations["records"][2:]):
+        row["evidence_record_ids"][1] = second["evidence_id"]
+        match = _fixture_evidence(annotations, "basic-graph-match", catalogue_id)
+        match["claim"]["match"]["fixture_id"] = "fixture-L-alternate-five-edge"
+    with pytest.raises(ValueError, match="common authoritative graph-definition"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_derived_structural_group_rejects_different_definition_id(
+    catalogue, annotations
+):
+    _populate_derived_structural_group(catalogue, annotations)
+    second = _append_graph_definition(
+        annotations,
+        evidence_id="fixture-graph-l-duplicate-definition",
+        fixture_id="fixture-L-five-edge",
+    )
+    annotations["records"][-1]["evidence_record_ids"][1] = second["evidence_id"]
+    with pytest.raises(ValueError, match="common authoritative graph-definition"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_derived_structural_group_rejects_match_outside_common_fixture(
+    catalogue, annotations
+):
+    fixture = _populate_derived_structural_group(catalogue, annotations)
+    match = _fixture_evidence(
+        annotations, "basic-graph-match", fixture["subject_ids"][-1]
+    )
+    match["claim"]["match"]["fixture_id"] = "fixture-L-alternate-five-edge"
+    with pytest.raises(ValueError, match="subject-bound graph match"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
 def test_derived_structural_group_rejects_target_for_wrong_subject(
     catalogue, annotations
 ):
@@ -1604,6 +1672,96 @@ def test_derived_structural_group_requires_reproduced_computation(
     _populate_derived_structural_group(catalogue, annotations)
     annotations["records"][0]["computational_cross_check_ids"] = []
     with pytest.raises(ValueError, match="independently reproduced"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_derived_structural_group_rejects_positive_unscoped_computation(
+    catalogue, annotations
+):
+    fixture = _populate_derived_structural_group(catalogue, annotations)
+    computation = _fixture_computation(annotations, fixture["computation_id"])
+    del computation["subject_catalogue_ids"]
+    del computation["reduction_target_network_numbers"]
+    with pytest.raises(ValueError, match="scoped to its exact subjects"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_derived_structural_group_rejects_wrong_computation_subjects(
+    catalogue, annotations
+):
+    fixture = _populate_derived_structural_group(catalogue, annotations)
+    computation = _fixture_computation(annotations, fixture["computation_id"])
+    replacement = next(
+        row["catalogue_id"]
+        for row in catalogue["records"]
+        if row["catalogue_id"] not in fixture["subject_ids"]
+    )
+    computation["subject_catalogue_ids"][-1] = replacement
+    with pytest.raises(ValueError, match="scoped to its exact subjects"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_derived_structural_group_rejects_wrong_computation_targets(
+    catalogue, annotations
+):
+    fixture = _populate_derived_structural_group(catalogue, annotations)
+    computation = _fixture_computation(annotations, fixture["computation_id"])
+    computation["reduction_target_network_numbers"][-1] = 31
+    with pytest.raises(ValueError, match="scoped to its exact subjects"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_derived_structural_group_rejects_computation_missing_subject(
+    catalogue, annotations
+):
+    fixture = _populate_derived_structural_group(catalogue, annotations)
+    computation = _fixture_computation(annotations, fixture["computation_id"])
+    computation["subject_catalogue_ids"].pop()
+    computation["reduction_target_network_numbers"].pop()
+    with pytest.raises(ValueError, match="scoped to its exact subjects"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_derived_structural_group_rejects_computation_extra_subject(
+    catalogue, annotations
+):
+    fixture = _populate_derived_structural_group(catalogue, annotations)
+    computation = _fixture_computation(annotations, fixture["computation_id"])
+    extra = next(
+        row["catalogue_id"]
+        for row in catalogue["records"]
+        if row["catalogue_id"] not in fixture["subject_ids"]
+    )
+    computation["subject_catalogue_ids"].append(extra)
+    computation["reduction_target_network_numbers"].append(31)
+    with pytest.raises(ValueError, match="scoped to its exact subjects"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_derived_structural_group_rejects_different_scoped_computations(
+    catalogue, annotations
+):
+    fixture = _populate_derived_structural_group(catalogue, annotations)
+    second = deepcopy(
+        _fixture_computation(annotations, fixture["computation_id"])
+    )
+    second["cross_check_id"] = "fixture-graph-l-second-computation"
+    annotations["computational_cross_checks"].append(second)
+    for row in annotations["records"][2:]:
+        row["computational_cross_check_ids"] = [second["cross_check_id"]]
+    with pytest.raises(ValueError, match="one common independently reproduced"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_derived_structural_group_rejects_unrelated_existing_computation(
+    catalogue, annotations
+):
+    _populate_derived_structural_group(catalogue, annotations)
+    for row in annotations["records"][-4:]:
+        row["computational_cross_check_ids"] = [
+            "rice-four-element-zobel-report-reproduction"
+        ]
+    with pytest.raises(ValueError, match="scoped to its exact subjects"):
         generate_evidence_ledger(catalogue, annotations)
 
 
@@ -2037,6 +2195,35 @@ def test_consistent_computational_provenance_is_accepted(
 ):
     annotations["computational_cross_checks"].append(record_factory())
     generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize(
+    "field",
+    ["subject_catalogue_ids", "reduction_target_network_numbers"],
+)
+def test_computational_scope_fields_must_be_present_together(
+    catalogue, annotations, field
+):
+    record = _cross_check()
+    record[field] = (
+        [catalogue["records"][0]["catalogue_id"]]
+        if field == "subject_catalogue_ids"
+        else [20]
+    )
+    annotations["computational_cross_checks"].append(record)
+    with pytest.raises(ValueError, match="scope fields must be present together"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_computational_scope_lists_must_have_equal_lengths(
+    catalogue, annotations
+):
+    record = _cross_check()
+    record["subject_catalogue_ids"] = [catalogue["records"][0]["catalogue_id"]]
+    record["reduction_target_network_numbers"] = [20, 25]
+    annotations["computational_cross_checks"].append(record)
+    with pytest.raises(ValueError, match="scope lists must have equal lengths"):
+        generate_evidence_ledger(catalogue, annotations)
 
 
 def test_committed_structural_relation_is_required(catalogue, annotations):
