@@ -644,6 +644,16 @@ def _validate_evidence_records(
                 f"evidence {evidence_id} network_number locator does not match "
                 "the claimed canonical network"
             )
+        if (
+            claim["claim_type"] == "reduction-target-match"
+            and "network_number" in record["locator"]
+            and record["locator"]["network_number"]
+            != claim["target_network_number"]
+        ):
+            raise ValueError(
+                f"evidence {evidence_id} reduction-target locator does not match "
+                "the claimed target network"
+            )
         source = sources[source_id]
         if source["source_type"] == "previous-workspace-repository":
             raise ValueError(
@@ -1239,10 +1249,10 @@ def _validate_derived_structural_groups(
     evidence: dict[str, dict[str, Any]],
     computations: dict[str, dict[str, Any]],
 ) -> None:
+    consumers = [*explicit.values(), *rules]
     aggregate_ids = {
         evidence_id
-        for assertion in explicit.values()
-        if assertion["comparison_status"] == "derived-structural-match"
+        for assertion in consumers
         for evidence_id in assertion["evidence_record_ids"]
         if evidence[evidence_id]["claim"]["claim_type"]
         == "aggregate-basic-graph-exclusion"

@@ -1520,6 +1520,49 @@ def test_complete_derived_structural_group_is_accepted(catalogue, annotations):
     assert all(row["historical_identifiers"] == [] for row in rows.values())
 
 
+def test_aggregate_graph_claim_cannot_also_support_existing_rule(
+    catalogue, annotations
+):
+    fixture = _populate_derived_structural_group(catalogue, annotations)
+    annotations["rules"][0]["evidence_record_ids"].append(fixture["aggregate_id"])
+    with pytest.raises(ValueError, match="may support only explicit"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_rule_only_aggregate_graph_claim_consumer_is_rejected(
+    catalogue, annotations
+):
+    fixture = _populate_derived_structural_group(catalogue, annotations)
+    annotations["records"] = []
+    annotations["rules"][1]["evidence_record_ids"].append(fixture["aggregate_id"])
+    with pytest.raises(ValueError, match="may support only explicit"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_unresolved_record_cannot_consume_aggregate_graph_claim(
+    catalogue, annotations
+):
+    fixture = _populate_derived_structural_group(catalogue, annotations)
+    row = _unresolved_annotation(fixture["subject_ids"][0])
+    row["evidence_record_ids"] = [fixture["aggregate_id"]]
+    annotations["records"] = [row]
+    with pytest.raises(ValueError, match="may support only explicit"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_source_backed_record_cannot_consume_aggregate_graph_claim(
+    catalogue, annotations
+):
+    fixture = _populate_derived_structural_group(catalogue, annotations)
+    retained = _retained_evidence(fixture["subject_ids"][0])
+    annotations["evidence_records"].append(retained)
+    row = _source_backed_fixture(catalogue, annotations)
+    row["catalogue_id"] = fixture["subject_ids"][0]
+    row["evidence_record_ids"] = [retained["evidence_id"], fixture["aggregate_id"]]
+    with pytest.raises(ValueError, match="may support only explicit"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
 def test_derived_structural_group_rejects_incomplete_population(
     catalogue, annotations
 ):
@@ -1664,6 +1707,40 @@ def test_derived_structural_group_rejects_target_for_wrong_subject(
     target["claim"]["subject_catalogue_ids"] = [fixture["subject_ids"][1]]
     with pytest.raises(ValueError, match="subject-bound reduction-target match"):
         generate_evidence_ledger(catalogue, annotations)
+
+
+def test_reduction_target_matching_network_locator_is_accepted(
+    catalogue, annotations
+):
+    fixture = _populate_derived_structural_group(catalogue, annotations)
+    target = _fixture_evidence(
+        annotations, "reduction-target-match", fixture["subject_ids"][0]
+    )
+    target["locator"]["network_number"] = fixture["targets"][0]
+    generate_evidence_ledger(catalogue, annotations)
+
+
+def test_reduction_target_network_locator_mismatch_is_rejected(
+    catalogue, annotations
+):
+    fixture = _populate_derived_structural_group(catalogue, annotations)
+    target = _fixture_evidence(
+        annotations, "reduction-target-match", fixture["subject_ids"][0]
+    )
+    target["locator"]["network_number"] = 99
+    with pytest.raises(ValueError, match="reduction-target locator does not match"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_reduction_target_locator_may_omit_network_number(
+    catalogue, annotations
+):
+    fixture = _populate_derived_structural_group(catalogue, annotations)
+    target = _fixture_evidence(
+        annotations, "reduction-target-match", fixture["subject_ids"][0]
+    )
+    assert target["locator"] == {"repository_path": "docs/fixture-report.md"}
+    generate_evidence_ledger(catalogue, annotations)
 
 
 def test_derived_structural_group_requires_reproduced_computation(
