@@ -10,10 +10,12 @@ candidate census under
 `colour-preserving-port-augmented-cycle-matroid-v1`, and checks each proposed
 candidate-to-target correspondence structurally and algebraically.
 
-This is evidence for later review. It does not update the production evidence
-ledger, assign a historical number to an excluded record, or claim to reproduce
-the canonical 108-network catalogue. The production ledger remains 12 excluded,
-136 unresolved, and 0 retained.
+This report was originally prepared as evidence for later ledger review and did
+not itself change production, assign a historical number to an excluded record,
+or claim to reproduce the canonical 108-network catalogue. PR 63 applies the
+four reviewed graph-`L` mappings through the version 3 subject-bound evidence
+route. On that branch, the production ledger has 16 excluded, 132 unresolved,
+and 0 retained records.
 
 The publication states the four-member graph-family/target relationship only in
 aggregate. It does not print RICE catalogue IDs or pair individual graph-`L`
@@ -318,8 +320,10 @@ lh148-5eb31698974d07f8 -> #28
 ```
 
 All four mappings are `independently-checked`, not individually
-`source-stated`. They are ready for separate ledger review, but this report does
-not apply them.
+`source-stated`. This report originally supplied them for separate ledger
+review; PR 63 now applies them through the version 3 subject-bound evidence
+route. The target numbers remain reduction destinations rather than historical
+identities of the excluded records.
 
 ## 13. Remaining uncertainties
 

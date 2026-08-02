@@ -3,8 +3,8 @@
 This is an evidence ledger for comparing RICE's reproduced structural
 148-record catalogue with the reported canonical 108-network catalogue. It is
 not a reproduction of the 108 catalogue. The committed evidence currently maps
-twelve proposed exclusions by logically unique component and structural
-matches and leaves the other 136 records unresolved.
+sixteen proposed exclusions through reviewed unique and subject-bound
+structural evidence and leaves the other 132 records unresolved.
 
 ## Two different catalogue layers
 
@@ -27,13 +27,13 @@ The four aggregate comparison targets are:
 |---|---:|---:|---:|
 | Simpler bilinear realization: four resistors and one reactive | 8 | 8 | 0 |
 | Zobel-reducible four-element | 4 | 4 | 0 |
-| Zobel-reducible five-element series-parallel | 20 | 0 | 20 |
+| Zobel-reducible five-element series-parallel | 20 | 4 | 16 |
 | Other O/O-dual and bridge exclusions | 8 | 0 | 8 |
-| **Total** | **40** | **12** | **28** |
+| **Total** | **40** | **16** | **24** |
 
-The five-element and final O/O-dual or bridge rows are aggregate gaps, not
-identifications of particular RICE records. Their 28 individual mappings remain
-wholly unresolved.
+Sixteen five-element and all final O/O-dual or bridge rows remain aggregate
+gaps rather than identifications of particular RICE records. Their 24
+individual mappings remain unresolved.
 
 ## Evidence material and provenance
 
@@ -57,6 +57,12 @@ The reviewed repository report
 `docs/comparisons/ladenheim-four-element-zobel-evidence.md` independently
 reproduces the four RICE graph/composition correspondences and their algebraic
 reductions. It is repository evidence, not the authoritative historical source.
+The reviewed graph-`L` report at
+`docs/comparisons/ladenheim-five-element-zobel-graph-l-evidence.md` likewise
+reproduces the complete 85-record five-element census, the four graph-`L`
+matches, their coloured signatures and target fixtures, and exact Zobel checks.
+It documents independently checked correspondences rather than individual
+historical source statements.
 
 Previous research workspaces contain useful graph descriptions, images,
 descriptor transcriptions, and computational results. Those artefacts can help
@@ -226,9 +232,9 @@ hygiene. Unknown fields are rejected rather than copied into the ledger.
 Version 3 does not represent ambiguous candidate mappings. A later extension
 must record the finite candidate set, evidence for each candidate, the comparison
 relation, and why the evidence does not distinguish them. Also deferred are real
-basic-graph assignments, the remaining twenty-eight exclusions,
+basic-graph assignments, the remaining twenty-four exclusions,
 retained canonical membership, canonical network numbering, and transformation
-proofs beyond the reviewed four-element Zobel report. Absence of those schema
+proofs beyond the reviewed Zobel reports. Absence of those schema
 objects establishes none of those claims.
 
 ## Current population
@@ -236,23 +242,23 @@ objects establishes none of those claims.
 | Comparison status | Rows |
 |---|---:|
 | `derived-unique-match` | 12 |
-| `derived-structural-match` | 0 |
-| `unresolved` | 136 |
+| `derived-structural-match` | 4 |
+| `unresolved` | 132 |
 | **Total** | **148** |
 
 | Proposed disposition | Rows |
 |---|---:|
-| `exclude` | 12 |
-| `unresolved` | 136 |
+| `exclude` | 16 |
+| `unresolved` | 132 |
 | **Total** | **148** |
 
 | Exclusion category | Rows |
 |---|---:|
 | `simpler-bilinear-realisation` | 8 |
 | `zobel-four-element` | 4 |
-| `zobel-five-element-series-parallel` | 0 |
+| `zobel-five-element-series-parallel` | 4 |
 | `other-canonical-exclusion` | 0 |
-| `unresolved` | 136 |
+| `unresolved` | 132 |
 | **Total** | **148** |
 
 The structural catalogue contains exactly eight records with `R=4` and
@@ -272,25 +278,27 @@ checks their G/G-dual coloured structural matches and reductions to #15 or #17.
 The source does not state the individual RICE-ID correspondences, so these rows
 remain `derived-unique-match`, not `source-backed`.
 
-All twenty Zobel five-element series-parallel mappings and all eight other
+The four reviewed graph-`L` five-element mappings are applied through one
+complete version 3 group: a collective authoritative exclusion and target-set
+claim, one common authoritative graph definition, four exclusive subject-bound
+graph and target matches, and one independently reproduced computation bound
+to those eight selected evidence records. The targets are reduction
+destinations only; they are not historical identities of the excluded rows.
+
+Sixteen Zobel five-element series-parallel mappings and all eight other
 O/O-dual or bridge mappings remain deliberately unassigned. The remaining
 entries are not called retained merely because no exclusion has yet been found.
 
-The reviewed graph-`L` report establishes four subject-bound five-element
-matches and target reductions. Version 3 can represent that evidence, but this
-contract-only change does not apply it: production remains 12 excluded, 136
-unresolved, and 0 retained.
-
-Basic-graph fixtures and assignments, all remaining exclusions, and canonical
-network numbers are intentionally deferred to later focused changes. No graph
-letter or historical network number is asserted by this ledger, every
-`basic_graph_assignment` remains null, and no record is retained.
+Production basic-graph assignments, all remaining exclusions, and canonical
+network identities are intentionally deferred to later focused changes. Every
+`basic_graph_assignment` remains null, every historical identifier list remains
+empty, and no record is retained.
 
 Mapped exclusion counts are consistency-checked against the evidence-linked
 historical targets. The total may not exceed forty, and no controlled category
 may exceed its declared `8`, `4`, `20`, or `8` target. Category counts must sum
 to the mapped exclusion total. These are upper bounds while the ledger is
-incomplete; equality is not required and the current mapping is twelve.
+incomplete; equality is not required and the current mapping is sixteen.
 
 ## Regeneration and validation
 
@@ -313,9 +321,8 @@ paths, or unstable metadata. `--check` fails if the committed ledger differs.
 
 1. Add independently checked basic-graph fixtures and map the 148 structural
    records without treating previous-workspace graph files as authoritative.
-2. Apply the four reviewed graph-`L` mappings through the version 3
-   subject-bound route, then establish the remaining sixteen individual
-   five-element series-parallel Zobel mappings.
+2. Establish the remaining sixteen individual five-element series-parallel
+   Zobel mappings through complete reviewed evidence groups.
 3. Identify the final eight O/O-dual and bridge cases and record each distinct
    Cauer-Foster, regularity, realizability, Y-delta, or other argument.
 4. Transcribe and validate the surviving canonical network numbers from the
