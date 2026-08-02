@@ -362,7 +362,9 @@ unapplied.
 
 ## 18. Complete reproduction commands and observed output
 
-Run this paste-ready block from the RICE repository root:
+Run this paste-ready block from the RICE repository root on a revision
+containing the graph-`M^d` production application. Its production checks are
+intentionally subject-level, so later applications do not invalidate it:
 
 ```bash
 sha256sum \
@@ -546,12 +548,13 @@ row = next(
 )
 assert row["comparison_status"] == "derived-structural-match"
 assert row["proposed_disposition"] == "exclude"
-assert ledger["summary"]["by_proposed_disposition"] == {
-    "exclude": 18,
-    "unresolved": 130,
-}
-assert all(record["basic_graph_assignment"] is None for record in ledger["records"])
-assert all(record["historical_identifiers"] == [] for record in ledger["records"])
+assert row["exclusion_category"] == "zobel-five-element-series-parallel"
+assert row["basic_graph_assignment"] is None
+assert row["historical_identifiers"] == []
+assert "rice-lh148-635770ede187bca9-target-73" in row["evidence_record_ids"]
+assert row["computational_cross_check_ids"] == [
+    "rice-five-element-zobel-graph-m-dual-report-reproduction"
+]
 
 print("five-element records examined: 85")
 print("graph-M-dual candidates: 1")
@@ -574,8 +577,8 @@ print("coloured graph-M-dual signature: pass")
 print("graph-H-dual and canonical network 73 signatures: pass")
 print("dual Zobel exact checks: 4 tuples x 5 W values pass")
 print("forward/inverse positivity and recovery: pass")
-print("production updated: 18 excluded / 130 unresolved / 0 retained")
-print("all graph assignments null; all historical identifiers empty")
+print("graph-M-dual production subject: resolved exclusion with durable links")
+print("subject graph assignment null; historical identifiers empty")
 PY
 ```
 
@@ -594,6 +597,6 @@ coloured graph-M-dual signature: pass
 graph-H-dual and canonical network 73 signatures: pass
 dual Zobel exact checks: 4 tuples x 5 W values pass
 forward/inverse positivity and recovery: pass
-production updated: 18 excluded / 130 unresolved / 0 retained
-all graph assignments null; all historical identifiers empty
+graph-M-dual production subject: resolved exclusion with durable links
+subject graph assignment null; historical identifiers empty
 ```

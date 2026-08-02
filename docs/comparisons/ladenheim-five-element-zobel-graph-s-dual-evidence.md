@@ -364,8 +364,9 @@ remain outside this goal.
 
 ## 16. Reproduction commands
 
-Run from the RICE repository root on this production-application branch, or
-from a descendant containing this application:
+Run from the RICE repository root on a revision containing the graph-`S^d`
+production application. The production checks are intentionally subject-level,
+so later applications do not invalidate this reproduction:
 
 ```bash
 sha256sum \
@@ -725,30 +726,30 @@ with open(
 ) as stream:
     production = json.load(stream)
 assert production["format_version"] == 3
-assert production["summary"]["by_proposed_disposition"] == {
-    "exclude": 32,
-    "unresolved": 116,
+production_rows = {
+    row["catalogue_id"]: row for row in production["records"]
 }
-assert all(row["basic_graph_assignment"] is None for row in production["records"])
-assert all(not row["historical_identifiers"] for row in production["records"])
-assert all(
-    next(
-        row
-        for row in production["records"]
-        if row["catalogue_id"] == catalogue_id
-    )["comparison_status"]
-    == "derived-structural-match"
-    for catalogue_id in fixtures
-)
+for catalogue_id, (target, _, _, _) in fixtures.items():
+    row = production_rows[catalogue_id]
+    assert row["comparison_status"] == "derived-structural-match"
+    assert row["proposed_disposition"] == "exclude"
+    assert row["exclusion_category"] == "zobel-five-element-series-parallel"
+    assert row["basic_graph_assignment"] is None
+    assert row["historical_identifiers"] == []
+    assert f"rice-{catalogue_id}-target-{target}" in row["evidence_record_ids"]
+    assert row["computational_cross_check_ids"] == [
+        "rice-five-element-zobel-graph-s-dual-report-reproduction"
+    ]
 print("exact Figure 5.2 and immittance checks: 5 pathways OK")
-print("production: 32 excluded / 116 unresolved / 0 retained")
+print("graph-S-dual production subjects: 5 resolved exclusions with durable links")
 PY
 ```
 
 Observed deterministic output includes 85 five-element records, all 15
 graph-`S^d` candidates and their catalogue provenance, five successful coloured
-source/target checks, five exact Figure 5.2 pathways, and production at 32
-excluded / 116 unresolved / 0 retained.
+source/target checks, five exact Figure 5.2 pathways, and five resolved
+production subjects with durable target and computation links. The current
+32 excluded / 116 unresolved / 0 retained state is recorded above.
 The concluding output is:
 
 ```text
@@ -758,5 +759,5 @@ lh148-4cf39db00710fb1c -> canonical network 45 (C, C): coloured source and targe
 lh148-3bf13e1a1ad41cd5 -> canonical network 48 (C, L): coloured source and target fixtures OK
 lh148-aefb4b8fe01749c6 -> canonical network 72 (R, L--C): coloured source and target fixtures OK
 exact Figure 5.2 and immittance checks: 5 pathways OK
-production: 32 excluded / 116 unresolved / 0 retained
+graph-S-dual production subjects: 5 resolved exclusions with durable links
 ```

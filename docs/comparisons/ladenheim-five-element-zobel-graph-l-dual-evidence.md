@@ -395,8 +395,9 @@ All three sibling worktrees were clean and remained unchanged.
 
 ## 15. Reproduction commands
 
-Run from the RICE repository root on this production-application branch, or
-from a descendant containing this application:
+Run from the RICE repository root on a revision containing the graph-`L^d`
+production application. The production checks are intentionally subject-level,
+so later applications do not invalidate this reproduction:
 
 ```bash
 sha256sum \
@@ -676,31 +677,21 @@ with open(
 ) as stream:
     production = json.load(stream)
 assert production["format_version"] == 3
-assert production["summary"]["by_proposed_disposition"] == {
-    "exclude": 22,
-    "unresolved": 126,
+production_rows = {
+    row["catalogue_id"]: row for row in production["records"]
 }
-assert all(
-    row["basic_graph_assignment"] is None for row in production["records"]
-)
-assert all(not row["historical_identifiers"] for row in production["records"])
-assert all(
-    (
-        next(
-            row
-            for row in production["records"]
-            if row["catalogue_id"] == cid
-        )["comparison_status"],
-        next(
-            row
-            for row in production["records"]
-            if row["catalogue_id"] == cid
-        )["proposed_disposition"],
-    )
-    == ("derived-structural-match", "exclude")
-    for cid in fixtures
-)
-print("production: 22 excluded / 126 unresolved / 0 retained")
+for catalogue_id, (_, _, target, _) in fixtures.items():
+    row = production_rows[catalogue_id]
+    assert row["comparison_status"] == "derived-structural-match"
+    assert row["proposed_disposition"] == "exclude"
+    assert row["exclusion_category"] == "zobel-five-element-series-parallel"
+    assert row["basic_graph_assignment"] is None
+    assert row["historical_identifiers"] == []
+    assert f"rice-{catalogue_id}-target-{target}" in row["evidence_record_ids"]
+    assert row["computational_cross_check_ids"] == [
+        "rice-five-element-zobel-graph-l-dual-report-reproduction"
+    ]
+print("graph-L-dual production subjects: 4 resolved exclusions with durable links")
 PY
 ```
 
@@ -720,5 +711,5 @@ lh148-5d5fb848a810c9cb -> canonical network 43: coloured structural and exact Zo
 lh148-534a4f02579831e9 -> canonical network 47: coloured structural and exact Zobel checks OK
 lh148-9e140322bfd33a22 -> canonical network 39: coloured structural and exact Zobel checks OK
 lh148-a1e6c042c7d77e41 -> canonical network 35: coloured structural and exact Zobel checks OK
-production: 22 excluded / 126 unresolved / 0 retained
+graph-L-dual production subjects: 4 resolved exclusions with durable links
 ```

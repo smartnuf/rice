@@ -12,11 +12,11 @@ candidate-to-target correspondence structurally and algebraically.
 
 This report was originally prepared as evidence-only work and did not itself
 change production. The production update containing this revision applies the
-five reviewed mappings through the version 3 subject-bound evidence route. On
-this branch, production has 27 excluded, 121 unresolved, and 0 retained
-records. It still assigns no historical number or basic graph to these RICE
-records, does not investigate graph `S^d`, and does not claim to reproduce the
-canonical 108-network catalogue.
+five reviewed mappings through the version 3 subject-bound evidence route. The
+later graph-`S^d` application on the current branch brings production to 32
+excluded, 116 unresolved, and 0 retained records. It still assigns no
+historical number or basic graph to these RICE records and does not claim to
+reproduce the canonical 108-network catalogue.
 
 The publication states the five-member graph-family/target relationship only
 in aggregate. It does not print RICE catalogue IDs or pair individual graph-`S`
@@ -383,15 +383,17 @@ algebraic checks select the five mappings uniquely.
 
 This report originally did not apply the mappings. The production update
 containing this revision now applies all five through the complete version 3
-subject-bound evidence route. On this branch, production has 27 excluded, 121
-unresolved, and 0 retained; all graph assignments remain null and all
-historical identifier lists remain empty. The five graph-`S^d` Zobel exclusions
-and final eight exclusions remain outside this milestone.
+subject-bound evidence route. The subsequent graph-`S^d` application on the
+current branch brings production to 32 excluded, 116 unresolved, and 0
+retained; all graph assignments remain null and all historical identifier
+lists remain empty. Only the final eight exclusions remain outside the
+completed five-element Zobel milestones.
 
 ## 15. Reproduction commands
 
-Run from the RICE repository root on this production-application branch, or
-from a descendant containing this application:
+Run from the RICE repository root on a revision containing the graph-`S`
+production application. The production checks are intentionally subject-level,
+so later applications do not invalidate this reproduction:
 
 ```bash
 sha256sum \
@@ -745,30 +747,29 @@ with open(
 ) as stream:
     production = json.load(stream)
 assert production["format_version"] == 3
-assert production["summary"]["by_proposed_disposition"] == {
-    "exclude": 27,
-    "unresolved": 121,
+production_rows = {
+    row["catalogue_id"]: row for row in production["records"]
 }
-assert all(row["basic_graph_assignment"] is None for row in production["records"])
-assert all(not row["historical_identifiers"] for row in production["records"])
-assert all(
-    next(
-        row
-        for row in production["records"]
-        if row["catalogue_id"] == catalogue_id
-    )["comparison_status"]
-    == "derived-structural-match"
-    for catalogue_id in fixtures
-)
+for catalogue_id, (target, _, _, _) in fixtures.items():
+    row = production_rows[catalogue_id]
+    assert row["comparison_status"] == "derived-structural-match"
+    assert row["proposed_disposition"] == "exclude"
+    assert row["exclusion_category"] == "zobel-five-element-series-parallel"
+    assert row["basic_graph_assignment"] is None
+    assert row["historical_identifiers"] == []
+    assert f"rice-{catalogue_id}-target-{target}" in row["evidence_record_ids"]
+    assert row["computational_cross_check_ids"] == [
+        "rice-five-element-zobel-graph-s-report-reproduction"
+    ]
 print("exact Figure 5.2 and immittance checks: 5 pathways OK")
-print("production: 27 excluded / 121 unresolved / 0 retained")
+print("graph-S production subjects: 5 resolved exclusions with durable links")
 PY
 ```
 
 Observed deterministic output is recorded by the script itself: 85
 five-element records, 15 graph-`S` candidates, the complete candidate rows,
 five successful coloured source/target checks, five exact Figure 5.2 pathways,
-and production at 27 excluded / 121 unresolved / 0 retained.
+and five resolved production subjects with durable target and computation links.
 
 The observed summary was:
 
@@ -781,5 +782,5 @@ lh148-3a7ebfebce0db0a4 -> canonical network 30 (L, L): coloured source and targe
 lh148-53370c9917eea4d0 -> canonical network 33 (L, C): coloured source and target fixtures OK
 lh148-45d19cefc5b496ce -> canonical network 73 (R, L||C): coloured source and target fixtures OK
 exact Figure 5.2 and immittance checks: 5 pathways OK
-production: 27 excluded / 121 unresolved / 0 retained
+graph-S production subjects: 5 resolved exclusions with durable links
 ```
