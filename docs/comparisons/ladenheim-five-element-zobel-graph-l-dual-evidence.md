@@ -395,8 +395,8 @@ All three sibling worktrees were clean and remained unchanged.
 
 ## 15. Reproduction commands
 
-Run from the RICE repository root at commit
-`deefccfd8732b1d35fa5b978a4de38d92d33f1dd` or a descendant:
+Run from the RICE repository root on this production-application branch, or
+from a descendant containing this application:
 
 ```bash
 sha256sum \
@@ -687,7 +687,9 @@ assert all(not row["historical_identifiers"] for row in production["records"])
 assert all(
     (
         next(
-        row for row in production["records"] if row["catalogue_id"] == cid
+            row
+            for row in production["records"]
+            if row["catalogue_id"] == cid
         )["comparison_status"],
         next(
             row
