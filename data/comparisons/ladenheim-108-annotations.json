@@ -280,7 +280,7 @@
       "verification_state": "cross-checked"
     }
   ],
-  "format_version": 2,
+  "format_version": 3,
   "previous_workspace_records": [],
   "records": [],
   "rules": [

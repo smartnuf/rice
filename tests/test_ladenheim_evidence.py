@@ -1,5 +1,6 @@
 import json
 from collections import Counter
+from copy import deepcopy
 from pathlib import Path
 
 import pytest
@@ -102,6 +103,155 @@ def _cross_check():
     }
 
 
+def _populate_derived_structural_group(catalogue, annotations):
+    unresolved_ids = [
+        row["catalogue_id"]
+        for row in generate_evidence_ledger(catalogue, annotations)["records"]
+        if row["comparison_status"] == "unresolved"
+    ][:4]
+    targets = [20, 25, 28, 32]
+    source_id = "fixture-graph-report"
+    aggregate_id = "fixture-aggregate-graph-l"
+    definition_id = "fixture-graph-l-definition"
+    computation_id = "fixture-graph-l-computation"
+    annotations["sources"].append({
+        "source_id": source_id,
+        "source_type": "rice-documentation",
+        "citation": "Fixture reviewed graph-family evidence report.",
+        "notes": "Test fixture only.",
+    })
+    annotations["evidence_records"].extend([
+        {
+            "evidence_id": aggregate_id,
+            "source_id": "morelli-smith-2019",
+            "provenance_level": "authoritative-source-transcription",
+            "verification_state": "source-verified",
+            "locator": {
+                "section": "5.1",
+                "printed_page": 42,
+                "pdf_page_index": 48,
+            },
+            "paraphrase": "Four graph-L networks reduce to four targets.",
+            "claim": {
+                "claim_type": "aggregate-basic-graph-exclusion",
+                "graph_label": "L",
+                "source_population": 4,
+                "supported_disposition": "exclude",
+                "supported_exclusion_category": (
+                    "zobel-five-element-series-parallel"
+                ),
+                "supported_reduction_targets": list(targets),
+            },
+        },
+        {
+            "evidence_id": definition_id,
+            "source_id": "morelli-smith-2019",
+            "provenance_level": "authoritative-source-transcription",
+            "verification_state": "source-verified",
+            "locator": {
+                "appendix": "B",
+                "printed_page": 126,
+                "pdf_page_index": 132,
+            },
+            "paraphrase": "Appendix B defines graph L.",
+            "claim": {
+                "claim_type": "basic-graph-definition",
+                "definition": {
+                    "graph_label": "L",
+                    "base_label": "L",
+                    "is_dual": False,
+                    "fixture_id": "fixture-L-five-edge",
+                },
+            },
+        },
+    ])
+    computation = _cross_check()
+    computation.update({
+        "cross_check_id": computation_id,
+        "implementation": "fixture graph-group reproduction",
+        "operation": "match coloured fixtures and exact reductions",
+        "result": "four unique subject and target matches",
+    })
+    annotations["computational_cross_checks"].append(computation)
+    for catalogue_id, target in zip(unresolved_ids, targets):
+        graph_id = f"fixture-{catalogue_id}-graph-match"
+        target_id = f"fixture-{catalogue_id}-target-match"
+        annotations["evidence_records"].extend([
+            {
+                "evidence_id": graph_id,
+                "source_id": source_id,
+                "provenance_level": "rice-derived-structural-fact",
+                "verification_state": "cross-checked",
+                "locator": {"repository_path": "docs/fixture-report.md"},
+                "paraphrase": "The subject matches the graph-L fixture.",
+                "claim": {
+                    "claim_type": "basic-graph-match",
+                    "subject_catalogue_ids": [catalogue_id],
+                    "match": {
+                        "fixture_id": "fixture-L-five-edge",
+                        "graph_label": "L",
+                        "structural_relation": (
+                            "colour-preserving-port-augmented-cycle-matroid-v1"
+                        ),
+                        "matched": True,
+                    },
+                },
+            },
+            {
+                "evidence_id": target_id,
+                "source_id": source_id,
+                "provenance_level": (
+                    "rice-derived-network-equivalence-fact"
+                ),
+                "verification_state": "cross-checked",
+                "locator": {"repository_path": "docs/fixture-report.md"},
+                "paraphrase": "The subject reduces to its allocated target.",
+                "claim": {
+                    "claim_type": "reduction-target-match",
+                    "subject_catalogue_ids": [catalogue_id],
+                    "target_network_number": target,
+                },
+            },
+        ])
+        annotations["records"].append({
+            "catalogue_id": catalogue_id,
+            "comparison_status": "derived-structural-match",
+            "proposed_disposition": "exclude",
+            "exclusion_category": "zobel-five-element-series-parallel",
+            "exclusion_reason": (
+                "Aggregate graph-family exclusion with independently checked "
+                "subject and reduction-target matches."
+            ),
+            "evidence_basis": [
+                (
+                    "aggregate-historical-graph-group-plus-subject-bound-"
+                    "rice-match"
+                ),
+                "mechanically-derived-rice-structural-fact",
+            ],
+            "evidence_record_ids": [
+                aggregate_id,
+                definition_id,
+                graph_id,
+                target_id,
+            ],
+            "previous_workspace_record_ids": [],
+            "computational_cross_check_ids": [computation_id],
+            "historical_identifiers": [],
+            "basic_graph_assignment": None,
+            "confidence": "high",
+            "notes": ["Fixture explicit subject-bound mapping."],
+            "open_questions": ["Test fixture only."],
+        })
+    return {
+        "aggregate_id": aggregate_id,
+        "computation_id": computation_id,
+        "definition_id": definition_id,
+        "subject_ids": unresolved_ids,
+        "targets": targets,
+    }
+
+
 def _previous_workspace_cross_check():
     record = _cross_check()
     record["provenance_level"] = "previous-workspace-generated"
@@ -109,9 +259,9 @@ def _previous_workspace_cross_check():
     return record
 
 
-def test_format_version_two_is_required(catalogue, annotations):
-    annotations["format_version"] = 1
-    with pytest.raises(ValueError, match="format_version must be 2"):
+def test_format_version_three_is_required(catalogue, annotations):
+    annotations["format_version"] = 2
+    with pytest.raises(ValueError, match="format_version must be 3"):
         generate_evidence_ledger(catalogue, annotations)
 
 
@@ -669,7 +819,7 @@ def test_retention_rejects_incomplete_or_rejected_claim(catalogue, annotations):
 
 
 @pytest.mark.parametrize("basis", [["researcher-hypothesis"], []])
-def test_ambiguous_status_is_unavailable_in_version_two(
+def test_ambiguous_status_is_unavailable_in_version_three(
     catalogue, annotations, basis
 ):
     annotations["rules"] = []
@@ -677,7 +827,7 @@ def test_ambiguous_status_is_unavailable_in_version_two(
     row.update(
         comparison_status="ambiguous",
         evidence_basis=basis,
-        notes=["Finite candidates are not represented in version 2."],
+        notes=["Finite candidates are not represented in version 3."],
     )
     annotations["records"] = [row]
     with pytest.raises(ValueError, match="comparison_status"):
@@ -1314,6 +1464,209 @@ def test_exact_twelve_and_136_distribution(catalogue, annotations):
     assert ledger["target"]["reproduction_claimed"] is False
     assert all(row["historical_identifiers"] == [] for row in ledger["records"])
     assert all(row["basic_graph_assignment"] is None for row in ledger["records"])
+
+
+def _fixture_evidence(annotations, claim_type, subject_id=None):
+    matches = [
+        record
+        for record in annotations["evidence_records"]
+        if record["claim"]["claim_type"] == claim_type
+        and (
+            subject_id is None
+            or record["claim"].get("subject_catalogue_ids") == [subject_id]
+        )
+    ]
+    assert len(matches) == 1
+    return matches[0]
+
+
+def test_complete_derived_structural_group_is_accepted(catalogue, annotations):
+    fixture = _populate_derived_structural_group(catalogue, annotations)
+    ledger = generate_evidence_ledger(catalogue, annotations)
+    rows = {
+        row["catalogue_id"]: row
+        for row in ledger["records"]
+        if row["comparison_status"] == "derived-structural-match"
+    }
+    assert set(rows) == set(fixture["subject_ids"])
+    assert len(rows) == 4
+    assert all(row["proposed_disposition"] == "exclude" for row in rows.values())
+    assert all(row["basic_graph_assignment"] is None for row in rows.values())
+    assert all(row["historical_identifiers"] == [] for row in rows.values())
+
+
+def test_derived_structural_group_rejects_incomplete_population(
+    catalogue, annotations
+):
+    _populate_derived_structural_group(catalogue, annotations)
+    annotations["records"].pop()
+    with pytest.raises(ValueError, match="group population"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_derived_structural_group_rejects_excessive_population(
+    catalogue, annotations
+):
+    fixture = _populate_derived_structural_group(catalogue, annotations)
+    extra_id = next(
+        row["catalogue_id"]
+        for row in catalogue["records"]
+        if row["catalogue_id"] not in fixture["subject_ids"]
+        and row["catalogue_id"] not in {
+            item["catalogue_id"] for item in annotations["records"]
+        }
+    )
+    template_id = fixture["subject_ids"][-1]
+    extra = deepcopy(annotations["records"][-1])
+    extra["catalogue_id"] = extra_id
+    graph = deepcopy(_fixture_evidence(annotations, "basic-graph-match", template_id))
+    graph["evidence_id"] = f"fixture-{extra_id}-graph-match"
+    graph["claim"]["subject_catalogue_ids"] = [extra_id]
+    target = deepcopy(
+        _fixture_evidence(annotations, "reduction-target-match", template_id)
+    )
+    target["evidence_id"] = f"fixture-{extra_id}-target-match"
+    target["claim"]["subject_catalogue_ids"] = [extra_id]
+    annotations["evidence_records"].extend([graph, target])
+    extra["evidence_record_ids"][-2:] = [graph["evidence_id"], target["evidence_id"]]
+    annotations["records"].append(extra)
+    with pytest.raises(ValueError, match="group population"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_derived_structural_group_rejects_duplicate_target(
+    catalogue, annotations
+):
+    fixture = _populate_derived_structural_group(catalogue, annotations)
+    last = _fixture_evidence(
+        annotations, "reduction-target-match", fixture["subject_ids"][-1]
+    )
+    last["claim"]["target_network_number"] = fixture["targets"][0]
+    with pytest.raises(ValueError, match="targets must be unique"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_derived_structural_group_rejects_target_outside_source_set(
+    catalogue, annotations
+):
+    fixture = _populate_derived_structural_group(catalogue, annotations)
+    target = _fixture_evidence(
+        annotations, "reduction-target-match", fixture["subject_ids"][-1]
+    )
+    target["claim"]["target_network_number"] = 99
+    with pytest.raises(ValueError, match="subject-bound reduction-target match"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_derived_structural_group_rejects_missing_authoritative_target(
+    catalogue, annotations
+):
+    fixture = _populate_derived_structural_group(catalogue, annotations)
+    aggregate = _fixture_evidence(
+        annotations, "aggregate-basic-graph-exclusion"
+    )
+    aggregate["claim"]["supported_reduction_targets"][-1] = 31
+    assert fixture["targets"][-1] not in aggregate["claim"][
+        "supported_reduction_targets"
+    ]
+    with pytest.raises(ValueError, match="subject-bound reduction-target match"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize("field", ["graph_label", "fixture_id"])
+def test_derived_structural_group_rejects_graph_or_fixture_mismatch(
+    catalogue, annotations, field
+):
+    fixture = _populate_derived_structural_group(catalogue, annotations)
+    match = _fixture_evidence(
+        annotations, "basic-graph-match", fixture["subject_ids"][0]
+    )
+    match["claim"]["match"][field] = "wrong"
+    with pytest.raises(ValueError, match="subject-bound graph match"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_derived_structural_group_rejects_target_for_wrong_subject(
+    catalogue, annotations
+):
+    fixture = _populate_derived_structural_group(catalogue, annotations)
+    target = _fixture_evidence(
+        annotations, "reduction-target-match", fixture["subject_ids"][0]
+    )
+    target["claim"]["subject_catalogue_ids"] = [fixture["subject_ids"][1]]
+    with pytest.raises(ValueError, match="subject-bound reduction-target match"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_derived_structural_group_requires_reproduced_computation(
+    catalogue, annotations
+):
+    _populate_derived_structural_group(catalogue, annotations)
+    annotations["records"][0]["computational_cross_check_ids"] = []
+    with pytest.raises(ValueError, match="independently reproduced"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_derived_structural_group_requires_authoritative_aggregate(
+    catalogue, annotations
+):
+    _populate_derived_structural_group(catalogue, annotations)
+    aggregate = _fixture_evidence(
+        annotations, "aggregate-basic-graph-exclusion"
+    )
+    aggregate["verification_state"] = "cross-checked"
+    with pytest.raises(ValueError, match="authoritative aggregate"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_derived_structural_match_is_invalid_in_rule(catalogue, annotations):
+    fixture = _populate_derived_structural_group(catalogue, annotations)
+    template = deepcopy(annotations["records"][0])
+    del template["catalogue_id"]
+    annotations["records"] = []
+    annotations["rules"] = []
+    source = next(
+        row for row in catalogue["records"] if row["catalogue_id"] in fixture["subject_ids"]
+    )
+    selector = {"r": source["r"], "l": source["l"], "c": source["c"]}
+    count = sum(
+        all(row[field] == value for field, value in selector.items())
+        for row in catalogue["records"]
+    )
+    template.update({
+        "rule_id": "invalid-derived-structural-rule",
+        "kind": "unique-component-match",
+        "selector": selector,
+        "expected_matches": count,
+    })
+    annotations["rules"].append(template)
+    with pytest.raises(ValueError, match="only for explicit annotation records"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_derived_structural_match_cannot_retain(catalogue, annotations):
+    _populate_derived_structural_group(catalogue, annotations)
+    row = annotations["records"][0]
+    row["proposed_disposition"] = "retain"
+    row["exclusion_category"] = "none"
+    row["exclusion_reason"] = None
+    with pytest.raises(ValueError, match="cannot assert retention"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_reduction_target_is_not_historical_identity_without_evidence(
+    catalogue, annotations
+):
+    fixture = _populate_derived_structural_group(catalogue, annotations)
+    row = annotations["records"][0]
+    row["historical_identifiers"] = [{
+        "scheme": "morelli-smith-canonical-network",
+        "value": fixture["targets"][0],
+        "verification_state": "parsed",
+        "evidence_record_ids": [],
+    }]
+    with pytest.raises(ValueError, match="historical identity"):
+        generate_evidence_ledger(catalogue, annotations)
 
 
 def test_exact_four_element_zobel_exclusions(catalogue, annotations):

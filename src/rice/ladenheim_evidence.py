@@ -10,11 +10,12 @@ import re
 from typing import Any
 
 
-FORMAT_VERSION = 2
+FORMAT_VERSION = 3
 SOURCE_CATALOGUE_RELATION = "colour-preserving-port-augmented-cycle-matroid-v1"
 COMPARISON_STATUSES = {
     "source-backed",
     "derived-unique-match",
+    "derived-structural-match",
     "working-hypothesis",
     "unresolved",
 }
@@ -31,6 +32,7 @@ EVIDENCE_BASES = {
     "explicit-historical-entry-statement",
     "explicit-historical-table-or-figure-mapping",
     "aggregate-historical-category-plus-logically-unique-rice-match",
+    "aggregate-historical-graph-group-plus-subject-bound-rice-match",
     "mechanically-derived-rice-structural-fact",
     "researcher-hypothesis",
     "no-evidence-yet",
@@ -45,6 +47,7 @@ SOURCE_TYPES = {
 EVIDENCE_PROVENANCE_LEVELS = {
     "authoritative-source-transcription",
     "rice-derived-structural-fact",
+    "rice-derived-network-equivalence-fact",
     "researcher-hypothesis",
 }
 WORKSPACE_PROVENANCE_LEVELS = {
@@ -100,11 +103,13 @@ CLAIM_TYPES = {
     "catalogue-target",
     "exclusion-category-targets",
     "aggregate-exclusion-category",
+    "aggregate-basic-graph-exclusion",
     "rice-selector-count",
     "individual-catalogue-record",
     "historical-identifier",
     "basic-graph-definition",
     "basic-graph-match",
+    "reduction-target-match",
 }
 IMMUTABLE_FIELDS = (
     "catalogue_id",
@@ -439,6 +444,39 @@ def _validate_claim(
             or claim.get("supported_disposition") != "exclude"
         ):
             raise ValueError(f"evidence {evidence_id} has invalid aggregate exclusion claim")
+    elif claim_type == "aggregate-basic-graph-exclusion":
+        _validate_object_shape(
+            claim,
+            f"evidence {evidence_id} aggregate basic-graph exclusion claim",
+            {
+                "claim_type",
+                "graph_label",
+                "source_population",
+                "supported_disposition",
+                "supported_exclusion_category",
+                "supported_reduction_targets",
+            },
+        )
+        targets = claim.get("supported_reduction_targets")
+        if (
+            not isinstance(claim.get("graph_label"), str)
+            or not claim["graph_label"]
+            or not _is_int(claim.get("source_population"))
+            or claim["source_population"] <= 0
+            or claim.get("supported_disposition") != "exclude"
+            or not _is_controlled(
+                claim.get("supported_exclusion_category"),
+                EXCLUSION_CATEGORIES - {"none", "unresolved"},
+            )
+            or not isinstance(targets, list)
+            or not targets
+            or not all(_is_int(value) and 1 <= value <= 108 for value in targets)
+            or len(set(targets)) != len(targets)
+            or len(targets) != claim["source_population"]
+        ):
+            raise ValueError(
+                f"evidence {evidence_id} has invalid aggregate basic-graph exclusion claim"
+            )
     elif claim_type == "rice-selector-count":
         _validate_object_shape(
             claim, f"evidence {evidence_id} selector/count claim",
@@ -554,6 +592,17 @@ def _validate_claim(
             or not isinstance(match["matched"], bool)
         ):
             raise ValueError(f"evidence {evidence_id} has invalid graph-match claim")
+    elif claim_type == "reduction-target-match":
+        _validate_object_shape(
+            claim,
+            f"evidence {evidence_id} reduction-target claim",
+            {"claim_type", "subject_catalogue_ids", "target_network_number"},
+        )
+        subjects = claim.get("subject_catalogue_ids")
+        _validate_subjects(subjects, evidence_id, catalogue_ids)
+        target = claim.get("target_network_number")
+        if len(subjects) != 1 or not _is_int(target) or not 1 <= target <= 108:
+            raise ValueError(f"evidence {evidence_id} has invalid reduction-target claim")
 
 
 def _validate_evidence_records(
@@ -606,11 +655,24 @@ def _validate_evidence_records(
                 raise ValueError(
                     f"source-verified evidence {evidence_id} requires a precise publication locator"
                 )
-        elif record["provenance_level"] == "rice-derived-structural-fact" and source[
-            "source_type"
-        ] not in {"rice-generated-artefact", "rice-documentation"}:
+        elif record["provenance_level"] in {
+            "rice-derived-structural-fact",
+            "rice-derived-network-equivalence-fact",
+        } and source["source_type"] not in {
+            "rice-generated-artefact",
+            "rice-documentation",
+        }:
             raise ValueError(
                 f"RICE-derived evidence {evidence_id} requires a RICE source"
+            )
+        if record["claim"]["claim_type"] == "reduction-target-match" and (
+            record["provenance_level"]
+            != "rice-derived-network-equivalence-fact"
+            or record["verification_state"] != "cross-checked"
+        ):
+            raise ValueError(
+                f"reduction-target evidence {evidence_id} requires cross-checked "
+                "RICE-derived network-equivalence provenance"
             )
     return records
 
@@ -697,6 +759,13 @@ def _is_positive_rice_derived(record: dict[str, Any]) -> bool:
     return (
         record["provenance_level"] == "rice-derived-structural-fact"
         and record["verification_state"] in {"cross-checked", "source-verified"}
+    )
+
+
+def _is_positive_rice_equivalence(record: dict[str, Any]) -> bool:
+    return (
+        record["provenance_level"] == "rice-derived-network-equivalence-fact"
+        and record["verification_state"] == "cross-checked"
     )
 
 
@@ -852,6 +921,10 @@ def _validate_assertion(
             "aggregate-historical-category-plus-logically-unique-rice-match",
             "mechanically-derived-rice-structural-fact",
         },
+        "derived-structural-match": {
+            "aggregate-historical-graph-group-plus-subject-bound-rice-match",
+            "mechanically-derived-rice-structural-fact",
+        },
         "working-hypothesis": {"researcher-hypothesis"},
     }
     if status in required_basis and not required_basis[status] <= basis:
@@ -897,6 +970,126 @@ def _validate_assertion(
             for field, value in record["claim"]["supported_values"].items()
         )
     ]
+    if status == "derived-structural-match":
+        required = {
+            "aggregate-historical-graph-group-plus-subject-bound-rice-match",
+            "mechanically-derived-rice-structural-fact",
+        }
+        if catalogue_id is None:
+            raise ValueError(
+                "derived-structural-match is valid only for explicit annotation records"
+            )
+        if basis != required:
+            raise ValueError(
+                "derived-structural-match requires exactly the graph-group and "
+                "mechanical RICE evidence bases"
+            )
+        if disposition != "exclude":
+            raise ValueError("derived-structural-match cannot assert retention")
+        aggregate_records = _matching_evidence(
+            evidence_ids, evidence, "aggregate-basic-graph-exclusion"
+        )
+        aggregates = [
+            record
+            for record in aggregate_records
+            if _is_authoritative(record)
+            and record["claim"]["supported_disposition"] == disposition
+            and record["claim"]["supported_exclusion_category"] == category
+        ]
+        if len(aggregate_records) != 1 or len(aggregates) != 1:
+            raise ValueError(
+                "derived-structural-match requires one matching authoritative "
+                "aggregate basic-graph exclusion"
+            )
+        aggregate = aggregates[0]["claim"]
+        definitions = [
+            record
+            for record in _matching_evidence(
+                evidence_ids, evidence, "basic-graph-definition"
+            )
+            if _is_authoritative(record)
+            and record["claim"]["definition"]["graph_label"]
+            == aggregate["graph_label"]
+        ]
+        if not definitions:
+            raise ValueError(
+                "derived-structural-match requires authoritative basic-graph definition"
+            )
+        fixture_ids = {
+            record["claim"]["definition"]["fixture_id"]
+            for record in definitions
+        }
+        graph_matches = [
+            record
+            for record in _matching_evidence(
+                evidence_ids, evidence, "basic-graph-match"
+            )
+            if _is_positive_rice_derived(record)
+            and record["claim"]["subject_catalogue_ids"] == [catalogue_id]
+            and record["claim"]["match"]["matched"] is True
+            and record["claim"]["match"]["graph_label"]
+            == aggregate["graph_label"]
+            and record["claim"]["match"]["fixture_id"] in fixture_ids
+            and record["claim"]["match"]["structural_relation"]
+            == SOURCE_CATALOGUE_RELATION
+        ]
+        if len(graph_matches) != 1:
+            raise ValueError(
+                "derived-structural-match requires one exact subject-bound graph match"
+            )
+        target_matches = [
+            record
+            for record in _matching_evidence(
+                evidence_ids, evidence, "reduction-target-match"
+            )
+            if _is_positive_rice_equivalence(record)
+            and record["claim"]["subject_catalogue_ids"] == [catalogue_id]
+            and record["claim"]["target_network_number"]
+            in aggregate["supported_reduction_targets"]
+        ]
+        if len(target_matches) != 1:
+            raise ValueError(
+                "derived-structural-match requires one exact subject-bound "
+                "reduction-target match"
+            )
+        reduction_target = target_matches[0]["claim"]["target_network_number"]
+        for identifier in assertion["historical_identifiers"]:
+            if (
+                identifier["scheme"] == "morelli-smith-canonical-network"
+                and identifier["value"] == reduction_target
+            ):
+                identifier_evidence = _matching_evidence(
+                    identifier["evidence_record_ids"],
+                    evidence,
+                    "historical-identifier",
+                )
+                if not any(
+                    _is_authoritative(record)
+                    and record["claim"]["subject_catalogue_ids"]
+                    == [catalogue_id]
+                    and record["claim"]["scheme"]
+                    == "morelli-smith-canonical-network"
+                    and record["claim"]["value"] == reduction_target
+                    for record in identifier_evidence
+                ):
+                    raise ValueError(
+                        "reduction target cannot be used as a historical identity "
+                        "without separate authoritative identifier evidence"
+                    )
+        cross_checks = [computations[item] for item in assertion[
+            "computational_cross_check_ids"
+        ]]
+        if not any(
+            record["provenance_level"]
+            == "independently-reproduced-computation"
+            and record["independently_reproduced"] is True
+            and record["verification_state"] == "cross-checked"
+            for record in cross_checks
+        ):
+            raise ValueError(
+                "derived-structural-match requires an independently reproduced "
+                "cross-checked computation"
+            )
     if status == "source-backed" and not any(
         _is_authoritative(record) for record in matching_individual
     ):
@@ -941,7 +1134,15 @@ def _validate_assertion(
                 evidence_ids, evidence, "aggregate-exclusion-category"
             )
         )
-        if not aggregate_match and not any(
+        graph_group_match = any(
+            _is_authoritative(record)
+            and record["claim"]["supported_exclusion_category"] == category
+            and record["claim"]["supported_disposition"] == disposition
+            for record in _matching_evidence(
+                evidence_ids, evidence, "aggregate-basic-graph-exclusion"
+            )
+        )
+        if not aggregate_match and not graph_group_match and not any(
             _is_authoritative(record)
             and record["claim"]["supported_values"].get("proposed_disposition")
             == disposition
@@ -995,6 +1196,67 @@ def _default_assertion() -> dict[str, Any]:
             "What entry-specific evidence establishes exclusion or retention?",
         ],
     }
+
+
+def _validate_derived_structural_groups(
+    explicit: dict[str, dict[str, Any]],
+    rules: list[dict[str, Any]],
+    evidence: dict[str, dict[str, Any]],
+) -> None:
+    aggregate_ids = {
+        evidence_id
+        for assertion in explicit.values()
+        if assertion["comparison_status"] == "derived-structural-match"
+        for evidence_id in assertion["evidence_record_ids"]
+        if evidence[evidence_id]["claim"]["claim_type"]
+        == "aggregate-basic-graph-exclusion"
+    }
+    for aggregate_id in aggregate_ids:
+        aggregate_record = evidence[aggregate_id]
+        aggregate = aggregate_record["claim"]
+        members = [
+            (catalogue_id, assertion)
+            for catalogue_id, assertion in explicit.items()
+            if aggregate_id in assertion["evidence_record_ids"]
+        ]
+        if any(
+            assertion["comparison_status"] != "derived-structural-match"
+            for _catalogue_id, assertion in members
+        ) or any(aggregate_id in rule["evidence_record_ids"] for rule in rules):
+            raise ValueError(
+                "aggregate basic-graph exclusion may support only explicit "
+                "derived-structural-match records"
+            )
+        if len(members) != aggregate["source_population"]:
+            raise ValueError(
+                "derived structural group population differs from authoritative claim"
+            )
+        allocated_targets = []
+        for catalogue_id, assertion in members:
+            target_matches = [
+                record
+                for record in _matching_evidence(
+                    assertion["evidence_record_ids"],
+                    evidence,
+                    "reduction-target-match",
+                )
+                if _is_positive_rice_equivalence(record)
+                and record["claim"]["subject_catalogue_ids"] == [catalogue_id]
+            ]
+            if len(target_matches) != 1:
+                raise ValueError(
+                    "derived structural group member requires exactly one "
+                    "subject-bound reduction target"
+                )
+            allocated_targets.append(
+                target_matches[0]["claim"]["target_network_number"]
+            )
+        if len(set(allocated_targets)) != len(allocated_targets):
+            raise ValueError("derived structural group reduction targets must be unique")
+        if set(allocated_targets) != set(aggregate["supported_reduction_targets"]):
+            raise ValueError(
+                "derived structural group target set differs from authoritative claim"
+            )
 
 
 def _validate_target(
@@ -1243,6 +1505,8 @@ def generate_evidence_ledger(
             raise ValueError("unique-component-match must be derived-unique-match")
         for row in matches:
             resolved[row["catalogue_id"]] = deepcopy(assertion)
+
+    _validate_derived_structural_groups(explicit, rules, evidence)
 
     ledger_rows = []
     for source_row in records:
