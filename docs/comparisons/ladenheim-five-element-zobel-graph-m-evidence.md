@@ -10,10 +10,12 @@ under `colour-preserving-port-augmented-cycle-matroid-v1`, checks the unique
 coloured correspondence, and verifies the Zobel reduction symbolically and
 with exact arithmetic.
 
-This is an evidence-only report. It does not apply the exclusion to the
-production ledger, assign a graph or historical identity to the RICE record, or
-claim to reproduce the canonical 108-network catalogue. Production remains 16
-excluded, 132 unresolved, and 0 retained.
+This report was originally prepared as evidence-only and did not itself change
+production, assign a graph or historical identity to the RICE record, or claim
+to reproduce the canonical 108-network catalogue. The production update
+containing this revision applies the graph-`M` mapping through the version 3
+subject-bound evidence route. With that update, the ledger has 17 excluded, 131
+unresolved, and 0 retained records.
 
 The publication states the graph family, population one, transformation class,
 and target. It does not print a RICE catalogue ID. The individual RICE-ID
@@ -142,9 +144,11 @@ StructuralSignature(
 ```
 
 The record itself commits the same relation and records six generated source
-candidates and six distinct representative forms in this structural class. The
-production row is currently `unresolved`, with unresolved disposition, null
-`basic_graph_assignment`, and an empty historical-identifier list.
+candidates and six distinct representative forms in this structural class. At
+the time of the evidence-only reproduction, the production row was
+`unresolved`; the production update containing this revision changes it to a
+derived structural exclusion while retaining a null `basic_graph_assignment`
+and an empty historical-identifier list.
 
 ## 7. Structural matching method
 
@@ -383,15 +387,23 @@ correspondence remains an independently checked computational conclusion rather
 than a historical quotation.
 
 This report does not investigate graph `M`-dual, graph `S`, graph `S`-dual, or
-any other family. It does not apply the graph-`M` exclusion to production.
-Production remains 16 excluded, 132 unresolved, and 0 retained; sixteen
+any other family. The production update containing this revision applies the
+graph-`M` exclusion through the complete version 3 subject-bound route. The
+ledger now has 17 excluded, 131 unresolved, and 0 retained; fifteen other
 five-element Zobel exclusions and eight final exclusions remain unresolved.
-After a separately reviewed graph-`M` production application, those counts
-would become fifteen and eight respectively.
+Canonical network #72 remains a reduction target rather than a historical
+identity of the excluded record.
 
 ## 16. Complete runnable reproduction commands
 
-Run this paste-ready block from the RICE repository root:
+The block and observed output below are preserved from the original
+evidence-only report. Run the complete block at evidence-report commit
+`46f009b99001a75dea4147312ee299d5aa036395`; its final production-boundary
+assertions intentionally record the then-unresolved row. On this production
+update, the structural census, signature, and exact-arithmetic portions remain
+unchanged, while the row is now the derived exclusion described above.
+
+Run this paste-ready block from the RICE repository root at that commit:
 
 ```bash
 sha256sum \
