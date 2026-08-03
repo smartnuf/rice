@@ -38,8 +38,11 @@ from pathlib import Path
 # totals, and the normative documents publishing golden values as
 # static text. Test assertions that recompute values live in CI are
 # deliberately excluded: weakening one changes no published value, and
-# shifting a value fails other protected checks. Extending this list
-# is an operator decision (see issue 76).
+# shifting a value fails other protected checks. Evidence publications
+# belong under docs/counts/ or docs/comparisons/, which are protected
+# as classes; a PR introducing a publisher document elsewhere must add
+# it to this list in the same PR. Other extensions are an operator
+# decision (see issue 76).
 PROTECTED_PATTERNS: tuple[str, ...] = (
     "data/counts/*",
     "data/comparisons/*",
@@ -48,6 +51,7 @@ PROTECTED_PATTERNS: tuple[str, ...] = (
     "docs/support_graph_enumeration.md",
     "docs/python_api.md",
     "docs/counts/*",
+    "docs/comparisons/*",
     "README.md",
     "tests/test_bundle_census.py",
     "tests/test_bundle_labelings.py",
