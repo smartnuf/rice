@@ -3894,6 +3894,97 @@ def test_final_eight_selected_graph_match_requires_reviewed_report_source(
 
 
 @pytest.mark.parametrize(
+    ("claim_type", "locator_updates"),
+    [
+        ("y-delta-partner-match", {"repository_path": "README.md"}),
+        ("y-delta-partner-match", {"figure": "9.9"}),
+        ("basic-graph-match", {"repository_path": "README.md"}),
+        ("forced-immittance-coefficient", {"repository_path": "README.md"}),
+        (
+            "conditional-simpler-realisation-route",
+            {"repository_path": "README.md"},
+        ),
+        ("basic-graph-match", {"section": "5.1"}),
+    ],
+)
+def test_final_eight_structured_facts_require_exact_report_locators(
+    catalogue, annotations, claim_type, locator_updates
+):
+    record = next(
+        item
+        for item in _evidence_of_type(annotations, claim_type)
+        if item["source_id"] == "rice-final-eight-o-bridge-report"
+    )
+    record["locator"].update(locator_updates)
+    with pytest.raises(ValueError, match="must use the reviewed final-eight report locator"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_final_eight_route_locator_requires_its_validated_target(
+    catalogue, annotations
+):
+    route = next(
+        item
+        for item in _evidence_of_type(
+            annotations, "conditional-simpler-realisation-route"
+        )
+        if item["source_id"] == "rice-final-eight-o-bridge-report"
+    )
+    route["locator"]["network_number"] = 99
+    with pytest.raises(ValueError, match="conditional-route locator does not match"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_final_eight_structured_fact_locator_shapes_are_accepted(
+    catalogue, annotations
+):
+    path = "docs/comparisons/ladenheim-final-eight-o-bridge-evidence-design.md"
+    expected = {
+        "basic-graph-match": {"repository_path": path},
+        "y-delta-partner-match": {"figure": "5.1", "repository_path": path},
+        "forced-immittance-coefficient": {"repository_path": path},
+    }
+    for claim_type, locator in expected.items():
+        records = [
+            item
+            for item in _evidence_of_type(annotations, claim_type)
+            if item["source_id"] == "rice-final-eight-o-bridge-report"
+        ]
+        assert records and all(item["locator"] == locator for item in records)
+    routes = [
+        item
+        for item in _evidence_of_type(
+            annotations, "conditional-simpler-realisation-route"
+        )
+        if item["source_id"] == "rice-final-eight-o-bridge-report"
+    ]
+    assert routes and all(
+        item["locator"] == {
+            "network_number": item["claim"]["nondegenerate_target_network_number"],
+            "repository_path": path,
+        }
+        for item in routes
+    )
+    generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize(
+    ("field", "value"),
+    [
+        ("cross_check_id", "fixture-other-final-eight-computation"),
+        ("implementation", "Reproduction commands in README.md"),
+    ],
+)
+def test_final_eight_computation_requires_reviewed_report_identity(
+    catalogue, annotations, field, value
+):
+    computation = _final_eight_computation(annotations)
+    computation[field] = value
+    with pytest.raises(ValueError, match="reviewed final-eight reproduction identity"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize(
     "updates",
     [
         {"base_label": "V"},

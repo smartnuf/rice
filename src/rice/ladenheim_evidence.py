@@ -233,6 +233,13 @@ REVIEWED_NONGENERIC_TARGET_FIXTURES = {
     44: "morelli-smith-canonical-network-44",
 }
 FINAL_EIGHT_RICE_SOURCE_ID = "rice-final-eight-o-bridge-report"
+FINAL_EIGHT_REPORT_PATH = (
+    "docs/comparisons/ladenheim-final-eight-o-bridge-evidence-design.md"
+)
+FINAL_EIGHT_COMPUTATION_ID = "rice-final-eight-o-bridge-report-reproduction"
+FINAL_EIGHT_COMPUTATION_IMPLEMENTATION = (
+    f"Reproduction commands in {FINAL_EIGHT_REPORT_PATH}"
+)
 CONDITIONAL_ROUTE_RELATION = (
     "conditional-nondegenerate-target-plus-degenerate-fewer-element"
 )
@@ -1968,6 +1975,14 @@ def _validate_nongeneric_simplification_groups(
                 "reproduced conditional computation"
             )
         computation = qualifying_computations[0]
+        if (
+            computation["cross_check_id"] != FINAL_EIGHT_COMPUTATION_ID
+            or computation["implementation"] != FINAL_EIGHT_COMPUTATION_IMPLEMENTATION
+        ):
+            raise ValueError(
+                "nongeneric group computation must use the reviewed final-eight "
+                "reproduction identity and implementation"
+            )
         member_ids = set(computation["subject_catalogue_ids"])
         verified_ids = set(computation["verified_evidence_record_ids"])
         verified_records = {item: evidence[item] for item in verified_ids}
@@ -2004,6 +2019,31 @@ def _validate_nongeneric_simplification_groups(
                 "nongeneric group structured facts must cite the reviewed final-eight "
                 "RICE report"
             )
+        expected_locators = {
+            "basic-graph-match": {"repository_path": FINAL_EIGHT_REPORT_PATH},
+            "y-delta-partner-match": {
+                "figure": "5.1",
+                "repository_path": FINAL_EIGHT_REPORT_PATH,
+            },
+            "forced-immittance-coefficient": {
+                "repository_path": FINAL_EIGHT_REPORT_PATH,
+            },
+        }
+        for claim_type, values in selected_by_type.items():
+            for _evidence_id, record in values:
+                expected_locator = expected_locators.get(claim_type)
+                if claim_type == "conditional-simpler-realisation-route":
+                    expected_locator = {
+                        "network_number": record["claim"][
+                            "nondegenerate_target_network_number"
+                        ],
+                        "repository_path": FINAL_EIGHT_REPORT_PATH,
+                    }
+                if record["locator"] != expected_locator:
+                    raise ValueError(
+                        "nongeneric group structured facts must use the reviewed "
+                        "final-eight report locator"
+                    )
         selected_structured_ids = {
             item for values in selected_by_type.values() for item, _record in values
         }
