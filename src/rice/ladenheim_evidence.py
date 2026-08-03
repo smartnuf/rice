@@ -115,6 +115,26 @@ NONGENERIC_AGGREGATE_LOCATOR = {
     "pdf_page_index": 48,
     "figure": "5.1",
 }
+REVIEWED_NONGENERIC_GRAPH_DEFINITIONS = {
+    "O": {
+        "graph_label": "O",
+        "base_label": "O",
+        "is_dual": False,
+        "fixture_id": "morelli-smith-O-five-edge",
+    },
+    "O^d": {
+        "graph_label": "O^d",
+        "base_label": "O",
+        "is_dual": True,
+        "fixture_id": "morelli-smith-Od-five-edge",
+    },
+    "V": {
+        "graph_label": "V",
+        "base_label": "V",
+        "is_dual": False,
+        "fixture_id": "morelli-smith-V-five-edge",
+    },
+}
 REVIEWED_Y_DELTA_FIGURE = "Figure 5.3"
 REVIEWED_FINAL_EIGHT_FIXTURES = {
     "morelli-smith-figure-5.1-O-C": {
@@ -689,10 +709,12 @@ def _validate_claim(
         )
         subjects = claim.get("subject_catalogue_ids")
         _validate_subjects(subjects, evidence_id, catalogue_ids)
+        coefficient = claim.get("coefficient")
         if (
             len(subjects) != 1
             or claim.get("immittance_representation") != NONGENERIC_REPRESENTATION
-            or claim.get("coefficient") not in NONGENERIC_COEFFICIENTS
+            or not isinstance(coefficient, str)
+            or coefficient not in NONGENERIC_COEFFICIENTS
             or not _is_int(claim.get("forced_value"))
             or claim.get("forced_value") != 0
             or not _is_int(claim.get("nongeneric_dimension_bound"))
@@ -722,6 +744,7 @@ def _validate_claim(
         subjects = claim.get("subject_catalogue_ids")
         _validate_subjects(subjects, evidence_id, catalogue_ids)
         target = claim.get("nondegenerate_target_network_number")
+        degenerate_class = claim.get("degenerate_realisation_class")
         if (
             len(subjects) != 1
             or not isinstance(claim.get("condition_parameterization_fixture_id"), str)
@@ -733,8 +756,8 @@ def _validate_claim(
             or claim.get("nondegenerate_target_fixture_id")
             != REVIEWED_NONGENERIC_TARGET_FIXTURES.get(target)
             or claim.get("degenerate_condition") != "delta = 0"
-            or claim.get("degenerate_realisation_class")
-            not in DEGENERATE_REALISATION_CLASSES
+            or not isinstance(degenerate_class, str)
+            or degenerate_class not in DEGENERATE_REALISATION_CLASSES
             or claim.get("route_relation") != CONDITIONAL_ROUTE_RELATION
             or (
                 "y_delta_partner_match_evidence_id" in claim
@@ -1511,6 +1534,11 @@ def _validate_assertion(
                 "derived-nongeneric-simplification-match requires the final "
                 "exclusion category and reason"
             )
+        if assertion["basic_graph_assignment"] is not None:
+            raise ValueError(
+                "derived-nongeneric-simplification-match requires no production "
+                "basic graph assignment"
+            )
         claim_types = [evidence[item]["claim"]["claim_type"] for item in evidence_ids]
         required_claim_types = {
             "aggregate-nongeneric-exclusion-group",
@@ -1979,19 +2007,24 @@ def _validate_nongeneric_simplification_groups(
             subject = subjects[0]
             graph_by_subject[subject] = (evidence_id, record)
             graph_labels[match["graph_label"]] += 1
+            expected_definition = REVIEWED_NONGENERIC_GRAPH_DEFINITIONS.get(
+                match["graph_label"]
+            )
             definitions = [
                 candidate
                 for candidate in evidence.values()
                 if candidate["claim"]["claim_type"] == "basic-graph-definition"
                 and _is_authoritative(candidate)
-                and candidate["claim"]["definition"]["graph_label"]
-                == match["graph_label"]
-                and candidate["claim"]["definition"]["fixture_id"]
-                == match["fixture_id"]
+                and candidate["claim"]["definition"] == expected_definition
             ]
-            if len(definitions) != 1:
+            if (
+                expected_definition is None
+                or match["fixture_id"] != expected_definition["fixture_id"]
+                or len(definitions) != 1
+            ):
                 raise ValueError(
-                    "nongeneric graph match requires one exact authoritative fixture"
+                    "nongeneric graph match requires one complete reviewed "
+                    "authoritative definition"
                 )
         if set(graph_by_subject) != member_ids or dict(graph_labels) != aggregate[
             "supported_subject_counts_by_graph"

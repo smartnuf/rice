@@ -3894,6 +3894,27 @@ def test_final_eight_selected_graph_match_requires_reviewed_report_source(
 
 
 @pytest.mark.parametrize(
+    "updates",
+    [
+        {"base_label": "V"},
+        {"is_dual": False},
+        {"base_label": "V", "is_dual": False},
+    ],
+)
+def test_final_eight_graph_definition_requires_complete_reviewed_metadata(
+    catalogue, annotations, updates
+):
+    definition = next(
+        record
+        for record in _evidence_of_type(annotations, "basic-graph-definition")
+        if record["claim"]["definition"]["graph_label"] == "O^d"
+    )
+    definition["claim"]["definition"].update(updates)
+    with pytest.raises(ValueError, match="complete reviewed authoritative definition"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize(
     ("field", "value", "message"),
     [
         ("route_relation", "realizability-set-containment", "invalid conditional"),
@@ -3931,6 +3952,31 @@ def test_forced_coefficient_numeric_fields_require_integers(
     coefficient = _evidence_of_type(annotations, "forced-immittance-coefficient")[0]
     coefficient["claim"][field] = value
     with pytest.raises(ValueError, match="invalid forced coefficient claim"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize("coefficient", [["A"], 1])
+def test_forced_coefficient_requires_controlled_string(
+    catalogue, annotations, coefficient
+):
+    record = _evidence_of_type(annotations, "forced-immittance-coefficient")[0]
+    record["claim"]["coefficient"] = coefficient
+    with pytest.raises(ValueError, match="invalid forced coefficient claim"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize(
+    "degenerate_class",
+    [["two-element-series-R-X"], 1],
+)
+def test_conditional_route_requires_controlled_degenerate_class(
+    catalogue, annotations, degenerate_class
+):
+    route = _evidence_of_type(
+        annotations, "conditional-simpler-realisation-route"
+    )[0]
+    route["claim"]["degenerate_realisation_class"] = degenerate_class
+    with pytest.raises(ValueError, match="invalid conditional simpler-realisation"):
         generate_evidence_ledger(catalogue, annotations)
 
 
@@ -4202,6 +4248,31 @@ def test_final_eight_subject_cannot_have_a_canonical_historical_identity(
         "evidence_record_ids": [identifier_evidence["evidence_id"]],
     }]
     with pytest.raises(ValueError, match="cannot use a canonical network.*historical identity"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_final_eight_status_requires_null_graph_assignment(catalogue, annotations):
+    _populate_final_eight_explicit_records(annotations)
+    subject = "lh148-4a925dd55dc8da19"
+    graph_match = _subject_evidence(annotations, "basic-graph-match", subject)
+    definition = next(
+        record
+        for record in _evidence_of_type(annotations, "basic-graph-definition")
+        if record["claim"]["definition"]["graph_label"] == "O"
+    )
+    row = next(item for item in annotations["records"] if item["catalogue_id"] == subject)
+    row["basic_graph_assignment"] = {
+        **definition["claim"]["definition"],
+        "structural_relation": (
+            "colour-preserving-port-augmented-cycle-matroid-v1"
+        ),
+        "verification_state": "cross-checked",
+        "evidence_record_ids": [
+            definition["evidence_id"],
+            graph_match["evidence_id"],
+        ],
+    }
+    with pytest.raises(ValueError, match="requires no production basic graph assignment"):
         generate_evidence_ledger(catalogue, annotations)
 
 
