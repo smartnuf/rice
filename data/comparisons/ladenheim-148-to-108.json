@@ -161,6 +161,44 @@
         "rice-lh148-53370c9917eea4d0-target-33",
         "rice-lh148-45d19cefc5b496ce-target-73"
       ]
+    },
+    {
+      "commit_sha": "8934cdce9bbc42c022f4b362ee6fa8e4f6539e7e",
+      "cross_check_id": "rice-five-element-zobel-graph-s-dual-report-reproduction",
+      "implementation": "Reproduction commands in docs/comparisons/ladenheim-five-element-zobel-graph-s-dual-evidence.md",
+      "independently_reproduced": true,
+      "input": "The 148-record catalogue, rendered graph-S-dual and coloured source fixtures, rendered graph-G-dual and graph-H target fixtures, and positive exact-arithmetic Figure 5.2 parameters",
+      "limitations": "This independently checks the RICE graph and reduction-target correspondences; it is not an individual historical source statement or a canonical identity assignment.",
+      "operation": "Enumerate all 85 five-element records and all 15 graph-S-dual matches; select exactly five coloured source pathway signatures; for four subjects apply the inverse Figure 5.2 coefficient map and merge series resistors to graph G-dual; for one subject apply the forward Figure 5.2 map to the composite series L-C arm and merge parallel resistors to graph H; compare every resulting target fixture; verify both maps cover the positive finite domain in both directions; and verify exact complete-network immittances with fractions.Fraction",
+      "provenance_level": "independently-reproduced-computation",
+      "reduction_target_network_numbers": [
+        37,
+        40,
+        45,
+        48,
+        72
+      ],
+      "result": "Exactly five graph-S-dual subjects match the reviewed coloured source fixtures and reduce respectively to canonical networks 37, 40, 45, 48, and 72 through four complete inverse-map/series-merge graph-G-dual pathways and one complete forward-map/parallel-merge graph-H pathway with exact positive coefficients.",
+      "subject_catalogue_ids": [
+        "lh148-84fedcab1cc7f77d",
+        "lh148-81ffdfa53c07c484",
+        "lh148-4cf39db00710fb1c",
+        "lh148-3bf13e1a1ad41cd5",
+        "lh148-aefb4b8fe01749c6"
+      ],
+      "verification_state": "cross-checked",
+      "verified_evidence_record_ids": [
+        "rice-lh148-84fedcab1cc7f77d-graph-s-dual-match",
+        "rice-lh148-81ffdfa53c07c484-graph-s-dual-match",
+        "rice-lh148-4cf39db00710fb1c-graph-s-dual-match",
+        "rice-lh148-3bf13e1a1ad41cd5-graph-s-dual-match",
+        "rice-lh148-aefb4b8fe01749c6-graph-s-dual-match",
+        "rice-lh148-84fedcab1cc7f77d-target-37",
+        "rice-lh148-81ffdfa53c07c484-target-40",
+        "rice-lh148-4cf39db00710fb1c-target-45",
+        "rice-lh148-3bf13e1a1ad41cd5-target-48",
+        "rice-lh148-aefb4b8fe01749c6-target-72"
+      ]
     }
   ],
   "evidence_records": [
@@ -1262,6 +1300,255 @@
       "paraphrase": "The reviewed pathway starts from R followed by R parallel with R followed by (L parallel C), applies the inverse Figure 5.2 coefficient map for a, b, and c recorded in the report to the composite parallel L-C arm, uses series interchange and merges the resulting series resistors, obtains graph H-dual as R followed by (R parallel L parallel C), and matches canonical network 73 with positive finite coefficients and exact immittance checks.",
       "provenance_level": "rice-derived-network-equivalence-fact",
       "source_id": "rice-five-element-zobel-graph-s-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "aggregate-basic-graph-exclusion",
+        "graph_label": "S^d",
+        "source_population": 5,
+        "supported_disposition": "exclude",
+        "supported_exclusion_category": "zobel-five-element-series-parallel",
+        "supported_reduction_targets": [
+          37,
+          40,
+          45,
+          48,
+          72
+        ]
+      },
+      "evidence_id": "ms-2019-five-element-zobel-graph-s-dual-group",
+      "locator": {
+        "pdf_page_index": 48,
+        "printed_page": 42,
+        "section": "5.1"
+      },
+      "notes": "This is a collective graph-family, population, category, and target-set statement; it does not identify RICE subjects or allocate individual targets.",
+      "paraphrase": "Five five-element series-parallel networks with basic graph S-dual are excluded by Zobel reduction to canonical networks 37, 40, 45, 48, and 72 collectively.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "claim_type": "basic-graph-definition",
+        "definition": {
+          "base_label": "S",
+          "fixture_id": "morelli-smith-Sd-five-edge",
+          "graph_label": "S^d",
+          "is_dual": true
+        }
+      },
+      "evidence_id": "ms-2019-basic-graph-s-dual-definition",
+      "locator": {
+        "appendix": "B",
+        "pdf_page_index": 133,
+        "printed_page": 127
+      },
+      "notes": "Normalized fixture: vertices A,B,C,E; terminals A,E; edges AB,BC,CE,BE,AE, with no parallel edges. Appendix B gives 15 assignments, eight canonical, two four-resistor bilinear exclusions, two exclusions in the combined 3R-2L/3R-2C column, and three 3R-LC exclusions.",
+      "paraphrase": "The rendered Appendix B diagram defines graph S-dual as AE in parallel with AB followed by the parallel combination of BE and BC followed by CE.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "claim_type": "basic-graph-match",
+        "match": {
+          "fixture_id": "morelli-smith-Sd-five-edge",
+          "graph_label": "S^d",
+          "matched": true,
+          "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1"
+        },
+        "subject_catalogue_ids": [
+          "lh148-84fedcab1cc7f77d"
+        ]
+      },
+      "evidence_id": "rice-lh148-84fedcab1cc7f77d-graph-s-dual-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-five-element-zobel-graph-s-dual-evidence.md"
+      },
+      "paraphrase": "The complete 85-record census, 15-member graph-S-dual population, and exact coloured signature uniquely match the R3L2C0 fixture L parallel with R followed by (R parallel with (R followed by L)) to this RICE subject.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-five-element-zobel-graph-s-dual-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "basic-graph-match",
+        "match": {
+          "fixture_id": "morelli-smith-Sd-five-edge",
+          "graph_label": "S^d",
+          "matched": true,
+          "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1"
+        },
+        "subject_catalogue_ids": [
+          "lh148-81ffdfa53c07c484"
+        ]
+      },
+      "evidence_id": "rice-lh148-81ffdfa53c07c484-graph-s-dual-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-five-element-zobel-graph-s-dual-evidence.md"
+      },
+      "paraphrase": "The complete 85-record census, 15-member graph-S-dual population, and exact coloured signature uniquely match the R3L1C1 fixture L parallel with R followed by (R parallel with (R followed by C)) to this RICE subject.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-five-element-zobel-graph-s-dual-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "basic-graph-match",
+        "match": {
+          "fixture_id": "morelli-smith-Sd-five-edge",
+          "graph_label": "S^d",
+          "matched": true,
+          "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1"
+        },
+        "subject_catalogue_ids": [
+          "lh148-4cf39db00710fb1c"
+        ]
+      },
+      "evidence_id": "rice-lh148-4cf39db00710fb1c-graph-s-dual-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-five-element-zobel-graph-s-dual-evidence.md"
+      },
+      "paraphrase": "The complete 85-record census, 15-member graph-S-dual population, and exact coloured signature uniquely match the R3L0C2 fixture C parallel with R followed by (R parallel with (R followed by C)) to this RICE subject.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-five-element-zobel-graph-s-dual-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "basic-graph-match",
+        "match": {
+          "fixture_id": "morelli-smith-Sd-five-edge",
+          "graph_label": "S^d",
+          "matched": true,
+          "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1"
+        },
+        "subject_catalogue_ids": [
+          "lh148-3bf13e1a1ad41cd5"
+        ]
+      },
+      "evidence_id": "rice-lh148-3bf13e1a1ad41cd5-graph-s-dual-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-five-element-zobel-graph-s-dual-evidence.md"
+      },
+      "paraphrase": "The complete 85-record census, 15-member graph-S-dual population, and exact coloured signature uniquely match the R3L1C1 fixture C parallel with R followed by (R parallel with (R followed by L)) to this RICE subject.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-five-element-zobel-graph-s-dual-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "basic-graph-match",
+        "match": {
+          "fixture_id": "morelli-smith-Sd-five-edge",
+          "graph_label": "S^d",
+          "matched": true,
+          "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1"
+        },
+        "subject_catalogue_ids": [
+          "lh148-aefb4b8fe01749c6"
+        ]
+      },
+      "evidence_id": "rice-lh148-aefb4b8fe01749c6-graph-s-dual-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-five-element-zobel-graph-s-dual-evidence.md"
+      },
+      "paraphrase": "The complete 85-record census, 15-member graph-S-dual population, and exact coloured signature uniquely match the R3L1C1 fixture R parallel with R followed by (R parallel with the composite series L-C arm) to this RICE subject.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-five-element-zobel-graph-s-dual-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "reduction-target-match",
+        "subject_catalogue_ids": [
+          "lh148-84fedcab1cc7f77d"
+        ],
+        "target_network_number": 37
+      },
+      "evidence_id": "rice-lh148-84fedcab1cc7f77d-target-37",
+      "locator": {
+        "network_number": 37,
+        "repository_path": "docs/comparisons/ladenheim-five-element-zobel-graph-s-dual-evidence.md"
+      },
+      "paraphrase": "The reviewed pathway starts from L parallel with R followed by (R parallel with (R followed by L)), applies the inverse Figure 5.2 coefficient map for a, b, and c recorded in the report, merges the resulting series resistors, obtains graph G-dual as L parallel with R followed by (R parallel L), and matches canonical network 37 with positive finite coefficients in both directions and exact immittance checks.",
+      "provenance_level": "rice-derived-network-equivalence-fact",
+      "source_id": "rice-five-element-zobel-graph-s-dual-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "reduction-target-match",
+        "subject_catalogue_ids": [
+          "lh148-81ffdfa53c07c484"
+        ],
+        "target_network_number": 40
+      },
+      "evidence_id": "rice-lh148-81ffdfa53c07c484-target-40",
+      "locator": {
+        "network_number": 40,
+        "repository_path": "docs/comparisons/ladenheim-five-element-zobel-graph-s-dual-evidence.md"
+      },
+      "paraphrase": "The reviewed pathway starts from L parallel with R followed by (R parallel with (R followed by C)), applies the inverse Figure 5.2 coefficient map for a, b, and c recorded in the report, merges the resulting series resistors, obtains graph G-dual as L parallel with R followed by (R parallel C), and matches canonical network 40 with positive finite coefficients in both directions and exact immittance checks.",
+      "provenance_level": "rice-derived-network-equivalence-fact",
+      "source_id": "rice-five-element-zobel-graph-s-dual-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "reduction-target-match",
+        "subject_catalogue_ids": [
+          "lh148-4cf39db00710fb1c"
+        ],
+        "target_network_number": 45
+      },
+      "evidence_id": "rice-lh148-4cf39db00710fb1c-target-45",
+      "locator": {
+        "network_number": 45,
+        "repository_path": "docs/comparisons/ladenheim-five-element-zobel-graph-s-dual-evidence.md"
+      },
+      "paraphrase": "The reviewed pathway starts from C parallel with R followed by (R parallel with (R followed by C)), applies the inverse Figure 5.2 coefficient map for a, b, and c recorded in the report, merges the resulting series resistors, obtains graph G-dual as C parallel with R followed by (R parallel C), and matches canonical network 45 with positive finite coefficients in both directions and exact immittance checks.",
+      "provenance_level": "rice-derived-network-equivalence-fact",
+      "source_id": "rice-five-element-zobel-graph-s-dual-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "reduction-target-match",
+        "subject_catalogue_ids": [
+          "lh148-3bf13e1a1ad41cd5"
+        ],
+        "target_network_number": 48
+      },
+      "evidence_id": "rice-lh148-3bf13e1a1ad41cd5-target-48",
+      "locator": {
+        "network_number": 48,
+        "repository_path": "docs/comparisons/ladenheim-five-element-zobel-graph-s-dual-evidence.md"
+      },
+      "paraphrase": "The reviewed pathway starts from C parallel with R followed by (R parallel with (R followed by L)), applies the inverse Figure 5.2 coefficient map for a, b, and c recorded in the report, merges the resulting series resistors, obtains graph G-dual as C parallel with R followed by (R parallel L), and matches canonical network 48 with positive finite coefficients in both directions and exact immittance checks.",
+      "provenance_level": "rice-derived-network-equivalence-fact",
+      "source_id": "rice-five-element-zobel-graph-s-dual-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "reduction-target-match",
+        "subject_catalogue_ids": [
+          "lh148-aefb4b8fe01749c6"
+        ],
+        "target_network_number": 72
+      },
+      "evidence_id": "rice-lh148-aefb4b8fe01749c6-target-72",
+      "locator": {
+        "network_number": 72,
+        "repository_path": "docs/comparisons/ladenheim-five-element-zobel-graph-s-dual-evidence.md"
+      },
+      "paraphrase": "The reviewed pathway starts from R parallel with R followed by (R parallel with the composite series L-C arm), applies the forward Figure 5.2 coefficient map for a-prime, b-prime, and c-prime recorded in the report to that composite arm, merges the untouched and transformed parallel resistors, obtains graph H as R parallel with the series R-L-C branch, and matches canonical network 72 with positive finite coefficients in both directions and exact immittance checks.",
+      "provenance_level": "rice-derived-network-equivalence-fact",
+      "source_id": "rice-five-element-zobel-graph-s-dual-report",
       "verification_state": "cross-checked"
     }
   ],
@@ -3493,27 +3780,34 @@
       "basic_graph_assignment": null,
       "c": 2,
       "catalogue_id": "lh148-4cf39db00710fb1c",
-      "comparison_status": "unresolved",
-      "computational_cross_check_ids": [],
-      "confidence": "none",
-      "evidence_basis": [
-        "no-evidence-yet"
+      "comparison_status": "derived-structural-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-zobel-graph-s-dual-report-reproduction"
       ],
-      "evidence_record_ids": [],
-      "exclusion_category": "unresolved",
-      "exclusion_reason": null,
+      "confidence": "high",
+      "evidence_basis": [
+        "aggregate-historical-graph-group-plus-subject-bound-rice-match",
+        "mechanically-derived-rice-structural-fact"
+      ],
+      "evidence_record_ids": [
+        "ms-2019-five-element-zobel-graph-s-dual-group",
+        "ms-2019-basic-graph-s-dual-definition",
+        "rice-lh148-4cf39db00710fb1c-graph-s-dual-match",
+        "rice-lh148-4cf39db00710fb1c-target-45"
+      ],
+      "exclusion_category": "zobel-five-element-series-parallel",
+      "exclusion_reason": "The source collectively excludes five graph-S-dual networks to the stated target set; the complete RICE census independently selects this direct-C/transformed-C subject, and the reviewed pathway applies the inverse Figure 5.2 coefficient map, merges series resistors, obtains graph G-dual as C parallel with R followed by (R parallel C), and checks canonical network 45 with exact positive immittance verification in both directions.",
       "historical_identifiers": [],
       "l": 0,
       "lc": 2,
       "notes": [
-        "No individual canonical-catalogue mapping is established."
+        "The RICE-ID correspondence and target allocation are independently checked repository evidence, not an individual historical source statement; canonical network 45 is a reduction target only."
       ],
       "open_questions": [
-        "Which historical network or figure, if any, corresponds to this record?",
-        "What entry-specific evidence establishes exclusion or retention?"
+        "Which of the final eight O/O-dual and bridge exclusions can be established under a separate evidence goal?"
       ],
       "previous_workspace_record_ids": [],
-      "proposed_disposition": "unresolved",
+      "proposed_disposition": "exclude",
       "r": 3,
       "representative_descriptor": "0-1:C;0-2:C;0-3:R;1-3:R;2-3:R",
       "rlc": 5,
@@ -3677,7 +3971,7 @@
         "The RICE-ID correspondence and target allocation are independently checked repository evidence, not an individual historical source statement; canonical network 43 is a reduction target only."
       ],
       "open_questions": [
-        "Which of the remaining ten five-element series-parallel Zobel exclusions can be established through complete graph-family groups?"
+        "Which of the final eight O/O-dual and bridge exclusions can be established under a separate evidence goal?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "exclude",
@@ -3844,7 +4138,7 @@
         "The RICE-ID correspondence and target allocation are independently checked repository evidence, not an individual historical source statement; canonical network 22 is a reduction target only."
       ],
       "open_questions": [
-        "Which of the remaining five graph-S-dual five-element Zobel exclusions can be established through a complete reviewed evidence group?"
+        "Which of the final eight O/O-dual and bridge exclusions can be established under a separate evidence goal?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "exclude",
@@ -3947,7 +4241,7 @@
         "The RICE-ID correspondence and individual target allocation are independently checked repository evidence, not an individual historical source statement."
       ],
       "open_questions": [
-        "Which of the remaining sixteen five-element series-parallel Zobel exclusions can be established through complete graph-family groups?"
+        "Which of the final eight O/O-dual and bridge exclusions can be established under a separate evidence goal?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "exclude",
@@ -4018,7 +4312,7 @@
         "The RICE-ID correspondence is independently checked repository evidence, not an individual RICE mapping printed by the historical source; canonical network 72 is a reduction target only."
       ],
       "open_questions": [
-        "Which of the remaining fifteen five-element series-parallel Zobel exclusions can be established through complete graph-family groups?"
+        "Which of the final eight O/O-dual and bridge exclusions can be established under a separate evidence goal?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "exclude",
@@ -4249,7 +4543,7 @@
         "The RICE-ID correspondence and individual target allocation are independently checked repository evidence, not an individual historical source statement."
       ],
       "open_questions": [
-        "Which of the remaining sixteen five-element series-parallel Zobel exclusions can be established through complete graph-family groups?"
+        "Which of the final eight O/O-dual and bridge exclusions can be established under a separate evidence goal?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "exclude",
@@ -4264,27 +4558,34 @@
       "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-3bf13e1a1ad41cd5",
-      "comparison_status": "unresolved",
-      "computational_cross_check_ids": [],
-      "confidence": "none",
-      "evidence_basis": [
-        "no-evidence-yet"
+      "comparison_status": "derived-structural-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-zobel-graph-s-dual-report-reproduction"
       ],
-      "evidence_record_ids": [],
-      "exclusion_category": "unresolved",
-      "exclusion_reason": null,
+      "confidence": "high",
+      "evidence_basis": [
+        "aggregate-historical-graph-group-plus-subject-bound-rice-match",
+        "mechanically-derived-rice-structural-fact"
+      ],
+      "evidence_record_ids": [
+        "ms-2019-five-element-zobel-graph-s-dual-group",
+        "ms-2019-basic-graph-s-dual-definition",
+        "rice-lh148-3bf13e1a1ad41cd5-graph-s-dual-match",
+        "rice-lh148-3bf13e1a1ad41cd5-target-48"
+      ],
+      "exclusion_category": "zobel-five-element-series-parallel",
+      "exclusion_reason": "The source collectively excludes five graph-S-dual networks to the stated target set; the complete RICE census independently selects this direct-C/transformed-L subject, and the reviewed pathway applies the inverse Figure 5.2 coefficient map, merges series resistors, obtains graph G-dual as C parallel with R followed by (R parallel L), and checks canonical network 48 with exact positive immittance verification in both directions.",
       "historical_identifiers": [],
       "l": 1,
       "lc": 2,
       "notes": [
-        "No individual canonical-catalogue mapping is established."
+        "The RICE-ID correspondence and target allocation are independently checked repository evidence, not an individual historical source statement; canonical network 48 is a reduction target only."
       ],
       "open_questions": [
-        "Which historical network or figure, if any, corresponds to this record?",
-        "What entry-specific evidence establishes exclusion or retention?"
+        "Which of the final eight O/O-dual and bridge exclusions can be established under a separate evidence goal?"
       ],
       "previous_workspace_record_ids": [],
-      "proposed_disposition": "unresolved",
+      "proposed_disposition": "exclude",
       "r": 3,
       "representative_descriptor": "0-1:C;0-2:L;0-3:R;1-3:R;2-3:R",
       "rlc": 5,
@@ -4320,7 +4621,7 @@
         "The RICE-ID correspondence and target allocation are independently checked repository evidence, not an individual historical source statement; canonical network 73 is a reduction target only."
       ],
       "open_questions": [
-        "Which of the remaining five graph-S-dual five-element Zobel exclusions can be established through a complete reviewed evidence group?"
+        "Which of the final eight O/O-dual and bridge exclusions can be established under a separate evidence goal?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "exclude",
@@ -4423,7 +4724,7 @@
         "The RICE-ID correspondence and target allocation are independently checked repository evidence, not an individual historical source statement; canonical network 33 is a reduction target only."
       ],
       "open_questions": [
-        "Which of the remaining five graph-S-dual five-element Zobel exclusions can be established through a complete reviewed evidence group?"
+        "Which of the final eight O/O-dual and bridge exclusions can be established under a separate evidence goal?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "exclude",
@@ -4462,7 +4763,7 @@
         "The RICE-ID correspondence and target allocation are independently checked repository evidence, not an individual historical source statement; canonical network 47 is a reduction target only."
       ],
       "open_questions": [
-        "Which of the remaining ten five-element series-parallel Zobel exclusions can be established through complete graph-family groups?"
+        "Which of the final eight O/O-dual and bridge exclusions can be established under a separate evidence goal?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "exclude",
@@ -4533,7 +4834,7 @@
         "The RICE-ID correspondence and target allocation are independently checked repository evidence, not an individual historical source statement; canonical network 24 is a reduction target only."
       ],
       "open_questions": [
-        "Which of the remaining five graph-S-dual five-element Zobel exclusions can be established through a complete reviewed evidence group?"
+        "Which of the final eight O/O-dual and bridge exclusions can be established under a separate evidence goal?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "exclude",
@@ -4572,7 +4873,7 @@
         "The RICE-ID correspondence is independently checked repository evidence, not an individual RICE mapping printed by the historical source; canonical network 73 is a reduction target only."
       ],
       "open_questions": [
-        "Which of the remaining fourteen five-element series-parallel Zobel exclusions can be established through complete graph-family groups?"
+        "Which of the final eight O/O-dual and bridge exclusions can be established under a separate evidence goal?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "exclude",
@@ -4811,27 +5112,34 @@
       "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-81ffdfa53c07c484",
-      "comparison_status": "unresolved",
-      "computational_cross_check_ids": [],
-      "confidence": "none",
-      "evidence_basis": [
-        "no-evidence-yet"
+      "comparison_status": "derived-structural-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-zobel-graph-s-dual-report-reproduction"
       ],
-      "evidence_record_ids": [],
-      "exclusion_category": "unresolved",
-      "exclusion_reason": null,
+      "confidence": "high",
+      "evidence_basis": [
+        "aggregate-historical-graph-group-plus-subject-bound-rice-match",
+        "mechanically-derived-rice-structural-fact"
+      ],
+      "evidence_record_ids": [
+        "ms-2019-five-element-zobel-graph-s-dual-group",
+        "ms-2019-basic-graph-s-dual-definition",
+        "rice-lh148-81ffdfa53c07c484-graph-s-dual-match",
+        "rice-lh148-81ffdfa53c07c484-target-40"
+      ],
+      "exclusion_category": "zobel-five-element-series-parallel",
+      "exclusion_reason": "The source collectively excludes five graph-S-dual networks to the stated target set; the complete RICE census independently selects this direct-L/transformed-C subject, and the reviewed pathway applies the inverse Figure 5.2 coefficient map, merges series resistors, obtains graph G-dual as L parallel with R followed by (R parallel C), and checks canonical network 40 with exact positive immittance verification in both directions.",
       "historical_identifiers": [],
       "l": 1,
       "lc": 2,
       "notes": [
-        "No individual canonical-catalogue mapping is established."
+        "The RICE-ID correspondence and target allocation are independently checked repository evidence, not an individual historical source statement; canonical network 40 is a reduction target only."
       ],
       "open_questions": [
-        "Which historical network or figure, if any, corresponds to this record?",
-        "What entry-specific evidence establishes exclusion or retention?"
+        "Which of the final eight O/O-dual and bridge exclusions can be established under a separate evidence goal?"
       ],
       "previous_workspace_record_ids": [],
-      "proposed_disposition": "unresolved",
+      "proposed_disposition": "exclude",
       "r": 3,
       "representative_descriptor": "0-1:L;0-2:C;0-3:R;1-3:R;2-3:R",
       "rlc": 5,
@@ -4899,7 +5207,7 @@
         "The RICE-ID correspondence and target allocation are independently checked repository evidence, not an individual historical source statement; canonical network 39 is a reduction target only."
       ],
       "open_questions": [
-        "Which of the remaining ten five-element series-parallel Zobel exclusions can be established through complete graph-family groups?"
+        "Which of the final eight O/O-dual and bridge exclusions can be established under a separate evidence goal?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "exclude",
@@ -4938,7 +5246,7 @@
         "The RICE-ID correspondence and individual target allocation are independently checked repository evidence, not an individual historical source statement."
       ],
       "open_questions": [
-        "Which of the remaining sixteen five-element series-parallel Zobel exclusions can be established through complete graph-family groups?"
+        "Which of the final eight O/O-dual and bridge exclusions can be established under a separate evidence goal?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "exclude",
@@ -4953,27 +5261,34 @@
       "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-aefb4b8fe01749c6",
-      "comparison_status": "unresolved",
-      "computational_cross_check_ids": [],
-      "confidence": "none",
-      "evidence_basis": [
-        "no-evidence-yet"
+      "comparison_status": "derived-structural-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-zobel-graph-s-dual-report-reproduction"
       ],
-      "evidence_record_ids": [],
-      "exclusion_category": "unresolved",
-      "exclusion_reason": null,
+      "confidence": "high",
+      "evidence_basis": [
+        "aggregate-historical-graph-group-plus-subject-bound-rice-match",
+        "mechanically-derived-rice-structural-fact"
+      ],
+      "evidence_record_ids": [
+        "ms-2019-five-element-zobel-graph-s-dual-group",
+        "ms-2019-basic-graph-s-dual-definition",
+        "rice-lh148-aefb4b8fe01749c6-graph-s-dual-match",
+        "rice-lh148-aefb4b8fe01749c6-target-72"
+      ],
+      "exclusion_category": "zobel-five-element-series-parallel",
+      "exclusion_reason": "The source collectively excludes five graph-S-dual networks to the stated target set; the complete RICE census independently selects this composite-series-L-C-arm subject, and the reviewed pathway applies the forward Figure 5.2 coefficient map, merges parallel resistors, obtains graph H as R parallel with the series R-L-C branch, and checks canonical network 72 with exact positive immittance verification in both directions.",
       "historical_identifiers": [],
       "l": 1,
       "lc": 2,
       "notes": [
-        "No individual canonical-catalogue mapping is established."
+        "The RICE-ID correspondence and target allocation are independently checked repository evidence, not an individual historical source statement; canonical network 72 is a reduction target only."
       ],
       "open_questions": [
-        "Which historical network or figure, if any, corresponds to this record?",
-        "What entry-specific evidence establishes exclusion or retention?"
+        "Which of the final eight O/O-dual and bridge exclusions can be established under a separate evidence goal?"
       ],
       "previous_workspace_record_ids": [],
-      "proposed_disposition": "unresolved",
+      "proposed_disposition": "exclude",
       "r": 3,
       "representative_descriptor": "0-1:R;0-2:C;0-3:R;1-3:R;2-3:L",
       "rlc": 5,
@@ -5425,7 +5740,7 @@
         "The RICE-ID correspondence and target allocation are independently checked repository evidence, not an individual historical source statement; canonical network 30 is a reduction target only."
       ],
       "open_questions": [
-        "Which of the remaining five graph-S-dual five-element Zobel exclusions can be established through a complete reviewed evidence group?"
+        "Which of the final eight O/O-dual and bridge exclusions can be established under a separate evidence goal?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "exclude",
@@ -5592,7 +5907,7 @@
         "The RICE-ID correspondence and individual target allocation are independently checked repository evidence, not an individual historical source statement."
       ],
       "open_questions": [
-        "Which of the remaining sixteen five-element series-parallel Zobel exclusions can be established through complete graph-family groups?"
+        "Which of the final eight O/O-dual and bridge exclusions can be established under a separate evidence goal?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "exclude",
@@ -5671,27 +5986,34 @@
       "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-84fedcab1cc7f77d",
-      "comparison_status": "unresolved",
-      "computational_cross_check_ids": [],
-      "confidence": "none",
-      "evidence_basis": [
-        "no-evidence-yet"
+      "comparison_status": "derived-structural-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-zobel-graph-s-dual-report-reproduction"
       ],
-      "evidence_record_ids": [],
-      "exclusion_category": "unresolved",
-      "exclusion_reason": null,
+      "confidence": "high",
+      "evidence_basis": [
+        "aggregate-historical-graph-group-plus-subject-bound-rice-match",
+        "mechanically-derived-rice-structural-fact"
+      ],
+      "evidence_record_ids": [
+        "ms-2019-five-element-zobel-graph-s-dual-group",
+        "ms-2019-basic-graph-s-dual-definition",
+        "rice-lh148-84fedcab1cc7f77d-graph-s-dual-match",
+        "rice-lh148-84fedcab1cc7f77d-target-37"
+      ],
+      "exclusion_category": "zobel-five-element-series-parallel",
+      "exclusion_reason": "The source collectively excludes five graph-S-dual networks to the stated target set; the complete RICE census independently selects this direct-L/transformed-L subject, and the reviewed pathway applies the inverse Figure 5.2 coefficient map, merges series resistors, obtains graph G-dual as L parallel with R followed by (R parallel L), and checks canonical network 37 with exact positive immittance verification in both directions.",
       "historical_identifiers": [],
       "l": 2,
       "lc": 2,
       "notes": [
-        "No individual canonical-catalogue mapping is established."
+        "The RICE-ID correspondence and target allocation are independently checked repository evidence, not an individual historical source statement; canonical network 37 is a reduction target only."
       ],
       "open_questions": [
-        "Which historical network or figure, if any, corresponds to this record?",
-        "What entry-specific evidence establishes exclusion or retention?"
+        "Which of the final eight O/O-dual and bridge exclusions can be established under a separate evidence goal?"
       ],
       "previous_workspace_record_ids": [],
-      "proposed_disposition": "unresolved",
+      "proposed_disposition": "exclude",
       "r": 3,
       "representative_descriptor": "0-1:L;0-2:L;0-3:R;1-3:R;2-3:R",
       "rlc": 5,
@@ -5727,7 +6049,7 @@
         "The RICE-ID correspondence and target allocation are independently checked repository evidence, not an individual historical source statement; canonical network 35 is a reduction target only."
       ],
       "open_questions": [
-        "Which of the remaining ten five-element series-parallel Zobel exclusions can be established through complete graph-family groups?"
+        "Which of the final eight O/O-dual and bridge exclusions can be established under a separate evidence goal?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "exclude",
@@ -6241,27 +6563,33 @@
       "notes": "Reviewed repository documentation recording the complete 85-record census and 15-member graph-S population, five coloured source fixtures, four forward Figure 5.2 maps and parallel-resistor merges to graph G, one inverse map with series interchange and a series-resistor merge to graph H-dual, exact target allocations, and exact immittance checks; it is not the authoritative historical publication.",
       "source_id": "rice-five-element-zobel-graph-s-report",
       "source_type": "rice-documentation"
+    },
+    {
+      "citation": "RICE graph-S-dual five-element Zobel exclusion evidence report.",
+      "notes": "Reviewed repository documentation recording the complete 85-record census and 15-member graph-S-dual population, five coloured source fixtures, four inverse Figure 5.2 maps and series-resistor merges to graph G-dual, one forward map on the composite series L-C arm with a parallel-resistor merge to graph H, exact target allocations, positive-finite domain coverage in both directions, and exact immittance checks; it is not the authoritative historical publication.",
+      "source_id": "rice-five-element-zobel-graph-s-dual-report",
+      "source_type": "rice-documentation"
     }
   ],
   "summary": {
     "by_comparison_status": {
-      "derived-structural-match": 15,
+      "derived-structural-match": 20,
       "derived-unique-match": 12,
-      "unresolved": 121
+      "unresolved": 116
     },
     "by_exclusion_category": {
       "simpler-bilinear-realisation": 8,
-      "unresolved": 121,
-      "zobel-five-element-series-parallel": 15,
+      "unresolved": 116,
+      "zobel-five-element-series-parallel": 20,
       "zobel-four-element": 4
     },
     "by_proposed_disposition": {
-      "exclude": 27,
-      "unresolved": 121
+      "exclude": 32,
+      "unresolved": 116
     },
-    "mapped_exclusions": 27,
+    "mapped_exclusions": 32,
     "total_rows": 148,
-    "unresolved_dispositions": 121
+    "unresolved_dispositions": 116
   },
   "target": {
     "evidence_record_ids": [
