@@ -3945,7 +3945,7 @@ def test_final_eight_selected_graph_match_requires_reviewed_report_source(
         annotations, "basic-graph-match", "lh148-4a925dd55dc8da19"
     )
     graph_match["source_id"] = "rice-five-element-zobel-graph-s-report"
-    with pytest.raises(ValueError, match="must cite the reviewed final-eight RICE report"):
+    with pytest.raises(ValueError, match="requires exactly eight report-backed records"):
         generate_evidence_ledger(catalogue, annotations)
 
 
@@ -4038,7 +4038,60 @@ def test_final_eight_computation_requires_reviewed_report_identity(
 ):
     computation = _final_eight_computation(annotations)
     computation[field] = value
-    with pytest.raises(ValueError, match="reviewed final-eight reproduction identity"):
+    with pytest.raises(ValueError, match="reviewed final-eight fixed reproduction payload"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize(
+    "field",
+    ["input", "operation", "result", "limitations"],
+)
+def test_final_eight_computation_requires_complete_fixed_payload(
+    catalogue, annotations, field
+):
+    computation = _final_eight_computation(annotations)
+    computation[field] = f"Altered {field}."
+    with pytest.raises(ValueError, match="reviewed final-eight fixed reproduction payload"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_final_eight_report_graph_matches_are_an_exact_inventory(
+    catalogue, annotations
+):
+    graph_match = deepcopy(
+        _subject_evidence(
+            annotations, "basic-graph-match", "lh148-4a925dd55dc8da19"
+        )
+    )
+    graph_match["evidence_id"] = "fixture-orphan-final-eight-graph-match"
+    graph_match["claim"]["match"].update(
+        {
+            "fixture_id": "morelli-smith-V-five-edge",
+            "graph_label": "V",
+        }
+    )
+    annotations["evidence_records"].append(graph_match)
+    with pytest.raises(ValueError, match="requires exactly eight report-backed records"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize(
+    ("field", "value"),
+    [
+        ("verification_state", "source-verified"),
+        ("provenance_level", "rice-derived-network-equivalence-fact"),
+    ],
+)
+def test_final_eight_selected_graph_matches_require_exact_provenance(
+    catalogue, annotations, field, value
+):
+    graph_match = _subject_evidence(
+        annotations, "basic-graph-match", "lh148-4a925dd55dc8da19"
+    )
+    graph_match[field] = value
+    with pytest.raises(
+        ValueError, match="one positive committed-relation graph match per subject"
+    ):
         generate_evidence_ledger(catalogue, annotations)
 
 

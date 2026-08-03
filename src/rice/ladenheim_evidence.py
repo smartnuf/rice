@@ -247,14 +247,44 @@ FINAL_EIGHT_RICE_SOURCE_IDENTITY = {
         "RICE final-eight O/O-dual and bridge evidence and contract-design report."
     ),
 }
+# The closed final-eight machine contract pins source identities and locators,
+# structured claims and fixtures, the report-backed inventory, computation
+# payload and semantic scope, and provenance/application invariants. Editorial
+# paraphrases and explanatory notes remain human-reviewed repository prose.
 FINAL_EIGHT_REPORT_PATH = (
     "docs/comparisons/ladenheim-final-eight-o-bridge-evidence-design.md"
 )
-FINAL_EIGHT_COMPUTATION_ID = "rice-final-eight-o-bridge-report-reproduction"
-FINAL_EIGHT_COMPUTATION_COMMIT = "c5896191cdfbed128485be04dcb23310a508a185"
-FINAL_EIGHT_COMPUTATION_IMPLEMENTATION = (
-    f"Reproduction commands in {FINAL_EIGHT_REPORT_PATH}"
-)
+FINAL_EIGHT_COMPUTATION_FIXED_PAYLOAD = {
+    "cross_check_id": "rice-final-eight-o-bridge-report-reproduction",
+    "provenance_level": "independently-reproduced-computation",
+    "implementation": f"Reproduction commands in {FINAL_EIGHT_REPORT_PATH}",
+    "commit_sha": "c5896191cdfbed128485be04dcb23310a508a185",
+    "input": (
+        "The complete 148-record catalogue, rendered O/O-dual/V and target "
+        "fixtures, positive-finite Y-delta parameters, and exact Cauer-Foster "
+        "parameterizations"
+    ),
+    "operation": (
+        "Enumerate all O, O-dual, and V subjects; assert eight unique coloured "
+        "matches and four Y-delta pairs; verify forced A, C, D, or F zeros; check "
+        "nondegenerate four-element targets and degenerate two-element R-X "
+        "realizations with exact arithmetic"
+    ),
+    "result": (
+        "Eight unique subjects form four positive-finite Y-delta pairs; each pair "
+        "has its reviewed forced-zero coefficient, conditional four-element target "
+        "for delta greater than zero, and exact two-element realization for delta "
+        "equal to zero."
+    ),
+    "independently_reproduced": True,
+    "limitations": (
+        "This verifies the independently reproduced RICE subjects, pairings, "
+        "forced coefficients, and conditional simplification routes; authoritative "
+        "publication transcriptions are provenance inputs rather than "
+        "computationally verified claims."
+    ),
+    "verification_state": "cross-checked",
+}
 CONDITIONAL_ROUTE_RELATION = (
     "conditional-nondegenerate-target-plus-degenerate-fewer-element"
 )
@@ -1943,6 +1973,12 @@ def _validate_nongeneric_simplification_groups(
         for evidence_id, record in evidence.items()
         if record["claim"]["claim_type"] in specialized_claim_types
     }
+    report_graph_match_ids = {
+        evidence_id
+        for evidence_id, record in evidence.items()
+        if record["claim"]["claim_type"] == "basic-graph-match"
+        and record["source_id"] == FINAL_EIGHT_RICE_SOURCE_ID
+    }
     conditional_computations = [
         record
         for record in computations.values()
@@ -1979,6 +2015,11 @@ def _validate_nongeneric_simplification_groups(
             "format-version-4 final-eight inventory requires four Y-delta pairs, "
             "eight forced coefficients, and eight conditional routes"
         )
+    if len(report_graph_match_ids) != 8:
+        raise ValueError(
+            "format-version-4 final-eight graph-match inventory requires exactly "
+            "eight report-backed records"
+        )
     for aggregate_id, aggregate_record in aggregates:
         aggregate = aggregate_record["claim"]
         if not _is_authoritative(aggregate_record):
@@ -2002,14 +2043,14 @@ def _validate_nongeneric_simplification_groups(
                 "reproduced conditional computation"
             )
         computation = qualifying_computations[0]
-        if (
-            computation["cross_check_id"] != FINAL_EIGHT_COMPUTATION_ID
-            or computation["commit_sha"] != FINAL_EIGHT_COMPUTATION_COMMIT
-            or computation["implementation"] != FINAL_EIGHT_COMPUTATION_IMPLEMENTATION
-        ):
+        fixed_payload = {
+            field: computation.get(field)
+            for field in FINAL_EIGHT_COMPUTATION_FIXED_PAYLOAD
+        }
+        if fixed_payload != FINAL_EIGHT_COMPUTATION_FIXED_PAYLOAD:
             raise ValueError(
                 "nongeneric group computation must use the reviewed final-eight "
-                "reproduction identity and implementation"
+                "fixed reproduction payload"
             )
         member_ids = set(computation["subject_catalogue_ids"])
         verified_ids = set(computation["verified_evidence_record_ids"])
@@ -2037,6 +2078,15 @@ def _validate_nongeneric_simplification_groups(
             raise ValueError(
                 "nongeneric computation must verify eight graph matches, four Y-delta "
                 "pairs, eight coefficient facts, and eight conditional routes"
+            )
+        selected_graph_match_ids = {
+            evidence_id
+            for evidence_id, _record in selected_by_type["basic-graph-match"]
+        }
+        if report_graph_match_ids != selected_graph_match_ids:
+            raise ValueError(
+                "final-eight report-backed graph-match inventory must equal the "
+                "computation-selected eight"
             )
         if any(
             record["source_id"] != FINAL_EIGHT_RICE_SOURCE_ID
@@ -2089,6 +2139,8 @@ def _validate_nongeneric_simplification_groups(
             match = claim["match"]
             if (
                 not _is_positive_rice_derived(record)
+                or record["provenance_level"] != "rice-derived-structural-fact"
+                or record["verification_state"] != "cross-checked"
                 or match["matched"] is not True
                 or match["structural_relation"] != SOURCE_CATALOGUE_RELATION
                 or len(subjects) != 1
