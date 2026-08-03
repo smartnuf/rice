@@ -111,48 +111,56 @@ NONGENERIC_REPRESENTATION = "Morelli-Smith-equation-5.1"
 REVIEWED_Y_DELTA_FIGURE = "Figure 5.3"
 REVIEWED_FINAL_EIGHT_FIXTURES = {
     "morelli-smith-figure-5.1-O-C": {
+        "catalogue_id": "lh148-4a925dd55dc8da19",
         "graph_label": "O",
         "coefficient": "F",
         "target": 21,
         "role": "nonbridge",
     },
     "morelli-smith-figure-5.1-V-terminal-C": {
+        "catalogue_id": "lh148-47ee32380ab1b406",
         "graph_label": "V",
         "coefficient": "F",
         "target": 21,
         "role": "bridge",
     },
     "morelli-smith-figure-5.1-O-L": {
+        "catalogue_id": "lh148-68430bbb448b9991",
         "graph_label": "O",
         "coefficient": "D",
         "target": 29,
         "role": "nonbridge",
     },
     "morelli-smith-figure-5.1-V-terminal-L": {
+        "catalogue_id": "lh148-7e24311a6fea4531",
         "graph_label": "V",
         "coefficient": "D",
         "target": 29,
         "role": "bridge",
     },
     "morelli-smith-figure-5.1-Od-L": {
+        "catalogue_id": "lh148-debfbc02c5650a94",
         "graph_label": "O^d",
         "coefficient": "C",
         "target": 36,
         "role": "nonbridge",
     },
     "morelli-smith-figure-5.1-V-path-L": {
+        "catalogue_id": "lh148-f40bfca59082ff8d",
         "graph_label": "V",
         "coefficient": "C",
         "target": 36,
         "role": "bridge",
     },
     "morelli-smith-figure-5.1-Od-C": {
+        "catalogue_id": "lh148-5278112fab778336",
         "graph_label": "O^d",
         "coefficient": "A",
         "target": 44,
         "role": "nonbridge",
     },
     "morelli-smith-figure-5.1-V-path-C": {
+        "catalogue_id": "lh148-f942f37eed38400a",
         "graph_label": "V",
         "coefficient": "A",
         "target": 44,
@@ -668,7 +676,9 @@ def _validate_claim(
             len(subjects) != 1
             or claim.get("immittance_representation") != NONGENERIC_REPRESENTATION
             or claim.get("coefficient") not in NONGENERIC_COEFFICIENTS
+            or not _is_int(claim.get("forced_value"))
             or claim.get("forced_value") != 0
+            or not _is_int(claim.get("nongeneric_dimension_bound"))
             or claim.get("nongeneric_dimension_bound") != 5
             or claim.get("supported_disposition") != "exclude"
         ):
@@ -1963,6 +1973,10 @@ def _validate_nongeneric_simplification_groups(
                 )
             for subject, fixture in zip(subjects, fixtures):
                 fixture_metadata = REVIEWED_FINAL_EIGHT_FIXTURES[fixture]
+                if fixture_metadata["catalogue_id"] != subject:
+                    raise ValueError(
+                        "Y-delta fixture position must match the reviewed catalogue subject"
+                    )
                 if fixture_metadata["graph_label"] != graph_by_subject[subject][1][
                     "claim"
                 ]["match"]["graph_label"]:

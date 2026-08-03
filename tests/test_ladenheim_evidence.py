@@ -3805,6 +3805,22 @@ def test_projective_dimension_bound_cannot_replace_source_bound(catalogue, annot
         generate_evidence_ledger(catalogue, annotations)
 
 
+@pytest.mark.parametrize(
+    ("field", "value"),
+    [
+        ("forced_value", False),
+        ("nongeneric_dimension_bound", 5.0),
+    ],
+)
+def test_forced_coefficient_numeric_fields_require_integers(
+    catalogue, annotations, field, value
+):
+    coefficient = _evidence_of_type(annotations, "forced-immittance-coefficient")[0]
+    coefficient["claim"][field] = value
+    with pytest.raises(ValueError, match="invalid forced coefficient claim"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
 def test_y_delta_pairs_must_be_complete_and_disjoint(catalogue, annotations):
     pairs = _evidence_of_type(annotations, "y-delta-partner-match")
     pairs[1]["claim"]["subject_catalogue_ids"][0] = pairs[0]["claim"][
@@ -3818,6 +3834,36 @@ def test_y_delta_pair_fixture_order_is_bound_to_subject_order(catalogue, annotat
     pair = _evidence_of_type(annotations, "y-delta-partner-match")[0]
     pair["claim"]["subject_fixture_ids"].reverse()
     with pytest.raises(ValueError, match="invalid Y-delta partner claim"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_reviewed_fixtures_reject_consistent_capacitive_inductive_subject_swap(
+    catalogue, annotations
+):
+    subject_swap = {
+        "lh148-4a925dd55dc8da19": "lh148-68430bbb448b9991",
+        "lh148-68430bbb448b9991": "lh148-4a925dd55dc8da19",
+        "lh148-47ee32380ab1b406": "lh148-7e24311a6fea4531",
+        "lh148-7e24311a6fea4531": "lh148-47ee32380ab1b406",
+    }
+    for record in annotations["evidence_records"]:
+        claim = record["claim"]
+        if claim["claim_type"] in {
+            "basic-graph-match",
+            "y-delta-partner-match",
+            "forced-immittance-coefficient",
+            "conditional-simpler-realisation-route",
+        }:
+            claim["subject_catalogue_ids"] = [
+                subject_swap.get(subject, subject)
+                for subject in claim.get("subject_catalogue_ids", [])
+            ]
+    computation = _final_eight_computation(annotations)
+    computation["subject_catalogue_ids"] = [
+        subject_swap.get(subject, subject)
+        for subject in computation["subject_catalogue_ids"]
+    ]
+    with pytest.raises(ValueError, match="reviewed catalogue subject"):
         generate_evidence_ledger(catalogue, annotations)
 
 

@@ -7,16 +7,18 @@ and Smith Figure 5.1: four series-parallel networks with basic graphs `O` or
 `O^d`, and four graph-`V` bridge networks connected to them by resistor
 Y--delta transformations. It transcribes the authoritative diagrams, searches
 all 148 committed RICE records, checks the eight coloured correspondences,
-derives their coefficient-zero and simpler-realisation facts, and recommends a
-minimum evidence-contract extension.
+derives their coefficient-zero and simpler-realisation facts, and specifies a
+minimum evidence-contract extension. PR 75 introduces the accepted
+format-version-4 annotation contract and the structured final-eight evidence
+specified here.
 
-This is evidence and contract design only. It does not change the annotation
-contract, production evidence, dispositions, graph assignments, historical
-identifiers, or canonical numbering. Production remains 32 excluded, 116
-unresolved, and 0 retained. Canonical networks 21, 29, 36, and 44 are simpler
-realisation destinations, not historical identities of the eight subjects.
-Nothing here establishes the complementary 108 rows as retained or reproduces
-the canonical 108 catalogue.
+The eight dispositions remain unapplied: production has 32 excluded, 116
+unresolved, and 0 retained records. Every graph assignment remains null, every
+historical-identifier list remains empty, and no canonical numbering is
+populated. Canonical networks 21, 29, 36, and 44 are simpler-realisation
+destinations, not historical identities of the eight subjects. Nothing here
+establishes the complementary 108 rows as retained or reproduces the canonical
+108 catalogue.
 
 ## 2. Source identity and locators
 
