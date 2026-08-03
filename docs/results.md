@@ -246,3 +246,4 @@ established pipeline totals: 1,830 raw assignments, 1,112 assigned-support
 classes, and 313 local-SP networks. The nearby local-SP region
 `--max-r 3 --max-lc 2 --max-support-edges 5` remains 140 networks; this is a
 RICE local-SP result, not the historical Ladenheim 108 relation.
+
