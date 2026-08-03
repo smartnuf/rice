@@ -250,9 +250,13 @@ the same forced zero:
 | `O^d-L` / `V-path-L` | `C` |
 
 Equation (5.1) has six homogeneous coefficients. Constraining one coordinate
-to zero confines the realizability set to dimension at most five. This is the
-specific nongenericity argument in Theorem 7.4; it is not inferred merely from
-the existence of a visually simpler circuit.
+to zero confines the realizability set to dimension at most five in the
+`R^6_+` coefficient-space convention of Definitions 7.1--7.2 and Theorem 7.4,
+which retains the common positive homogeneous scale. A projective convention
+would subtract one from both the generic dimension six and the constrained
+dimension five, leaving the same nongenericity conclusion. The bound used here
+is the source's nonprojective bound; it is not inferred merely from the
+existence of a visually simpler circuit.
 
 ## 8. Cauer--Foster extraction and individual target allocation
 
