@@ -109,6 +109,14 @@ NONGENERIC_TARGETS = {21, 29, 36, 44}
 NONGENERIC_MECHANISM = "forced-immittance-coefficient-nongenericity"
 NONGENERIC_REPRESENTATION = "Morelli-Smith-equation-5.1"
 NONGENERIC_AGGREGATE_SOURCE_ID = "morelli-smith-2019"
+NONGENERIC_AGGREGATE_SOURCE_IDENTITY = {
+    "source_type": "authoritative-publication",
+    "citation": (
+        "A. Morelli and M. C. Smith, Passive Network Synthesis: An Approach "
+        "to Classification, SIAM, 2019."
+    ),
+    "publication": {"publisher": "SIAM", "year": 2019},
+}
 NONGENERIC_AGGREGATE_LOCATOR = {
     "section": "5.1",
     "printed_page": 42,
@@ -233,10 +241,17 @@ REVIEWED_NONGENERIC_TARGET_FIXTURES = {
     44: "morelli-smith-canonical-network-44",
 }
 FINAL_EIGHT_RICE_SOURCE_ID = "rice-final-eight-o-bridge-report"
+FINAL_EIGHT_RICE_SOURCE_IDENTITY = {
+    "source_type": "rice-documentation",
+    "citation": (
+        "RICE final-eight O/O-dual and bridge evidence and contract-design report."
+    ),
+}
 FINAL_EIGHT_REPORT_PATH = (
     "docs/comparisons/ladenheim-final-eight-o-bridge-evidence-design.md"
 )
 FINAL_EIGHT_COMPUTATION_ID = "rice-final-eight-o-bridge-report-reproduction"
+FINAL_EIGHT_COMPUTATION_COMMIT = "c5896191cdfbed128485be04dcb23310a508a185"
 FINAL_EIGHT_COMPUTATION_IMPLEMENTATION = (
     f"Reproduction commands in {FINAL_EIGHT_REPORT_PATH}"
 )
@@ -520,6 +535,18 @@ def _validate_sources(values: Any) -> dict[str, dict[str, Any]]:
             )
         if source["source_type"] == "authoritative-publication" and publication is None:
             raise ValueError(f"source {source_id} requires publication metadata")
+    reviewed_identities = {
+        NONGENERIC_AGGREGATE_SOURCE_ID: NONGENERIC_AGGREGATE_SOURCE_IDENTITY,
+        FINAL_EIGHT_RICE_SOURCE_ID: FINAL_EIGHT_RICE_SOURCE_IDENTITY,
+    }
+    for source_id, identity in reviewed_identities.items():
+        source = sources.get(source_id)
+        if source is None or any(
+            source.get(field) != value for field, value in identity.items()
+        ):
+            raise ValueError(
+                f"source {source_id} must match the reviewed final-eight identity"
+            )
     return sources
 
 
@@ -1977,6 +2004,7 @@ def _validate_nongeneric_simplification_groups(
         computation = qualifying_computations[0]
         if (
             computation["cross_check_id"] != FINAL_EIGHT_COMPUTATION_ID
+            or computation["commit_sha"] != FINAL_EIGHT_COMPUTATION_COMMIT
             or computation["implementation"] != FINAL_EIGHT_COMPUTATION_IMPLEMENTATION
         ):
             raise ValueError(

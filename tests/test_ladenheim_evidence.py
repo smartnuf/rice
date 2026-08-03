@@ -3089,8 +3089,11 @@ def test_conventional_timestamp_metadata_keys_are_rejected(
 
 
 def test_stable_publication_and_locator_metadata_are_accepted(catalogue, annotations):
-    annotations["sources"][0]["publication"]["year"] = 2019
-    annotations["sources"][0]["citation"] += " Published in 2019."
+    publication_source = deepcopy(annotations["sources"][0])
+    publication_source["source_id"] = "fixture-stable-publication"
+    publication_source["publication"]["year"] = 2019
+    publication_source["citation"] += " Published in 2019."
+    annotations["sources"].append(publication_source)
     locator = annotations["evidence_records"][0]["locator"]
     locator["printed_page"] = 41
     locator["pdf_page_index"] = 47
@@ -3801,6 +3804,59 @@ def test_final_eight_aggregate_requires_reviewed_publication_source(
 
 
 @pytest.mark.parametrize(
+    ("citation", "publisher", "year"),
+    [
+        ("Unrelated publication.", "SIAM", 2019),
+        (
+            "A. Morelli and M. C. Smith, Passive Network Synthesis: An Approach "
+            "to Classification, SIAM, 2019.",
+            "Other publisher",
+            2019,
+        ),
+        (
+            "A. Morelli and M. C. Smith, Passive Network Synthesis: An Approach "
+            "to Classification, SIAM, 2019.",
+            "SIAM",
+            2020,
+        ),
+        ("Unrelated publication.", "Other publisher", 2020),
+    ],
+)
+def test_final_eight_publication_source_requires_reviewed_identity(
+    catalogue, annotations, citation, publisher, year
+):
+    source = next(
+        item
+        for item in annotations["sources"]
+        if item["source_id"] == "morelli-smith-2019"
+    )
+    source["citation"] = citation
+    source["publication"] = {"publisher": publisher, "year": year}
+    with pytest.raises(ValueError, match="reviewed final-eight identity"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize(
+    ("field", "value"),
+    [
+        ("citation", "RICE graph-S five-element Zobel exclusion evidence report."),
+        ("source_type", "rice-generated-artefact"),
+    ],
+)
+def test_final_eight_rice_source_requires_reviewed_identity(
+    catalogue, annotations, field, value
+):
+    source = next(
+        item
+        for item in annotations["sources"]
+        if item["source_id"] == "rice-final-eight-o-bridge-report"
+    )
+    source[field] = value
+    with pytest.raises(ValueError, match="reviewed final-eight identity"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize(
     ("field", "value"),
     [
         ("section", "7.1"),
@@ -3973,6 +4029,8 @@ def test_final_eight_structured_fact_locator_shapes_are_accepted(
     [
         ("cross_check_id", "fixture-other-final-eight-computation"),
         ("implementation", "Reproduction commands in README.md"),
+        ("commit_sha", "not-a-commit"),
+        ("commit_sha", "0123456789abcdef0123456789abcdef01234567"),
     ],
 )
 def test_final_eight_computation_requires_reviewed_report_identity(
