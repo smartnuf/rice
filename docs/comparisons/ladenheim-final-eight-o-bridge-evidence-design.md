@@ -464,22 +464,23 @@ routes whose nondegenerate and degenerate branches it checks. Authoritative
 source transcriptions remain provenance inputs and are not mislabelled as
 computationally verified records.
 
-Global completeness validation must require all eight explicit exclusions,
-the exact supported `2+2+4` subject counts, four disjoint Y--delta pairs, one
+Application-time completeness validation, once any explicit assertion consumes
+the nongeneric aggregate, must require all eight explicit exclusions, the exact
+supported `2+2+4` subject counts, four disjoint Y--delta pairs, one
 coefficient-zero fact and one conditional route per subject, derived target
-multiplicity two, and the exact collective target set. Every row must remain an
-exclusion in `other-canonical-exclusion`, with a nonempty reason and
+multiplicity two, and the exact collective target set. Every applied row must be
+an exclusion in `other-canonical-exclusion`, with a nonempty reason and
 non-`none` confidence. The route must not require or create a historical
 identifier or a production graph assignment. It must reject use of a
 simpler-realisation destination as the excluded subject's identity, reject an
 unconditional named-target claim, and reject any attempt to substitute a
 `reduction-target-match` equivalence claim.
 
-Format version 4 now implements this recommendation: its controlled values,
-claim types, schema, structured evidence, and validators have changed. The eight
-dispositions remain unapplied: production remains 32 excluded / 116 unresolved /
-0 retained, graph assignments remain null, historical identifiers remain empty,
-and no canonical-numbering or complementary-108 claim is made.
+Format version 4 implements the complete structured-evidence contract and the
+conditional application-time validation described above. It does not apply the
+eight dispositions in this milestone: production remains 32 excluded / 116
+unresolved / 0 retained, graph assignments remain null, historical identifiers
+remain empty, and no canonical-numbering or complementary-108 claim is made.
 
 ## 10. Previous-workspace audit
 
