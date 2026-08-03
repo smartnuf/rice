@@ -35,12 +35,15 @@ PROTECTED_PATTERNS: tuple[str, ...] = (
     "data/counts/*",
     "data/comparisons/*",
     "docs/results.md",
+    "docs/computation.md",
+    "docs/support_graph_enumeration.md",
     "docs/counts/*",
     "README.md",
     "tests/test_bundle_census.py",
     "tests/test_bundle_labelings.py",
     "tests/test_count_language.py",
     "tests/test_reduced_census.py",
+    "tests/test_ladenheim.py",
 )
 
 DECLARATION_LABEL = "evidence-change"
