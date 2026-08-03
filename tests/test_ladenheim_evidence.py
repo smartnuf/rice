@@ -3780,6 +3780,45 @@ def test_final_eight_aggregate_must_remain_authoritative(catalogue, annotations)
         generate_evidence_ledger(catalogue, annotations)
 
 
+def test_final_eight_aggregate_requires_reviewed_publication_source(
+    catalogue, annotations
+):
+    source = deepcopy(
+        next(
+            item
+            for item in annotations["sources"]
+            if item["source_id"] == "morelli-smith-2019"
+        )
+    )
+    source["source_id"] = "fixture-other-authoritative-publication"
+    annotations["sources"].append(source)
+    aggregate = _evidence_of_type(
+        annotations, "aggregate-nongeneric-exclusion-group"
+    )[0]
+    aggregate["source_id"] = source["source_id"]
+    with pytest.raises(ValueError, match="must be authoritative and source-verified"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize(
+    ("field", "value"),
+    [
+        ("section", "7.1"),
+        ("figure", "5.2"),
+        ("appendix", "B"),
+    ],
+)
+def test_final_eight_aggregate_requires_exact_reviewed_locator(
+    catalogue, annotations, field, value
+):
+    aggregate = _evidence_of_type(
+        annotations, "aggregate-nongeneric-exclusion-group"
+    )[0]
+    aggregate["locator"][field] = value
+    with pytest.raises(ValueError, match="must be authoritative and source-verified"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
 @pytest.mark.parametrize(
     ("field", "value"),
     [
@@ -3812,6 +3851,24 @@ def test_final_eight_aggregate_targets_require_integers(
         annotations, "aggregate-nongeneric-exclusion-group"
     )[0]
     aggregate["claim"]["supported_simpler_realisation_targets"] = targets
+    with pytest.raises(ValueError, match="invalid aggregate nongeneric exclusion"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize(
+    "coefficients",
+    [
+        [["A"], "C", "D", "F"],
+        [1, "C", "D", "F"],
+    ],
+)
+def test_final_eight_aggregate_coefficients_require_controlled_strings(
+    catalogue, annotations, coefficients
+):
+    aggregate = _evidence_of_type(
+        annotations, "aggregate-nongeneric-exclusion-group"
+    )[0]
+    aggregate["claim"]["supported_zero_coefficient_set"] = coefficients
     with pytest.raises(ValueError, match="invalid aggregate nongeneric exclusion"):
         generate_evidence_ledger(catalogue, annotations)
 
@@ -4129,15 +4186,12 @@ def test_nongeneric_status_rejects_reduction_target_match(catalogue, annotations
         generate_evidence_ledger(catalogue, annotations)
 
 
-def test_conditional_target_cannot_be_the_subject_historical_identity(
-    catalogue, annotations
+@pytest.mark.parametrize("target", [29, 99])
+def test_final_eight_subject_cannot_have_a_canonical_historical_identity(
+    catalogue, annotations, target
 ):
     _populate_final_eight_explicit_records(annotations)
-    subject = sorted(FINAL_EIGHT_SUBJECTS)[0]
-    route = _subject_evidence(
-        annotations, "conditional-simpler-realisation-route", subject
-    )["claim"]
-    target = route["nondegenerate_target_network_number"]
+    subject = "lh148-4a925dd55dc8da19"
     identifier_evidence = _historical_identifier_evidence(subject, value=target)
     annotations["evidence_records"].append(identifier_evidence)
     row = next(item for item in annotations["records"] if item["catalogue_id"] == subject)
@@ -4147,7 +4201,7 @@ def test_conditional_target_cannot_be_the_subject_historical_identity(
         "verification_state": "source-verified",
         "evidence_record_ids": [identifier_evidence["evidence_id"]],
     }]
-    with pytest.raises(ValueError, match="cannot be used as.*historical identity"):
+    with pytest.raises(ValueError, match="cannot use a canonical network.*historical identity"):
         generate_evidence_ledger(catalogue, annotations)
 
 

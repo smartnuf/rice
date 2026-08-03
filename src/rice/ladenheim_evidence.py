@@ -108,6 +108,13 @@ NONGENERIC_COEFFICIENTS = {"A", "C", "D", "F"}
 NONGENERIC_TARGETS = {21, 29, 36, 44}
 NONGENERIC_MECHANISM = "forced-immittance-coefficient-nongenericity"
 NONGENERIC_REPRESENTATION = "Morelli-Smith-equation-5.1"
+NONGENERIC_AGGREGATE_SOURCE_ID = "morelli-smith-2019"
+NONGENERIC_AGGREGATE_LOCATOR = {
+    "section": "5.1",
+    "printed_page": 42,
+    "pdf_page_index": 48,
+    "figure": "5.1",
+}
 REVIEWED_Y_DELTA_FIGURE = "Figure 5.3"
 REVIEWED_FINAL_EIGHT_FIXTURES = {
     "morelli-smith-figure-5.1-O-C": {
@@ -625,6 +632,10 @@ def _validate_claim(
             != "other-canonical-exclusion"
             or claim.get("supported_exclusion_mechanism") != NONGENERIC_MECHANISM
             or not isinstance(coefficients, list)
+            or not all(
+                isinstance(value, str) and value in NONGENERIC_COEFFICIENTS
+                for value in coefficients
+            )
             or len(coefficients) != len(set(coefficients))
             or set(coefficients) != NONGENERIC_COEFFICIENTS
             or not isinstance(targets, list)
@@ -950,6 +961,8 @@ def _validate_evidence_records(
             record["provenance_level"] == "authoritative-source-transcription"
             and record["verification_state"] == "source-verified"
             and source["source_type"] == "authoritative-publication"
+            and source_id == NONGENERIC_AGGREGATE_SOURCE_ID
+            and record["locator"] == NONGENERIC_AGGREGATE_LOCATOR
         ):
             raise ValueError(
                 f"aggregate nongeneric evidence {evidence_id} must be authoritative "
@@ -1533,22 +1546,13 @@ def _validate_assertion(
                     "derived-nongeneric-simplification-match requires one exact "
                     f"subject-bound {claim_type} claim"
                 )
-        route = next(
-            evidence[item]["claim"]
-            for item in evidence_ids
-            if evidence[item]["claim"]["claim_type"]
-            == "conditional-simpler-realisation-route"
-            and evidence[item]["verification_state"] != "rejected"
-        )
-        target = route["nondegenerate_target_network_number"]
         if any(
             identifier["scheme"] == "morelli-smith-canonical-network"
-            and identifier["value"] == target
             for identifier in assertion["historical_identifiers"]
         ):
             raise ValueError(
-                "conditional simpler-realisation target cannot be used as the "
-                "excluded subject's historical identity"
+                "derived nongeneric exclusions cannot use a canonical network "
+                "as the excluded subject's historical identity"
             )
     if status == "source-backed" and not any(
         _is_authoritative(record) for record in matching_individual
