@@ -1,0 +1,43 @@
+name: evidence-guard
+
+# This check runs under pull_request_target so that BOTH the workflow
+# definition and the guard script execute from the base branch. Under a
+# plain pull_request trigger, a PR could edit this file to neuter the
+# check while keeping the job name, satisfying branch protection. Do not
+# change the trigger back to pull_request. The job must never check out
+# or execute head-revision content: it reads the head only as a git SHA
+# passed to a diff.
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened, edited, labeled, unlabeled]
+
+jobs:
+  guard:
+    name: evidence-guard
+    runs-on: ubuntu-latest
+    env:
+      BASE_SHA: ${{ github.event.pull_request.base.sha }}
+      HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+    steps:
+      - name: Check out base repository
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Write PR body to file
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
+        run: printf '%s' "$PR_BODY" > /tmp/pr_body.txt
+
+      - name: Run evidence guard from the base revision
+        env:
+          PR_LABELS: >-
+            ${{ join(github.event.pull_request.labels.*.name, ',') }}
+        run: |
+          git cat-file -e "$HEAD_SHA^{commit}" \
+            || git fetch origin "$HEAD_SHA"
+          python3 scripts/evidence_guard.py \
+            --base "$BASE_SHA" \
+            --head "$HEAD_SHA" \
+            --pr-body-file /tmp/pr_body.txt \
+            --labels "$PR_LABELS"
