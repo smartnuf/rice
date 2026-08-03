@@ -613,8 +613,12 @@ def _validate_claim(
         coefficients = claim.get("supported_zero_coefficient_set")
         targets = claim.get("supported_simpler_realisation_targets")
         if (
-            graph_counts != NONGENERIC_GRAPH_COUNTS
-            or claim.get("source_population") != sum(NONGENERIC_GRAPH_COUNTS.values())
+            not isinstance(graph_counts, dict)
+            or set(graph_counts) != set(NONGENERIC_GRAPH_COUNTS)
+            or not all(_is_int(value) for value in graph_counts.values())
+            or graph_counts != NONGENERIC_GRAPH_COUNTS
+            or not _is_int(claim.get("source_population"))
+            or claim["source_population"] != sum(NONGENERIC_GRAPH_COUNTS.values())
             or claim.get("supported_disposition") != "exclude"
             or claim.get("supported_exclusion_category")
             != "other-canonical-exclusion"
@@ -1841,12 +1845,46 @@ def _validate_nongeneric_simplification_groups(
     evidence: dict[str, dict[str, Any]],
     computations: dict[str, dict[str, Any]],
 ) -> None:
+    specialized_claim_types = {
+        "y-delta-partner-match",
+        "forced-immittance-coefficient",
+        "conditional-simpler-realisation-route",
+    }
     aggregates = [
         (evidence_id, record)
         for evidence_id, record in evidence.items()
         if record["claim"]["claim_type"]
         == "aggregate-nongeneric-exclusion-group"
     ]
+    specialized_ids = {
+        evidence_id
+        for evidence_id, record in evidence.items()
+        if record["claim"]["claim_type"] in specialized_claim_types
+    }
+    conditional_computations = [
+        record
+        for record in computations.values()
+        if "conditional_target_network_numbers" in record
+    ]
+    if aggregates or specialized_ids or conditional_computations:
+        if len(aggregates) != 1:
+            raise ValueError(
+                "final-eight structured evidence requires exactly one aggregate "
+                "nongeneric exclusion group"
+            )
+        if len(conditional_computations) != 1:
+            raise ValueError(
+                "final-eight structured evidence requires exactly one conditional "
+                "computation"
+            )
+        verified_ids = set(
+            conditional_computations[0]["verified_evidence_record_ids"]
+        )
+        if not specialized_ids <= verified_ids:
+            raise ValueError(
+                "every final-eight specialized fact must belong to the aggregate "
+                "computation scope"
+            )
     for aggregate_id, aggregate_record in aggregates:
         aggregate = aggregate_record["claim"]
         if not _is_authoritative(aggregate_record):

@@ -3781,6 +3781,24 @@ def test_final_eight_aggregate_must_remain_authoritative(catalogue, annotations)
 
 
 @pytest.mark.parametrize(
+    ("field", "value"),
+    [
+        ("source_population", 8.0),
+        ("supported_subject_counts_by_graph", {"O": 2.0, "O^d": 2, "V": 4}),
+    ],
+)
+def test_final_eight_aggregate_counts_require_integers(
+    catalogue, annotations, field, value
+):
+    aggregate = _evidence_of_type(
+        annotations, "aggregate-nongeneric-exclusion-group"
+    )[0]
+    aggregate["claim"][field] = value
+    with pytest.raises(ValueError, match="invalid aggregate nongeneric exclusion"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize(
     ("field", "value", "message"),
     [
         ("route_relation", "realizability-set-containment", "invalid conditional"),
@@ -3823,10 +3841,51 @@ def test_forced_coefficient_numeric_fields_require_integers(
 
 def test_y_delta_pairs_must_be_complete_and_disjoint(catalogue, annotations):
     pairs = _evidence_of_type(annotations, "y-delta-partner-match")
-    pairs[1]["claim"]["subject_catalogue_ids"][0] = pairs[0]["claim"][
-        "subject_catalogue_ids"
-    ][0]
+    pairs[1]["claim"]["subject_catalogue_ids"] = list(
+        pairs[0]["claim"]["subject_catalogue_ids"]
+    )
+    pairs[1]["claim"]["subject_fixture_ids"] = list(
+        pairs[0]["claim"]["subject_fixture_ids"]
+    )
     with pytest.raises(ValueError, match="pairs must be disjoint"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_final_eight_specialized_facts_require_one_aggregate(catalogue, annotations):
+    aggregate = _evidence_of_type(
+        annotations, "aggregate-nongeneric-exclusion-group"
+    )[0]
+    annotations["evidence_records"].remove(aggregate)
+    with pytest.raises(ValueError, match="requires exactly one aggregate"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_final_eight_specialized_facts_cannot_escape_computation_scope(
+    catalogue, annotations
+):
+    source = _evidence_of_type(annotations, "forced-immittance-coefficient")[0]
+    orphan = deepcopy(source)
+    orphan["evidence_id"] = "fixture-orphan-final-eight-coefficient"
+    annotations["evidence_records"].append(orphan)
+    with pytest.raises(ValueError, match="must belong to the aggregate computation"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_final_eight_requires_one_conditional_computation(catalogue, annotations):
+    duplicate = deepcopy(_final_eight_computation(annotations))
+    duplicate["cross_check_id"] = "fixture-second-final-eight-computation"
+    annotations["computational_cross_checks"].append(duplicate)
+    with pytest.raises(ValueError, match="exactly one conditional computation"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_final_eight_requires_one_aggregate(catalogue, annotations):
+    duplicate = deepcopy(
+        _evidence_of_type(annotations, "aggregate-nongeneric-exclusion-group")[0]
+    )
+    duplicate["evidence_id"] = "fixture-second-final-eight-aggregate"
+    annotations["evidence_records"].append(duplicate)
+    with pytest.raises(ValueError, match="requires exactly one aggregate"):
         generate_evidence_ledger(catalogue, annotations)
 
 
@@ -3978,7 +4037,7 @@ def test_conditional_target_number_requires_its_reviewed_fixture(
 def test_common_computation_must_verify_every_derived_fact(catalogue, annotations):
     computation = _final_eight_computation(annotations)
     computation["verified_evidence_record_ids"].pop()
-    with pytest.raises(ValueError, match="eight conditional routes"):
+    with pytest.raises(ValueError, match="must belong to the aggregate computation"):
         generate_evidence_ledger(catalogue, annotations)
 
 

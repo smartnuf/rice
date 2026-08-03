@@ -475,8 +475,11 @@ simpler-realisation destination as the excluded subject's identity, reject an
 unconditional named-target claim, and reject any attempt to substitute a
 `reduction-target-match` equivalence claim.
 
-This is a recommendation only; no controlled value, claim type, schema, or
-validator is changed in this milestone.
+Format version 4 now implements this recommendation: its controlled values,
+claim types, schema, structured evidence, and validators have changed. The eight
+dispositions remain unapplied: production remains 32 excluded / 116 unresolved /
+0 retained, graph assignments remain null, historical identifiers remain empty,
+and no canonical-numbering or complementary-108 claim is made.
 
 ## 10. Previous-workspace audit
 
