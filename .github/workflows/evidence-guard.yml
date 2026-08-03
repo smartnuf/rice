@@ -1,0 +1,31 @@
+name: evidence-guard
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, edited, labeled, unlabeled]
+
+jobs:
+  guard:
+    name: evidence-guard
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Write PR body to file
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
+        run: printf '%s' "$PR_BODY" > /tmp/pr_body.txt
+
+      - name: Run evidence guard
+        env:
+          PR_LABELS: >-
+            ${{ join(github.event.pull_request.labels.*.name, ',') }}
+        run: |
+          python3 scripts/evidence_guard.py \
+            --base "${{ github.event.pull_request.base.sha }}" \
+            --head "${{ github.event.pull_request.head.sha }}" \
+            --pr-body-file /tmp/pr_body.txt \
+            --labels "$PR_LABELS"
