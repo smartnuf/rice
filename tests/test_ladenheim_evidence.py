@@ -3914,6 +3914,49 @@ def test_final_eight_graph_definition_requires_complete_reviewed_metadata(
         generate_evidence_ledger(catalogue, annotations)
 
 
+def test_final_eight_graph_definition_requires_reviewed_publication_source(
+    catalogue, annotations
+):
+    source = deepcopy(
+        next(
+            item
+            for item in annotations["sources"]
+            if item["source_id"] == "morelli-smith-2019"
+        )
+    )
+    source["source_id"] = "fixture-unrelated-graph-authority"
+    annotations["sources"].append(source)
+    definition = next(
+        record
+        for record in _evidence_of_type(annotations, "basic-graph-definition")
+        if record["claim"]["definition"]["graph_label"] == "O^d"
+    )
+    definition["source_id"] = source["source_id"]
+    with pytest.raises(ValueError, match="complete reviewed authoritative definition"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize(
+    ("field", "value"),
+    [
+        ("printed_page", 126),
+        ("pdf_page_index", 132),
+        ("section", "5.1"),
+    ],
+)
+def test_final_eight_graph_definition_requires_exact_reviewed_locator(
+    catalogue, annotations, field, value
+):
+    definition = next(
+        record
+        for record in _evidence_of_type(annotations, "basic-graph-definition")
+        if record["claim"]["definition"]["graph_label"] == "O^d"
+    )
+    definition["locator"][field] = value
+    with pytest.raises(ValueError, match="complete reviewed authoritative definition"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
 @pytest.mark.parametrize(
     ("field", "value", "message"),
     [
@@ -3999,6 +4042,48 @@ def test_final_eight_specialized_facts_require_one_aggregate(catalogue, annotati
     annotations["evidence_records"].remove(aggregate)
     with pytest.raises(ValueError, match="requires exactly one aggregate"):
         generate_evidence_ledger(catalogue, annotations)
+
+
+def test_format_version_four_requires_complete_final_eight_inventory(
+    catalogue, annotations
+):
+    final_eight_claim_types = {
+        "aggregate-nongeneric-exclusion-group",
+        "y-delta-partner-match",
+        "forced-immittance-coefficient",
+        "conditional-simpler-realisation-route",
+    }
+    annotations["evidence_records"] = [
+        record
+        for record in annotations["evidence_records"]
+        if record["claim"]["claim_type"] not in final_eight_claim_types
+    ]
+    annotations["computational_cross_checks"] = [
+        record
+        for record in annotations["computational_cross_checks"]
+        if "conditional_target_network_numbers" not in record
+    ]
+    with pytest.raises(ValueError, match="final-eight inventory requires exactly one aggregate"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_format_version_four_requires_exact_specialized_inventory(
+    catalogue, annotations
+):
+    pair = _evidence_of_type(annotations, "y-delta-partner-match")[0]
+    annotations["evidence_records"].remove(pair)
+    _final_eight_computation(annotations)["verified_evidence_record_ids"].remove(
+        pair["evidence_id"]
+    )
+    with pytest.raises(ValueError, match="inventory requires four Y-delta pairs"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_format_version_four_accepts_complete_final_eight_inventory(
+    catalogue, annotations
+):
+    generated = generate_evidence_ledger(catalogue, annotations)
+    assert generated["format_version"] == 4
 
 
 def test_final_eight_specialized_facts_cannot_escape_computation_scope(

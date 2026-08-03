@@ -135,6 +135,20 @@ REVIEWED_NONGENERIC_GRAPH_DEFINITIONS = {
         "fixture_id": "morelli-smith-V-five-edge",
     },
 }
+REVIEWED_NONGENERIC_GRAPH_DEFINITION_PROVENANCE = {
+    "O": {
+        "source_id": "morelli-smith-2019",
+        "locator": {"appendix": "B", "printed_page": 126, "pdf_page_index": 132},
+    },
+    "O^d": {
+        "source_id": "morelli-smith-2019",
+        "locator": {"appendix": "B", "printed_page": 127, "pdf_page_index": 133},
+    },
+    "V": {
+        "source_id": "morelli-smith-2019",
+        "locator": {"appendix": "B", "printed_page": 126, "pdf_page_index": 132},
+    },
+}
 REVIEWED_Y_DELTA_FIGURE = "Figure 5.3"
 REVIEWED_FINAL_EIGHT_FIXTURES = {
     "morelli-smith-figure-5.1-O-C": {
@@ -1900,25 +1914,37 @@ def _validate_nongeneric_simplification_groups(
         for record in computations.values()
         if "conditional_target_network_numbers" in record
     ]
-    if aggregates or specialized_ids or conditional_computations:
-        if len(aggregates) != 1:
-            raise ValueError(
-                "final-eight structured evidence requires exactly one aggregate "
-                "nongeneric exclusion group"
-            )
-        if len(conditional_computations) != 1:
-            raise ValueError(
-                "final-eight structured evidence requires exactly one conditional "
-                "computation"
-            )
-        verified_ids = set(
-            conditional_computations[0]["verified_evidence_record_ids"]
+    specialized_counts = Counter(
+        record["claim"]["claim_type"]
+        for record in evidence.values()
+        if record["claim"]["claim_type"] in specialized_claim_types
+    )
+    expected_specialized_counts = Counter({
+        "y-delta-partner-match": 4,
+        "forced-immittance-coefficient": 8,
+        "conditional-simpler-realisation-route": 8,
+    })
+    if len(aggregates) != 1:
+        raise ValueError(
+            "format-version-4 final-eight inventory requires exactly one aggregate "
+            "nongeneric exclusion group"
         )
-        if not specialized_ids <= verified_ids:
-            raise ValueError(
-                "every final-eight specialized fact must belong to the aggregate "
-                "computation scope"
-            )
+    if len(conditional_computations) != 1:
+        raise ValueError(
+            "format-version-4 final-eight inventory requires exactly one conditional "
+            "computation"
+        )
+    verified_ids = set(conditional_computations[0]["verified_evidence_record_ids"])
+    if not specialized_ids <= verified_ids:
+        raise ValueError(
+            "every final-eight specialized fact must belong to the aggregate "
+            "computation scope"
+        )
+    if specialized_counts != expected_specialized_counts:
+        raise ValueError(
+            "format-version-4 final-eight inventory requires four Y-delta pairs, "
+            "eight forced coefficients, and eight conditional routes"
+        )
     for aggregate_id, aggregate_record in aggregates:
         aggregate = aggregate_record["claim"]
         if not _is_authoritative(aggregate_record):
@@ -2010,15 +2036,25 @@ def _validate_nongeneric_simplification_groups(
             expected_definition = REVIEWED_NONGENERIC_GRAPH_DEFINITIONS.get(
                 match["graph_label"]
             )
+            expected_provenance = (
+                REVIEWED_NONGENERIC_GRAPH_DEFINITION_PROVENANCE.get(
+                    match["graph_label"]
+                )
+            )
             definitions = [
                 candidate
                 for candidate in evidence.values()
                 if candidate["claim"]["claim_type"] == "basic-graph-definition"
+                and expected_definition is not None
+                and expected_provenance is not None
                 and _is_authoritative(candidate)
                 and candidate["claim"]["definition"] == expected_definition
+                and candidate["source_id"] == expected_provenance["source_id"]
+                and candidate["locator"] == expected_provenance["locator"]
             ]
             if (
                 expected_definition is None
+                or expected_provenance is None
                 or match["fixture_id"] != expected_definition["fixture_id"]
                 or len(definitions) != 1
             ):
