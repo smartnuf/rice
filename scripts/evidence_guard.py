@@ -31,12 +31,22 @@ from pathlib import Path
 
 # Paths whose modification constitutes an evidence change. Glob patterns
 # are matched against repository-relative paths with fnmatch semantics.
+#
+# Boundary: the guard protects the canonical evidence contract — the
+# committed data artefacts, the tests comparing committed data against
+# deterministic regeneration, the census tests asserting production
+# totals, and the normative documents publishing golden values as
+# static text. Test assertions that recompute values live in CI are
+# deliberately excluded: weakening one changes no published value, and
+# shifting a value fails other protected checks. Extending this list
+# is an operator decision (see issue 76).
 PROTECTED_PATTERNS: tuple[str, ...] = (
     "data/counts/*",
     "data/comparisons/*",
     "docs/results.md",
     "docs/computation.md",
     "docs/support_graph_enumeration.md",
+    "docs/python_api.md",
     "docs/counts/*",
     "README.md",
     "tests/test_bundle_census.py",
