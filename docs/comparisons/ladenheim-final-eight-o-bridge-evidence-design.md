@@ -292,10 +292,27 @@ x'_1 = k E_0-x'_0.
 
 When `delta>0`, every extracted element is positive and finite, and direct
 coefficient substitution proves equality. When `delta=0`, the two original
-arms have the same time constant and combine to a still smaller three-element
-realisation. Thus every graph-`O` impedance has a realisation with fewer than
-five elements, but the argument deliberately does not claim equality of the
-complete positive-finite parameter domains.
+series `R-X` arms have the same time constant and are proportional. Their
+parallel combination is one series `R-X` branch; its resistor is then adjacent
+to the leading resistor, so the two resistors merge. The result has two
+primitive elements, one resistor and one reactive element. The corresponding
+network dual is a two-element parallel `R-X` realisation. Thus every graph-`O`
+or graph-`O^d` impedance has a realisation with fewer than five elements, but
+the named four-element target is established only on the nondegenerate locus.
+This does not prove complete realizability-set containment in one named
+canonical target.
+
+Indeed, if `r_2=lambda r_1` and `x_2=lambda x_1` for `lambda>0`, then
+
+```text
+(r_1+t x_1) || (r_2+t x_2)
+  = lambda/(1+lambda) (r_1+t x_1).
+```
+
+The leading `r_0` therefore merges with the displayed resistor, leaving only
+one resistor and one `X`. Series/parallel dualization gives the corresponding
+two-element parallel formula for `O^d`. The reproduction checks both reactive
+types and both topologies with exact rational arithmetic.
 
 More explicitly,
 
@@ -316,7 +333,9 @@ targets 36 and 44. The reproduction performs all four transformations with
 four rational parameter tuples, checks positivity and finiteness on the
 nondegenerate locus, evaluates exact immittances at four rational frequencies,
 and compares every resulting coloured topology with its independently
-transcribed Appendix C fixture.
+transcribed Appendix C fixture. It separately constructs the two-element
+series or parallel realisation on the degenerate locus and checks its
+immittance exactly.
 
 Consequently the independently checked subject allocation is:
 
@@ -344,7 +363,7 @@ subjects, whereas this group contains three graph labels and two subjects per
 destination.
 
 The minimum recommended version-4 addition is a new explicit-only status,
-`derived-nongeneric-containment-match`, with one evidence basis such as
+`derived-nongeneric-simplification-match`, with one evidence basis such as
 `aggregate-historical-nongeneric-group-plus-subject-bound-rice-facts`. It must
 remain invalid for rules and retention and must not be treated as
 source-backed.
@@ -353,13 +372,16 @@ Add these narrowly typed claims:
 
 1. `aggregate-nongeneric-exclusion-group`
 
-   - exact fields: `claim_type`, `graph_populations`, `source_population`,
+   - exact fields: `claim_type`, `supported_subject_counts_by_graph`,
+     `source_population`,
      `supported_disposition`, `supported_exclusion_category`,
-     `supported_simpler_realisation_targets`, and
-     `target_subject_multiplicity`;
-   - here graph populations are `O:2`, `O^d:2`, `V:4`, population is eight,
-     targets are the unique set `{21,29,36,44}`, and every target has
-     multiplicity two;
+     `supported_exclusion_mechanism`, `supported_zero_coefficient_set`, and
+     `supported_simpler_realisation_targets`;
+   - the authoritative values are selected-subject counts `O:2`, `O^d:2`,
+     `V:4`, source population eight, the collective zero-coefficient set
+     `{A,C,D,F}`, and collective target set `{21,29,36,44}`; these selected
+     counts are not the independently reproduced complete graph populations
+     `3`, `3`, and `17`;
    - requires authoritative-source provenance, source verification, and the
      precise Section 5.1/Figure 5.1 locator.
 
@@ -376,39 +398,58 @@ Add these narrowly typed claims:
 3. `forced-immittance-coefficient`
 
    - exact fields: `claim_type`, `subject_catalogue_ids`,
-     `immittance_representation`, `coefficient`, and `forced_value`;
+     `immittance_representation`, `coefficient`, `forced_value`,
+     `nongeneric_dimension_bound`, and `supported_disposition`;
    - `coefficient` is controlled to `A,C,D,F`, `forced_value` is exactly zero,
-     and the representation is equation (5.1);
+     the representation is equation (5.1), the dimension bound is at most
+     five, and the supported disposition is `exclude`;
    - every subject needs exactly one positive cross-checked claim, and paired
      subjects must name the same coefficient.
 
-4. `simpler-realisation-containment-match`
+4. `conditional-simpler-realisation-route`
 
    - exact fields: `claim_type`, `subject_catalogue_ids` (exactly one),
-     `target_network_number`, `target_fixture_id`, `relation`, and
-     `degenerate_locus_handling`;
-   - `relation` is the controlled value `realizability-set-containment`, never
-     network equivalence; the target is constrained to `1..108` and must agree
-     with any locator network number;
-   - the two members of each Y--delta pair must use the same target, and the
-     target multiplicities must equal the aggregate claim.
+     `nondegenerate_condition`, `nondegenerate_target_network_number`,
+     `nondegenerate_target_fixture_id`, `degenerate_condition`,
+     `degenerate_realisation_class`, and `route_relation`;
+   - `route_relation` is the controlled value
+     `conditional-nondegenerate-target-plus-degenerate-fewer-element`, which
+     asserts neither network equivalence nor complete realizability-set
+     containment; `nondegenerate_condition` is exactly `delta > 0`, while
+     `degenerate_condition` is exactly `delta = 0` and the realisation class is
+     the appropriate two-element series or parallel `R-X` class;
+   - the nondegenerate target is constrained to `1..108` and must agree with
+     any locator network number;
+   - the two members of each Y--delta pair must use the same conditional target.
+
+The authoritative aggregate claim supplies the collective exclusion mechanism,
+but does not allocate individual subjects to targets or assert that every
+target has two subjects. Group validation derives target multiplicity two from
+the eight subject-bound conditional routes after their independent checks. The
+exclusion status itself is supported by the aggregate historical statement
+together with each subject's forced-coefficient and nongenericity facts, not by
+an unconditional target-containment assertion.
 
 The route should continue to reuse authoritative `basic-graph-definition` and
 subject-bound `basic-graph-match` records for `O`, `O^d`, and `V`. A common
 independently reproduced computation must be scoped to exactly the eight
-subjects, the four partner claims, eight coefficient-zero claims, eight
-containment claims, and target set. Its `verified_evidence_record_ids` must
-equal precisely those selected structured facts.
+subjects and target set. Its `verified_evidence_record_ids` must equal exactly
+the eight subject-bound graph-match records, four Y--delta partner claims,
+eight coefficient-zero claims, and eight conditional simpler-realisation
+routes whose nondegenerate and degenerate branches it checks. Authoritative
+source transcriptions remain provenance inputs and are not mislabelled as
+computationally verified records.
 
 Global completeness validation must require all eight explicit exclusions,
-the exact `2+2+4` graph populations, four disjoint Y--delta pairs, one
-coefficient-zero fact and one containment fact per subject, target
-multiplicity two, and the exact target set. Every row must remain an exclusion
-in `other-canonical-exclusion`, with a nonempty reason and non-`none`
-confidence. The route must not require or create a historical identifier or a
-production graph assignment. It must reject use of a containment destination
-as the excluded subject's identity and reject any attempt to substitute a
-`reduction-target-match` equivalence claim.
+the exact supported `2+2+4` subject counts, four disjoint Y--delta pairs, one
+coefficient-zero fact and one conditional route per subject, derived target
+multiplicity two, and the exact collective target set. Every row must remain an
+exclusion in `other-canonical-exclusion`, with a nonempty reason and
+non-`none` confidence. The route must not require or create a historical
+identifier or a production graph assignment. It must reject use of a
+containment destination as the excluded subject's identity, reject an
+unconditional complete-set containment claim, and reject any attempt to
+substitute a `reduction-target-match` equivalence claim.
 
 This is a recommendation only; no controlled value, claim type, schema, or
 validator is changed in this milestone.
@@ -1032,6 +1073,63 @@ for r0, r1, x1, r2, x2 in cf_parameter_sets:
         assert source_z == evaluate_biquadratic(coefficients, s)
 
 
+degenerate_parameter_sets = (
+    (Fraction(2), Fraction(3), Fraction(5), Fraction(2)),
+    (Fraction(7, 3), Fraction(11, 4), Fraction(13, 5), Fraction(5, 2)),
+    (Fraction(17, 6), Fraction(19, 7), Fraction(23, 8), Fraction(7, 3)),
+)
+
+for r0, r1, x1, scale in degenerate_parameter_sets:
+    r2, x2 = scale * r1, scale * x1
+    assert r1 * x2 == r2 * x1
+    series_r = r0 + parallel(r1, r2)
+    series_x = parallel(x1, x2)
+    parallel_r = parallel(r0, r1 + r2)
+    parallel_l = (x1 / r1) * (r1 + r2)
+    parallel_c = (r1 / x1) / (r1 + r2)
+
+    for reactive_kind in ("L", "C"):
+        source_o = [
+            ("A", "B", "R", r0),
+            ("B", "C", "R", r1),
+            ("C", "E", reactive_kind, x1 if reactive_kind == "L" else 1 / x1),
+            ("B", "D", "R", r2),
+            ("D", "E", reactive_kind, x2 if reactive_kind == "L" else 1 / x2),
+        ]
+        reduced_o = [
+            ("A", "B", "R", series_r),
+            (
+                "B",
+                "E",
+                reactive_kind,
+                series_x if reactive_kind == "L" else 1 / series_x,
+            ),
+        ]
+        source_od = [
+            ("A", "E", "R", r0),
+            ("A", "B", "R", r1),
+            ("A", "B", reactive_kind, x1 if reactive_kind == "L" else 1 / x1),
+            ("B", "E", "R", r2),
+            ("B", "E", reactive_kind, x2 if reactive_kind == "L" else 1 / x2),
+        ]
+        reduced_od = [
+            ("A", "E", "R", parallel_r),
+            (
+                "A",
+                "E",
+                reactive_kind,
+                parallel_l if reactive_kind == "L" else parallel_c,
+            ),
+        ]
+        for s in s_values:
+            assert driving_point_impedance(source_o, ("A", "E"), s) == (
+                driving_point_impedance(reduced_o, ("A", "E"), s)
+            )
+            assert driving_point_impedance(source_od, ("A", "E"), s) == (
+                driving_point_impedance(reduced_od, ("A", "E"), s)
+            )
+
+
 print("catalogue records examined: 148")
 for graph_name in ("O", "Od", "V"):
     rows = uncoloured_matches[graph_name]
@@ -1053,6 +1151,7 @@ for fixture_name in fixtures:
 print("Y-delta: 4 fixture pairings, 3 parameter tuples x 4 s values pass")
 print("Y-delta forward/inverse positive-finite recovery: pass")
 print("Cauer-Foster extraction: 4 paths, 4 parameter tuples x 4 s values pass")
+print("degenerate locus: 4 two-element paths, 3 parameter tuples x 4 s values pass")
 print("coefficient-zero identities: O-C F, O-L D, Od-C A, Od-L C")
 print("target structural signatures: canonical networks 21, 29, 36, 44 pass")
 print("production unchanged: 32 excluded / 116 unresolved / 0 retained")
@@ -1078,6 +1177,7 @@ V-terminal-L lh148-7e24311a6fea4531 0-2:L;0-3:L;1-2:R;1-3:R;2-3:R -> canonical n
 Y-delta: 4 fixture pairings, 3 parameter tuples x 4 s values pass
 Y-delta forward/inverse positive-finite recovery: pass
 Cauer-Foster extraction: 4 paths, 4 parameter tuples x 4 s values pass
+degenerate locus: 4 two-element paths, 3 parameter tuples x 4 s values pass
 coefficient-zero identities: O-C F, O-L D, Od-C A, Od-L C
 target structural signatures: canonical networks 21, 29, 36, 44 pass
 production unchanged: 32 excluded / 116 unresolved / 0 retained
