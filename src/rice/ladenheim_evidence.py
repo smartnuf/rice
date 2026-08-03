@@ -10,12 +10,13 @@ import re
 from typing import Any
 
 
-FORMAT_VERSION = 3
+FORMAT_VERSION = 4
 SOURCE_CATALOGUE_RELATION = "colour-preserving-port-augmented-cycle-matroid-v1"
 COMPARISON_STATUSES = {
     "source-backed",
     "derived-unique-match",
     "derived-structural-match",
+    "derived-nongeneric-simplification-match",
     "working-hypothesis",
     "unresolved",
 }
@@ -33,6 +34,7 @@ EVIDENCE_BASES = {
     "explicit-historical-table-or-figure-mapping",
     "aggregate-historical-category-plus-logically-unique-rice-match",
     "aggregate-historical-graph-group-plus-subject-bound-rice-match",
+    "aggregate-historical-nongeneric-group-plus-subject-bound-rice-facts",
     "mechanically-derived-rice-structural-fact",
     "researcher-hypothesis",
     "no-evidence-yet",
@@ -48,6 +50,8 @@ EVIDENCE_PROVENANCE_LEVELS = {
     "authoritative-source-transcription",
     "rice-derived-structural-fact",
     "rice-derived-network-equivalence-fact",
+    "rice-derived-immittance-coefficient-fact",
+    "rice-derived-conditional-simplification-fact",
     "researcher-hypothesis",
 }
 WORKSPACE_PROVENANCE_LEVELS = {
@@ -99,6 +103,196 @@ PUBLICATION_LOCATOR_FIELDS = {
     "table",
     "network_number",
 }
+NONGENERIC_GRAPH_COUNTS = {"O": 2, "O^d": 2, "V": 4}
+NONGENERIC_COEFFICIENTS = {"A", "C", "D", "F"}
+NONGENERIC_TARGETS = {21, 29, 36, 44}
+NONGENERIC_MECHANISM = "forced-immittance-coefficient-nongenericity"
+NONGENERIC_REPRESENTATION = "Morelli-Smith-equation-5.1"
+NONGENERIC_AGGREGATE_SOURCE_ID = "morelli-smith-2019"
+NONGENERIC_AGGREGATE_SOURCE_IDENTITY = {
+    "source_type": "authoritative-publication",
+    "citation": (
+        "A. Morelli and M. C. Smith, Passive Network Synthesis: An Approach "
+        "to Classification, SIAM, 2019."
+    ),
+    "publication": {"publisher": "SIAM", "year": 2019},
+}
+NONGENERIC_AGGREGATE_LOCATOR = {
+    "section": "5.1",
+    "printed_page": 42,
+    "pdf_page_index": 48,
+    "figure": "5.1",
+}
+REVIEWED_NONGENERIC_GRAPH_DEFINITIONS = {
+    "O": {
+        "graph_label": "O",
+        "base_label": "O",
+        "is_dual": False,
+        "fixture_id": "morelli-smith-O-five-edge",
+    },
+    "O^d": {
+        "graph_label": "O^d",
+        "base_label": "O",
+        "is_dual": True,
+        "fixture_id": "morelli-smith-Od-five-edge",
+    },
+    "V": {
+        "graph_label": "V",
+        "base_label": "V",
+        "is_dual": False,
+        "fixture_id": "morelli-smith-V-five-edge",
+    },
+}
+REVIEWED_NONGENERIC_GRAPH_DEFINITION_PROVENANCE = {
+    "O": {
+        "source_id": "morelli-smith-2019",
+        "locator": {"appendix": "B", "printed_page": 126, "pdf_page_index": 132},
+    },
+    "O^d": {
+        "source_id": "morelli-smith-2019",
+        "locator": {"appendix": "B", "printed_page": 127, "pdf_page_index": 133},
+    },
+    "V": {
+        "source_id": "morelli-smith-2019",
+        "locator": {"appendix": "B", "printed_page": 126, "pdf_page_index": 132},
+    },
+}
+REVIEWED_Y_DELTA_FIGURE = "Figure 5.3"
+REVIEWED_FINAL_EIGHT_FIXTURES = {
+    "morelli-smith-figure-5.1-O-C": {
+        "catalogue_id": "lh148-4a925dd55dc8da19",
+        "graph_label": "O",
+        "coefficient": "F",
+        "target": 21,
+        "role": "nonbridge",
+    },
+    "morelli-smith-figure-5.1-V-terminal-C": {
+        "catalogue_id": "lh148-47ee32380ab1b406",
+        "graph_label": "V",
+        "coefficient": "F",
+        "target": 21,
+        "role": "bridge",
+    },
+    "morelli-smith-figure-5.1-O-L": {
+        "catalogue_id": "lh148-68430bbb448b9991",
+        "graph_label": "O",
+        "coefficient": "D",
+        "target": 29,
+        "role": "nonbridge",
+    },
+    "morelli-smith-figure-5.1-V-terminal-L": {
+        "catalogue_id": "lh148-7e24311a6fea4531",
+        "graph_label": "V",
+        "coefficient": "D",
+        "target": 29,
+        "role": "bridge",
+    },
+    "morelli-smith-figure-5.1-Od-L": {
+        "catalogue_id": "lh148-debfbc02c5650a94",
+        "graph_label": "O^d",
+        "coefficient": "C",
+        "target": 36,
+        "role": "nonbridge",
+    },
+    "morelli-smith-figure-5.1-V-path-L": {
+        "catalogue_id": "lh148-f40bfca59082ff8d",
+        "graph_label": "V",
+        "coefficient": "C",
+        "target": 36,
+        "role": "bridge",
+    },
+    "morelli-smith-figure-5.1-Od-C": {
+        "catalogue_id": "lh148-5278112fab778336",
+        "graph_label": "O^d",
+        "coefficient": "A",
+        "target": 44,
+        "role": "nonbridge",
+    },
+    "morelli-smith-figure-5.1-V-path-C": {
+        "catalogue_id": "lh148-f942f37eed38400a",
+        "graph_label": "V",
+        "coefficient": "A",
+        "target": 44,
+        "role": "bridge",
+    },
+}
+REVIEWED_Y_DELTA_FIXTURE_PAIRS = {
+    (
+        "morelli-smith-figure-5.1-O-C",
+        "morelli-smith-figure-5.1-V-terminal-C",
+    ),
+    (
+        "morelli-smith-figure-5.1-O-L",
+        "morelli-smith-figure-5.1-V-terminal-L",
+    ),
+    (
+        "morelli-smith-figure-5.1-Od-L",
+        "morelli-smith-figure-5.1-V-path-L",
+    ),
+    (
+        "morelli-smith-figure-5.1-Od-C",
+        "morelli-smith-figure-5.1-V-path-C",
+    ),
+}
+REVIEWED_NONGENERIC_TARGET_FIXTURES = {
+    21: "morelli-smith-canonical-network-21",
+    29: "morelli-smith-canonical-network-29",
+    36: "morelli-smith-canonical-network-36",
+    44: "morelli-smith-canonical-network-44",
+}
+FINAL_EIGHT_RICE_SOURCE_ID = "rice-final-eight-o-bridge-report"
+FINAL_EIGHT_RICE_SOURCE_IDENTITY = {
+    "source_type": "rice-documentation",
+    "citation": (
+        "RICE final-eight O/O-dual and bridge evidence and contract-design report."
+    ),
+}
+# The closed final-eight machine contract pins source identities and locators,
+# structured claims and fixtures, the report-backed inventory, computation
+# payload and semantic scope, and provenance/application invariants. Editorial
+# paraphrases and explanatory notes remain human-reviewed repository prose.
+FINAL_EIGHT_REPORT_PATH = (
+    "docs/comparisons/ladenheim-final-eight-o-bridge-evidence-design.md"
+)
+FINAL_EIGHT_COMPUTATION_FIXED_PAYLOAD = {
+    "cross_check_id": "rice-final-eight-o-bridge-report-reproduction",
+    "provenance_level": "independently-reproduced-computation",
+    "implementation": f"Reproduction commands in {FINAL_EIGHT_REPORT_PATH}",
+    "commit_sha": "c5896191cdfbed128485be04dcb23310a508a185",
+    "input": (
+        "The complete 148-record catalogue, rendered O/O-dual/V and target "
+        "fixtures, positive-finite Y-delta parameters, and exact Cauer-Foster "
+        "parameterizations"
+    ),
+    "operation": (
+        "Enumerate all O, O-dual, and V subjects; assert eight unique coloured "
+        "matches and four Y-delta pairs; verify forced A, C, D, or F zeros; check "
+        "nondegenerate four-element targets and degenerate two-element R-X "
+        "realizations with exact arithmetic"
+    ),
+    "result": (
+        "Eight unique subjects form four positive-finite Y-delta pairs; each pair "
+        "has its reviewed forced-zero coefficient, conditional four-element target "
+        "for delta greater than zero, and exact two-element realization for delta "
+        "equal to zero."
+    ),
+    "independently_reproduced": True,
+    "limitations": (
+        "This verifies the independently reproduced RICE subjects, pairings, "
+        "forced coefficients, and conditional simplification routes; authoritative "
+        "publication transcriptions are provenance inputs rather than "
+        "computationally verified claims."
+    ),
+    "verification_state": "cross-checked",
+}
+CONDITIONAL_ROUTE_RELATION = (
+    "conditional-nondegenerate-target-plus-degenerate-fewer-element"
+)
+CONDITION_EXPRESSION = "(r1*x2-r2*x1)^2/(r1+r2)^2"
+DEGENERATE_REALISATION_CLASSES = {
+    "two-element-series-R-X",
+    "two-element-parallel-R-X",
+}
 CLAIM_TYPES = {
     "catalogue-target",
     "exclusion-category-targets",
@@ -110,6 +304,10 @@ CLAIM_TYPES = {
     "basic-graph-definition",
     "basic-graph-match",
     "reduction-target-match",
+    "aggregate-nongeneric-exclusion-group",
+    "y-delta-partner-match",
+    "forced-immittance-coefficient",
+    "conditional-simpler-realisation-route",
 }
 IMMUTABLE_FIELDS = (
     "catalogue_id",
@@ -162,11 +360,19 @@ COMPUTATION_FIELDS = {
     "operation", "result", "independently_reproduced", "limitations",
     "verification_state",
 }
-COMPUTATION_OPTIONAL_FIELDS = {
+COMPUTATION_EQUIVALENCE_SCOPE_FIELDS = {
     "subject_catalogue_ids",
     "reduction_target_network_numbers",
     "verified_evidence_record_ids",
 }
+COMPUTATION_CONDITIONAL_SCOPE_FIELDS = {
+    "subject_catalogue_ids",
+    "conditional_target_network_numbers",
+    "verified_evidence_record_ids",
+}
+COMPUTATION_OPTIONAL_FIELDS = (
+    COMPUTATION_EQUIVALENCE_SCOPE_FIELDS | COMPUTATION_CONDITIONAL_SCOPE_FIELDS
+)
 TARGET_FIELDS = {
     "source_population", "reported_members", "reported_exclusions",
     "exclusion_category_targets", "evidence_record_ids",
@@ -359,6 +565,18 @@ def _validate_sources(values: Any) -> dict[str, dict[str, Any]]:
             )
         if source["source_type"] == "authoritative-publication" and publication is None:
             raise ValueError(f"source {source_id} requires publication metadata")
+    reviewed_identities = {
+        NONGENERIC_AGGREGATE_SOURCE_ID: NONGENERIC_AGGREGATE_SOURCE_IDENTITY,
+        FINAL_EIGHT_RICE_SOURCE_ID: FINAL_EIGHT_RICE_SOURCE_IDENTITY,
+    }
+    for source_id, identity in reviewed_identities.items():
+        source = sources.get(source_id)
+        if source is None or any(
+            source.get(field) != value for field, value in identity.items()
+        ):
+            raise ValueError(
+                f"source {source_id} must match the reviewed final-eight identity"
+            )
     return sources
 
 
@@ -481,6 +699,154 @@ def _validate_claim(
         ):
             raise ValueError(
                 f"evidence {evidence_id} has invalid aggregate basic-graph exclusion claim"
+            )
+    elif claim_type == "aggregate-nongeneric-exclusion-group":
+        _validate_object_shape(
+            claim,
+            f"evidence {evidence_id} aggregate nongeneric exclusion claim",
+            {
+                "claim_type",
+                "supported_subject_counts_by_graph",
+                "source_population",
+                "supported_disposition",
+                "supported_exclusion_category",
+                "supported_exclusion_mechanism",
+                "supported_zero_coefficient_set",
+                "supported_simpler_realisation_targets",
+            },
+        )
+        graph_counts = claim.get("supported_subject_counts_by_graph")
+        coefficients = claim.get("supported_zero_coefficient_set")
+        targets = claim.get("supported_simpler_realisation_targets")
+        if (
+            not isinstance(graph_counts, dict)
+            or set(graph_counts) != set(NONGENERIC_GRAPH_COUNTS)
+            or not all(_is_int(value) for value in graph_counts.values())
+            or graph_counts != NONGENERIC_GRAPH_COUNTS
+            or not _is_int(claim.get("source_population"))
+            or claim["source_population"] != sum(NONGENERIC_GRAPH_COUNTS.values())
+            or claim.get("supported_disposition") != "exclude"
+            or claim.get("supported_exclusion_category")
+            != "other-canonical-exclusion"
+            or claim.get("supported_exclusion_mechanism") != NONGENERIC_MECHANISM
+            or not isinstance(coefficients, list)
+            or not all(
+                isinstance(value, str) and value in NONGENERIC_COEFFICIENTS
+                for value in coefficients
+            )
+            or len(coefficients) != len(set(coefficients))
+            or set(coefficients) != NONGENERIC_COEFFICIENTS
+            or not isinstance(targets, list)
+            or not all(_is_int(value) for value in targets)
+            or len(targets) != len(set(targets))
+            or set(targets) != NONGENERIC_TARGETS
+        ):
+            raise ValueError(
+                f"evidence {evidence_id} has invalid aggregate nongeneric exclusion claim"
+            )
+    elif claim_type == "y-delta-partner-match":
+        _validate_object_shape(
+            claim,
+            f"evidence {evidence_id} Y-delta partner claim",
+            {
+                "claim_type",
+                "subject_catalogue_ids",
+                "subject_fixture_ids",
+                "transformation_figure",
+                "positive_finite_forward",
+                "positive_finite_inverse",
+            },
+        )
+        subjects = claim.get("subject_catalogue_ids")
+        _validate_subjects(subjects, evidence_id, catalogue_ids)
+        fixtures = claim.get("subject_fixture_ids")
+        if (
+            len(subjects) != 2
+            or not isinstance(fixtures, list)
+            or len(fixtures) != 2
+            or not all(isinstance(value, str) for value in fixtures)
+            or tuple(fixtures) not in REVIEWED_Y_DELTA_FIXTURE_PAIRS
+            or claim.get("transformation_figure") != REVIEWED_Y_DELTA_FIGURE
+            or claim.get("positive_finite_forward") is not True
+            or claim.get("positive_finite_inverse") is not True
+        ):
+            raise ValueError(f"evidence {evidence_id} has invalid Y-delta partner claim")
+    elif claim_type == "forced-immittance-coefficient":
+        _validate_object_shape(
+            claim,
+            f"evidence {evidence_id} forced coefficient claim",
+            {
+                "claim_type",
+                "subject_catalogue_ids",
+                "immittance_representation",
+                "coefficient",
+                "forced_value",
+                "nongeneric_dimension_bound",
+                "supported_disposition",
+            },
+        )
+        subjects = claim.get("subject_catalogue_ids")
+        _validate_subjects(subjects, evidence_id, catalogue_ids)
+        coefficient = claim.get("coefficient")
+        if (
+            len(subjects) != 1
+            or claim.get("immittance_representation") != NONGENERIC_REPRESENTATION
+            or not isinstance(coefficient, str)
+            or coefficient not in NONGENERIC_COEFFICIENTS
+            or not _is_int(claim.get("forced_value"))
+            or claim.get("forced_value") != 0
+            or not _is_int(claim.get("nongeneric_dimension_bound"))
+            or claim.get("nongeneric_dimension_bound") != 5
+            or claim.get("supported_disposition") != "exclude"
+        ):
+            raise ValueError(f"evidence {evidence_id} has invalid forced coefficient claim")
+    elif claim_type == "conditional-simpler-realisation-route":
+        required = {
+            "claim_type",
+            "subject_catalogue_ids",
+            "condition_parameterization_fixture_id",
+            "condition_expression",
+            "nondegenerate_condition",
+            "nondegenerate_target_network_number",
+            "nondegenerate_target_fixture_id",
+            "degenerate_condition",
+            "degenerate_realisation_class",
+            "route_relation",
+        }
+        _validate_object_shape(
+            claim,
+            f"evidence {evidence_id} conditional simpler-realisation claim",
+            required,
+            {"y_delta_partner_match_evidence_id"},
+        )
+        subjects = claim.get("subject_catalogue_ids")
+        _validate_subjects(subjects, evidence_id, catalogue_ids)
+        target = claim.get("nondegenerate_target_network_number")
+        degenerate_class = claim.get("degenerate_realisation_class")
+        if (
+            len(subjects) != 1
+            or not isinstance(claim.get("condition_parameterization_fixture_id"), str)
+            or not claim["condition_parameterization_fixture_id"]
+            or claim.get("condition_expression") != CONDITION_EXPRESSION
+            or claim.get("nondegenerate_condition") != "delta > 0"
+            or not _is_int(target)
+            or not 1 <= target <= 108
+            or claim.get("nondegenerate_target_fixture_id")
+            != REVIEWED_NONGENERIC_TARGET_FIXTURES.get(target)
+            or claim.get("degenerate_condition") != "delta = 0"
+            or not isinstance(degenerate_class, str)
+            or degenerate_class not in DEGENERATE_REALISATION_CLASSES
+            or claim.get("route_relation") != CONDITIONAL_ROUTE_RELATION
+            or (
+                "y_delta_partner_match_evidence_id" in claim
+                and (
+                    not isinstance(claim["y_delta_partner_match_evidence_id"], str)
+                    or not claim["y_delta_partner_match_evidence_id"]
+                )
+            )
+        ):
+            raise ValueError(
+                f"evidence {evidence_id} has invalid conditional simpler-realisation claim"
             )
     elif claim_type == "rice-selector-count":
         _validate_object_shape(
@@ -655,6 +1021,16 @@ def _validate_evidence_records(
                 f"evidence {evidence_id} reduction-target locator does not match "
                 "the claimed target network"
             )
+        if (
+            claim["claim_type"] == "conditional-simpler-realisation-route"
+            and "network_number" in record["locator"]
+            and record["locator"]["network_number"]
+            != claim["nondegenerate_target_network_number"]
+        ):
+            raise ValueError(
+                f"evidence {evidence_id} conditional-route locator does not match "
+                "the claimed nondegenerate target network"
+            )
         source = sources[source_id]
         if source["source_type"] == "previous-workspace-repository":
             raise ValueError(
@@ -673,12 +1049,43 @@ def _validate_evidence_records(
         elif record["provenance_level"] in {
             "rice-derived-structural-fact",
             "rice-derived-network-equivalence-fact",
+            "rice-derived-immittance-coefficient-fact",
+            "rice-derived-conditional-simplification-fact",
         } and source["source_type"] not in {
             "rice-generated-artefact",
             "rice-documentation",
         }:
             raise ValueError(
                 f"RICE-derived evidence {evidence_id} requires a RICE source"
+            )
+        if claim["claim_type"] == "aggregate-nongeneric-exclusion-group" and not (
+            record["provenance_level"] == "authoritative-source-transcription"
+            and record["verification_state"] == "source-verified"
+            and source["source_type"] == "authoritative-publication"
+            and source_id == NONGENERIC_AGGREGATE_SOURCE_ID
+            and record["locator"] == NONGENERIC_AGGREGATE_LOCATOR
+        ):
+            raise ValueError(
+                f"aggregate nongeneric evidence {evidence_id} must be authoritative "
+                "and source-verified"
+            )
+        expected_positive_provenance = {
+            "y-delta-partner-match": "rice-derived-network-equivalence-fact",
+            "forced-immittance-coefficient": (
+                "rice-derived-immittance-coefficient-fact"
+            ),
+            "conditional-simpler-realisation-route": (
+                "rice-derived-conditional-simplification-fact"
+            ),
+        }
+        if claim["claim_type"] in expected_positive_provenance and (
+            record["provenance_level"]
+            != expected_positive_provenance[claim["claim_type"]]
+            or record["verification_state"] != "cross-checked"
+        ):
+            raise ValueError(
+                f"{claim['claim_type']} evidence {evidence_id} requires its "
+                "cross-checked RICE-derived provenance"
             )
         if record["claim"]["claim_type"] == "reduction-target-match" and (
             record["provenance_level"]
@@ -759,13 +1166,22 @@ def _validate_computational_cross_checks(
                 f"cross-check {record_id} provenance contradicts independently_reproduced"
             )
         present_scope_fields = COMPUTATION_OPTIONAL_FIELDS & record.keys()
-        if present_scope_fields and present_scope_fields != COMPUTATION_OPTIONAL_FIELDS:
+        valid_scope_shapes = {
+            frozenset(COMPUTATION_EQUIVALENCE_SCOPE_FIELDS),
+            frozenset(COMPUTATION_CONDITIONAL_SCOPE_FIELDS),
+        }
+        if present_scope_fields and frozenset(present_scope_fields) not in valid_scope_shapes:
             raise ValueError(
                 f"cross-check {record_id} scope fields must be present together"
             )
         if present_scope_fields:
             subjects = record["subject_catalogue_ids"]
-            targets = record["reduction_target_network_numbers"]
+            target_field = (
+                "reduction_target_network_numbers"
+                if "reduction_target_network_numbers" in record
+                else "conditional_target_network_numbers"
+            )
+            targets = record[target_field]
             verified_evidence_ids = record["verified_evidence_record_ids"]
             _require_unique_string_list(
                 subjects, f"cross-check {record_id} subject_catalogue_ids"
@@ -783,9 +1199,12 @@ def _validate_computational_cross_checks(
                 or len(set(targets)) != len(targets)
             ):
                 raise ValueError(
-                    f"cross-check {record_id} has invalid reduction target scope"
+                    f"cross-check {record_id} has invalid target scope"
                 )
-            if len(subjects) != len(targets):
+            if (
+                target_field == "reduction_target_network_numbers"
+                and len(subjects) != len(targets)
+            ):
                 raise ValueError(
                     f"cross-check {record_id} scope lists must have equal lengths"
                 )
@@ -1011,6 +1430,9 @@ def _validate_assertion(
             "aggregate-historical-graph-group-plus-subject-bound-rice-match",
             "mechanically-derived-rice-structural-fact",
         },
+        "derived-nongeneric-simplification-match": {
+            "aggregate-historical-nongeneric-group-plus-subject-bound-rice-facts",
+        },
         "working-hypothesis": {"researcher-hypothesis"},
     }
     if status in required_basis and not required_basis[status] <= basis:
@@ -1167,6 +1589,77 @@ def _validate_assertion(
                 "derived-structural-match requires an independently reproduced "
                 "cross-checked computation"
             )
+    if status == "derived-nongeneric-simplification-match":
+        required = {
+            "aggregate-historical-nongeneric-group-plus-subject-bound-rice-facts"
+        }
+        if catalogue_id is None:
+            raise ValueError(
+                "derived-nongeneric-simplification-match is valid only for "
+                "explicit annotation records"
+            )
+        if basis != required:
+            raise ValueError(
+                "derived-nongeneric-simplification-match requires exactly the "
+                "nongeneric subject-bound evidence basis"
+            )
+        if disposition != "exclude":
+            raise ValueError(
+                "derived-nongeneric-simplification-match cannot assert retention"
+            )
+        if category != "other-canonical-exclusion" or not isinstance(reason, str) or not reason:
+            raise ValueError(
+                "derived-nongeneric-simplification-match requires the final "
+                "exclusion category and reason"
+            )
+        if assertion["basic_graph_assignment"] is not None:
+            raise ValueError(
+                "derived-nongeneric-simplification-match requires no production "
+                "basic graph assignment"
+            )
+        claim_types = [evidence[item]["claim"]["claim_type"] for item in evidence_ids]
+        required_claim_types = {
+            "aggregate-nongeneric-exclusion-group",
+            "basic-graph-match",
+            "forced-immittance-coefficient",
+            "conditional-simpler-realisation-route",
+        }
+        if not required_claim_types <= set(claim_types):
+            raise ValueError(
+                "derived-nongeneric-simplification-match requires aggregate, graph, "
+                "coefficient, and conditional-route evidence"
+            )
+        if "reduction-target-match" in claim_types:
+            raise ValueError(
+                "derived-nongeneric-simplification-match cannot use a "
+                "reduction-target-match"
+            )
+        for claim_type in {
+            "basic-graph-match",
+            "forced-immittance-coefficient",
+            "conditional-simpler-realisation-route",
+        }:
+            matching = [
+                evidence[item]
+                for item in evidence_ids
+                if evidence[item]["claim"]["claim_type"] == claim_type
+                and evidence[item]["verification_state"] != "rejected"
+            ]
+            if len(matching) != 1 or matching[0]["claim"]["subject_catalogue_ids"] != [
+                catalogue_id
+            ]:
+                raise ValueError(
+                    "derived-nongeneric-simplification-match requires one exact "
+                    f"subject-bound {claim_type} claim"
+                )
+        if any(
+            identifier["scheme"] == "morelli-smith-canonical-network"
+            for identifier in assertion["historical_identifiers"]
+        ):
+            raise ValueError(
+                "derived nongeneric exclusions cannot use a canonical network "
+                "as the excluded subject's historical identity"
+            )
     if status == "source-backed" and not any(
         _is_authoritative(record) for record in matching_individual
     ):
@@ -1219,7 +1712,15 @@ def _validate_assertion(
                 evidence_ids, evidence, "aggregate-basic-graph-exclusion"
             )
         )
-        if not aggregate_match and not graph_group_match and not any(
+        nongeneric_group_match = any(
+            _is_authoritative(record)
+            and record["claim"]["supported_exclusion_category"] == category
+            and record["claim"]["supported_disposition"] == disposition
+            for record in _matching_evidence(
+                evidence_ids, evidence, "aggregate-nongeneric-exclusion-group"
+            )
+        )
+        if not aggregate_match and not graph_group_match and not nongeneric_group_match and not any(
             _is_authoritative(record)
             and record["claim"]["supported_values"].get("proposed_disposition")
             == disposition
@@ -1448,6 +1949,441 @@ def _validate_derived_structural_groups(
                 "derived structural group requires one common independently reproduced "
                 "computation scoped to its exact subjects and reduction targets"
             )
+
+
+def _validate_nongeneric_simplification_groups(
+    explicit: dict[str, dict[str, Any]],
+    rules: list[dict[str, Any]],
+    evidence: dict[str, dict[str, Any]],
+    computations: dict[str, dict[str, Any]],
+) -> None:
+    specialized_claim_types = {
+        "y-delta-partner-match",
+        "forced-immittance-coefficient",
+        "conditional-simpler-realisation-route",
+    }
+    aggregates = [
+        (evidence_id, record)
+        for evidence_id, record in evidence.items()
+        if record["claim"]["claim_type"]
+        == "aggregate-nongeneric-exclusion-group"
+    ]
+    specialized_ids = {
+        evidence_id
+        for evidence_id, record in evidence.items()
+        if record["claim"]["claim_type"] in specialized_claim_types
+    }
+    report_graph_match_ids = {
+        evidence_id
+        for evidence_id, record in evidence.items()
+        if record["claim"]["claim_type"] == "basic-graph-match"
+        and record["source_id"] == FINAL_EIGHT_RICE_SOURCE_ID
+    }
+    conditional_computations = [
+        record
+        for record in computations.values()
+        if "conditional_target_network_numbers" in record
+    ]
+    specialized_counts = Counter(
+        record["claim"]["claim_type"]
+        for record in evidence.values()
+        if record["claim"]["claim_type"] in specialized_claim_types
+    )
+    expected_specialized_counts = Counter({
+        "y-delta-partner-match": 4,
+        "forced-immittance-coefficient": 8,
+        "conditional-simpler-realisation-route": 8,
+    })
+    if len(aggregates) != 1:
+        raise ValueError(
+            "format-version-4 final-eight inventory requires exactly one aggregate "
+            "nongeneric exclusion group"
+        )
+    if len(conditional_computations) != 1:
+        raise ValueError(
+            "format-version-4 final-eight inventory requires exactly one conditional "
+            "computation"
+        )
+    verified_ids = set(conditional_computations[0]["verified_evidence_record_ids"])
+    if not specialized_ids <= verified_ids:
+        raise ValueError(
+            "every final-eight specialized fact must belong to the aggregate "
+            "computation scope"
+        )
+    if specialized_counts != expected_specialized_counts:
+        raise ValueError(
+            "format-version-4 final-eight inventory requires four Y-delta pairs, "
+            "eight forced coefficients, and eight conditional routes"
+        )
+    if len(report_graph_match_ids) != 8:
+        raise ValueError(
+            "format-version-4 final-eight graph-match inventory requires exactly "
+            "eight report-backed records"
+        )
+    for aggregate_id, aggregate_record in aggregates:
+        aggregate = aggregate_record["claim"]
+        if not _is_authoritative(aggregate_record):
+            raise ValueError(
+                "nongeneric simplification group requires authoritative aggregate evidence"
+            )
+        targets = set(aggregate["supported_simpler_realisation_targets"])
+        qualifying_computations = [
+            record
+            for record in computations.values()
+            if record["provenance_level"] == "independently-reproduced-computation"
+            and record["independently_reproduced"] is True
+            and record["verification_state"] == "cross-checked"
+            and len(record.get("subject_catalogue_ids", []))
+            == aggregate["source_population"]
+            and set(record.get("conditional_target_network_numbers", [])) == targets
+        ]
+        if len(qualifying_computations) != 1:
+            raise ValueError(
+                "nongeneric simplification group requires one exact independently "
+                "reproduced conditional computation"
+            )
+        computation = qualifying_computations[0]
+        fixed_payload = {
+            field: computation.get(field)
+            for field in FINAL_EIGHT_COMPUTATION_FIXED_PAYLOAD
+        }
+        if fixed_payload != FINAL_EIGHT_COMPUTATION_FIXED_PAYLOAD:
+            raise ValueError(
+                "nongeneric group computation must use the reviewed final-eight "
+                "fixed reproduction payload"
+            )
+        member_ids = set(computation["subject_catalogue_ids"])
+        verified_ids = set(computation["verified_evidence_record_ids"])
+        verified_records = {item: evidence[item] for item in verified_ids}
+        selected_by_type: dict[str, list[tuple[str, dict[str, Any]]]] = {
+            claim_type: [
+                (item, record)
+                for item, record in verified_records.items()
+                if record["claim"]["claim_type"] == claim_type
+            ]
+            for claim_type in {
+                "basic-graph-match",
+                "y-delta-partner-match",
+                "forced-immittance-coefficient",
+                "conditional-simpler-realisation-route",
+            }
+        }
+        expected_counts = {
+            "basic-graph-match": 8,
+            "y-delta-partner-match": 4,
+            "forced-immittance-coefficient": 8,
+            "conditional-simpler-realisation-route": 8,
+        }
+        if {key: len(value) for key, value in selected_by_type.items()} != expected_counts:
+            raise ValueError(
+                "nongeneric computation must verify eight graph matches, four Y-delta "
+                "pairs, eight coefficient facts, and eight conditional routes"
+            )
+        selected_graph_match_ids = {
+            evidence_id
+            for evidence_id, _record in selected_by_type["basic-graph-match"]
+        }
+        if report_graph_match_ids != selected_graph_match_ids:
+            raise ValueError(
+                "final-eight report-backed graph-match inventory must equal the "
+                "computation-selected eight"
+            )
+        if any(
+            record["source_id"] != FINAL_EIGHT_RICE_SOURCE_ID
+            for values in selected_by_type.values()
+            for _evidence_id, record in values
+        ):
+            raise ValueError(
+                "nongeneric group structured facts must cite the reviewed final-eight "
+                "RICE report"
+            )
+        expected_locators = {
+            "basic-graph-match": {"repository_path": FINAL_EIGHT_REPORT_PATH},
+            "y-delta-partner-match": {
+                "figure": "5.1",
+                "repository_path": FINAL_EIGHT_REPORT_PATH,
+            },
+            "forced-immittance-coefficient": {
+                "repository_path": FINAL_EIGHT_REPORT_PATH,
+            },
+        }
+        for claim_type, values in selected_by_type.items():
+            for _evidence_id, record in values:
+                expected_locator = expected_locators.get(claim_type)
+                if claim_type == "conditional-simpler-realisation-route":
+                    expected_locator = {
+                        "network_number": record["claim"][
+                            "nondegenerate_target_network_number"
+                        ],
+                        "repository_path": FINAL_EIGHT_REPORT_PATH,
+                    }
+                if record["locator"] != expected_locator:
+                    raise ValueError(
+                        "nongeneric group structured facts must use the reviewed "
+                        "final-eight report locator"
+                    )
+        selected_structured_ids = {
+            item for values in selected_by_type.values() for item, _record in values
+        }
+        if verified_ids != selected_structured_ids:
+            raise ValueError(
+                "nongeneric computation verified evidence IDs differ from the exact "
+                "derived structured facts"
+            )
+
+        graph_by_subject: dict[str, tuple[str, dict[str, Any]]] = {}
+        graph_labels = Counter()
+        for evidence_id, record in selected_by_type["basic-graph-match"]:
+            claim = record["claim"]
+            subjects = claim["subject_catalogue_ids"]
+            match = claim["match"]
+            if (
+                not _is_positive_rice_derived(record)
+                or record["provenance_level"] != "rice-derived-structural-fact"
+                or record["verification_state"] != "cross-checked"
+                or match["matched"] is not True
+                or match["structural_relation"] != SOURCE_CATALOGUE_RELATION
+                or len(subjects) != 1
+                or subjects[0] in graph_by_subject
+            ):
+                raise ValueError(
+                    "nongeneric group requires one positive committed-relation graph "
+                    "match per subject"
+                )
+            subject = subjects[0]
+            graph_by_subject[subject] = (evidence_id, record)
+            graph_labels[match["graph_label"]] += 1
+            expected_definition = REVIEWED_NONGENERIC_GRAPH_DEFINITIONS.get(
+                match["graph_label"]
+            )
+            expected_provenance = (
+                REVIEWED_NONGENERIC_GRAPH_DEFINITION_PROVENANCE.get(
+                    match["graph_label"]
+                )
+            )
+            definitions = [
+                candidate
+                for candidate in evidence.values()
+                if candidate["claim"]["claim_type"] == "basic-graph-definition"
+                and expected_definition is not None
+                and expected_provenance is not None
+                and _is_authoritative(candidate)
+                and candidate["claim"]["definition"] == expected_definition
+                and candidate["source_id"] == expected_provenance["source_id"]
+                and candidate["locator"] == expected_provenance["locator"]
+            ]
+            if (
+                expected_definition is None
+                or expected_provenance is None
+                or match["fixture_id"] != expected_definition["fixture_id"]
+                or len(definitions) != 1
+            ):
+                raise ValueError(
+                    "nongeneric graph match requires one complete reviewed "
+                    "authoritative definition"
+                )
+        if set(graph_by_subject) != member_ids or dict(graph_labels) != aggregate[
+            "supported_subject_counts_by_graph"
+        ]:
+            raise ValueError(
+                "nongeneric group subjects or graph counts differ from the aggregate claim"
+            )
+
+        pair_by_subject: dict[str, tuple[str, dict[str, Any]]] = {}
+        fixture_by_subject: dict[str, str] = {}
+        pair_ids = set()
+        for evidence_id, record in selected_by_type["y-delta-partner-match"]:
+            claim = record["claim"]
+            subjects = claim["subject_catalogue_ids"]
+            fixtures = claim["subject_fixture_ids"]
+            if not _is_positive_rice_equivalence(record):
+                raise ValueError("Y-delta partner evidence must be positive equivalence")
+            if any(subject in pair_by_subject for subject in subjects):
+                raise ValueError("Y-delta pairs must be disjoint")
+            if tuple(fixtures) not in REVIEWED_Y_DELTA_FIXTURE_PAIRS:
+                raise ValueError("Y-delta pair must use one reviewed ordered fixture pair")
+            labels = [
+                graph_by_subject[subject][1]["claim"]["match"]["graph_label"]
+                for subject in subjects
+            ]
+            if labels.count("V") != 1 or not any(
+                label in {"O", "O^d"} for label in labels
+            ):
+                raise ValueError(
+                    "each Y-delta pair must contain one reviewed O/O-dual subject "
+                    "and one bridge subject with exact fixtures"
+                )
+            for subject, fixture in zip(subjects, fixtures):
+                fixture_metadata = REVIEWED_FINAL_EIGHT_FIXTURES[fixture]
+                if fixture_metadata["catalogue_id"] != subject:
+                    raise ValueError(
+                        "Y-delta fixture position must match the reviewed catalogue subject"
+                    )
+                if fixture_metadata["graph_label"] != graph_by_subject[subject][1][
+                    "claim"
+                ]["match"]["graph_label"]:
+                    raise ValueError(
+                        "Y-delta fixture position must match the subject graph class"
+                    )
+                fixture_by_subject[subject] = fixture
+            pair_ids.add(evidence_id)
+            for subject in subjects:
+                pair_by_subject[subject] = (evidence_id, record)
+        if set(pair_by_subject) != member_ids:
+            raise ValueError("four Y-delta pairs must partition all eight subjects")
+
+        coefficient_by_subject: dict[str, tuple[str, dict[str, Any]]] = {}
+        for evidence_id, record in selected_by_type["forced-immittance-coefficient"]:
+            subject = record["claim"]["subject_catalogue_ids"][0]
+            if subject in coefficient_by_subject:
+                raise ValueError("nongeneric group requires one coefficient per subject")
+            coefficient_by_subject[subject] = (evidence_id, record)
+        if set(coefficient_by_subject) != member_ids:
+            raise ValueError("nongeneric coefficient subjects differ from group subjects")
+        if Counter(
+            record["claim"]["coefficient"]
+            for _evidence_id, record in coefficient_by_subject.values()
+        ) != Counter({coefficient: 2 for coefficient in NONGENERIC_COEFFICIENTS}):
+            raise ValueError("nongeneric coefficient allocation must use A, C, D, F twice")
+        for evidence_id in pair_ids:
+            subjects = evidence[evidence_id]["claim"]["subject_catalogue_ids"]
+            coefficients = {
+                coefficient_by_subject[subject][1]["claim"]["coefficient"]
+                for subject in subjects
+            }
+            if len(coefficients) != 1:
+                raise ValueError("Y-delta partners must have the same forced coefficient")
+        if any(
+            REVIEWED_FINAL_EIGHT_FIXTURES[fixture_by_subject[subject]]["coefficient"]
+            != coefficient_by_subject[subject][1]["claim"]["coefficient"]
+            for subject in member_ids
+        ):
+            raise ValueError(
+                "Y-delta fixture must match its subject's forced coefficient"
+            )
+
+        route_by_subject: dict[str, tuple[str, dict[str, Any]]] = {}
+        for evidence_id, record in selected_by_type[
+            "conditional-simpler-realisation-route"
+        ]:
+            subject = record["claim"]["subject_catalogue_ids"][0]
+            if subject in route_by_subject:
+                raise ValueError("nongeneric group requires one conditional route per subject")
+            route_by_subject[subject] = (evidence_id, record)
+        if set(route_by_subject) != member_ids:
+            raise ValueError("conditional-route subjects differ from group subjects")
+        allocated_targets = Counter()
+        for pair_id in pair_ids:
+            subjects = evidence[pair_id]["claim"]["subject_catalogue_ids"]
+            labels = {
+                subject: graph_by_subject[subject][1]["claim"]["match"]["graph_label"]
+                for subject in subjects
+            }
+            nonbridge = next(subject for subject in subjects if labels[subject] != "V")
+            bridge = next(subject for subject in subjects if labels[subject] == "V")
+            pair_claim = evidence[pair_id]["claim"]
+            parameter_fixture = pair_claim["subject_fixture_ids"][
+                pair_claim["subject_catalogue_ids"].index(nonbridge)
+            ]
+            nonbridge_route = route_by_subject[nonbridge][1]["claim"]
+            bridge_route = route_by_subject[bridge][1]["claim"]
+            if (
+                REVIEWED_FINAL_EIGHT_FIXTURES[fixture_by_subject[nonbridge]]["role"]
+                != "nonbridge"
+                or REVIEWED_FINAL_EIGHT_FIXTURES[fixture_by_subject[bridge]]["role"]
+                != "bridge"
+            ):
+                raise ValueError(
+                    "Y-delta fixture positions must identify nonbridge and bridge roles"
+                )
+            if "y_delta_partner_match_evidence_id" in nonbridge_route:
+                raise ValueError("series-parallel conditional route cannot cite a partner")
+            if bridge_route.get("y_delta_partner_match_evidence_id") != pair_id:
+                raise ValueError("bridge conditional route requires its Y-delta partner")
+            shared_fields = {
+                "condition_parameterization_fixture_id",
+                "condition_expression",
+                "nondegenerate_condition",
+                "nondegenerate_target_network_number",
+                "nondegenerate_target_fixture_id",
+                "degenerate_condition",
+                "degenerate_realisation_class",
+                "route_relation",
+            }
+            if (
+                nonbridge_route["condition_parameterization_fixture_id"]
+                != parameter_fixture
+                or bridge_route["condition_parameterization_fixture_id"]
+                != parameter_fixture
+                or any(nonbridge_route[field] != bridge_route[field] for field in shared_fields)
+            ):
+                raise ValueError(
+                    "Y-delta pair routes must use one reviewed condition fixture and target"
+                )
+            target = nonbridge_route["nondegenerate_target_network_number"]
+            if any(
+                REVIEWED_FINAL_EIGHT_FIXTURES[fixture_by_subject[subject]]["target"]
+                != target
+                for subject in subjects
+            ):
+                raise ValueError(
+                    "Y-delta fixtures must match the pair's conditional target"
+                )
+            expected_class = (
+                "two-element-series-R-X"
+                if labels[nonbridge] == "O"
+                else "two-element-parallel-R-X"
+            )
+            if nonbridge_route["degenerate_realisation_class"] != expected_class:
+                raise ValueError("conditional route has wrong degenerate realisation class")
+            allocated_targets[nonbridge_route["nondegenerate_target_network_number"]] += 2
+        if set(allocated_targets) != targets or any(
+            count != 2 for count in allocated_targets.values()
+        ):
+            raise ValueError(
+                "conditional routes must derive the exact target set with multiplicity two"
+            )
+
+        consumers = [
+            (catalogue_id, assertion)
+            for catalogue_id, assertion in explicit.items()
+            if aggregate_id in assertion["evidence_record_ids"]
+        ]
+        if any(aggregate_id in rule["evidence_record_ids"] for rule in rules):
+            raise ValueError("nongeneric aggregate evidence cannot support a rule")
+        if any(
+            assertion["comparison_status"]
+            != "derived-nongeneric-simplification-match"
+            for _catalogue_id, assertion in consumers
+        ):
+            raise ValueError(
+                "nongeneric aggregate evidence may support only the explicit "
+                "nongeneric simplification status"
+            )
+        if consumers:
+            if {catalogue_id for catalogue_id, _assertion in consumers} != member_ids:
+                raise ValueError(
+                    "nongeneric simplification application must include the complete group"
+                )
+            for catalogue_id, assertion in consumers:
+                pair_id = pair_by_subject[catalogue_id][0]
+                required_ids = {
+                    aggregate_id,
+                    graph_by_subject[catalogue_id][0],
+                    pair_id,
+                    coefficient_by_subject[catalogue_id][0],
+                    route_by_subject[catalogue_id][0],
+                }
+                if not required_ids <= set(assertion["evidence_record_ids"]):
+                    raise ValueError(
+                        "nongeneric simplification member must cite its exact group facts"
+                    )
+                if computation["cross_check_id"] not in assertion[
+                    "computational_cross_check_ids"
+                ]:
+                    raise ValueError(
+                        "nongeneric simplification member must cite the common computation"
+                    )
 
 
 def _validate_target(
@@ -1700,6 +2636,9 @@ def generate_evidence_ledger(
             resolved[row["catalogue_id"]] = deepcopy(assertion)
 
     _validate_derived_structural_groups(explicit, rules, evidence, computations)
+    _validate_nongeneric_simplification_groups(
+        explicit, rules, evidence, computations
+    )
 
     ledger_rows = []
     for source_row in records:
