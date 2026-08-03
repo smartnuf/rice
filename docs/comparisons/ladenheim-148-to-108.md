@@ -99,10 +99,10 @@ historical evidence. In particular, computational agreement can corroborate a
 transcription without converting an uncited workspace assertion into a
 source-backed mapping.
 
-## Version 3 evidence contract
+## Version 4 evidence contract
 
 The manual file
-`data/comparisons/ladenheim-108-annotations.json` uses `format_version: 3` and
+`data/comparisons/ladenheim-108-annotations.json` uses `format_version: 4` and
 contains reviewed assertions and structural matching rules without duplicating
 all 148 structural records. The generated file
 `data/comparisons/ladenheim-148-to-108.json` joins those assertions to the
@@ -219,7 +219,7 @@ property; they are not historical evidence by themselves.
 must use the basis values appropriate to their source-backed, unique-match, or
 hypothesis contract.
 
-Version 3 adds `derived-structural-match` for explicit exclusion annotations
+Version 3 added `derived-structural-match` for explicit exclusion annotations
 that cannot be selected by component counts. It joins an authoritative,
 source-verified `aggregate-basic-graph-exclusion` claim to an authoritative
 basic-graph definition, a subject-bound RICE `basic-graph-match`, a
@@ -247,20 +247,35 @@ rules and cannot assert retention. Existing `source-backed`,
 `derived-unique-match`, retention, historical-identifier, graph-assignment, and
 component-selector contracts are unchanged.
 
+Version 4 adds the explicit-only
+`derived-nongeneric-simplification-match` route and the
+`aggregate-historical-nongeneric-group-plus-subject-bound-rice-facts` basis.
+The final-eight structured evidence records the authoritative collective
+nongeneric exclusion, subject-bound graph matches, four positive-finite
+Y--delta pairs, one forced-zero immittance coefficient per subject, and one
+conditional simpler-realisation route per subject. Each conditional route
+distinguishes a positive-finite four-element Cauer--Foster realisation on
+`delta > 0` from a two-element `R-X` realisation on `delta = 0`; it does not
+assert network equivalence or unconditional realizability-set containment in
+the named target. One exact-scope computation verifies the derived facts, not
+the authoritative source transcriptions. These records are evidence only in
+the current production ledger: none of the eight subjects uses the new status
+or has an exclusion applied.
+
 Confidence is controlled as `high`, `medium`, `low`, or `none`.
 
-## Version 3 validation boundary
+## Version 4 validation boundary
 
-The version 3 validator is closed-world for every annotation object. It checks
+The version 4 validator is closed-world for every annotation object. It checks
 object shapes, controlled vocabularies, reference and catalogue-subject
 resolution, provenance and verification coherence, status/disposition/category
 tuples, numeric boundaries, target and count invariants, and deterministic-output
 hygiene. Unknown fields are rejected rather than copied into the ledger.
 
-Version 3 does not represent ambiguous candidate mappings. A later extension
+Version 4 does not represent ambiguous candidate mappings. A later extension
 must record the finite candidate set, evidence for each candidate, the comparison
 relation, and why the evidence does not distinguish them. Also deferred are real
-basic-graph assignments, the remaining eight exclusions,
+basic-graph assignments, application of the remaining eight exclusions,
 retained canonical membership, canonical network numbering, and transformation
 proofs beyond the reviewed Zobel reports. Absence of those schema
 objects establishes none of those claims.

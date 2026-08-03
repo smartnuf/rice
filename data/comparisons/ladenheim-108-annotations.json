@@ -199,6 +199,64 @@
         "rice-lh148-3bf13e1a1ad41cd5-target-48",
         "rice-lh148-aefb4b8fe01749c6-target-72"
       ]
+    },
+    {
+      "commit_sha": "c5896191cdfbed128485be04dcb23310a508a185",
+      "cross_check_id": "rice-final-eight-o-bridge-report-reproduction",
+      "implementation": "Reproduction commands in docs/comparisons/ladenheim-final-eight-o-bridge-evidence-design.md",
+      "independently_reproduced": true,
+      "input": "The complete 148-record catalogue, rendered O/O-dual/V and target fixtures, positive-finite Y-delta parameters, and exact Cauer-Foster parameterizations",
+      "limitations": "This verifies the independently reproduced RICE subjects, pairings, forced coefficients, and conditional simplification routes; authoritative publication transcriptions are provenance inputs rather than computationally verified claims.",
+      "operation": "Enumerate all O, O-dual, and V subjects; assert eight unique coloured matches and four Y-delta pairs; verify forced A, C, D, or F zeros; check nondegenerate four-element targets and degenerate two-element R-X realizations with exact arithmetic",
+      "provenance_level": "independently-reproduced-computation",
+      "conditional_target_network_numbers": [
+        21,
+        29,
+        36,
+        44
+      ],
+      "result": "Eight unique subjects form four positive-finite Y-delta pairs; each pair has its reviewed forced-zero coefficient, conditional four-element target for delta greater than zero, and exact two-element realization for delta equal to zero.",
+      "subject_catalogue_ids": [
+        "lh148-4a925dd55dc8da19",
+        "lh148-47ee32380ab1b406",
+        "lh148-68430bbb448b9991",
+        "lh148-7e24311a6fea4531",
+        "lh148-debfbc02c5650a94",
+        "lh148-f40bfca59082ff8d",
+        "lh148-5278112fab778336",
+        "lh148-f942f37eed38400a"
+      ],
+      "verification_state": "cross-checked",
+      "verified_evidence_record_ids": [
+        "rice-lh148-4a925dd55dc8da19-graph-o-match",
+        "rice-lh148-47ee32380ab1b406-graph-v-match",
+        "rice-lh148-68430bbb448b9991-graph-o-match",
+        "rice-lh148-7e24311a6fea4531-graph-v-match",
+        "rice-lh148-debfbc02c5650a94-graph-o-dual-match",
+        "rice-lh148-f40bfca59082ff8d-graph-v-match",
+        "rice-lh148-5278112fab778336-graph-o-dual-match",
+        "rice-lh148-f942f37eed38400a-graph-v-match",
+        "rice-y-delta-o-c-v-terminal-c",
+        "rice-y-delta-o-l-v-terminal-l",
+        "rice-y-delta-o-dual-l-v-path-l",
+        "rice-y-delta-o-dual-c-v-path-c",
+        "rice-lh148-4a925dd55dc8da19-forced-f-zero",
+        "rice-lh148-47ee32380ab1b406-forced-f-zero",
+        "rice-lh148-68430bbb448b9991-forced-d-zero",
+        "rice-lh148-7e24311a6fea4531-forced-d-zero",
+        "rice-lh148-debfbc02c5650a94-forced-c-zero",
+        "rice-lh148-f40bfca59082ff8d-forced-c-zero",
+        "rice-lh148-5278112fab778336-forced-a-zero",
+        "rice-lh148-f942f37eed38400a-forced-a-zero",
+        "rice-lh148-4a925dd55dc8da19-conditional-target-21",
+        "rice-lh148-47ee32380ab1b406-conditional-target-21",
+        "rice-lh148-68430bbb448b9991-conditional-target-29",
+        "rice-lh148-7e24311a6fea4531-conditional-target-29",
+        "rice-lh148-debfbc02c5650a94-conditional-target-36",
+        "rice-lh148-f40bfca59082ff8d-conditional-target-36",
+        "rice-lh148-5278112fab778336-conditional-target-44",
+        "rice-lh148-f942f37eed38400a-conditional-target-44"
+      ]
     }
   ],
   "evidence_records": [
@@ -1479,9 +1537,777 @@
       "provenance_level": "rice-derived-network-equivalence-fact",
       "source_id": "rice-five-element-zobel-graph-s-dual-report",
       "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "aggregate-nongeneric-exclusion-group",
+        "supported_subject_counts_by_graph": {
+          "O": 2,
+          "O^d": 2,
+          "V": 4
+        },
+        "source_population": 8,
+        "supported_disposition": "exclude",
+        "supported_exclusion_category": "other-canonical-exclusion",
+        "supported_exclusion_mechanism": "forced-immittance-coefficient-nongenericity",
+        "supported_zero_coefficient_set": [
+          "A",
+          "C",
+          "D",
+          "F"
+        ],
+        "supported_simpler_realisation_targets": [
+          21,
+          29,
+          36,
+          44
+        ]
+      },
+      "evidence_id": "ms-2019-final-eight-nongeneric-exclusion-group",
+      "locator": {
+        "section": "5.1",
+        "printed_page": 42,
+        "pdf_page_index": 48,
+        "figure": "5.1"
+      },
+      "notes": "This authoritative aggregate claim supplies selected exclusion counts, the collective coefficient set, and the collective target set. It does not identify RICE subjects, pair subjects, allocate individual targets, or assert target multiplicity.",
+      "paraphrase": "The publication collectively excludes eight Figure 5.1 networks: two graph-O, two graph-O-dual, and four bridge subjects, with one of A, C, D, or F zero and conditional simpler-realisation destinations among canonical networks 21, 29, 36, and 44.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "claim_type": "basic-graph-definition",
+        "definition": {
+          "graph_label": "O",
+          "base_label": "O",
+          "is_dual": false,
+          "fixture_id": "morelli-smith-O-five-edge"
+        }
+      },
+      "evidence_id": "ms-2019-basic-graph-o-definition",
+      "locator": {
+        "appendix": "B",
+        "pdf_page_index": 132,
+        "printed_page": 126
+      },
+      "notes": "Normalized fixture: vertices A,B,C,D,E; terminals A,E; edges AB,BC,CE,BD,DE.",
+      "paraphrase": "The rendered Appendix B diagram defines the reviewed basic graph O fixture.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "claim_type": "basic-graph-definition",
+        "definition": {
+          "graph_label": "O^d",
+          "base_label": "O",
+          "is_dual": true,
+          "fixture_id": "morelli-smith-Od-five-edge"
+        }
+      },
+      "evidence_id": "ms-2019-basic-graph-o-dual-definition",
+      "locator": {
+        "appendix": "B",
+        "pdf_page_index": 133,
+        "printed_page": 127
+      },
+      "notes": "Normalized fixture: vertices A,B,E; terminals A,E; edges AE,AB_1,AB_2,BE_1,BE_2.",
+      "paraphrase": "The rendered Appendix B diagram defines the reviewed basic graph O^d fixture.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "claim_type": "basic-graph-definition",
+        "definition": {
+          "graph_label": "V",
+          "base_label": "V",
+          "is_dual": false,
+          "fixture_id": "morelli-smith-V-five-edge"
+        }
+      },
+      "evidence_id": "ms-2019-basic-graph-v-definition",
+      "locator": {
+        "appendix": "B",
+        "pdf_page_index": 132,
+        "printed_page": 126
+      },
+      "notes": "Normalized fixture: vertices A,B,D,E; terminals A,E; edges AB,BE,AD,DE,BD.",
+      "paraphrase": "The rendered Appendix B diagram defines the reviewed basic graph V fixture.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "claim_type": "basic-graph-match",
+        "subject_catalogue_ids": [
+          "lh148-4a925dd55dc8da19"
+        ],
+        "match": {
+          "fixture_id": "morelli-smith-O-five-edge",
+          "graph_label": "O",
+          "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+          "matched": true
+        }
+      },
+      "evidence_id": "rice-lh148-4a925dd55dc8da19-graph-o-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-final-eight-o-bridge-evidence-design.md"
+      },
+      "paraphrase": "The complete census and exact coloured signature uniquely match the reviewed O-C fixture to this catalogue subject.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-final-eight-o-bridge-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "basic-graph-match",
+        "subject_catalogue_ids": [
+          "lh148-47ee32380ab1b406"
+        ],
+        "match": {
+          "fixture_id": "morelli-smith-V-five-edge",
+          "graph_label": "V",
+          "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+          "matched": true
+        }
+      },
+      "evidence_id": "rice-lh148-47ee32380ab1b406-graph-v-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-final-eight-o-bridge-evidence-design.md"
+      },
+      "paraphrase": "The complete census and exact coloured signature uniquely match the reviewed V-terminal-C fixture to this catalogue subject.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-final-eight-o-bridge-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "basic-graph-match",
+        "subject_catalogue_ids": [
+          "lh148-68430bbb448b9991"
+        ],
+        "match": {
+          "fixture_id": "morelli-smith-O-five-edge",
+          "graph_label": "O",
+          "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+          "matched": true
+        }
+      },
+      "evidence_id": "rice-lh148-68430bbb448b9991-graph-o-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-final-eight-o-bridge-evidence-design.md"
+      },
+      "paraphrase": "The complete census and exact coloured signature uniquely match the reviewed O-L fixture to this catalogue subject.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-final-eight-o-bridge-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "basic-graph-match",
+        "subject_catalogue_ids": [
+          "lh148-7e24311a6fea4531"
+        ],
+        "match": {
+          "fixture_id": "morelli-smith-V-five-edge",
+          "graph_label": "V",
+          "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+          "matched": true
+        }
+      },
+      "evidence_id": "rice-lh148-7e24311a6fea4531-graph-v-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-final-eight-o-bridge-evidence-design.md"
+      },
+      "paraphrase": "The complete census and exact coloured signature uniquely match the reviewed V-terminal-L fixture to this catalogue subject.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-final-eight-o-bridge-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "basic-graph-match",
+        "subject_catalogue_ids": [
+          "lh148-debfbc02c5650a94"
+        ],
+        "match": {
+          "fixture_id": "morelli-smith-Od-five-edge",
+          "graph_label": "O^d",
+          "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+          "matched": true
+        }
+      },
+      "evidence_id": "rice-lh148-debfbc02c5650a94-graph-o-dual-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-final-eight-o-bridge-evidence-design.md"
+      },
+      "paraphrase": "The complete census and exact coloured signature uniquely match the reviewed O-dual-L fixture to this catalogue subject.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-final-eight-o-bridge-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "basic-graph-match",
+        "subject_catalogue_ids": [
+          "lh148-f40bfca59082ff8d"
+        ],
+        "match": {
+          "fixture_id": "morelli-smith-V-five-edge",
+          "graph_label": "V",
+          "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+          "matched": true
+        }
+      },
+      "evidence_id": "rice-lh148-f40bfca59082ff8d-graph-v-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-final-eight-o-bridge-evidence-design.md"
+      },
+      "paraphrase": "The complete census and exact coloured signature uniquely match the reviewed V-path-L fixture to this catalogue subject.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-final-eight-o-bridge-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "basic-graph-match",
+        "subject_catalogue_ids": [
+          "lh148-5278112fab778336"
+        ],
+        "match": {
+          "fixture_id": "morelli-smith-Od-five-edge",
+          "graph_label": "O^d",
+          "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+          "matched": true
+        }
+      },
+      "evidence_id": "rice-lh148-5278112fab778336-graph-o-dual-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-final-eight-o-bridge-evidence-design.md"
+      },
+      "paraphrase": "The complete census and exact coloured signature uniquely match the reviewed O-dual-C fixture to this catalogue subject.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-final-eight-o-bridge-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "basic-graph-match",
+        "subject_catalogue_ids": [
+          "lh148-f942f37eed38400a"
+        ],
+        "match": {
+          "fixture_id": "morelli-smith-V-five-edge",
+          "graph_label": "V",
+          "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+          "matched": true
+        }
+      },
+      "evidence_id": "rice-lh148-f942f37eed38400a-graph-v-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-final-eight-o-bridge-evidence-design.md"
+      },
+      "paraphrase": "The complete census and exact coloured signature uniquely match the reviewed V-path-C fixture to this catalogue subject.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-final-eight-o-bridge-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "y-delta-partner-match",
+        "subject_catalogue_ids": [
+          "lh148-4a925dd55dc8da19",
+          "lh148-47ee32380ab1b406"
+        ],
+        "subject_fixture_ids": [
+          "morelli-smith-figure-5.1-O-C",
+          "morelli-smith-figure-5.1-V-terminal-C"
+        ],
+        "transformation_figure": "Figure 5.3",
+        "positive_finite_forward": true,
+        "positive_finite_inverse": true
+      },
+      "evidence_id": "rice-y-delta-o-c-v-terminal-c",
+      "locator": {
+        "figure": "5.1",
+        "repository_path": "docs/comparisons/ladenheim-final-eight-o-bridge-evidence-design.md"
+      },
+      "paraphrase": "The reviewed exact Y-delta map pairs O-C and V-terminal-C, with positive finite resistor parameters in both directions.",
+      "provenance_level": "rice-derived-network-equivalence-fact",
+      "source_id": "rice-final-eight-o-bridge-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "y-delta-partner-match",
+        "subject_catalogue_ids": [
+          "lh148-68430bbb448b9991",
+          "lh148-7e24311a6fea4531"
+        ],
+        "subject_fixture_ids": [
+          "morelli-smith-figure-5.1-O-L",
+          "morelli-smith-figure-5.1-V-terminal-L"
+        ],
+        "transformation_figure": "Figure 5.3",
+        "positive_finite_forward": true,
+        "positive_finite_inverse": true
+      },
+      "evidence_id": "rice-y-delta-o-l-v-terminal-l",
+      "locator": {
+        "figure": "5.1",
+        "repository_path": "docs/comparisons/ladenheim-final-eight-o-bridge-evidence-design.md"
+      },
+      "paraphrase": "The reviewed exact Y-delta map pairs O-L and V-terminal-L, with positive finite resistor parameters in both directions.",
+      "provenance_level": "rice-derived-network-equivalence-fact",
+      "source_id": "rice-final-eight-o-bridge-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "y-delta-partner-match",
+        "subject_catalogue_ids": [
+          "lh148-debfbc02c5650a94",
+          "lh148-f40bfca59082ff8d"
+        ],
+        "subject_fixture_ids": [
+          "morelli-smith-figure-5.1-Od-L",
+          "morelli-smith-figure-5.1-V-path-L"
+        ],
+        "transformation_figure": "Figure 5.3",
+        "positive_finite_forward": true,
+        "positive_finite_inverse": true
+      },
+      "evidence_id": "rice-y-delta-o-dual-l-v-path-l",
+      "locator": {
+        "figure": "5.1",
+        "repository_path": "docs/comparisons/ladenheim-final-eight-o-bridge-evidence-design.md"
+      },
+      "paraphrase": "The reviewed exact Y-delta map pairs O-dual-L and V-path-L, with positive finite resistor parameters in both directions.",
+      "provenance_level": "rice-derived-network-equivalence-fact",
+      "source_id": "rice-final-eight-o-bridge-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "y-delta-partner-match",
+        "subject_catalogue_ids": [
+          "lh148-5278112fab778336",
+          "lh148-f942f37eed38400a"
+        ],
+        "subject_fixture_ids": [
+          "morelli-smith-figure-5.1-Od-C",
+          "morelli-smith-figure-5.1-V-path-C"
+        ],
+        "transformation_figure": "Figure 5.3",
+        "positive_finite_forward": true,
+        "positive_finite_inverse": true
+      },
+      "evidence_id": "rice-y-delta-o-dual-c-v-path-c",
+      "locator": {
+        "figure": "5.1",
+        "repository_path": "docs/comparisons/ladenheim-final-eight-o-bridge-evidence-design.md"
+      },
+      "paraphrase": "The reviewed exact Y-delta map pairs O-dual-C and V-path-C, with positive finite resistor parameters in both directions.",
+      "provenance_level": "rice-derived-network-equivalence-fact",
+      "source_id": "rice-final-eight-o-bridge-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "forced-immittance-coefficient",
+        "subject_catalogue_ids": [
+          "lh148-4a925dd55dc8da19"
+        ],
+        "immittance_representation": "Morelli-Smith-equation-5.1",
+        "coefficient": "F",
+        "forced_value": 0,
+        "nongeneric_dimension_bound": 5,
+        "supported_disposition": "exclude"
+      },
+      "evidence_id": "rice-lh148-4a925dd55dc8da19-forced-f-zero",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-final-eight-o-bridge-evidence-design.md"
+      },
+      "notes": "The dimension bound uses the retained-scale R^6_+ convention of Definitions 7.1-7.2 and Theorem 7.4, not the projective convention.",
+      "paraphrase": "Exact immittance expansion forces coefficient F to zero for this subject, bounding its realizability set dimension by five in the source convention and establishing nongenericity.",
+      "provenance_level": "rice-derived-immittance-coefficient-fact",
+      "source_id": "rice-final-eight-o-bridge-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "forced-immittance-coefficient",
+        "subject_catalogue_ids": [
+          "lh148-47ee32380ab1b406"
+        ],
+        "immittance_representation": "Morelli-Smith-equation-5.1",
+        "coefficient": "F",
+        "forced_value": 0,
+        "nongeneric_dimension_bound": 5,
+        "supported_disposition": "exclude"
+      },
+      "evidence_id": "rice-lh148-47ee32380ab1b406-forced-f-zero",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-final-eight-o-bridge-evidence-design.md"
+      },
+      "notes": "The dimension bound uses the retained-scale R^6_+ convention of Definitions 7.1-7.2 and Theorem 7.4, not the projective convention.",
+      "paraphrase": "Exact immittance expansion forces coefficient F to zero for this subject, bounding its realizability set dimension by five in the source convention and establishing nongenericity.",
+      "provenance_level": "rice-derived-immittance-coefficient-fact",
+      "source_id": "rice-final-eight-o-bridge-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "forced-immittance-coefficient",
+        "subject_catalogue_ids": [
+          "lh148-68430bbb448b9991"
+        ],
+        "immittance_representation": "Morelli-Smith-equation-5.1",
+        "coefficient": "D",
+        "forced_value": 0,
+        "nongeneric_dimension_bound": 5,
+        "supported_disposition": "exclude"
+      },
+      "evidence_id": "rice-lh148-68430bbb448b9991-forced-d-zero",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-final-eight-o-bridge-evidence-design.md"
+      },
+      "notes": "The dimension bound uses the retained-scale R^6_+ convention of Definitions 7.1-7.2 and Theorem 7.4, not the projective convention.",
+      "paraphrase": "Exact immittance expansion forces coefficient D to zero for this subject, bounding its realizability set dimension by five in the source convention and establishing nongenericity.",
+      "provenance_level": "rice-derived-immittance-coefficient-fact",
+      "source_id": "rice-final-eight-o-bridge-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "forced-immittance-coefficient",
+        "subject_catalogue_ids": [
+          "lh148-7e24311a6fea4531"
+        ],
+        "immittance_representation": "Morelli-Smith-equation-5.1",
+        "coefficient": "D",
+        "forced_value": 0,
+        "nongeneric_dimension_bound": 5,
+        "supported_disposition": "exclude"
+      },
+      "evidence_id": "rice-lh148-7e24311a6fea4531-forced-d-zero",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-final-eight-o-bridge-evidence-design.md"
+      },
+      "notes": "The dimension bound uses the retained-scale R^6_+ convention of Definitions 7.1-7.2 and Theorem 7.4, not the projective convention.",
+      "paraphrase": "Exact immittance expansion forces coefficient D to zero for this subject, bounding its realizability set dimension by five in the source convention and establishing nongenericity.",
+      "provenance_level": "rice-derived-immittance-coefficient-fact",
+      "source_id": "rice-final-eight-o-bridge-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "forced-immittance-coefficient",
+        "subject_catalogue_ids": [
+          "lh148-debfbc02c5650a94"
+        ],
+        "immittance_representation": "Morelli-Smith-equation-5.1",
+        "coefficient": "C",
+        "forced_value": 0,
+        "nongeneric_dimension_bound": 5,
+        "supported_disposition": "exclude"
+      },
+      "evidence_id": "rice-lh148-debfbc02c5650a94-forced-c-zero",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-final-eight-o-bridge-evidence-design.md"
+      },
+      "notes": "The dimension bound uses the retained-scale R^6_+ convention of Definitions 7.1-7.2 and Theorem 7.4, not the projective convention.",
+      "paraphrase": "Exact immittance expansion forces coefficient C to zero for this subject, bounding its realizability set dimension by five in the source convention and establishing nongenericity.",
+      "provenance_level": "rice-derived-immittance-coefficient-fact",
+      "source_id": "rice-final-eight-o-bridge-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "forced-immittance-coefficient",
+        "subject_catalogue_ids": [
+          "lh148-f40bfca59082ff8d"
+        ],
+        "immittance_representation": "Morelli-Smith-equation-5.1",
+        "coefficient": "C",
+        "forced_value": 0,
+        "nongeneric_dimension_bound": 5,
+        "supported_disposition": "exclude"
+      },
+      "evidence_id": "rice-lh148-f40bfca59082ff8d-forced-c-zero",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-final-eight-o-bridge-evidence-design.md"
+      },
+      "notes": "The dimension bound uses the retained-scale R^6_+ convention of Definitions 7.1-7.2 and Theorem 7.4, not the projective convention.",
+      "paraphrase": "Exact immittance expansion forces coefficient C to zero for this subject, bounding its realizability set dimension by five in the source convention and establishing nongenericity.",
+      "provenance_level": "rice-derived-immittance-coefficient-fact",
+      "source_id": "rice-final-eight-o-bridge-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "forced-immittance-coefficient",
+        "subject_catalogue_ids": [
+          "lh148-5278112fab778336"
+        ],
+        "immittance_representation": "Morelli-Smith-equation-5.1",
+        "coefficient": "A",
+        "forced_value": 0,
+        "nongeneric_dimension_bound": 5,
+        "supported_disposition": "exclude"
+      },
+      "evidence_id": "rice-lh148-5278112fab778336-forced-a-zero",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-final-eight-o-bridge-evidence-design.md"
+      },
+      "notes": "The dimension bound uses the retained-scale R^6_+ convention of Definitions 7.1-7.2 and Theorem 7.4, not the projective convention.",
+      "paraphrase": "Exact immittance expansion forces coefficient A to zero for this subject, bounding its realizability set dimension by five in the source convention and establishing nongenericity.",
+      "provenance_level": "rice-derived-immittance-coefficient-fact",
+      "source_id": "rice-final-eight-o-bridge-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "forced-immittance-coefficient",
+        "subject_catalogue_ids": [
+          "lh148-f942f37eed38400a"
+        ],
+        "immittance_representation": "Morelli-Smith-equation-5.1",
+        "coefficient": "A",
+        "forced_value": 0,
+        "nongeneric_dimension_bound": 5,
+        "supported_disposition": "exclude"
+      },
+      "evidence_id": "rice-lh148-f942f37eed38400a-forced-a-zero",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-final-eight-o-bridge-evidence-design.md"
+      },
+      "notes": "The dimension bound uses the retained-scale R^6_+ convention of Definitions 7.1-7.2 and Theorem 7.4, not the projective convention.",
+      "paraphrase": "Exact immittance expansion forces coefficient A to zero for this subject, bounding its realizability set dimension by five in the source convention and establishing nongenericity.",
+      "provenance_level": "rice-derived-immittance-coefficient-fact",
+      "source_id": "rice-final-eight-o-bridge-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "conditional-simpler-realisation-route",
+        "subject_catalogue_ids": [
+          "lh148-4a925dd55dc8da19"
+        ],
+        "condition_parameterization_fixture_id": "morelli-smith-figure-5.1-O-C",
+        "condition_expression": "(r1*x2-r2*x1)^2/(r1+r2)^2",
+        "nondegenerate_condition": "delta > 0",
+        "nondegenerate_target_network_number": 21,
+        "nondegenerate_target_fixture_id": "morelli-smith-canonical-network-21",
+        "degenerate_condition": "delta = 0",
+        "degenerate_realisation_class": "two-element-series-R-X",
+        "route_relation": "conditional-nondegenerate-target-plus-degenerate-fewer-element"
+      },
+      "evidence_id": "rice-lh148-4a925dd55dc8da19-conditional-target-21",
+      "locator": {
+        "network_number": 21,
+        "repository_path": "docs/comparisons/ladenheim-final-eight-o-bridge-evidence-design.md"
+      },
+      "notes": "The canonical number is a conditional simpler-realisation destination, never the subject's historical identity or an unconditional network-equivalence claim.",
+      "paraphrase": "For the reviewed O-C parameterization, delta greater than zero gives a positive finite Cauer-Foster realization in canonical network 21; delta equal to zero gives the reviewed two-element-series-R-X realization.",
+      "provenance_level": "rice-derived-conditional-simplification-fact",
+      "source_id": "rice-final-eight-o-bridge-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "conditional-simpler-realisation-route",
+        "subject_catalogue_ids": [
+          "lh148-47ee32380ab1b406"
+        ],
+        "condition_parameterization_fixture_id": "morelli-smith-figure-5.1-O-C",
+        "condition_expression": "(r1*x2-r2*x1)^2/(r1+r2)^2",
+        "nondegenerate_condition": "delta > 0",
+        "nondegenerate_target_network_number": 21,
+        "nondegenerate_target_fixture_id": "morelli-smith-canonical-network-21",
+        "degenerate_condition": "delta = 0",
+        "degenerate_realisation_class": "two-element-series-R-X",
+        "route_relation": "conditional-nondegenerate-target-plus-degenerate-fewer-element",
+        "y_delta_partner_match_evidence_id": "rice-y-delta-o-c-v-terminal-c"
+      },
+      "evidence_id": "rice-lh148-47ee32380ab1b406-conditional-target-21",
+      "locator": {
+        "network_number": 21,
+        "repository_path": "docs/comparisons/ladenheim-final-eight-o-bridge-evidence-design.md"
+      },
+      "notes": "The canonical number is a conditional simpler-realisation destination, never the subject's historical identity or an unconditional network-equivalence claim.",
+      "paraphrase": "For the reviewed V-terminal-C parameterization, delta greater than zero gives a positive finite Cauer-Foster realization in canonical network 21; delta equal to zero gives the reviewed two-element-series-R-X realization.",
+      "provenance_level": "rice-derived-conditional-simplification-fact",
+      "source_id": "rice-final-eight-o-bridge-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "conditional-simpler-realisation-route",
+        "subject_catalogue_ids": [
+          "lh148-68430bbb448b9991"
+        ],
+        "condition_parameterization_fixture_id": "morelli-smith-figure-5.1-O-L",
+        "condition_expression": "(r1*x2-r2*x1)^2/(r1+r2)^2",
+        "nondegenerate_condition": "delta > 0",
+        "nondegenerate_target_network_number": 29,
+        "nondegenerate_target_fixture_id": "morelli-smith-canonical-network-29",
+        "degenerate_condition": "delta = 0",
+        "degenerate_realisation_class": "two-element-series-R-X",
+        "route_relation": "conditional-nondegenerate-target-plus-degenerate-fewer-element"
+      },
+      "evidence_id": "rice-lh148-68430bbb448b9991-conditional-target-29",
+      "locator": {
+        "network_number": 29,
+        "repository_path": "docs/comparisons/ladenheim-final-eight-o-bridge-evidence-design.md"
+      },
+      "notes": "The canonical number is a conditional simpler-realisation destination, never the subject's historical identity or an unconditional network-equivalence claim.",
+      "paraphrase": "For the reviewed O-L parameterization, delta greater than zero gives a positive finite Cauer-Foster realization in canonical network 29; delta equal to zero gives the reviewed two-element-series-R-X realization.",
+      "provenance_level": "rice-derived-conditional-simplification-fact",
+      "source_id": "rice-final-eight-o-bridge-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "conditional-simpler-realisation-route",
+        "subject_catalogue_ids": [
+          "lh148-7e24311a6fea4531"
+        ],
+        "condition_parameterization_fixture_id": "morelli-smith-figure-5.1-O-L",
+        "condition_expression": "(r1*x2-r2*x1)^2/(r1+r2)^2",
+        "nondegenerate_condition": "delta > 0",
+        "nondegenerate_target_network_number": 29,
+        "nondegenerate_target_fixture_id": "morelli-smith-canonical-network-29",
+        "degenerate_condition": "delta = 0",
+        "degenerate_realisation_class": "two-element-series-R-X",
+        "route_relation": "conditional-nondegenerate-target-plus-degenerate-fewer-element",
+        "y_delta_partner_match_evidence_id": "rice-y-delta-o-l-v-terminal-l"
+      },
+      "evidence_id": "rice-lh148-7e24311a6fea4531-conditional-target-29",
+      "locator": {
+        "network_number": 29,
+        "repository_path": "docs/comparisons/ladenheim-final-eight-o-bridge-evidence-design.md"
+      },
+      "notes": "The canonical number is a conditional simpler-realisation destination, never the subject's historical identity or an unconditional network-equivalence claim.",
+      "paraphrase": "For the reviewed V-terminal-L parameterization, delta greater than zero gives a positive finite Cauer-Foster realization in canonical network 29; delta equal to zero gives the reviewed two-element-series-R-X realization.",
+      "provenance_level": "rice-derived-conditional-simplification-fact",
+      "source_id": "rice-final-eight-o-bridge-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "conditional-simpler-realisation-route",
+        "subject_catalogue_ids": [
+          "lh148-debfbc02c5650a94"
+        ],
+        "condition_parameterization_fixture_id": "morelli-smith-figure-5.1-Od-L",
+        "condition_expression": "(r1*x2-r2*x1)^2/(r1+r2)^2",
+        "nondegenerate_condition": "delta > 0",
+        "nondegenerate_target_network_number": 36,
+        "nondegenerate_target_fixture_id": "morelli-smith-canonical-network-36",
+        "degenerate_condition": "delta = 0",
+        "degenerate_realisation_class": "two-element-parallel-R-X",
+        "route_relation": "conditional-nondegenerate-target-plus-degenerate-fewer-element"
+      },
+      "evidence_id": "rice-lh148-debfbc02c5650a94-conditional-target-36",
+      "locator": {
+        "network_number": 36,
+        "repository_path": "docs/comparisons/ladenheim-final-eight-o-bridge-evidence-design.md"
+      },
+      "notes": "The canonical number is a conditional simpler-realisation destination, never the subject's historical identity or an unconditional network-equivalence claim.",
+      "paraphrase": "For the reviewed O-dual-L parameterization, delta greater than zero gives a positive finite Cauer-Foster realization in canonical network 36; delta equal to zero gives the reviewed two-element-parallel-R-X realization.",
+      "provenance_level": "rice-derived-conditional-simplification-fact",
+      "source_id": "rice-final-eight-o-bridge-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "conditional-simpler-realisation-route",
+        "subject_catalogue_ids": [
+          "lh148-f40bfca59082ff8d"
+        ],
+        "condition_parameterization_fixture_id": "morelli-smith-figure-5.1-Od-L",
+        "condition_expression": "(r1*x2-r2*x1)^2/(r1+r2)^2",
+        "nondegenerate_condition": "delta > 0",
+        "nondegenerate_target_network_number": 36,
+        "nondegenerate_target_fixture_id": "morelli-smith-canonical-network-36",
+        "degenerate_condition": "delta = 0",
+        "degenerate_realisation_class": "two-element-parallel-R-X",
+        "route_relation": "conditional-nondegenerate-target-plus-degenerate-fewer-element",
+        "y_delta_partner_match_evidence_id": "rice-y-delta-o-dual-l-v-path-l"
+      },
+      "evidence_id": "rice-lh148-f40bfca59082ff8d-conditional-target-36",
+      "locator": {
+        "network_number": 36,
+        "repository_path": "docs/comparisons/ladenheim-final-eight-o-bridge-evidence-design.md"
+      },
+      "notes": "The canonical number is a conditional simpler-realisation destination, never the subject's historical identity or an unconditional network-equivalence claim.",
+      "paraphrase": "For the reviewed V-path-L parameterization, delta greater than zero gives a positive finite Cauer-Foster realization in canonical network 36; delta equal to zero gives the reviewed two-element-parallel-R-X realization.",
+      "provenance_level": "rice-derived-conditional-simplification-fact",
+      "source_id": "rice-final-eight-o-bridge-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "conditional-simpler-realisation-route",
+        "subject_catalogue_ids": [
+          "lh148-5278112fab778336"
+        ],
+        "condition_parameterization_fixture_id": "morelli-smith-figure-5.1-Od-C",
+        "condition_expression": "(r1*x2-r2*x1)^2/(r1+r2)^2",
+        "nondegenerate_condition": "delta > 0",
+        "nondegenerate_target_network_number": 44,
+        "nondegenerate_target_fixture_id": "morelli-smith-canonical-network-44",
+        "degenerate_condition": "delta = 0",
+        "degenerate_realisation_class": "two-element-parallel-R-X",
+        "route_relation": "conditional-nondegenerate-target-plus-degenerate-fewer-element"
+      },
+      "evidence_id": "rice-lh148-5278112fab778336-conditional-target-44",
+      "locator": {
+        "network_number": 44,
+        "repository_path": "docs/comparisons/ladenheim-final-eight-o-bridge-evidence-design.md"
+      },
+      "notes": "The canonical number is a conditional simpler-realisation destination, never the subject's historical identity or an unconditional network-equivalence claim.",
+      "paraphrase": "For the reviewed O-dual-C parameterization, delta greater than zero gives a positive finite Cauer-Foster realization in canonical network 44; delta equal to zero gives the reviewed two-element-parallel-R-X realization.",
+      "provenance_level": "rice-derived-conditional-simplification-fact",
+      "source_id": "rice-final-eight-o-bridge-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "conditional-simpler-realisation-route",
+        "subject_catalogue_ids": [
+          "lh148-f942f37eed38400a"
+        ],
+        "condition_parameterization_fixture_id": "morelli-smith-figure-5.1-Od-C",
+        "condition_expression": "(r1*x2-r2*x1)^2/(r1+r2)^2",
+        "nondegenerate_condition": "delta > 0",
+        "nondegenerate_target_network_number": 44,
+        "nondegenerate_target_fixture_id": "morelli-smith-canonical-network-44",
+        "degenerate_condition": "delta = 0",
+        "degenerate_realisation_class": "two-element-parallel-R-X",
+        "route_relation": "conditional-nondegenerate-target-plus-degenerate-fewer-element",
+        "y_delta_partner_match_evidence_id": "rice-y-delta-o-dual-c-v-path-c"
+      },
+      "evidence_id": "rice-lh148-f942f37eed38400a-conditional-target-44",
+      "locator": {
+        "network_number": 44,
+        "repository_path": "docs/comparisons/ladenheim-final-eight-o-bridge-evidence-design.md"
+      },
+      "notes": "The canonical number is a conditional simpler-realisation destination, never the subject's historical identity or an unconditional network-equivalence claim.",
+      "paraphrase": "For the reviewed V-path-C parameterization, delta greater than zero gives a positive finite Cauer-Foster realization in canonical network 44; delta equal to zero gives the reviewed two-element-parallel-R-X realization.",
+      "provenance_level": "rice-derived-conditional-simplification-fact",
+      "source_id": "rice-final-eight-o-bridge-report",
+      "verification_state": "cross-checked"
     }
   ],
-  "format_version": 3,
+  "format_version": 4,
   "previous_workspace_records": [],
   "records": [
     {
@@ -2156,6 +2982,12 @@
       "citation": "RICE graph-S-dual five-element Zobel exclusion evidence report.",
       "notes": "Reviewed repository documentation recording the complete 85-record census and 15-member graph-S-dual population, five coloured source fixtures, four inverse Figure 5.2 maps and series-resistor merges to graph G-dual, one forward map on the composite series L-C arm with a parallel-resistor merge to graph H, exact target allocations, positive-finite domain coverage in both directions, and exact immittance checks; it is not the authoritative historical publication.",
       "source_id": "rice-five-element-zobel-graph-s-dual-report",
+      "source_type": "rice-documentation"
+    },
+    {
+      "citation": "RICE final-eight O/O-dual and bridge evidence and contract-design report.",
+      "notes": "Reviewed repository documentation recording the complete catalogue census, eight coloured fixtures, four positive-finite Y-delta pairs, forced coefficient zeros, conditional nondegenerate targets, degenerate two-element realizations, and exact computations. It is not the authoritative historical publication.",
+      "source_id": "rice-final-eight-o-bridge-report",
       "source_type": "rice-documentation"
     }
   ],

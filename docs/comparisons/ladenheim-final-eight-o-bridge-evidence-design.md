@@ -7,16 +7,18 @@ and Smith Figure 5.1: four series-parallel networks with basic graphs `O` or
 `O^d`, and four graph-`V` bridge networks connected to them by resistor
 Y--delta transformations. It transcribes the authoritative diagrams, searches
 all 148 committed RICE records, checks the eight coloured correspondences,
-derives their coefficient-zero and simpler-realisation facts, and recommends a
-minimum evidence-contract extension.
+derives their coefficient-zero and simpler-realisation facts, and specifies a
+minimum evidence-contract extension. PR 75 introduces the accepted
+format-version-4 annotation contract and the structured final-eight evidence
+specified here.
 
-This is evidence and contract design only. It does not change the annotation
-contract, production evidence, dispositions, graph assignments, historical
-identifiers, or canonical numbering. Production remains 32 excluded, 116
-unresolved, and 0 retained. Canonical networks 21, 29, 36, and 44 are simpler
-realisation destinations, not historical identities of the eight subjects.
-Nothing here establishes the complementary 108 rows as retained or reproduces
-the canonical 108 catalogue.
+The eight dispositions remain unapplied: production has 32 excluded, 116
+unresolved, and 0 retained records. Every graph assignment remains null, every
+historical-identifier list remains empty, and no canonical numbering is
+populated. Canonical networks 21, 29, 36, and 44 are simpler-realisation
+destinations, not historical identities of the eight subjects. Nothing here
+establishes the complementary 108 rows as retained or reproduces the canonical
+108 catalogue.
 
 ## 2. Source identity and locators
 
@@ -462,19 +464,23 @@ routes whose nondegenerate and degenerate branches it checks. Authoritative
 source transcriptions remain provenance inputs and are not mislabelled as
 computationally verified records.
 
-Global completeness validation must require all eight explicit exclusions,
-the exact supported `2+2+4` subject counts, four disjoint Y--delta pairs, one
+Application-time completeness validation, once any explicit assertion consumes
+the nongeneric aggregate, must require all eight explicit exclusions, the exact
+supported `2+2+4` subject counts, four disjoint Y--delta pairs, one
 coefficient-zero fact and one conditional route per subject, derived target
-multiplicity two, and the exact collective target set. Every row must remain an
-exclusion in `other-canonical-exclusion`, with a nonempty reason and
+multiplicity two, and the exact collective target set. Every applied row must be
+an exclusion in `other-canonical-exclusion`, with a nonempty reason and
 non-`none` confidence. The route must not require or create a historical
 identifier or a production graph assignment. It must reject use of a
 simpler-realisation destination as the excluded subject's identity, reject an
 unconditional named-target claim, and reject any attempt to substitute a
 `reduction-target-match` equivalence claim.
 
-This is a recommendation only; no controlled value, claim type, schema, or
-validator is changed in this milestone.
+Format version 4 implements the complete structured-evidence contract and the
+conditional application-time validation described above. It does not apply the
+eight dispositions in this milestone: production remains 32 excluded / 116
+unresolved / 0 retained, graph assignments remain null, historical identifiers
+remain empty, and no canonical-numbering or complementary-108 claim is made.
 
 ## 10. Previous-workspace audit
 
@@ -718,7 +724,7 @@ ledger = json.loads(
     Path("data/comparisons/ladenheim-148-to-108.json").read_text()
 )
 assert len(catalogue["records"]) == 148
-assert ledger["format_version"] == 3
+assert ledger["format_version"] == 4
 assert ledger["summary"]["by_proposed_disposition"] == {
     "exclude": 32,
     "unresolved": 116,
