@@ -191,6 +191,7 @@ REVIEWED_NONGENERIC_TARGET_FIXTURES = {
     36: "morelli-smith-canonical-network-36",
     44: "morelli-smith-canonical-network-44",
 }
+FINAL_EIGHT_RICE_SOURCE_ID = "rice-final-eight-o-bridge-report"
 CONDITIONAL_ROUTE_RELATION = (
     "conditional-nondegenerate-target-plus-degenerate-fewer-element"
 )
@@ -627,6 +628,7 @@ def _validate_claim(
             or len(coefficients) != len(set(coefficients))
             or set(coefficients) != NONGENERIC_COEFFICIENTS
             or not isinstance(targets, list)
+            or not all(_is_int(value) for value in targets)
             or len(targets) != len(set(targets))
             or set(targets) != NONGENERIC_TARGETS
         ):
@@ -1934,6 +1936,15 @@ def _validate_nongeneric_simplification_groups(
             raise ValueError(
                 "nongeneric computation must verify eight graph matches, four Y-delta "
                 "pairs, eight coefficient facts, and eight conditional routes"
+            )
+        if any(
+            record["source_id"] != FINAL_EIGHT_RICE_SOURCE_ID
+            for values in selected_by_type.values()
+            for _evidence_id, record in values
+        ):
+            raise ValueError(
+                "nongeneric group structured facts must cite the reviewed final-eight "
+                "RICE report"
             )
         selected_structured_ids = {
             item for values in selected_by_type.values() for item, _record in values

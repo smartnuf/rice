@@ -3799,6 +3799,44 @@ def test_final_eight_aggregate_counts_require_integers(
 
 
 @pytest.mark.parametrize(
+    "targets",
+    [
+        [21.0, 29, 36, 44],
+        [True, 29, 36, 44],
+    ],
+)
+def test_final_eight_aggregate_targets_require_integers(
+    catalogue, annotations, targets
+):
+    aggregate = _evidence_of_type(
+        annotations, "aggregate-nongeneric-exclusion-group"
+    )[0]
+    aggregate["claim"]["supported_simpler_realisation_targets"] = targets
+    with pytest.raises(ValueError, match="invalid aggregate nongeneric exclusion"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_final_eight_specialized_fact_requires_reviewed_report_source(
+    catalogue, annotations
+):
+    pair = _evidence_of_type(annotations, "y-delta-partner-match")[0]
+    pair["source_id"] = "rice-five-element-zobel-graph-s-report"
+    with pytest.raises(ValueError, match="must cite the reviewed final-eight RICE report"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_final_eight_selected_graph_match_requires_reviewed_report_source(
+    catalogue, annotations
+):
+    graph_match = _subject_evidence(
+        annotations, "basic-graph-match", "lh148-4a925dd55dc8da19"
+    )
+    graph_match["source_id"] = "rice-five-element-zobel-graph-s-report"
+    with pytest.raises(ValueError, match="must cite the reviewed final-eight RICE report"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize(
     ("field", "value", "message"),
     [
         ("route_relation", "realizability-set-containment", "invalid conditional"),
