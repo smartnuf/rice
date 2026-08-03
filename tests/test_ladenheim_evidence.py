@@ -3814,6 +3814,43 @@ def test_y_delta_pairs_must_be_complete_and_disjoint(catalogue, annotations):
         generate_evidence_ledger(catalogue, annotations)
 
 
+def test_y_delta_pair_fixture_order_is_bound_to_subject_order(catalogue, annotations):
+    pair = _evidence_of_type(annotations, "y-delta-partner-match")[0]
+    pair["claim"]["subject_fixture_ids"].reverse()
+    with pytest.raises(ValueError, match="invalid Y-delta partner claim"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_y_delta_pair_rejects_internally_consistent_arbitrary_fixtures(
+    catalogue, annotations
+):
+    pair = _evidence_of_type(annotations, "y-delta-partner-match")[0]
+    arbitrary_nonbridge = "arbitrary-nonbridge-fixture"
+    arbitrary_bridge = "arbitrary-bridge-fixture"
+    pair["claim"]["subject_fixture_ids"] = [
+        arbitrary_nonbridge,
+        arbitrary_bridge,
+    ]
+    for subject in pair["claim"]["subject_catalogue_ids"]:
+        route = _subject_evidence(
+            annotations, "conditional-simpler-realisation-route", subject
+        )
+        route["claim"]["condition_parameterization_fixture_id"] = (
+            arbitrary_nonbridge
+        )
+    with pytest.raises(ValueError, match="invalid Y-delta partner claim"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_y_delta_pair_requires_the_reviewed_transformation_figure(
+    catalogue, annotations
+):
+    pair = _evidence_of_type(annotations, "y-delta-partner-match")[0]
+    pair["claim"]["transformation_figure"] = "Figure 99.1"
+    with pytest.raises(ValueError, match="invalid Y-delta partner claim"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
 def test_missing_y_delta_pair_is_rejected(catalogue, annotations):
     pair = _evidence_of_type(annotations, "y-delta-partner-match")[0]
     annotations["evidence_records"].remove(pair)
@@ -3871,8 +3908,24 @@ def test_conditional_targets_require_exact_derived_multiplicity(catalogue, annot
         "lh148-47ee32380ab1b406",
     )
     route["claim"]["nondegenerate_target_network_number"] = 29
+    route["claim"]["nondegenerate_target_fixture_id"] = (
+        "morelli-smith-canonical-network-29"
+    )
     route["locator"]["network_number"] = 29
     with pytest.raises(ValueError, match="one reviewed condition fixture and target"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_conditional_target_number_requires_its_reviewed_fixture(
+    catalogue, annotations
+):
+    route = _evidence_of_type(
+        annotations, "conditional-simpler-realisation-route"
+    )[0]
+    route["claim"]["nondegenerate_target_fixture_id"] = (
+        "morelli-smith-canonical-network-29"
+    )
+    with pytest.raises(ValueError, match="invalid conditional simpler-realisation"):
         generate_evidence_ledger(catalogue, annotations)
 
 

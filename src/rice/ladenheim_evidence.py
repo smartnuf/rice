@@ -108,6 +108,81 @@ NONGENERIC_COEFFICIENTS = {"A", "C", "D", "F"}
 NONGENERIC_TARGETS = {21, 29, 36, 44}
 NONGENERIC_MECHANISM = "forced-immittance-coefficient-nongenericity"
 NONGENERIC_REPRESENTATION = "Morelli-Smith-equation-5.1"
+REVIEWED_Y_DELTA_FIGURE = "Figure 5.3"
+REVIEWED_FINAL_EIGHT_FIXTURES = {
+    "morelli-smith-figure-5.1-O-C": {
+        "graph_label": "O",
+        "coefficient": "F",
+        "target": 21,
+        "role": "nonbridge",
+    },
+    "morelli-smith-figure-5.1-V-terminal-C": {
+        "graph_label": "V",
+        "coefficient": "F",
+        "target": 21,
+        "role": "bridge",
+    },
+    "morelli-smith-figure-5.1-O-L": {
+        "graph_label": "O",
+        "coefficient": "D",
+        "target": 29,
+        "role": "nonbridge",
+    },
+    "morelli-smith-figure-5.1-V-terminal-L": {
+        "graph_label": "V",
+        "coefficient": "D",
+        "target": 29,
+        "role": "bridge",
+    },
+    "morelli-smith-figure-5.1-Od-L": {
+        "graph_label": "O^d",
+        "coefficient": "C",
+        "target": 36,
+        "role": "nonbridge",
+    },
+    "morelli-smith-figure-5.1-V-path-L": {
+        "graph_label": "V",
+        "coefficient": "C",
+        "target": 36,
+        "role": "bridge",
+    },
+    "morelli-smith-figure-5.1-Od-C": {
+        "graph_label": "O^d",
+        "coefficient": "A",
+        "target": 44,
+        "role": "nonbridge",
+    },
+    "morelli-smith-figure-5.1-V-path-C": {
+        "graph_label": "V",
+        "coefficient": "A",
+        "target": 44,
+        "role": "bridge",
+    },
+}
+REVIEWED_Y_DELTA_FIXTURE_PAIRS = {
+    (
+        "morelli-smith-figure-5.1-O-C",
+        "morelli-smith-figure-5.1-V-terminal-C",
+    ),
+    (
+        "morelli-smith-figure-5.1-O-L",
+        "morelli-smith-figure-5.1-V-terminal-L",
+    ),
+    (
+        "morelli-smith-figure-5.1-Od-L",
+        "morelli-smith-figure-5.1-V-path-L",
+    ),
+    (
+        "morelli-smith-figure-5.1-Od-C",
+        "morelli-smith-figure-5.1-V-path-C",
+    ),
+}
+REVIEWED_NONGENERIC_TARGET_FIXTURES = {
+    21: "morelli-smith-canonical-network-21",
+    29: "morelli-smith-canonical-network-29",
+    36: "morelli-smith-canonical-network-36",
+    44: "morelli-smith-canonical-network-44",
+}
 CONDITIONAL_ROUTE_RELATION = (
     "conditional-nondegenerate-target-plus-degenerate-fewer-element"
 )
@@ -566,10 +641,9 @@ def _validate_claim(
             len(subjects) != 2
             or not isinstance(fixtures, list)
             or len(fixtures) != 2
-            or len(set(fixtures)) != 2
-            or not all(isinstance(value, str) and value for value in fixtures)
-            or not isinstance(claim.get("transformation_figure"), str)
-            or not claim["transformation_figure"]
+            or not all(isinstance(value, str) for value in fixtures)
+            or tuple(fixtures) not in REVIEWED_Y_DELTA_FIXTURE_PAIRS
+            or claim.get("transformation_figure") != REVIEWED_Y_DELTA_FIGURE
             or claim.get("positive_finite_forward") is not True
             or claim.get("positive_finite_inverse") is not True
         ):
@@ -629,8 +703,8 @@ def _validate_claim(
             or claim.get("nondegenerate_condition") != "delta > 0"
             or not _is_int(target)
             or not 1 <= target <= 108
-            or not isinstance(claim.get("nondegenerate_target_fixture_id"), str)
-            or not claim["nondegenerate_target_fixture_id"]
+            or claim.get("nondegenerate_target_fixture_id")
+            != REVIEWED_NONGENERIC_TARGET_FIXTURES.get(target)
             or claim.get("degenerate_condition") != "delta = 0"
             or claim.get("degenerate_realisation_class")
             not in DEGENERATE_REALISATION_CLASSES
@@ -1864,6 +1938,7 @@ def _validate_nongeneric_simplification_groups(
             )
 
         pair_by_subject: dict[str, tuple[str, dict[str, Any]]] = {}
+        fixture_by_subject: dict[str, str] = {}
         pair_ids = set()
         for evidence_id, record in selected_by_type["y-delta-partner-match"]:
             claim = record["claim"]
@@ -1873,6 +1948,8 @@ def _validate_nongeneric_simplification_groups(
                 raise ValueError("Y-delta partner evidence must be positive equivalence")
             if any(subject in pair_by_subject for subject in subjects):
                 raise ValueError("Y-delta pairs must be disjoint")
+            if tuple(fixtures) not in REVIEWED_Y_DELTA_FIXTURE_PAIRS:
+                raise ValueError("Y-delta pair must use one reviewed ordered fixture pair")
             labels = [
                 graph_by_subject[subject][1]["claim"]["match"]["graph_label"]
                 for subject in subjects
@@ -1884,6 +1961,15 @@ def _validate_nongeneric_simplification_groups(
                     "each Y-delta pair must contain one reviewed O/O-dual subject "
                     "and one bridge subject with exact fixtures"
                 )
+            for subject, fixture in zip(subjects, fixtures):
+                fixture_metadata = REVIEWED_FINAL_EIGHT_FIXTURES[fixture]
+                if fixture_metadata["graph_label"] != graph_by_subject[subject][1][
+                    "claim"
+                ]["match"]["graph_label"]:
+                    raise ValueError(
+                        "Y-delta fixture position must match the subject graph class"
+                    )
+                fixture_by_subject[subject] = fixture
             pair_ids.add(evidence_id)
             for subject in subjects:
                 pair_by_subject[subject] = (evidence_id, record)
@@ -1911,6 +1997,14 @@ def _validate_nongeneric_simplification_groups(
             }
             if len(coefficients) != 1:
                 raise ValueError("Y-delta partners must have the same forced coefficient")
+        if any(
+            REVIEWED_FINAL_EIGHT_FIXTURES[fixture_by_subject[subject]]["coefficient"]
+            != coefficient_by_subject[subject][1]["claim"]["coefficient"]
+            for subject in member_ids
+        ):
+            raise ValueError(
+                "Y-delta fixture must match its subject's forced coefficient"
+            )
 
         route_by_subject: dict[str, tuple[str, dict[str, Any]]] = {}
         for evidence_id, record in selected_by_type[
@@ -1937,6 +2031,15 @@ def _validate_nongeneric_simplification_groups(
             ]
             nonbridge_route = route_by_subject[nonbridge][1]["claim"]
             bridge_route = route_by_subject[bridge][1]["claim"]
+            if (
+                REVIEWED_FINAL_EIGHT_FIXTURES[fixture_by_subject[nonbridge]]["role"]
+                != "nonbridge"
+                or REVIEWED_FINAL_EIGHT_FIXTURES[fixture_by_subject[bridge]]["role"]
+                != "bridge"
+            ):
+                raise ValueError(
+                    "Y-delta fixture positions must identify nonbridge and bridge roles"
+                )
             if "y_delta_partner_match_evidence_id" in nonbridge_route:
                 raise ValueError("series-parallel conditional route cannot cite a partner")
             if bridge_route.get("y_delta_partner_match_evidence_id") != pair_id:
@@ -1960,6 +2063,15 @@ def _validate_nongeneric_simplification_groups(
             ):
                 raise ValueError(
                     "Y-delta pair routes must use one reviewed condition fixture and target"
+                )
+            target = nonbridge_route["nondegenerate_target_network_number"]
+            if any(
+                REVIEWED_FINAL_EIGHT_FIXTURES[fixture_by_subject[subject]]["target"]
+                != target
+                for subject in subjects
+            ):
+                raise ValueError(
+                    "Y-delta fixtures must match the pair's conditional target"
                 )
             expected_class = (
                 "two-element-series-R-X"
