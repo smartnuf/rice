@@ -58,6 +58,7 @@ PROTECTED_PATTERNS: tuple[str, ...] = (
     "tests/test_count_language.py",
     "tests/test_reduced_census.py",
     "tests/test_ladenheim.py",
+    "tests/test_ladenheim_evidence.py",
 )
 
 DECLARATION_LABEL = "evidence-change"
