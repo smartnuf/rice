@@ -332,9 +332,9 @@ def _previous_workspace_cross_check():
     return record
 
 
-def test_format_version_three_is_required(catalogue, annotations):
-    annotations["format_version"] = 2
-    with pytest.raises(ValueError, match="format_version must be 3"):
+def test_format_version_four_is_required(catalogue, annotations):
+    annotations["format_version"] = 3
+    with pytest.raises(ValueError, match="format_version must be 4"):
         generate_evidence_ledger(catalogue, annotations)
 
 
@@ -3602,3 +3602,385 @@ def test_original_catalogue_ids_and_file_are_unchanged(catalogue):
     assert [row["catalogue_id"] for row in regenerated["records"]] == [
         row["catalogue_id"] for row in catalogue["records"]
     ]
+
+
+FINAL_EIGHT_SUBJECTS = {
+    "lh148-4a925dd55dc8da19",
+    "lh148-47ee32380ab1b406",
+    "lh148-68430bbb448b9991",
+    "lh148-7e24311a6fea4531",
+    "lh148-debfbc02c5650a94",
+    "lh148-f40bfca59082ff8d",
+    "lh148-5278112fab778336",
+    "lh148-f942f37eed38400a",
+}
+FINAL_EIGHT_AGGREGATE_ID = "ms-2019-final-eight-nongeneric-exclusion-group"
+FINAL_EIGHT_COMPUTATION_ID = "rice-final-eight-o-bridge-report-reproduction"
+
+
+def _evidence_of_type(annotations, claim_type):
+    return [
+        record
+        for record in annotations["evidence_records"]
+        if record["claim"]["claim_type"] == claim_type
+    ]
+
+
+def _subject_evidence(annotations, claim_type, subject):
+    return next(
+        record
+        for record in _evidence_of_type(annotations, claim_type)
+        if record["claim"].get("subject_catalogue_ids") == [subject]
+    )
+
+
+def _final_eight_computation(annotations):
+    return next(
+        record
+        for record in annotations["computational_cross_checks"]
+        if record["cross_check_id"] == FINAL_EIGHT_COMPUTATION_ID
+    )
+
+
+def _populate_final_eight_explicit_records(annotations):
+    pairs = _evidence_of_type(annotations, "y-delta-partner-match")
+    for subject in sorted(FINAL_EIGHT_SUBJECTS):
+        graph = _subject_evidence(annotations, "basic-graph-match", subject)
+        coefficient = _subject_evidence(
+            annotations, "forced-immittance-coefficient", subject
+        )
+        route = _subject_evidence(
+            annotations, "conditional-simpler-realisation-route", subject
+        )
+        pair = next(
+            record
+            for record in pairs
+            if subject in record["claim"]["subject_catalogue_ids"]
+        )
+        annotations["records"].append({
+            "catalogue_id": subject,
+            "comparison_status": "derived-nongeneric-simplification-match",
+            "proposed_disposition": "exclude",
+            "exclusion_category": "other-canonical-exclusion",
+            "exclusion_reason": (
+                "Fixture aggregate nongeneric exclusion with independently "
+                "checked subject-bound facts."
+            ),
+            "evidence_basis": [
+                "aggregate-historical-nongeneric-group-plus-subject-bound-rice-facts"
+            ],
+            "evidence_record_ids": [
+                FINAL_EIGHT_AGGREGATE_ID,
+                graph["evidence_id"],
+                pair["evidence_id"],
+                coefficient["evidence_id"],
+                route["evidence_id"],
+            ],
+            "previous_workspace_record_ids": [],
+            "computational_cross_check_ids": [FINAL_EIGHT_COMPUTATION_ID],
+            "historical_identifiers": [],
+            "basic_graph_assignment": None,
+            "confidence": "high",
+            "notes": ["Complete-group application fixture."],
+            "open_questions": ["Test fixture only."],
+        })
+
+
+def test_final_eight_structured_evidence_is_complete_but_unapplied(
+    catalogue, annotations
+):
+    ledger = generate_evidence_ledger(catalogue, annotations)
+    records = {row["catalogue_id"]: row for row in ledger["records"]}
+    assert ledger["format_version"] == 4
+    assert ledger["summary"]["by_proposed_disposition"] == {
+        "exclude": 32,
+        "unresolved": 116,
+    }
+    assert len(_evidence_of_type(annotations, "aggregate-nongeneric-exclusion-group")) == 1
+    assert len(_evidence_of_type(annotations, "y-delta-partner-match")) == 4
+    assert len(_evidence_of_type(annotations, "forced-immittance-coefficient")) == 8
+    assert len(_evidence_of_type(annotations, "conditional-simpler-realisation-route")) == 8
+    assert {
+        row["claim"]["subject_catalogue_ids"][0]
+        for row in _evidence_of_type(annotations, "forced-immittance-coefficient")
+    } == FINAL_EIGHT_SUBJECTS
+    assert all(
+        records[subject]["comparison_status"] == "unresolved"
+        and records[subject]["proposed_disposition"] == "unresolved"
+        for subject in FINAL_EIGHT_SUBJECTS
+    )
+    assert all(row["basic_graph_assignment"] is None for row in records.values())
+    assert all(not row["historical_identifiers"] for row in records.values())
+
+
+def test_complete_final_eight_explicit_group_can_apply(catalogue, annotations):
+    _populate_final_eight_explicit_records(annotations)
+    ledger = generate_evidence_ledger(catalogue, annotations)
+    records = {row["catalogue_id"]: row for row in ledger["records"]}
+    assert ledger["summary"]["by_proposed_disposition"] == {
+        "exclude": 40,
+        "unresolved": 108,
+    }
+    assert all(
+        records[subject]["comparison_status"]
+        == "derived-nongeneric-simplification-match"
+        for subject in FINAL_EIGHT_SUBJECTS
+    )
+
+
+def test_partial_final_eight_explicit_group_is_rejected(catalogue, annotations):
+    _populate_final_eight_explicit_records(annotations)
+    annotations["records"].pop()
+    with pytest.raises(ValueError, match="must include the complete group"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_final_eight_common_computation_has_exact_derived_fact_scope(annotations):
+    computation = _final_eight_computation(annotations)
+    derived_ids = {
+        record["evidence_id"]
+        for record in annotations["evidence_records"]
+        if record["claim"]["claim_type"]
+        in {
+            "basic-graph-match",
+            "y-delta-partner-match",
+            "forced-immittance-coefficient",
+            "conditional-simpler-realisation-route",
+        }
+        and set(record["claim"].get("subject_catalogue_ids", []))
+        <= FINAL_EIGHT_SUBJECTS
+        and record["claim"].get("subject_catalogue_ids")
+    }
+    assert set(computation["subject_catalogue_ids"]) == FINAL_EIGHT_SUBJECTS
+    assert set(computation["conditional_target_network_numbers"]) == {21, 29, 36, 44}
+    assert set(computation["verified_evidence_record_ids"]) == derived_ids
+    assert FINAL_EIGHT_AGGREGATE_ID not in computation["verified_evidence_record_ids"]
+
+
+@pytest.mark.parametrize(
+    ("claim_type", "provenance"),
+    [
+        ("y-delta-partner-match", "rice-derived-structural-fact"),
+        ("forced-immittance-coefficient", "rice-derived-structural-fact"),
+        ("conditional-simpler-realisation-route", "rice-derived-structural-fact"),
+    ],
+)
+def test_final_eight_positive_claims_require_exact_cross_checked_provenance(
+    catalogue, annotations, claim_type, provenance
+):
+    _evidence_of_type(annotations, claim_type)[0]["provenance_level"] = provenance
+    with pytest.raises(ValueError, match="cross-checked RICE-derived provenance"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_final_eight_aggregate_must_remain_authoritative(catalogue, annotations):
+    aggregate = _evidence_of_type(annotations, "aggregate-nongeneric-exclusion-group")[0]
+    aggregate["verification_state"] = "cross-checked"
+    with pytest.raises(ValueError, match="must be authoritative and source-verified"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize(
+    ("field", "value", "message"),
+    [
+        ("route_relation", "realizability-set-containment", "invalid conditional"),
+        ("condition_expression", "delta", "invalid conditional"),
+        ("nondegenerate_condition", "delta >= 0", "invalid conditional"),
+        ("degenerate_condition", "delta <= 0", "invalid conditional"),
+    ],
+)
+def test_conditional_routes_reject_unreviewed_relations_or_conditions(
+    catalogue, annotations, field, value, message
+):
+    route = _evidence_of_type(annotations, "conditional-simpler-realisation-route")[0]
+    route["claim"][field] = value
+    with pytest.raises(ValueError, match=message):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_projective_dimension_bound_cannot_replace_source_bound(catalogue, annotations):
+    coefficient = _evidence_of_type(annotations, "forced-immittance-coefficient")[0]
+    coefficient["claim"]["nongeneric_dimension_bound"] = 4
+    with pytest.raises(ValueError, match="invalid forced coefficient claim"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_y_delta_pairs_must_be_complete_and_disjoint(catalogue, annotations):
+    pairs = _evidence_of_type(annotations, "y-delta-partner-match")
+    pairs[1]["claim"]["subject_catalogue_ids"][0] = pairs[0]["claim"][
+        "subject_catalogue_ids"
+    ][0]
+    with pytest.raises(ValueError, match="pairs must be disjoint"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_missing_y_delta_pair_is_rejected(catalogue, annotations):
+    pair = _evidence_of_type(annotations, "y-delta-partner-match")[0]
+    annotations["evidence_records"].remove(pair)
+    computation = _final_eight_computation(annotations)
+    computation["verified_evidence_record_ids"].remove(pair["evidence_id"])
+    with pytest.raises(ValueError, match="four Y-delta pairs"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_y_delta_pair_members_require_the_same_forced_coefficient(
+    catalogue, annotations
+):
+    pair = _evidence_of_type(annotations, "y-delta-partner-match")[0]
+    subject = pair["claim"]["subject_catalogue_ids"][1]
+    subject_claim = _subject_evidence(
+        annotations, "forced-immittance-coefficient", subject
+    )["claim"]
+    other_claim = _subject_evidence(
+        annotations,
+        "forced-immittance-coefficient",
+        "lh148-5278112fab778336",
+    )["claim"]
+    subject_claim["coefficient"], other_claim["coefficient"] = (
+        other_claim["coefficient"],
+        subject_claim["coefficient"],
+    )
+    with pytest.raises(ValueError, match="same forced coefficient"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_bridge_route_requires_its_reviewed_partner(catalogue, annotations):
+    bridge_subject = "lh148-47ee32380ab1b406"
+    route = _subject_evidence(
+        annotations, "conditional-simpler-realisation-route", bridge_subject
+    )
+    route["claim"].pop("y_delta_partner_match_evidence_id")
+    with pytest.raises(ValueError, match="bridge conditional route requires"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_pair_routes_require_the_same_condition_fixture(catalogue, annotations):
+    bridge_subject = "lh148-47ee32380ab1b406"
+    route = _subject_evidence(
+        annotations, "conditional-simpler-realisation-route", bridge_subject
+    )
+    route["claim"]["condition_parameterization_fixture_id"] = "wrong-fixture"
+    with pytest.raises(ValueError, match="one reviewed condition fixture"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_conditional_targets_require_exact_derived_multiplicity(catalogue, annotations):
+    route = _subject_evidence(
+        annotations,
+        "conditional-simpler-realisation-route",
+        "lh148-47ee32380ab1b406",
+    )
+    route["claim"]["nondegenerate_target_network_number"] = 29
+    route["locator"]["network_number"] = 29
+    with pytest.raises(ValueError, match="one reviewed condition fixture and target"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_common_computation_must_verify_every_derived_fact(catalogue, annotations):
+    computation = _final_eight_computation(annotations)
+    computation["verified_evidence_record_ids"].pop()
+    with pytest.raises(ValueError, match="eight conditional routes"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_nongeneric_aggregate_cannot_support_a_rule(catalogue, annotations):
+    annotations["rules"][0]["evidence_record_ids"].append(FINAL_EIGHT_AGGREGATE_ID)
+    with pytest.raises(ValueError, match="cannot support a rule"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_nongeneric_aggregate_cannot_apply_through_another_status(
+    catalogue, annotations
+):
+    subject = next(iter(FINAL_EIGHT_SUBJECTS))
+    row = _unresolved_annotation(subject)
+    row["evidence_record_ids"] = [FINAL_EIGHT_AGGREGATE_ID]
+    annotations["records"].append(row)
+    with pytest.raises(ValueError, match="only the explicit nongeneric simplification status"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_nongeneric_status_rejects_reduction_target_match(catalogue, annotations):
+    _populate_final_eight_explicit_records(annotations)
+    subject = sorted(FINAL_EIGHT_SUBJECTS)[0]
+    route = _subject_evidence(
+        annotations, "conditional-simpler-realisation-route", subject
+    )["claim"]
+    evidence_id = "fixture-invalid-reduction-target-match"
+    annotations["evidence_records"].append({
+        "evidence_id": evidence_id,
+        "source_id": "rice-final-eight-o-bridge-report",
+        "provenance_level": "rice-derived-network-equivalence-fact",
+        "verification_state": "cross-checked",
+        "locator": {
+            "repository_path": (
+                "docs/comparisons/"
+                "ladenheim-final-eight-o-bridge-evidence-design.md"
+            )
+        },
+        "paraphrase": "Invalidly treats a conditional destination as equivalence.",
+        "claim": {
+            "claim_type": "reduction-target-match",
+            "subject_catalogue_ids": [subject],
+            "target_network_number": route[
+                "nondegenerate_target_network_number"
+            ],
+        },
+    })
+    row = next(item for item in annotations["records"] if item["catalogue_id"] == subject)
+    row["evidence_record_ids"].append(evidence_id)
+    with pytest.raises(ValueError, match="cannot use a reduction-target-match"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_conditional_target_cannot_be_the_subject_historical_identity(
+    catalogue, annotations
+):
+    _populate_final_eight_explicit_records(annotations)
+    subject = sorted(FINAL_EIGHT_SUBJECTS)[0]
+    route = _subject_evidence(
+        annotations, "conditional-simpler-realisation-route", subject
+    )["claim"]
+    target = route["nondegenerate_target_network_number"]
+    identifier_evidence = _historical_identifier_evidence(subject, value=target)
+    annotations["evidence_records"].append(identifier_evidence)
+    row = next(item for item in annotations["records"] if item["catalogue_id"] == subject)
+    row["historical_identifiers"] = [{
+        "scheme": "morelli-smith-canonical-network",
+        "value": target,
+        "verification_state": "source-verified",
+        "evidence_record_ids": [identifier_evidence["evidence_id"]],
+    }]
+    with pytest.raises(ValueError, match="cannot be used as.*historical identity"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_new_status_is_invalid_for_rules_and_retention(catalogue, annotations):
+    annotations["rules"][0]["comparison_status"] = (
+        "derived-nongeneric-simplification-match"
+    )
+    annotations["rules"][0]["evidence_basis"] = [
+        "aggregate-historical-nongeneric-group-plus-subject-bound-rice-facts"
+    ]
+    with pytest.raises(ValueError, match="valid only for explicit annotation records"):
+        generate_evidence_ledger(catalogue, annotations)
+
+    annotations["rules"][0]["comparison_status"] = "derived-unique-match"
+    annotations["rules"][0]["evidence_basis"] = [
+        "aggregate-historical-category-plus-logically-unique-rice-match"
+    ]
+    subject = next(iter(FINAL_EIGHT_SUBJECTS))
+    row = _unresolved_annotation(subject)
+    row.update({
+        "comparison_status": "derived-nongeneric-simplification-match",
+        "proposed_disposition": "retain",
+        "exclusion_category": "other-canonical-exclusion",
+        "exclusion_reason": "Invalid fixture retention.",
+        "confidence": "high",
+        "evidence_basis": [
+            "aggregate-historical-nongeneric-group-plus-subject-bound-rice-facts"
+        ],
+    })
+    annotations["records"].append(row)
+    with pytest.raises(ValueError, match="cannot assert retention"):
+        generate_evidence_ledger(catalogue, annotations)

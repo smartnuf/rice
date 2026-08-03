@@ -718,7 +718,7 @@ ledger = json.loads(
     Path("data/comparisons/ladenheim-148-to-108.json").read_text()
 )
 assert len(catalogue["records"]) == 148
-assert ledger["format_version"] == 3
+assert ledger["format_version"] == 4
 assert ledger["summary"]["by_proposed_disposition"] == {
     "exclude": 32,
     "unresolved": 116,
