@@ -35,6 +35,8 @@ PROTECTED_PATTERNS: tuple[str, ...] = (
     "data/counts/*",
     "data/comparisons/*",
     "docs/results.md",
+    "docs/counts/*",
+    "README.md",
     "tests/test_bundle_census.py",
     "tests/test_bundle_labelings.py",
     "tests/test_count_language.py",
@@ -42,12 +44,14 @@ PROTECTED_PATTERNS: tuple[str, ...] = (
 )
 
 DECLARATION_LABEL = "evidence-change"
-DECLARATION_RE = re.compile(r"^\s*Evidence-Change:\s*(\S.*)$", re.MULTILINE)
+DECLARATION_RE = re.compile(
+    r"^[ \t]*Evidence-Change:[ \t]*(\S.*)$", re.MULTILINE
+)
 
 
 def changed_paths(base: str, head: str) -> list[str]:
     out = subprocess.run(
-        ["git", "diff", "--name-only", f"{base}...{head}"],
+        ["git", "diff", "--name-only", "--no-renames", f"{base}...{head}"],
         check=True,
         capture_output=True,
         text=True,

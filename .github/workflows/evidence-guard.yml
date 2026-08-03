@@ -8,11 +8,24 @@ jobs:
   guard:
     name: evidence-guard
     runs-on: ubuntu-latest
+    env:
+      BASE_SHA: ${{ github.event.pull_request.base.sha }}
+      HEAD_SHA: ${{ github.event.pull_request.head.sha }}
     steps:
       - name: Check out repository
         uses: actions/checkout@v7
         with:
           fetch-depth: 0
+
+      - name: Select trusted guard implementation
+        run: |
+          if git show "$BASE_SHA:scripts/evidence_guard.py" \
+              > /tmp/evidence_guard.py 2>/dev/null; then
+            echo "guard: using base-revision implementation"
+          else
+            echo "guard: script absent at base (bootstrap); using head"
+            cp scripts/evidence_guard.py /tmp/evidence_guard.py
+          fi
 
       - name: Write PR body to file
         env:
@@ -24,8 +37,8 @@ jobs:
           PR_LABELS: >-
             ${{ join(github.event.pull_request.labels.*.name, ',') }}
         run: |
-          python3 scripts/evidence_guard.py \
-            --base "${{ github.event.pull_request.base.sha }}" \
-            --head "${{ github.event.pull_request.head.sha }}" \
+          python3 /tmp/evidence_guard.py \
+            --base "$BASE_SHA" \
+            --head "$HEAD_SHA" \
             --pr-body-file /tmp/pr_body.txt \
             --labels "$PR_LABELS"
