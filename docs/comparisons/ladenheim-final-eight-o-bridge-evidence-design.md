@@ -299,8 +299,8 @@ primitive elements, one resistor and one reactive element. The corresponding
 network dual is a two-element parallel `R-X` realisation. Thus every graph-`O`
 or graph-`O^d` impedance has a realisation with fewer than five elements, but
 the named four-element target is established only on the nondegenerate locus.
-This does not prove complete realizability-set containment in one named
-canonical target.
+This does not prove that every source parameter lies in the positive-finite
+realizability set of one named canonical target.
 
 Indeed, if `r_2=lambda r_1` and `x_2=lambda x_1` for `lambda>0`, then
 
@@ -347,9 +347,12 @@ Consequently the independently checked subject allocation is:
 | `lh148-5278112fab778336` (`O^d-C`) | `lh148-f942f37eed38400a` | 44 | independently checked |
 
 The Y--delta pair is a true positive-finite network equivalence. The arrow from
-each pair to its four-element destination instead records simpler-realisation
-containment plus nongenericity. It is not a claim that the five-element and
-four-element realizability sets are identical.
+each pair to its named four-element destination records a positive-finite
+Cauer--Foster realisation only when `delta>0`. When `delta=0`, the route instead
+ends in the two-element series or parallel `R-X` realisation derived above. The
+unconditional conclusion is nongenericity and the existence of a
+fewer-element realisation, not membership of the complete source family in one
+named target's positive-finite realizability set.
 
 ## 9. Evidence-contract assessment
 
@@ -357,7 +360,8 @@ Format version 3 cannot represent these conclusions honestly without a
 contract change. Its `derived-structural-match` route requires a
 `reduction-target-match` with
 `rice-derived-network-equivalence-fact` provenance. Reusing that claim would
-misstate the Cauer--Foster containment as true network equivalence. The current
+misstate the conditional Cauer--Foster simplification as true network
+equivalence. The current
 aggregate claim also assumes one graph label and as many unique targets as
 subjects, whereas this group contains three graph labels and two subjects per
 destination.
@@ -409,18 +413,32 @@ Add these narrowly typed claims:
 4. `conditional-simpler-realisation-route`
 
    - exact fields: `claim_type`, `subject_catalogue_ids` (exactly one),
+     `condition_parameterization_fixture_id`, `condition_expression`,
      `nondegenerate_condition`, `nondegenerate_target_network_number`,
      `nondegenerate_target_fixture_id`, `degenerate_condition`,
-     `degenerate_realisation_class`, and `route_relation`;
+     `degenerate_realisation_class`, `route_relation`, and optionally
+     `y_delta_partner_match_evidence_id`;
    - `route_relation` is the controlled value
      `conditional-nondegenerate-target-plus-degenerate-fewer-element`, which
-     asserts neither network equivalence nor complete realizability-set
-     containment; `nondegenerate_condition` is exactly `delta > 0`, while
+     asserts neither network equivalence nor an unconditional named-target
+     result; `condition_expression` is the controlled normalized expression
+     `(r1*x2-r2*x1)^2/(r1+r2)^2`, `nondegenerate_condition` is exactly
+     `delta > 0`, while
      `degenerate_condition` is exactly `delta = 0` and the realisation class is
      the appropriate two-element series or parallel `R-X` class;
    - the nondegenerate target is constrained to `1..108` and must agree with
      any locator network number;
-   - the two members of each Y--delta pair must use the same conditional target.
+   - for an `O` or `O^d` subject, the parameterization fixture is that subject's
+     reviewed fixture; for a graph-`V` bridge subject, the partner evidence ID
+     is required and the parameterization fixture is the corresponding
+     `O`/`O^d` fixture named by that `y-delta-partner-match`;
+   - the condition expression is a controlled reviewed expression, not
+     arbitrary prose, and its fixture must belong to the subject or its
+     declared Y--delta partner;
+   - `delta>0` and `delta=0` must be complementary over the positive-finite
+     parameter domain (the normalized square cannot be negative);
+   - both members of each Y--delta pair must reference the same parameterized
+     condition and the same conditional four-element target.
 
 The authoritative aggregate claim supplies the collective exclusion mechanism,
 but does not allocate individual subjects to targets or assert that every
@@ -428,7 +446,7 @@ target has two subjects. Group validation derives target multiplicity two from
 the eight subject-bound conditional routes after their independent checks. The
 exclusion status itself is supported by the aggregate historical statement
 together with each subject's forced-coefficient and nongenericity facts, not by
-an unconditional target-containment assertion.
+an unconditional named-target assertion.
 
 The route should continue to reuse authoritative `basic-graph-definition` and
 subject-bound `basic-graph-match` records for `O`, `O^d`, and `V`. A common
@@ -447,9 +465,9 @@ multiplicity two, and the exact collective target set. Every row must remain an
 exclusion in `other-canonical-exclusion`, with a nonempty reason and
 non-`none` confidence. The route must not require or create a historical
 identifier or a production graph assignment. It must reject use of a
-containment destination as the excluded subject's identity, reject an
-unconditional complete-set containment claim, and reject any attempt to
-substitute a `reduction-target-match` equivalence claim.
+simpler-realisation destination as the excluded subject's identity, reject an
+unconditional named-target claim, and reject any attempt to substitute a
+`reduction-target-match` equivalence claim.
 
 This is a recommendation only; no controlled value, claim type, schema, or
 validator is changed in this milestone.
