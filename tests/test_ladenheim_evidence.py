@@ -4948,6 +4948,8 @@ def _add_low_order_bypass_record(
     include_identifier=True,
     identifier_evidence_ids=None,
     direct_evidence_ids=(),
+    identifier_scheme="morelli-smith-canonical-network",
+    evidence_basis=None,
 ):
     match = next(
         record
@@ -4965,10 +4967,12 @@ def _add_low_order_bypass_record(
     else:
         basis = ["no-evidence-yet"]
         confidence = "none"
+    if evidence_basis is not None:
+        basis = list(evidence_basis)
     identifiers = []
     if include_identifier:
         identifiers.append({
-            "scheme": "morelli-smith-canonical-network",
+            "scheme": identifier_scheme,
             "value": identifier_value,
             "verification_state": "cross-checked",
             "evidence_record_ids": (
@@ -5031,6 +5035,32 @@ def test_other_number_cannot_cite_low_order_aggregate_as_nested_evidence(
         annotations,
         identifier_value=108,
         identifier_evidence_ids=[LOW_ORDER_AGGREGATE_ID],
+    )
+    with pytest.raises(ValueError, match="identifiers require derived-canonical"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize(
+    ("identifier_scheme", "identifier_value", "evidence_kind"),
+    [
+        ("morelli-smith-basic-graph", "G", "definition"),
+        ("morelli-smith-basic-graph", "G", "match"),
+        ("ladenheim-original-identifier", "L-1", "aggregate"),
+    ],
+)
+def test_nested_low_order_evidence_triggers_consumption_for_every_identifier_scheme(
+    catalogue, annotations, identifier_scheme, identifier_value, evidence_kind
+):
+    evidence_id = {
+        "definition": _low_order_definitions(annotations)[0]["evidence_id"],
+        "match": _low_order_matches(annotations)[0]["evidence_id"],
+        "aggregate": LOW_ORDER_AGGREGATE_ID,
+    }[evidence_kind]
+    _add_low_order_bypass_record(
+        annotations,
+        identifier_scheme=identifier_scheme,
+        identifier_value=identifier_value,
+        identifier_evidence_ids=[evidence_id],
     )
     with pytest.raises(ValueError, match="identifiers require derived-canonical"):
         generate_evidence_ledger(catalogue, annotations)
@@ -5099,6 +5129,78 @@ def test_low_order_status_is_invalid_for_a_rule(catalogue, annotations):
         "authoritative-canonical-diagram-plus-subject-bound-rice-match"
     ]
     with pytest.raises(ValueError, match="valid only for explicit records"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_low_order_identity_basis_is_invalid_for_a_rule(catalogue, annotations):
+    annotations["rules"][0]["evidence_basis"].append(
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+    )
+    with pytest.raises(ValueError, match="explicit-record only"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_low_order_identity_basis_is_invalid_for_an_unresolved_record(
+    catalogue, annotations
+):
+    _add_low_order_bypass_record(
+        annotations,
+        include_identifier=False,
+        evidence_basis=[
+            "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+        ],
+    )
+    with pytest.raises(ValueError):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_low_order_identity_basis_is_invalid_for_a_derived_unique_record(
+    catalogue, annotations
+):
+    generated = generate_evidence_ledger(catalogue, annotations)
+    row = next(
+        record
+        for record in generated["records"]
+        if record["comparison_status"] == "derived-unique-match"
+    )
+    assertion_fields = {
+        "catalogue_id",
+        "comparison_status",
+        "proposed_disposition",
+        "exclusion_category",
+        "exclusion_reason",
+        "evidence_basis",
+        "evidence_record_ids",
+        "previous_workspace_record_ids",
+        "computational_cross_check_ids",
+        "historical_identifiers",
+        "basic_graph_assignment",
+        "confidence",
+        "notes",
+        "open_questions",
+    }
+    row = {field: deepcopy(row[field]) for field in assertion_fields}
+    row["evidence_basis"].append(
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+    )
+    annotations["records"].append(row)
+    with pytest.raises(ValueError):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_low_order_identity_basis_is_invalid_for_a_working_hypothesis_record(
+    catalogue, annotations
+):
+    _add_low_order_bypass_record(
+        annotations,
+        status="working-hypothesis",
+        include_identifier=False,
+        evidence_basis=[
+            "researcher-hypothesis",
+            "authoritative-canonical-diagram-plus-subject-bound-rice-match",
+        ],
+    )
+    with pytest.raises(ValueError, match="identifiers require derived-canonical"):
         generate_evidence_ledger(catalogue, annotations)
 
 

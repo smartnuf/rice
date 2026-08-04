@@ -12,6 +12,9 @@ from typing import Any
 
 FORMAT_VERSION = 5
 SOURCE_CATALOGUE_RELATION = "colour-preserving-port-augmented-cycle-matroid-v1"
+LOW_ORDER_IDENTITY_EVIDENCE_BASIS = (
+    "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+)
 COMPARISON_STATUSES = {
     "source-backed",
     "derived-unique-match",
@@ -36,7 +39,7 @@ EVIDENCE_BASES = {
     "aggregate-historical-category-plus-logically-unique-rice-match",
     "aggregate-historical-graph-group-plus-subject-bound-rice-match",
     "aggregate-historical-nongeneric-group-plus-subject-bound-rice-facts",
-    "authoritative-canonical-diagram-plus-subject-bound-rice-match",
+    LOW_ORDER_IDENTITY_EVIDENCE_BASIS,
     "mechanically-derived-rice-structural-fact",
     "researcher-hypothesis",
     "no-evidence-yet",
@@ -1712,7 +1715,7 @@ def _validate_assertion(
             "aggregate-historical-nongeneric-group-plus-subject-bound-rice-facts",
         },
         "derived-canonical-identity-match": {
-            "authoritative-canonical-diagram-plus-subject-bound-rice-match",
+            LOW_ORDER_IDENTITY_EVIDENCE_BASIS,
         },
         "working-hypothesis": {"researcher-hypothesis"},
     }
@@ -1942,9 +1945,7 @@ def _validate_assertion(
                 "as the excluded subject's historical identity"
             )
     if status == "derived-canonical-identity-match":
-        required = {
-            "authoritative-canonical-diagram-plus-subject-bound-rice-match"
-        }
+        required = {LOW_ORDER_IDENTITY_EVIDENCE_BASIS}
         if catalogue_id is None:
             raise ValueError(
                 "derived-canonical-identity-match is valid only for explicit records"
@@ -2894,20 +2895,26 @@ def _validate_canonical_identity_groups(
         *reviewed_match_ids,
     }
 
+    # The version-5 consumer boundary covers every machine-semantic identity
+    # channel: status, basis, direct evidence, computation references,
+    # identifier values, and nested identifier evidence. Editorial prose is
+    # deliberately outside this contract.
     def consumes_low_order_identity(assertion: dict[str, Any]) -> bool:
         if assertion["comparison_status"] == "derived-canonical-identity-match":
+            return True
+        if LOW_ORDER_IDENTITY_EVIDENCE_BASIS in assertion["evidence_basis"]:
             return True
         if reviewed_evidence_ids & set(assertion["evidence_record_ids"]):
             return True
         if LOW_ORDER_COMPUTATION_ID in assertion["computational_cross_check_ids"]:
             return True
         for identifier in assertion["historical_identifiers"]:
-            if identifier["scheme"] != "morelli-smith-canonical-network":
-                continue
             nested_ids = set(identifier["evidence_record_ids"])
+            if nested_ids & reviewed_evidence_ids:
+                return True
             if (
-                identifier["value"] in reviewed_numbers
-                or nested_ids & reviewed_evidence_ids
+                identifier["scheme"] == "morelli-smith-canonical-network"
+                and identifier["value"] in reviewed_numbers
             ):
                 return True
         return False
