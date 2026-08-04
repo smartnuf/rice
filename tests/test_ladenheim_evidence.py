@@ -571,7 +571,7 @@ def test_unique_match_accepts_exact_historical_and_mechanical_predicate(
         "r": 4,
         "lc": 1,
     }
-    assert ledger["summary"]["mapped_exclusions"] == 32
+    assert ledger["summary"]["mapped_exclusions"] == 40
 
 
 def test_rejected_rice_evidence_cannot_satisfy_unique_match(catalogue, annotations):
@@ -1417,7 +1417,7 @@ def test_category_counter_must_agree_with_total(catalogue, annotations):
         _validate_exclusion_counts(
             ledger["records"],
             ledger["target"],
-            32,
+            40,
             Counter(
                 {
                     "simpler-bilinear-realisation": 8,
@@ -1512,28 +1512,30 @@ def test_unresolved_entry_needs_no_fabricated_evidence(catalogue, annotations):
     assert row["computational_cross_check_ids"] == []
 
 
-def test_exact_thirty_two_and_116_distribution(catalogue, annotations):
+def test_exact_forty_and_108_distribution(catalogue, annotations):
     ledger = generate_evidence_ledger(catalogue, annotations)
     assert ledger["summary"]["by_comparison_status"] == {
+        "derived-nongeneric-simplification-match": 8,
         "derived-structural-match": 20,
         "derived-unique-match": 12,
-        "unresolved": 116,
+        "unresolved": 108,
     }
     assert ledger["summary"]["by_proposed_disposition"] == {
-        "exclude": 32,
-        "unresolved": 116,
+        "exclude": 40,
+        "unresolved": 108,
     }
     assert ledger["summary"]["by_exclusion_category"] == {
+        "other-canonical-exclusion": 8,
         "simpler-bilinear-realisation": 8,
-        "unresolved": 116,
+        "unresolved": 108,
         "zobel-five-element-series-parallel": 20,
         "zobel-four-element": 4,
     }
-    assert ledger["summary"]["mapped_exclusions"] == 32
-    assert ledger["summary"]["unresolved_dispositions"] == 116
+    assert ledger["summary"]["mapped_exclusions"] == 40
+    assert ledger["summary"]["unresolved_dispositions"] == 108
     assert all(row["proposed_disposition"] != "retain" for row in ledger["records"])
     mapped = [row for row in ledger["records"] if row["proposed_disposition"] == "exclude"]
-    assert len(mapped) == 32
+    assert len(mapped) == 40
     assert all(row["comparison_status"] != "ambiguous" for row in ledger["records"])
     assert ledger["target"]["reproduction_claimed"] is False
     assert all(row["historical_identifiers"] == [] for row in ledger["records"])
@@ -2907,6 +2909,7 @@ def test_only_reviewed_exclusions_are_resolved(catalogue, annotations):
         | set(ZOBEL_GRAPH_S_TARGETS)
         | set(ZOBEL_GRAPH_S_DUAL_TARGETS)
         | {ZOBEL_GRAPH_M_ID, ZOBEL_GRAPH_M_DUAL_ID}
+        | FINAL_EIGHT_SUBJECTS
     )
     resolved = {
         row["catalogue_id"]
@@ -2947,8 +2950,8 @@ def test_exclusion_category_population_and_empty_identifiers(catalogue, annotati
     assert categories["simpler-bilinear-realisation"] == 8
     assert categories["zobel-four-element"] == 4
     assert categories["zobel-five-element-series-parallel"] == 20
-    assert categories["other-canonical-exclusion"] == 0
-    assert categories["unresolved"] == 116
+    assert categories["other-canonical-exclusion"] == 8
+    assert categories["unresolved"] == 108
     assert all(row["basic_graph_assignment"] is None for row in ledger["records"])
     assert all(row["historical_identifiers"] == [] for row in ledger["records"])
     assert all(
@@ -3645,7 +3648,16 @@ def _final_eight_computation(annotations):
     )
 
 
+def _remove_final_eight_explicit_records(annotations):
+    annotations["records"] = [
+        row
+        for row in annotations["records"]
+        if row["catalogue_id"] not in FINAL_EIGHT_SUBJECTS
+    ]
+
+
 def _populate_final_eight_explicit_records(annotations):
+    _remove_final_eight_explicit_records(annotations)
     pairs = _evidence_of_type(annotations, "y-delta-partner-match")
     for subject in sorted(FINAL_EIGHT_SUBJECTS):
         graph = _subject_evidence(annotations, "basic-graph-match", subject)
@@ -3689,15 +3701,15 @@ def _populate_final_eight_explicit_records(annotations):
         })
 
 
-def test_final_eight_structured_evidence_is_complete_but_unapplied(
+def test_final_eight_structured_evidence_is_complete_and_applied(
     catalogue, annotations
 ):
     ledger = generate_evidence_ledger(catalogue, annotations)
     records = {row["catalogue_id"]: row for row in ledger["records"]}
     assert ledger["format_version"] == 4
     assert ledger["summary"]["by_proposed_disposition"] == {
-        "exclude": 32,
-        "unresolved": 116,
+        "exclude": 40,
+        "unresolved": 108,
     }
     assert len(_evidence_of_type(annotations, "aggregate-nongeneric-exclusion-group")) == 1
     assert len(_evidence_of_type(annotations, "y-delta-partner-match")) == 4
@@ -3707,11 +3719,32 @@ def test_final_eight_structured_evidence_is_complete_but_unapplied(
         row["claim"]["subject_catalogue_ids"][0]
         for row in _evidence_of_type(annotations, "forced-immittance-coefficient")
     } == FINAL_EIGHT_SUBJECTS
-    assert all(
-        records[subject]["comparison_status"] == "unresolved"
-        and records[subject]["proposed_disposition"] == "unresolved"
-        for subject in FINAL_EIGHT_SUBJECTS
-    )
+    pairs = _evidence_of_type(annotations, "y-delta-partner-match")
+    for subject in FINAL_EIGHT_SUBJECTS:
+        row = records[subject]
+        graph = _subject_evidence(annotations, "basic-graph-match", subject)
+        coefficient = _subject_evidence(
+            annotations, "forced-immittance-coefficient", subject
+        )
+        route = _subject_evidence(
+            annotations, "conditional-simpler-realisation-route", subject
+        )
+        pair = next(
+            item for item in pairs if subject in item["claim"]["subject_catalogue_ids"]
+        )
+        assert row["comparison_status"] == "derived-nongeneric-simplification-match"
+        assert row["proposed_disposition"] == "exclude"
+        assert row["exclusion_category"] == "other-canonical-exclusion"
+        assert set(row["evidence_record_ids"]) == {
+            FINAL_EIGHT_AGGREGATE_ID,
+            graph["evidence_id"],
+            pair["evidence_id"],
+            coefficient["evidence_id"],
+            route["evidence_id"],
+        }
+        assert row["computational_cross_check_ids"] == [
+            FINAL_EIGHT_COMPUTATION_ID
+        ]
     assert all(row["basic_graph_assignment"] is None for row in records.values())
     assert all(not row["historical_identifiers"] for row in records.values())
 
@@ -4036,6 +4069,7 @@ def test_final_eight_structured_fact_locator_shapes_are_accepted(
 def test_final_eight_computation_requires_reviewed_report_identity(
     catalogue, annotations, field, value
 ):
+    _remove_final_eight_explicit_records(annotations)
     computation = _final_eight_computation(annotations)
     computation[field] = value
     with pytest.raises(ValueError, match="reviewed final-eight fixed reproduction payload"):
@@ -4238,6 +4272,7 @@ def test_y_delta_pairs_must_be_complete_and_disjoint(catalogue, annotations):
 
 
 def test_final_eight_specialized_facts_require_one_aggregate(catalogue, annotations):
+    _remove_final_eight_explicit_records(annotations)
     aggregate = _evidence_of_type(
         annotations, "aggregate-nongeneric-exclusion-group"
     )[0]
@@ -4249,6 +4284,7 @@ def test_final_eight_specialized_facts_require_one_aggregate(catalogue, annotati
 def test_format_version_four_requires_complete_final_eight_inventory(
     catalogue, annotations
 ):
+    _remove_final_eight_explicit_records(annotations)
     final_eight_claim_types = {
         "aggregate-nongeneric-exclusion-group",
         "y-delta-partner-match",
@@ -4272,6 +4308,7 @@ def test_format_version_four_requires_complete_final_eight_inventory(
 def test_format_version_four_requires_exact_specialized_inventory(
     catalogue, annotations
 ):
+    _remove_final_eight_explicit_records(annotations)
     pair = _evidence_of_type(annotations, "y-delta-partner-match")[0]
     annotations["evidence_records"].remove(pair)
     _final_eight_computation(annotations)["verified_evidence_record_ids"].remove(
@@ -4327,6 +4364,7 @@ def test_y_delta_pair_fixture_order_is_bound_to_subject_order(catalogue, annotat
 def test_reviewed_fixtures_reject_consistent_capacitive_inductive_subject_swap(
     catalogue, annotations
 ):
+    _remove_final_eight_explicit_records(annotations)
     subject_swap = {
         "lh148-4a925dd55dc8da19": "lh148-68430bbb448b9991",
         "lh148-68430bbb448b9991": "lh148-4a925dd55dc8da19",
@@ -4385,6 +4423,7 @@ def test_y_delta_pair_requires_the_reviewed_transformation_figure(
 
 
 def test_missing_y_delta_pair_is_rejected(catalogue, annotations):
+    _remove_final_eight_explicit_records(annotations)
     pair = _evidence_of_type(annotations, "y-delta-partner-match")[0]
     annotations["evidence_records"].remove(pair)
     computation = _final_eight_computation(annotations)
@@ -4478,6 +4517,7 @@ def test_nongeneric_aggregate_cannot_support_a_rule(catalogue, annotations):
 def test_nongeneric_aggregate_cannot_apply_through_another_status(
     catalogue, annotations
 ):
+    _remove_final_eight_explicit_records(annotations)
     subject = next(iter(FINAL_EIGHT_SUBJECTS))
     row = _unresolved_annotation(subject)
     row["evidence_record_ids"] = [FINAL_EIGHT_AGGREGATE_ID]
@@ -4564,6 +4604,7 @@ def test_final_eight_status_requires_null_graph_assignment(catalogue, annotation
 
 
 def test_new_status_is_invalid_for_rules_and_retention(catalogue, annotations):
+    _remove_final_eight_explicit_records(annotations)
     annotations["rules"][0]["comparison_status"] = (
         "derived-nongeneric-simplification-match"
     )
