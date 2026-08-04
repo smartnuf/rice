@@ -305,7 +305,10 @@ LOW_ORDER_COMPUTATION_ID = "rice-low-order-canonical-report-reproduction"
 LOW_ORDER_COMPUTATION_FIXED_PAYLOAD = {
     "cross_check_id": LOW_ORDER_COMPUTATION_ID,
     "provenance_level": "independently-reproduced-computation",
-    "implementation": f"Reproduction commands in {LOW_ORDER_REPORT_PATH}",
+    "implementation": (
+        f"Structural-match reproduction commands in {LOW_ORDER_REPORT_PATH} "
+        "at the pinned evidence-only revision"
+    ),
     "commit_sha": "4411b1fa441241f47e3d2e39a4e96ef5447199e9",
     "input": (
         "The committed 148-record catalogue and 25 independently transcribed "
@@ -317,13 +320,19 @@ LOW_ORDER_COMPUTATION_FIXED_PAYLOAD = {
         "component inventories"
     ),
     "result": (
-        "The 25 canonical fixtures have 25 distinct unique unresolved RICE "
+        "The 25 canonical fixtures have 25 distinct unique RICE structural "
         "matches with the reviewed descriptors and component inventories."
     ),
     "independently_reproduced": True,
     "limitations": (
-        "This verifies the RICE structural matches and inventories; the "
-        "authoritative publication transcriptions remain source-verified inputs."
+        "The report reproduction was run at the pinned evidence-only revision, "
+        "where it also checked the then-current 40 excluded / 108 unresolved / "
+        "0 retained production boundary. Those disposition checks document the "
+        "historical acceptance state, are not part of the durable structural-match "
+        "result, and are not intended to run against a later ledger after identity "
+        "application. Current application validity is enforced by the version-5 "
+        "validator, generated-ledger checks, and tests; authoritative publication "
+        "transcriptions remain source-verified inputs."
     ),
     "verification_state": "cross-checked",
 }
@@ -2895,23 +2904,32 @@ def _validate_canonical_identity_groups(
         *reviewed_match_ids,
     }
 
-    # The version-5 consumer boundary covers every machine-semantic identity
-    # channel: status, basis, direct evidence, computation references,
-    # identifier values, and nested identifier evidence. Editorial prose is
-    # deliberately outside this contract.
+    def collect_evidence_record_ids(value: Any) -> set[str]:
+        """Collect structurally named evidence references from a valid assertion."""
+        collected: set[str] = set()
+        if isinstance(value, dict):
+            for key, nested in value.items():
+                if key == "evidence_record_ids":
+                    collected.update(nested)
+                collected.update(collect_evidence_record_ids(nested))
+        elif isinstance(value, list):
+            for nested in value:
+                collected.update(collect_evidence_record_ids(nested))
+        return collected
+
+    # The version-5 consumer boundary covers status, basis, computation
+    # references, canonical identifier values, and every structurally named
+    # evidence_record_ids path recursively. Editorial prose is outside it.
     def consumes_low_order_identity(assertion: dict[str, Any]) -> bool:
         if assertion["comparison_status"] == "derived-canonical-identity-match":
             return True
         if LOW_ORDER_IDENTITY_EVIDENCE_BASIS in assertion["evidence_basis"]:
             return True
-        if reviewed_evidence_ids & set(assertion["evidence_record_ids"]):
+        if reviewed_evidence_ids & collect_evidence_record_ids(assertion):
             return True
         if LOW_ORDER_COMPUTATION_ID in assertion["computational_cross_check_ids"]:
             return True
         for identifier in assertion["historical_identifiers"]:
-            nested_ids = set(identifier["evidence_record_ids"])
-            if nested_ids & reviewed_evidence_ids:
-                return True
             if (
                 identifier["scheme"] == "morelli-smith-canonical-network"
                 and identifier["value"] in reviewed_numbers

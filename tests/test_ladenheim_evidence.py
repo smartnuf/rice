@@ -4939,6 +4939,56 @@ def test_complete_low_order_identity_application_can_pass(catalogue, annotations
     }
 
 
+def test_low_order_computation_result_is_durable_and_pinned(annotations):
+    computation = _low_order_computation(annotations)
+    result = computation["result"].lower()
+    assert all(
+        word not in result for word in ("unresolved", "retained", "excluded")
+    )
+    assert computation["commit_sha"] == (
+        "4411b1fa441241f47e3d2e39a4e96ef5447199e9"
+    )
+
+
+@pytest.mark.parametrize("reviewed_kind", ["aggregate", "definition", "match"])
+def test_basic_graph_assignment_low_order_evidence_triggers_consumption(
+    catalogue, annotations, reviewed_kind
+):
+    row = annotations["records"][0]
+    evidence = {
+        record["evidence_id"]: record for record in annotations["evidence_records"]
+    }
+    definition = next(
+        evidence[evidence_id]
+        for evidence_id in row["evidence_record_ids"]
+        if evidence[evidence_id]["claim"]["claim_type"] == "basic-graph-definition"
+    )
+    graph_match = next(
+        evidence[evidence_id]
+        for evidence_id in row["evidence_record_ids"]
+        if evidence[evidence_id]["claim"]["claim_type"] == "basic-graph-match"
+    )
+    reviewed_id = {
+        "aggregate": LOW_ORDER_AGGREGATE_ID,
+        "definition": _low_order_definitions(annotations)[0]["evidence_id"],
+        "match": _low_order_matches(annotations)[0]["evidence_id"],
+    }[reviewed_kind]
+    row["basic_graph_assignment"] = {
+        **definition["claim"]["definition"],
+        "structural_relation": graph_match["claim"]["match"][
+            "structural_relation"
+        ],
+        "verification_state": "cross-checked",
+        "evidence_record_ids": [
+            definition["evidence_id"],
+            graph_match["evidence_id"],
+            reviewed_id,
+        ],
+    }
+    with pytest.raises(ValueError, match="identifiers require derived-canonical"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
 def _add_low_order_bypass_record(
     annotations,
     *,
