@@ -5,15 +5,25 @@
 This report transcribes and independently matches the complete four-element
 portion of the canonical 108-network catalogue in A. Morelli and M. C. Smith,
 *Passive Network Synthesis: An Approach to Classification* (SIAM, 2019).
-It is evidence only. It does not add structured annotation evidence, apply a
-retained disposition, populate a historical identifier or graph assignment,
-or begin the five-element or 108-to-62 work.
+As originally accepted, it was evidence only: it did not add structured
+annotation evidence, apply a retained disposition, populate a historical
+identifier or graph assignment, or begin the five-element or 108-to-62 work.
 
-Production therefore remains 40 excluded, 83 unresolved, and 25 retained
-records. The existing 25 retained low-order identities are unchanged. Exactly
+At that evidence-only milestone, production remained 40 excluded, 83
+unresolved, and 25 retained records. The existing 25 retained low-order
+identities were unchanged. Exactly
 25 historical-identifier lists remain populated with those low-order canonical
 identifiers, the other 123 lists remain empty, and every
 `basic_graph_assignment` remains null.
+
+The subsequent format-version-6 contract milestone encodes all 34 reviewed
+mappings as one controlled canonical-identity evidence group, including their
+authoritative definitions, subject-bound matches, aggregate inventory, and
+pinned computation. None of the 34 mappings is applied in production: all 34
+subjects remain unresolved, production remains 40 excluded, 83 unresolved,
+and 25 retained, and a later application requires a separate pull request. The
+original reproduction below remains pinned to accepted revision
+`b499f0340771feaacb535fb987a45754dbeb050e`.
 
 ## 2. Source identity and exact locators
 

@@ -120,10 +120,10 @@ historical evidence. In particular, computational agreement can corroborate a
 transcription without converting an uncited workspace assertion into a
 source-backed mapping.
 
-## Version 5 evidence contract
+## Version 6 evidence contract
 
 The manual file
-`data/comparisons/ladenheim-108-annotations.json` uses `format_version: 5` and
+`data/comparisons/ladenheim-108-annotations.json` uses `format_version: 6` and
 contains reviewed assertions and structural matching rules without duplicating
 all 148 structural records. The generated file
 `data/comparisons/ladenheim-148-to-108.json` joins those assertions to the
@@ -294,19 +294,30 @@ retains all 25 subjects together and assigns each exactly its matched
 orbit and equivalence-class labels remain contextual source facts, not alternate
 proofs of identity.
 
-## Version 5 validation boundary
+Version 6 generalizes that route through a closed, code-controlled registry of
+reviewed canonical-identity groups. The existing 25-member low-order group
+remains fully applied and unchanged. A second group encodes 34 authoritative
+four-element definitions, 34 unique subject-bound RICE matches, its exact
+aggregate inventory, and its pinned computation from the reviewed
+four-element report. Each group is independently all-or-nothing: the
+four-element evidence is complete, but none of its 34 identities or retained
+dispositions is applied in this revision.
 
-The version 5 validator is closed-world for every annotation object. It checks
+## Version 6 validation boundary
+
+The version 6 validator is closed-world for every annotation object. It checks
 object shapes, controlled vocabularies, reference and catalogue-subject
 resolution, provenance and verification coherence, status/disposition/category
 tuples, numeric boundaries, target and count invariants, and deterministic-output
-hygiene. Unknown fields are rejected rather than copied into the ledger.
+hygiene. It also rejects cross-group canonical evidence and partial application
+of either controlled identity group. Unknown fields are rejected rather than
+copied into the ledger.
 
-Version 5 does not represent ambiguous candidate mappings. A later extension
+Version 6 does not represent ambiguous candidate mappings. A later extension
 must record the finite candidate set, evidence for each candidate, the comparison
 relation, and why the evidence does not distinguish them. Also deferred are real
-basic-graph assignments, all remaining canonical network numbering, and transformation
-proofs beyond the reviewed Zobel reports. Absence of those schema
+basic-graph assignments, the 49 five-element canonical identities, and transformation
+proofs beyond the reviewed reports. Absence of those schema
 objects establishes none of those claims.
 
 ## Current population
@@ -415,6 +426,12 @@ The complete reviewed low-order group contributes 25 retained rows with exact
 cross-checked canonical network identifiers. The remaining 83 survivors are
 unresolved rather than retained; this ledger therefore does not positively
 identify the complete canonical catalogue.
+
+The controlled four-element group contributes structured evidence for all 34
+four-element identities: six subfamilies, 20 source equivalence classes, ten
+source orbits, and one exact-scope computation. It has no production consumers
+in this revision. All 34 subjects therefore remain within the 83 unresolved
+survivors, alongside the 49 five-element subjects that remain uninvestigated.
 
 Production basic-graph assignments remain deferred: every
 `basic_graph_assignment` is null. Exactly 25 historical identifier lists are

@@ -10,7 +10,7 @@ import re
 from typing import Any
 
 
-FORMAT_VERSION = 5
+FORMAT_VERSION = 6
 SOURCE_CATALOGUE_RELATION = "colour-preserving-port-augmented-cycle-matroid-v1"
 LOW_ORDER_IDENTITY_EVIDENCE_BASIS = (
     "authoritative-canonical-diagram-plus-subject-bound-rice-match"
@@ -409,6 +409,613 @@ def _reviewed_low_order_definition(number: int) -> dict[str, Any]:
             "network_number": number,
         },
     }
+
+
+FOUR_ELEMENT_REPORT_PATH = (
+    "docs/comparisons/ladenheim-canonical-108-four-element-evidence.md"
+)
+FOUR_ELEMENT_RICE_SOURCE_ID = "rice-canonical-108-four-element-report"
+FOUR_ELEMENT_RICE_SOURCE_IDENTITY = {
+    "source_type": "rice-documentation",
+    "citation": "RICE four-element canonical-108 evidence report.",
+}
+FOUR_ELEMENT_AGGREGATE_ID = "rice-four-element-canonical-network-group"
+FOUR_ELEMENT_COMPUTATION_ID = "rice-four-element-canonical-report-reproduction"
+FOUR_ELEMENT_COMPUTATION_FIXED_PAYLOAD = {
+    "cross_check_id": FOUR_ELEMENT_COMPUTATION_ID,
+    "provenance_level": "independently-reproduced-computation",
+    "implementation": (
+        f"Structural-match reproduction commands in {FOUR_ELEMENT_REPORT_PATH} "
+        "at the pinned evidence-only revision"
+    ),
+    "commit_sha": "b499f0340771feaacb535fb987a45754dbeb050e",
+    "input": (
+        "The committed 148-record catalogue and 34 independently transcribed "
+        "four-element coloured canonical fixtures"
+    ),
+    "operation": (
+        "Construct all 34 fixtures, scan all 148 catalogue records under the "
+        "committed structural relation, and verify unique subject matches, "
+        "descriptors, component inventories, and complete four-element coverage"
+    ),
+    "result": (
+        "The 34 canonical fixtures have 34 distinct unique RICE structural "
+        "matches with the reviewed descriptors and component inventories."
+    ),
+    "independently_reproduced": True,
+    "limitations": (
+        "The report reproduction was run at the pinned evidence-only revision, "
+        "where it also checked the then-current 40 excluded / 83 unresolved / "
+        "25 retained production boundary and that all 34 four-element subjects "
+        "were unresolved. Those disposition checks document the historical "
+        "acceptance state, are not part of the durable structural-match result, "
+        "and are not intended to run unchanged after identity application. "
+        "Future production validity is enforced by the current validator, "
+        "generated-ledger checks, and tests; authoritative publication "
+        "transcriptions remain source-verified inputs."
+    ),
+    "verification_state": "cross-checked",
+}
+FOUR_ELEMENT_COUNTS_BY_ELEMENT_ORDER = {"4": 34}
+FOUR_ELEMENT_SUBFAMILIES = {"IVA", "IVB", "IVC", "IVD", "IVE", "IVF"}
+FOUR_ELEMENT_FIGURE_LOCATOR = {
+    "figure": "6.2",
+    "printed_page": 50,
+    "pdf_page_index": 56,
+}
+FOUR_ELEMENT_CLASS_TABLE_LOCATOR = {
+    "table": "6.11",
+    "printed_page": 58,
+    "pdf_page_index": 64,
+}
+FOUR_ELEMENT_COUNT_TABLE_LOCATOR = {
+    "table": "6.2",
+    "printed_page": 49,
+    "pdf_page_index": 55,
+}
+REVIEWED_FOUR_ELEMENT_CANONICAL_NETWORKS = {
+    20: (
+        "lh148-e4990ea5b5b75ace",
+        "0-2:C;0-2:R;1-3:C;2-3:R",
+        (2, 0, 2),
+        "IVA",
+        "IV_A^4",
+        (20, 28, 35, 43),
+        138,
+        144,
+        58,
+        64,
+    ),
+    21: (
+        "lh148-79cf9dd24646a1a1",
+        "0-2:C;0-3:C;1-2:R;2-3:R",
+        (2, 0, 2),
+        "IVA",
+        "IV_A^4",
+        (21, 29, 36, 44),
+        138,
+        144,
+        58,
+        64,
+    ),
+    22: (
+        "lh148-53e805bd81449a69",
+        "0-2:C;0-3:R;1-3:C;2-3:R",
+        (2, 0, 2),
+        "IVA",
+        "IV_A^4",
+        (22, 30, 37, 45),
+        138,
+        144,
+        58,
+        64,
+    ),
+    23: (
+        "lh148-40b10a9f485445a8",
+        "0-2:C;0-3:C;1-2:R;1-3:R",
+        (2, 0, 2),
+        "IVB",
+        "IV_B^4",
+        (23, 31, 38, 46),
+        139,
+        145,
+        59,
+        65,
+    ),
+    24: (
+        "lh148-0f581053d03369e2",
+        "0-2:C;1-2:R;1-3:L;2-3:R",
+        (2, 1, 1),
+        "IVC",
+        "IV_C^4",
+        (24, 33, 40, 48),
+        139,
+        145,
+        59,
+        65,
+    ),
+    25: (
+        "lh148-2fe78de797e54618",
+        "0-2:C;1-3:L;1-3:R;2-3:R",
+        (2, 1, 1),
+        "IVC",
+        "IV_C^4",
+        (25, 32, 39, 47),
+        139,
+        145,
+        59,
+        65,
+    ),
+    28: (
+        "lh148-354f03447076bf4a",
+        "0-2:L;0-2:R;1-3:L;2-3:R",
+        (2, 2, 0),
+        "IVA",
+        "IV_A^2",
+        (20, 28, 35, 43),
+        138,
+        144,
+        58,
+        64,
+    ),
+    29: (
+        "lh148-867793e6aaaea530",
+        "0-2:L;0-3:L;1-2:R;2-3:R",
+        (2, 2, 0),
+        "IVA",
+        "IV_A^2",
+        (21, 29, 36, 44),
+        138,
+        144,
+        58,
+        64,
+    ),
+    30: (
+        "lh148-366759d751e644ba",
+        "0-2:L;0-3:R;1-3:L;2-3:R",
+        (2, 2, 0),
+        "IVA",
+        "IV_A^2",
+        (22, 30, 37, 45),
+        138,
+        144,
+        58,
+        64,
+    ),
+    31: (
+        "lh148-0b27d33003f81032",
+        "0-2:L;0-3:L;1-2:R;1-3:R",
+        (2, 2, 0),
+        "IVB",
+        "IV_B^2",
+        (23, 31, 38, 46),
+        139,
+        145,
+        59,
+        65,
+    ),
+    32: (
+        "lh148-c4a008c923682500",
+        "0-2:C;0-2:R;1-3:L;2-3:R",
+        (2, 1, 1),
+        "IVC",
+        "IV_C^2",
+        (25, 32, 39, 47),
+        139,
+        145,
+        59,
+        65,
+    ),
+    33: (
+        "lh148-4d6ac6885b8efb8e",
+        "0-2:C;0-3:R;1-3:L;2-3:R",
+        (2, 1, 1),
+        "IVC",
+        "IV_C^2",
+        (24, 33, 40, 48),
+        139,
+        145,
+        59,
+        65,
+    ),
+    35: (
+        "lh148-a1a63778c0bb98e8",
+        "0-1:L;0-1:R;0-2:L;1-2:R",
+        (2, 2, 0),
+        "IVA",
+        "IV_A^1",
+        (20, 28, 35, 43),
+        138,
+        144,
+        58,
+        64,
+    ),
+    36: (
+        "lh148-af3808b69e5fc54f",
+        "0-1:R;0-2:L;0-2:R;1-2:L",
+        (2, 2, 0),
+        "IVA",
+        "IV_A^1",
+        (21, 29, 36, 44),
+        138,
+        144,
+        58,
+        64,
+    ),
+    37: (
+        "lh148-e61bc7a989c01099",
+        "0-1:L;0-2:L;0-2:R;1-2:R",
+        (2, 2, 0),
+        "IVA",
+        "IV_A^1",
+        (22, 30, 37, 45),
+        138,
+        144,
+        58,
+        64,
+    ),
+    38: (
+        "lh148-ff2aaae76070d52a",
+        "0-2:L;0-2:R;1-2:L;1-2:R",
+        (2, 2, 0),
+        "IVB",
+        "IV_B^1",
+        (23, 31, 38, 46),
+        139,
+        145,
+        59,
+        65,
+    ),
+    39: (
+        "lh148-05ef035064872f96",
+        "0-1:L;0-1:R;0-2:C;1-2:R",
+        (2, 1, 1),
+        "IVC",
+        "IV_C^1",
+        (25, 32, 39, 47),
+        139,
+        145,
+        59,
+        65,
+    ),
+    40: (
+        "lh148-cdfcaba8001db4d0",
+        "0-1:L;0-2:C;0-2:R;1-2:R",
+        (2, 1, 1),
+        "IVC",
+        "IV_C^1",
+        (24, 33, 40, 48),
+        139,
+        145,
+        59,
+        65,
+    ),
+    43: (
+        "lh148-02b69ac8bc305a1f",
+        "0-1:C;0-1:R;0-2:C;1-2:R",
+        (2, 0, 2),
+        "IVA",
+        "IV_A^3",
+        (20, 28, 35, 43),
+        138,
+        144,
+        58,
+        64,
+    ),
+    44: (
+        "lh148-fad884ca638a4191",
+        "0-1:R;0-2:C;0-2:R;1-2:C",
+        (2, 0, 2),
+        "IVA",
+        "IV_A^3",
+        (21, 29, 36, 44),
+        138,
+        144,
+        58,
+        64,
+    ),
+    45: (
+        "lh148-102b49d775bd5eb8",
+        "0-1:C;0-2:C;0-2:R;1-2:R",
+        (2, 0, 2),
+        "IVA",
+        "IV_A^3",
+        (22, 30, 37, 45),
+        138,
+        144,
+        58,
+        64,
+    ),
+    46: (
+        "lh148-c89875389584ae09",
+        "0-2:C;0-2:R;1-2:C;1-2:R",
+        (2, 0, 2),
+        "IVB",
+        "IV_B^3",
+        (23, 31, 38, 46),
+        139,
+        145,
+        59,
+        65,
+    ),
+    47: (
+        "lh148-343285fa13b9f794",
+        "0-1:C;0-1:R;0-2:L;1-2:R",
+        (2, 1, 1),
+        "IVC",
+        "IV_C^3",
+        (25, 32, 39, 47),
+        139,
+        145,
+        59,
+        65,
+    ),
+    48: (
+        "lh148-5a15c54aa65b57dc",
+        "0-1:C;0-2:L;0-2:R;1-2:R",
+        (2, 1, 1),
+        "IVC",
+        "IV_C^3",
+        (24, 33, 40, 48),
+        139,
+        145,
+        59,
+        65,
+    ),
+    62: (
+        "lh148-b9495748ed67c6d6",
+        "0-1:R;0-2:C;0-2:R;1-2:L",
+        (2, 1, 1),
+        "IVE",
+        "IV_E^2",
+        (62, 63, 87, 88),
+        140,
+        146,
+        59,
+        65,
+    ),
+    63: (
+        "lh148-47aef84ec8f4741c",
+        "0-2:C;0-3:L;1-3:R;2-3:R",
+        (2, 1, 1),
+        "IVE",
+        "IV_E^1",
+        (62, 63, 87, 88),
+        140,
+        146,
+        59,
+        65,
+    ),
+    71: (
+        "lh148-4fef33c7e96b6566",
+        "0-2:C;0-3:R;1-3:R;2-3:L",
+        (2, 1, 1),
+        "IVD",
+        "IV_D^1",
+        (71, 74),
+        140,
+        146,
+        59,
+        65,
+    ),
+    72: (
+        "lh148-67980e5858742b26",
+        "0-1:R;0-2:C;1-3:L;2-3:R",
+        (2, 1, 1),
+        "IVD",
+        "IV_D^1",
+        (72, 73),
+        140,
+        146,
+        59,
+        65,
+    ),
+    73: (
+        "lh148-21e4f9e2ce897b40",
+        "0-2:C;0-2:L;0-2:R;1-2:R",
+        (2, 1, 1),
+        "IVD",
+        "IV_D^2",
+        (72, 73),
+        140,
+        146,
+        59,
+        65,
+    ),
+    74: (
+        "lh148-3419842c4cffff68",
+        "0-1:R;0-2:C;0-2:L;1-2:R",
+        (2, 1, 1),
+        "IVD",
+        "IV_D^2",
+        (71, 74),
+        140,
+        146,
+        59,
+        65,
+    ),
+    87: (
+        "lh148-68712beedefbc0fa",
+        "0-2:C;0-3:L;1-2:R;2-3:R",
+        (2, 1, 1),
+        "IVE",
+        "IV_E^3",
+        (62, 63, 87, 88),
+        140,
+        146,
+        59,
+        65,
+    ),
+    88: (
+        "lh148-8a1860e27fc40c7f",
+        "0-1:R;0-2:C;1-2:L;1-2:R",
+        (2, 1, 1),
+        "IVE",
+        "IV_E^4",
+        (62, 63, 87, 88),
+        140,
+        146,
+        59,
+        65,
+    ),
+    96: (
+        "lh148-5cb1f71c6efaef26",
+        "0-2:C;0-2:R;1-2:L;1-2:R",
+        (2, 1, 1),
+        "IVF",
+        "IV_F^2",
+        (96, 97),
+        140,
+        146,
+        59,
+        65,
+    ),
+    97: (
+        "lh148-74be9e435c3d69b8",
+        "0-2:C;0-3:L;1-2:R;1-3:R",
+        (2, 1, 1),
+        "IVF",
+        "IV_F^1",
+        (96, 97),
+        140,
+        146,
+        59,
+        65,
+    ),
+}
+
+
+def _reviewed_low_order_definition(number: int) -> dict[str, Any]:
+    (
+        _catalogue_id,
+        _descriptor,
+        element_count,
+        inventory,
+        subfamily,
+        equivalence_class,
+        printed_page,
+        pdf_page_index,
+    ) = REVIEWED_LOW_ORDER_CANONICAL_NETWORKS[number]
+    return {
+        "canonical_network_number": number,
+        "fixture_id": f"morelli-smith-canonical-network-{number}",
+        "element_count": element_count,
+        "component_inventory": dict(zip(("r", "l", "c"), inventory, strict=True)),
+        "subfamily": subfamily,
+        "source_equivalence_class": equivalence_class,
+        "source_orbit": f"{subfamily} (sole orbit)",
+        "diagram_locator": {
+            "appendix": "D",
+            "printed_page": printed_page,
+            "pdf_page_index": pdf_page_index,
+            "network_number": number,
+        },
+        "figure_locator": {**LOW_ORDER_FIGURE_LOCATOR, "network_number": number},
+        "class_table_locator": {
+            **LOW_ORDER_CLASS_TABLE_LOCATOR,
+            "network_number": number,
+        },
+    }
+
+
+def _reviewed_four_element_definition(number: int) -> dict[str, Any]:
+    (
+        _catalogue_id,
+        _descriptor,
+        inventory,
+        subfamily,
+        equivalence_class,
+        orbit,
+        diagram_page,
+        diagram_index,
+        class_page,
+        class_index,
+    ) = REVIEWED_FOUR_ELEMENT_CANONICAL_NETWORKS[number]
+    return {
+        "canonical_network_number": number,
+        "fixture_id": f"ms-c108-four-{number}",
+        "element_count": 4,
+        "component_inventory": dict(zip(("r", "l", "c"), inventory, strict=True)),
+        "subfamily": subfamily,
+        "source_equivalence_class": equivalence_class,
+        "source_orbit": list(orbit),
+        "diagram_locator": {
+            "appendix": "D",
+            "printed_page": diagram_page,
+            "pdf_page_index": diagram_index,
+            "network_number": number,
+        },
+        "figure_locator": {
+            **FOUR_ELEMENT_FIGURE_LOCATOR,
+            "network_number": number,
+        },
+        "class_table_locator": {
+            "table": "6.11",
+            "printed_page": class_page,
+            "pdf_page_index": class_index,
+            "network_number": number,
+        },
+    }
+
+
+CANONICAL_IDENTITY_GROUPS = {
+    "low-order": {
+        "networks": REVIEWED_LOW_ORDER_CANONICAL_NETWORKS,
+        "definition": _reviewed_low_order_definition,
+        "fixture": lambda number: f"morelli-smith-canonical-network-{number}",
+        "aggregate_id": LOW_ORDER_AGGREGATE_ID,
+        "computation_id": LOW_ORDER_COMPUTATION_ID,
+        "report_path": LOW_ORDER_REPORT_PATH,
+        "rice_source_id": LOW_ORDER_RICE_SOURCE_ID,
+        "fixed_computation": LOW_ORDER_COMPUTATION_FIXED_PAYLOAD,
+        "counts_by_element_order": LOW_ORDER_COUNTS_BY_ELEMENT_ORDER,
+        "subfamilies": LOW_ORDER_SUBFAMILIES,
+        "orbit_count": 9,
+        "equivalence_class_count": 21,
+        "total_networks": 25,
+        "count_table_locator": LOW_ORDER_COUNT_TABLE_LOCATOR,
+        "figure_locator": LOW_ORDER_FIGURE_LOCATOR,
+        "class_table_locator": LOW_ORDER_CLASS_TABLE_LOCATOR,
+    },
+    "four-element": {
+        "networks": REVIEWED_FOUR_ELEMENT_CANONICAL_NETWORKS,
+        "definition": _reviewed_four_element_definition,
+        "fixture": lambda number: f"ms-c108-four-{number}",
+        "aggregate_id": FOUR_ELEMENT_AGGREGATE_ID,
+        "computation_id": FOUR_ELEMENT_COMPUTATION_ID,
+        "report_path": FOUR_ELEMENT_REPORT_PATH,
+        "rice_source_id": FOUR_ELEMENT_RICE_SOURCE_ID,
+        "fixed_computation": FOUR_ELEMENT_COMPUTATION_FIXED_PAYLOAD,
+        "counts_by_element_order": FOUR_ELEMENT_COUNTS_BY_ELEMENT_ORDER,
+        "subfamilies": FOUR_ELEMENT_SUBFAMILIES,
+        "orbit_count": 10,
+        "equivalence_class_count": 20,
+        "total_networks": 34,
+        "count_table_locator": FOUR_ELEMENT_COUNT_TABLE_LOCATOR,
+        "figure_locator": FOUR_ELEMENT_FIGURE_LOCATOR,
+        "class_table_locator": FOUR_ELEMENT_CLASS_TABLE_LOCATOR,
+    },
+}
+
+
+def _canonical_group_for_number(number: int) -> tuple[str, dict[str, Any]]:
+    owners = [
+        (name, group)
+        for name, group in CANONICAL_IDENTITY_GROUPS.items()
+        if number in group["networks"]
+    ]
+    if len(owners) != 1:
+        raise ValueError("canonical network number must belong to one reviewed group")
+    return owners[0]
+
+
+def reviewed_canonical_definition(number: int) -> dict[str, Any]:
+    """Return the exact controlled definition for one reviewed canonical number."""
+
+    _name, group = _canonical_group_for_number(number)
+    return group["definition"](number)
+
+
 CONDITIONAL_ROUTE_RELATION = (
     "conditional-nondegenerate-target-plus-degenerate-fewer-element"
 )
@@ -708,6 +1315,7 @@ def _validate_sources(values: Any) -> dict[str, dict[str, Any]]:
         NONGENERIC_AGGREGATE_SOURCE_ID: NONGENERIC_AGGREGATE_SOURCE_IDENTITY,
         FINAL_EIGHT_RICE_SOURCE_ID: FINAL_EIGHT_RICE_SOURCE_IDENTITY,
         LOW_ORDER_RICE_SOURCE_ID: LOW_ORDER_RICE_SOURCE_IDENTITY,
+        FOUR_ELEMENT_RICE_SOURCE_ID: FOUR_ELEMENT_RICE_SOURCE_IDENTITY,
     }
     for source_id, identity in reviewed_identities.items():
         source = sources.get(source_id)
@@ -989,7 +1597,7 @@ def _validate_claim(
                 f"evidence {evidence_id} has invalid conditional simpler-realisation claim"
             )
     elif claim_type == "canonical-network-definition":
-        required = {"claim_type"} | set(_reviewed_low_order_definition(1))
+        required = {"claim_type"} | set(reviewed_canonical_definition(1))
         _validate_object_shape(
             claim,
             f"evidence {evidence_id} canonical-network definition claim",
@@ -997,29 +1605,46 @@ def _validate_claim(
         )
         number = claim.get("canonical_network_number")
         inventory = claim.get("component_inventory")
+        source_orbit = claim.get("source_orbit")
+        source_orbit_is_valid = (
+            isinstance(source_orbit, str) and bool(source_orbit)
+        ) or (
+            isinstance(source_orbit, list)
+            and bool(source_orbit)
+            and all(_is_int(value) for value in source_orbit)
+            and len(source_orbit) == len(set(source_orbit))
+        )
         numeric_locators_are_strict = all(
             isinstance(claim.get(locator_field), dict)
             and all(
                 numeric_field not in claim[locator_field]
                 or _is_int(claim[locator_field][numeric_field])
                 for numeric_field in {
-                    "printed_page", "pdf_page_index", "network_number",
+                    "printed_page",
+                    "pdf_page_index",
+                    "network_number",
                 }
             )
             for locator_field in {
-                "diagram_locator", "figure_locator", "class_table_locator",
+                "diagram_locator",
+                "figure_locator",
+                "class_table_locator",
             }
         )
         if (
             not _is_int(number)
-            or number not in REVIEWED_LOW_ORDER_CANONICAL_NETWORKS
+            or not any(
+                number in group["networks"]
+                for group in CANONICAL_IDENTITY_GROUPS.values()
+            )
             or not _is_int(claim.get("element_count"))
             or not isinstance(inventory, dict)
             or set(inventory) != {"r", "l", "c"}
             or not all(_is_int(inventory[field]) for field in {"r", "l", "c"})
+            or not source_orbit_is_valid
             or not numeric_locators_are_strict
             or {key: claim[key] for key in required - {"claim_type"}}
-            != _reviewed_low_order_definition(number)
+            != reviewed_canonical_definition(number)
         ):
             raise ValueError(
                 f"evidence {evidence_id} has invalid canonical-network definition claim"
@@ -1041,17 +1666,21 @@ def _validate_claim(
         subjects = claim.get("subject_catalogue_ids")
         _validate_subjects(subjects, evidence_id, catalogue_ids)
         number = claim.get("canonical_network_number")
-        reviewed = (
-            REVIEWED_LOW_ORDER_CANONICAL_NETWORKS.get(number)
-            if _is_int(number)
-            else None
-        )
+        if _is_int(number):
+            try:
+                _group_name, group = _canonical_group_for_number(number)
+                reviewed = group["networks"][number]
+            except ValueError:
+                group = None
+                reviewed = None
+        else:
+            group = None
+            reviewed = None
         if (
             len(subjects) != 1
             or reviewed is None
             or subjects != [reviewed[0]]
-            or claim.get("fixture_id")
-            != f"morelli-smith-canonical-network-{number}"
+            or claim.get("fixture_id") != group["fixture"](number)
             or claim.get("representative_descriptor") != reviewed[1]
             or claim.get("structural_relation") != SOURCE_CATALOGUE_RELATION
             or claim.get("matched") is not True
@@ -1088,32 +1717,43 @@ def _validate_claim(
                 for numeric_field in {"printed_page", "pdf_page_index"}
             )
             for locator_field in {
-                "count_table_locator", "figure_locator", "class_table_locator",
+                "count_table_locator",
+                "figure_locator",
+                "class_table_locator",
             }
         )
         _validate_subjects(subjects, evidence_id, catalogue_ids)
+        group = next(
+            (
+                candidate
+                for candidate in CANONICAL_IDENTITY_GROUPS.values()
+                if candidate["aggregate_id"] == evidence_id
+            ),
+            None,
+        )
         if (
-            not isinstance(numbers, list)
+            group is None
+            or not isinstance(numbers, list)
             or not all(_is_int(number) for number in numbers)
             or len(numbers) != len(set(numbers))
-            or set(numbers) != set(REVIEWED_LOW_ORDER_CANONICAL_NETWORKS)
-            or set(subjects)
-            != {value[0] for value in REVIEWED_LOW_ORDER_CANONICAL_NETWORKS.values()}
+            or set(numbers) != set(group["networks"])
+            or set(subjects) != {value[0] for value in group["networks"].values()}
             or not isinstance(counts, dict)
-            or set(counts) != set(LOW_ORDER_COUNTS_BY_ELEMENT_ORDER)
+            or set(counts) != set(group["counts_by_element_order"])
             or not all(_is_int(counts[field]) for field in counts)
-            or counts != LOW_ORDER_COUNTS_BY_ELEMENT_ORDER
-            or claim.get("subfamilies") != sorted(LOW_ORDER_SUBFAMILIES)
+            or counts != group["counts_by_element_order"]
+            or claim.get("subfamilies") != sorted(group["subfamilies"])
             or not _is_int(claim.get("source_orbit_count"))
-            or claim.get("source_orbit_count") != 9
+            or claim.get("source_orbit_count") != group["orbit_count"]
             or not _is_int(claim.get("source_equivalence_class_count"))
-            or claim.get("source_equivalence_class_count") != 21
+            or claim.get("source_equivalence_class_count")
+            != group["equivalence_class_count"]
             or not _is_int(claim.get("total_networks"))
-            or claim.get("total_networks") != 25
+            or claim.get("total_networks") != group["total_networks"]
             or not aggregate_locators_are_strict
-            or claim.get("count_table_locator") != LOW_ORDER_COUNT_TABLE_LOCATOR
-            or claim.get("figure_locator") != LOW_ORDER_FIGURE_LOCATOR
-            or claim.get("class_table_locator") != LOW_ORDER_CLASS_TABLE_LOCATOR
+            or claim.get("count_table_locator") != group["count_table_locator"]
+            or claim.get("figure_locator") != group["figure_locator"]
+            or claim.get("class_table_locator") != group["class_table_locator"]
         ):
             raise ValueError(
                 f"evidence {evidence_id} has invalid aggregate canonical-network claim"
@@ -2023,10 +2663,17 @@ def _validate_assertion(
                 "derived-canonical-identity-match requires its exact cross-checked "
                 "canonical historical identifier"
             )
-        if assertion["computational_cross_check_ids"] != [LOW_ORDER_COMPUTATION_ID]:
+        canonical_computation_ids = {
+            group["computation_id"] for group in CANONICAL_IDENTITY_GROUPS.values()
+        }
+        if (
+            len(assertion["computational_cross_check_ids"]) != 1
+            or assertion["computational_cross_check_ids"][0]
+            not in canonical_computation_ids
+        ):
             raise ValueError(
-                "derived-canonical-identity-match requires the common low-order "
-                "computation"
+                "derived-canonical-identity-match requires exactly one controlled "
+                "canonical group computation"
             )
     if status == "source-backed" and not any(
         _is_authoritative(record) for record in matching_individual
@@ -2762,160 +3409,179 @@ def _validate_canonical_identity_groups(
     catalogue_by_id: dict[str, dict[str, Any]],
 ) -> None:
     definitions = {
-        evidence_id: record
-        for evidence_id, record in evidence.items()
+        evidence_id: record for evidence_id, record in evidence.items()
         if record["claim"]["claim_type"] == "canonical-network-definition"
     }
     matches = {
-        evidence_id: record
-        for evidence_id, record in evidence.items()
+        evidence_id: record for evidence_id, record in evidence.items()
         if record["claim"]["claim_type"] == "canonical-network-match"
     }
     aggregates = {
-        evidence_id: record
-        for evidence_id, record in evidence.items()
+        evidence_id: record for evidence_id, record in evidence.items()
         if record["claim"]["claim_type"] == "aggregate-canonical-network-group"
     }
-    canonical_computations = [
-        record
-        for record in computations.values()
+    canonical_computations = {
+        computation_id: record for computation_id, record in computations.items()
         if "canonical_network_numbers" in record
-    ]
-    if len(definitions) != 25 or len(matches) != 25:
+    }
+    expected_aggregate_ids = {
+        group["aggregate_id"] for group in CANONICAL_IDENTITY_GROUPS.values()
+    }
+    expected_computation_ids = {
+        group["computation_id"] for group in CANONICAL_IDENTITY_GROUPS.values()
+    }
+    if set(aggregates) != expected_aggregate_ids:
         raise ValueError(
-            "format-version-5 low-order inventory requires exactly 25 canonical "
-            "definitions and 25 subject matches"
+            "format-version-6 canonical inventory requires one controlled aggregate "
+            "for every reviewed group"
         )
-    if set(aggregates) != {LOW_ORDER_AGGREGATE_ID}:
+    if set(canonical_computations) != expected_computation_ids:
         raise ValueError(
-            "format-version-5 low-order inventory requires exactly one controlled "
-            "aggregate canonical group"
-        )
-    if len(canonical_computations) != 1:
-        raise ValueError(
-            "format-version-5 low-order inventory requires exactly one canonical "
-            "identity computation"
-        )
-
-    aggregate_record = aggregates[LOW_ORDER_AGGREGATE_ID]
-    aggregate = aggregate_record["claim"]
-    if (
-        aggregate_record["source_id"] != LOW_ORDER_RICE_SOURCE_ID
-        or aggregate_record["provenance_level"] != "rice-derived-structural-fact"
-        or aggregate_record["verification_state"] != "cross-checked"
-        or aggregate_record["locator"] != {"repository_path": LOW_ORDER_REPORT_PATH}
-    ):
-        raise ValueError(
-            "low-order aggregate group requires the exact reviewed report provenance"
+            "format-version-6 canonical inventory requires one controlled computation "
+            "for every reviewed group"
         )
 
-    definition_by_number: dict[int, tuple[str, dict[str, Any]]] = {}
-    for evidence_id, record in definitions.items():
-        claim = record["claim"]
-        number = claim["canonical_network_number"]
-        if number in definition_by_number:
-            raise ValueError("low-order canonical numbers must be unique")
+    number_owners: dict[int, str] = {}
+    subject_owners: dict[str, str] = {}
+    for group_name, group in CANONICAL_IDENTITY_GROUPS.items():
+        for number, reviewed in group["networks"].items():
+            if number in number_owners:
+                raise ValueError("canonical numbers must be disjoint across groups")
+            number_owners[number] = group_name
+            subject = reviewed[0]
+            if subject in subject_owners:
+                raise ValueError("canonical subjects must be disjoint across groups")
+            subject_owners[subject] = group_name
+
+    definition_by_group = {}
+    match_by_group = {}
+    evidence_group_by_id: dict[str, str] = {}
+    for group_name, group in CANONICAL_IDENTITY_GROUPS.items():
+        expected_numbers = set(group["networks"])
+        expected_subjects = {reviewed[0] for reviewed in group["networks"].values()}
+        group_definitions = {}
+        group_matches = {}
+        group_matches_by_subject = {}
+
+        for evidence_id, record in definitions.items():
+            claim = record["claim"]
+            number = claim["canonical_network_number"]
+            if number_owners.get(number) != group_name:
+                continue
+            if number in group_definitions:
+                raise ValueError("canonical definition numbers must be unique")
+            controlled_claim = {
+                key: value for key, value in claim.items() if key != "claim_type"
+            }
+            if (
+                evidence_id != f"ms-2019-canonical-network-{number}-definition"
+                or record["source_id"] != NONGENERIC_AGGREGATE_SOURCE_ID
+                or not _is_authoritative(record)
+                or record["locator"] != claim["diagram_locator"]
+                or controlled_claim != reviewed_canonical_definition(number)
+            ):
+                raise ValueError(
+                    "canonical definition requires the exact reviewed publication "
+                    "payload, provenance, and locators"
+                )
+            group_definitions[number] = (evidence_id, record)
+            evidence_group_by_id[evidence_id] = group_name
+        if set(group_definitions) != expected_numbers:
+            raise ValueError(f"{group_name} canonical definition inventory is incomplete")
+
+        for evidence_id, record in matches.items():
+            claim = record["claim"]
+            number = claim["canonical_network_number"]
+            if number_owners.get(number) != group_name:
+                continue
+            subject = claim["subject_catalogue_ids"][0]
+            if number in group_matches or subject in group_matches_by_subject:
+                raise ValueError(
+                    "canonical matches require unique numbers and subjects per group"
+                )
+            reviewed = group["networks"][number]
+            definition = group_definitions[number][1]["claim"]
+            source_row = catalogue_by_id[subject]
+            inventory = definition["component_inventory"]
+            if (
+                evidence_id != f"rice-{subject}-canonical-network-{number}-match"
+                or record["source_id"] != group["rice_source_id"]
+                or record["provenance_level"] != "rice-derived-structural-fact"
+                or record["verification_state"] != "cross-checked"
+                or record["locator"] != {"repository_path": group["report_path"]}
+                or subject != reviewed[0]
+                or claim["representative_descriptor"] != reviewed[1]
+                or source_row["representative_descriptor"] != reviewed[1]
+                or (source_row["r"], source_row["l"], source_row["c"])
+                != (inventory["r"], inventory["l"], inventory["c"])
+                or source_row["rlc"] != definition["element_count"]
+                or claim["fixture_id"] != definition["fixture_id"]
+            ):
+                raise ValueError(
+                    "canonical match disagrees with its reviewed group, immutable "
+                    "catalogue row, definition, or report provenance"
+                )
+            group_matches[number] = (evidence_id, record)
+            group_matches_by_subject[subject] = (evidence_id, record)
+            evidence_group_by_id[evidence_id] = group_name
+        if set(group_matches) != expected_numbers or set(group_matches_by_subject) != expected_subjects:
+            raise ValueError(f"{group_name} canonical match inventory is incomplete")
+
+        aggregate_id = group["aggregate_id"]
+        aggregate_record = aggregates[aggregate_id]
+        aggregate = aggregate_record["claim"]
         if (
-            evidence_id != f"ms-2019-canonical-network-{number}-definition"
-            or record["source_id"] != NONGENERIC_AGGREGATE_SOURCE_ID
-            or not _is_authoritative(record)
-            or record["locator"] != claim["diagram_locator"]
-            or claim["figure_locator"]
-            != {**LOW_ORDER_FIGURE_LOCATOR, "network_number": number}
-            or claim["class_table_locator"]
-            != {**LOW_ORDER_CLASS_TABLE_LOCATOR, "network_number": number}
+            aggregate_record["source_id"] != group["rice_source_id"]
+            or aggregate_record["provenance_level"] != "rice-derived-structural-fact"
+            or aggregate_record["verification_state"] != "cross-checked"
+            or aggregate_record["locator"] != {"repository_path": group["report_path"]}
+            or set(aggregate["canonical_network_numbers"]) != expected_numbers
+            or set(aggregate["subject_catalogue_ids"]) != expected_subjects
         ):
             raise ValueError(
-                "canonical definition requires exact publication provenance and locators"
+                f"{group_name} aggregate requires the exact reviewed group scope "
+                "and report provenance"
             )
-        definition_by_number[number] = (evidence_id, record)
-    if set(definition_by_number) != set(REVIEWED_LOW_ORDER_CANONICAL_NETWORKS):
-        raise ValueError("low-order canonical definition number set is incomplete")
+        evidence_group_by_id[aggregate_id] = group_name
 
-    match_by_number: dict[int, tuple[str, dict[str, Any]]] = {}
-    match_by_subject: dict[str, tuple[str, dict[str, Any]]] = {}
-    for evidence_id, record in matches.items():
-        claim = record["claim"]
-        number = claim["canonical_network_number"]
-        subject = claim["subject_catalogue_ids"][0]
-        if number in match_by_number or subject in match_by_subject:
-            raise ValueError(
-                "low-order canonical matches require unique numbers and subjects"
-            )
+        computation_id = group["computation_id"]
+        computation = canonical_computations[computation_id]
+        fixed_payload = {
+            field: computation.get(field) for field in group["fixed_computation"]
+        }
+        if fixed_payload != group["fixed_computation"]:
+            raise ValueError(f"{group_name} computation must use the reviewed fixed payload")
         if (
-            evidence_id != f"rice-{subject}-canonical-network-{number}-match"
-            or record["source_id"] != LOW_ORDER_RICE_SOURCE_ID
-            or record["provenance_level"] != "rice-derived-structural-fact"
-            or record["verification_state"] != "cross-checked"
-            or record["locator"] != {"repository_path": LOW_ORDER_REPORT_PATH}
+            set(computation["canonical_network_numbers"]) != expected_numbers
+            or set(computation["subject_catalogue_ids"]) != expected_subjects
+            or set(computation["canonical_definition_evidence_record_ids"])
+            != {item[0] for item in group_definitions.values()}
+            or set(computation["verified_evidence_record_ids"])
+            != {item[0] for item in group_matches.values()}
         ):
             raise ValueError(
-                "canonical match requires exact reviewed report provenance and locator"
+                f"{group_name} computation requires exact canonical definition "
+                "and match scope"
             )
-        source_row = catalogue_by_id[subject]
-        reviewed = REVIEWED_LOW_ORDER_CANONICAL_NETWORKS[number]
-        if (
-            source_row["representative_descriptor"] != claim["representative_descriptor"]
-            or (source_row["r"], source_row["l"], source_row["c"])
-            != reviewed[3]
-            or source_row["rlc"] != reviewed[2]
-            or claim["fixture_id"]
-            != definition_by_number[number][1]["claim"]["fixture_id"]
-        ):
-            raise ValueError(
-                "canonical match disagrees with its immutable catalogue row or definition"
-            )
-        match_by_number[number] = (evidence_id, record)
-        match_by_subject[subject] = (evidence_id, record)
-    expected_subjects = {
-        value[0] for value in REVIEWED_LOW_ORDER_CANONICAL_NETWORKS.values()
-    }
-    if (
-        set(match_by_number) != set(definition_by_number)
-        or set(match_by_subject) != expected_subjects
-        or set(aggregate["canonical_network_numbers"]) != set(definition_by_number)
-        or set(aggregate["subject_catalogue_ids"]) != set(match_by_subject)
-    ):
-        raise ValueError(
-            "low-order aggregate, definitions, and subject matches must be complete"
-        )
+        definition_by_group[group_name] = group_definitions
+        match_by_group[group_name] = group_matches
 
-    computation = canonical_computations[0]
-    fixed_payload = {
-        field: computation.get(field) for field in LOW_ORDER_COMPUTATION_FIXED_PAYLOAD
+    controlled_definition_ids = {
+        item[0] for group in definition_by_group.values() for item in group.values()
     }
-    if fixed_payload != LOW_ORDER_COMPUTATION_FIXED_PAYLOAD:
-        raise ValueError(
-            "low-order computation must use the reviewed fixed reproduction payload"
-        )
-    if (
-        set(computation["canonical_network_numbers"]) != set(definition_by_number)
-        or set(computation["subject_catalogue_ids"]) != set(match_by_subject)
-        or set(computation["canonical_definition_evidence_record_ids"])
-        != set(definitions)
-        or set(computation["verified_evidence_record_ids"]) != set(matches)
-    ):
-        raise ValueError(
-            "low-order computation requires exact canonical definition and match scope"
-        )
-
-    reviewed_numbers = set(REVIEWED_LOW_ORDER_CANONICAL_NETWORKS)
-    reviewed_definition_ids = set(definitions)
-    reviewed_match_ids = set(matches)
-    reviewed_evidence_ids = {
-        LOW_ORDER_AGGREGATE_ID,
-        *reviewed_definition_ids,
-        *reviewed_match_ids,
+    controlled_match_ids = {
+        item[0] for group in match_by_group.values() for item in group.values()
     }
+    if set(definitions) != controlled_definition_ids or set(matches) != controlled_match_ids:
+        raise ValueError(
+            "canonical definitions and matches must belong to exactly one reviewed group"
+        )
 
     def collect_evidence_record_ids(value: Any) -> set[str]:
-        """Collect structurally named evidence references from a valid assertion."""
         collected: set[str] = set()
         if isinstance(value, dict):
             for key, nested in value.items():
-                if key == "evidence_record_ids" or key.endswith(
-                    "_evidence_record_ids"
-                ):
+                if key == "evidence_record_ids" or key.endswith("_evidence_record_ids"):
                     collected.update(nested)
                 collected.update(collect_evidence_record_ids(nested))
         elif isinstance(value, list):
@@ -2926,79 +3592,84 @@ def _validate_canonical_identity_groups(
     def cited_computation_evidence_ids(assertion: dict[str, Any]) -> set[str]:
         collected: set[str] = set()
         for computation_id in assertion["computational_cross_check_ids"]:
-            collected.update(
-                collect_evidence_record_ids(computations[computation_id])
-            )
+            collected.update(collect_evidence_record_ids(computations[computation_id]))
         return collected
 
-    # The version-5 consumer boundary covers status, basis, computation
-    # references and their machine evidence scopes, canonical identifier
-    # values, and every structurally named evidence-reference path recursively.
-    # Editorial prose is outside it.
-    def consumes_low_order_identity(assertion: dict[str, Any]) -> bool:
-        if assertion["comparison_status"] == "derived-canonical-identity-match":
-            return True
-        if LOW_ORDER_IDENTITY_EVIDENCE_BASIS in assertion["evidence_basis"]:
-            return True
-        if reviewed_evidence_ids & collect_evidence_record_ids(assertion):
-            return True
-        if reviewed_evidence_ids & cited_computation_evidence_ids(assertion):
-            return True
-        if LOW_ORDER_COMPUTATION_ID in assertion["computational_cross_check_ids"]:
-            return True
+    # Version 6 resolves every machine-semantic identity channel to a closed
+    # reviewed group. Editorial prose remains outside the machine contract.
+    def consumed_canonical_groups(assertion: dict[str, Any]) -> tuple[bool, set[str]]:
+        generic_channel = (
+            assertion["comparison_status"] == "derived-canonical-identity-match"
+            or LOW_ORDER_IDENTITY_EVIDENCE_BASIS in assertion["evidence_basis"]
+        )
+        referenced_ids = (
+            collect_evidence_record_ids(assertion)
+            | cited_computation_evidence_ids(assertion)
+        )
+        groups = {
+            evidence_group_by_id[evidence_id]
+            for evidence_id in referenced_ids if evidence_id in evidence_group_by_id
+        }
+        for computation_id in assertion["computational_cross_check_ids"]:
+            for group_name, group in CANONICAL_IDENTITY_GROUPS.items():
+                if computation_id == group["computation_id"]:
+                    groups.add(group_name)
         for identifier in assertion["historical_identifiers"]:
-            if (
-                identifier["scheme"] == "morelli-smith-canonical-network"
-                and identifier["value"] in reviewed_numbers
-            ):
-                return True
-        return False
+            if identifier["scheme"] == "morelli-smith-canonical-network":
+                owner = number_owners.get(identifier["value"])
+                if owner is not None:
+                    groups.add(owner)
+        return generic_channel or bool(groups), groups
 
-    if any(consumes_low_order_identity(rule) for rule in rules):
+    if any(consumed_canonical_groups(rule)[0] for rule in rules):
         raise ValueError(
-            "canonical identity evidence is explicit-record only and cannot "
-            "support a rule"
+            "canonical identity evidence is explicit-record only and cannot support a rule"
         )
 
-    consumers = {
-        catalogue_id: assertion
-        for catalogue_id, assertion in explicit.items()
-        if consumes_low_order_identity(assertion)
-    }
-    if consumers:
-        if any(
-            assertion["comparison_status"] != "derived-canonical-identity-match"
-            for assertion in consumers.values()
-        ):
+    consumers_by_group = {group_name: {} for group_name in CANONICAL_IDENTITY_GROUPS}
+    for catalogue_id, assertion in explicit.items():
+        consumes, groups = consumed_canonical_groups(assertion)
+        if not consumes:
+            continue
+        if assertion["comparison_status"] != "derived-canonical-identity-match":
             raise ValueError(
-                "low-order canonical identity evidence and identifiers require "
+                "canonical identity evidence and identifiers require "
                 "derived-canonical-identity-match"
             )
+        if len(groups) != 1:
+            raise ValueError(
+                "canonical identity consumer must resolve to exactly one reviewed group"
+            )
+        consumers_by_group[next(iter(groups))][catalogue_id] = assertion
+
+    for group_name, consumers in consumers_by_group.items():
+        group = CANONICAL_IDENTITY_GROUPS[group_name]
+        expected_subjects = {reviewed[0] for reviewed in group["networks"].values()}
+        if not consumers:
+            continue
         if set(consumers) != expected_subjects:
             raise ValueError(
-                "canonical identity application must include the complete 25-row group"
+                f"canonical identity application must include the complete "
+                f"{len(expected_subjects)}-row group ({group_name})"
             )
+        number_by_subject = {
+            reviewed[0]: number for number, reviewed in group["networks"].items()
+        }
         for subject, assertion in consumers.items():
-            number = next(
-                number
-                for number, reviewed in REVIEWED_LOW_ORDER_CANONICAL_NETWORKS.items()
-                if reviewed[0] == subject
-            )
+            number = number_by_subject[subject]
             required_evidence = {
-                LOW_ORDER_AGGREGATE_ID,
-                definition_by_number[number][0],
-                match_by_number[number][0],
+                group["aggregate_id"],
+                definition_by_group[group_name][number][0],
+                match_by_group[group_name][number][0],
             }
             if (
                 set(assertion["evidence_record_ids"]) != required_evidence
-                or assertion["computational_cross_check_ids"]
-                != [LOW_ORDER_COMPUTATION_ID]
+                or assertion["computational_cross_check_ids"] != [group["computation_id"]]
             ):
                 raise ValueError(
                     "canonical identity member requires its exact group evidence and "
                     "common computation"
                 )
-
 
 def _validate_target(
     target: Any, evidence: dict[str, dict[str, Any]]
