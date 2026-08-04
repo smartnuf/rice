@@ -39,6 +39,12 @@ once the cited sources and reduction definitions are aligned.
 - Implemented the format-version-5 structured identity contract and complete
   25-definition/25-match evidence group from the same reviewed report. It
   validates the authoritative numbered diagrams, unique subject-bound RICE
-  matches, and an all-or-nothing later application. The 25 historical
-  identifiers and retained dispositions remain unapplied; all 108 survivors
-  are still unresolved, so the numbering task remains `prog`.
+  matches, and an all-or-nothing later application. At that contract-only
+  milestone the 25 historical identifiers and retained dispositions were
+  unapplied and all 108 survivors were unresolved.
+- Applied the reviewed low-order identity group. Exactly 25 production rows now
+  carry searchable `morelli-smith-canonical-network` identifiers and retained
+  dispositions, joined to their authoritative numbered definitions and exact
+  subject-bound RICE matches. The remaining 83 canonical networks are still
+  unmapped, and no graph assignments or 108-to-62 classification were added,
+  so this task remains `prog`.

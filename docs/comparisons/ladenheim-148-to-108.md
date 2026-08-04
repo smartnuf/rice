@@ -2,10 +2,10 @@
 
 This is an evidence ledger for comparing RICE's reproduced structural
 148-record catalogue with the reported canonical 108-network catalogue. It is
-not a reproduction of the 108 catalogue. The committed evidence now maps all
-forty proposed exclusions through reviewed unique, subject-bound structural,
-and nongeneric-simplification evidence and leaves the other 108 records
-unresolved.
+not a reproduction of the complete 108 catalogue. The committed evidence maps
+all forty proposed exclusions and now positively identifies the complete
+reviewed 25-member one-, two-, and three-element group. The other 83 survivors
+remain unresolved.
 
 ## Two different catalogue layers
 
@@ -99,9 +99,10 @@ transcribes all 25 one-, two-, and three-element canonical diagrams, records
 their nine source subfamilies and 21 source equivalence classes, and
 independently obtains 25 distinct unique RICE structural matches. It keeps
 network identity, orbit membership, and source realizability-set equivalence
-separate. This repository evidence does not populate production historical
-identifiers or retained dispositions, reproduce the complete canonical 108, or
-begin the 108-to-62 production classification.
+separate. The reviewed format-version-5 route now uses this repository evidence
+to populate exactly those 25 historical identifiers and retained dispositions;
+it does not reproduce the complete canonical 108 or begin the 108-to-62
+production classification.
 
 Previous research workspaces contain useful graph descriptions, images,
 descriptor transcriptions, and computational results. Those artefacts can help
@@ -278,12 +279,11 @@ Version 5 adds the explicit-only `derived-canonical-identity-match` route and
 the `authoritative-canonical-diagram-plus-subject-bound-rice-match` basis. The
 complete low-order structured group joins 25 authoritative numbered diagram
 definitions to 25 unique subject-bound RICE structural matches and one exact
-computation from the reviewed low-order report. A later application must retain
-all 25 subjects together and assign each exactly its matched
+computation from the reviewed low-order report. The production application
+retains all 25 subjects together and assigns each exactly its matched
 `morelli-smith-canonical-network` historical identifier. The publication's
 orbit and equivalence-class labels remain contextual source facts, not alternate
-proofs of identity. This contract-only change does not yet apply those retained
-dispositions or identifiers.
+proofs of identity.
 
 ## Version 5 validation boundary
 
@@ -296,9 +296,7 @@ hygiene. Unknown fields are rejected rather than copied into the ledger.
 Version 5 does not represent ambiguous candidate mappings. A later extension
 must record the finite candidate set, evidence for each candidate, the comparison
 relation, and why the evidence does not distinguish them. Also deferred are real
-basic-graph assignments, application of the reviewed low-order retained
-canonical membership and numbering, all remaining canonical network numbering,
-and transformation
+basic-graph assignments, all remaining canonical network numbering, and transformation
 proofs beyond the reviewed Zobel reports. Absence of those schema
 objects establishes none of those claims.
 
@@ -309,14 +307,15 @@ objects establishes none of those claims.
 | `derived-unique-match` | 12 |
 | `derived-structural-match` | 20 |
 | `derived-nongeneric-simplification-match` | 8 |
-| `unresolved` | 108 |
+| `derived-canonical-identity-match` | 25 |
+| `unresolved` | 83 |
 | **Total** | **148** |
 
 | Proposed disposition | Rows |
 |---|---:|
 | `exclude` | 40 |
-| `retain` | 0 |
-| `unresolved` | 108 |
+| `retain` | 25 |
+| `unresolved` | 83 |
 | **Total** | **148** |
 
 | Exclusion category | Rows |
@@ -325,7 +324,8 @@ objects establishes none of those claims.
 | `zobel-four-element` | 4 |
 | `zobel-five-element-series-parallel` | 20 |
 | `other-canonical-exclusion` | 8 |
-| `unresolved` | 108 |
+| `none` | 25 |
+| `unresolved` | 83 |
 | **Total** | **148** |
 
 The structural catalogue contains exactly eight records with `R=4` and
@@ -402,13 +402,15 @@ the route records a positive-finite four-element Cauer--Foster realisation; on
 `delta = 0` it records a separate two-element `R-X` realisation. Neither route
 asserts network equivalence or unconditional named-target containment.
 
-The remaining 108 entries are unresolved rather than retained; this ledger
-does not positively identify them as the canonical catalogue.
+The complete reviewed low-order group contributes 25 retained rows with exact
+cross-checked canonical network identifiers. The remaining 83 survivors are
+unresolved rather than retained; this ledger therefore does not positively
+identify the complete canonical catalogue.
 
-Production basic-graph assignments and canonical network identities are
-intentionally deferred to later focused changes. Every
-`basic_graph_assignment` remains null, every historical identifier list remains
-empty, and no record is retained.
+Production basic-graph assignments remain deferred: every
+`basic_graph_assignment` is null. Exactly 25 historical identifier lists are
+populated by the reviewed low-order application, and the other 123 remain
+empty.
 
 Mapped exclusion counts are consistency-checked against the evidence-linked
 historical targets. The total may not exceed forty, and no controlled category
@@ -435,11 +437,9 @@ paths, or unstable metadata. `--check` fails if the committed ledger differs.
 
 ## Next evidence work
 
-1. Add independently checked basic-graph fixtures and map the 148 structural
-   records without treating previous-workspace graph files as authoritative.
-2. Transcribe and validate the surviving canonical network numbers from the
+1. Transcribe and validate the remaining 83 canonical network numbers from the
    authoritative catalogue diagrams.
-3. With all forty exclusions established, review whether separate positive
-   evidence
-   also warrants marking the complementary 108 records retained and claiming
-   reproduction of the canonical catalogue.
+2. Add independently checked subject-bound matches without treating
+   previous-workspace graph files as authoritative.
+3. Only after all 108 survivors have positive identity evidence, assess whether
+   the complete canonical catalogue has been reproduced.
