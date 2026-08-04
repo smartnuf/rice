@@ -36,3 +36,9 @@ once the cited sources and reduction definitions are aligned.
   production `historical_identifiers`, canonical-number field, or positive
   disposition has been applied. The remaining 83 canonical networks are not
   yet mapped, so this task remains `prog` rather than complete.
+- Implemented the format-version-5 structured identity contract and complete
+  25-definition/25-match evidence group from the same reviewed report. It
+  validates the authoritative numbered diagrams, unique subject-bound RICE
+  matches, and an all-or-nothing later application. The 25 historical
+  identifiers and retained dispositions remain unapplied; all 108 survivors
+  are still unresolved, so the numbering task remains `prog`.
