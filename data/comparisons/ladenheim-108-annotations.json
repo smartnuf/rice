@@ -267,7 +267,7 @@
       "operation": "Construct all 25 fixtures, scan all 148 catalogue records under the committed structural relation, and verify unique subject matches and component inventories",
       "result": "The 25 canonical fixtures have 25 distinct unique RICE structural matches with the reviewed descriptors and component inventories.",
       "independently_reproduced": true,
-      "limitations": "The report reproduction was run at the pinned evidence-only revision, where it also checked the then-current 40 excluded / 108 unresolved / 0 retained production boundary. Those disposition checks document the historical acceptance state, are not part of the durable structural-match result, and are not intended to run against a later ledger after identity application. Current application validity is enforced by the version-5 validator, generated-ledger checks, and tests; authoritative publication transcriptions remain source-verified inputs.",
+      "limitations": "The report reproduction was run at the pinned evidence-only revision, where it also checked the then-current 40 excluded / 108 unresolved / 0 retained production boundary. Those disposition checks document the historical acceptance state, are not part of the durable structural-match result, and are not intended to run against a later ledger after identity application. Current application validity is enforced by the current canonical-identity contract, generated-ledger checks, and tests; authoritative publication transcriptions remain source-verified inputs.",
       "verification_state": "cross-checked",
       "subject_catalogue_ids": [
         "lh148-11e22e7cba30a62f",
@@ -376,6 +376,162 @@
         "rice-lh148-6ab986b43f5cdc3d-canonical-network-41-match",
         "rice-lh148-0fa59ac63267cb6f-canonical-network-42-match",
         "rice-lh148-7ad37b581984a1b6-canonical-network-49-match"
+      ]
+    },
+    {
+      "cross_check_id": "rice-four-element-canonical-report-reproduction",
+      "provenance_level": "independently-reproduced-computation",
+      "implementation": "Structural-match reproduction commands in docs/comparisons/ladenheim-canonical-108-four-element-evidence.md at the pinned evidence-only revision",
+      "commit_sha": "b499f0340771feaacb535fb987a45754dbeb050e",
+      "input": "The committed 148-record catalogue and 34 independently transcribed four-element coloured canonical fixtures",
+      "operation": "Construct all 34 fixtures, scan all 148 catalogue records under the committed structural relation, and verify unique subject matches, descriptors, component inventories, and complete four-element coverage",
+      "result": "The 34 canonical fixtures have 34 distinct unique RICE structural matches with the reviewed descriptors and component inventories.",
+      "independently_reproduced": true,
+      "limitations": "The report reproduction was run at the pinned evidence-only revision, where it also checked the then-current 40 excluded / 83 unresolved / 25 retained production boundary and that all 34 four-element subjects were unresolved. Those disposition checks document the historical acceptance state, are not part of the durable structural-match result, and are not intended to run unchanged after identity application. Future production validity is enforced by the current validator, generated-ledger checks, and tests; authoritative publication transcriptions remain source-verified inputs.",
+      "verification_state": "cross-checked",
+      "subject_catalogue_ids": [
+        "lh148-e4990ea5b5b75ace",
+        "lh148-79cf9dd24646a1a1",
+        "lh148-53e805bd81449a69",
+        "lh148-40b10a9f485445a8",
+        "lh148-0f581053d03369e2",
+        "lh148-2fe78de797e54618",
+        "lh148-354f03447076bf4a",
+        "lh148-867793e6aaaea530",
+        "lh148-366759d751e644ba",
+        "lh148-0b27d33003f81032",
+        "lh148-c4a008c923682500",
+        "lh148-4d6ac6885b8efb8e",
+        "lh148-a1a63778c0bb98e8",
+        "lh148-af3808b69e5fc54f",
+        "lh148-e61bc7a989c01099",
+        "lh148-ff2aaae76070d52a",
+        "lh148-05ef035064872f96",
+        "lh148-cdfcaba8001db4d0",
+        "lh148-02b69ac8bc305a1f",
+        "lh148-fad884ca638a4191",
+        "lh148-102b49d775bd5eb8",
+        "lh148-c89875389584ae09",
+        "lh148-343285fa13b9f794",
+        "lh148-5a15c54aa65b57dc",
+        "lh148-b9495748ed67c6d6",
+        "lh148-47aef84ec8f4741c",
+        "lh148-4fef33c7e96b6566",
+        "lh148-67980e5858742b26",
+        "lh148-21e4f9e2ce897b40",
+        "lh148-3419842c4cffff68",
+        "lh148-68712beedefbc0fa",
+        "lh148-8a1860e27fc40c7f",
+        "lh148-5cb1f71c6efaef26",
+        "lh148-74be9e435c3d69b8"
+      ],
+      "canonical_network_numbers": [
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        62,
+        63,
+        71,
+        72,
+        73,
+        74,
+        87,
+        88,
+        96,
+        97
+      ],
+      "canonical_definition_evidence_record_ids": [
+        "ms-2019-canonical-network-20-definition",
+        "ms-2019-canonical-network-21-definition",
+        "ms-2019-canonical-network-22-definition",
+        "ms-2019-canonical-network-23-definition",
+        "ms-2019-canonical-network-24-definition",
+        "ms-2019-canonical-network-25-definition",
+        "ms-2019-canonical-network-28-definition",
+        "ms-2019-canonical-network-29-definition",
+        "ms-2019-canonical-network-30-definition",
+        "ms-2019-canonical-network-31-definition",
+        "ms-2019-canonical-network-32-definition",
+        "ms-2019-canonical-network-33-definition",
+        "ms-2019-canonical-network-35-definition",
+        "ms-2019-canonical-network-36-definition",
+        "ms-2019-canonical-network-37-definition",
+        "ms-2019-canonical-network-38-definition",
+        "ms-2019-canonical-network-39-definition",
+        "ms-2019-canonical-network-40-definition",
+        "ms-2019-canonical-network-43-definition",
+        "ms-2019-canonical-network-44-definition",
+        "ms-2019-canonical-network-45-definition",
+        "ms-2019-canonical-network-46-definition",
+        "ms-2019-canonical-network-47-definition",
+        "ms-2019-canonical-network-48-definition",
+        "ms-2019-canonical-network-62-definition",
+        "ms-2019-canonical-network-63-definition",
+        "ms-2019-canonical-network-71-definition",
+        "ms-2019-canonical-network-72-definition",
+        "ms-2019-canonical-network-73-definition",
+        "ms-2019-canonical-network-74-definition",
+        "ms-2019-canonical-network-87-definition",
+        "ms-2019-canonical-network-88-definition",
+        "ms-2019-canonical-network-96-definition",
+        "ms-2019-canonical-network-97-definition"
+      ],
+      "verified_evidence_record_ids": [
+        "rice-lh148-e4990ea5b5b75ace-canonical-network-20-match",
+        "rice-lh148-79cf9dd24646a1a1-canonical-network-21-match",
+        "rice-lh148-53e805bd81449a69-canonical-network-22-match",
+        "rice-lh148-40b10a9f485445a8-canonical-network-23-match",
+        "rice-lh148-0f581053d03369e2-canonical-network-24-match",
+        "rice-lh148-2fe78de797e54618-canonical-network-25-match",
+        "rice-lh148-354f03447076bf4a-canonical-network-28-match",
+        "rice-lh148-867793e6aaaea530-canonical-network-29-match",
+        "rice-lh148-366759d751e644ba-canonical-network-30-match",
+        "rice-lh148-0b27d33003f81032-canonical-network-31-match",
+        "rice-lh148-c4a008c923682500-canonical-network-32-match",
+        "rice-lh148-4d6ac6885b8efb8e-canonical-network-33-match",
+        "rice-lh148-a1a63778c0bb98e8-canonical-network-35-match",
+        "rice-lh148-af3808b69e5fc54f-canonical-network-36-match",
+        "rice-lh148-e61bc7a989c01099-canonical-network-37-match",
+        "rice-lh148-ff2aaae76070d52a-canonical-network-38-match",
+        "rice-lh148-05ef035064872f96-canonical-network-39-match",
+        "rice-lh148-cdfcaba8001db4d0-canonical-network-40-match",
+        "rice-lh148-02b69ac8bc305a1f-canonical-network-43-match",
+        "rice-lh148-fad884ca638a4191-canonical-network-44-match",
+        "rice-lh148-102b49d775bd5eb8-canonical-network-45-match",
+        "rice-lh148-c89875389584ae09-canonical-network-46-match",
+        "rice-lh148-343285fa13b9f794-canonical-network-47-match",
+        "rice-lh148-5a15c54aa65b57dc-canonical-network-48-match",
+        "rice-lh148-b9495748ed67c6d6-canonical-network-62-match",
+        "rice-lh148-47aef84ec8f4741c-canonical-network-63-match",
+        "rice-lh148-4fef33c7e96b6566-canonical-network-71-match",
+        "rice-lh148-67980e5858742b26-canonical-network-72-match",
+        "rice-lh148-21e4f9e2ce897b40-canonical-network-73-match",
+        "rice-lh148-3419842c4cffff68-canonical-network-74-match",
+        "rice-lh148-68712beedefbc0fa-canonical-network-87-match",
+        "rice-lh148-8a1860e27fc40c7f-canonical-network-88-match",
+        "rice-lh148-5cb1f71c6efaef26-canonical-network-96-match",
+        "rice-lh148-74be9e435c3d69b8-canonical-network-97-match"
       ]
     }
   ],
@@ -4176,9 +4332,2525 @@
       "provenance_level": "rice-derived-structural-fact",
       "source_id": "rice-canonical-108-low-order-report",
       "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-definition",
+        "canonical_network_number": 20,
+        "fixture_id": "ms-c108-four-20",
+        "element_count": 4,
+        "component_inventory": {
+          "r": 2,
+          "l": 0,
+          "c": 2
+        },
+        "subfamily": "IVA",
+        "source_equivalence_class": "IV_A^4",
+        "source_orbit": [
+          20,
+          28,
+          35,
+          43
+        ],
+        "diagram_locator": {
+          "appendix": "D",
+          "printed_page": 138,
+          "pdf_page_index": 144,
+          "network_number": 20
+        },
+        "figure_locator": {
+          "figure": "6.2",
+          "printed_page": 50,
+          "pdf_page_index": 56,
+          "network_number": 20
+        },
+        "class_table_locator": {
+          "table": "6.11",
+          "printed_page": 58,
+          "pdf_page_index": 64,
+          "network_number": 20
+        }
+      },
+      "evidence_id": "ms-2019-canonical-network-20-definition",
+      "locator": {
+        "appendix": "D",
+        "printed_page": 138,
+        "pdf_page_index": 144,
+        "network_number": 20
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 20 with the recorded four-element topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-match",
+        "subject_catalogue_ids": [
+          "lh148-e4990ea5b5b75ace"
+        ],
+        "canonical_network_number": 20,
+        "fixture_id": "ms-c108-four-20",
+        "representative_descriptor": "0-2:C;0-2:R;1-3:C;2-3:R",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "matched": true
+      },
+      "evidence_id": "rice-lh148-e4990ea5b5b75ace-canonical-network-20-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-four-element-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 20 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-four-element-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-definition",
+        "canonical_network_number": 21,
+        "fixture_id": "ms-c108-four-21",
+        "element_count": 4,
+        "component_inventory": {
+          "r": 2,
+          "l": 0,
+          "c": 2
+        },
+        "subfamily": "IVA",
+        "source_equivalence_class": "IV_A^4",
+        "source_orbit": [
+          21,
+          29,
+          36,
+          44
+        ],
+        "diagram_locator": {
+          "appendix": "D",
+          "printed_page": 138,
+          "pdf_page_index": 144,
+          "network_number": 21
+        },
+        "figure_locator": {
+          "figure": "6.2",
+          "printed_page": 50,
+          "pdf_page_index": 56,
+          "network_number": 21
+        },
+        "class_table_locator": {
+          "table": "6.11",
+          "printed_page": 58,
+          "pdf_page_index": 64,
+          "network_number": 21
+        }
+      },
+      "evidence_id": "ms-2019-canonical-network-21-definition",
+      "locator": {
+        "appendix": "D",
+        "printed_page": 138,
+        "pdf_page_index": 144,
+        "network_number": 21
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 21 with the recorded four-element topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-match",
+        "subject_catalogue_ids": [
+          "lh148-79cf9dd24646a1a1"
+        ],
+        "canonical_network_number": 21,
+        "fixture_id": "ms-c108-four-21",
+        "representative_descriptor": "0-2:C;0-3:C;1-2:R;2-3:R",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "matched": true
+      },
+      "evidence_id": "rice-lh148-79cf9dd24646a1a1-canonical-network-21-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-four-element-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 21 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-four-element-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-definition",
+        "canonical_network_number": 22,
+        "fixture_id": "ms-c108-four-22",
+        "element_count": 4,
+        "component_inventory": {
+          "r": 2,
+          "l": 0,
+          "c": 2
+        },
+        "subfamily": "IVA",
+        "source_equivalence_class": "IV_A^4",
+        "source_orbit": [
+          22,
+          30,
+          37,
+          45
+        ],
+        "diagram_locator": {
+          "appendix": "D",
+          "printed_page": 138,
+          "pdf_page_index": 144,
+          "network_number": 22
+        },
+        "figure_locator": {
+          "figure": "6.2",
+          "printed_page": 50,
+          "pdf_page_index": 56,
+          "network_number": 22
+        },
+        "class_table_locator": {
+          "table": "6.11",
+          "printed_page": 58,
+          "pdf_page_index": 64,
+          "network_number": 22
+        }
+      },
+      "evidence_id": "ms-2019-canonical-network-22-definition",
+      "locator": {
+        "appendix": "D",
+        "printed_page": 138,
+        "pdf_page_index": 144,
+        "network_number": 22
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 22 with the recorded four-element topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-match",
+        "subject_catalogue_ids": [
+          "lh148-53e805bd81449a69"
+        ],
+        "canonical_network_number": 22,
+        "fixture_id": "ms-c108-four-22",
+        "representative_descriptor": "0-2:C;0-3:R;1-3:C;2-3:R",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "matched": true
+      },
+      "evidence_id": "rice-lh148-53e805bd81449a69-canonical-network-22-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-four-element-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 22 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-four-element-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-definition",
+        "canonical_network_number": 23,
+        "fixture_id": "ms-c108-four-23",
+        "element_count": 4,
+        "component_inventory": {
+          "r": 2,
+          "l": 0,
+          "c": 2
+        },
+        "subfamily": "IVB",
+        "source_equivalence_class": "IV_B^4",
+        "source_orbit": [
+          23,
+          31,
+          38,
+          46
+        ],
+        "diagram_locator": {
+          "appendix": "D",
+          "printed_page": 139,
+          "pdf_page_index": 145,
+          "network_number": 23
+        },
+        "figure_locator": {
+          "figure": "6.2",
+          "printed_page": 50,
+          "pdf_page_index": 56,
+          "network_number": 23
+        },
+        "class_table_locator": {
+          "table": "6.11",
+          "printed_page": 59,
+          "pdf_page_index": 65,
+          "network_number": 23
+        }
+      },
+      "evidence_id": "ms-2019-canonical-network-23-definition",
+      "locator": {
+        "appendix": "D",
+        "printed_page": 139,
+        "pdf_page_index": 145,
+        "network_number": 23
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 23 with the recorded four-element topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-match",
+        "subject_catalogue_ids": [
+          "lh148-40b10a9f485445a8"
+        ],
+        "canonical_network_number": 23,
+        "fixture_id": "ms-c108-four-23",
+        "representative_descriptor": "0-2:C;0-3:C;1-2:R;1-3:R",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "matched": true
+      },
+      "evidence_id": "rice-lh148-40b10a9f485445a8-canonical-network-23-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-four-element-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 23 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-four-element-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-definition",
+        "canonical_network_number": 24,
+        "fixture_id": "ms-c108-four-24",
+        "element_count": 4,
+        "component_inventory": {
+          "r": 2,
+          "l": 1,
+          "c": 1
+        },
+        "subfamily": "IVC",
+        "source_equivalence_class": "IV_C^4",
+        "source_orbit": [
+          24,
+          33,
+          40,
+          48
+        ],
+        "diagram_locator": {
+          "appendix": "D",
+          "printed_page": 139,
+          "pdf_page_index": 145,
+          "network_number": 24
+        },
+        "figure_locator": {
+          "figure": "6.2",
+          "printed_page": 50,
+          "pdf_page_index": 56,
+          "network_number": 24
+        },
+        "class_table_locator": {
+          "table": "6.11",
+          "printed_page": 59,
+          "pdf_page_index": 65,
+          "network_number": 24
+        }
+      },
+      "evidence_id": "ms-2019-canonical-network-24-definition",
+      "locator": {
+        "appendix": "D",
+        "printed_page": 139,
+        "pdf_page_index": 145,
+        "network_number": 24
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 24 with the recorded four-element topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-match",
+        "subject_catalogue_ids": [
+          "lh148-0f581053d03369e2"
+        ],
+        "canonical_network_number": 24,
+        "fixture_id": "ms-c108-four-24",
+        "representative_descriptor": "0-2:C;1-2:R;1-3:L;2-3:R",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "matched": true
+      },
+      "evidence_id": "rice-lh148-0f581053d03369e2-canonical-network-24-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-four-element-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 24 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-four-element-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-definition",
+        "canonical_network_number": 25,
+        "fixture_id": "ms-c108-four-25",
+        "element_count": 4,
+        "component_inventory": {
+          "r": 2,
+          "l": 1,
+          "c": 1
+        },
+        "subfamily": "IVC",
+        "source_equivalence_class": "IV_C^4",
+        "source_orbit": [
+          25,
+          32,
+          39,
+          47
+        ],
+        "diagram_locator": {
+          "appendix": "D",
+          "printed_page": 139,
+          "pdf_page_index": 145,
+          "network_number": 25
+        },
+        "figure_locator": {
+          "figure": "6.2",
+          "printed_page": 50,
+          "pdf_page_index": 56,
+          "network_number": 25
+        },
+        "class_table_locator": {
+          "table": "6.11",
+          "printed_page": 59,
+          "pdf_page_index": 65,
+          "network_number": 25
+        }
+      },
+      "evidence_id": "ms-2019-canonical-network-25-definition",
+      "locator": {
+        "appendix": "D",
+        "printed_page": 139,
+        "pdf_page_index": 145,
+        "network_number": 25
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 25 with the recorded four-element topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-match",
+        "subject_catalogue_ids": [
+          "lh148-2fe78de797e54618"
+        ],
+        "canonical_network_number": 25,
+        "fixture_id": "ms-c108-four-25",
+        "representative_descriptor": "0-2:C;1-3:L;1-3:R;2-3:R",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "matched": true
+      },
+      "evidence_id": "rice-lh148-2fe78de797e54618-canonical-network-25-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-four-element-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 25 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-four-element-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-definition",
+        "canonical_network_number": 28,
+        "fixture_id": "ms-c108-four-28",
+        "element_count": 4,
+        "component_inventory": {
+          "r": 2,
+          "l": 2,
+          "c": 0
+        },
+        "subfamily": "IVA",
+        "source_equivalence_class": "IV_A^2",
+        "source_orbit": [
+          20,
+          28,
+          35,
+          43
+        ],
+        "diagram_locator": {
+          "appendix": "D",
+          "printed_page": 138,
+          "pdf_page_index": 144,
+          "network_number": 28
+        },
+        "figure_locator": {
+          "figure": "6.2",
+          "printed_page": 50,
+          "pdf_page_index": 56,
+          "network_number": 28
+        },
+        "class_table_locator": {
+          "table": "6.11",
+          "printed_page": 58,
+          "pdf_page_index": 64,
+          "network_number": 28
+        }
+      },
+      "evidence_id": "ms-2019-canonical-network-28-definition",
+      "locator": {
+        "appendix": "D",
+        "printed_page": 138,
+        "pdf_page_index": 144,
+        "network_number": 28
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 28 with the recorded four-element topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-match",
+        "subject_catalogue_ids": [
+          "lh148-354f03447076bf4a"
+        ],
+        "canonical_network_number": 28,
+        "fixture_id": "ms-c108-four-28",
+        "representative_descriptor": "0-2:L;0-2:R;1-3:L;2-3:R",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "matched": true
+      },
+      "evidence_id": "rice-lh148-354f03447076bf4a-canonical-network-28-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-four-element-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 28 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-four-element-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-definition",
+        "canonical_network_number": 29,
+        "fixture_id": "ms-c108-four-29",
+        "element_count": 4,
+        "component_inventory": {
+          "r": 2,
+          "l": 2,
+          "c": 0
+        },
+        "subfamily": "IVA",
+        "source_equivalence_class": "IV_A^2",
+        "source_orbit": [
+          21,
+          29,
+          36,
+          44
+        ],
+        "diagram_locator": {
+          "appendix": "D",
+          "printed_page": 138,
+          "pdf_page_index": 144,
+          "network_number": 29
+        },
+        "figure_locator": {
+          "figure": "6.2",
+          "printed_page": 50,
+          "pdf_page_index": 56,
+          "network_number": 29
+        },
+        "class_table_locator": {
+          "table": "6.11",
+          "printed_page": 58,
+          "pdf_page_index": 64,
+          "network_number": 29
+        }
+      },
+      "evidence_id": "ms-2019-canonical-network-29-definition",
+      "locator": {
+        "appendix": "D",
+        "printed_page": 138,
+        "pdf_page_index": 144,
+        "network_number": 29
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 29 with the recorded four-element topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-match",
+        "subject_catalogue_ids": [
+          "lh148-867793e6aaaea530"
+        ],
+        "canonical_network_number": 29,
+        "fixture_id": "ms-c108-four-29",
+        "representative_descriptor": "0-2:L;0-3:L;1-2:R;2-3:R",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "matched": true
+      },
+      "evidence_id": "rice-lh148-867793e6aaaea530-canonical-network-29-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-four-element-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 29 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-four-element-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-definition",
+        "canonical_network_number": 30,
+        "fixture_id": "ms-c108-four-30",
+        "element_count": 4,
+        "component_inventory": {
+          "r": 2,
+          "l": 2,
+          "c": 0
+        },
+        "subfamily": "IVA",
+        "source_equivalence_class": "IV_A^2",
+        "source_orbit": [
+          22,
+          30,
+          37,
+          45
+        ],
+        "diagram_locator": {
+          "appendix": "D",
+          "printed_page": 138,
+          "pdf_page_index": 144,
+          "network_number": 30
+        },
+        "figure_locator": {
+          "figure": "6.2",
+          "printed_page": 50,
+          "pdf_page_index": 56,
+          "network_number": 30
+        },
+        "class_table_locator": {
+          "table": "6.11",
+          "printed_page": 58,
+          "pdf_page_index": 64,
+          "network_number": 30
+        }
+      },
+      "evidence_id": "ms-2019-canonical-network-30-definition",
+      "locator": {
+        "appendix": "D",
+        "printed_page": 138,
+        "pdf_page_index": 144,
+        "network_number": 30
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 30 with the recorded four-element topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-match",
+        "subject_catalogue_ids": [
+          "lh148-366759d751e644ba"
+        ],
+        "canonical_network_number": 30,
+        "fixture_id": "ms-c108-four-30",
+        "representative_descriptor": "0-2:L;0-3:R;1-3:L;2-3:R",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "matched": true
+      },
+      "evidence_id": "rice-lh148-366759d751e644ba-canonical-network-30-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-four-element-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 30 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-four-element-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-definition",
+        "canonical_network_number": 31,
+        "fixture_id": "ms-c108-four-31",
+        "element_count": 4,
+        "component_inventory": {
+          "r": 2,
+          "l": 2,
+          "c": 0
+        },
+        "subfamily": "IVB",
+        "source_equivalence_class": "IV_B^2",
+        "source_orbit": [
+          23,
+          31,
+          38,
+          46
+        ],
+        "diagram_locator": {
+          "appendix": "D",
+          "printed_page": 139,
+          "pdf_page_index": 145,
+          "network_number": 31
+        },
+        "figure_locator": {
+          "figure": "6.2",
+          "printed_page": 50,
+          "pdf_page_index": 56,
+          "network_number": 31
+        },
+        "class_table_locator": {
+          "table": "6.11",
+          "printed_page": 59,
+          "pdf_page_index": 65,
+          "network_number": 31
+        }
+      },
+      "evidence_id": "ms-2019-canonical-network-31-definition",
+      "locator": {
+        "appendix": "D",
+        "printed_page": 139,
+        "pdf_page_index": 145,
+        "network_number": 31
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 31 with the recorded four-element topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-match",
+        "subject_catalogue_ids": [
+          "lh148-0b27d33003f81032"
+        ],
+        "canonical_network_number": 31,
+        "fixture_id": "ms-c108-four-31",
+        "representative_descriptor": "0-2:L;0-3:L;1-2:R;1-3:R",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "matched": true
+      },
+      "evidence_id": "rice-lh148-0b27d33003f81032-canonical-network-31-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-four-element-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 31 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-four-element-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-definition",
+        "canonical_network_number": 32,
+        "fixture_id": "ms-c108-four-32",
+        "element_count": 4,
+        "component_inventory": {
+          "r": 2,
+          "l": 1,
+          "c": 1
+        },
+        "subfamily": "IVC",
+        "source_equivalence_class": "IV_C^2",
+        "source_orbit": [
+          25,
+          32,
+          39,
+          47
+        ],
+        "diagram_locator": {
+          "appendix": "D",
+          "printed_page": 139,
+          "pdf_page_index": 145,
+          "network_number": 32
+        },
+        "figure_locator": {
+          "figure": "6.2",
+          "printed_page": 50,
+          "pdf_page_index": 56,
+          "network_number": 32
+        },
+        "class_table_locator": {
+          "table": "6.11",
+          "printed_page": 59,
+          "pdf_page_index": 65,
+          "network_number": 32
+        }
+      },
+      "evidence_id": "ms-2019-canonical-network-32-definition",
+      "locator": {
+        "appendix": "D",
+        "printed_page": 139,
+        "pdf_page_index": 145,
+        "network_number": 32
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 32 with the recorded four-element topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-match",
+        "subject_catalogue_ids": [
+          "lh148-c4a008c923682500"
+        ],
+        "canonical_network_number": 32,
+        "fixture_id": "ms-c108-four-32",
+        "representative_descriptor": "0-2:C;0-2:R;1-3:L;2-3:R",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "matched": true
+      },
+      "evidence_id": "rice-lh148-c4a008c923682500-canonical-network-32-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-four-element-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 32 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-four-element-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-definition",
+        "canonical_network_number": 33,
+        "fixture_id": "ms-c108-four-33",
+        "element_count": 4,
+        "component_inventory": {
+          "r": 2,
+          "l": 1,
+          "c": 1
+        },
+        "subfamily": "IVC",
+        "source_equivalence_class": "IV_C^2",
+        "source_orbit": [
+          24,
+          33,
+          40,
+          48
+        ],
+        "diagram_locator": {
+          "appendix": "D",
+          "printed_page": 139,
+          "pdf_page_index": 145,
+          "network_number": 33
+        },
+        "figure_locator": {
+          "figure": "6.2",
+          "printed_page": 50,
+          "pdf_page_index": 56,
+          "network_number": 33
+        },
+        "class_table_locator": {
+          "table": "6.11",
+          "printed_page": 59,
+          "pdf_page_index": 65,
+          "network_number": 33
+        }
+      },
+      "evidence_id": "ms-2019-canonical-network-33-definition",
+      "locator": {
+        "appendix": "D",
+        "printed_page": 139,
+        "pdf_page_index": 145,
+        "network_number": 33
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 33 with the recorded four-element topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-match",
+        "subject_catalogue_ids": [
+          "lh148-4d6ac6885b8efb8e"
+        ],
+        "canonical_network_number": 33,
+        "fixture_id": "ms-c108-four-33",
+        "representative_descriptor": "0-2:C;0-3:R;1-3:L;2-3:R",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "matched": true
+      },
+      "evidence_id": "rice-lh148-4d6ac6885b8efb8e-canonical-network-33-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-four-element-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 33 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-four-element-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-definition",
+        "canonical_network_number": 35,
+        "fixture_id": "ms-c108-four-35",
+        "element_count": 4,
+        "component_inventory": {
+          "r": 2,
+          "l": 2,
+          "c": 0
+        },
+        "subfamily": "IVA",
+        "source_equivalence_class": "IV_A^1",
+        "source_orbit": [
+          20,
+          28,
+          35,
+          43
+        ],
+        "diagram_locator": {
+          "appendix": "D",
+          "printed_page": 138,
+          "pdf_page_index": 144,
+          "network_number": 35
+        },
+        "figure_locator": {
+          "figure": "6.2",
+          "printed_page": 50,
+          "pdf_page_index": 56,
+          "network_number": 35
+        },
+        "class_table_locator": {
+          "table": "6.11",
+          "printed_page": 58,
+          "pdf_page_index": 64,
+          "network_number": 35
+        }
+      },
+      "evidence_id": "ms-2019-canonical-network-35-definition",
+      "locator": {
+        "appendix": "D",
+        "printed_page": 138,
+        "pdf_page_index": 144,
+        "network_number": 35
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 35 with the recorded four-element topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-match",
+        "subject_catalogue_ids": [
+          "lh148-a1a63778c0bb98e8"
+        ],
+        "canonical_network_number": 35,
+        "fixture_id": "ms-c108-four-35",
+        "representative_descriptor": "0-1:L;0-1:R;0-2:L;1-2:R",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "matched": true
+      },
+      "evidence_id": "rice-lh148-a1a63778c0bb98e8-canonical-network-35-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-four-element-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 35 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-four-element-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-definition",
+        "canonical_network_number": 36,
+        "fixture_id": "ms-c108-four-36",
+        "element_count": 4,
+        "component_inventory": {
+          "r": 2,
+          "l": 2,
+          "c": 0
+        },
+        "subfamily": "IVA",
+        "source_equivalence_class": "IV_A^1",
+        "source_orbit": [
+          21,
+          29,
+          36,
+          44
+        ],
+        "diagram_locator": {
+          "appendix": "D",
+          "printed_page": 138,
+          "pdf_page_index": 144,
+          "network_number": 36
+        },
+        "figure_locator": {
+          "figure": "6.2",
+          "printed_page": 50,
+          "pdf_page_index": 56,
+          "network_number": 36
+        },
+        "class_table_locator": {
+          "table": "6.11",
+          "printed_page": 58,
+          "pdf_page_index": 64,
+          "network_number": 36
+        }
+      },
+      "evidence_id": "ms-2019-canonical-network-36-definition",
+      "locator": {
+        "appendix": "D",
+        "printed_page": 138,
+        "pdf_page_index": 144,
+        "network_number": 36
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 36 with the recorded four-element topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-match",
+        "subject_catalogue_ids": [
+          "lh148-af3808b69e5fc54f"
+        ],
+        "canonical_network_number": 36,
+        "fixture_id": "ms-c108-four-36",
+        "representative_descriptor": "0-1:R;0-2:L;0-2:R;1-2:L",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "matched": true
+      },
+      "evidence_id": "rice-lh148-af3808b69e5fc54f-canonical-network-36-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-four-element-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 36 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-four-element-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-definition",
+        "canonical_network_number": 37,
+        "fixture_id": "ms-c108-four-37",
+        "element_count": 4,
+        "component_inventory": {
+          "r": 2,
+          "l": 2,
+          "c": 0
+        },
+        "subfamily": "IVA",
+        "source_equivalence_class": "IV_A^1",
+        "source_orbit": [
+          22,
+          30,
+          37,
+          45
+        ],
+        "diagram_locator": {
+          "appendix": "D",
+          "printed_page": 138,
+          "pdf_page_index": 144,
+          "network_number": 37
+        },
+        "figure_locator": {
+          "figure": "6.2",
+          "printed_page": 50,
+          "pdf_page_index": 56,
+          "network_number": 37
+        },
+        "class_table_locator": {
+          "table": "6.11",
+          "printed_page": 58,
+          "pdf_page_index": 64,
+          "network_number": 37
+        }
+      },
+      "evidence_id": "ms-2019-canonical-network-37-definition",
+      "locator": {
+        "appendix": "D",
+        "printed_page": 138,
+        "pdf_page_index": 144,
+        "network_number": 37
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 37 with the recorded four-element topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-match",
+        "subject_catalogue_ids": [
+          "lh148-e61bc7a989c01099"
+        ],
+        "canonical_network_number": 37,
+        "fixture_id": "ms-c108-four-37",
+        "representative_descriptor": "0-1:L;0-2:L;0-2:R;1-2:R",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "matched": true
+      },
+      "evidence_id": "rice-lh148-e61bc7a989c01099-canonical-network-37-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-four-element-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 37 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-four-element-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-definition",
+        "canonical_network_number": 38,
+        "fixture_id": "ms-c108-four-38",
+        "element_count": 4,
+        "component_inventory": {
+          "r": 2,
+          "l": 2,
+          "c": 0
+        },
+        "subfamily": "IVB",
+        "source_equivalence_class": "IV_B^1",
+        "source_orbit": [
+          23,
+          31,
+          38,
+          46
+        ],
+        "diagram_locator": {
+          "appendix": "D",
+          "printed_page": 139,
+          "pdf_page_index": 145,
+          "network_number": 38
+        },
+        "figure_locator": {
+          "figure": "6.2",
+          "printed_page": 50,
+          "pdf_page_index": 56,
+          "network_number": 38
+        },
+        "class_table_locator": {
+          "table": "6.11",
+          "printed_page": 59,
+          "pdf_page_index": 65,
+          "network_number": 38
+        }
+      },
+      "evidence_id": "ms-2019-canonical-network-38-definition",
+      "locator": {
+        "appendix": "D",
+        "printed_page": 139,
+        "pdf_page_index": 145,
+        "network_number": 38
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 38 with the recorded four-element topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-match",
+        "subject_catalogue_ids": [
+          "lh148-ff2aaae76070d52a"
+        ],
+        "canonical_network_number": 38,
+        "fixture_id": "ms-c108-four-38",
+        "representative_descriptor": "0-2:L;0-2:R;1-2:L;1-2:R",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "matched": true
+      },
+      "evidence_id": "rice-lh148-ff2aaae76070d52a-canonical-network-38-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-four-element-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 38 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-four-element-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-definition",
+        "canonical_network_number": 39,
+        "fixture_id": "ms-c108-four-39",
+        "element_count": 4,
+        "component_inventory": {
+          "r": 2,
+          "l": 1,
+          "c": 1
+        },
+        "subfamily": "IVC",
+        "source_equivalence_class": "IV_C^1",
+        "source_orbit": [
+          25,
+          32,
+          39,
+          47
+        ],
+        "diagram_locator": {
+          "appendix": "D",
+          "printed_page": 139,
+          "pdf_page_index": 145,
+          "network_number": 39
+        },
+        "figure_locator": {
+          "figure": "6.2",
+          "printed_page": 50,
+          "pdf_page_index": 56,
+          "network_number": 39
+        },
+        "class_table_locator": {
+          "table": "6.11",
+          "printed_page": 59,
+          "pdf_page_index": 65,
+          "network_number": 39
+        }
+      },
+      "evidence_id": "ms-2019-canonical-network-39-definition",
+      "locator": {
+        "appendix": "D",
+        "printed_page": 139,
+        "pdf_page_index": 145,
+        "network_number": 39
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 39 with the recorded four-element topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-match",
+        "subject_catalogue_ids": [
+          "lh148-05ef035064872f96"
+        ],
+        "canonical_network_number": 39,
+        "fixture_id": "ms-c108-four-39",
+        "representative_descriptor": "0-1:L;0-1:R;0-2:C;1-2:R",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "matched": true
+      },
+      "evidence_id": "rice-lh148-05ef035064872f96-canonical-network-39-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-four-element-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 39 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-four-element-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-definition",
+        "canonical_network_number": 40,
+        "fixture_id": "ms-c108-four-40",
+        "element_count": 4,
+        "component_inventory": {
+          "r": 2,
+          "l": 1,
+          "c": 1
+        },
+        "subfamily": "IVC",
+        "source_equivalence_class": "IV_C^1",
+        "source_orbit": [
+          24,
+          33,
+          40,
+          48
+        ],
+        "diagram_locator": {
+          "appendix": "D",
+          "printed_page": 139,
+          "pdf_page_index": 145,
+          "network_number": 40
+        },
+        "figure_locator": {
+          "figure": "6.2",
+          "printed_page": 50,
+          "pdf_page_index": 56,
+          "network_number": 40
+        },
+        "class_table_locator": {
+          "table": "6.11",
+          "printed_page": 59,
+          "pdf_page_index": 65,
+          "network_number": 40
+        }
+      },
+      "evidence_id": "ms-2019-canonical-network-40-definition",
+      "locator": {
+        "appendix": "D",
+        "printed_page": 139,
+        "pdf_page_index": 145,
+        "network_number": 40
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 40 with the recorded four-element topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-match",
+        "subject_catalogue_ids": [
+          "lh148-cdfcaba8001db4d0"
+        ],
+        "canonical_network_number": 40,
+        "fixture_id": "ms-c108-four-40",
+        "representative_descriptor": "0-1:L;0-2:C;0-2:R;1-2:R",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "matched": true
+      },
+      "evidence_id": "rice-lh148-cdfcaba8001db4d0-canonical-network-40-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-four-element-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 40 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-four-element-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-definition",
+        "canonical_network_number": 43,
+        "fixture_id": "ms-c108-four-43",
+        "element_count": 4,
+        "component_inventory": {
+          "r": 2,
+          "l": 0,
+          "c": 2
+        },
+        "subfamily": "IVA",
+        "source_equivalence_class": "IV_A^3",
+        "source_orbit": [
+          20,
+          28,
+          35,
+          43
+        ],
+        "diagram_locator": {
+          "appendix": "D",
+          "printed_page": 138,
+          "pdf_page_index": 144,
+          "network_number": 43
+        },
+        "figure_locator": {
+          "figure": "6.2",
+          "printed_page": 50,
+          "pdf_page_index": 56,
+          "network_number": 43
+        },
+        "class_table_locator": {
+          "table": "6.11",
+          "printed_page": 58,
+          "pdf_page_index": 64,
+          "network_number": 43
+        }
+      },
+      "evidence_id": "ms-2019-canonical-network-43-definition",
+      "locator": {
+        "appendix": "D",
+        "printed_page": 138,
+        "pdf_page_index": 144,
+        "network_number": 43
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 43 with the recorded four-element topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-match",
+        "subject_catalogue_ids": [
+          "lh148-02b69ac8bc305a1f"
+        ],
+        "canonical_network_number": 43,
+        "fixture_id": "ms-c108-four-43",
+        "representative_descriptor": "0-1:C;0-1:R;0-2:C;1-2:R",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "matched": true
+      },
+      "evidence_id": "rice-lh148-02b69ac8bc305a1f-canonical-network-43-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-four-element-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 43 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-four-element-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-definition",
+        "canonical_network_number": 44,
+        "fixture_id": "ms-c108-four-44",
+        "element_count": 4,
+        "component_inventory": {
+          "r": 2,
+          "l": 0,
+          "c": 2
+        },
+        "subfamily": "IVA",
+        "source_equivalence_class": "IV_A^3",
+        "source_orbit": [
+          21,
+          29,
+          36,
+          44
+        ],
+        "diagram_locator": {
+          "appendix": "D",
+          "printed_page": 138,
+          "pdf_page_index": 144,
+          "network_number": 44
+        },
+        "figure_locator": {
+          "figure": "6.2",
+          "printed_page": 50,
+          "pdf_page_index": 56,
+          "network_number": 44
+        },
+        "class_table_locator": {
+          "table": "6.11",
+          "printed_page": 58,
+          "pdf_page_index": 64,
+          "network_number": 44
+        }
+      },
+      "evidence_id": "ms-2019-canonical-network-44-definition",
+      "locator": {
+        "appendix": "D",
+        "printed_page": 138,
+        "pdf_page_index": 144,
+        "network_number": 44
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 44 with the recorded four-element topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-match",
+        "subject_catalogue_ids": [
+          "lh148-fad884ca638a4191"
+        ],
+        "canonical_network_number": 44,
+        "fixture_id": "ms-c108-four-44",
+        "representative_descriptor": "0-1:R;0-2:C;0-2:R;1-2:C",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "matched": true
+      },
+      "evidence_id": "rice-lh148-fad884ca638a4191-canonical-network-44-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-four-element-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 44 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-four-element-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-definition",
+        "canonical_network_number": 45,
+        "fixture_id": "ms-c108-four-45",
+        "element_count": 4,
+        "component_inventory": {
+          "r": 2,
+          "l": 0,
+          "c": 2
+        },
+        "subfamily": "IVA",
+        "source_equivalence_class": "IV_A^3",
+        "source_orbit": [
+          22,
+          30,
+          37,
+          45
+        ],
+        "diagram_locator": {
+          "appendix": "D",
+          "printed_page": 138,
+          "pdf_page_index": 144,
+          "network_number": 45
+        },
+        "figure_locator": {
+          "figure": "6.2",
+          "printed_page": 50,
+          "pdf_page_index": 56,
+          "network_number": 45
+        },
+        "class_table_locator": {
+          "table": "6.11",
+          "printed_page": 58,
+          "pdf_page_index": 64,
+          "network_number": 45
+        }
+      },
+      "evidence_id": "ms-2019-canonical-network-45-definition",
+      "locator": {
+        "appendix": "D",
+        "printed_page": 138,
+        "pdf_page_index": 144,
+        "network_number": 45
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 45 with the recorded four-element topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-match",
+        "subject_catalogue_ids": [
+          "lh148-102b49d775bd5eb8"
+        ],
+        "canonical_network_number": 45,
+        "fixture_id": "ms-c108-four-45",
+        "representative_descriptor": "0-1:C;0-2:C;0-2:R;1-2:R",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "matched": true
+      },
+      "evidence_id": "rice-lh148-102b49d775bd5eb8-canonical-network-45-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-four-element-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 45 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-four-element-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-definition",
+        "canonical_network_number": 46,
+        "fixture_id": "ms-c108-four-46",
+        "element_count": 4,
+        "component_inventory": {
+          "r": 2,
+          "l": 0,
+          "c": 2
+        },
+        "subfamily": "IVB",
+        "source_equivalence_class": "IV_B^3",
+        "source_orbit": [
+          23,
+          31,
+          38,
+          46
+        ],
+        "diagram_locator": {
+          "appendix": "D",
+          "printed_page": 139,
+          "pdf_page_index": 145,
+          "network_number": 46
+        },
+        "figure_locator": {
+          "figure": "6.2",
+          "printed_page": 50,
+          "pdf_page_index": 56,
+          "network_number": 46
+        },
+        "class_table_locator": {
+          "table": "6.11",
+          "printed_page": 59,
+          "pdf_page_index": 65,
+          "network_number": 46
+        }
+      },
+      "evidence_id": "ms-2019-canonical-network-46-definition",
+      "locator": {
+        "appendix": "D",
+        "printed_page": 139,
+        "pdf_page_index": 145,
+        "network_number": 46
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 46 with the recorded four-element topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-match",
+        "subject_catalogue_ids": [
+          "lh148-c89875389584ae09"
+        ],
+        "canonical_network_number": 46,
+        "fixture_id": "ms-c108-four-46",
+        "representative_descriptor": "0-2:C;0-2:R;1-2:C;1-2:R",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "matched": true
+      },
+      "evidence_id": "rice-lh148-c89875389584ae09-canonical-network-46-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-four-element-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 46 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-four-element-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-definition",
+        "canonical_network_number": 47,
+        "fixture_id": "ms-c108-four-47",
+        "element_count": 4,
+        "component_inventory": {
+          "r": 2,
+          "l": 1,
+          "c": 1
+        },
+        "subfamily": "IVC",
+        "source_equivalence_class": "IV_C^3",
+        "source_orbit": [
+          25,
+          32,
+          39,
+          47
+        ],
+        "diagram_locator": {
+          "appendix": "D",
+          "printed_page": 139,
+          "pdf_page_index": 145,
+          "network_number": 47
+        },
+        "figure_locator": {
+          "figure": "6.2",
+          "printed_page": 50,
+          "pdf_page_index": 56,
+          "network_number": 47
+        },
+        "class_table_locator": {
+          "table": "6.11",
+          "printed_page": 59,
+          "pdf_page_index": 65,
+          "network_number": 47
+        }
+      },
+      "evidence_id": "ms-2019-canonical-network-47-definition",
+      "locator": {
+        "appendix": "D",
+        "printed_page": 139,
+        "pdf_page_index": 145,
+        "network_number": 47
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 47 with the recorded four-element topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-match",
+        "subject_catalogue_ids": [
+          "lh148-343285fa13b9f794"
+        ],
+        "canonical_network_number": 47,
+        "fixture_id": "ms-c108-four-47",
+        "representative_descriptor": "0-1:C;0-1:R;0-2:L;1-2:R",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "matched": true
+      },
+      "evidence_id": "rice-lh148-343285fa13b9f794-canonical-network-47-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-four-element-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 47 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-four-element-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-definition",
+        "canonical_network_number": 48,
+        "fixture_id": "ms-c108-four-48",
+        "element_count": 4,
+        "component_inventory": {
+          "r": 2,
+          "l": 1,
+          "c": 1
+        },
+        "subfamily": "IVC",
+        "source_equivalence_class": "IV_C^3",
+        "source_orbit": [
+          24,
+          33,
+          40,
+          48
+        ],
+        "diagram_locator": {
+          "appendix": "D",
+          "printed_page": 139,
+          "pdf_page_index": 145,
+          "network_number": 48
+        },
+        "figure_locator": {
+          "figure": "6.2",
+          "printed_page": 50,
+          "pdf_page_index": 56,
+          "network_number": 48
+        },
+        "class_table_locator": {
+          "table": "6.11",
+          "printed_page": 59,
+          "pdf_page_index": 65,
+          "network_number": 48
+        }
+      },
+      "evidence_id": "ms-2019-canonical-network-48-definition",
+      "locator": {
+        "appendix": "D",
+        "printed_page": 139,
+        "pdf_page_index": 145,
+        "network_number": 48
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 48 with the recorded four-element topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-match",
+        "subject_catalogue_ids": [
+          "lh148-5a15c54aa65b57dc"
+        ],
+        "canonical_network_number": 48,
+        "fixture_id": "ms-c108-four-48",
+        "representative_descriptor": "0-1:C;0-2:L;0-2:R;1-2:R",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "matched": true
+      },
+      "evidence_id": "rice-lh148-5a15c54aa65b57dc-canonical-network-48-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-four-element-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 48 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-four-element-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-definition",
+        "canonical_network_number": 62,
+        "fixture_id": "ms-c108-four-62",
+        "element_count": 4,
+        "component_inventory": {
+          "r": 2,
+          "l": 1,
+          "c": 1
+        },
+        "subfamily": "IVE",
+        "source_equivalence_class": "IV_E^2",
+        "source_orbit": [
+          62,
+          63,
+          87,
+          88
+        ],
+        "diagram_locator": {
+          "appendix": "D",
+          "printed_page": 140,
+          "pdf_page_index": 146,
+          "network_number": 62
+        },
+        "figure_locator": {
+          "figure": "6.2",
+          "printed_page": 50,
+          "pdf_page_index": 56,
+          "network_number": 62
+        },
+        "class_table_locator": {
+          "table": "6.11",
+          "printed_page": 59,
+          "pdf_page_index": 65,
+          "network_number": 62
+        }
+      },
+      "evidence_id": "ms-2019-canonical-network-62-definition",
+      "locator": {
+        "appendix": "D",
+        "printed_page": 140,
+        "pdf_page_index": 146,
+        "network_number": 62
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 62 with the recorded four-element topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-match",
+        "subject_catalogue_ids": [
+          "lh148-b9495748ed67c6d6"
+        ],
+        "canonical_network_number": 62,
+        "fixture_id": "ms-c108-four-62",
+        "representative_descriptor": "0-1:R;0-2:C;0-2:R;1-2:L",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "matched": true
+      },
+      "evidence_id": "rice-lh148-b9495748ed67c6d6-canonical-network-62-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-four-element-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 62 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-four-element-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-definition",
+        "canonical_network_number": 63,
+        "fixture_id": "ms-c108-four-63",
+        "element_count": 4,
+        "component_inventory": {
+          "r": 2,
+          "l": 1,
+          "c": 1
+        },
+        "subfamily": "IVE",
+        "source_equivalence_class": "IV_E^1",
+        "source_orbit": [
+          62,
+          63,
+          87,
+          88
+        ],
+        "diagram_locator": {
+          "appendix": "D",
+          "printed_page": 140,
+          "pdf_page_index": 146,
+          "network_number": 63
+        },
+        "figure_locator": {
+          "figure": "6.2",
+          "printed_page": 50,
+          "pdf_page_index": 56,
+          "network_number": 63
+        },
+        "class_table_locator": {
+          "table": "6.11",
+          "printed_page": 59,
+          "pdf_page_index": 65,
+          "network_number": 63
+        }
+      },
+      "evidence_id": "ms-2019-canonical-network-63-definition",
+      "locator": {
+        "appendix": "D",
+        "printed_page": 140,
+        "pdf_page_index": 146,
+        "network_number": 63
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 63 with the recorded four-element topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-match",
+        "subject_catalogue_ids": [
+          "lh148-47aef84ec8f4741c"
+        ],
+        "canonical_network_number": 63,
+        "fixture_id": "ms-c108-four-63",
+        "representative_descriptor": "0-2:C;0-3:L;1-3:R;2-3:R",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "matched": true
+      },
+      "evidence_id": "rice-lh148-47aef84ec8f4741c-canonical-network-63-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-four-element-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 63 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-four-element-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-definition",
+        "canonical_network_number": 71,
+        "fixture_id": "ms-c108-four-71",
+        "element_count": 4,
+        "component_inventory": {
+          "r": 2,
+          "l": 1,
+          "c": 1
+        },
+        "subfamily": "IVD",
+        "source_equivalence_class": "IV_D^1",
+        "source_orbit": [
+          71,
+          74
+        ],
+        "diagram_locator": {
+          "appendix": "D",
+          "printed_page": 140,
+          "pdf_page_index": 146,
+          "network_number": 71
+        },
+        "figure_locator": {
+          "figure": "6.2",
+          "printed_page": 50,
+          "pdf_page_index": 56,
+          "network_number": 71
+        },
+        "class_table_locator": {
+          "table": "6.11",
+          "printed_page": 59,
+          "pdf_page_index": 65,
+          "network_number": 71
+        }
+      },
+      "evidence_id": "ms-2019-canonical-network-71-definition",
+      "locator": {
+        "appendix": "D",
+        "printed_page": 140,
+        "pdf_page_index": 146,
+        "network_number": 71
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 71 with the recorded four-element topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-match",
+        "subject_catalogue_ids": [
+          "lh148-4fef33c7e96b6566"
+        ],
+        "canonical_network_number": 71,
+        "fixture_id": "ms-c108-four-71",
+        "representative_descriptor": "0-2:C;0-3:R;1-3:R;2-3:L",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "matched": true
+      },
+      "evidence_id": "rice-lh148-4fef33c7e96b6566-canonical-network-71-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-four-element-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 71 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-four-element-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-definition",
+        "canonical_network_number": 72,
+        "fixture_id": "ms-c108-four-72",
+        "element_count": 4,
+        "component_inventory": {
+          "r": 2,
+          "l": 1,
+          "c": 1
+        },
+        "subfamily": "IVD",
+        "source_equivalence_class": "IV_D^1",
+        "source_orbit": [
+          72,
+          73
+        ],
+        "diagram_locator": {
+          "appendix": "D",
+          "printed_page": 140,
+          "pdf_page_index": 146,
+          "network_number": 72
+        },
+        "figure_locator": {
+          "figure": "6.2",
+          "printed_page": 50,
+          "pdf_page_index": 56,
+          "network_number": 72
+        },
+        "class_table_locator": {
+          "table": "6.11",
+          "printed_page": 59,
+          "pdf_page_index": 65,
+          "network_number": 72
+        }
+      },
+      "evidence_id": "ms-2019-canonical-network-72-definition",
+      "locator": {
+        "appendix": "D",
+        "printed_page": 140,
+        "pdf_page_index": 146,
+        "network_number": 72
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 72 with the recorded four-element topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-match",
+        "subject_catalogue_ids": [
+          "lh148-67980e5858742b26"
+        ],
+        "canonical_network_number": 72,
+        "fixture_id": "ms-c108-four-72",
+        "representative_descriptor": "0-1:R;0-2:C;1-3:L;2-3:R",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "matched": true
+      },
+      "evidence_id": "rice-lh148-67980e5858742b26-canonical-network-72-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-four-element-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 72 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-four-element-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-definition",
+        "canonical_network_number": 73,
+        "fixture_id": "ms-c108-four-73",
+        "element_count": 4,
+        "component_inventory": {
+          "r": 2,
+          "l": 1,
+          "c": 1
+        },
+        "subfamily": "IVD",
+        "source_equivalence_class": "IV_D^2",
+        "source_orbit": [
+          72,
+          73
+        ],
+        "diagram_locator": {
+          "appendix": "D",
+          "printed_page": 140,
+          "pdf_page_index": 146,
+          "network_number": 73
+        },
+        "figure_locator": {
+          "figure": "6.2",
+          "printed_page": 50,
+          "pdf_page_index": 56,
+          "network_number": 73
+        },
+        "class_table_locator": {
+          "table": "6.11",
+          "printed_page": 59,
+          "pdf_page_index": 65,
+          "network_number": 73
+        }
+      },
+      "evidence_id": "ms-2019-canonical-network-73-definition",
+      "locator": {
+        "appendix": "D",
+        "printed_page": 140,
+        "pdf_page_index": 146,
+        "network_number": 73
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 73 with the recorded four-element topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-match",
+        "subject_catalogue_ids": [
+          "lh148-21e4f9e2ce897b40"
+        ],
+        "canonical_network_number": 73,
+        "fixture_id": "ms-c108-four-73",
+        "representative_descriptor": "0-2:C;0-2:L;0-2:R;1-2:R",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "matched": true
+      },
+      "evidence_id": "rice-lh148-21e4f9e2ce897b40-canonical-network-73-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-four-element-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 73 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-four-element-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-definition",
+        "canonical_network_number": 74,
+        "fixture_id": "ms-c108-four-74",
+        "element_count": 4,
+        "component_inventory": {
+          "r": 2,
+          "l": 1,
+          "c": 1
+        },
+        "subfamily": "IVD",
+        "source_equivalence_class": "IV_D^2",
+        "source_orbit": [
+          71,
+          74
+        ],
+        "diagram_locator": {
+          "appendix": "D",
+          "printed_page": 140,
+          "pdf_page_index": 146,
+          "network_number": 74
+        },
+        "figure_locator": {
+          "figure": "6.2",
+          "printed_page": 50,
+          "pdf_page_index": 56,
+          "network_number": 74
+        },
+        "class_table_locator": {
+          "table": "6.11",
+          "printed_page": 59,
+          "pdf_page_index": 65,
+          "network_number": 74
+        }
+      },
+      "evidence_id": "ms-2019-canonical-network-74-definition",
+      "locator": {
+        "appendix": "D",
+        "printed_page": 140,
+        "pdf_page_index": 146,
+        "network_number": 74
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 74 with the recorded four-element topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-match",
+        "subject_catalogue_ids": [
+          "lh148-3419842c4cffff68"
+        ],
+        "canonical_network_number": 74,
+        "fixture_id": "ms-c108-four-74",
+        "representative_descriptor": "0-1:R;0-2:C;0-2:L;1-2:R",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "matched": true
+      },
+      "evidence_id": "rice-lh148-3419842c4cffff68-canonical-network-74-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-four-element-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 74 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-four-element-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-definition",
+        "canonical_network_number": 87,
+        "fixture_id": "ms-c108-four-87",
+        "element_count": 4,
+        "component_inventory": {
+          "r": 2,
+          "l": 1,
+          "c": 1
+        },
+        "subfamily": "IVE",
+        "source_equivalence_class": "IV_E^3",
+        "source_orbit": [
+          62,
+          63,
+          87,
+          88
+        ],
+        "diagram_locator": {
+          "appendix": "D",
+          "printed_page": 140,
+          "pdf_page_index": 146,
+          "network_number": 87
+        },
+        "figure_locator": {
+          "figure": "6.2",
+          "printed_page": 50,
+          "pdf_page_index": 56,
+          "network_number": 87
+        },
+        "class_table_locator": {
+          "table": "6.11",
+          "printed_page": 59,
+          "pdf_page_index": 65,
+          "network_number": 87
+        }
+      },
+      "evidence_id": "ms-2019-canonical-network-87-definition",
+      "locator": {
+        "appendix": "D",
+        "printed_page": 140,
+        "pdf_page_index": 146,
+        "network_number": 87
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 87 with the recorded four-element topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-match",
+        "subject_catalogue_ids": [
+          "lh148-68712beedefbc0fa"
+        ],
+        "canonical_network_number": 87,
+        "fixture_id": "ms-c108-four-87",
+        "representative_descriptor": "0-2:C;0-3:L;1-2:R;2-3:R",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "matched": true
+      },
+      "evidence_id": "rice-lh148-68712beedefbc0fa-canonical-network-87-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-four-element-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 87 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-four-element-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-definition",
+        "canonical_network_number": 88,
+        "fixture_id": "ms-c108-four-88",
+        "element_count": 4,
+        "component_inventory": {
+          "r": 2,
+          "l": 1,
+          "c": 1
+        },
+        "subfamily": "IVE",
+        "source_equivalence_class": "IV_E^4",
+        "source_orbit": [
+          62,
+          63,
+          87,
+          88
+        ],
+        "diagram_locator": {
+          "appendix": "D",
+          "printed_page": 140,
+          "pdf_page_index": 146,
+          "network_number": 88
+        },
+        "figure_locator": {
+          "figure": "6.2",
+          "printed_page": 50,
+          "pdf_page_index": 56,
+          "network_number": 88
+        },
+        "class_table_locator": {
+          "table": "6.11",
+          "printed_page": 59,
+          "pdf_page_index": 65,
+          "network_number": 88
+        }
+      },
+      "evidence_id": "ms-2019-canonical-network-88-definition",
+      "locator": {
+        "appendix": "D",
+        "printed_page": 140,
+        "pdf_page_index": 146,
+        "network_number": 88
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 88 with the recorded four-element topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-match",
+        "subject_catalogue_ids": [
+          "lh148-8a1860e27fc40c7f"
+        ],
+        "canonical_network_number": 88,
+        "fixture_id": "ms-c108-four-88",
+        "representative_descriptor": "0-1:R;0-2:C;1-2:L;1-2:R",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "matched": true
+      },
+      "evidence_id": "rice-lh148-8a1860e27fc40c7f-canonical-network-88-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-four-element-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 88 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-four-element-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-definition",
+        "canonical_network_number": 96,
+        "fixture_id": "ms-c108-four-96",
+        "element_count": 4,
+        "component_inventory": {
+          "r": 2,
+          "l": 1,
+          "c": 1
+        },
+        "subfamily": "IVF",
+        "source_equivalence_class": "IV_F^2",
+        "source_orbit": [
+          96,
+          97
+        ],
+        "diagram_locator": {
+          "appendix": "D",
+          "printed_page": 140,
+          "pdf_page_index": 146,
+          "network_number": 96
+        },
+        "figure_locator": {
+          "figure": "6.2",
+          "printed_page": 50,
+          "pdf_page_index": 56,
+          "network_number": 96
+        },
+        "class_table_locator": {
+          "table": "6.11",
+          "printed_page": 59,
+          "pdf_page_index": 65,
+          "network_number": 96
+        }
+      },
+      "evidence_id": "ms-2019-canonical-network-96-definition",
+      "locator": {
+        "appendix": "D",
+        "printed_page": 140,
+        "pdf_page_index": 146,
+        "network_number": 96
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 96 with the recorded four-element topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-match",
+        "subject_catalogue_ids": [
+          "lh148-5cb1f71c6efaef26"
+        ],
+        "canonical_network_number": 96,
+        "fixture_id": "ms-c108-four-96",
+        "representative_descriptor": "0-2:C;0-2:R;1-2:L;1-2:R",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "matched": true
+      },
+      "evidence_id": "rice-lh148-5cb1f71c6efaef26-canonical-network-96-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-four-element-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 96 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-four-element-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-definition",
+        "canonical_network_number": 97,
+        "fixture_id": "ms-c108-four-97",
+        "element_count": 4,
+        "component_inventory": {
+          "r": 2,
+          "l": 1,
+          "c": 1
+        },
+        "subfamily": "IVF",
+        "source_equivalence_class": "IV_F^1",
+        "source_orbit": [
+          96,
+          97
+        ],
+        "diagram_locator": {
+          "appendix": "D",
+          "printed_page": 140,
+          "pdf_page_index": 146,
+          "network_number": 97
+        },
+        "figure_locator": {
+          "figure": "6.2",
+          "printed_page": 50,
+          "pdf_page_index": 56,
+          "network_number": 97
+        },
+        "class_table_locator": {
+          "table": "6.11",
+          "printed_page": 59,
+          "pdf_page_index": 65,
+          "network_number": 97
+        }
+      },
+      "evidence_id": "ms-2019-canonical-network-97-definition",
+      "locator": {
+        "appendix": "D",
+        "printed_page": 140,
+        "pdf_page_index": 146,
+        "network_number": 97
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 97 with the recorded four-element topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "claim_type": "canonical-network-match",
+        "subject_catalogue_ids": [
+          "lh148-74be9e435c3d69b8"
+        ],
+        "canonical_network_number": 97,
+        "fixture_id": "ms-c108-four-97",
+        "representative_descriptor": "0-2:C;0-3:L;1-2:R;1-3:R",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "matched": true
+      },
+      "evidence_id": "rice-lh148-74be9e435c3d69b8-canonical-network-97-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-four-element-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 97 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-four-element-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "claim_type": "aggregate-canonical-network-group",
+        "canonical_network_numbers": [
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          62,
+          63,
+          71,
+          72,
+          73,
+          74,
+          87,
+          88,
+          96,
+          97
+        ],
+        "subject_catalogue_ids": [
+          "lh148-e4990ea5b5b75ace",
+          "lh148-79cf9dd24646a1a1",
+          "lh148-53e805bd81449a69",
+          "lh148-40b10a9f485445a8",
+          "lh148-0f581053d03369e2",
+          "lh148-2fe78de797e54618",
+          "lh148-354f03447076bf4a",
+          "lh148-867793e6aaaea530",
+          "lh148-366759d751e644ba",
+          "lh148-0b27d33003f81032",
+          "lh148-c4a008c923682500",
+          "lh148-4d6ac6885b8efb8e",
+          "lh148-a1a63778c0bb98e8",
+          "lh148-af3808b69e5fc54f",
+          "lh148-e61bc7a989c01099",
+          "lh148-ff2aaae76070d52a",
+          "lh148-05ef035064872f96",
+          "lh148-cdfcaba8001db4d0",
+          "lh148-02b69ac8bc305a1f",
+          "lh148-fad884ca638a4191",
+          "lh148-102b49d775bd5eb8",
+          "lh148-c89875389584ae09",
+          "lh148-343285fa13b9f794",
+          "lh148-5a15c54aa65b57dc",
+          "lh148-b9495748ed67c6d6",
+          "lh148-47aef84ec8f4741c",
+          "lh148-4fef33c7e96b6566",
+          "lh148-67980e5858742b26",
+          "lh148-21e4f9e2ce897b40",
+          "lh148-3419842c4cffff68",
+          "lh148-68712beedefbc0fa",
+          "lh148-8a1860e27fc40c7f",
+          "lh148-5cb1f71c6efaef26",
+          "lh148-74be9e435c3d69b8"
+        ],
+        "counts_by_element_order": {
+          "4": 34
+        },
+        "subfamilies": [
+          "IVA",
+          "IVB",
+          "IVC",
+          "IVD",
+          "IVE",
+          "IVF"
+        ],
+        "source_orbit_count": 10,
+        "source_equivalence_class_count": 20,
+        "total_networks": 34,
+        "count_table_locator": {
+          "table": "6.2",
+          "printed_page": 49,
+          "pdf_page_index": 55
+        },
+        "figure_locator": {
+          "figure": "6.2",
+          "printed_page": 50,
+          "pdf_page_index": 56
+        },
+        "class_table_locator": {
+          "table": "6.11",
+          "printed_page": 58,
+          "pdf_page_index": 64
+        }
+      },
+      "evidence_id": "rice-four-element-canonical-network-group",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-four-element-evidence.md"
+      },
+      "paraphrase": "The reviewed four-element group joins 34 authoritative numbered diagrams to 34 distinct unique RICE structural matches while preserving source classification metadata.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-four-element-report",
+      "verification_state": "cross-checked"
     }
   ],
-  "format_version": 5,
+  "format_version": 6,
   "previous_workspace_records": [],
   "records": [
     {
@@ -5943,6 +8615,12 @@
       "citation": "RICE low-order canonical-108 evidence report.",
       "notes": "Reviewed repository evidence recording the 25 independently reproduced low-order structural matches; it is not the historical publication.",
       "source_id": "rice-canonical-108-low-order-report",
+      "source_type": "rice-documentation"
+    },
+    {
+      "citation": "RICE four-element canonical-108 evidence report.",
+      "notes": "Reviewed repository evidence for the independently reproduced four-element canonical fixture-to-catalogue correspondences.",
+      "source_id": "rice-canonical-108-four-element-report",
       "source_type": "rice-documentation"
     }
   ],

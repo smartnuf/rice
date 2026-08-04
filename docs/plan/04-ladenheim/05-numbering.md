@@ -55,3 +55,9 @@ once the cited sources and reduction definitions are aligned.
   identifiers; the 34 four-element identifiers are not yet applied, and 49
   five-element networks remain unmapped. The numbering task therefore remains
   `prog`.
+- Implemented the format-version-6 controlled group for those 34 reviewed
+  four-element mappings. Their definitions, exact subject matches, aggregate,
+  and pinned computation are now structured evidence, while production still
+  contains only the 25 applied low-order canonical identifiers. The 34
+  four-element identities remain unapplied and 49 five-element identities
+  remain to be investigated, so this task remains `prog`.
