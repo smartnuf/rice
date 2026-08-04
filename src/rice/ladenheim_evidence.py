@@ -980,9 +980,28 @@ def _validate_claim(
             required,
         )
         number = claim.get("canonical_network_number")
+        inventory = claim.get("component_inventory")
+        numeric_locators_are_strict = all(
+            isinstance(claim.get(locator_field), dict)
+            and all(
+                numeric_field not in claim[locator_field]
+                or _is_int(claim[locator_field][numeric_field])
+                for numeric_field in {
+                    "printed_page", "pdf_page_index", "network_number",
+                }
+            )
+            for locator_field in {
+                "diagram_locator", "figure_locator", "class_table_locator",
+            }
+        )
         if (
             not _is_int(number)
             or number not in REVIEWED_LOW_ORDER_CANONICAL_NETWORKS
+            or not _is_int(claim.get("element_count"))
+            or not isinstance(inventory, dict)
+            or set(inventory) != {"r", "l", "c"}
+            or not all(_is_int(inventory[field]) for field in {"r", "l", "c"})
+            or not numeric_locators_are_strict
             or {key: claim[key] for key in required - {"claim_type"}}
             != _reviewed_low_order_definition(number)
         ):
@@ -1044,6 +1063,18 @@ def _validate_claim(
         )
         numbers = claim.get("canonical_network_numbers")
         subjects = claim.get("subject_catalogue_ids")
+        counts = claim.get("counts_by_element_order")
+        aggregate_locators_are_strict = all(
+            isinstance(claim.get(locator_field), dict)
+            and all(
+                numeric_field not in claim[locator_field]
+                or _is_int(claim[locator_field][numeric_field])
+                for numeric_field in {"printed_page", "pdf_page_index"}
+            )
+            for locator_field in {
+                "count_table_locator", "figure_locator", "class_table_locator",
+            }
+        )
         _validate_subjects(subjects, evidence_id, catalogue_ids)
         if (
             not isinstance(numbers, list)
@@ -1052,12 +1083,18 @@ def _validate_claim(
             or set(numbers) != set(REVIEWED_LOW_ORDER_CANONICAL_NETWORKS)
             or set(subjects)
             != {value[0] for value in REVIEWED_LOW_ORDER_CANONICAL_NETWORKS.values()}
-            or claim.get("counts_by_element_order")
-            != LOW_ORDER_COUNTS_BY_ELEMENT_ORDER
+            or not isinstance(counts, dict)
+            or set(counts) != set(LOW_ORDER_COUNTS_BY_ELEMENT_ORDER)
+            or not all(_is_int(counts[field]) for field in counts)
+            or counts != LOW_ORDER_COUNTS_BY_ELEMENT_ORDER
             or claim.get("subfamilies") != sorted(LOW_ORDER_SUBFAMILIES)
+            or not _is_int(claim.get("source_orbit_count"))
             or claim.get("source_orbit_count") != 9
+            or not _is_int(claim.get("source_equivalence_class_count"))
             or claim.get("source_equivalence_class_count") != 21
+            or not _is_int(claim.get("total_networks"))
             or claim.get("total_networks") != 25
+            or not aggregate_locators_are_strict
             or claim.get("count_table_locator") != LOW_ORDER_COUNT_TABLE_LOCATOR
             or claim.get("figure_locator") != LOW_ORDER_FIGURE_LOCATOR
             or claim.get("class_table_locator") != LOW_ORDER_CLASS_TABLE_LOCATOR
@@ -2848,12 +2885,6 @@ def _validate_canonical_identity_groups(
             "low-order computation requires exact canonical definition and match scope"
         )
 
-    if any(
-        LOW_ORDER_AGGREGATE_ID in rule["evidence_record_ids"]
-        or rule["comparison_status"] == "derived-canonical-identity-match"
-        for rule in rules
-    ):
-        raise ValueError("canonical identity evidence cannot support a rule")
     reviewed_numbers = set(REVIEWED_LOW_ORDER_CANONICAL_NETWORKS)
     reviewed_definition_ids = set(definitions)
     reviewed_match_ids = set(matches)
@@ -2876,10 +2907,16 @@ def _validate_canonical_identity_groups(
             nested_ids = set(identifier["evidence_record_ids"])
             if (
                 identifier["value"] in reviewed_numbers
-                or nested_ids & (reviewed_definition_ids | reviewed_match_ids)
+                or nested_ids & reviewed_evidence_ids
             ):
                 return True
         return False
+
+    if any(consumes_low_order_identity(rule) for rule in rules):
+        raise ValueError(
+            "canonical identity evidence is explicit-record only and cannot "
+            "support a rule"
+        )
 
     consumers = {
         catalogue_id: assertion
