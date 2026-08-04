@@ -4542,27 +4542,32 @@
       "basic_graph_assignment": null,
       "c": 2,
       "catalogue_id": "lh148-47ee32380ab1b406",
-      "comparison_status": "unresolved",
-      "computational_cross_check_ids": [],
-      "confidence": "none",
-      "evidence_basis": [
-        "no-evidence-yet"
+      "comparison_status": "derived-nongeneric-simplification-match",
+      "computational_cross_check_ids": [
+        "rice-final-eight-o-bridge-report-reproduction"
       ],
-      "evidence_record_ids": [],
-      "exclusion_category": "unresolved",
-      "exclusion_reason": null,
+      "confidence": "high",
+      "evidence_basis": [
+        "aggregate-historical-nongeneric-group-plus-subject-bound-rice-facts"
+      ],
+      "evidence_record_ids": [
+        "ms-2019-final-eight-nongeneric-exclusion-group",
+        "rice-lh148-47ee32380ab1b406-graph-v-match",
+        "rice-y-delta-o-c-v-terminal-c",
+        "rice-lh148-47ee32380ab1b406-forced-f-zero",
+        "rice-lh148-47ee32380ab1b406-conditional-target-21"
+      ],
+      "exclusion_category": "other-canonical-exclusion",
+      "exclusion_reason": "The authoritative aggregate excludes the complete final-eight nongeneric group. The reviewed subject-bound graph and Y-delta evidence establishes this subject's pair; its forced F=0 fact makes the five-element realization nongeneric, and its conditional route gives a positive-finite Cauer-Foster realization associated with canonical network 21 for delta > 0 and a separate two-element R-X realization for delta = 0. The target is a simpler-realisation destination, not a network-equivalence, unconditional containment, or historical-identity claim.",
       "historical_identifiers": [],
       "l": 0,
       "lc": 2,
       "notes": [
-        "No individual canonical-catalogue mapping is established."
+        "Applied through the complete reviewed format-version-4 final-eight evidence group."
       ],
-      "open_questions": [
-        "Which historical network or figure, if any, corresponds to this record?",
-        "What entry-specific evidence establishes exclusion or retention?"
-      ],
+      "open_questions": [],
       "previous_workspace_record_ids": [],
-      "proposed_disposition": "unresolved",
+      "proposed_disposition": "exclude",
       "r": 3,
       "representative_descriptor": "0-2:C;0-3:C;1-2:R;1-3:R;2-3:R",
       "rlc": 5,
@@ -4574,27 +4579,32 @@
       "basic_graph_assignment": null,
       "c": 2,
       "catalogue_id": "lh148-4a925dd55dc8da19",
-      "comparison_status": "unresolved",
-      "computational_cross_check_ids": [],
-      "confidence": "none",
-      "evidence_basis": [
-        "no-evidence-yet"
+      "comparison_status": "derived-nongeneric-simplification-match",
+      "computational_cross_check_ids": [
+        "rice-final-eight-o-bridge-report-reproduction"
       ],
-      "evidence_record_ids": [],
-      "exclusion_category": "unresolved",
-      "exclusion_reason": null,
+      "confidence": "high",
+      "evidence_basis": [
+        "aggregate-historical-nongeneric-group-plus-subject-bound-rice-facts"
+      ],
+      "evidence_record_ids": [
+        "ms-2019-final-eight-nongeneric-exclusion-group",
+        "rice-lh148-4a925dd55dc8da19-graph-o-match",
+        "rice-y-delta-o-c-v-terminal-c",
+        "rice-lh148-4a925dd55dc8da19-forced-f-zero",
+        "rice-lh148-4a925dd55dc8da19-conditional-target-21"
+      ],
+      "exclusion_category": "other-canonical-exclusion",
+      "exclusion_reason": "The authoritative aggregate excludes the complete final-eight nongeneric group. The reviewed subject-bound graph and Y-delta evidence establishes this subject's pair; its forced F=0 fact makes the five-element realization nongeneric, and its conditional route gives a positive-finite Cauer-Foster realization associated with canonical network 21 for delta > 0 and a separate two-element R-X realization for delta = 0. The target is a simpler-realisation destination, not a network-equivalence, unconditional containment, or historical-identity claim.",
       "historical_identifiers": [],
       "l": 0,
       "lc": 2,
       "notes": [
-        "No individual canonical-catalogue mapping is established."
+        "Applied through the complete reviewed format-version-4 final-eight evidence group."
       ],
-      "open_questions": [
-        "Which historical network or figure, if any, corresponds to this record?",
-        "What entry-specific evidence establishes exclusion or retention?"
-      ],
+      "open_questions": [],
       "previous_workspace_record_ids": [],
-      "proposed_disposition": "unresolved",
+      "proposed_disposition": "exclude",
       "r": 3,
       "representative_descriptor": "0-2:C;0-3:C;1-4:R;2-4:R;3-4:R",
       "rlc": 5,
@@ -4645,27 +4655,32 @@
       "basic_graph_assignment": null,
       "c": 2,
       "catalogue_id": "lh148-5278112fab778336",
-      "comparison_status": "unresolved",
-      "computational_cross_check_ids": [],
-      "confidence": "none",
-      "evidence_basis": [
-        "no-evidence-yet"
+      "comparison_status": "derived-nongeneric-simplification-match",
+      "computational_cross_check_ids": [
+        "rice-final-eight-o-bridge-report-reproduction"
       ],
-      "evidence_record_ids": [],
-      "exclusion_category": "unresolved",
-      "exclusion_reason": null,
+      "confidence": "high",
+      "evidence_basis": [
+        "aggregate-historical-nongeneric-group-plus-subject-bound-rice-facts"
+      ],
+      "evidence_record_ids": [
+        "ms-2019-final-eight-nongeneric-exclusion-group",
+        "rice-lh148-5278112fab778336-graph-o-dual-match",
+        "rice-y-delta-o-dual-c-v-path-c",
+        "rice-lh148-5278112fab778336-forced-a-zero",
+        "rice-lh148-5278112fab778336-conditional-target-44"
+      ],
+      "exclusion_category": "other-canonical-exclusion",
+      "exclusion_reason": "The authoritative aggregate excludes the complete final-eight nongeneric group. The reviewed subject-bound graph and Y-delta evidence establishes this subject's pair; its forced A=0 fact makes the five-element realization nongeneric, and its conditional route gives a positive-finite Cauer-Foster realization associated with canonical network 44 for delta > 0 and a separate two-element R-X realization for delta = 0. The target is a simpler-realisation destination, not a network-equivalence, unconditional containment, or historical-identity claim.",
       "historical_identifiers": [],
       "l": 0,
       "lc": 2,
       "notes": [
-        "No individual canonical-catalogue mapping is established."
+        "Applied through the complete reviewed format-version-4 final-eight evidence group."
       ],
-      "open_questions": [
-        "Which historical network or figure, if any, corresponds to this record?",
-        "What entry-specific evidence establishes exclusion or retention?"
-      ],
+      "open_questions": [],
       "previous_workspace_record_ids": [],
-      "proposed_disposition": "unresolved",
+      "proposed_disposition": "exclude",
       "r": 3,
       "representative_descriptor": "0-1:R;0-2:C;0-2:R;1-2:C;1-2:R",
       "rlc": 5,
@@ -5082,27 +5097,32 @@
       "basic_graph_assignment": null,
       "c": 2,
       "catalogue_id": "lh148-f942f37eed38400a",
-      "comparison_status": "unresolved",
-      "computational_cross_check_ids": [],
-      "confidence": "none",
-      "evidence_basis": [
-        "no-evidence-yet"
+      "comparison_status": "derived-nongeneric-simplification-match",
+      "computational_cross_check_ids": [
+        "rice-final-eight-o-bridge-report-reproduction"
       ],
-      "evidence_record_ids": [],
-      "exclusion_category": "unresolved",
-      "exclusion_reason": null,
+      "confidence": "high",
+      "evidence_basis": [
+        "aggregate-historical-nongeneric-group-plus-subject-bound-rice-facts"
+      ],
+      "evidence_record_ids": [
+        "ms-2019-final-eight-nongeneric-exclusion-group",
+        "rice-lh148-f942f37eed38400a-graph-v-match",
+        "rice-y-delta-o-dual-c-v-path-c",
+        "rice-lh148-f942f37eed38400a-forced-a-zero",
+        "rice-lh148-f942f37eed38400a-conditional-target-44"
+      ],
+      "exclusion_category": "other-canonical-exclusion",
+      "exclusion_reason": "The authoritative aggregate excludes the complete final-eight nongeneric group. The reviewed subject-bound graph and Y-delta evidence establishes this subject's pair; its forced A=0 fact makes the five-element realization nongeneric, and its conditional route gives a positive-finite Cauer-Foster realization associated with canonical network 44 for delta > 0 and a separate two-element R-X realization for delta = 0. The target is a simpler-realisation destination, not a network-equivalence, unconditional containment, or historical-identity claim.",
       "historical_identifiers": [],
       "l": 0,
       "lc": 2,
       "notes": [
-        "No individual canonical-catalogue mapping is established."
+        "Applied through the complete reviewed format-version-4 final-eight evidence group."
       ],
-      "open_questions": [
-        "Which historical network or figure, if any, corresponds to this record?",
-        "What entry-specific evidence establishes exclusion or retention?"
-      ],
+      "open_questions": [],
       "previous_workspace_record_ids": [],
-      "proposed_disposition": "unresolved",
+      "proposed_disposition": "exclude",
       "r": 3,
       "representative_descriptor": "0-2:C;0-3:R;1-2:C;1-3:R;2-3:R",
       "rlc": 5,
@@ -6748,27 +6768,32 @@
       "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-68430bbb448b9991",
-      "comparison_status": "unresolved",
-      "computational_cross_check_ids": [],
-      "confidence": "none",
-      "evidence_basis": [
-        "no-evidence-yet"
+      "comparison_status": "derived-nongeneric-simplification-match",
+      "computational_cross_check_ids": [
+        "rice-final-eight-o-bridge-report-reproduction"
       ],
-      "evidence_record_ids": [],
-      "exclusion_category": "unresolved",
-      "exclusion_reason": null,
+      "confidence": "high",
+      "evidence_basis": [
+        "aggregate-historical-nongeneric-group-plus-subject-bound-rice-facts"
+      ],
+      "evidence_record_ids": [
+        "ms-2019-final-eight-nongeneric-exclusion-group",
+        "rice-lh148-68430bbb448b9991-graph-o-match",
+        "rice-y-delta-o-l-v-terminal-l",
+        "rice-lh148-68430bbb448b9991-forced-d-zero",
+        "rice-lh148-68430bbb448b9991-conditional-target-29"
+      ],
+      "exclusion_category": "other-canonical-exclusion",
+      "exclusion_reason": "The authoritative aggregate excludes the complete final-eight nongeneric group. The reviewed subject-bound graph and Y-delta evidence establishes this subject's pair; its forced D=0 fact makes the five-element realization nongeneric, and its conditional route gives a positive-finite Cauer-Foster realization associated with canonical network 29 for delta > 0 and a separate two-element R-X realization for delta = 0. The target is a simpler-realisation destination, not a network-equivalence, unconditional containment, or historical-identity claim.",
       "historical_identifiers": [],
       "l": 2,
       "lc": 2,
       "notes": [
-        "No individual canonical-catalogue mapping is established."
+        "Applied through the complete reviewed format-version-4 final-eight evidence group."
       ],
-      "open_questions": [
-        "Which historical network or figure, if any, corresponds to this record?",
-        "What entry-specific evidence establishes exclusion or retention?"
-      ],
+      "open_questions": [],
       "previous_workspace_record_ids": [],
-      "proposed_disposition": "unresolved",
+      "proposed_disposition": "exclude",
       "r": 3,
       "representative_descriptor": "0-2:L;0-3:L;1-4:R;2-4:R;3-4:R",
       "rlc": 5,
@@ -6780,27 +6805,32 @@
       "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-7e24311a6fea4531",
-      "comparison_status": "unresolved",
-      "computational_cross_check_ids": [],
-      "confidence": "none",
-      "evidence_basis": [
-        "no-evidence-yet"
+      "comparison_status": "derived-nongeneric-simplification-match",
+      "computational_cross_check_ids": [
+        "rice-final-eight-o-bridge-report-reproduction"
       ],
-      "evidence_record_ids": [],
-      "exclusion_category": "unresolved",
-      "exclusion_reason": null,
+      "confidence": "high",
+      "evidence_basis": [
+        "aggregate-historical-nongeneric-group-plus-subject-bound-rice-facts"
+      ],
+      "evidence_record_ids": [
+        "ms-2019-final-eight-nongeneric-exclusion-group",
+        "rice-lh148-7e24311a6fea4531-graph-v-match",
+        "rice-y-delta-o-l-v-terminal-l",
+        "rice-lh148-7e24311a6fea4531-forced-d-zero",
+        "rice-lh148-7e24311a6fea4531-conditional-target-29"
+      ],
+      "exclusion_category": "other-canonical-exclusion",
+      "exclusion_reason": "The authoritative aggregate excludes the complete final-eight nongeneric group. The reviewed subject-bound graph and Y-delta evidence establishes this subject's pair; its forced D=0 fact makes the five-element realization nongeneric, and its conditional route gives a positive-finite Cauer-Foster realization associated with canonical network 29 for delta > 0 and a separate two-element R-X realization for delta = 0. The target is a simpler-realisation destination, not a network-equivalence, unconditional containment, or historical-identity claim.",
       "historical_identifiers": [],
       "l": 2,
       "lc": 2,
       "notes": [
-        "No individual canonical-catalogue mapping is established."
+        "Applied through the complete reviewed format-version-4 final-eight evidence group."
       ],
-      "open_questions": [
-        "Which historical network or figure, if any, corresponds to this record?",
-        "What entry-specific evidence establishes exclusion or retention?"
-      ],
+      "open_questions": [],
       "previous_workspace_record_ids": [],
-      "proposed_disposition": "unresolved",
+      "proposed_disposition": "exclude",
       "r": 3,
       "representative_descriptor": "0-2:L;0-3:L;1-2:R;1-3:R;2-3:R",
       "rlc": 5,
@@ -6986,27 +7016,32 @@
       "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-debfbc02c5650a94",
-      "comparison_status": "unresolved",
-      "computational_cross_check_ids": [],
-      "confidence": "none",
-      "evidence_basis": [
-        "no-evidence-yet"
+      "comparison_status": "derived-nongeneric-simplification-match",
+      "computational_cross_check_ids": [
+        "rice-final-eight-o-bridge-report-reproduction"
       ],
-      "evidence_record_ids": [],
-      "exclusion_category": "unresolved",
-      "exclusion_reason": null,
+      "confidence": "high",
+      "evidence_basis": [
+        "aggregate-historical-nongeneric-group-plus-subject-bound-rice-facts"
+      ],
+      "evidence_record_ids": [
+        "ms-2019-final-eight-nongeneric-exclusion-group",
+        "rice-lh148-debfbc02c5650a94-graph-o-dual-match",
+        "rice-y-delta-o-dual-l-v-path-l",
+        "rice-lh148-debfbc02c5650a94-forced-c-zero",
+        "rice-lh148-debfbc02c5650a94-conditional-target-36"
+      ],
+      "exclusion_category": "other-canonical-exclusion",
+      "exclusion_reason": "The authoritative aggregate excludes the complete final-eight nongeneric group. The reviewed subject-bound graph and Y-delta evidence establishes this subject's pair; its forced C=0 fact makes the five-element realization nongeneric, and its conditional route gives a positive-finite Cauer-Foster realization associated with canonical network 36 for delta > 0 and a separate two-element R-X realization for delta = 0. The target is a simpler-realisation destination, not a network-equivalence, unconditional containment, or historical-identity claim.",
       "historical_identifiers": [],
       "l": 2,
       "lc": 2,
       "notes": [
-        "No individual canonical-catalogue mapping is established."
+        "Applied through the complete reviewed format-version-4 final-eight evidence group."
       ],
-      "open_questions": [
-        "Which historical network or figure, if any, corresponds to this record?",
-        "What entry-specific evidence establishes exclusion or retention?"
-      ],
+      "open_questions": [],
       "previous_workspace_record_ids": [],
-      "proposed_disposition": "unresolved",
+      "proposed_disposition": "exclude",
       "r": 3,
       "representative_descriptor": "0-1:R;0-2:L;0-2:R;1-2:L;1-2:R",
       "rlc": 5,
@@ -7018,27 +7053,32 @@
       "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-f40bfca59082ff8d",
-      "comparison_status": "unresolved",
-      "computational_cross_check_ids": [],
-      "confidence": "none",
-      "evidence_basis": [
-        "no-evidence-yet"
+      "comparison_status": "derived-nongeneric-simplification-match",
+      "computational_cross_check_ids": [
+        "rice-final-eight-o-bridge-report-reproduction"
       ],
-      "evidence_record_ids": [],
-      "exclusion_category": "unresolved",
-      "exclusion_reason": null,
+      "confidence": "high",
+      "evidence_basis": [
+        "aggregate-historical-nongeneric-group-plus-subject-bound-rice-facts"
+      ],
+      "evidence_record_ids": [
+        "ms-2019-final-eight-nongeneric-exclusion-group",
+        "rice-lh148-f40bfca59082ff8d-graph-v-match",
+        "rice-y-delta-o-dual-l-v-path-l",
+        "rice-lh148-f40bfca59082ff8d-forced-c-zero",
+        "rice-lh148-f40bfca59082ff8d-conditional-target-36"
+      ],
+      "exclusion_category": "other-canonical-exclusion",
+      "exclusion_reason": "The authoritative aggregate excludes the complete final-eight nongeneric group. The reviewed subject-bound graph and Y-delta evidence establishes this subject's pair; its forced C=0 fact makes the five-element realization nongeneric, and its conditional route gives a positive-finite Cauer-Foster realization associated with canonical network 36 for delta > 0 and a separate two-element R-X realization for delta = 0. The target is a simpler-realisation destination, not a network-equivalence, unconditional containment, or historical-identity claim.",
       "historical_identifiers": [],
       "l": 2,
       "lc": 2,
       "notes": [
-        "No individual canonical-catalogue mapping is established."
+        "Applied through the complete reviewed format-version-4 final-eight evidence group."
       ],
-      "open_questions": [
-        "Which historical network or figure, if any, corresponds to this record?",
-        "What entry-specific evidence establishes exclusion or retention?"
-      ],
+      "open_questions": [],
       "previous_workspace_record_ids": [],
-      "proposed_disposition": "unresolved",
+      "proposed_disposition": "exclude",
       "r": 3,
       "representative_descriptor": "0-2:L;0-3:R;1-2:L;1-3:R;2-3:R",
       "rlc": 5,
@@ -7405,23 +7445,25 @@
   ],
   "summary": {
     "by_comparison_status": {
+      "derived-nongeneric-simplification-match": 8,
       "derived-structural-match": 20,
       "derived-unique-match": 12,
-      "unresolved": 116
+      "unresolved": 108
     },
     "by_exclusion_category": {
+      "other-canonical-exclusion": 8,
       "simpler-bilinear-realisation": 8,
-      "unresolved": 116,
+      "unresolved": 108,
       "zobel-five-element-series-parallel": 20,
       "zobel-four-element": 4
     },
     "by_proposed_disposition": {
-      "exclude": 32,
-      "unresolved": 116
+      "exclude": 40,
+      "unresolved": 108
     },
-    "mapped_exclusions": 32,
+    "mapped_exclusions": 40,
     "total_rows": 148,
-    "unresolved_dispositions": 116
+    "unresolved_dispositions": 108
   },
   "target": {
     "evidence_record_ids": [
