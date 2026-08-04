@@ -4,8 +4,9 @@ This is an evidence ledger for comparing RICE's reproduced structural
 148-record catalogue with the reported canonical 108-network catalogue. It is
 not a reproduction of the complete 108 catalogue. The committed evidence maps
 all forty proposed exclusions and now positively identifies the complete
-reviewed 25-member one-, two-, and three-element group. The other 83 survivors
-remain unresolved.
+reviewed 25-member one-, two-, and three-element group together with the
+complete reviewed 34-member four-element group. The remaining 49 survivors are
+unresolved five-element networks.
 
 ## Two different catalogue layers
 
@@ -110,8 +111,9 @@ visually transcribes all 34 four-element canonical diagrams across six source
 subfamilies, 20 source equivalence classes, and ten source orbits. It
 independently obtains 34 distinct unique RICE structural matches while keeping
 identity, orbit, and realizability-set equivalence separate. The report is
-evidence only: none of those identities is applied in production, it does not
-complete the canonical 108, and it does not reproduce the 62 classes.
+preserved as the evidence basis for the now-applied complete 34-member group;
+that application does not complete the canonical 108 or reproduce the 62
+classes.
 
 Previous research workspaces contain useful graph descriptions, images,
 descriptor transcriptions, and computational results. Those artefacts can help
@@ -300,8 +302,8 @@ remains fully applied and unchanged. A second group encodes 34 authoritative
 four-element definitions, 34 unique subject-bound RICE matches, its exact
 aggregate inventory, and its pinned computation from the reviewed
 four-element report. Each group is independently all-or-nothing: the
-four-element evidence is complete, but none of its 34 identities or retained
-dispositions is applied in this revision.
+four-element evidence is complete, and all 34 identities and retained
+dispositions are now applied together.
 
 ## Version 6 validation boundary
 
@@ -327,15 +329,15 @@ objects establishes none of those claims.
 | `derived-unique-match` | 12 |
 | `derived-structural-match` | 20 |
 | `derived-nongeneric-simplification-match` | 8 |
-| `derived-canonical-identity-match` | 25 |
-| `unresolved` | 83 |
+| `derived-canonical-identity-match` | 59 |
+| `unresolved` | 49 |
 | **Total** | **148** |
 
 | Proposed disposition | Rows |
 |---|---:|
 | `exclude` | 40 |
-| `retain` | 25 |
-| `unresolved` | 83 |
+| `retain` | 59 |
+| `unresolved` | 49 |
 | **Total** | **148** |
 
 | Exclusion category | Rows |
@@ -344,8 +346,8 @@ objects establishes none of those claims.
 | `zobel-four-element` | 4 |
 | `zobel-five-element-series-parallel` | 20 |
 | `other-canonical-exclusion` | 8 |
-| `none` | 25 |
-| `unresolved` | 83 |
+| `none` | 59 |
+| `unresolved` | 49 |
 | **Total** | **148** |
 
 The structural catalogue contains exactly eight records with `R=4` and
@@ -423,20 +425,22 @@ the route records a positive-finite four-element Cauer--Foster realisation; on
 asserts network equivalence or unconditional named-target containment.
 
 The complete reviewed low-order group contributes 25 retained rows with exact
-cross-checked canonical network identifiers. The remaining 83 survivors are
-unresolved rather than retained; this ledger therefore does not positively
-identify the complete canonical catalogue.
+cross-checked canonical network identifiers. The complete reviewed
+four-element group contributes another 34 retained rows with the same
+authoritative-definition-plus-subject-match boundary. The remaining 49
+survivors are unresolved five-element networks; this ledger therefore does not
+positively identify the complete canonical catalogue.
 
 The controlled four-element group contributes structured evidence for all 34
 four-element identities: six subfamilies, 20 source equivalence classes, ten
-source orbits, and one exact-scope computation. It has no production consumers
-in this revision. All 34 subjects therefore remain within the 83 unresolved
-survivors, alongside the 49 five-element subjects that remain uninvestigated.
+source orbits, and one exact-scope computation. Its complete production
+application now retains and numbers all 34 reviewed subjects. The remaining 49
+five-element subjects remain uninvestigated and unresolved.
 
 Production basic-graph assignments remain deferred: every
 `basic_graph_assignment` is null. Exactly 25 historical identifier lists are
-populated by the reviewed low-order application, and the other 123 remain
-empty.
+populated by the reviewed low-order application and another 34 by the reviewed
+four-element application, for 59 total; the other 89 remain empty.
 
 Mapped exclusion counts are consistency-checked against the evidence-linked
 historical targets. The total may not exceed forty, and no controlled category
@@ -463,8 +467,8 @@ paths, or unstable metadata. `--check` fails if the committed ledger differs.
 
 ## Next evidence work
 
-1. Transcribe and validate the remaining 83 canonical network numbers from the
-   authoritative catalogue diagrams.
+1. Transcribe and validate the remaining 49 five-element canonical network
+   numbers from the authoritative catalogue diagrams.
 2. Add independently checked subject-bound matches without treating
    previous-workspace graph files as authoritative.
 3. Only after all 108 survivors have positive identity evidence, assess whether
