@@ -12,13 +12,17 @@ minimum evidence-contract extension. PR 75 introduces the accepted
 format-version-4 annotation contract and the structured final-eight evidence
 specified here.
 
-The eight dispositions remain unapplied: production has 32 excluded, 116
-unresolved, and 0 retained records. Every graph assignment remains null, every
-historical-identifier list remains empty, and no canonical numbering is
-populated. Canonical networks 21, 29, 36, and 44 are simpler-realisation
-destinations, not historical identities of the eight subjects. Nothing here
-establishes the complementary 108 rows as retained or reproduces the canonical
-108 catalogue.
+When the evidence and format-version-4 contract were accepted, the eight
+dispositions were intentionally unapplied and production had 32 excluded, 116
+unresolved, and 0 retained records. The subsequent production-application
+milestone applies all eight reviewed exclusions through that accepted contract,
+so current production has 40 excluded, 108 unresolved, and 0 retained records.
+Every graph assignment remains null, every historical-identifier list remains
+empty, and no canonical numbering is populated. Canonical networks 21, 29, 36,
+and 44 are conditional simpler-realisation destinations, not historical
+identities of the eight subjects. Nothing here establishes the complementary
+108 rows as retained, positively identifies them with the canonical catalogue,
+or reproduces that catalogue.
 
 ## 2. Source identity and locators
 
@@ -477,10 +481,14 @@ unconditional named-target claim, and reject any attempt to substitute a
 `reduction-target-match` equivalence claim.
 
 Format version 4 implements the complete structured-evidence contract and the
-conditional application-time validation described above. It does not apply the
-eight dispositions in this milestone: production remains 32 excluded / 116
-unresolved / 0 retained, graph assignments remain null, historical identifiers
-remain empty, and no canonical-numbering or complementary-108 claim is made.
+conditional application-time validation described above. The evidence-contract
+milestone did not apply the eight dispositions and had the historical
+32 excluded / 116 unresolved / 0 retained boundary. The subsequent production
+application consumes the complete reviewed group and applies all eight, giving
+40 excluded / 108 unresolved / 0 retained. Graph assignments remain null,
+historical identifiers remain empty, and no canonical-numbering, positive
+complementary-108 identification, or realizability-set equivalence claim is
+made.
 
 ## 10. Previous-workspace audit
 
@@ -521,14 +529,19 @@ source pair --coefficient-zero/nongeneric argument--> fewer-element realisation
 
 It is not established, and this report does not claim, that a five-element
 subject is truly equivalent to its four-element destination in the
-publication's realizability-set sense. Applying the mappings requires the
-reviewed contract extension described above and a separate production PR.
+publication's realizability-set sense. Applying the mappings required the
+reviewed contract extension described above and a separate production
+application. That application has now been performed through the complete
+format-version-4 group, but it neither establishes equivalence to the four
+named destinations nor positively identifies the remaining 108 rows.
 
 ## 12. Reproduction commands
 
-Run this paste-ready block from the RICE repository root on a revision
-containing this report. It uses only existing RICE APIs and the Python standard
-library.
+Run this paste-ready block from the RICE repository root at the historical
+evidence-contract milestone containing this report. It uses only existing RICE
+APIs and the Python standard library. Its concluding production line records
+the historical evidence-only boundary at report acceptance, not the current
+production state after the separate application.
 
 ```bash
 .venv/bin/python - <<'PY'
@@ -1182,7 +1195,7 @@ print("Cauer-Foster extraction: 4 paths, 4 parameter tuples x 4 s values pass")
 print("degenerate locus: 4 two-element paths, 3 parameter tuples x 4 s values pass")
 print("coefficient-zero identities: O-C F, O-L D, Od-C A, Od-L C")
 print("target structural signatures: canonical networks 21, 29, 36, 44 pass")
-print("production unchanged: 32 excluded / 116 unresolved / 0 retained")
+print("historical evidence-only baseline at report acceptance: 32 excluded / 116 unresolved / 0 retained")
 
 PY
 ```
@@ -1208,5 +1221,5 @@ Cauer-Foster extraction: 4 paths, 4 parameter tuples x 4 s values pass
 degenerate locus: 4 two-element paths, 3 parameter tuples x 4 s values pass
 coefficient-zero identities: O-C F, O-L D, Od-C A, Od-L C
 target structural signatures: canonical networks 21, 29, 36, 44 pass
-production unchanged: 32 excluded / 116 unresolved / 0 retained
+historical evidence-only baseline at report acceptance: 32 excluded / 116 unresolved / 0 retained
 ```
