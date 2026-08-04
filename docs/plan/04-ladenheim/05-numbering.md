@@ -1,6 +1,6 @@
 # 04-ladenheim / 05 — Map descriptors to Morelli/Ladenheim numbering
 
-Status: `todo`
+Status: `prog`
 
 ## Goal
 
@@ -25,4 +25,14 @@ once the cited sources and reduction definitions are aligned.
   `historical_identifiers`, per-assertion publication locators, and a nullable
   basic-graph assignment for each record. A source-verified identifier must
   cite precise authoritative evidence. No graph letter or historical network
-  number has been populated, so this task remains `todo`.
+  number has been populated.
+- The evidence-only report
+  [`docs/comparisons/ladenheim-canonical-108-low-order-evidence.md`](../../comparisons/ladenheim-canonical-108-low-order-evidence.md)
+  transcribes and independently matches 25 historical canonical network
+  numbers covering every one-, two-, and three-element network. For each
+  network it records precise authoritative locators, an explicit coloured
+  topology, one unique RICE catalogue ID, and a representative descriptor.
+  This begins the historical-numbering task at the evidence layer, but no
+  production `historical_identifiers`, canonical-number field, or positive
+  disposition has been applied. The remaining 83 canonical networks are not
+  yet mapped, so this task remains `prog` rather than complete.

@@ -93,6 +93,16 @@ pathway with a parallel-resistor merge to graph `H`, both-direction
 positive-finite coverage, and exact target checks. It documents independently
 checked correspondences rather than individual source-stated RICE mappings.
 
+The reviewed low-order positive-identification pilot at
+[`docs/comparisons/ladenheim-canonical-108-low-order-evidence.md`](ladenheim-canonical-108-low-order-evidence.md)
+transcribes all 25 one-, two-, and three-element canonical diagrams, records
+their nine source subfamilies and 21 source equivalence classes, and
+independently obtains 25 distinct unique RICE structural matches. It keeps
+network identity, orbit membership, and source realizability-set equivalence
+separate. This repository evidence does not populate production historical
+identifiers or retained dispositions, reproduce the complete canonical 108, or
+begin the 108-to-62 production classification.
+
 Previous research workspaces contain useful graph descriptions, images,
 descriptor transcriptions, and computational results. Those artefacts can help
 later transcription and cross-checking, but they are not authoritative
