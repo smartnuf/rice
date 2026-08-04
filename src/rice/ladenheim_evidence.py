@@ -2913,7 +2913,9 @@ def _validate_canonical_identity_groups(
         collected: set[str] = set()
         if isinstance(value, dict):
             for key, nested in value.items():
-                if key == "evidence_record_ids":
+                if key == "evidence_record_ids" or key.endswith(
+                    "_evidence_record_ids"
+                ):
                     collected.update(nested)
                 collected.update(collect_evidence_record_ids(nested))
         elif isinstance(value, list):
@@ -2921,15 +2923,26 @@ def _validate_canonical_identity_groups(
                 collected.update(collect_evidence_record_ids(nested))
         return collected
 
+    def cited_computation_evidence_ids(assertion: dict[str, Any]) -> set[str]:
+        collected: set[str] = set()
+        for computation_id in assertion["computational_cross_check_ids"]:
+            collected.update(
+                collect_evidence_record_ids(computations[computation_id])
+            )
+        return collected
+
     # The version-5 consumer boundary covers status, basis, computation
-    # references, canonical identifier values, and every structurally named
-    # evidence_record_ids path recursively. Editorial prose is outside it.
+    # references and their machine evidence scopes, canonical identifier
+    # values, and every structurally named evidence-reference path recursively.
+    # Editorial prose is outside it.
     def consumes_low_order_identity(assertion: dict[str, Any]) -> bool:
         if assertion["comparison_status"] == "derived-canonical-identity-match":
             return True
         if LOW_ORDER_IDENTITY_EVIDENCE_BASIS in assertion["evidence_basis"]:
             return True
         if reviewed_evidence_ids & collect_evidence_record_ids(assertion):
+            return True
+        if reviewed_evidence_ids & cited_computation_evidence_ids(assertion):
             return True
         if LOW_ORDER_COMPUTATION_ID in assertion["computational_cross_check_ids"]:
             return True

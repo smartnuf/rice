@@ -5045,6 +5045,71 @@ def test_basic_graph_assignment_low_order_evidence_triggers_consumption(
         generate_evidence_ledger(catalogue, annotations)
 
 
+def _append_indirect_low_order_computation(annotations, evidence_id):
+    computation = _cross_check()
+    computation.update({
+        "cross_check_id": "fixture-indirect-low-order-computation",
+        "subject_catalogue_ids": [annotations["records"][0]["catalogue_id"]],
+        "reduction_target_network_numbers": [1],
+        "verified_evidence_record_ids": [evidence_id],
+    })
+    annotations["computational_cross_checks"].append(computation)
+    return computation["cross_check_id"]
+
+
+@pytest.mark.parametrize("reviewed_kind", ["aggregate", "definition", "match"])
+def test_rule_computation_scope_low_order_evidence_triggers_consumption(
+    catalogue, annotations, reviewed_kind
+):
+    reviewed_id = {
+        "aggregate": LOW_ORDER_AGGREGATE_ID,
+        "definition": _low_order_definitions(annotations)[0]["evidence_id"],
+        "match": _low_order_matches(annotations)[0]["evidence_id"],
+    }[reviewed_kind]
+    computation_id = _append_indirect_low_order_computation(
+        annotations, reviewed_id
+    )
+    annotations["rules"][0]["computational_cross_check_ids"].append(
+        computation_id
+    )
+    with pytest.raises(ValueError, match="explicit-record only"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_explicit_computation_scope_low_order_evidence_triggers_consumption(
+    catalogue, annotations
+):
+    reviewed_id = _low_order_definitions(annotations)[0]["evidence_id"]
+    computation_id = _append_indirect_low_order_computation(
+        annotations, reviewed_id
+    )
+    annotations["records"][0]["computational_cross_check_ids"].append(
+        computation_id
+    )
+    with pytest.raises(ValueError, match="identifiers require derived-canonical"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_unrelated_computation_scope_does_not_trigger_low_order_consumption(
+    catalogue, annotations
+):
+    computation_id = _append_indirect_low_order_computation(
+        annotations, "ms-2019-reported-148-to-108"
+    )
+    computation = next(
+        item
+        for item in annotations["computational_cross_checks"]
+        if item["cross_check_id"] == computation_id
+    )
+    computation["result"] = (
+        f"Editorial mention only: {LOW_ORDER_AGGREGATE_ID} is not evidence scope."
+    )
+    annotations["rules"][0]["computational_cross_check_ids"].append(
+        computation_id
+    )
+    generate_evidence_ledger(catalogue, annotations)
+
+
 def _add_low_order_bypass_record(
     annotations,
     *,
