@@ -512,6 +512,10 @@ TARGET_FIELDS = {
     "source_population", "reported_members", "reported_exclusions",
     "exclusion_category_targets", "evidence_record_ids",
 }
+TARGET_EVIDENCE_RECORD_IDS = (
+    "ms-2019-reported-148-to-108",
+    "ms-2019-four-exclusion-category-targets",
+)
 RULE_FIELDS = set(ASSERTION_FIELDS) | {
     "rule_id", "kind", "selector", "expected_matches",
 }
@@ -3011,6 +3015,12 @@ def _validate_target(
         raise ValueError("annotation target values differ from the comparison contract")
     ids = target.get("evidence_record_ids")
     _require_references(ids, "target evidence_record_ids", evidence)
+    if len(ids) != len(TARGET_EVIDENCE_RECORD_IDS) or set(ids) != set(
+        TARGET_EVIDENCE_RECORD_IDS
+    ):
+        raise ValueError(
+            "target requires exactly the two reviewed aggregate evidence records"
+        )
     catalogue_claim = {
         "source_population": 148,
         "reported_members": 108,
@@ -3029,7 +3039,11 @@ def _validate_target(
         for record in _matching_evidence(ids, evidence, "exclusion-category-targets")
     ):
         raise ValueError("target requires matching authoritative category-target evidence")
-    return {**expected, "evidence_record_ids": list(ids), "reproduction_claimed": False}
+    return {
+        **expected,
+        "evidence_record_ids": list(TARGET_EVIDENCE_RECORD_IDS),
+        "reproduction_claimed": False,
+    }
 
 
 def _validate_exclusion_counts(

@@ -701,7 +701,7 @@ def test_target_requires_aggregate_evidence(catalogue, annotations):
     annotations["target"]["evidence_record_ids"].remove(
         "ms-2019-reported-148-to-108"
     )
-    with pytest.raises(ValueError, match="aggregate evidence"):
+    with pytest.raises(ValueError, match="exactly the two reviewed aggregate"):
         generate_evidence_ledger(catalogue, annotations)
 
 
@@ -709,7 +709,7 @@ def test_target_requires_category_target_evidence(catalogue, annotations):
     annotations["target"]["evidence_record_ids"].remove(
         "ms-2019-four-exclusion-category-targets"
     )
-    with pytest.raises(ValueError, match="category-target evidence"):
+    with pytest.raises(ValueError, match="exactly the two reviewed aggregate"):
         generate_evidence_ledger(catalogue, annotations)
 
 
@@ -719,6 +719,62 @@ def test_generated_target_references_its_evidence(catalogue, annotations):
         "ms-2019-reported-148-to-108",
         "ms-2019-four-exclusion-category-targets",
     ]
+
+
+@pytest.mark.parametrize(
+    "extra_kind", ["aggregate", "definition", "match", "unrelated"]
+)
+def test_target_rejects_every_additional_evidence_record(
+    catalogue, annotations, extra_kind
+):
+    extra_id = {
+        "aggregate": LOW_ORDER_AGGREGATE_ID,
+        "definition": _low_order_definitions(annotations)[0]["evidence_id"],
+        "match": _low_order_matches(annotations)[0]["evidence_id"],
+        "unrelated": "ms-2019-eight-four-resistor-one-reactive",
+    }[extra_kind]
+    annotations["target"]["evidence_record_ids"].append(extra_id)
+    with pytest.raises(ValueError, match="exactly the two reviewed aggregate"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize(
+    "required_id",
+    [
+        "ms-2019-reported-148-to-108",
+        "ms-2019-four-exclusion-category-targets",
+    ],
+)
+def test_target_rejects_each_missing_required_evidence(
+    catalogue, annotations, required_id
+):
+    annotations["target"]["evidence_record_ids"].remove(required_id)
+    with pytest.raises(ValueError, match="exactly the two reviewed aggregate"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize(
+    "required_id",
+    [
+        "ms-2019-reported-148-to-108",
+        "ms-2019-four-exclusion-category-targets",
+    ],
+)
+def test_target_rejects_replacement_evidence(catalogue, annotations, required_id):
+    ids = annotations["target"]["evidence_record_ids"]
+    ids[ids.index(required_id)] = "ms-2019-eight-four-resistor-one-reactive"
+    with pytest.raises(ValueError, match="exactly the two reviewed aggregate"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize("required_index", [0, 1])
+def test_target_rejects_duplicate_required_evidence(
+    catalogue, annotations, required_index
+):
+    ids = annotations["target"]["evidence_record_ids"]
+    ids.append(ids[required_index])
+    with pytest.raises(ValueError, match="duplicates"):
+        generate_evidence_ledger(catalogue, annotations)
 
 
 def _retained_evidence(catalogue_id):
