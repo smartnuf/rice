@@ -257,6 +257,126 @@
         "rice-lh148-5278112fab778336-conditional-target-44",
         "rice-lh148-f942f37eed38400a-conditional-target-44"
       ]
+    },
+    {
+      "canonical_definition_evidence_record_ids": [
+        "ms-2019-canonical-network-1-definition",
+        "ms-2019-canonical-network-2-definition",
+        "ms-2019-canonical-network-3-definition",
+        "ms-2019-canonical-network-4-definition",
+        "ms-2019-canonical-network-5-definition",
+        "ms-2019-canonical-network-6-definition",
+        "ms-2019-canonical-network-7-definition",
+        "ms-2019-canonical-network-8-definition",
+        "ms-2019-canonical-network-9-definition",
+        "ms-2019-canonical-network-10-definition",
+        "ms-2019-canonical-network-11-definition",
+        "ms-2019-canonical-network-12-definition",
+        "ms-2019-canonical-network-13-definition",
+        "ms-2019-canonical-network-14-definition",
+        "ms-2019-canonical-network-15-definition",
+        "ms-2019-canonical-network-16-definition",
+        "ms-2019-canonical-network-17-definition",
+        "ms-2019-canonical-network-18-definition",
+        "ms-2019-canonical-network-19-definition",
+        "ms-2019-canonical-network-26-definition",
+        "ms-2019-canonical-network-27-definition",
+        "ms-2019-canonical-network-34-definition",
+        "ms-2019-canonical-network-41-definition",
+        "ms-2019-canonical-network-42-definition",
+        "ms-2019-canonical-network-49-definition"
+      ],
+      "canonical_network_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        26,
+        27,
+        34,
+        41,
+        42,
+        49
+      ],
+      "commit_sha": "4411b1fa441241f47e3d2e39a4e96ef5447199e9",
+      "cross_check_id": "rice-low-order-canonical-report-reproduction",
+      "implementation": "Structural-match reproduction commands in docs/comparisons/ladenheim-canonical-108-low-order-evidence.md at the pinned evidence-only revision",
+      "independently_reproduced": true,
+      "input": "The committed 148-record catalogue and 25 independently transcribed one-, two-, and three-element coloured canonical fixtures",
+      "limitations": "The report reproduction was run at the pinned evidence-only revision, where it also checked the then-current 40 excluded / 108 unresolved / 0 retained production boundary. Those disposition checks document the historical acceptance state, are not part of the durable structural-match result, and are not intended to run against a later ledger after identity application. Current application validity is enforced by the version-5 validator, generated-ledger checks, and tests; authoritative publication transcriptions remain source-verified inputs.",
+      "operation": "Construct all 25 fixtures, scan all 148 catalogue records under the committed structural relation, and verify unique subject matches and component inventories",
+      "provenance_level": "independently-reproduced-computation",
+      "result": "The 25 canonical fixtures have 25 distinct unique RICE structural matches with the reviewed descriptors and component inventories.",
+      "subject_catalogue_ids": [
+        "lh148-11e22e7cba30a62f",
+        "lh148-187ef8e981d523c3",
+        "lh148-e6719ebfaa65ecc4",
+        "lh148-bc703386759e1fc4",
+        "lh148-e5ab4cbd88b9cfcd",
+        "lh148-dacf11ef419be4ae",
+        "lh148-6c4acdd4ee210778",
+        "lh148-33615cdca4d212bc",
+        "lh148-e798eb374bc4314b",
+        "lh148-ec2d91a9eb609e87",
+        "lh148-9ce47e2e00e47d8a",
+        "lh148-ba7c48b07f29dd51",
+        "lh148-4ec3374bd9f5ab9d",
+        "lh148-34b077a26df0d439",
+        "lh148-d0dd7ab06f8d9467",
+        "lh148-26ab596fc1b6adf0",
+        "lh148-f2ca341555f420ec",
+        "lh148-2d28eb19a83067c3",
+        "lh148-f6b0120a6632013a",
+        "lh148-aecc406cd94c57bc",
+        "lh148-c4dd949e0cc0cb9a",
+        "lh148-81fbe344564bbcf0",
+        "lh148-6ab986b43f5cdc3d",
+        "lh148-0fa59ac63267cb6f",
+        "lh148-7ad37b581984a1b6"
+      ],
+      "verification_state": "cross-checked",
+      "verified_evidence_record_ids": [
+        "rice-lh148-11e22e7cba30a62f-canonical-network-1-match",
+        "rice-lh148-187ef8e981d523c3-canonical-network-2-match",
+        "rice-lh148-e6719ebfaa65ecc4-canonical-network-3-match",
+        "rice-lh148-bc703386759e1fc4-canonical-network-4-match",
+        "rice-lh148-e5ab4cbd88b9cfcd-canonical-network-5-match",
+        "rice-lh148-dacf11ef419be4ae-canonical-network-6-match",
+        "rice-lh148-6c4acdd4ee210778-canonical-network-7-match",
+        "rice-lh148-33615cdca4d212bc-canonical-network-8-match",
+        "rice-lh148-e798eb374bc4314b-canonical-network-9-match",
+        "rice-lh148-ec2d91a9eb609e87-canonical-network-10-match",
+        "rice-lh148-9ce47e2e00e47d8a-canonical-network-11-match",
+        "rice-lh148-ba7c48b07f29dd51-canonical-network-12-match",
+        "rice-lh148-4ec3374bd9f5ab9d-canonical-network-13-match",
+        "rice-lh148-34b077a26df0d439-canonical-network-14-match",
+        "rice-lh148-d0dd7ab06f8d9467-canonical-network-15-match",
+        "rice-lh148-26ab596fc1b6adf0-canonical-network-16-match",
+        "rice-lh148-f2ca341555f420ec-canonical-network-17-match",
+        "rice-lh148-2d28eb19a83067c3-canonical-network-18-match",
+        "rice-lh148-f6b0120a6632013a-canonical-network-19-match",
+        "rice-lh148-aecc406cd94c57bc-canonical-network-26-match",
+        "rice-lh148-c4dd949e0cc0cb9a-canonical-network-27-match",
+        "rice-lh148-81fbe344564bbcf0-canonical-network-34-match",
+        "rice-lh148-6ab986b43f5cdc3d-canonical-network-41-match",
+        "rice-lh148-0fa59ac63267cb6f-canonical-network-42-match",
+        "rice-lh148-7ad37b581984a1b6-canonical-network-49-match"
+      ]
     }
   ],
   "evidence_records": [
@@ -2376,9 +2496,1760 @@
       "provenance_level": "rice-derived-conditional-simplification-fact",
       "source_id": "rice-final-eight-o-bridge-report",
       "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "canonical_network_number": 1,
+        "claim_type": "canonical-network-definition",
+        "class_table_locator": {
+          "network_number": 1,
+          "pdf_page_index": 64,
+          "printed_page": 58,
+          "table": "6.11"
+        },
+        "component_inventory": {
+          "c": 0,
+          "l": 1,
+          "r": 0
+        },
+        "diagram_locator": {
+          "appendix": "D",
+          "network_number": 1,
+          "pdf_page_index": 141,
+          "printed_page": 135
+        },
+        "element_count": 1,
+        "figure_locator": {
+          "figure": "6.1",
+          "network_number": 1,
+          "pdf_page_index": 56,
+          "printed_page": 50
+        },
+        "fixture_id": "morelli-smith-canonical-network-1",
+        "source_equivalence_class": "I_B^1",
+        "source_orbit": "IB (sole orbit)",
+        "subfamily": "IB"
+      },
+      "evidence_id": "ms-2019-canonical-network-1-definition",
+      "locator": {
+        "appendix": "D",
+        "network_number": 1,
+        "pdf_page_index": 141,
+        "printed_page": 135
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 1 with the recorded low-order topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "canonical_network_number": 1,
+        "claim_type": "canonical-network-match",
+        "fixture_id": "morelli-smith-canonical-network-1",
+        "matched": true,
+        "representative_descriptor": "0-1:L",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "subject_catalogue_ids": [
+          "lh148-11e22e7cba30a62f"
+        ]
+      },
+      "evidence_id": "rice-lh148-11e22e7cba30a62f-canonical-network-1-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-low-order-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 1 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-low-order-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "canonical_network_number": 2,
+        "claim_type": "canonical-network-definition",
+        "class_table_locator": {
+          "network_number": 2,
+          "pdf_page_index": 64,
+          "printed_page": 58,
+          "table": "6.11"
+        },
+        "component_inventory": {
+          "c": 1,
+          "l": 0,
+          "r": 0
+        },
+        "diagram_locator": {
+          "appendix": "D",
+          "network_number": 2,
+          "pdf_page_index": 141,
+          "printed_page": 135
+        },
+        "element_count": 1,
+        "figure_locator": {
+          "figure": "6.1",
+          "network_number": 2,
+          "pdf_page_index": 56,
+          "printed_page": 50
+        },
+        "fixture_id": "morelli-smith-canonical-network-2",
+        "source_equivalence_class": "I_B^2",
+        "source_orbit": "IB (sole orbit)",
+        "subfamily": "IB"
+      },
+      "evidence_id": "ms-2019-canonical-network-2-definition",
+      "locator": {
+        "appendix": "D",
+        "network_number": 2,
+        "pdf_page_index": 141,
+        "printed_page": 135
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 2 with the recorded low-order topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "canonical_network_number": 2,
+        "claim_type": "canonical-network-match",
+        "fixture_id": "morelli-smith-canonical-network-2",
+        "matched": true,
+        "representative_descriptor": "0-1:C",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "subject_catalogue_ids": [
+          "lh148-187ef8e981d523c3"
+        ]
+      },
+      "evidence_id": "rice-lh148-187ef8e981d523c3-canonical-network-2-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-low-order-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 2 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-low-order-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "canonical_network_number": 3,
+        "claim_type": "canonical-network-definition",
+        "class_table_locator": {
+          "network_number": 3,
+          "pdf_page_index": 64,
+          "printed_page": 58,
+          "table": "6.11"
+        },
+        "component_inventory": {
+          "c": 0,
+          "l": 0,
+          "r": 1
+        },
+        "diagram_locator": {
+          "appendix": "D",
+          "network_number": 3,
+          "pdf_page_index": 141,
+          "printed_page": 135
+        },
+        "element_count": 1,
+        "figure_locator": {
+          "figure": "6.1",
+          "network_number": 3,
+          "pdf_page_index": 56,
+          "printed_page": 50
+        },
+        "fixture_id": "morelli-smith-canonical-network-3",
+        "source_equivalence_class": "I_A^1",
+        "source_orbit": "IA (sole orbit)",
+        "subfamily": "IA"
+      },
+      "evidence_id": "ms-2019-canonical-network-3-definition",
+      "locator": {
+        "appendix": "D",
+        "network_number": 3,
+        "pdf_page_index": 141,
+        "printed_page": 135
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 3 with the recorded low-order topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "canonical_network_number": 3,
+        "claim_type": "canonical-network-match",
+        "fixture_id": "morelli-smith-canonical-network-3",
+        "matched": true,
+        "representative_descriptor": "0-1:R",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "subject_catalogue_ids": [
+          "lh148-e6719ebfaa65ecc4"
+        ]
+      },
+      "evidence_id": "rice-lh148-e6719ebfaa65ecc4-canonical-network-3-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-low-order-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 3 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-low-order-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "canonical_network_number": 4,
+        "claim_type": "canonical-network-definition",
+        "class_table_locator": {
+          "network_number": 4,
+          "pdf_page_index": 64,
+          "printed_page": 58,
+          "table": "6.11"
+        },
+        "component_inventory": {
+          "c": 1,
+          "l": 1,
+          "r": 0
+        },
+        "diagram_locator": {
+          "appendix": "D",
+          "network_number": 4,
+          "pdf_page_index": 142,
+          "printed_page": 136
+        },
+        "element_count": 2,
+        "figure_locator": {
+          "figure": "6.1",
+          "network_number": 4,
+          "pdf_page_index": 56,
+          "printed_page": 50
+        },
+        "fixture_id": "morelli-smith-canonical-network-4",
+        "source_equivalence_class": "II_B^1",
+        "source_orbit": "IIB (sole orbit)",
+        "subfamily": "IIB"
+      },
+      "evidence_id": "ms-2019-canonical-network-4-definition",
+      "locator": {
+        "appendix": "D",
+        "network_number": 4,
+        "pdf_page_index": 142,
+        "printed_page": 136
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 4 with the recorded low-order topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "canonical_network_number": 4,
+        "claim_type": "canonical-network-match",
+        "fixture_id": "morelli-smith-canonical-network-4",
+        "matched": true,
+        "representative_descriptor": "0-2:C;1-2:L",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "subject_catalogue_ids": [
+          "lh148-bc703386759e1fc4"
+        ]
+      },
+      "evidence_id": "rice-lh148-bc703386759e1fc4-canonical-network-4-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-low-order-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 4 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-low-order-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "canonical_network_number": 5,
+        "claim_type": "canonical-network-definition",
+        "class_table_locator": {
+          "network_number": 5,
+          "pdf_page_index": 64,
+          "printed_page": 58,
+          "table": "6.11"
+        },
+        "component_inventory": {
+          "c": 1,
+          "l": 0,
+          "r": 1
+        },
+        "diagram_locator": {
+          "appendix": "D",
+          "network_number": 5,
+          "pdf_page_index": 141,
+          "printed_page": 135
+        },
+        "element_count": 2,
+        "figure_locator": {
+          "figure": "6.1",
+          "network_number": 5,
+          "pdf_page_index": 56,
+          "printed_page": 50
+        },
+        "fixture_id": "morelli-smith-canonical-network-5",
+        "source_equivalence_class": "II_A^3",
+        "source_orbit": "IIA (sole orbit)",
+        "subfamily": "IIA"
+      },
+      "evidence_id": "ms-2019-canonical-network-5-definition",
+      "locator": {
+        "appendix": "D",
+        "network_number": 5,
+        "pdf_page_index": 141,
+        "printed_page": 135
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 5 with the recorded low-order topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "canonical_network_number": 5,
+        "claim_type": "canonical-network-match",
+        "fixture_id": "morelli-smith-canonical-network-5",
+        "matched": true,
+        "representative_descriptor": "0-2:C;1-2:R",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "subject_catalogue_ids": [
+          "lh148-e5ab4cbd88b9cfcd"
+        ]
+      },
+      "evidence_id": "rice-lh148-e5ab4cbd88b9cfcd-canonical-network-5-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-low-order-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 5 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-low-order-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "canonical_network_number": 6,
+        "claim_type": "canonical-network-definition",
+        "class_table_locator": {
+          "network_number": 6,
+          "pdf_page_index": 64,
+          "printed_page": 58,
+          "table": "6.11"
+        },
+        "component_inventory": {
+          "c": 0,
+          "l": 1,
+          "r": 1
+        },
+        "diagram_locator": {
+          "appendix": "D",
+          "network_number": 6,
+          "pdf_page_index": 141,
+          "printed_page": 135
+        },
+        "element_count": 2,
+        "figure_locator": {
+          "figure": "6.1",
+          "network_number": 6,
+          "pdf_page_index": 56,
+          "printed_page": 50
+        },
+        "fixture_id": "morelli-smith-canonical-network-6",
+        "source_equivalence_class": "II_A^1",
+        "source_orbit": "IIA (sole orbit)",
+        "subfamily": "IIA"
+      },
+      "evidence_id": "ms-2019-canonical-network-6-definition",
+      "locator": {
+        "appendix": "D",
+        "network_number": 6,
+        "pdf_page_index": 141,
+        "printed_page": 135
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 6 with the recorded low-order topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "canonical_network_number": 6,
+        "claim_type": "canonical-network-match",
+        "fixture_id": "morelli-smith-canonical-network-6",
+        "matched": true,
+        "representative_descriptor": "0-2:L;1-2:R",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "subject_catalogue_ids": [
+          "lh148-dacf11ef419be4ae"
+        ]
+      },
+      "evidence_id": "rice-lh148-dacf11ef419be4ae-canonical-network-6-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-low-order-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 6 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-low-order-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "canonical_network_number": 7,
+        "claim_type": "canonical-network-definition",
+        "class_table_locator": {
+          "network_number": 7,
+          "pdf_page_index": 64,
+          "printed_page": 58,
+          "table": "6.11"
+        },
+        "component_inventory": {
+          "c": 1,
+          "l": 1,
+          "r": 0
+        },
+        "diagram_locator": {
+          "appendix": "D",
+          "network_number": 7,
+          "pdf_page_index": 142,
+          "printed_page": 136
+        },
+        "element_count": 2,
+        "figure_locator": {
+          "figure": "6.1",
+          "network_number": 7,
+          "pdf_page_index": 56,
+          "printed_page": 50
+        },
+        "fixture_id": "morelli-smith-canonical-network-7",
+        "source_equivalence_class": "II_B^2",
+        "source_orbit": "IIB (sole orbit)",
+        "subfamily": "IIB"
+      },
+      "evidence_id": "ms-2019-canonical-network-7-definition",
+      "locator": {
+        "appendix": "D",
+        "network_number": 7,
+        "pdf_page_index": 142,
+        "printed_page": 136
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 7 with the recorded low-order topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "canonical_network_number": 7,
+        "claim_type": "canonical-network-match",
+        "fixture_id": "morelli-smith-canonical-network-7",
+        "matched": true,
+        "representative_descriptor": "0-1:C;0-1:L",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "subject_catalogue_ids": [
+          "lh148-6c4acdd4ee210778"
+        ]
+      },
+      "evidence_id": "rice-lh148-6c4acdd4ee210778-canonical-network-7-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-low-order-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 7 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-low-order-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "canonical_network_number": 8,
+        "claim_type": "canonical-network-definition",
+        "class_table_locator": {
+          "network_number": 8,
+          "pdf_page_index": 64,
+          "printed_page": 58,
+          "table": "6.11"
+        },
+        "component_inventory": {
+          "c": 0,
+          "l": 1,
+          "r": 1
+        },
+        "diagram_locator": {
+          "appendix": "D",
+          "network_number": 8,
+          "pdf_page_index": 141,
+          "printed_page": 135
+        },
+        "element_count": 2,
+        "figure_locator": {
+          "figure": "6.1",
+          "network_number": 8,
+          "pdf_page_index": 56,
+          "printed_page": 50
+        },
+        "fixture_id": "morelli-smith-canonical-network-8",
+        "source_equivalence_class": "II_A^2",
+        "source_orbit": "IIA (sole orbit)",
+        "subfamily": "IIA"
+      },
+      "evidence_id": "ms-2019-canonical-network-8-definition",
+      "locator": {
+        "appendix": "D",
+        "network_number": 8,
+        "pdf_page_index": 141,
+        "printed_page": 135
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 8 with the recorded low-order topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "canonical_network_number": 8,
+        "claim_type": "canonical-network-match",
+        "fixture_id": "morelli-smith-canonical-network-8",
+        "matched": true,
+        "representative_descriptor": "0-1:L;0-1:R",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "subject_catalogue_ids": [
+          "lh148-33615cdca4d212bc"
+        ]
+      },
+      "evidence_id": "rice-lh148-33615cdca4d212bc-canonical-network-8-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-low-order-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 8 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-low-order-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "canonical_network_number": 9,
+        "claim_type": "canonical-network-definition",
+        "class_table_locator": {
+          "network_number": 9,
+          "pdf_page_index": 64,
+          "printed_page": 58,
+          "table": "6.11"
+        },
+        "component_inventory": {
+          "c": 1,
+          "l": 0,
+          "r": 1
+        },
+        "diagram_locator": {
+          "appendix": "D",
+          "network_number": 9,
+          "pdf_page_index": 141,
+          "printed_page": 135
+        },
+        "element_count": 2,
+        "figure_locator": {
+          "figure": "6.1",
+          "network_number": 9,
+          "pdf_page_index": 56,
+          "printed_page": 50
+        },
+        "fixture_id": "morelli-smith-canonical-network-9",
+        "source_equivalence_class": "II_A^4",
+        "source_orbit": "IIA (sole orbit)",
+        "subfamily": "IIA"
+      },
+      "evidence_id": "ms-2019-canonical-network-9-definition",
+      "locator": {
+        "appendix": "D",
+        "network_number": 9,
+        "pdf_page_index": 141,
+        "printed_page": 135
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 9 with the recorded low-order topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "canonical_network_number": 9,
+        "claim_type": "canonical-network-match",
+        "fixture_id": "morelli-smith-canonical-network-9",
+        "matched": true,
+        "representative_descriptor": "0-1:C;0-1:R",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "subject_catalogue_ids": [
+          "lh148-e798eb374bc4314b"
+        ]
+      },
+      "evidence_id": "rice-lh148-e798eb374bc4314b-canonical-network-9-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-low-order-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 9 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-low-order-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "canonical_network_number": 10,
+        "claim_type": "canonical-network-definition",
+        "class_table_locator": {
+          "network_number": 10,
+          "pdf_page_index": 64,
+          "printed_page": 58,
+          "table": "6.11"
+        },
+        "component_inventory": {
+          "c": 1,
+          "l": 1,
+          "r": 1
+        },
+        "diagram_locator": {
+          "appendix": "D",
+          "network_number": 10,
+          "pdf_page_index": 143,
+          "printed_page": 137
+        },
+        "element_count": 3,
+        "figure_locator": {
+          "figure": "6.1",
+          "network_number": 10,
+          "pdf_page_index": 56,
+          "printed_page": 50
+        },
+        "fixture_id": "morelli-smith-canonical-network-10",
+        "source_equivalence_class": "III_E^1",
+        "source_orbit": "IIIE (sole orbit)",
+        "subfamily": "IIIE"
+      },
+      "evidence_id": "ms-2019-canonical-network-10-definition",
+      "locator": {
+        "appendix": "D",
+        "network_number": 10,
+        "pdf_page_index": 143,
+        "printed_page": 137
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 10 with the recorded low-order topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "canonical_network_number": 10,
+        "claim_type": "canonical-network-match",
+        "fixture_id": "morelli-smith-canonical-network-10",
+        "matched": true,
+        "representative_descriptor": "0-2:C;1-3:L;2-3:R",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "subject_catalogue_ids": [
+          "lh148-ec2d91a9eb609e87"
+        ]
+      },
+      "evidence_id": "rice-lh148-ec2d91a9eb609e87-canonical-network-10-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-low-order-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 10 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-low-order-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "canonical_network_number": 11,
+        "claim_type": "canonical-network-definition",
+        "class_table_locator": {
+          "network_number": 11,
+          "pdf_page_index": 64,
+          "printed_page": 58,
+          "table": "6.11"
+        },
+        "component_inventory": {
+          "c": 0,
+          "l": 2,
+          "r": 1
+        },
+        "diagram_locator": {
+          "appendix": "D",
+          "network_number": 11,
+          "pdf_page_index": 142,
+          "printed_page": 136
+        },
+        "element_count": 3,
+        "figure_locator": {
+          "figure": "6.1",
+          "network_number": 11,
+          "pdf_page_index": 56,
+          "printed_page": 50
+        },
+        "fixture_id": "morelli-smith-canonical-network-11",
+        "source_equivalence_class": "III_B^1",
+        "source_orbit": "IIIB (sole orbit)",
+        "subfamily": "IIIB"
+      },
+      "evidence_id": "ms-2019-canonical-network-11-definition",
+      "locator": {
+        "appendix": "D",
+        "network_number": 11,
+        "pdf_page_index": 142,
+        "printed_page": 136
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 11 with the recorded low-order topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "canonical_network_number": 11,
+        "claim_type": "canonical-network-match",
+        "fixture_id": "morelli-smith-canonical-network-11",
+        "matched": true,
+        "representative_descriptor": "0-2:L;0-2:R;1-2:L",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "subject_catalogue_ids": [
+          "lh148-9ce47e2e00e47d8a"
+        ]
+      },
+      "evidence_id": "rice-lh148-9ce47e2e00e47d8a-canonical-network-11-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-low-order-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 11 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-low-order-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "canonical_network_number": 12,
+        "claim_type": "canonical-network-definition",
+        "class_table_locator": {
+          "network_number": 12,
+          "pdf_page_index": 64,
+          "printed_page": 58,
+          "table": "6.11"
+        },
+        "component_inventory": {
+          "c": 0,
+          "l": 2,
+          "r": 1
+        },
+        "diagram_locator": {
+          "appendix": "D",
+          "network_number": 12,
+          "pdf_page_index": 142,
+          "printed_page": 136
+        },
+        "element_count": 3,
+        "figure_locator": {
+          "figure": "6.1",
+          "network_number": 12,
+          "pdf_page_index": 56,
+          "printed_page": 50
+        },
+        "fixture_id": "morelli-smith-canonical-network-12",
+        "source_equivalence_class": "III_B^1",
+        "source_orbit": "IIIB (sole orbit)",
+        "subfamily": "IIIB"
+      },
+      "evidence_id": "ms-2019-canonical-network-12-definition",
+      "locator": {
+        "appendix": "D",
+        "network_number": 12,
+        "pdf_page_index": 142,
+        "printed_page": 136
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 12 with the recorded low-order topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "canonical_network_number": 12,
+        "claim_type": "canonical-network-match",
+        "fixture_id": "morelli-smith-canonical-network-12",
+        "matched": true,
+        "representative_descriptor": "0-1:L;0-2:L;1-2:R",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "subject_catalogue_ids": [
+          "lh148-ba7c48b07f29dd51"
+        ]
+      },
+      "evidence_id": "rice-lh148-ba7c48b07f29dd51-canonical-network-12-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-low-order-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 12 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-low-order-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "canonical_network_number": 13,
+        "claim_type": "canonical-network-definition",
+        "class_table_locator": {
+          "network_number": 13,
+          "pdf_page_index": 64,
+          "printed_page": 58,
+          "table": "6.11"
+        },
+        "component_inventory": {
+          "c": 2,
+          "l": 0,
+          "r": 1
+        },
+        "diagram_locator": {
+          "appendix": "D",
+          "network_number": 13,
+          "pdf_page_index": 142,
+          "printed_page": 136
+        },
+        "element_count": 3,
+        "figure_locator": {
+          "figure": "6.1",
+          "network_number": 13,
+          "pdf_page_index": 56,
+          "printed_page": 50
+        },
+        "fixture_id": "morelli-smith-canonical-network-13",
+        "source_equivalence_class": "III_B^2",
+        "source_orbit": "IIIB (sole orbit)",
+        "subfamily": "IIIB"
+      },
+      "evidence_id": "ms-2019-canonical-network-13-definition",
+      "locator": {
+        "appendix": "D",
+        "network_number": 13,
+        "pdf_page_index": 142,
+        "printed_page": 136
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 13 with the recorded low-order topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "canonical_network_number": 13,
+        "claim_type": "canonical-network-match",
+        "fixture_id": "morelli-smith-canonical-network-13",
+        "matched": true,
+        "representative_descriptor": "0-1:C;0-2:C;1-2:R",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "subject_catalogue_ids": [
+          "lh148-4ec3374bd9f5ab9d"
+        ]
+      },
+      "evidence_id": "rice-lh148-4ec3374bd9f5ab9d-canonical-network-13-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-low-order-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 13 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-low-order-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "canonical_network_number": 14,
+        "claim_type": "canonical-network-definition",
+        "class_table_locator": {
+          "network_number": 14,
+          "pdf_page_index": 64,
+          "printed_page": 58,
+          "table": "6.11"
+        },
+        "component_inventory": {
+          "c": 2,
+          "l": 0,
+          "r": 1
+        },
+        "diagram_locator": {
+          "appendix": "D",
+          "network_number": 14,
+          "pdf_page_index": 142,
+          "printed_page": 136
+        },
+        "element_count": 3,
+        "figure_locator": {
+          "figure": "6.1",
+          "network_number": 14,
+          "pdf_page_index": 56,
+          "printed_page": 50
+        },
+        "fixture_id": "morelli-smith-canonical-network-14",
+        "source_equivalence_class": "III_B^2",
+        "source_orbit": "IIIB (sole orbit)",
+        "subfamily": "IIIB"
+      },
+      "evidence_id": "ms-2019-canonical-network-14-definition",
+      "locator": {
+        "appendix": "D",
+        "network_number": 14,
+        "pdf_page_index": 142,
+        "printed_page": 136
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 14 with the recorded low-order topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "canonical_network_number": 14,
+        "claim_type": "canonical-network-match",
+        "fixture_id": "morelli-smith-canonical-network-14",
+        "matched": true,
+        "representative_descriptor": "0-2:C;0-2:R;1-2:C",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "subject_catalogue_ids": [
+          "lh148-34b077a26df0d439"
+        ]
+      },
+      "evidence_id": "rice-lh148-34b077a26df0d439-canonical-network-14-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-low-order-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 14 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-low-order-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "canonical_network_number": 15,
+        "claim_type": "canonical-network-definition",
+        "class_table_locator": {
+          "network_number": 15,
+          "pdf_page_index": 64,
+          "printed_page": 58,
+          "table": "6.11"
+        },
+        "component_inventory": {
+          "c": 0,
+          "l": 1,
+          "r": 2
+        },
+        "diagram_locator": {
+          "appendix": "D",
+          "network_number": 15,
+          "pdf_page_index": 142,
+          "printed_page": 136
+        },
+        "element_count": 3,
+        "figure_locator": {
+          "figure": "6.1",
+          "network_number": 15,
+          "pdf_page_index": 56,
+          "printed_page": 50
+        },
+        "fixture_id": "morelli-smith-canonical-network-15",
+        "source_equivalence_class": "III_A^1",
+        "source_orbit": "IIIA (sole orbit)",
+        "subfamily": "IIIA"
+      },
+      "evidence_id": "ms-2019-canonical-network-15-definition",
+      "locator": {
+        "appendix": "D",
+        "network_number": 15,
+        "pdf_page_index": 142,
+        "printed_page": 136
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 15 with the recorded low-order topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "canonical_network_number": 15,
+        "claim_type": "canonical-network-match",
+        "fixture_id": "morelli-smith-canonical-network-15",
+        "matched": true,
+        "representative_descriptor": "0-2:L;0-2:R;1-2:R",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "subject_catalogue_ids": [
+          "lh148-d0dd7ab06f8d9467"
+        ]
+      },
+      "evidence_id": "rice-lh148-d0dd7ab06f8d9467-canonical-network-15-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-low-order-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 15 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-low-order-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "canonical_network_number": 16,
+        "claim_type": "canonical-network-definition",
+        "class_table_locator": {
+          "network_number": 16,
+          "pdf_page_index": 64,
+          "printed_page": 58,
+          "table": "6.11"
+        },
+        "component_inventory": {
+          "c": 0,
+          "l": 1,
+          "r": 2
+        },
+        "diagram_locator": {
+          "appendix": "D",
+          "network_number": 16,
+          "pdf_page_index": 142,
+          "printed_page": 136
+        },
+        "element_count": 3,
+        "figure_locator": {
+          "figure": "6.1",
+          "network_number": 16,
+          "pdf_page_index": 56,
+          "printed_page": 50
+        },
+        "fixture_id": "morelli-smith-canonical-network-16",
+        "source_equivalence_class": "III_A^1",
+        "source_orbit": "IIIA (sole orbit)",
+        "subfamily": "IIIA"
+      },
+      "evidence_id": "ms-2019-canonical-network-16-definition",
+      "locator": {
+        "appendix": "D",
+        "network_number": 16,
+        "pdf_page_index": 142,
+        "printed_page": 136
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 16 with the recorded low-order topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "canonical_network_number": 16,
+        "claim_type": "canonical-network-match",
+        "fixture_id": "morelli-smith-canonical-network-16",
+        "matched": true,
+        "representative_descriptor": "0-1:R;0-2:L;1-2:R",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "subject_catalogue_ids": [
+          "lh148-26ab596fc1b6adf0"
+        ]
+      },
+      "evidence_id": "rice-lh148-26ab596fc1b6adf0-canonical-network-16-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-low-order-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 16 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-low-order-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "canonical_network_number": 17,
+        "claim_type": "canonical-network-definition",
+        "class_table_locator": {
+          "network_number": 17,
+          "pdf_page_index": 64,
+          "printed_page": 58,
+          "table": "6.11"
+        },
+        "component_inventory": {
+          "c": 1,
+          "l": 0,
+          "r": 2
+        },
+        "diagram_locator": {
+          "appendix": "D",
+          "network_number": 17,
+          "pdf_page_index": 142,
+          "printed_page": 136
+        },
+        "element_count": 3,
+        "figure_locator": {
+          "figure": "6.1",
+          "network_number": 17,
+          "pdf_page_index": 56,
+          "printed_page": 50
+        },
+        "fixture_id": "morelli-smith-canonical-network-17",
+        "source_equivalence_class": "III_A^2",
+        "source_orbit": "IIIA (sole orbit)",
+        "subfamily": "IIIA"
+      },
+      "evidence_id": "ms-2019-canonical-network-17-definition",
+      "locator": {
+        "appendix": "D",
+        "network_number": 17,
+        "pdf_page_index": 142,
+        "printed_page": 136
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 17 with the recorded low-order topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "canonical_network_number": 17,
+        "claim_type": "canonical-network-match",
+        "fixture_id": "morelli-smith-canonical-network-17",
+        "matched": true,
+        "representative_descriptor": "0-2:C;0-2:R;1-2:R",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "subject_catalogue_ids": [
+          "lh148-f2ca341555f420ec"
+        ]
+      },
+      "evidence_id": "rice-lh148-f2ca341555f420ec-canonical-network-17-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-low-order-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 17 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-low-order-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "canonical_network_number": 18,
+        "claim_type": "canonical-network-definition",
+        "class_table_locator": {
+          "network_number": 18,
+          "pdf_page_index": 64,
+          "printed_page": 58,
+          "table": "6.11"
+        },
+        "component_inventory": {
+          "c": 1,
+          "l": 0,
+          "r": 2
+        },
+        "diagram_locator": {
+          "appendix": "D",
+          "network_number": 18,
+          "pdf_page_index": 142,
+          "printed_page": 136
+        },
+        "element_count": 3,
+        "figure_locator": {
+          "figure": "6.1",
+          "network_number": 18,
+          "pdf_page_index": 56,
+          "printed_page": 50
+        },
+        "fixture_id": "morelli-smith-canonical-network-18",
+        "source_equivalence_class": "III_A^2",
+        "source_orbit": "IIIA (sole orbit)",
+        "subfamily": "IIIA"
+      },
+      "evidence_id": "ms-2019-canonical-network-18-definition",
+      "locator": {
+        "appendix": "D",
+        "network_number": 18,
+        "pdf_page_index": 142,
+        "printed_page": 136
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 18 with the recorded low-order topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "canonical_network_number": 18,
+        "claim_type": "canonical-network-match",
+        "fixture_id": "morelli-smith-canonical-network-18",
+        "matched": true,
+        "representative_descriptor": "0-1:R;0-2:C;1-2:R",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "subject_catalogue_ids": [
+          "lh148-2d28eb19a83067c3"
+        ]
+      },
+      "evidence_id": "rice-lh148-2d28eb19a83067c3-canonical-network-18-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-low-order-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 18 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-low-order-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "canonical_network_number": 19,
+        "claim_type": "canonical-network-definition",
+        "class_table_locator": {
+          "network_number": 19,
+          "pdf_page_index": 64,
+          "printed_page": 58,
+          "table": "6.11"
+        },
+        "component_inventory": {
+          "c": 1,
+          "l": 1,
+          "r": 1
+        },
+        "diagram_locator": {
+          "appendix": "D",
+          "network_number": 19,
+          "pdf_page_index": 143,
+          "printed_page": 137
+        },
+        "element_count": 3,
+        "figure_locator": {
+          "figure": "6.1",
+          "network_number": 19,
+          "pdf_page_index": 56,
+          "printed_page": 50
+        },
+        "fixture_id": "morelli-smith-canonical-network-19",
+        "source_equivalence_class": "III_E^2",
+        "source_orbit": "IIIE (sole orbit)",
+        "subfamily": "IIIE"
+      },
+      "evidence_id": "ms-2019-canonical-network-19-definition",
+      "locator": {
+        "appendix": "D",
+        "network_number": 19,
+        "pdf_page_index": 143,
+        "printed_page": 137
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 19 with the recorded low-order topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "canonical_network_number": 19,
+        "claim_type": "canonical-network-match",
+        "fixture_id": "morelli-smith-canonical-network-19",
+        "matched": true,
+        "representative_descriptor": "0-1:C;0-1:L;0-1:R",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "subject_catalogue_ids": [
+          "lh148-f6b0120a6632013a"
+        ]
+      },
+      "evidence_id": "rice-lh148-f6b0120a6632013a-canonical-network-19-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-low-order-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 19 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-low-order-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "canonical_network_number": 26,
+        "claim_type": "canonical-network-definition",
+        "class_table_locator": {
+          "network_number": 26,
+          "pdf_page_index": 64,
+          "printed_page": 58,
+          "table": "6.11"
+        },
+        "component_inventory": {
+          "c": 1,
+          "l": 1,
+          "r": 1
+        },
+        "diagram_locator": {
+          "appendix": "D",
+          "network_number": 26,
+          "pdf_page_index": 143,
+          "printed_page": 137
+        },
+        "element_count": 3,
+        "figure_locator": {
+          "figure": "6.1",
+          "network_number": 26,
+          "pdf_page_index": 56,
+          "printed_page": 50
+        },
+        "fixture_id": "morelli-smith-canonical-network-26",
+        "source_equivalence_class": "III_C^4",
+        "source_orbit": "IIIC (sole orbit)",
+        "subfamily": "IIIC"
+      },
+      "evidence_id": "ms-2019-canonical-network-26-definition",
+      "locator": {
+        "appendix": "D",
+        "network_number": 26,
+        "pdf_page_index": 143,
+        "printed_page": 137
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 26 with the recorded low-order topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "canonical_network_number": 26,
+        "claim_type": "canonical-network-match",
+        "fixture_id": "morelli-smith-canonical-network-26",
+        "matched": true,
+        "representative_descriptor": "0-2:C;1-2:L;1-2:R",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "subject_catalogue_ids": [
+          "lh148-aecc406cd94c57bc"
+        ]
+      },
+      "evidence_id": "rice-lh148-aecc406cd94c57bc-canonical-network-26-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-low-order-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 26 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-low-order-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "canonical_network_number": 27,
+        "claim_type": "canonical-network-definition",
+        "class_table_locator": {
+          "network_number": 27,
+          "pdf_page_index": 64,
+          "printed_page": 58,
+          "table": "6.11"
+        },
+        "component_inventory": {
+          "c": 1,
+          "l": 1,
+          "r": 1
+        },
+        "diagram_locator": {
+          "appendix": "D",
+          "network_number": 27,
+          "pdf_page_index": 143,
+          "printed_page": 137
+        },
+        "element_count": 3,
+        "figure_locator": {
+          "figure": "6.1",
+          "network_number": 27,
+          "pdf_page_index": 56,
+          "printed_page": 50
+        },
+        "fixture_id": "morelli-smith-canonical-network-27",
+        "source_equivalence_class": "III_D^1",
+        "source_orbit": "IIID (sole orbit)",
+        "subfamily": "IIID"
+      },
+      "evidence_id": "ms-2019-canonical-network-27-definition",
+      "locator": {
+        "appendix": "D",
+        "network_number": 27,
+        "pdf_page_index": 143,
+        "printed_page": 137
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 27 with the recorded low-order topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "canonical_network_number": 27,
+        "claim_type": "canonical-network-match",
+        "fixture_id": "morelli-smith-canonical-network-27",
+        "matched": true,
+        "representative_descriptor": "0-2:C;0-2:L;1-2:R",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "subject_catalogue_ids": [
+          "lh148-c4dd949e0cc0cb9a"
+        ]
+      },
+      "evidence_id": "rice-lh148-c4dd949e0cc0cb9a-canonical-network-27-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-low-order-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 27 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-low-order-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "canonical_network_number": 34,
+        "claim_type": "canonical-network-definition",
+        "class_table_locator": {
+          "network_number": 34,
+          "pdf_page_index": 64,
+          "printed_page": 58,
+          "table": "6.11"
+        },
+        "component_inventory": {
+          "c": 1,
+          "l": 1,
+          "r": 1
+        },
+        "diagram_locator": {
+          "appendix": "D",
+          "network_number": 34,
+          "pdf_page_index": 143,
+          "printed_page": 137
+        },
+        "element_count": 3,
+        "figure_locator": {
+          "figure": "6.1",
+          "network_number": 34,
+          "pdf_page_index": 56,
+          "printed_page": 50
+        },
+        "fixture_id": "morelli-smith-canonical-network-34",
+        "source_equivalence_class": "III_C^2",
+        "source_orbit": "IIIC (sole orbit)",
+        "subfamily": "IIIC"
+      },
+      "evidence_id": "ms-2019-canonical-network-34-definition",
+      "locator": {
+        "appendix": "D",
+        "network_number": 34,
+        "pdf_page_index": 143,
+        "printed_page": 137
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 34 with the recorded low-order topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "canonical_network_number": 34,
+        "claim_type": "canonical-network-match",
+        "fixture_id": "morelli-smith-canonical-network-34",
+        "matched": true,
+        "representative_descriptor": "0-2:C;0-2:R;1-2:L",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "subject_catalogue_ids": [
+          "lh148-81fbe344564bbcf0"
+        ]
+      },
+      "evidence_id": "rice-lh148-81fbe344564bbcf0-canonical-network-34-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-low-order-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 34 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-low-order-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "canonical_network_number": 41,
+        "claim_type": "canonical-network-definition",
+        "class_table_locator": {
+          "network_number": 41,
+          "pdf_page_index": 64,
+          "printed_page": 58,
+          "table": "6.11"
+        },
+        "component_inventory": {
+          "c": 1,
+          "l": 1,
+          "r": 1
+        },
+        "diagram_locator": {
+          "appendix": "D",
+          "network_number": 41,
+          "pdf_page_index": 143,
+          "printed_page": 137
+        },
+        "element_count": 3,
+        "figure_locator": {
+          "figure": "6.1",
+          "network_number": 41,
+          "pdf_page_index": 56,
+          "printed_page": 50
+        },
+        "fixture_id": "morelli-smith-canonical-network-41",
+        "source_equivalence_class": "III_C^1",
+        "source_orbit": "IIIC (sole orbit)",
+        "subfamily": "IIIC"
+      },
+      "evidence_id": "ms-2019-canonical-network-41-definition",
+      "locator": {
+        "appendix": "D",
+        "network_number": 41,
+        "pdf_page_index": 143,
+        "printed_page": 137
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 41 with the recorded low-order topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "canonical_network_number": 41,
+        "claim_type": "canonical-network-match",
+        "fixture_id": "morelli-smith-canonical-network-41",
+        "matched": true,
+        "representative_descriptor": "0-1:L;0-2:C;1-2:R",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "subject_catalogue_ids": [
+          "lh148-6ab986b43f5cdc3d"
+        ]
+      },
+      "evidence_id": "rice-lh148-6ab986b43f5cdc3d-canonical-network-41-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-low-order-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 41 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-low-order-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "canonical_network_number": 42,
+        "claim_type": "canonical-network-definition",
+        "class_table_locator": {
+          "network_number": 42,
+          "pdf_page_index": 64,
+          "printed_page": 58,
+          "table": "6.11"
+        },
+        "component_inventory": {
+          "c": 1,
+          "l": 1,
+          "r": 1
+        },
+        "diagram_locator": {
+          "appendix": "D",
+          "network_number": 42,
+          "pdf_page_index": 143,
+          "printed_page": 137
+        },
+        "element_count": 3,
+        "figure_locator": {
+          "figure": "6.1",
+          "network_number": 42,
+          "pdf_page_index": 56,
+          "printed_page": 50
+        },
+        "fixture_id": "morelli-smith-canonical-network-42",
+        "source_equivalence_class": "III_D^2",
+        "source_orbit": "IIID (sole orbit)",
+        "subfamily": "IIID"
+      },
+      "evidence_id": "ms-2019-canonical-network-42-definition",
+      "locator": {
+        "appendix": "D",
+        "network_number": 42,
+        "pdf_page_index": 143,
+        "printed_page": 137
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 42 with the recorded low-order topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "canonical_network_number": 42,
+        "claim_type": "canonical-network-match",
+        "fixture_id": "morelli-smith-canonical-network-42",
+        "matched": true,
+        "representative_descriptor": "0-1:R;0-2:C;1-2:L",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "subject_catalogue_ids": [
+          "lh148-0fa59ac63267cb6f"
+        ]
+      },
+      "evidence_id": "rice-lh148-0fa59ac63267cb6f-canonical-network-42-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-low-order-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 42 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-low-order-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "canonical_network_number": 49,
+        "claim_type": "canonical-network-definition",
+        "class_table_locator": {
+          "network_number": 49,
+          "pdf_page_index": 64,
+          "printed_page": 58,
+          "table": "6.11"
+        },
+        "component_inventory": {
+          "c": 1,
+          "l": 1,
+          "r": 1
+        },
+        "diagram_locator": {
+          "appendix": "D",
+          "network_number": 49,
+          "pdf_page_index": 143,
+          "printed_page": 137
+        },
+        "element_count": 3,
+        "figure_locator": {
+          "figure": "6.1",
+          "network_number": 49,
+          "pdf_page_index": 56,
+          "printed_page": 50
+        },
+        "fixture_id": "morelli-smith-canonical-network-49",
+        "source_equivalence_class": "III_C^3",
+        "source_orbit": "IIIC (sole orbit)",
+        "subfamily": "IIIC"
+      },
+      "evidence_id": "ms-2019-canonical-network-49-definition",
+      "locator": {
+        "appendix": "D",
+        "network_number": 49,
+        "pdf_page_index": 143,
+        "printed_page": 137
+      },
+      "paraphrase": "Morelli and Smith draw canonical network 49 with the recorded low-order topology and classification.",
+      "provenance_level": "authoritative-source-transcription",
+      "source_id": "morelli-smith-2019",
+      "verification_state": "source-verified"
+    },
+    {
+      "claim": {
+        "canonical_network_number": 49,
+        "claim_type": "canonical-network-match",
+        "fixture_id": "morelli-smith-canonical-network-49",
+        "matched": true,
+        "representative_descriptor": "0-1:C;0-2:L;1-2:R",
+        "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1",
+        "subject_catalogue_ids": [
+          "lh148-7ad37b581984a1b6"
+        ]
+      },
+      "evidence_id": "rice-lh148-7ad37b581984a1b6-canonical-network-49-match",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-low-order-evidence.md"
+      },
+      "paraphrase": "The reviewed coloured fixture for canonical network 49 has one unique RICE catalogue match.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-low-order-report",
+      "verification_state": "cross-checked"
+    },
+    {
+      "claim": {
+        "canonical_network_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          26,
+          27,
+          34,
+          41,
+          42,
+          49
+        ],
+        "claim_type": "aggregate-canonical-network-group",
+        "class_table_locator": {
+          "pdf_page_index": 64,
+          "printed_page": 58,
+          "table": "6.11"
+        },
+        "count_table_locator": {
+          "pdf_page_index": 55,
+          "printed_page": 49,
+          "table": "6.2"
+        },
+        "counts_by_element_order": {
+          "1": 3,
+          "2": 6,
+          "3": 16
+        },
+        "figure_locator": {
+          "figure": "6.1",
+          "pdf_page_index": 56,
+          "printed_page": 50
+        },
+        "source_equivalence_class_count": 21,
+        "source_orbit_count": 9,
+        "subfamilies": [
+          "IA",
+          "IB",
+          "IIA",
+          "IIB",
+          "IIIA",
+          "IIIB",
+          "IIIC",
+          "IIID",
+          "IIIE"
+        ],
+        "subject_catalogue_ids": [
+          "lh148-11e22e7cba30a62f",
+          "lh148-187ef8e981d523c3",
+          "lh148-e6719ebfaa65ecc4",
+          "lh148-bc703386759e1fc4",
+          "lh148-e5ab4cbd88b9cfcd",
+          "lh148-dacf11ef419be4ae",
+          "lh148-6c4acdd4ee210778",
+          "lh148-33615cdca4d212bc",
+          "lh148-e798eb374bc4314b",
+          "lh148-ec2d91a9eb609e87",
+          "lh148-9ce47e2e00e47d8a",
+          "lh148-ba7c48b07f29dd51",
+          "lh148-4ec3374bd9f5ab9d",
+          "lh148-34b077a26df0d439",
+          "lh148-d0dd7ab06f8d9467",
+          "lh148-26ab596fc1b6adf0",
+          "lh148-f2ca341555f420ec",
+          "lh148-2d28eb19a83067c3",
+          "lh148-f6b0120a6632013a",
+          "lh148-aecc406cd94c57bc",
+          "lh148-c4dd949e0cc0cb9a",
+          "lh148-81fbe344564bbcf0",
+          "lh148-6ab986b43f5cdc3d",
+          "lh148-0fa59ac63267cb6f",
+          "lh148-7ad37b581984a1b6"
+        ],
+        "total_networks": 25
+      },
+      "evidence_id": "rice-low-order-canonical-network-group",
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-canonical-108-low-order-evidence.md"
+      },
+      "paraphrase": "The reviewed low-order group joins 25 authoritative numbered diagrams to 25 distinct unique RICE structural matches while preserving source classification metadata.",
+      "provenance_level": "rice-derived-structural-fact",
+      "source_id": "rice-canonical-108-low-order-report",
+      "verification_state": "cross-checked"
     }
   ],
-  "format_version": 4,
+  "format_version": 5,
   "object": "ladenheim-148-to-108-evidence-ledger",
   "previous_workspace_records": [],
   "records": [
@@ -7440,6 +9311,12 @@
       "citation": "RICE final-eight O/O-dual and bridge evidence and contract-design report.",
       "notes": "Reviewed repository documentation recording the complete catalogue census, eight coloured fixtures, four positive-finite Y-delta pairs, forced coefficient zeros, conditional nondegenerate targets, degenerate two-element realizations, and exact computations. It is not the authoritative historical publication.",
       "source_id": "rice-final-eight-o-bridge-report",
+      "source_type": "rice-documentation"
+    },
+    {
+      "citation": "RICE low-order canonical-108 evidence report.",
+      "notes": "Reviewed repository evidence recording the 25 independently reproduced low-order structural matches; it is not the historical publication.",
+      "source_id": "rice-canonical-108-low-order-report",
       "source_type": "rice-documentation"
     }
   ],

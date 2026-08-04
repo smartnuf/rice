@@ -110,10 +110,10 @@ historical evidence. In particular, computational agreement can corroborate a
 transcription without converting an uncited workspace assertion into a
 source-backed mapping.
 
-## Version 4 evidence contract
+## Version 5 evidence contract
 
 The manual file
-`data/comparisons/ladenheim-108-annotations.json` uses `format_version: 4` and
+`data/comparisons/ladenheim-108-annotations.json` uses `format_version: 5` and
 contains reviewed assertions and structural matching rules without duplicating
 all 148 structural records. The generated file
 `data/comparisons/ladenheim-148-to-108.json` joins those assertions to the
@@ -258,7 +258,7 @@ rules and cannot assert retention. Existing `source-backed`,
 `derived-unique-match`, retention, historical-identifier, graph-assignment, and
 component-selector contracts are unchanged.
 
-Version 4 adds the explicit-only
+Version 4 added the explicit-only
 `derived-nongeneric-simplification-match` route and the
 `aggregate-historical-nongeneric-group-plus-subject-bound-rice-facts` basis.
 The final-eight structured evidence records the authoritative collective
@@ -274,19 +274,31 @@ status and are applied as one complete group.
 
 Confidence is controlled as `high`, `medium`, `low`, or `none`.
 
-## Version 4 validation boundary
+Version 5 adds the explicit-only `derived-canonical-identity-match` route and
+the `authoritative-canonical-diagram-plus-subject-bound-rice-match` basis. The
+complete low-order structured group joins 25 authoritative numbered diagram
+definitions to 25 unique subject-bound RICE structural matches and one exact
+computation from the reviewed low-order report. A later application must retain
+all 25 subjects together and assign each exactly its matched
+`morelli-smith-canonical-network` historical identifier. The publication's
+orbit and equivalence-class labels remain contextual source facts, not alternate
+proofs of identity. This contract-only change does not yet apply those retained
+dispositions or identifiers.
 
-The version 4 validator is closed-world for every annotation object. It checks
+## Version 5 validation boundary
+
+The version 5 validator is closed-world for every annotation object. It checks
 object shapes, controlled vocabularies, reference and catalogue-subject
 resolution, provenance and verification coherence, status/disposition/category
 tuples, numeric boundaries, target and count invariants, and deterministic-output
 hygiene. Unknown fields are rejected rather than copied into the ledger.
 
-Version 4 does not represent ambiguous candidate mappings. A later extension
+Version 5 does not represent ambiguous candidate mappings. A later extension
 must record the finite candidate set, evidence for each candidate, the comparison
 relation, and why the evidence does not distinguish them. Also deferred are real
-basic-graph assignments, retained canonical membership, canonical network
-numbering, and transformation
+basic-graph assignments, application of the reviewed low-order retained
+canonical membership and numbering, all remaining canonical network numbering,
+and transformation
 proofs beyond the reviewed Zobel reports. Absence of those schema
 objects establishes none of those claims.
 

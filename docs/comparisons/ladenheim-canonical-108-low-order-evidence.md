@@ -9,11 +9,12 @@ M. C. Smith, *Passive Network Synthesis: An Approach to Classification*
 application. No disposition, historical identifier, canonical-number field, or
 basic-graph assignment is changed.
 
-Production therefore remains 40 excluded, 108 unresolved, and 0 retained.
-Every `basic_graph_assignment` remains null and every historical-identifier
-list remains empty. The structural matches below do not mark the 25 subjects
-retained, do not establish the complementary 108 as the canonical catalogue,
-and do not begin the 108-to-62 classification.
+At this report's accepted evidence-only revision, production remained 40
+excluded, 108 unresolved, and 0 retained.
+At that milestone, every `basic_graph_assignment` was null and every
+historical-identifier list was empty. The structural matches below did not
+mark the 25 subjects retained, establish the complementary 108 as the
+canonical catalogue, or begin the 108-to-62 classification.
 
 ## 2. Source identity and exact locators
 
@@ -116,9 +117,10 @@ catalogue ordering, source ordering, duality, frequency inversion, and
 subfamily counts were not matching predicates.
 
 Every fixture has exactly one signature match. The 25 matches use 25 different
-RICE catalogue IDs, have the source-drawn component inventories, and are all
-currently `unresolved` in the production ledger. None is among the forty
-excluded rows. The result therefore establishes subject identity under the
+RICE catalogue IDs, have the source-drawn component inventories, and were all
+`unresolved` in the production ledger at the accepted evidence-only revision.
+None was among the forty excluded rows. The result therefore establishes
+subject identity under the
 committed structural relation, but this evidence-only report does not apply a
 canonical number or positive disposition.
 
@@ -161,7 +163,8 @@ canonical number, or RICE ID used above.
 The authoritative low-order inventory is 3 one-element, 6 two-element, and 16
 three-element networks: 25 networks in nine subfamilies, nine orbits, and 21
 equivalence classes. Independently transcribed coloured fixtures select exactly
-25 distinct unresolved RICE subjects, one per canonical source diagram.
+25 distinct RICE subjects, one per canonical source diagram; all 25 were
+unresolved at the accepted evidence-only revision.
 
 This is sufficient evidence for later subject-bound canonical-identity review,
 but it is not that application. No historical identity, retention disposition,
@@ -169,6 +172,15 @@ canonical-108 reproduction claim, or 108-to-62 behavioural classification is
 made here.
 
 ## 9. Reproduction commands
+
+The exact block below records the evidence-only state at accepted commit
+`4411b1fa441241f47e3d2e39a4e96ef5447199e9`. Its unresolved-row and
+40 excluded / 108 unresolved / 0 retained assertions are historical acceptance
+checks. The reusable computation result is the unique structural
+correspondence, descriptors, and component inventories. After a later identity
+application, reproducing this historical block requires checking out the pinned
+commit; the then-current retained production state is validated separately by
+the current contract and generator.
 
 Run this paste-ready block from the RICE repository root. It uses only existing
 RICE APIs and the Python standard library, scans all 148 catalogue rows, and

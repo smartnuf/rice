@@ -332,9 +332,9 @@ def _previous_workspace_cross_check():
     return record
 
 
-def test_format_version_four_is_required(catalogue, annotations):
-    annotations["format_version"] = 3
-    with pytest.raises(ValueError, match="format_version must be 4"):
+def test_format_version_five_is_required(catalogue, annotations):
+    annotations["format_version"] = 4
+    with pytest.raises(ValueError, match="format_version must be 5"):
         generate_evidence_ledger(catalogue, annotations)
 
 
@@ -701,7 +701,7 @@ def test_target_requires_aggregate_evidence(catalogue, annotations):
     annotations["target"]["evidence_record_ids"].remove(
         "ms-2019-reported-148-to-108"
     )
-    with pytest.raises(ValueError, match="aggregate evidence"):
+    with pytest.raises(ValueError, match="exactly the two reviewed aggregate"):
         generate_evidence_ledger(catalogue, annotations)
 
 
@@ -709,7 +709,7 @@ def test_target_requires_category_target_evidence(catalogue, annotations):
     annotations["target"]["evidence_record_ids"].remove(
         "ms-2019-four-exclusion-category-targets"
     )
-    with pytest.raises(ValueError, match="category-target evidence"):
+    with pytest.raises(ValueError, match="exactly the two reviewed aggregate"):
         generate_evidence_ledger(catalogue, annotations)
 
 
@@ -719,6 +719,62 @@ def test_generated_target_references_its_evidence(catalogue, annotations):
         "ms-2019-reported-148-to-108",
         "ms-2019-four-exclusion-category-targets",
     ]
+
+
+@pytest.mark.parametrize(
+    "extra_kind", ["aggregate", "definition", "match", "unrelated"]
+)
+def test_target_rejects_every_additional_evidence_record(
+    catalogue, annotations, extra_kind
+):
+    extra_id = {
+        "aggregate": LOW_ORDER_AGGREGATE_ID,
+        "definition": _low_order_definitions(annotations)[0]["evidence_id"],
+        "match": _low_order_matches(annotations)[0]["evidence_id"],
+        "unrelated": "ms-2019-eight-four-resistor-one-reactive",
+    }[extra_kind]
+    annotations["target"]["evidence_record_ids"].append(extra_id)
+    with pytest.raises(ValueError, match="exactly the two reviewed aggregate"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize(
+    "required_id",
+    [
+        "ms-2019-reported-148-to-108",
+        "ms-2019-four-exclusion-category-targets",
+    ],
+)
+def test_target_rejects_each_missing_required_evidence(
+    catalogue, annotations, required_id
+):
+    annotations["target"]["evidence_record_ids"].remove(required_id)
+    with pytest.raises(ValueError, match="exactly the two reviewed aggregate"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize(
+    "required_id",
+    [
+        "ms-2019-reported-148-to-108",
+        "ms-2019-four-exclusion-category-targets",
+    ],
+)
+def test_target_rejects_replacement_evidence(catalogue, annotations, required_id):
+    ids = annotations["target"]["evidence_record_ids"]
+    ids[ids.index(required_id)] = "ms-2019-eight-four-resistor-one-reactive"
+    with pytest.raises(ValueError, match="exactly the two reviewed aggregate"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize("required_index", [0, 1])
+def test_target_rejects_duplicate_required_evidence(
+    catalogue, annotations, required_index
+):
+    ids = annotations["target"]["evidence_record_ids"]
+    ids.append(ids[required_index])
+    with pytest.raises(ValueError, match="duplicates"):
+        generate_evidence_ledger(catalogue, annotations)
 
 
 def _retained_evidence(catalogue_id):
@@ -1153,8 +1209,9 @@ def test_malformed_historical_identifiers_are_rejected(
         ("morelli-smith-canonical-network", 0, False),
         ("morelli-smith-canonical-network", -1, False),
         ("morelli-smith-canonical-network", True, False),
+        ("morelli-smith-canonical-network", 1.0, False),
         ("morelli-smith-canonical-network", "1", False),
-        ("morelli-smith-canonical-network", 1, True),
+        ("morelli-smith-canonical-network", 1, False),
         ("morelli-smith-canonical-network", 108, True),
         ("morelli-smith-canonical-network", 109, False),
         ("morelli-smith-basic-graph", 1, False),
@@ -3706,7 +3763,7 @@ def test_final_eight_structured_evidence_is_complete_and_applied(
 ):
     ledger = generate_evidence_ledger(catalogue, annotations)
     records = {row["catalogue_id"]: row for row in ledger["records"]}
-    assert ledger["format_version"] == 4
+    assert ledger["format_version"] == 5
     assert ledger["summary"]["by_proposed_disposition"] == {
         "exclude": 40,
         "unresolved": 108,
@@ -4322,7 +4379,7 @@ def test_format_version_four_accepts_complete_final_eight_inventory(
     catalogue, annotations
 ):
     generated = generate_evidence_ledger(catalogue, annotations)
-    assert generated["format_version"] == 4
+    assert generated["format_version"] == 5
 
 
 def test_final_eight_specialized_facts_cannot_escape_computation_scope(
@@ -4632,4 +4689,720 @@ def test_new_status_is_invalid_for_rules_and_retention(catalogue, annotations):
     })
     annotations["records"].append(row)
     with pytest.raises(ValueError, match="cannot assert retention"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+LOW_ORDER_AGGREGATE_ID = "rice-low-order-canonical-network-group"
+LOW_ORDER_COMPUTATION_ID = "rice-low-order-canonical-report-reproduction"
+
+
+def _low_order_definitions(annotations):
+    return _evidence_of_type(annotations, "canonical-network-definition")
+
+
+def _low_order_matches(annotations):
+    return _evidence_of_type(annotations, "canonical-network-match")
+
+
+def _low_order_computation(annotations):
+    return next(
+        record
+        for record in annotations["computational_cross_checks"]
+        if record["cross_check_id"] == LOW_ORDER_COMPUTATION_ID
+    )
+
+
+def _populate_low_order_identity_records(annotations):
+    aggregate = next(
+        record
+        for record in _evidence_of_type(
+            annotations, "aggregate-canonical-network-group"
+        )
+        if record["evidence_id"] == LOW_ORDER_AGGREGATE_ID
+    )
+    definitions = {
+        record["claim"]["canonical_network_number"]: record
+        for record in _low_order_definitions(annotations)
+    }
+    matches = {
+        record["claim"]["canonical_network_number"]: record
+        for record in _low_order_matches(annotations)
+    }
+    for number in aggregate["claim"]["canonical_network_numbers"]:
+        definition = definitions[number]
+        match = matches[number]
+        subject = match["claim"]["subject_catalogue_ids"][0]
+        annotations["records"].append({
+            "catalogue_id": subject,
+            "comparison_status": "derived-canonical-identity-match",
+            "proposed_disposition": "retain",
+            "exclusion_category": "none",
+            "exclusion_reason": None,
+            "evidence_basis": [
+                "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+            ],
+            "evidence_record_ids": [
+                LOW_ORDER_AGGREGATE_ID,
+                definition["evidence_id"],
+                match["evidence_id"],
+            ],
+            "previous_workspace_record_ids": [],
+            "computational_cross_check_ids": [LOW_ORDER_COMPUTATION_ID],
+            "historical_identifiers": [{
+                "scheme": "morelli-smith-canonical-network",
+                "value": number,
+                "verification_state": "cross-checked",
+                "evidence_record_ids": [
+                    definition["evidence_id"],
+                    match["evidence_id"],
+                ],
+            }],
+            "basic_graph_assignment": None,
+            "confidence": "high",
+            "notes": ["Complete low-order identity application fixture."],
+            "open_questions": [],
+        })
+
+
+def test_low_order_contract_group_is_complete_but_unapplied(catalogue, annotations):
+    ledger = generate_evidence_ledger(catalogue, annotations)
+    definitions = _low_order_definitions(annotations)
+    matches = _low_order_matches(annotations)
+    assert len(definitions) == 25
+    assert len(matches) == 25
+    assert len({row["claim"]["canonical_network_number"] for row in definitions}) == 25
+    assert len({row["claim"]["subject_catalogue_ids"][0] for row in matches}) == 25
+    assert ledger["format_version"] == 5
+    assert ledger["summary"]["by_proposed_disposition"] == {
+        "exclude": 40,
+        "unresolved": 108,
+    }
+    assert all(row["basic_graph_assignment"] is None for row in ledger["records"])
+    assert all(not row["historical_identifiers"] for row in ledger["records"])
+
+
+@pytest.mark.parametrize("claim_type", [
+    "canonical-network-definition",
+    "canonical-network-match",
+])
+def test_low_order_group_rejects_a_missing_definition_or_match(
+    catalogue, annotations, claim_type
+):
+    record = _evidence_of_type(annotations, claim_type)[-1]
+    annotations["evidence_records"].remove(record)
+    computation = _low_order_computation(annotations)
+    scope_field = (
+        "canonical_definition_evidence_record_ids"
+        if claim_type == "canonical-network-definition"
+        else "verified_evidence_record_ids"
+    )
+    computation[scope_field].remove(record["evidence_id"])
+    with pytest.raises(ValueError, match="exactly 25 canonical definitions and 25"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_low_order_group_rejects_duplicate_canonical_number(catalogue, annotations):
+    definitions = _low_order_definitions(annotations)
+    definitions[1]["claim"]["canonical_network_number"] = definitions[0]["claim"][
+        "canonical_network_number"
+    ]
+    with pytest.raises(ValueError, match="invalid canonical-network definition"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_low_order_group_rejects_duplicate_or_wrong_subject(catalogue, annotations):
+    matches = _low_order_matches(annotations)
+    matches[1]["claim"]["subject_catalogue_ids"] = matches[0]["claim"][
+        "subject_catalogue_ids"
+    ].copy()
+    with pytest.raises(ValueError, match="invalid canonical-network match"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize("number", [[1], {"number": 1}, True])
+def test_canonical_network_match_rejects_noninteger_numbers(
+    catalogue, annotations, number
+):
+    _low_order_matches(annotations)[0]["claim"]["canonical_network_number"] = number
+    with pytest.raises(ValueError, match="invalid canonical-network match"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize("value", [True, 1.0])
+def test_canonical_definition_requires_integer_element_count(
+    catalogue, annotations, value
+):
+    _low_order_definitions(annotations)[0]["claim"]["element_count"] = value
+    with pytest.raises(ValueError, match="invalid canonical-network definition"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize("field", ["r", "l", "c"])
+@pytest.mark.parametrize("replacement", [True, "equal-float"])
+def test_canonical_definition_requires_integer_component_inventory(
+    catalogue, annotations, field, replacement
+):
+    definition = _low_order_definitions(annotations)[0]["claim"]
+    value = definition["component_inventory"][field]
+    definition["component_inventory"][field] = (
+        float(value) if replacement == "equal-float" else replacement
+    )
+    with pytest.raises(ValueError, match="invalid canonical-network definition"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize(
+    ("locator", "field", "value"),
+    [
+        ("diagram_locator", "network_number", True),
+        ("diagram_locator", "network_number", 1.0),
+        ("figure_locator", "printed_page", 50.0),
+        ("class_table_locator", "pdf_page_index", 64.0),
+    ],
+)
+def test_canonical_definition_requires_integer_nested_locators(
+    catalogue, annotations, locator, field, value
+):
+    definition = _low_order_definitions(annotations)[0]["claim"]
+    definition[locator][field] = value
+    with pytest.raises(ValueError, match="invalid canonical-network definition"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize("value", [True, 1.0])
+def test_canonical_aggregate_requires_integer_number_scope(
+    catalogue, annotations, value
+):
+    aggregate = _evidence_of_type(
+        annotations, "aggregate-canonical-network-group"
+    )[0]["claim"]
+    aggregate["canonical_network_numbers"][0] = value
+    with pytest.raises(ValueError, match="invalid aggregate canonical-network"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize(
+    ("field", "value"),
+    [("source_orbit_count", True), ("total_networks", 25.0)],
+)
+def test_canonical_aggregate_requires_integer_counts(
+    catalogue, annotations, field, value
+):
+    aggregate = _evidence_of_type(
+        annotations, "aggregate-canonical-network-group"
+    )[0]["claim"]
+    aggregate[field] = value
+    with pytest.raises(ValueError, match="invalid aggregate canonical-network"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize("value", [True, 3.0])
+def test_canonical_aggregate_requires_integer_element_order_counts(
+    catalogue, annotations, value
+):
+    aggregate = _evidence_of_type(
+        annotations, "aggregate-canonical-network-group"
+    )[0]["claim"]
+    aggregate["counts_by_element_order"]["1"] = value
+    with pytest.raises(ValueError, match="invalid aggregate canonical-network"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize(
+    ("locator", "field", "value"),
+    [
+        ("count_table_locator", "printed_page", 49.0),
+        ("figure_locator", "pdf_page_index", 56.0),
+    ],
+)
+def test_canonical_aggregate_requires_integer_locators(
+    catalogue, annotations, locator, field, value
+):
+    aggregate = _evidence_of_type(
+        annotations, "aggregate-canonical-network-group"
+    )[0]["claim"]
+    aggregate[locator][field] = value
+    with pytest.raises(ValueError, match="invalid aggregate canonical-network"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize("value", [True, 1.0])
+def test_canonical_computation_requires_integer_number_scope(
+    catalogue, annotations, value
+):
+    _low_order_computation(annotations)["canonical_network_numbers"][0] = value
+    with pytest.raises(ValueError, match="invalid canonical-number scope"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize("mutation", ["diagram-locator", "report-path", "relation"])
+def test_low_order_group_rejects_mutated_binding(
+    catalogue, annotations, mutation
+):
+    if mutation == "diagram-locator":
+        _low_order_definitions(annotations)[0]["locator"]["printed_page"] = 999
+        expected = "exact publication provenance and locators"
+    elif mutation == "report-path":
+        _low_order_matches(annotations)[0]["locator"]["repository_path"] = "README.md"
+        expected = "exact reviewed report provenance"
+    else:
+        _low_order_matches(annotations)[0]["claim"]["structural_relation"] = "wrong"
+        expected = "invalid canonical-network match"
+    with pytest.raises(ValueError, match=expected):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_low_order_group_rejects_component_inventory_disagreement(
+    catalogue, annotations
+):
+    _low_order_definitions(annotations)[0]["claim"]["component_inventory"] = {
+        "r": 1, "l": 0, "c": 0,
+    }
+    with pytest.raises(ValueError, match="invalid canonical-network definition"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_low_order_group_rejects_an_excluded_subject(catalogue, annotations):
+    excluded = next(
+        row["catalogue_id"]
+        for row in generate_evidence_ledger(catalogue, annotations)["records"]
+        if row["proposed_disposition"] == "exclude"
+    )
+    _low_order_matches(annotations)[0]["claim"]["subject_catalogue_ids"] = [excluded]
+    with pytest.raises(ValueError, match="invalid canonical-network match"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize("scope_field", [
+    "canonical_definition_evidence_record_ids",
+    "verified_evidence_record_ids",
+])
+def test_low_order_computation_requires_complete_evidence_scope(
+    catalogue, annotations, scope_field
+):
+    _low_order_computation(annotations)[scope_field].pop()
+    with pytest.raises(ValueError, match="exact canonical definition and match scope"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_complete_low_order_identity_application_can_pass(catalogue, annotations):
+    _populate_low_order_identity_records(annotations)
+    ledger = generate_evidence_ledger(catalogue, annotations)
+    assert ledger["summary"]["by_proposed_disposition"] == {
+        "exclude": 40,
+        "retain": 25,
+        "unresolved": 83,
+    }
+
+
+def test_low_order_computation_result_is_durable_and_pinned(annotations):
+    computation = _low_order_computation(annotations)
+    result = computation["result"].lower()
+    assert all(
+        word not in result for word in ("unresolved", "retained", "excluded")
+    )
+    assert computation["commit_sha"] == (
+        "4411b1fa441241f47e3d2e39a4e96ef5447199e9"
+    )
+
+
+@pytest.mark.parametrize("reviewed_kind", ["aggregate", "definition", "match"])
+def test_basic_graph_assignment_low_order_evidence_triggers_consumption(
+    catalogue, annotations, reviewed_kind
+):
+    row = annotations["records"][0]
+    evidence = {
+        record["evidence_id"]: record for record in annotations["evidence_records"]
+    }
+    definition = next(
+        evidence[evidence_id]
+        for evidence_id in row["evidence_record_ids"]
+        if evidence[evidence_id]["claim"]["claim_type"] == "basic-graph-definition"
+    )
+    graph_match = next(
+        evidence[evidence_id]
+        for evidence_id in row["evidence_record_ids"]
+        if evidence[evidence_id]["claim"]["claim_type"] == "basic-graph-match"
+    )
+    reviewed_id = {
+        "aggregate": LOW_ORDER_AGGREGATE_ID,
+        "definition": _low_order_definitions(annotations)[0]["evidence_id"],
+        "match": _low_order_matches(annotations)[0]["evidence_id"],
+    }[reviewed_kind]
+    row["basic_graph_assignment"] = {
+        **definition["claim"]["definition"],
+        "structural_relation": graph_match["claim"]["match"][
+            "structural_relation"
+        ],
+        "verification_state": "cross-checked",
+        "evidence_record_ids": [
+            definition["evidence_id"],
+            graph_match["evidence_id"],
+            reviewed_id,
+        ],
+    }
+    with pytest.raises(ValueError, match="identifiers require derived-canonical"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def _append_indirect_low_order_computation(annotations, evidence_id):
+    computation = _cross_check()
+    computation.update({
+        "cross_check_id": "fixture-indirect-low-order-computation",
+        "subject_catalogue_ids": [annotations["records"][0]["catalogue_id"]],
+        "reduction_target_network_numbers": [1],
+        "verified_evidence_record_ids": [evidence_id],
+    })
+    annotations["computational_cross_checks"].append(computation)
+    return computation["cross_check_id"]
+
+
+@pytest.mark.parametrize("reviewed_kind", ["aggregate", "definition", "match"])
+def test_rule_computation_scope_low_order_evidence_triggers_consumption(
+    catalogue, annotations, reviewed_kind
+):
+    reviewed_id = {
+        "aggregate": LOW_ORDER_AGGREGATE_ID,
+        "definition": _low_order_definitions(annotations)[0]["evidence_id"],
+        "match": _low_order_matches(annotations)[0]["evidence_id"],
+    }[reviewed_kind]
+    computation_id = _append_indirect_low_order_computation(
+        annotations, reviewed_id
+    )
+    annotations["rules"][0]["computational_cross_check_ids"].append(
+        computation_id
+    )
+    with pytest.raises(ValueError, match="explicit-record only"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_explicit_computation_scope_low_order_evidence_triggers_consumption(
+    catalogue, annotations
+):
+    reviewed_id = _low_order_definitions(annotations)[0]["evidence_id"]
+    computation_id = _append_indirect_low_order_computation(
+        annotations, reviewed_id
+    )
+    annotations["records"][0]["computational_cross_check_ids"].append(
+        computation_id
+    )
+    with pytest.raises(ValueError, match="identifiers require derived-canonical"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_unrelated_computation_scope_does_not_trigger_low_order_consumption(
+    catalogue, annotations
+):
+    computation_id = _append_indirect_low_order_computation(
+        annotations, "ms-2019-reported-148-to-108"
+    )
+    computation = next(
+        item
+        for item in annotations["computational_cross_checks"]
+        if item["cross_check_id"] == computation_id
+    )
+    computation["result"] = (
+        f"Editorial mention only: {LOW_ORDER_AGGREGATE_ID} is not evidence scope."
+    )
+    annotations["rules"][0]["computational_cross_check_ids"].append(
+        computation_id
+    )
+    generate_evidence_ledger(catalogue, annotations)
+
+
+def _add_low_order_bypass_record(
+    annotations,
+    *,
+    status="unresolved",
+    identifier_value=1,
+    identifier_evidence=True,
+    include_identifier=True,
+    identifier_evidence_ids=None,
+    direct_evidence_ids=(),
+    identifier_scheme="morelli-smith-canonical-network",
+    evidence_basis=None,
+):
+    match = next(
+        record
+        for record in _low_order_matches(annotations)
+        if record["claim"]["canonical_network_number"] == 1
+    )
+    definition = next(
+        record
+        for record in _low_order_definitions(annotations)
+        if record["claim"]["canonical_network_number"] == 1
+    )
+    if status == "working-hypothesis":
+        basis = ["researcher-hypothesis"]
+        confidence = "low"
+    else:
+        basis = ["no-evidence-yet"]
+        confidence = "none"
+    if evidence_basis is not None:
+        basis = list(evidence_basis)
+    identifiers = []
+    if include_identifier:
+        identifiers.append({
+            "scheme": identifier_scheme,
+            "value": identifier_value,
+            "verification_state": "cross-checked",
+            "evidence_record_ids": (
+                list(identifier_evidence_ids)
+                if identifier_evidence_ids is not None
+                else (
+                    [definition["evidence_id"], match["evidence_id"]]
+                    if identifier_evidence
+                    else []
+                )
+            ),
+        })
+    annotations["records"].append({
+        "catalogue_id": match["claim"]["subject_catalogue_ids"][0],
+        "comparison_status": status,
+        "proposed_disposition": "unresolved",
+        "exclusion_category": "unresolved",
+        "exclusion_reason": None,
+        "evidence_basis": basis,
+        "evidence_record_ids": list(direct_evidence_ids),
+        "previous_workspace_record_ids": [],
+        "computational_cross_check_ids": [],
+        "historical_identifiers": identifiers,
+        "basic_graph_assignment": None,
+        "confidence": confidence,
+        "notes": ["Invalid partial low-order identity fixture."],
+        "open_questions": [],
+    })
+
+
+@pytest.mark.parametrize("status", ["unresolved", "working-hypothesis"])
+def test_low_order_identifier_requires_the_grouped_status(
+    catalogue, annotations, status
+):
+    _add_low_order_bypass_record(annotations, status=status)
+    with pytest.raises(ValueError, match="identifiers require derived-canonical"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_reviewed_low_order_number_cannot_omit_grouped_status(
+    catalogue, annotations
+):
+    _add_low_order_bypass_record(annotations, identifier_evidence=False)
+    with pytest.raises(ValueError, match="identifiers require derived-canonical"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_other_number_cannot_cite_low_order_identity_evidence(
+    catalogue, annotations
+):
+    _add_low_order_bypass_record(annotations, identifier_value=108)
+    with pytest.raises(ValueError, match="identifiers require derived-canonical"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_other_number_cannot_cite_low_order_aggregate_as_nested_evidence(
+    catalogue, annotations
+):
+    _add_low_order_bypass_record(
+        annotations,
+        identifier_value=108,
+        identifier_evidence_ids=[LOW_ORDER_AGGREGATE_ID],
+    )
+    with pytest.raises(ValueError, match="identifiers require derived-canonical"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize(
+    ("identifier_scheme", "identifier_value", "evidence_kind"),
+    [
+        ("morelli-smith-basic-graph", "G", "definition"),
+        ("morelli-smith-basic-graph", "G", "match"),
+        ("ladenheim-original-identifier", "L-1", "aggregate"),
+    ],
+)
+def test_nested_low_order_evidence_triggers_consumption_for_every_identifier_scheme(
+    catalogue, annotations, identifier_scheme, identifier_value, evidence_kind
+):
+    evidence_id = {
+        "definition": _low_order_definitions(annotations)[0]["evidence_id"],
+        "match": _low_order_matches(annotations)[0]["evidence_id"],
+        "aggregate": LOW_ORDER_AGGREGATE_ID,
+    }[evidence_kind]
+    _add_low_order_bypass_record(
+        annotations,
+        identifier_scheme=identifier_scheme,
+        identifier_value=identifier_value,
+        identifier_evidence_ids=[evidence_id],
+    )
+    with pytest.raises(ValueError, match="identifiers require derived-canonical"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_direct_low_order_evidence_citation_requires_the_grouped_status(
+    catalogue, annotations
+):
+    definition_id = _low_order_definitions(annotations)[0]["evidence_id"]
+    _add_low_order_bypass_record(
+        annotations,
+        identifier_value=108,
+        identifier_evidence=False,
+        include_identifier=False,
+        direct_evidence_ids=[definition_id],
+    )
+    with pytest.raises(ValueError, match="identifiers require derived-canonical"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_partial_low_order_identity_application_is_rejected(catalogue, annotations):
+    _populate_low_order_identity_records(annotations)
+    annotations["records"].pop()
+    with pytest.raises(ValueError, match="complete 25-row group"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_low_order_retention_requires_its_identifier(catalogue, annotations):
+    _populate_low_order_identity_records(annotations)
+    annotations["records"][-1]["historical_identifiers"] = []
+    with pytest.raises(ValueError, match="exact cross-checked canonical"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_low_order_identifier_requires_its_own_number(catalogue, annotations):
+    _populate_low_order_identity_records(annotations)
+    annotations["records"][-1]["historical_identifiers"][0]["value"] = 1
+    with pytest.raises(ValueError, match="exact cross-checked canonical"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize(
+    ("disposition", "category", "reason"),
+    [("exclude", "other-canonical-exclusion", "wrong"),
+     ("unresolved", "unresolved", None)],
+)
+def test_low_order_status_rejects_nonretention_dispositions(
+    catalogue, annotations, disposition, category, reason
+):
+    _populate_low_order_identity_records(annotations)
+    row = annotations["records"][-1]
+    row["proposed_disposition"] = disposition
+    row["exclusion_category"] = category
+    row["exclusion_reason"] = reason
+    with pytest.raises(ValueError, match="requires retention"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_low_order_status_is_invalid_for_a_rule(catalogue, annotations):
+    rule = annotations["rules"][0]
+    rule["comparison_status"] = "derived-canonical-identity-match"
+    rule["proposed_disposition"] = "retain"
+    rule["exclusion_category"] = "none"
+    rule["exclusion_reason"] = None
+    rule["evidence_basis"] = [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+    ]
+    with pytest.raises(ValueError, match="valid only for explicit records"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_low_order_identity_basis_is_invalid_for_a_rule(catalogue, annotations):
+    annotations["rules"][0]["evidence_basis"].append(
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+    )
+    with pytest.raises(ValueError, match="explicit-record only"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_low_order_identity_basis_is_invalid_for_an_unresolved_record(
+    catalogue, annotations
+):
+    _add_low_order_bypass_record(
+        annotations,
+        include_identifier=False,
+        evidence_basis=[
+            "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+        ],
+    )
+    with pytest.raises(ValueError):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_low_order_identity_basis_is_invalid_for_a_derived_unique_record(
+    catalogue, annotations
+):
+    generated = generate_evidence_ledger(catalogue, annotations)
+    row = next(
+        record
+        for record in generated["records"]
+        if record["comparison_status"] == "derived-unique-match"
+    )
+    assertion_fields = {
+        "catalogue_id",
+        "comparison_status",
+        "proposed_disposition",
+        "exclusion_category",
+        "exclusion_reason",
+        "evidence_basis",
+        "evidence_record_ids",
+        "previous_workspace_record_ids",
+        "computational_cross_check_ids",
+        "historical_identifiers",
+        "basic_graph_assignment",
+        "confidence",
+        "notes",
+        "open_questions",
+    }
+    row = {field: deepcopy(row[field]) for field in assertion_fields}
+    row["evidence_basis"].append(
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+    )
+    annotations["records"].append(row)
+    with pytest.raises(ValueError):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_low_order_identity_basis_is_invalid_for_a_working_hypothesis_record(
+    catalogue, annotations
+):
+    _add_low_order_bypass_record(
+        annotations,
+        status="working-hypothesis",
+        include_identifier=False,
+        evidence_basis=[
+            "researcher-hypothesis",
+            "authoritative-canonical-diagram-plus-subject-bound-rice-match",
+        ],
+    )
+    with pytest.raises(ValueError, match="identifiers require derived-canonical"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize(
+    "consumer_kind",
+    ["definition", "match", "computation", "aggregate", "identifier", "nested"],
+)
+def test_all_low_order_identity_consumption_is_invalid_for_rules(
+    catalogue, annotations, consumer_kind
+):
+    rule = annotations["rules"][0]
+    if consumer_kind == "definition":
+        rule["evidence_record_ids"].append(
+            _low_order_definitions(annotations)[0]["evidence_id"]
+        )
+    elif consumer_kind == "match":
+        rule["evidence_record_ids"].append(
+            _low_order_matches(annotations)[0]["evidence_id"]
+        )
+    elif consumer_kind == "computation":
+        rule["computational_cross_check_ids"].append(LOW_ORDER_COMPUTATION_ID)
+    elif consumer_kind == "aggregate":
+        rule["evidence_record_ids"].append(LOW_ORDER_AGGREGATE_ID)
+    else:
+        rule["historical_identifiers"].append({
+            "scheme": "morelli-smith-canonical-network",
+            "value": 1 if consumer_kind == "identifier" else 108,
+            "verification_state": "cross-checked",
+            "evidence_record_ids": (
+                [] if consumer_kind == "identifier" else [LOW_ORDER_AGGREGATE_ID]
+            ),
+        })
+    with pytest.raises(ValueError, match="explicit-record only"):
         generate_evidence_ledger(catalogue, annotations)
