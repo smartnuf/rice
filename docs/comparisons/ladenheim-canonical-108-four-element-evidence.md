@@ -11,18 +11,20 @@ identifier or graph assignment, or begin the five-element or 108-to-62 work.
 
 At that evidence-only milestone, production remained 40 excluded, 83
 unresolved, and 25 retained records. The existing 25 retained low-order
-identities were unchanged. Exactly
-25 historical-identifier lists remain populated with those low-order canonical
-identifiers, the other 123 lists remain empty, and every
-`basic_graph_assignment` remains null.
+identities were unchanged. Exactly 25 historical-identifier lists remained
+populated with those low-order canonical identifiers, the other 123 lists
+remained empty, and every
+`basic_graph_assignment` remained null.
 
 The subsequent format-version-6 contract milestone encodes all 34 reviewed
 mappings as one controlled canonical-identity evidence group, including their
 authoritative definitions, subject-bound matches, aggregate inventory, and
 pinned computation. None of the 34 mappings is applied in production: all 34
 subjects remain unresolved, production remains 40 excluded, 83 unresolved,
-and 25 retained, and a later application requires a separate pull request. The
-original reproduction below remains pinned to accepted revision
+and 25 retained, exactly 25 canonical historical-identifier lists remain
+populated, and every `basic_graph_assignment` remains null. A later production
+application requires a separate pull request. The original reproduction below
+remains pinned to accepted revision
 `b499f0340771feaacb535fb987a45754dbeb050e`.
 
 ## 2. Source identity and exact locators
@@ -240,12 +242,14 @@ The authoritative four-element inventory is 34 networks in six subfamilies,
 select exactly 34 distinct RICE subjects, one per source diagram, and exhaust
 the current unresolved four-element population.
 
-This report provides evidence for a later identity-contract and application
-milestone. It does not populate the 34 historical identifiers or retained
-dispositions, claim that the full canonical 108 has been reproduced, or begin
-the 108-to-62 classification. The publication prints canonical diagrams and
-numbers, not `lh148-*` catalogue IDs; each RICE correspondence above is an
-independently reproduced conclusion.
+At its original evidence-only milestone, this report supplied the basis for the
+later identity contract and production application. The format-version-6
+contract now encodes the complete reviewed 34-member group. Only production
+application remains deferred: the 34 historical identifiers and retained
+dispositions are not yet populated. This work does not claim that the full
+canonical 108 has been reproduced or begin the 108-to-62 classification. The
+publication prints canonical diagrams and numbers, not `lh148-*` catalogue IDs;
+each RICE correspondence above is an independently reproduced conclusion.
 
 ## 10. Reproduction commands
 
