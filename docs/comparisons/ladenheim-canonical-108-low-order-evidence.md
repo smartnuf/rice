@@ -5,9 +5,8 @@
 This report transcribes and independently matches the complete one-, two-, and
 three-element portion of the canonical 108-network catalogue in A. Morelli and
 M. C. Smith, *Passive Network Synthesis: An Approach to Classification*
-(SIAM, 2019). It is a positive-identification evidence pilot, not a production
-application. No disposition, historical identifier, canonical-number field, or
-basic-graph assignment is changed.
+(SIAM, 2019). It was prepared as a positive-identification evidence pilot,
+separately from the later production application.
 
 At this report's accepted evidence-only revision, production remained 40
 excluded, 108 unresolved, and 0 retained.
@@ -15,6 +14,12 @@ At that milestone, every `basic_graph_assignment` was null and every
 historical-identifier list was empty. The structural matches below did not
 mark the 25 subjects retained, establish the complementary 108 as the
 canonical catalogue, or begin the 108-to-62 classification.
+
+The subsequent format-version-5 application now retains and numbers all 25
+reviewed subjects. Current production has 40 excluded, 83 unresolved, and 25
+retained rows; every `basic_graph_assignment` remains null. The remaining 83
+survivors are not thereby identified with the canonical catalogue, and the
+108-to-62 classification has not begun.
 
 ## 2. Source identity and exact locators
 
@@ -166,10 +171,11 @@ equivalence classes. Independently transcribed coloured fixtures select exactly
 25 distinct RICE subjects, one per canonical source diagram; all 25 were
 unresolved at the accepted evidence-only revision.
 
-This is sufficient evidence for later subject-bound canonical-identity review,
-but it is not that application. No historical identity, retention disposition,
-canonical-108 reproduction claim, or 108-to-62 behavioural classification is
-made here.
+This evidence supported the later subject-bound canonical-identity application.
+That application now retains and numbers the complete reviewed 25-member group
+without changing the durable structural result reported here. It does not make
+a complete canonical-108 reproduction claim or begin the 108-to-62 behavioural
+classification.
 
 ## 9. Reproduction commands
 
@@ -179,8 +185,8 @@ The exact block below records the evidence-only state at accepted commit
 checks. The reusable computation result is the unique structural
 correspondence, descriptors, and component inventories. After a later identity
 application, reproducing this historical block requires checking out the pinned
-commit; the then-current retained production state is validated separately by
-the current contract and generator.
+commit. The current 40 excluded / 83 unresolved / 25 retained production state
+is validated separately by the format-version-5 contract and generator.
 
 Run this paste-ready block from the RICE repository root. It uses only existing
 RICE APIs and the Python standard library, scans all 148 catalogue rows, and
@@ -368,7 +374,7 @@ assert len(expected_subfamilies) == 9
 print("counts by element order: 1=3, 2=6, 3=16; total=25")
 print("source structure: 9 subfamilies, 9 orbits, 21 equivalence classes")
 print("structural matches: 25 unique unresolved RICE subjects; no duplicates")
-print("production unchanged: 40 excluded / 108 unresolved / 0 retained")
+print("historical evidence-only baseline: 40 excluded / 108 unresolved / 0 retained")
 PY
 ```
 
@@ -406,5 +412,5 @@ network 49 IIIC III_C^3 -> lh148-7ad37b581984a1b6 0-1:C;0-2:L;1-2:R
 counts by element order: 1=3, 2=6, 3=16; total=25
 source structure: 9 subfamilies, 9 orbits, 21 equivalence classes
 structural matches: 25 unique unresolved RICE subjects; no duplicates
-production unchanged: 40 excluded / 108 unresolved / 0 retained
+historical evidence-only baseline: 40 excluded / 108 unresolved / 0 retained
 ```

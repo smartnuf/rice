@@ -4257,27 +4257,42 @@
       "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-187ef8e981d523c3",
-      "comparison_status": "unresolved",
-      "computational_cross_check_ids": [],
-      "confidence": "none",
-      "evidence_basis": [
-        "no-evidence-yet"
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-low-order-canonical-report-reproduction"
       ],
-      "evidence_record_ids": [],
-      "exclusion_category": "unresolved",
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-low-order-canonical-network-group",
+        "ms-2019-canonical-network-2-definition",
+        "rice-lh148-187ef8e981d523c3-canonical-network-2-match"
+      ],
+      "exclusion_category": "none",
       "exclusion_reason": null,
-      "historical_identifiers": [],
+      "historical_identifiers": [
+        {
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-2-definition",
+            "rice-lh148-187ef8e981d523c3-canonical-network-2-match"
+          ],
+          "scheme": "morelli-smith-canonical-network",
+          "value": 2,
+          "verification_state": "cross-checked"
+        }
+      ],
       "l": 0,
       "lc": 1,
       "notes": [
-        "No individual canonical-catalogue mapping is established."
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "Which historical network or figure, if any, corresponds to this record?",
-        "What entry-specific evidence establishes exclusion or retention?"
+        "How do the remaining canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
       ],
       "previous_workspace_record_ids": [],
-      "proposed_disposition": "unresolved",
+      "proposed_disposition": "retain",
       "r": 0,
       "representative_descriptor": "0-1:C",
       "rlc": 1,
@@ -4289,27 +4304,42 @@
       "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-11e22e7cba30a62f",
-      "comparison_status": "unresolved",
-      "computational_cross_check_ids": [],
-      "confidence": "none",
-      "evidence_basis": [
-        "no-evidence-yet"
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-low-order-canonical-report-reproduction"
       ],
-      "evidence_record_ids": [],
-      "exclusion_category": "unresolved",
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-low-order-canonical-network-group",
+        "ms-2019-canonical-network-1-definition",
+        "rice-lh148-11e22e7cba30a62f-canonical-network-1-match"
+      ],
+      "exclusion_category": "none",
       "exclusion_reason": null,
-      "historical_identifiers": [],
+      "historical_identifiers": [
+        {
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-1-definition",
+            "rice-lh148-11e22e7cba30a62f-canonical-network-1-match"
+          ],
+          "scheme": "morelli-smith-canonical-network",
+          "value": 1,
+          "verification_state": "cross-checked"
+        }
+      ],
       "l": 1,
       "lc": 1,
       "notes": [
-        "No individual canonical-catalogue mapping is established."
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "Which historical network or figure, if any, corresponds to this record?",
-        "What entry-specific evidence establishes exclusion or retention?"
+        "How do the remaining canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
       ],
       "previous_workspace_record_ids": [],
-      "proposed_disposition": "unresolved",
+      "proposed_disposition": "retain",
       "r": 0,
       "representative_descriptor": "0-1:L",
       "rlc": 1,
@@ -4321,27 +4351,42 @@
       "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-e6719ebfaa65ecc4",
-      "comparison_status": "unresolved",
-      "computational_cross_check_ids": [],
-      "confidence": "none",
-      "evidence_basis": [
-        "no-evidence-yet"
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-low-order-canonical-report-reproduction"
       ],
-      "evidence_record_ids": [],
-      "exclusion_category": "unresolved",
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-low-order-canonical-network-group",
+        "ms-2019-canonical-network-3-definition",
+        "rice-lh148-e6719ebfaa65ecc4-canonical-network-3-match"
+      ],
+      "exclusion_category": "none",
       "exclusion_reason": null,
-      "historical_identifiers": [],
+      "historical_identifiers": [
+        {
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-3-definition",
+            "rice-lh148-e6719ebfaa65ecc4-canonical-network-3-match"
+          ],
+          "scheme": "morelli-smith-canonical-network",
+          "value": 3,
+          "verification_state": "cross-checked"
+        }
+      ],
       "l": 0,
       "lc": 0,
       "notes": [
-        "No individual canonical-catalogue mapping is established."
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "Which historical network or figure, if any, corresponds to this record?",
-        "What entry-specific evidence establishes exclusion or retention?"
+        "How do the remaining canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
       ],
       "previous_workspace_record_ids": [],
-      "proposed_disposition": "unresolved",
+      "proposed_disposition": "retain",
       "r": 1,
       "representative_descriptor": "0-1:R",
       "rlc": 1,
@@ -4353,27 +4398,42 @@
       "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-6c4acdd4ee210778",
-      "comparison_status": "unresolved",
-      "computational_cross_check_ids": [],
-      "confidence": "none",
-      "evidence_basis": [
-        "no-evidence-yet"
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-low-order-canonical-report-reproduction"
       ],
-      "evidence_record_ids": [],
-      "exclusion_category": "unresolved",
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-low-order-canonical-network-group",
+        "ms-2019-canonical-network-7-definition",
+        "rice-lh148-6c4acdd4ee210778-canonical-network-7-match"
+      ],
+      "exclusion_category": "none",
       "exclusion_reason": null,
-      "historical_identifiers": [],
+      "historical_identifiers": [
+        {
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-7-definition",
+            "rice-lh148-6c4acdd4ee210778-canonical-network-7-match"
+          ],
+          "scheme": "morelli-smith-canonical-network",
+          "value": 7,
+          "verification_state": "cross-checked"
+        }
+      ],
       "l": 1,
       "lc": 2,
       "notes": [
-        "No individual canonical-catalogue mapping is established."
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "Which historical network or figure, if any, corresponds to this record?",
-        "What entry-specific evidence establishes exclusion or retention?"
+        "How do the remaining canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
       ],
       "previous_workspace_record_ids": [],
-      "proposed_disposition": "unresolved",
+      "proposed_disposition": "retain",
       "r": 0,
       "representative_descriptor": "0-1:C;0-1:L",
       "rlc": 2,
@@ -4385,27 +4445,42 @@
       "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-bc703386759e1fc4",
-      "comparison_status": "unresolved",
-      "computational_cross_check_ids": [],
-      "confidence": "none",
-      "evidence_basis": [
-        "no-evidence-yet"
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-low-order-canonical-report-reproduction"
       ],
-      "evidence_record_ids": [],
-      "exclusion_category": "unresolved",
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-low-order-canonical-network-group",
+        "ms-2019-canonical-network-4-definition",
+        "rice-lh148-bc703386759e1fc4-canonical-network-4-match"
+      ],
+      "exclusion_category": "none",
       "exclusion_reason": null,
-      "historical_identifiers": [],
+      "historical_identifiers": [
+        {
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-4-definition",
+            "rice-lh148-bc703386759e1fc4-canonical-network-4-match"
+          ],
+          "scheme": "morelli-smith-canonical-network",
+          "value": 4,
+          "verification_state": "cross-checked"
+        }
+      ],
       "l": 1,
       "lc": 2,
       "notes": [
-        "No individual canonical-catalogue mapping is established."
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "Which historical network or figure, if any, corresponds to this record?",
-        "What entry-specific evidence establishes exclusion or retention?"
+        "How do the remaining canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
       ],
       "previous_workspace_record_ids": [],
-      "proposed_disposition": "unresolved",
+      "proposed_disposition": "retain",
       "r": 0,
       "representative_descriptor": "0-2:C;1-2:L",
       "rlc": 2,
@@ -4417,27 +4492,42 @@
       "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-e5ab4cbd88b9cfcd",
-      "comparison_status": "unresolved",
-      "computational_cross_check_ids": [],
-      "confidence": "none",
-      "evidence_basis": [
-        "no-evidence-yet"
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-low-order-canonical-report-reproduction"
       ],
-      "evidence_record_ids": [],
-      "exclusion_category": "unresolved",
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-low-order-canonical-network-group",
+        "ms-2019-canonical-network-5-definition",
+        "rice-lh148-e5ab4cbd88b9cfcd-canonical-network-5-match"
+      ],
+      "exclusion_category": "none",
       "exclusion_reason": null,
-      "historical_identifiers": [],
+      "historical_identifiers": [
+        {
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-5-definition",
+            "rice-lh148-e5ab4cbd88b9cfcd-canonical-network-5-match"
+          ],
+          "scheme": "morelli-smith-canonical-network",
+          "value": 5,
+          "verification_state": "cross-checked"
+        }
+      ],
       "l": 0,
       "lc": 1,
       "notes": [
-        "No individual canonical-catalogue mapping is established."
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "Which historical network or figure, if any, corresponds to this record?",
-        "What entry-specific evidence establishes exclusion or retention?"
+        "How do the remaining canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
       ],
       "previous_workspace_record_ids": [],
-      "proposed_disposition": "unresolved",
+      "proposed_disposition": "retain",
       "r": 1,
       "representative_descriptor": "0-2:C;1-2:R",
       "rlc": 2,
@@ -4449,27 +4539,42 @@
       "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-e798eb374bc4314b",
-      "comparison_status": "unresolved",
-      "computational_cross_check_ids": [],
-      "confidence": "none",
-      "evidence_basis": [
-        "no-evidence-yet"
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-low-order-canonical-report-reproduction"
       ],
-      "evidence_record_ids": [],
-      "exclusion_category": "unresolved",
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-low-order-canonical-network-group",
+        "ms-2019-canonical-network-9-definition",
+        "rice-lh148-e798eb374bc4314b-canonical-network-9-match"
+      ],
+      "exclusion_category": "none",
       "exclusion_reason": null,
-      "historical_identifiers": [],
+      "historical_identifiers": [
+        {
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-9-definition",
+            "rice-lh148-e798eb374bc4314b-canonical-network-9-match"
+          ],
+          "scheme": "morelli-smith-canonical-network",
+          "value": 9,
+          "verification_state": "cross-checked"
+        }
+      ],
       "l": 0,
       "lc": 1,
       "notes": [
-        "No individual canonical-catalogue mapping is established."
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "Which historical network or figure, if any, corresponds to this record?",
-        "What entry-specific evidence establishes exclusion or retention?"
+        "How do the remaining canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
       ],
       "previous_workspace_record_ids": [],
-      "proposed_disposition": "unresolved",
+      "proposed_disposition": "retain",
       "r": 1,
       "representative_descriptor": "0-1:C;0-1:R",
       "rlc": 2,
@@ -4481,27 +4586,42 @@
       "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-33615cdca4d212bc",
-      "comparison_status": "unresolved",
-      "computational_cross_check_ids": [],
-      "confidence": "none",
-      "evidence_basis": [
-        "no-evidence-yet"
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-low-order-canonical-report-reproduction"
       ],
-      "evidence_record_ids": [],
-      "exclusion_category": "unresolved",
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-low-order-canonical-network-group",
+        "ms-2019-canonical-network-8-definition",
+        "rice-lh148-33615cdca4d212bc-canonical-network-8-match"
+      ],
+      "exclusion_category": "none",
       "exclusion_reason": null,
-      "historical_identifiers": [],
+      "historical_identifiers": [
+        {
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-8-definition",
+            "rice-lh148-33615cdca4d212bc-canonical-network-8-match"
+          ],
+          "scheme": "morelli-smith-canonical-network",
+          "value": 8,
+          "verification_state": "cross-checked"
+        }
+      ],
       "l": 1,
       "lc": 1,
       "notes": [
-        "No individual canonical-catalogue mapping is established."
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "Which historical network or figure, if any, corresponds to this record?",
-        "What entry-specific evidence establishes exclusion or retention?"
+        "How do the remaining canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
       ],
       "previous_workspace_record_ids": [],
-      "proposed_disposition": "unresolved",
+      "proposed_disposition": "retain",
       "r": 1,
       "representative_descriptor": "0-1:L;0-1:R",
       "rlc": 2,
@@ -4513,27 +4633,42 @@
       "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-dacf11ef419be4ae",
-      "comparison_status": "unresolved",
-      "computational_cross_check_ids": [],
-      "confidence": "none",
-      "evidence_basis": [
-        "no-evidence-yet"
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-low-order-canonical-report-reproduction"
       ],
-      "evidence_record_ids": [],
-      "exclusion_category": "unresolved",
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-low-order-canonical-network-group",
+        "ms-2019-canonical-network-6-definition",
+        "rice-lh148-dacf11ef419be4ae-canonical-network-6-match"
+      ],
+      "exclusion_category": "none",
       "exclusion_reason": null,
-      "historical_identifiers": [],
+      "historical_identifiers": [
+        {
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-6-definition",
+            "rice-lh148-dacf11ef419be4ae-canonical-network-6-match"
+          ],
+          "scheme": "morelli-smith-canonical-network",
+          "value": 6,
+          "verification_state": "cross-checked"
+        }
+      ],
       "l": 1,
       "lc": 1,
       "notes": [
-        "No individual canonical-catalogue mapping is established."
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "Which historical network or figure, if any, corresponds to this record?",
-        "What entry-specific evidence establishes exclusion or retention?"
+        "How do the remaining canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
       ],
       "previous_workspace_record_ids": [],
-      "proposed_disposition": "unresolved",
+      "proposed_disposition": "retain",
       "r": 1,
       "representative_descriptor": "0-2:L;1-2:R",
       "rlc": 2,
@@ -4545,27 +4680,42 @@
       "basic_graph_assignment": null,
       "c": 2,
       "catalogue_id": "lh148-34b077a26df0d439",
-      "comparison_status": "unresolved",
-      "computational_cross_check_ids": [],
-      "confidence": "none",
-      "evidence_basis": [
-        "no-evidence-yet"
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-low-order-canonical-report-reproduction"
       ],
-      "evidence_record_ids": [],
-      "exclusion_category": "unresolved",
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-low-order-canonical-network-group",
+        "ms-2019-canonical-network-14-definition",
+        "rice-lh148-34b077a26df0d439-canonical-network-14-match"
+      ],
+      "exclusion_category": "none",
       "exclusion_reason": null,
-      "historical_identifiers": [],
+      "historical_identifiers": [
+        {
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-14-definition",
+            "rice-lh148-34b077a26df0d439-canonical-network-14-match"
+          ],
+          "scheme": "morelli-smith-canonical-network",
+          "value": 14,
+          "verification_state": "cross-checked"
+        }
+      ],
       "l": 0,
       "lc": 2,
       "notes": [
-        "No individual canonical-catalogue mapping is established."
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "Which historical network or figure, if any, corresponds to this record?",
-        "What entry-specific evidence establishes exclusion or retention?"
+        "How do the remaining canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
       ],
       "previous_workspace_record_ids": [],
-      "proposed_disposition": "unresolved",
+      "proposed_disposition": "retain",
       "r": 1,
       "representative_descriptor": "0-2:C;0-2:R;1-2:C",
       "rlc": 3,
@@ -4577,27 +4727,42 @@
       "basic_graph_assignment": null,
       "c": 2,
       "catalogue_id": "lh148-4ec3374bd9f5ab9d",
-      "comparison_status": "unresolved",
-      "computational_cross_check_ids": [],
-      "confidence": "none",
-      "evidence_basis": [
-        "no-evidence-yet"
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-low-order-canonical-report-reproduction"
       ],
-      "evidence_record_ids": [],
-      "exclusion_category": "unresolved",
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-low-order-canonical-network-group",
+        "ms-2019-canonical-network-13-definition",
+        "rice-lh148-4ec3374bd9f5ab9d-canonical-network-13-match"
+      ],
+      "exclusion_category": "none",
       "exclusion_reason": null,
-      "historical_identifiers": [],
+      "historical_identifiers": [
+        {
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-13-definition",
+            "rice-lh148-4ec3374bd9f5ab9d-canonical-network-13-match"
+          ],
+          "scheme": "morelli-smith-canonical-network",
+          "value": 13,
+          "verification_state": "cross-checked"
+        }
+      ],
       "l": 0,
       "lc": 2,
       "notes": [
-        "No individual canonical-catalogue mapping is established."
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "Which historical network or figure, if any, corresponds to this record?",
-        "What entry-specific evidence establishes exclusion or retention?"
+        "How do the remaining canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
       ],
       "previous_workspace_record_ids": [],
-      "proposed_disposition": "unresolved",
+      "proposed_disposition": "retain",
       "r": 1,
       "representative_descriptor": "0-1:C;0-2:C;1-2:R",
       "rlc": 3,
@@ -4609,27 +4774,42 @@
       "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-0fa59ac63267cb6f",
-      "comparison_status": "unresolved",
-      "computational_cross_check_ids": [],
-      "confidence": "none",
-      "evidence_basis": [
-        "no-evidence-yet"
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-low-order-canonical-report-reproduction"
       ],
-      "evidence_record_ids": [],
-      "exclusion_category": "unresolved",
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-low-order-canonical-network-group",
+        "ms-2019-canonical-network-42-definition",
+        "rice-lh148-0fa59ac63267cb6f-canonical-network-42-match"
+      ],
+      "exclusion_category": "none",
       "exclusion_reason": null,
-      "historical_identifiers": [],
+      "historical_identifiers": [
+        {
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-42-definition",
+            "rice-lh148-0fa59ac63267cb6f-canonical-network-42-match"
+          ],
+          "scheme": "morelli-smith-canonical-network",
+          "value": 42,
+          "verification_state": "cross-checked"
+        }
+      ],
       "l": 1,
       "lc": 2,
       "notes": [
-        "No individual canonical-catalogue mapping is established."
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "Which historical network or figure, if any, corresponds to this record?",
-        "What entry-specific evidence establishes exclusion or retention?"
+        "How do the remaining canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
       ],
       "previous_workspace_record_ids": [],
-      "proposed_disposition": "unresolved",
+      "proposed_disposition": "retain",
       "r": 1,
       "representative_descriptor": "0-1:R;0-2:C;1-2:L",
       "rlc": 3,
@@ -4641,27 +4821,42 @@
       "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-6ab986b43f5cdc3d",
-      "comparison_status": "unresolved",
-      "computational_cross_check_ids": [],
-      "confidence": "none",
-      "evidence_basis": [
-        "no-evidence-yet"
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-low-order-canonical-report-reproduction"
       ],
-      "evidence_record_ids": [],
-      "exclusion_category": "unresolved",
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-low-order-canonical-network-group",
+        "ms-2019-canonical-network-41-definition",
+        "rice-lh148-6ab986b43f5cdc3d-canonical-network-41-match"
+      ],
+      "exclusion_category": "none",
       "exclusion_reason": null,
-      "historical_identifiers": [],
+      "historical_identifiers": [
+        {
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-41-definition",
+            "rice-lh148-6ab986b43f5cdc3d-canonical-network-41-match"
+          ],
+          "scheme": "morelli-smith-canonical-network",
+          "value": 41,
+          "verification_state": "cross-checked"
+        }
+      ],
       "l": 1,
       "lc": 2,
       "notes": [
-        "No individual canonical-catalogue mapping is established."
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "Which historical network or figure, if any, corresponds to this record?",
-        "What entry-specific evidence establishes exclusion or retention?"
+        "How do the remaining canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
       ],
       "previous_workspace_record_ids": [],
-      "proposed_disposition": "unresolved",
+      "proposed_disposition": "retain",
       "r": 1,
       "representative_descriptor": "0-1:L;0-2:C;1-2:R",
       "rlc": 3,
@@ -4673,27 +4868,42 @@
       "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-7ad37b581984a1b6",
-      "comparison_status": "unresolved",
-      "computational_cross_check_ids": [],
-      "confidence": "none",
-      "evidence_basis": [
-        "no-evidence-yet"
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-low-order-canonical-report-reproduction"
       ],
-      "evidence_record_ids": [],
-      "exclusion_category": "unresolved",
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-low-order-canonical-network-group",
+        "ms-2019-canonical-network-49-definition",
+        "rice-lh148-7ad37b581984a1b6-canonical-network-49-match"
+      ],
+      "exclusion_category": "none",
       "exclusion_reason": null,
-      "historical_identifiers": [],
+      "historical_identifiers": [
+        {
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-49-definition",
+            "rice-lh148-7ad37b581984a1b6-canonical-network-49-match"
+          ],
+          "scheme": "morelli-smith-canonical-network",
+          "value": 49,
+          "verification_state": "cross-checked"
+        }
+      ],
       "l": 1,
       "lc": 2,
       "notes": [
-        "No individual canonical-catalogue mapping is established."
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "Which historical network or figure, if any, corresponds to this record?",
-        "What entry-specific evidence establishes exclusion or retention?"
+        "How do the remaining canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
       ],
       "previous_workspace_record_ids": [],
-      "proposed_disposition": "unresolved",
+      "proposed_disposition": "retain",
       "r": 1,
       "representative_descriptor": "0-1:C;0-2:L;1-2:R",
       "rlc": 3,
@@ -4705,27 +4915,42 @@
       "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-81fbe344564bbcf0",
-      "comparison_status": "unresolved",
-      "computational_cross_check_ids": [],
-      "confidence": "none",
-      "evidence_basis": [
-        "no-evidence-yet"
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-low-order-canonical-report-reproduction"
       ],
-      "evidence_record_ids": [],
-      "exclusion_category": "unresolved",
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-low-order-canonical-network-group",
+        "ms-2019-canonical-network-34-definition",
+        "rice-lh148-81fbe344564bbcf0-canonical-network-34-match"
+      ],
+      "exclusion_category": "none",
       "exclusion_reason": null,
-      "historical_identifiers": [],
+      "historical_identifiers": [
+        {
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-34-definition",
+            "rice-lh148-81fbe344564bbcf0-canonical-network-34-match"
+          ],
+          "scheme": "morelli-smith-canonical-network",
+          "value": 34,
+          "verification_state": "cross-checked"
+        }
+      ],
       "l": 1,
       "lc": 2,
       "notes": [
-        "No individual canonical-catalogue mapping is established."
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "Which historical network or figure, if any, corresponds to this record?",
-        "What entry-specific evidence establishes exclusion or retention?"
+        "How do the remaining canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
       ],
       "previous_workspace_record_ids": [],
-      "proposed_disposition": "unresolved",
+      "proposed_disposition": "retain",
       "r": 1,
       "representative_descriptor": "0-2:C;0-2:R;1-2:L",
       "rlc": 3,
@@ -4737,27 +4962,42 @@
       "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-aecc406cd94c57bc",
-      "comparison_status": "unresolved",
-      "computational_cross_check_ids": [],
-      "confidence": "none",
-      "evidence_basis": [
-        "no-evidence-yet"
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-low-order-canonical-report-reproduction"
       ],
-      "evidence_record_ids": [],
-      "exclusion_category": "unresolved",
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-low-order-canonical-network-group",
+        "ms-2019-canonical-network-26-definition",
+        "rice-lh148-aecc406cd94c57bc-canonical-network-26-match"
+      ],
+      "exclusion_category": "none",
       "exclusion_reason": null,
-      "historical_identifiers": [],
+      "historical_identifiers": [
+        {
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-26-definition",
+            "rice-lh148-aecc406cd94c57bc-canonical-network-26-match"
+          ],
+          "scheme": "morelli-smith-canonical-network",
+          "value": 26,
+          "verification_state": "cross-checked"
+        }
+      ],
       "l": 1,
       "lc": 2,
       "notes": [
-        "No individual canonical-catalogue mapping is established."
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "Which historical network or figure, if any, corresponds to this record?",
-        "What entry-specific evidence establishes exclusion or retention?"
+        "How do the remaining canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
       ],
       "previous_workspace_record_ids": [],
-      "proposed_disposition": "unresolved",
+      "proposed_disposition": "retain",
       "r": 1,
       "representative_descriptor": "0-2:C;1-2:L;1-2:R",
       "rlc": 3,
@@ -4769,27 +5009,42 @@
       "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-c4dd949e0cc0cb9a",
-      "comparison_status": "unresolved",
-      "computational_cross_check_ids": [],
-      "confidence": "none",
-      "evidence_basis": [
-        "no-evidence-yet"
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-low-order-canonical-report-reproduction"
       ],
-      "evidence_record_ids": [],
-      "exclusion_category": "unresolved",
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-low-order-canonical-network-group",
+        "ms-2019-canonical-network-27-definition",
+        "rice-lh148-c4dd949e0cc0cb9a-canonical-network-27-match"
+      ],
+      "exclusion_category": "none",
       "exclusion_reason": null,
-      "historical_identifiers": [],
+      "historical_identifiers": [
+        {
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-27-definition",
+            "rice-lh148-c4dd949e0cc0cb9a-canonical-network-27-match"
+          ],
+          "scheme": "morelli-smith-canonical-network",
+          "value": 27,
+          "verification_state": "cross-checked"
+        }
+      ],
       "l": 1,
       "lc": 2,
       "notes": [
-        "No individual canonical-catalogue mapping is established."
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "Which historical network or figure, if any, corresponds to this record?",
-        "What entry-specific evidence establishes exclusion or retention?"
+        "How do the remaining canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
       ],
       "previous_workspace_record_ids": [],
-      "proposed_disposition": "unresolved",
+      "proposed_disposition": "retain",
       "r": 1,
       "representative_descriptor": "0-2:C;0-2:L;1-2:R",
       "rlc": 3,
@@ -4801,27 +5056,42 @@
       "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-ec2d91a9eb609e87",
-      "comparison_status": "unresolved",
-      "computational_cross_check_ids": [],
-      "confidence": "none",
-      "evidence_basis": [
-        "no-evidence-yet"
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-low-order-canonical-report-reproduction"
       ],
-      "evidence_record_ids": [],
-      "exclusion_category": "unresolved",
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-low-order-canonical-network-group",
+        "ms-2019-canonical-network-10-definition",
+        "rice-lh148-ec2d91a9eb609e87-canonical-network-10-match"
+      ],
+      "exclusion_category": "none",
       "exclusion_reason": null,
-      "historical_identifiers": [],
+      "historical_identifiers": [
+        {
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-10-definition",
+            "rice-lh148-ec2d91a9eb609e87-canonical-network-10-match"
+          ],
+          "scheme": "morelli-smith-canonical-network",
+          "value": 10,
+          "verification_state": "cross-checked"
+        }
+      ],
       "l": 1,
       "lc": 2,
       "notes": [
-        "No individual canonical-catalogue mapping is established."
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "Which historical network or figure, if any, corresponds to this record?",
-        "What entry-specific evidence establishes exclusion or retention?"
+        "How do the remaining canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
       ],
       "previous_workspace_record_ids": [],
-      "proposed_disposition": "unresolved",
+      "proposed_disposition": "retain",
       "r": 1,
       "representative_descriptor": "0-2:C;1-3:L;2-3:R",
       "rlc": 3,
@@ -4833,27 +5103,42 @@
       "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-f6b0120a6632013a",
-      "comparison_status": "unresolved",
-      "computational_cross_check_ids": [],
-      "confidence": "none",
-      "evidence_basis": [
-        "no-evidence-yet"
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-low-order-canonical-report-reproduction"
       ],
-      "evidence_record_ids": [],
-      "exclusion_category": "unresolved",
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-low-order-canonical-network-group",
+        "ms-2019-canonical-network-19-definition",
+        "rice-lh148-f6b0120a6632013a-canonical-network-19-match"
+      ],
+      "exclusion_category": "none",
       "exclusion_reason": null,
-      "historical_identifiers": [],
+      "historical_identifiers": [
+        {
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-19-definition",
+            "rice-lh148-f6b0120a6632013a-canonical-network-19-match"
+          ],
+          "scheme": "morelli-smith-canonical-network",
+          "value": 19,
+          "verification_state": "cross-checked"
+        }
+      ],
       "l": 1,
       "lc": 2,
       "notes": [
-        "No individual canonical-catalogue mapping is established."
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "Which historical network or figure, if any, corresponds to this record?",
-        "What entry-specific evidence establishes exclusion or retention?"
+        "How do the remaining canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
       ],
       "previous_workspace_record_ids": [],
-      "proposed_disposition": "unresolved",
+      "proposed_disposition": "retain",
       "r": 1,
       "representative_descriptor": "0-1:C;0-1:L;0-1:R",
       "rlc": 3,
@@ -4865,27 +5150,42 @@
       "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-9ce47e2e00e47d8a",
-      "comparison_status": "unresolved",
-      "computational_cross_check_ids": [],
-      "confidence": "none",
-      "evidence_basis": [
-        "no-evidence-yet"
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-low-order-canonical-report-reproduction"
       ],
-      "evidence_record_ids": [],
-      "exclusion_category": "unresolved",
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-low-order-canonical-network-group",
+        "ms-2019-canonical-network-11-definition",
+        "rice-lh148-9ce47e2e00e47d8a-canonical-network-11-match"
+      ],
+      "exclusion_category": "none",
       "exclusion_reason": null,
-      "historical_identifiers": [],
+      "historical_identifiers": [
+        {
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-11-definition",
+            "rice-lh148-9ce47e2e00e47d8a-canonical-network-11-match"
+          ],
+          "scheme": "morelli-smith-canonical-network",
+          "value": 11,
+          "verification_state": "cross-checked"
+        }
+      ],
       "l": 2,
       "lc": 2,
       "notes": [
-        "No individual canonical-catalogue mapping is established."
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "Which historical network or figure, if any, corresponds to this record?",
-        "What entry-specific evidence establishes exclusion or retention?"
+        "How do the remaining canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
       ],
       "previous_workspace_record_ids": [],
-      "proposed_disposition": "unresolved",
+      "proposed_disposition": "retain",
       "r": 1,
       "representative_descriptor": "0-2:L;0-2:R;1-2:L",
       "rlc": 3,
@@ -4897,27 +5197,42 @@
       "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-ba7c48b07f29dd51",
-      "comparison_status": "unresolved",
-      "computational_cross_check_ids": [],
-      "confidence": "none",
-      "evidence_basis": [
-        "no-evidence-yet"
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-low-order-canonical-report-reproduction"
       ],
-      "evidence_record_ids": [],
-      "exclusion_category": "unresolved",
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-low-order-canonical-network-group",
+        "ms-2019-canonical-network-12-definition",
+        "rice-lh148-ba7c48b07f29dd51-canonical-network-12-match"
+      ],
+      "exclusion_category": "none",
       "exclusion_reason": null,
-      "historical_identifiers": [],
+      "historical_identifiers": [
+        {
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-12-definition",
+            "rice-lh148-ba7c48b07f29dd51-canonical-network-12-match"
+          ],
+          "scheme": "morelli-smith-canonical-network",
+          "value": 12,
+          "verification_state": "cross-checked"
+        }
+      ],
       "l": 2,
       "lc": 2,
       "notes": [
-        "No individual canonical-catalogue mapping is established."
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "Which historical network or figure, if any, corresponds to this record?",
-        "What entry-specific evidence establishes exclusion or retention?"
+        "How do the remaining canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
       ],
       "previous_workspace_record_ids": [],
-      "proposed_disposition": "unresolved",
+      "proposed_disposition": "retain",
       "r": 1,
       "representative_descriptor": "0-1:L;0-2:L;1-2:R",
       "rlc": 3,
@@ -4929,27 +5244,42 @@
       "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-2d28eb19a83067c3",
-      "comparison_status": "unresolved",
-      "computational_cross_check_ids": [],
-      "confidence": "none",
-      "evidence_basis": [
-        "no-evidence-yet"
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-low-order-canonical-report-reproduction"
       ],
-      "evidence_record_ids": [],
-      "exclusion_category": "unresolved",
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-low-order-canonical-network-group",
+        "ms-2019-canonical-network-18-definition",
+        "rice-lh148-2d28eb19a83067c3-canonical-network-18-match"
+      ],
+      "exclusion_category": "none",
       "exclusion_reason": null,
-      "historical_identifiers": [],
+      "historical_identifiers": [
+        {
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-18-definition",
+            "rice-lh148-2d28eb19a83067c3-canonical-network-18-match"
+          ],
+          "scheme": "morelli-smith-canonical-network",
+          "value": 18,
+          "verification_state": "cross-checked"
+        }
+      ],
       "l": 0,
       "lc": 1,
       "notes": [
-        "No individual canonical-catalogue mapping is established."
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "Which historical network or figure, if any, corresponds to this record?",
-        "What entry-specific evidence establishes exclusion or retention?"
+        "How do the remaining canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
       ],
       "previous_workspace_record_ids": [],
-      "proposed_disposition": "unresolved",
+      "proposed_disposition": "retain",
       "r": 2,
       "representative_descriptor": "0-1:R;0-2:C;1-2:R",
       "rlc": 3,
@@ -4961,27 +5291,42 @@
       "basic_graph_assignment": null,
       "c": 1,
       "catalogue_id": "lh148-f2ca341555f420ec",
-      "comparison_status": "unresolved",
-      "computational_cross_check_ids": [],
-      "confidence": "none",
-      "evidence_basis": [
-        "no-evidence-yet"
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-low-order-canonical-report-reproduction"
       ],
-      "evidence_record_ids": [],
-      "exclusion_category": "unresolved",
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-low-order-canonical-network-group",
+        "ms-2019-canonical-network-17-definition",
+        "rice-lh148-f2ca341555f420ec-canonical-network-17-match"
+      ],
+      "exclusion_category": "none",
       "exclusion_reason": null,
-      "historical_identifiers": [],
+      "historical_identifiers": [
+        {
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-17-definition",
+            "rice-lh148-f2ca341555f420ec-canonical-network-17-match"
+          ],
+          "scheme": "morelli-smith-canonical-network",
+          "value": 17,
+          "verification_state": "cross-checked"
+        }
+      ],
       "l": 0,
       "lc": 1,
       "notes": [
-        "No individual canonical-catalogue mapping is established."
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "Which historical network or figure, if any, corresponds to this record?",
-        "What entry-specific evidence establishes exclusion or retention?"
+        "How do the remaining canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
       ],
       "previous_workspace_record_ids": [],
-      "proposed_disposition": "unresolved",
+      "proposed_disposition": "retain",
       "r": 2,
       "representative_descriptor": "0-2:C;0-2:R;1-2:R",
       "rlc": 3,
@@ -4993,27 +5338,42 @@
       "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-26ab596fc1b6adf0",
-      "comparison_status": "unresolved",
-      "computational_cross_check_ids": [],
-      "confidence": "none",
-      "evidence_basis": [
-        "no-evidence-yet"
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-low-order-canonical-report-reproduction"
       ],
-      "evidence_record_ids": [],
-      "exclusion_category": "unresolved",
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-low-order-canonical-network-group",
+        "ms-2019-canonical-network-16-definition",
+        "rice-lh148-26ab596fc1b6adf0-canonical-network-16-match"
+      ],
+      "exclusion_category": "none",
       "exclusion_reason": null,
-      "historical_identifiers": [],
+      "historical_identifiers": [
+        {
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-16-definition",
+            "rice-lh148-26ab596fc1b6adf0-canonical-network-16-match"
+          ],
+          "scheme": "morelli-smith-canonical-network",
+          "value": 16,
+          "verification_state": "cross-checked"
+        }
+      ],
       "l": 1,
       "lc": 1,
       "notes": [
-        "No individual canonical-catalogue mapping is established."
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "Which historical network or figure, if any, corresponds to this record?",
-        "What entry-specific evidence establishes exclusion or retention?"
+        "How do the remaining canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
       ],
       "previous_workspace_record_ids": [],
-      "proposed_disposition": "unresolved",
+      "proposed_disposition": "retain",
       "r": 2,
       "representative_descriptor": "0-1:R;0-2:L;1-2:R",
       "rlc": 3,
@@ -5025,27 +5385,42 @@
       "basic_graph_assignment": null,
       "c": 0,
       "catalogue_id": "lh148-d0dd7ab06f8d9467",
-      "comparison_status": "unresolved",
-      "computational_cross_check_ids": [],
-      "confidence": "none",
-      "evidence_basis": [
-        "no-evidence-yet"
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-low-order-canonical-report-reproduction"
       ],
-      "evidence_record_ids": [],
-      "exclusion_category": "unresolved",
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-low-order-canonical-network-group",
+        "ms-2019-canonical-network-15-definition",
+        "rice-lh148-d0dd7ab06f8d9467-canonical-network-15-match"
+      ],
+      "exclusion_category": "none",
       "exclusion_reason": null,
-      "historical_identifiers": [],
+      "historical_identifiers": [
+        {
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-15-definition",
+            "rice-lh148-d0dd7ab06f8d9467-canonical-network-15-match"
+          ],
+          "scheme": "morelli-smith-canonical-network",
+          "value": 15,
+          "verification_state": "cross-checked"
+        }
+      ],
       "l": 1,
       "lc": 1,
       "notes": [
-        "No individual canonical-catalogue mapping is established."
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "Which historical network or figure, if any, corresponds to this record?",
-        "What entry-specific evidence establishes exclusion or retention?"
+        "How do the remaining canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
       ],
       "previous_workspace_record_ids": [],
-      "proposed_disposition": "unresolved",
+      "proposed_disposition": "retain",
       "r": 2,
       "representative_descriptor": "0-2:L;0-2:R;1-2:R",
       "rlc": 3,
@@ -9322,25 +9697,28 @@
   ],
   "summary": {
     "by_comparison_status": {
+      "derived-canonical-identity-match": 25,
       "derived-nongeneric-simplification-match": 8,
       "derived-structural-match": 20,
       "derived-unique-match": 12,
-      "unresolved": 108
+      "unresolved": 83
     },
     "by_exclusion_category": {
+      "none": 25,
       "other-canonical-exclusion": 8,
       "simpler-bilinear-realisation": 8,
-      "unresolved": 108,
+      "unresolved": 83,
       "zobel-five-element-series-parallel": 20,
       "zobel-four-element": 4
     },
     "by_proposed_disposition": {
       "exclude": 40,
-      "unresolved": 108
+      "retain": 25,
+      "unresolved": 83
     },
     "mapped_exclusions": 40,
     "total_rows": 148,
-    "unresolved_dispositions": 108
+    "unresolved_dispositions": 83
   },
   "target": {
     "evidence_record_ids": [
