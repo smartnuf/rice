@@ -1006,7 +1006,11 @@ def _validate_claim(
         subjects = claim.get("subject_catalogue_ids")
         _validate_subjects(subjects, evidence_id, catalogue_ids)
         number = claim.get("canonical_network_number")
-        reviewed = REVIEWED_LOW_ORDER_CANONICAL_NETWORKS.get(number)
+        reviewed = (
+            REVIEWED_LOW_ORDER_CANONICAL_NETWORKS.get(number)
+            if _is_int(number)
+            else None
+        )
         if (
             len(subjects) != 1
             or reviewed is None
@@ -2850,13 +2854,47 @@ def _validate_canonical_identity_groups(
         for rule in rules
     ):
         raise ValueError("canonical identity evidence cannot support a rule")
+    reviewed_numbers = set(REVIEWED_LOW_ORDER_CANONICAL_NETWORKS)
+    reviewed_definition_ids = set(definitions)
+    reviewed_match_ids = set(matches)
+    reviewed_evidence_ids = {
+        LOW_ORDER_AGGREGATE_ID,
+        *reviewed_definition_ids,
+        *reviewed_match_ids,
+    }
+
+    def consumes_low_order_identity(assertion: dict[str, Any]) -> bool:
+        if assertion["comparison_status"] == "derived-canonical-identity-match":
+            return True
+        if reviewed_evidence_ids & set(assertion["evidence_record_ids"]):
+            return True
+        if LOW_ORDER_COMPUTATION_ID in assertion["computational_cross_check_ids"]:
+            return True
+        for identifier in assertion["historical_identifiers"]:
+            if identifier["scheme"] != "morelli-smith-canonical-network":
+                continue
+            nested_ids = set(identifier["evidence_record_ids"])
+            if (
+                identifier["value"] in reviewed_numbers
+                or nested_ids & (reviewed_definition_ids | reviewed_match_ids)
+            ):
+                return True
+        return False
+
     consumers = {
         catalogue_id: assertion
         for catalogue_id, assertion in explicit.items()
-        if assertion["comparison_status"] == "derived-canonical-identity-match"
-        or LOW_ORDER_AGGREGATE_ID in assertion["evidence_record_ids"]
+        if consumes_low_order_identity(assertion)
     }
     if consumers:
+        if any(
+            assertion["comparison_status"] != "derived-canonical-identity-match"
+            for assertion in consumers.values()
+        ):
+            raise ValueError(
+                "low-order canonical identity evidence and identifiers require "
+                "derived-canonical-identity-match"
+            )
         if set(consumers) != expected_subjects:
             raise ValueError(
                 "canonical identity application must include the complete 25-row group"

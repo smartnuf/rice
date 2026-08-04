@@ -1154,7 +1154,7 @@ def test_malformed_historical_identifiers_are_rejected(
         ("morelli-smith-canonical-network", -1, False),
         ("morelli-smith-canonical-network", True, False),
         ("morelli-smith-canonical-network", "1", False),
-        ("morelli-smith-canonical-network", 1, True),
+        ("morelli-smith-canonical-network", 1, False),
         ("morelli-smith-canonical-network", 108, True),
         ("morelli-smith-canonical-network", 109, False),
         ("morelli-smith-basic-graph", 1, False),
@@ -4762,6 +4762,15 @@ def test_low_order_group_rejects_duplicate_or_wrong_subject(catalogue, annotatio
         generate_evidence_ledger(catalogue, annotations)
 
 
+@pytest.mark.parametrize("number", [[1], {"number": 1}, True])
+def test_canonical_network_match_rejects_noninteger_numbers(
+    catalogue, annotations, number
+):
+    _low_order_matches(annotations)[0]["claim"]["canonical_network_number"] = number
+    with pytest.raises(ValueError, match="invalid canonical-network match"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
 @pytest.mark.parametrize("mutation", ["diagram-locator", "report-path", "relation"])
 def test_low_order_group_rejects_mutated_binding(
     catalogue, annotations, mutation
@@ -4820,6 +4829,101 @@ def test_complete_low_order_identity_application_can_pass(catalogue, annotations
         "retain": 25,
         "unresolved": 83,
     }
+
+
+def _add_low_order_bypass_record(
+    annotations,
+    *,
+    status="unresolved",
+    identifier_value=1,
+    identifier_evidence=True,
+    include_identifier=True,
+    direct_evidence_ids=(),
+):
+    match = next(
+        record
+        for record in _low_order_matches(annotations)
+        if record["claim"]["canonical_network_number"] == 1
+    )
+    definition = next(
+        record
+        for record in _low_order_definitions(annotations)
+        if record["claim"]["canonical_network_number"] == 1
+    )
+    if status == "working-hypothesis":
+        basis = ["researcher-hypothesis"]
+        confidence = "low"
+    else:
+        basis = ["no-evidence-yet"]
+        confidence = "none"
+    identifiers = []
+    if include_identifier:
+        identifiers.append({
+            "scheme": "morelli-smith-canonical-network",
+            "value": identifier_value,
+            "verification_state": "cross-checked",
+            "evidence_record_ids": (
+                [definition["evidence_id"], match["evidence_id"]]
+                if identifier_evidence
+                else []
+            ),
+        })
+    annotations["records"].append({
+        "catalogue_id": match["claim"]["subject_catalogue_ids"][0],
+        "comparison_status": status,
+        "proposed_disposition": "unresolved",
+        "exclusion_category": "unresolved",
+        "exclusion_reason": None,
+        "evidence_basis": basis,
+        "evidence_record_ids": list(direct_evidence_ids),
+        "previous_workspace_record_ids": [],
+        "computational_cross_check_ids": [],
+        "historical_identifiers": identifiers,
+        "basic_graph_assignment": None,
+        "confidence": confidence,
+        "notes": ["Invalid partial low-order identity fixture."],
+        "open_questions": [],
+    })
+
+
+@pytest.mark.parametrize("status", ["unresolved", "working-hypothesis"])
+def test_low_order_identifier_requires_the_grouped_status(
+    catalogue, annotations, status
+):
+    _add_low_order_bypass_record(annotations, status=status)
+    with pytest.raises(ValueError, match="identifiers require derived-canonical"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_reviewed_low_order_number_cannot_omit_grouped_status(
+    catalogue, annotations
+):
+    _add_low_order_bypass_record(annotations, identifier_evidence=False)
+    with pytest.raises(ValueError, match="identifiers require derived-canonical"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_other_number_cannot_cite_low_order_identity_evidence(
+    catalogue, annotations
+):
+    _add_low_order_bypass_record(annotations, identifier_value=108)
+    with pytest.raises(ValueError, match="identifiers require derived-canonical"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_direct_low_order_evidence_citation_requires_the_grouped_status(
+    catalogue, annotations
+):
+    definition_id = _low_order_definitions(annotations)[0]["evidence_id"]
+    _add_low_order_bypass_record(
+        annotations,
+        identifier_value=108,
+        identifier_evidence=False,
+        include_identifier=False,
+        direct_evidence_ids=[definition_id],
+    )
+    with pytest.raises(ValueError, match="identifiers require derived-canonical"):
+        generate_evidence_ledger(catalogue, annotations)
 
 
 def test_partial_low_order_identity_application_is_rejected(catalogue, annotations):

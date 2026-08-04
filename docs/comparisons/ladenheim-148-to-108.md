@@ -110,10 +110,10 @@ historical evidence. In particular, computational agreement can corroborate a
 transcription without converting an uncited workspace assertion into a
 source-backed mapping.
 
-## Version 4 evidence contract
+## Version 5 evidence contract
 
 The manual file
-`data/comparisons/ladenheim-108-annotations.json` uses `format_version: 4` and
+`data/comparisons/ladenheim-108-annotations.json` uses `format_version: 5` and
 contains reviewed assertions and structural matching rules without duplicating
 all 148 structural records. The generated file
 `data/comparisons/ladenheim-148-to-108.json` joins those assertions to the
