@@ -104,6 +104,15 @@ to populate exactly those 25 historical identifiers and retained dispositions;
 it does not reproduce the complete canonical 108 or begin the 108-to-62
 production classification.
 
+The four-element evidence report at
+[`docs/comparisons/ladenheim-canonical-108-four-element-evidence.md`](ladenheim-canonical-108-four-element-evidence.md)
+visually transcribes all 34 four-element canonical diagrams across six source
+subfamilies, 20 source equivalence classes, and ten source orbits. It
+independently obtains 34 distinct unique RICE structural matches while keeping
+identity, orbit, and realizability-set equivalence separate. The report is
+evidence only: none of those identities is applied in production, it does not
+complete the canonical 108, and it does not reproduce the 62 classes.
+
 Previous research workspaces contain useful graph descriptions, images,
 descriptor transcriptions, and computational results. Those artefacts can help
 later transcription and cross-checking, but they are not authoritative
