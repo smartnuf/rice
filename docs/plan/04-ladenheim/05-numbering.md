@@ -48,3 +48,10 @@ once the cited sources and reduction definitions are aligned.
   subject-bound RICE matches. The remaining 83 canonical networks are still
   unmapped, and no graph assignments or 108-to-62 classification were added,
   so this task remains `prog`.
+- The evidence-only report
+  [`docs/comparisons/ladenheim-canonical-108-four-element-evidence.md`](../../comparisons/ladenheim-canonical-108-four-element-evidence.md)
+  adds 34 independently reproduced four-element number-to-subject mappings.
+  Production still contains only the 25 populated low-order canonical
+  identifiers; the 34 four-element identifiers are not yet applied, and 49
+  five-element networks remain unmapped. The numbering task therefore remains
+  `prog`.
