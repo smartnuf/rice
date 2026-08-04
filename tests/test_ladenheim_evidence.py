@@ -4811,7 +4811,8 @@ def _populate_low_order_identity_records(annotations):
         for record in _low_order_matches(annotations)
     }
     expected_subjects = {
-        record["claim"]["subject_catalogue_ids"][0] for record in matches.values()
+        record["claim"]["subject_catalogue_ids"][0]
+        for record in matches.values()
     }
     existing_subjects = {
         record["catalogue_id"]
@@ -4824,8 +4825,7 @@ def _populate_low_order_identity_records(annotations):
         definition = definitions[number]
         match = matches[number]
         subject = match["claim"]["subject_catalogue_ids"][0]
-        annotations["records"].append(
-            {
+        annotations["records"].append({
             "catalogue_id": subject,
             "comparison_status": "derived-canonical-identity-match",
             "proposed_disposition": "retain",
@@ -4841,8 +4841,7 @@ def _populate_low_order_identity_records(annotations):
             ],
             "previous_workspace_record_ids": [],
             "computational_cross_check_ids": [LOW_ORDER_COMPUTATION_ID],
-                "historical_identifiers": [
-                    {
+            "historical_identifiers": [{
                 "scheme": "morelli-smith-canonical-network",
                 "value": number,
                 "verification_state": "cross-checked",
@@ -4850,14 +4849,13 @@ def _populate_low_order_identity_records(annotations):
                     definition["evidence_id"],
                     match["evidence_id"],
                 ],
-                    }
-                ],
+            }],
             "basic_graph_assignment": None,
             "confidence": "high",
             "notes": ["Complete low-order identity application fixture."],
             "open_questions": [],
-            }
-        )
+        })
+
 
 
 def _populate_four_element_identity_records(annotations):
@@ -5580,6 +5578,8 @@ def test_all_low_order_identity_consumption_is_invalid_for_rules(
         })
     with pytest.raises(ValueError, match="explicit-record only"):
         generate_evidence_ledger(catalogue, annotations)
+
+
 def test_four_element_canonical_group_is_complete_and_unapplied(catalogue, annotations):
     ledger = generate_evidence_ledger(catalogue, annotations)
     definitions = _four_element_definitions(annotations)
