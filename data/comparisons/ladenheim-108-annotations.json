@@ -267,7 +267,7 @@
       "operation": "Construct all 25 fixtures, scan all 148 catalogue records under the committed structural relation, and verify unique subject matches and component inventories",
       "result": "The 25 canonical fixtures have 25 distinct unique RICE structural matches with the reviewed descriptors and component inventories.",
       "independently_reproduced": true,
-      "limitations": "The report reproduction was run at the pinned evidence-only revision, where it also checked the then-current 40 excluded / 108 unresolved / 0 retained production boundary. Those disposition checks document the historical acceptance state, are not part of the durable structural-match result, and are not intended to run against a later ledger after identity application. Current application validity is enforced by the version-5 validator, generated-ledger checks, and tests; authoritative publication transcriptions remain source-verified inputs.",
+      "limitations": "The report reproduction was run at the pinned evidence-only revision, where it also checked the then-current 40 excluded / 108 unresolved / 0 retained production boundary. Those disposition checks document the historical acceptance state, are not part of the durable structural-match result, and are not intended to run against a later ledger after identity application. Current application validity is enforced by the current canonical-identity contract, generated-ledger checks, and tests; authoritative publication transcriptions remain source-verified inputs.",
       "verification_state": "cross-checked",
       "subject_catalogue_ids": [
         "lh148-11e22e7cba30a62f",

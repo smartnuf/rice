@@ -330,9 +330,9 @@ LOW_ORDER_COMPUTATION_FIXED_PAYLOAD = {
         "0 retained production boundary. Those disposition checks document the "
         "historical acceptance state, are not part of the durable structural-match "
         "result, and are not intended to run against a later ledger after identity "
-        "application. Current application validity is enforced by the version-5 "
-        "validator, generated-ledger checks, and tests; authoritative publication "
-        "transcriptions remain source-verified inputs."
+        "application. Current application validity is enforced by the current "
+        "canonical-identity contract, generated-ledger checks, and tests; "
+        "authoritative publication transcriptions remain source-verified inputs."
     ),
     "verification_state": "cross-checked",
 }
