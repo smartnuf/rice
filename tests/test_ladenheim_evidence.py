@@ -4866,6 +4866,36 @@ def _populate_low_order_identity_records(annotations):
         })
 
 
+def _low_order_identity_row(annotations, number=49):
+    subject = REVIEWED_LOW_ORDER_CANONICAL_NETWORKS[number][0]
+    row = next(
+        record
+        for record in annotations["records"]
+        if record["catalogue_id"] == subject
+        and record["comparison_status"] == "derived-canonical-identity-match"
+    )
+    assert row["catalogue_id"] == subject
+    assert row["historical_identifiers"][0]["value"] == number
+    assert subject not in {
+        reviewed[0]
+        for reviewed in REVIEWED_FOUR_ELEMENT_CANONICAL_NETWORKS.values()
+    }
+    assert LOW_ORDER_AGGREGATE_ID in row["evidence_record_ids"]
+    assert row["computational_cross_check_ids"] == [LOW_ORDER_COMPUTATION_ID]
+    return row
+
+
+def _four_element_identity_row(annotations, number=97):
+    subject = REVIEWED_FOUR_ELEMENT_CANONICAL_NETWORKS[number][0]
+    row = next(
+        record
+        for record in annotations["records"]
+        if record["catalogue_id"] == subject
+        and record["comparison_status"] == "derived-canonical-identity-match"
+    )
+    assert row["historical_identifiers"][0]["value"] == number
+    return row
+
 
 def _populate_four_element_identity_records(annotations):
     definitions = {
@@ -5462,14 +5492,17 @@ def test_partial_low_order_identity_application_is_rejected(catalogue, annotatio
 
 def test_low_order_retention_requires_its_identifier(catalogue, annotations):
     _populate_low_order_identity_records(annotations)
-    annotations["records"][-1]["historical_identifiers"] = []
+    row = _low_order_identity_row(annotations)
+    row["historical_identifiers"] = []
     with pytest.raises(ValueError, match="exact cross-checked canonical"):
         generate_evidence_ledger(catalogue, annotations)
 
 
 def test_low_order_identifier_requires_its_own_number(catalogue, annotations):
     _populate_low_order_identity_records(annotations)
-    annotations["records"][-1]["historical_identifiers"][0]["value"] = 1
+    row = _low_order_identity_row(annotations)
+    assert row["historical_identifiers"][0]["value"] == 49
+    row["historical_identifiers"][0]["value"] = 1
     with pytest.raises(ValueError, match="exact cross-checked canonical"):
         generate_evidence_ledger(catalogue, annotations)
 
@@ -5483,7 +5516,7 @@ def test_low_order_status_rejects_nonretention_dispositions(
     catalogue, annotations, disposition, category, reason
 ):
     _populate_low_order_identity_records(annotations)
-    row = annotations["records"][-1]
+    row = _low_order_identity_row(annotations)
     row["proposed_disposition"] = disposition
     row["exclusion_category"] = category
     row["exclusion_reason"] = reason
@@ -5864,7 +5897,7 @@ def test_partial_four_element_identity_application_is_rejected(
 
 def test_four_element_identifier_cannot_use_low_order_evidence(catalogue, annotations):
     _populate_four_element_identity_records(annotations)
-    row = annotations["records"][-1]
+    row = _four_element_identity_row(annotations)
     row["historical_identifiers"][0]["evidence_record_ids"][0] = _low_order_definitions(
         annotations
     )[0]["evidence_id"]
@@ -5893,7 +5926,7 @@ def test_prior_reduction_target_evidence_cannot_replace_canonical_identity_evide
     catalogue, annotations
 ):
     _populate_four_element_identity_records(annotations)
-    row = annotations["records"][-1]
+    row = _four_element_identity_row(annotations)
     reduction_target = next(
         record
         for record in annotations["evidence_records"]
