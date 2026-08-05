@@ -195,8 +195,13 @@ Historical identifiers are structured by scheme, value, verification state,
 and evidence-record IDs. A source-verified identifier requires precise
 authoritative evidence. The nullable `basic_graph_assignment` contract can
 later record a label, base label, dual designation, fixture, matching relation,
-verification state, and evidence references. Every current identifier list is
-empty and every basic-graph assignment is null.
+verification state, and evidence references. Exactly 59 current rows carry one
+cross-checked `morelli-smith-canonical-network` identifier: 25 from the
+low-order group and 34 from the four-element group. Morelli and Smith provide
+the authoritative numbered diagrams, while the corresponding `lh148-*`
+identities are independently reproduced through the reviewed canonical-identity
+route; the publication does not print those RICE IDs. The other 89 historical-
+identifier lists are empty, and every `basic_graph_assignment` remains null.
 
 A future source-verified basic-graph assignment must cite authoritative
 evidence for the exact historical graph definition and fixture. It must also
@@ -212,18 +217,25 @@ invalid.
 |---|---|
 | `source-backed` | A source explicitly identifies this entry or its checked mapping. |
 | `derived-unique-match` | An aggregate historical category has one logically unique set of RICE matches, with the inference recorded. |
+| `derived-structural-match` | A complete authoritative graph-family exclusion is joined to exact subject-bound RICE structural and reduction-target evidence. |
+| `derived-nongeneric-simplification-match` | A complete reviewed nongeneric group is joined to subject-bound coefficient, transformation, and conditional simpler-realisation evidence. |
+| `derived-canonical-identity-match` | An authoritative numbered canonical diagram is joined to an exact subject-bound RICE structural match through a complete controlled identity group. |
 | `working-hypothesis` | A researcher proposal not yet established by adequate source evidence. |
 | `unresolved` | No adequate entry-level mapping is available. |
 
 `proposed_disposition` is `exclude`, `retain`, or `unresolved`. Unresolved does
-not mean retained. Retention requires a resolved status and evidence basis plus
-authoritative, source-verified individual-record evidence for that exact
-catalogue ID and retained disposition. It is never inferred merely because an
-exclusion has not yet been found. An exclusion requires a controlled category,
-a reason, an evidence basis, and source references. No entries are currently
-marked `retain`.
-Any future retained row and its supporting individual claim must use category
-`none` and a null exclusion reason.
+not mean retained. Retention requires a resolved positive status and that
+status's exact evidence contract. Source-backed retention requires exact
+authoritative, source-verified individual-record evidence. A
+`derived-canonical-identity-match` retention requires the complete controlled
+group route: its authoritative canonical definition, exact subject-bound RICE
+match, controlled aggregate, exact group computation, and one exact
+cross-checked canonical historical identifier. Retention is never inferred
+merely because an exclusion has not yet been found. An exclusion requires a
+controlled category, a reason, an evidence basis, and source references.
+Fifty-nine entries are currently marked `retain` through the two complete
+controlled canonical-identity groups. Every retained row and its supporting
+claim use category `none` and a null exclusion reason.
 An unresolved comparison status must use the complete default unresolved
 contract; it cannot carry either an exclusion or retention disposition.
 
@@ -235,8 +247,10 @@ contract; it cannot carry either an exclusion or retention disposition.
 `evidence_basis` distinguishes an explicit historical entry statement, an
 explicit table/figure mapping, an aggregate category plus a logically unique
 RICE match, an aggregate historical graph group plus subject-bound RICE
-matches, a mechanically derived RICE structural fact, a researcher hypothesis,
-or no evidence yet. Mechanically derived facts establish only the stated RICE
+matches, an aggregate historical nongeneric group plus subject-bound RICE
+facts, an authoritative canonical diagram plus a subject-bound RICE match, a
+mechanically derived RICE structural fact, a researcher hypothesis, or no
+evidence yet. Mechanically derived facts establish only the stated RICE
 property; they are not historical evidence by themselves.
 `no-evidence-yet` is exclusive to unresolved assertions, and positive statuses
 must use the basis values appropriate to their source-backed, unique-match, or
