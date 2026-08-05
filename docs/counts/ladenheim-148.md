@@ -65,8 +65,12 @@ exclusion removes one bridge class.
 
 Eight records have four resistors and one reactive element. This is not the
 RICE local-SP count, rational immittance equality, or the canonical Ladenheim
-108 catalogue. The later exclusions, historical numbering, transformations,
-and realizability classifications remain open work.
+108 catalogue. Subsequent comparison work has accounted for all forty
+exclusions and positively identified and numbered the 108 nonexcluded subjects
+as canonical networks 1 through 108, without changing this structural count.
+See `docs/comparisons/ladenheim-148-to-108.md` for the evidence contract and
+detailed mapping. Independent reproduction of the 62 realizability-set classes,
+basic-graph letters, and broader descriptor integration remain separate work.
 
 Machine-readable catalogue: `data/counts/ladenheim-148.json`.
 

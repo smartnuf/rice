@@ -501,9 +501,16 @@ paths, or unstable metadata. `--check` fails if the committed ledger differs.
 
 ## Next evidence work
 
-1. Encode the reviewed 49-member five-element identity evidence in a controlled
-   structured contract without treating source classes or targets as identity.
-2. Apply the complete five-element group only after that separate contract is
-   reviewed.
-3. Keep the source-labelled 62-class coverage distinct from an independent
-   RICE reproduction of the 62 realizability sets.
+The structural 148-to-canonical-108 identity comparison is complete. The next
+separate Ladenheim milestone is independent reproduction of the 62
+realizability-set equivalence classes. All 62 source class labels and member
+inventories have been transcribed, but RICE has not yet independently
+established the behavioural equality or distinction of those realizability
+sets.
+
+That work must continue to distinguish network identity, group-action orbit,
+source equivalence class, Zobel relationship, Y--delta relationship, and
+reduction destination. Any machine contract for the 62 classes requires
+separate evidence and review. Later follow-on work also includes generator
+sets, integrated SP/bridge descriptors, and broader comparison of named
+structural and reduction contracts.
