@@ -72,3 +72,8 @@ once the cited sources and reduction definitions are aligned.
   historical identifiers: production still contains 59 searchable canonical
   identifiers, and the five-element contract and application remain pending.
   The numbering task therefore remains `prog`.
+- Encoded those 49 evidence-only mappings as the complete third controlled
+  format-version-6 identity group. The contract now covers all 108 canonical
+  numbers and subjects, but only the existing 59 identifiers are populated;
+  the five-element group remains unapplied pending a separate all-or-nothing
+  application. The numbering task therefore remains `prog`.

@@ -8,7 +8,10 @@ import pytest
 from rice.ladenheim_evidence import (
     FOUR_ELEMENT_AGGREGATE_ID,
     FOUR_ELEMENT_COMPUTATION_ID,
+    FIVE_ELEMENT_AGGREGATE_ID,
+    FIVE_ELEMENT_COMPUTATION_ID,
     REVIEWED_FOUR_ELEMENT_CANONICAL_NETWORKS,
+    REVIEWED_FIVE_ELEMENT_CANONICAL_NETWORKS,
     REVIEWED_LOW_ORDER_CANONICAL_NETWORKS,
     _is_unstable_time_key,
     _validate_disposition_partition,
@@ -23,6 +26,9 @@ ANNOTATION_PATH = Path("data/comparisons/ladenheim-108-annotations.json")
 LEDGER_PATH = Path("data/comparisons/ladenheim-148-to-108.json")
 FOUR_ELEMENT_REPORT_PATH = Path(
     "docs/comparisons/ladenheim-canonical-108-four-element-evidence.md"
+)
+FIVE_ELEMENT_REPORT_PATH = Path(
+    "docs/comparisons/ladenheim-canonical-108-five-element-evidence.md"
 )
 ZOBEL_FOUR_ELEMENT_IDS = {
     "lh148-d5533186cc51bbab",
@@ -1052,11 +1058,15 @@ def test_exact_subject_historical_identifier_fixture_is_accepted(
 ):
     annotations["rules"] = []
     row_id = catalogue["records"][0]["catalogue_id"]
-    annotations["evidence_records"].append(_historical_identifier_evidence(row_id))
+    annotations["evidence_records"].append(
+        _historical_identifier_evidence(
+            row_id, scheme="ladenheim-original-identifier", value="L-70"
+        )
+    )
     row = _unresolved_annotation(row_id)
     row["historical_identifiers"] = [{
-        "scheme": "morelli-smith-canonical-network",
-        "value": 70,
+        "scheme": "ladenheim-original-identifier",
+        "value": "L-70",
         "verification_state": "source-verified",
         "evidence_record_ids": ["fixture-historical-identifier"],
     }]
@@ -1077,24 +1087,15 @@ def _parsed_historical_identifier(scheme, value):
 
 
 def test_canonical_network_numbers_are_unique_across_rows(catalogue, annotations):
-    annotations["rules"] = []
-    rows = [
-        _unresolved_annotation(record["catalogue_id"])
-        for record in catalogue["records"][:2]
-    ]
-    for row in rows:
-        row["historical_identifiers"] = [
-            _parsed_historical_identifier("morelli-smith-canonical-network", 70)
-        ]
-    annotations["records"] = rows
-    with pytest.raises(
-        ValueError,
-        match=r"morelli-smith-canonical-network 70.*lh148-.*lh148-",
-    ):
+    row = _four_element_identity_row(annotations)
+    row["historical_identifiers"][0]["value"] = 49
+    with pytest.raises(ValueError, match="exact cross-checked canonical"):
         generate_evidence_ledger(catalogue, annotations)
 
 
-def test_different_canonical_network_numbers_are_accepted(catalogue, annotations):
+def test_different_noncanonical_historical_identifiers_are_accepted(
+    catalogue, annotations
+):
     annotations["rules"] = []
     rows = [
         _unresolved_annotation(record["catalogue_id"])
@@ -1102,7 +1103,9 @@ def test_different_canonical_network_numbers_are_accepted(catalogue, annotations
     ]
     for number, row in enumerate(rows, start=100):
         row["historical_identifiers"] = [
-            _parsed_historical_identifier("morelli-smith-canonical-network", number)
+            _parsed_historical_identifier(
+                "ladenheim-original-identifier", f"L-{number}"
+            )
         ]
     annotations["records"] = rows
     generate_evidence_ledger(catalogue, annotations)
@@ -1238,7 +1241,7 @@ def test_malformed_historical_identifiers_are_rejected(
         ("morelli-smith-canonical-network", 1.0, False),
         ("morelli-smith-canonical-network", "1", False),
         ("morelli-smith-canonical-network", 1, False),
-        ("morelli-smith-canonical-network", 108, True),
+        ("morelli-smith-canonical-network", 108, False),
         ("morelli-smith-canonical-network", 109, False),
         ("morelli-smith-basic-graph", 1, False),
         ("morelli-smith-basic-graph", "", False),
@@ -4803,6 +4806,114 @@ def _four_element_aggregate(annotations):
     )
 
 
+def _five_element_definitions(annotations):
+    return [
+        record
+        for record in _evidence_of_type(annotations, "canonical-network-definition")
+        if record["claim"]["canonical_network_number"]
+        in REVIEWED_FIVE_ELEMENT_CANONICAL_NETWORKS
+    ]
+
+
+def _five_element_matches(annotations):
+    return [
+        record
+        for record in _evidence_of_type(annotations, "canonical-network-match")
+        if record["claim"]["canonical_network_number"]
+        in REVIEWED_FIVE_ELEMENT_CANONICAL_NETWORKS
+    ]
+
+
+def _five_element_computation(annotations):
+    return next(
+        record
+        for record in annotations["computational_cross_checks"]
+        if record["cross_check_id"] == FIVE_ELEMENT_COMPUTATION_ID
+    )
+
+
+def _five_element_aggregate(annotations):
+    return next(
+        record
+        for record in _evidence_of_type(
+            annotations, "aggregate-canonical-network-group"
+        )
+        if record["evidence_id"] == FIVE_ELEMENT_AGGREGATE_ID
+    )
+
+
+def _populate_five_element_identity_records(annotations):
+    definitions = {
+        record["claim"]["canonical_network_number"]: record
+        for record in _five_element_definitions(annotations)
+    }
+    matches = {
+        record["claim"]["canonical_network_number"]: record
+        for record in _five_element_matches(annotations)
+    }
+    existing_subjects = {
+        record["catalogue_id"]
+        for record in annotations["records"]
+        if record["comparison_status"] == "derived-canonical-identity-match"
+    }
+    for number in _five_element_aggregate(annotations)["claim"][
+        "canonical_network_numbers"
+    ]:
+        definition = definitions[number]
+        match = matches[number]
+        subject = match["claim"]["subject_catalogue_ids"][0]
+        if subject in existing_subjects:
+            continue
+        annotations["records"].append(
+            {
+                "catalogue_id": subject,
+                "comparison_status": "derived-canonical-identity-match",
+                "proposed_disposition": "retain",
+                "exclusion_category": "none",
+                "exclusion_reason": None,
+                "evidence_basis": [
+                    "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+                ],
+                "evidence_record_ids": [
+                    FIVE_ELEMENT_AGGREGATE_ID,
+                    definition["evidence_id"],
+                    match["evidence_id"],
+                ],
+                "previous_workspace_record_ids": [],
+                "computational_cross_check_ids": [FIVE_ELEMENT_COMPUTATION_ID],
+                "historical_identifiers": [
+                    {
+                        "scheme": "morelli-smith-canonical-network",
+                        "value": number,
+                        "verification_state": "cross-checked",
+                        "evidence_record_ids": [
+                            definition["evidence_id"],
+                            match["evidence_id"],
+                        ],
+                    }
+                ],
+                "basic_graph_assignment": None,
+                "confidence": "high",
+                "notes": ["Complete five-element identity application fixture."],
+                "open_questions": [],
+            }
+        )
+
+
+def _five_element_identity_row(annotations, number=108):
+    subject = REVIEWED_FIVE_ELEMENT_CANONICAL_NETWORKS[number][0]
+    row = next(
+        record
+        for record in annotations["records"]
+        if record["catalogue_id"] == subject
+        and record["comparison_status"] == "derived-canonical-identity-match"
+    )
+    assert row["historical_identifiers"][0]["value"] == number
+    assert FIVE_ELEMENT_AGGREGATE_ID in row["evidence_record_ids"]
+    assert row["computational_cross_check_ids"] == [FIVE_ELEMENT_COMPUTATION_ID]
+    return row
+
+
 def _populate_low_order_identity_records(annotations):
     aggregate = next(
         record
@@ -5935,3 +6046,310 @@ def test_prior_reduction_target_evidence_cannot_replace_canonical_identity_evide
     row["evidence_record_ids"][1] = reduction_target["evidence_id"]
     with pytest.raises(ValueError, match="one definition, match, and aggregate"):
         generate_evidence_ledger(catalogue, annotations)
+
+
+def test_five_element_group_is_complete_and_unapplied(catalogue, annotations):
+    ledger = generate_evidence_ledger(catalogue, annotations)
+    definitions = _five_element_definitions(annotations)
+    matches = _five_element_matches(annotations)
+    assert len(definitions) == len(matches) == 49
+    assert (
+        len({record["claim"]["canonical_network_number"] for record in definitions})
+        == 49
+    )
+    subjects = {record["claim"]["subject_catalogue_ids"][0] for record in matches}
+    assert len(subjects) == 49
+    assert subjects == {
+        row["catalogue_id"]
+        for row in ledger["records"]
+        if row["proposed_disposition"] == "unresolved"
+    }
+    assert all(
+        row["rlc"] == 5 and row["r"] == 3
+        for row in ledger["records"]
+        if row["catalogue_id"] in subjects
+    )
+
+
+def test_three_canonical_groups_cover_exact_nonexcluded_population(
+    catalogue, annotations
+):
+    ledger = generate_evidence_ledger(catalogue, annotations)
+    definitions = _evidence_of_type(annotations, "canonical-network-definition")
+    matches = _evidence_of_type(annotations, "canonical-network-match")
+    aggregates = _evidence_of_type(annotations, "aggregate-canonical-network-group")
+    computations = [
+        item
+        for item in annotations["computational_cross_checks"]
+        if "canonical_network_numbers" in item
+    ]
+    numbers = {item["claim"]["canonical_network_number"] for item in definitions}
+    subjects = {item["claim"]["subject_catalogue_ids"][0] for item in matches}
+    nonexcluded = {
+        row["catalogue_id"]
+        for row in ledger["records"]
+        if row["proposed_disposition"] != "exclude"
+    }
+    assert len(definitions) == len(matches) == len(numbers) == len(subjects) == 108
+    assert len(aggregates) == len(computations) == 3
+    assert subjects == nonexcluded
+
+
+@pytest.mark.parametrize("claim_type", ["definition", "match"])
+def test_five_element_group_rejects_missing_inventory(
+    catalogue, annotations, claim_type
+):
+    records = (
+        _five_element_definitions(annotations)
+        if claim_type == "definition"
+        else _five_element_matches(annotations)
+    )
+    record = records[-1]
+    annotations["evidence_records"].remove(record)
+    scope = (
+        "canonical_definition_evidence_record_ids"
+        if claim_type == "definition"
+        else "verified_evidence_record_ids"
+    )
+    _five_element_computation(annotations)[scope].remove(record["evidence_id"])
+    with pytest.raises(
+        ValueError, match="five-element canonical .* inventory is incomplete"
+    ):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize("duplicate", ["number", "subject"])
+def test_five_element_group_rejects_duplicate_number_or_subject(
+    catalogue, annotations, duplicate
+):
+    if duplicate == "number":
+        definitions = _five_element_definitions(annotations)
+        definitions[1]["claim"]["canonical_network_number"] = definitions[0]["claim"][
+            "canonical_network_number"
+        ]
+    else:
+        matches = _five_element_matches(annotations)
+        matches[1]["claim"]["subject_catalogue_ids"] = matches[0]["claim"][
+            "subject_catalogue_ids"
+        ].copy()
+    with pytest.raises(ValueError):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize(
+    ("mutation", "expected"),
+    [
+        ("descriptor", "invalid canonical-network match"),
+        ("inventory", "invalid canonical-network definition"),
+        ("fixture", "invalid canonical-network definition"),
+        ("subfamily", "invalid canonical-network definition"),
+        ("class", "invalid canonical-network definition"),
+        ("orbit", "invalid canonical-network definition"),
+        ("diagram", "invalid canonical-network definition"),
+        ("figure", "invalid canonical-network definition"),
+        ("class-table", "invalid canonical-network definition"),
+        ("source", "report provenance"),
+        ("report-path", "report provenance"),
+    ],
+)
+def test_five_element_group_rejects_mutated_reviewed_bindings(
+    catalogue, annotations, mutation, expected
+):
+    definition = _five_element_definitions(annotations)[0]
+    match = _five_element_matches(annotations)[0]
+    if mutation == "descriptor":
+        match["claim"]["representative_descriptor"] = "0-1:R"
+    elif mutation == "inventory":
+        definition["claim"]["component_inventory"]["r"] = 2
+    elif mutation == "fixture":
+        definition["claim"]["fixture_id"] = "ms-c108-five-wrong"
+    elif mutation == "subfamily":
+        definition["claim"]["subfamily"] = "VI"
+    elif mutation == "class":
+        definition["claim"]["source_equivalence_class"] = "V_I"
+    elif mutation == "orbit":
+        definition["claim"]["source_orbit"] = [50]
+    elif mutation == "diagram":
+        definition["claim"]["diagram_locator"]["printed_page"] = 999
+    elif mutation == "figure":
+        definition["claim"]["figure_locator"]["figure"] = "6.2"
+    elif mutation == "class-table":
+        definition["claim"]["class_table_locator"]["pdf_page_index"] = 64
+    elif mutation == "source":
+        match["source_id"] = "rice-canonical-108-four-element-report"
+    else:
+        match["locator"]["repository_path"] = "README.md"
+    with pytest.raises(ValueError, match=expected):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize(
+    ("field", "value"),
+    [
+        ("source_orbit_count", 15),
+        ("source_equivalence_class_count", 20),
+        ("total_networks", 48),
+        ("source_orbit_count", True),
+        ("total_networks", 49.0),
+    ],
+)
+def test_five_element_aggregate_rejects_wrong_or_nonstrict_counts(
+    catalogue, annotations, field, value
+):
+    _five_element_aggregate(annotations)["claim"][field] = value
+    with pytest.raises(ValueError, match="invalid aggregate canonical-network"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize(
+    ("target", "value"),
+    [
+        ("definition-number", True),
+        ("definition-number", 50.0),
+        ("orbit", True),
+        ("orbit", 50.0),
+        ("diagram-page", 141.0),
+        ("computation-number", True),
+        ("computation-number", 50.0),
+    ],
+)
+def test_five_element_numeric_contract_rejects_booleans_and_floats(
+    catalogue, annotations, target, value
+):
+    definition = _five_element_definitions(annotations)[0]["claim"]
+    if target == "definition-number":
+        definition["canonical_network_number"] = value
+    elif target == "orbit":
+        definition["source_orbit"][0] = value
+    elif target == "diagram-page":
+        definition["diagram_locator"]["printed_page"] = value
+    else:
+        _five_element_computation(annotations)["canonical_network_numbers"][0] = value
+    with pytest.raises(ValueError):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_five_element_computation_requires_exact_scope_and_revision(
+    catalogue, annotations
+):
+    computation = _five_element_computation(annotations)
+    computation["commit_sha"] = "0" * 40
+    with pytest.raises(ValueError, match="five-element computation must use"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_five_element_computation_rejects_cross_group_scope(catalogue, annotations):
+    computation = _five_element_computation(annotations)
+    computation["canonical_definition_evidence_record_ids"][0] = (
+        _four_element_definitions(annotations)[0]["evidence_id"]
+    )
+    with pytest.raises(ValueError, match="five-element computation requires exact"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_five_element_aggregate_rejects_cross_group_scope(catalogue, annotations):
+    aggregate = _five_element_aggregate(annotations)["claim"]
+    aggregate["canonical_network_numbers"][0] = next(
+        iter(REVIEWED_FOUR_ELEMENT_CANONICAL_NETWORKS)
+    )
+    with pytest.raises(ValueError, match="invalid aggregate canonical-network"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_five_element_match_cannot_claim_earlier_group_number(catalogue, annotations):
+    match = _five_element_matches(annotations)[0]
+    match["claim"]["canonical_network_number"] = next(
+        iter(REVIEWED_LOW_ORDER_CANONICAL_NETWORKS)
+    )
+    with pytest.raises(ValueError, match="invalid canonical-network match"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_complete_five_element_identity_application_can_pass(catalogue, annotations):
+    _populate_five_element_identity_records(annotations)
+    ledger = generate_evidence_ledger(catalogue, annotations)
+    assert ledger["summary"]["by_proposed_disposition"] == {
+        "exclude": 40,
+        "retain": 108,
+    }
+    assert (
+        len(
+            [
+                row
+                for row in ledger["records"]
+                if row["comparison_status"] == "derived-canonical-identity-match"
+            ]
+        )
+        == 108
+    )
+
+
+@pytest.mark.parametrize("consumer_count", [1, 48])
+def test_partial_five_element_identity_application_is_rejected(
+    catalogue, annotations, consumer_count
+):
+    _populate_five_element_identity_records(annotations)
+    keep = {
+        payload[0]
+        for payload in list(REVIEWED_FIVE_ELEMENT_CANONICAL_NETWORKS.values())[
+            :consumer_count
+        ]
+    }
+    annotations["records"] = [
+        row
+        for row in annotations["records"]
+        if row["catalogue_id"]
+        not in {
+            payload[0] for payload in REVIEWED_FIVE_ELEMENT_CANONICAL_NETWORKS.values()
+        }
+        or row["catalogue_id"] in keep
+    ]
+    with pytest.raises(ValueError, match="complete 49-row group"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+@pytest.mark.parametrize(
+    "mutation", ["number", "identifier", "aggregate", "computation"]
+)
+def test_complete_five_element_application_rejects_wrong_member_contract(
+    catalogue, annotations, mutation
+):
+    _populate_five_element_identity_records(annotations)
+    row = _five_element_identity_row(annotations)
+    if mutation == "number":
+        row["historical_identifiers"][0]["value"] = 107
+    elif mutation == "identifier":
+        row["historical_identifiers"] = []
+    elif mutation == "aggregate":
+        row["evidence_record_ids"][0] = FOUR_ELEMENT_AGGREGATE_ID
+    else:
+        row["computational_cross_check_ids"] = [FOUR_ELEMENT_COMPUTATION_ID]
+    with pytest.raises(ValueError):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_five_element_evidence_is_invalid_for_a_rule(catalogue, annotations):
+    annotations["rules"][0]["evidence_record_ids"].append(
+        _five_element_definitions(annotations)[0]["evidence_id"]
+    )
+    with pytest.raises(ValueError, match="explicit-record only"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_indirect_five_element_evidence_is_invalid_for_a_rule(catalogue, annotations):
+    computation_id = _append_indirect_low_order_computation(
+        annotations, _five_element_matches(annotations)[0]["evidence_id"]
+    )
+    annotations["rules"][0]["computational_cross_check_ids"].append(computation_id)
+    with pytest.raises(ValueError, match="explicit-record only"):
+        generate_evidence_ledger(catalogue, annotations)
+
+
+def test_five_element_computation_and_report_keep_historical_boundary(annotations):
+    computation = _five_element_computation(annotations)
+    result = computation["result"].lower()
+    assert all(word not in result for word in ("unresolved", "retained", "excluded"))
+    assert computation["commit_sha"] == "b64946fd9ddcae6f764921d082b315affb9e233e"
+    report = FIVE_ELEMENT_REPORT_PATH.read_text(encoding="utf-8")
+    assert "evidence-only milestone" in report
+    assert "production remains 40 excluded" in report

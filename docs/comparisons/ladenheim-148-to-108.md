@@ -325,9 +325,12 @@ reviewed canonical-identity groups. The existing 25-member low-order group
 remains fully applied and unchanged. A second group encodes 34 authoritative
 four-element definitions, 34 unique subject-bound RICE matches, its exact
 aggregate inventory, and its pinned computation from the reviewed
-four-element report. Each group is independently all-or-nothing: the
-four-element evidence is complete, and all 34 identities and retained
-dispositions are now applied together.
+four-element report; all 34 identities are applied. A third controlled group
+now encodes 49 authoritative five-element definitions, 49 exact subject-bound
+matches, its aggregate inventory, and its pinned report computation. Across the
+three groups, 108 definitions and 108 matches cover the complete nonexcluded
+population. Each group remains independently all-or-nothing: the five-element
+group is structured and complete but has no production consumers yet.
 
 ## Version 6 validation boundary
 
@@ -336,13 +339,13 @@ object shapes, controlled vocabularies, reference and catalogue-subject
 resolution, provenance and verification coherence, status/disposition/category
 tuples, numeric boundaries, target and count invariants, and deterministic-output
 hygiene. It also rejects cross-group canonical evidence and partial application
-of either controlled identity group. Unknown fields are rejected rather than
+of any controlled identity group. Unknown fields are rejected rather than
 copied into the ledger.
 
 Version 6 does not represent ambiguous candidate mappings. A later extension
 must record the finite candidate set, evidence for each candidate, the comparison
 relation, and why the evidence does not distinguish them. Also deferred are real
-basic-graph assignments, the 49 five-element canonical identities, and transformation
+basic-graph assignments, application of the 49 five-element identities, and transformation
 proofs beyond the reviewed reports. Absence of those schema
 objects establishes none of those claims.
 
@@ -452,16 +455,16 @@ The complete reviewed low-order group contributes 25 retained rows with exact
 cross-checked canonical network identifiers. The complete reviewed
 four-element group contributes another 34 retained rows with the same
 authoritative-definition-plus-subject-match boundary. The remaining 49
-survivors are unresolved five-element networks. The five-element report now
-supplies unique structural matches for all 49 at the evidence layer, but this
-ledger does not yet apply those identities.
+survivors are unresolved five-element networks. The third controlled group now
+supplies exact definitions, subject matches, aggregate scope, and computation
+for all 49, but this ledger does not yet apply those identities.
 
 The controlled four-element group contributes structured evidence for all 34
 four-element identities: six subfamilies, 20 source equivalence classes, ten
 source orbits, and one exact-scope computation. Its complete production
 application now retains and numbers all 34 reviewed subjects. The remaining 49
-five-element subjects have complete evidence-only identity matches but remain
-unresolved pending a structured contract and production application.
+five-element subjects have a complete structured identity group but remain
+unresolved pending a separate all-or-nothing production application.
 
 Production basic-graph assignments remain deferred: every
 `basic_graph_assignment` is null. Exactly 25 historical identifier lists are
