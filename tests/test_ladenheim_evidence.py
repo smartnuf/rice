@@ -178,10 +178,9 @@ def _cross_check():
 
 def _populate_derived_structural_group(catalogue, annotations):
     unresolved_ids = [
-        row["catalogue_id"]
-        for row in generate_evidence_ledger(catalogue, annotations)["records"]
-        if row["comparison_status"] == "unresolved"
-    ][:4]
+        REVIEWED_FIVE_ELEMENT_CANONICAL_NETWORKS[number][0]
+        for number in sorted(REVIEWED_FIVE_ELEMENT_CANONICAL_NETWORKS)[:4]
+    ]
     annotations["records"] = []
     targets = [20, 25, 28, 32]
     source_id = "fixture-graph-report"
@@ -1149,7 +1148,7 @@ def test_committed_ledger_has_exact_reviewed_canonical_identifiers():
         for row in ledger["records"]
         for identifier in row["historical_identifiers"]
     ]
-    assert len(identifiers) == 59
+    assert len(identifiers) == 108
     assert {
         (row_id, identifier["value"])
         for row_id, identifier in identifiers
@@ -1159,6 +1158,9 @@ def test_committed_ledger_has_exact_reviewed_canonical_identifiers():
     } | {
         (payload[0], number)
         for number, payload in REVIEWED_FOUR_ELEMENT_CANONICAL_NETWORKS.items()
+    } | {
+        (payload[0], number)
+        for number, payload in REVIEWED_FIVE_ELEMENT_CANONICAL_NETWORKS.items()
     }
     assert all(
         identifier["scheme"] == "morelli-smith-canonical-network"
@@ -1598,38 +1600,35 @@ def test_unresolved_entry_needs_no_fabricated_evidence(catalogue, annotations):
     assert row["computational_cross_check_ids"] == []
 
 
-def test_exact_forty_49_and_59_distribution(catalogue, annotations):
+def test_exact_forty_zero_and_108_distribution(catalogue, annotations):
     ledger = generate_evidence_ledger(catalogue, annotations)
     assert ledger["summary"]["by_comparison_status"] == {
         "derived-nongeneric-simplification-match": 8,
         "derived-structural-match": 20,
         "derived-unique-match": 12,
-        "derived-canonical-identity-match": 59,
-        "unresolved": 49,
+        "derived-canonical-identity-match": 108,
     }
     assert ledger["summary"]["by_proposed_disposition"] == {
         "exclude": 40,
-        "retain": 59,
-        "unresolved": 49,
+        "retain": 108,
     }
     assert ledger["summary"]["by_exclusion_category"] == {
         "other-canonical-exclusion": 8,
         "simpler-bilinear-realisation": 8,
-        "none": 59,
-        "unresolved": 49,
+        "none": 108,
         "zobel-five-element-series-parallel": 20,
         "zobel-four-element": 4,
     }
     assert ledger["summary"]["mapped_exclusions"] == 40
-    assert ledger["summary"]["unresolved_dispositions"] == 49
+    assert ledger["summary"]["unresolved_dispositions"] == 0
     assert sum(
         row["proposed_disposition"] == "retain" for row in ledger["records"]
-    ) == 59
+    ) == 108
     mapped = [row for row in ledger["records"] if row["proposed_disposition"] == "exclude"]
     assert len(mapped) == 40
     assert all(row["comparison_status"] != "ambiguous" for row in ledger["records"])
     assert ledger["target"]["reproduction_claimed"] is False
-    assert sum(bool(row["historical_identifiers"]) for row in ledger["records"]) == 59
+    assert sum(bool(row["historical_identifiers"]) for row in ledger["records"]) == 108
     assert all(row["basic_graph_assignment"] is None for row in ledger["records"])
 
 
@@ -3009,6 +3008,10 @@ def test_only_reviewed_exclusions_are_resolved(catalogue, annotations):
             payload[0]
             for payload in REVIEWED_FOUR_ELEMENT_CANONICAL_NETWORKS.values()
         }
+        | {
+            payload[0]
+            for payload in REVIEWED_FIVE_ELEMENT_CANONICAL_NETWORKS.values()
+        }
     )
     resolved = {
         row["catalogue_id"]
@@ -3050,10 +3053,10 @@ def test_exclusion_category_population_and_identity_boundary(catalogue, annotati
     assert categories["zobel-four-element"] == 4
     assert categories["zobel-five-element-series-parallel"] == 20
     assert categories["other-canonical-exclusion"] == 8
-    assert categories["none"] == 59
-    assert categories["unresolved"] == 49
+    assert categories["none"] == 108
+    assert categories["unresolved"] == 0
     assert all(row["basic_graph_assignment"] is None for row in ledger["records"])
-    assert sum(bool(row["historical_identifiers"]) for row in ledger["records"]) == 59
+    assert sum(bool(row["historical_identifiers"]) for row in ledger["records"]) == 108
     assert all(
         not any(
             identifier.get("value") in {15, 17}
@@ -3809,8 +3812,7 @@ def test_final_eight_structured_evidence_is_complete_and_applied(
     assert ledger["format_version"] == 6
     assert ledger["summary"]["by_proposed_disposition"] == {
         "exclude": 40,
-        "retain": 59,
-        "unresolved": 49,
+        "retain": 108,
     }
     assert len(_evidence_of_type(annotations, "aggregate-nongeneric-exclusion-group")) == 1
     assert len(_evidence_of_type(annotations, "y-delta-partner-match")) == 4
@@ -3859,8 +3861,7 @@ def test_complete_final_eight_explicit_group_can_apply(catalogue, annotations):
     records = {row["catalogue_id"]: row for row in ledger["records"]}
     assert ledger["summary"]["by_proposed_disposition"] == {
         "exclude": 40,
-        "retain": 59,
-        "unresolved": 49,
+        "retain": 108,
     }
     assert all(
         records[subject]["comparison_status"]
@@ -5080,8 +5081,7 @@ def test_low_order_contract_group_is_complete_and_applied(catalogue, annotations
     assert ledger["format_version"] == 6
     assert ledger["summary"]["by_proposed_disposition"] == {
         "exclude": 40,
-        "retain": 59,
-        "unresolved": 49,
+        "retain": 108,
     }
     assert all(row["basic_graph_assignment"] is None for row in ledger["records"])
     low_order_subjects = {
@@ -5321,8 +5321,7 @@ def test_complete_low_order_identity_application_can_pass(catalogue, annotations
     ledger = generate_evidence_ledger(catalogue, annotations)
     assert ledger["summary"]["by_proposed_disposition"] == {
         "exclude": 40,
-        "retain": 59,
-        "unresolved": 49,
+        "retain": 108,
     }
 
 
@@ -5817,23 +5816,57 @@ def test_committed_canonical_identity_application_is_complete(catalogue, annotat
     } | {
         (payload[0], number)
         for number, payload in REVIEWED_FOUR_ELEMENT_CANONICAL_NETWORKS.items()
+    } | {
+        (payload[0], number)
+        for number, payload in REVIEWED_FIVE_ELEMENT_CANONICAL_NETWORKS.items()
     }
     actual = {
         (row["catalogue_id"], row["historical_identifiers"][0]["value"])
         for row in canonical_rows
     }
-    assert len(canonical_rows) == 59
+    assert len(canonical_rows) == 108
     assert actual == expected
-    assert len({number for _, number in actual}) == 59
+    assert {number for _, number in actual} == set(range(1, 109))
+    group_subjects = {
+        "low-order": {
+            payload[0] for payload in REVIEWED_LOW_ORDER_CANONICAL_NETWORKS.values()
+        },
+        "four-element": {
+            payload[0]
+            for payload in REVIEWED_FOUR_ELEMENT_CANONICAL_NETWORKS.values()
+        },
+        "five-element": {
+            payload[0]
+            for payload in REVIEWED_FIVE_ELEMENT_CANONICAL_NETWORKS.values()
+        },
+    }
+    assert {
+        name: sum(row["catalogue_id"] in subjects for row in canonical_rows)
+        for name, subjects in group_subjects.items()
+    } == {"low-order": 25, "four-element": 34, "five-element": 49}
+    assert all(
+        sum(row["catalogue_id"] in subjects for subjects in group_subjects.values())
+        == 1
+        for row in canonical_rows
+    )
     assert all(
         row["proposed_disposition"] == "retain"
         and row["exclusion_category"] == "none"
+        and row["exclusion_reason"] is None
         and row["basic_graph_assignment"] is None
         for row in canonical_rows
     )
+    classification_question = (
+        "How do the 108 identified canonical networks partition into the 62 "
+        "realizability-set equivalence classes under an independently reproduced "
+        "RICE classification?"
+    )
+    assert all(
+        row["open_questions"] == [classification_question]
+        for row in canonical_rows
+    )
     unresolved = [row for row in rows if row["proposed_disposition"] == "unresolved"]
-    assert len(unresolved) == 49
-    assert all(row["rlc"] == 5 for row in unresolved)
+    assert unresolved == []
     assert sum(row["proposed_disposition"] == "exclude" for row in rows) == 40
     assert all(row["basic_graph_assignment"] is None for row in rows)
 
@@ -5849,8 +5882,9 @@ def test_four_element_computation_and_report_keep_historical_boundary(annotation
     assert "At that evidence-only milestone" in report
     assert "historical evidence-only state" in report
     assert "production unchanged: 40 excluded / 83 unresolved / 25 retained" in report
-    assert "current production is 40 excluded, 49" in report.lower()
-    assert "unresolved, and 59 retained" in report.lower()
+    assert "production was 40 excluded, 49 unresolved, and 59 retained" in report
+    assert "current production is 40 excluded, 0" in report.lower()
+    assert "unresolved, and 108 retained" in report.lower()
 
 
 @pytest.mark.parametrize("claim_type", ["definition", "match"])
@@ -5981,8 +6015,7 @@ def test_complete_four_element_identity_application_can_pass(catalogue, annotati
     ledger = generate_evidence_ledger(catalogue, annotations)
     assert ledger["summary"]["by_proposed_disposition"] == {
         "exclude": 40,
-        "retain": 59,
-        "unresolved": 49,
+        "retain": 108,
     }
 
 
@@ -6048,7 +6081,7 @@ def test_prior_reduction_target_evidence_cannot_replace_canonical_identity_evide
         generate_evidence_ledger(catalogue, annotations)
 
 
-def test_five_element_group_is_complete_and_unapplied(catalogue, annotations):
+def test_five_element_group_is_complete_and_applied(catalogue, annotations):
     ledger = generate_evidence_ledger(catalogue, annotations)
     definitions = _five_element_definitions(annotations)
     matches = _five_element_matches(annotations)
@@ -6062,7 +6095,9 @@ def test_five_element_group_is_complete_and_unapplied(catalogue, annotations):
     assert subjects == {
         row["catalogue_id"]
         for row in ledger["records"]
-        if row["proposed_disposition"] == "unresolved"
+        if row["comparison_status"] == "derived-canonical-identity-match"
+        and row["historical_identifiers"][0]["value"]
+        in REVIEWED_FIVE_ELEMENT_CANONICAL_NETWORKS
     }
     assert all(
         row["rlc"] == 5 and row["r"] == 3
@@ -6105,6 +6140,14 @@ def test_five_element_group_rejects_missing_inventory(
         else _five_element_matches(annotations)
     )
     record = records[-1]
+    five_element_subjects = {
+        payload[0] for payload in REVIEWED_FIVE_ELEMENT_CANONICAL_NETWORKS.values()
+    }
+    annotations["records"] = [
+        row
+        for row in annotations["records"]
+        if row["catalogue_id"] not in five_element_subjects
+    ]
     annotations["evidence_records"].remove(record)
     scope = (
         "canonical_definition_evidence_record_ids"
@@ -6351,5 +6394,10 @@ def test_five_element_computation_and_report_keep_historical_boundary(annotation
     assert all(word not in result for word in ("unresolved", "retained", "excluded"))
     assert computation["commit_sha"] == "b64946fd9ddcae6f764921d082b315affb9e233e"
     report = FIVE_ELEMENT_REPORT_PATH.read_text(encoding="utf-8")
+    normalized_report = " ".join(report.split())
     assert "evidence-only milestone" in report
-    assert "production remains 40 excluded" in report
+    assert "production remained 40 excluded" in report
+    assert (
+        "Current production is 40 excluded, 0 unresolved, and 108 retained"
+        in normalized_report
+    )

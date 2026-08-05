@@ -11,19 +11,20 @@ RICE catalogue identifiers.
 
 At this report's original evidence-only milestone, production remained 40 excluded,
 49 unresolved, and 59 retained. The already applied 25 low-order and 34
-four-element canonical identities are unchanged. The 49 matches below remain
-unresolved and carry no historical identifiers. All 148
-`basic_graph_assignment` values remain null. No format-version-6 contract,
+four-element canonical identities were unchanged. The 49 matches below were
+unresolved and carried no historical identifiers. All 148
+`basic_graph_assignment` values remained null. No format-version-6 contract,
 structured annotation evidence, production disposition, or 108-to-62
 classification was changed at that milestone.
 
-Subsequently, format version 6 has encoded the complete controlled 49-member
+Subsequently, format version 6 encoded the complete controlled 49-member
 five-element group: 49 authoritative definitions, 49 exact subject-bound RICE
-matches, one aggregate, and one pinned computation. None of its identities is
-applied. Current production remains 40 excluded, 49 unresolved, and 59
-retained; all 49 five-element rows remain unresolved, and later application is
-a separate PR. The reproduction block below remains a historical record pinned
-to accepted evidence revision `b64946fd9ddcae6f764921d082b315affb9e233e`.
+matches, one aggregate, and one pinned computation. The later complete
+application now retains and numbers all 49 subjects through that group. Current
+production is 40 excluded, 0 unresolved, and 108 retained, with 108 unique
+canonical identifiers and all 148 graph assignments null. The reproduction
+block below remains a historical record pinned to accepted evidence revision
+`b64946fd9ddcae6f764921d082b315affb9e233e`.
 
 ## 2. Source identity and exact locators
 
@@ -154,7 +155,8 @@ Each source topology above was independently encoded as a
 `PrimitiveNetwork`, then compared with all 148 committed catalogue rows under
 `colour-preserving-port-augmented-cycle-matroid-v1`. Descriptor text and list
 order were not matching predicates. `Card.` is the signature-match
-cardinality; every production disposition shown here is `unresolved`.
+cardinality; every production disposition shown here records the historical
+evidence-only milestone, when all 49 subjects were `unresolved`.
 
 | No. | Fixture | RICE catalogue ID | Representative descriptor | R/L/C | Relation | Card. | Disposition | Evidence locator |
 |---:|---|---|---|---|---|---:|---|---|
@@ -208,11 +210,13 @@ cardinality; every production disposition shown here is `unresolved`.
 | 107 | ms-c108-five-107 | lh148-226210ea8617797f | `0-2:C;0-3:R;1-2:L;1-3:R;2-3:R` | 3/1/1 | colour-preserving-port-augmented-cycle-matroid-v1 | 1 | unresolved | this report, section 4 |
 | 108 | ms-c108-five-108 | lh148-11e619a8865be381 | `0-2:C;0-3:R;1-2:R;1-3:L;2-3:R` | 3/1/1 | colour-preserving-port-augmented-cycle-matroid-v1 | 1 | unresolved | this report, section 4 |
 
-The 49 IDs are distinct and exhaust the current unresolved population. The
-union with the 25 applied low-order and 34 applied four-element identities has
+At the evidence-only milestone, the 49 IDs were distinct and exhausted the
+unresolved population. The union with the 25 applied low-order and 34 applied
+four-element identities had
 108 distinct canonical numbers and 108 distinct nonexcluded RICE subjects,
-exactly the nonexcluded side of the 148-row catalogue. This is evidence-level
-identity coverage; only 59 identities are applied in production.
+exactly the nonexcluded side of the 148-row catalogue. The later complete
+application now applies all 108 identities without changing that structural
+coverage result.
 
 ## 6. Reduction-target and historical-identity separation
 
@@ -220,8 +224,10 @@ The matching computation uses only each numbered Appendix D diagram's explicit
 fixture. It does not consume any `reduction-target-match`, conditional target,
 Zobel destination, or earlier exclusion mapping. A statement that an excluded
 subject reduces to a numbered network does not make the excluded subject that
-network and does not identify the target's RICE row. None of the 49 matched
-subjects is excluded or carries a historical identifier.
+network and does not identify the target's RICE row. At the evidence-only
+milestone, none of the 49 matched subjects was excluded or carried a historical
+identifier. The later complete five-element application assigns each subject
+its exact cross-checked `morelli-smith-canonical-network` identifier.
 
 The complete source-class arithmetic is now 21 low-order classes plus 20
 four-element classes plus 21 five-element classes, or 62. That is complete
@@ -248,23 +254,44 @@ RICE-ID allocation. No sibling record supplied any conclusion in this report.
 
 The authoritative inventory is 49 five-element networks in nine subfamilies,
 21 equivalence classes, and 16 group-action orbits. The 49 independently
-transcribed fixtures select 49 distinct unique RICE subjects and exhaust the
-unresolved production population. Together with the prior 59 reviewed
-identities, they provide evidence-level coverage of all canonical 108 numbers
-and all 108 nonexcluded RICE subjects.
+transcribed fixtures select 49 distinct unique RICE subjects and, at the
+evidence-only milestone, exhausted the unresolved production population.
+Together with the prior 59 reviewed identities, they provide evidence-level
+coverage of all canonical 108 numbers and all 108 nonexcluded RICE subjects.
 
-The 49 mappings remain evidence-only and unresolved. This report does not add a
-structured canonical group, apply identifiers or retention, independently
-reproduce the source orbits or realizability classes, or begin the 108-to-62
-production classification. The complete five-element contract and application
-remain separate review milestones.
+At the report milestone the 49 mappings were evidence-only and unresolved. The
+subsequent format-version-6 group encoded them, and the later complete
+application now retains and numbers all 49 subjects. Current production is 40
+excluded, 0 unresolved, and 108 retained. The historical unresolved-state
+checks below remain pinned to the accepted evidence revision, and the durable
+structural-match result is unchanged. Neither the report nor the application
+independently reproduces the source realizability classes or begins the
+108-to-62 production classification.
 
-## 9. Reproduction commands
+## 9. Historical reproduction commands
 
-Run this paste-ready block from the RICE repository root. It reads the explicit
-fixture and expected-match tables above, constructs primitive coloured
-networks, scans all 148 catalogue rows, and verifies the authoritative
-inventory, unique matches, production boundary, and full 108-subject union.
+This block reproduces the accepted evidence-only revision and is not intended
+to run against current main. Prepare a detached worktree at
+`b64946fd9ddcae6f764921d082b315affb9e233e`; this leaves the current checkout
+and branch untouched. The symlink reuses the current repository's virtual
+environment, while `PYTHONPATH` selects the pinned worktree's source:
+
+```bash
+repo_root="$(git rev-parse --show-toplevel)"
+repro_parent="$(mktemp -d)"
+repro_dir="$repro_parent/rice"
+git -C "$repo_root" worktree add --detach \
+    "$repro_dir" \
+    b64946fd9ddcae6f764921d082b315affb9e233e
+ln -s "$repo_root/.venv" "$repro_dir/.venv"
+export PYTHONPATH="$repro_dir/src"
+cd "$repro_dir"
+```
+
+Run the existing Python block there. It reads the explicit fixture and
+expected-match tables above, constructs primitive coloured networks, scans all
+148 catalogue rows, and verifies the authoritative inventory, unique matches,
+historical production boundary, and full 108-subject union.
 
 ```bash
 .venv/bin/python - <<'PY'
@@ -509,3 +536,16 @@ canonical union: 108 distinct numbers; 108 distinct nonexcluded subjects
 production unchanged: 40 excluded / 49 unresolved / 59 retained
 identifiers: 59 populated rows; graph assignments: 148 null
 ```
+
+After recording the result, remove the detached worktree without changing the
+current checkout:
+
+```bash
+cd "$repo_root"
+unlink "$repro_dir/.venv"
+git worktree remove "$repro_dir"
+rmdir "$repro_parent"
+```
+
+The current canonical-identity contract, generator, and tests separately
+validate the later 40 excluded / 0 unresolved / 108 retained production state.

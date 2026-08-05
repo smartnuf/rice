@@ -15,14 +15,20 @@ specified here.
 When the evidence and format-version-4 contract were accepted, the eight
 dispositions were intentionally unapplied and production had 32 excluded, 116
 unresolved, and 0 retained records. The subsequent production-application
-milestone applies all eight reviewed exclusions through that accepted contract,
-so current production has 40 excluded, 108 unresolved, and 0 retained records.
-Every graph assignment remains null, every historical-identifier list remains
-empty, and no canonical numbering is populated. Canonical networks 21, 29, 36,
-and 44 are conditional simpler-realisation destinations, not historical
-identities of the eight subjects. Nothing here establishes the complementary
-108 rows as retained, positively identifies them with the canonical catalogue,
-or reproduces that catalogue.
+milestone applied all eight reviewed exclusions through that accepted contract,
+and at that final-eight application milestone production became 40 excluded,
+108 unresolved, and 0 retained records. Canonical identity application and
+numbering had not yet begun, historical-identifier lists were empty, and every
+graph assignment was null.
+
+Subsequent low-order, four-element, and five-element canonical-identity
+applications bring current production to 40 excluded, 0 unresolved, and 108
+retained records. All canonical numbers 1 through 108 are populated, while
+every graph assignment remains null. Canonical networks 21, 29, 36, and 44 are
+conditional simpler-realisation destinations for the eight subjects, not their
+historical identities. Nothing in this report's final-eight reasoning itself
+establishes the later canonical identities or reproduces the 62
+realizability-set classes.
 
 ## 2. Source identity and locators
 
@@ -484,11 +490,14 @@ Format version 4 implements the complete structured-evidence contract and the
 conditional application-time validation described above. The evidence-contract
 milestone did not apply the eight dispositions and had the historical
 32 excluded / 116 unresolved / 0 retained boundary. The subsequent production
-application consumes the complete reviewed group and applies all eight, giving
-40 excluded / 108 unresolved / 0 retained. Graph assignments remain null,
-historical identifiers remain empty, and no canonical-numbering, positive
-complementary-108 identification, or realizability-set equivalence claim is
-made.
+application consumed the complete reviewed group and applied all eight, giving
+the historical 40 excluded / 108 unresolved / 0 retained boundary. At that
+milestone graph assignments remained null, historical identifiers remained
+empty, and no canonical-numbering, positive complementary-108 identification,
+or realizability-set equivalence claim was made. Later canonical-identity
+applications now produce 40 excluded / 0 unresolved / 108 retained with all
+canonical numbers populated; graph assignments remain null, and the 62-class
+realizability-set claim remains unmade.
 
 ## 10. Previous-workspace audit
 

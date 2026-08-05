@@ -11,19 +11,24 @@ records identify the state of each task.
 ## Current direction
 
 The structural [148-network Ladenheim catalogue](04-ladenheim/01-148.md) has
-now been reproduced with traceable records and provenance. Comparison with the
-[canonical 108-network catalogue](04-ladenheim/02-108.md) is now in progress
-through a deterministic evidence ledger. Starting from the reproduced 148 set,
-that work must account for the forty exclusions with per-entry evidence and
-distinguish star-delta effects from Zobel
-transformations, simpler bilinear realizations, Cauer-Foster relationships,
-regularity, and other realizability arguments.
+been reproduced with traceable records and provenance. Comparison with the
+[canonical 108-network catalogue](04-ladenheim/02-108.md) is also complete:
+all forty exclusions have per-entry evidence, all 108 retained subjects have
+exact canonical numbers, and the production ledger contains 40 excluded and
+108 retained rows with no unresolved rows. Structural identity remains
+distinct from Zobel transformations, star-delta or Y-delta relationships,
+simpler bilinear realisations, nongeneric simplification, and
+realizability-set equivalence.
 
-Subsequent work includes the
-[62 realizability-set classes](04-ladenheim/03-62.md),
-[historical descriptor and number mapping](04-ladenheim/05-numbering.md), and
-comparison of the
+The next distinct Ladenheim milestone is independent reproduction of the
+[62 realizability-set classes](04-ladenheim/03-62.md). The source class labels
+have been transcribed, but RICE has not yet independently reproduced that
+behavioural classification. Other subsequent work includes
+[generator sets](04-ladenheim/04-generators.md), integrated
+[SP/bridge descriptors](04-ladenheim/06-descriptors.md), and comparison of the
 [named structural and reduction contracts](04-ladenheim/07-compare-reductions.md).
+Canonical numbering is complete; basic-graph letters and broader descriptor
+vocabularies remain separate work.
 Larger slices, including the
 [full `R <= 3`, `L+C <= 5` census](05-slices/04-r3-x5.md), remain later work
 subject to performance and output-size review. Those catalogue results will
@@ -70,10 +75,10 @@ files' numeric prefixes; the files were not renamed/renumbered to match):
 ## 04 — Ladenheim reproduction
 
 - `done` [Reproduce structural 148-network Ladenheim set](04-ladenheim/01-148.md)
-- `prog` [Compare with canonical 108-network Ladenheim catalogue](04-ladenheim/02-108.md)
+- `done` [Compare with canonical 108-network Ladenheim catalogue](04-ladenheim/02-108.md)
 - `todo` [Reproduce 62 realizability-set classes](04-ladenheim/03-62.md)
 - `todo` [Identify generator sets](04-ladenheim/04-generators.md)
-- `todo` [Map descriptors to Morelli/Ladenheim numbering](04-ladenheim/05-numbering.md)
+- `done` [Map descriptors to Morelli/Ladenheim numbering](04-ladenheim/05-numbering.md)
 - `todo` [Integrate SP/bridge descriptors](04-ladenheim/06-descriptors.md)
 - `todo` [Compare local SP and 2-isomorphism reductions](04-ladenheim/07-compare-reductions.md)
 
