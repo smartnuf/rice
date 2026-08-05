@@ -9,13 +9,21 @@ equivalence classes, and network types. The `lh148-*` correspondences are
 independently reproduced RICE structural facts; the publication does not print
 RICE catalogue identifiers.
 
-This is an evidence-only milestone. Current production remains 40 excluded,
+At this report's original evidence-only milestone, production remained 40 excluded,
 49 unresolved, and 59 retained. The already applied 25 low-order and 34
 four-element canonical identities are unchanged. The 49 matches below remain
 unresolved and carry no historical identifiers. All 148
 `basic_graph_assignment` values remain null. No format-version-6 contract,
 structured annotation evidence, production disposition, or 108-to-62
-classification is changed here.
+classification was changed at that milestone.
+
+Subsequently, format version 6 has encoded the complete controlled 49-member
+five-element group: 49 authoritative definitions, 49 exact subject-bound RICE
+matches, one aggregate, and one pinned computation. None of its identities is
+applied. Current production remains 40 excluded, 49 unresolved, and 59
+retained; all 49 five-element rows remain unresolved, and later application is
+a separate PR. The reproduction block below remains a historical record pinned
+to accepted evidence revision `b64946fd9ddcae6f764921d082b315affb9e233e`.
 
 ## 2. Source identity and exact locators
 
