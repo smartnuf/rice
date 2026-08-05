@@ -32,8 +32,10 @@ Chapter 5, the Chapter 6 classification discussion, and Theorem 7.4.
 - Historical Ladenheim structural scope: `R+L+C <= 5` and `L+C <= 2`.
 - RICE local series/parallel comparison point: `R <= 3`, `L+C <= 2`,
   `max_edges = 5`, currently counting 140 reduced signatures. Historical 108
-  members lie in this budget region, but their mapping to these signatures has
-  not yet been measured.
+  members lie in this budget region, but that local-SP relation is distinct
+  from the completed mapping of the canonical 108 identities against the
+  structural 148 catalogue under the named port-augmented coloured structural
+  contract. The two relations must not be silently equated.
 - RICE smoke-test slice: `R <= 2`, `L+C <= 3`.
 - RICE full planned scope: `R <= 3`, `L+C <= 5`.
 
@@ -47,15 +49,18 @@ Chapter 5, the Chapter 6 classification discussion, and Theorem 7.4.
 ## Progress notes
 
 - Added `docs/comparisons/ladenheim-148-to-108.md` with the evidence-status and
-  disposition contract, current `8 mapped / 140 unresolved` population, source
-  inventory, explicit research gaps, and deterministic regeneration commands.
-  The comparison is not complete and the task remains open.
+  disposition contract, complete 40 excluded / 0 unresolved / 108 retained
+  population, source inventory, explicit research boundaries, and
+  deterministic regeneration commands.
 - Documented the version 2 separation between authoritative evidence,
   previous-workspace material, and computational cross-checks, including the
-  precise Morelli and Smith page/PDF-index locators currently used. Graph and
-  canonical-number mappings remain deferred.
-- The comparison document now describes the version 2 evidence and locator
-  contract, deterministic regeneration, and the partial `8 excluded / 140
-  unresolved` ledger. The remaining thirty-two exclusions, retained canonical
-  membership, basic-graph assignments, canonical numbering, and complete 108
-  reproduction remain open.
+  precise Morelli and Smith page/PDF-index locators used by the later reviewed
+  evidence contracts.
+- All forty exclusions now have per-entry evidence, all 108 nonexcluded
+  subjects are positively identified, and canonical numbers 1 through 108 are
+  populated. Production is 40 excluded / 0 unresolved / 108 retained, so the
+  central identity-comparison and numbering documentation is complete. The
+  source's 62 class labels have been transcribed, but RICE has not independently
+  reproduced the 62 realizability-set classes. Basic-graph assignments and
+  broader descriptor integration remain open, so this wider documentation task
+  remains in progress.
