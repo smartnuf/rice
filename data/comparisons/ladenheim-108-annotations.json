@@ -1859,7 +1859,13 @@
         "source_population": 5,
         "supported_disposition": "exclude",
         "supported_exclusion_category": "zobel-five-element-series-parallel",
-        "supported_reduction_targets": [37, 40, 45, 48, 72]
+        "supported_reduction_targets": [
+          37,
+          40,
+          45,
+          48,
+          72
+        ]
       },
       "evidence_id": "ms-2019-five-element-zobel-graph-s-dual-group",
       "locator": {
@@ -1904,10 +1910,14 @@
           "matched": true,
           "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1"
         },
-        "subject_catalogue_ids": ["lh148-84fedcab1cc7f77d"]
+        "subject_catalogue_ids": [
+          "lh148-84fedcab1cc7f77d"
+        ]
       },
       "evidence_id": "rice-lh148-84fedcab1cc7f77d-graph-s-dual-match",
-      "locator": {"repository_path": "docs/comparisons/ladenheim-five-element-zobel-graph-s-dual-evidence.md"},
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-five-element-zobel-graph-s-dual-evidence.md"
+      },
       "paraphrase": "The complete 85-record census, 15-member graph-S-dual population, and exact coloured signature uniquely match the R3L2C0 fixture L parallel with R followed by (R parallel with (R followed by L)) to this RICE subject.",
       "provenance_level": "rice-derived-structural-fact",
       "source_id": "rice-five-element-zobel-graph-s-dual-report",
@@ -1922,10 +1932,14 @@
           "matched": true,
           "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1"
         },
-        "subject_catalogue_ids": ["lh148-81ffdfa53c07c484"]
+        "subject_catalogue_ids": [
+          "lh148-81ffdfa53c07c484"
+        ]
       },
       "evidence_id": "rice-lh148-81ffdfa53c07c484-graph-s-dual-match",
-      "locator": {"repository_path": "docs/comparisons/ladenheim-five-element-zobel-graph-s-dual-evidence.md"},
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-five-element-zobel-graph-s-dual-evidence.md"
+      },
       "paraphrase": "The complete 85-record census, 15-member graph-S-dual population, and exact coloured signature uniquely match the R3L1C1 fixture L parallel with R followed by (R parallel with (R followed by C)) to this RICE subject.",
       "provenance_level": "rice-derived-structural-fact",
       "source_id": "rice-five-element-zobel-graph-s-dual-report",
@@ -1940,10 +1954,14 @@
           "matched": true,
           "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1"
         },
-        "subject_catalogue_ids": ["lh148-4cf39db00710fb1c"]
+        "subject_catalogue_ids": [
+          "lh148-4cf39db00710fb1c"
+        ]
       },
       "evidence_id": "rice-lh148-4cf39db00710fb1c-graph-s-dual-match",
-      "locator": {"repository_path": "docs/comparisons/ladenheim-five-element-zobel-graph-s-dual-evidence.md"},
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-five-element-zobel-graph-s-dual-evidence.md"
+      },
       "paraphrase": "The complete 85-record census, 15-member graph-S-dual population, and exact coloured signature uniquely match the R3L0C2 fixture C parallel with R followed by (R parallel with (R followed by C)) to this RICE subject.",
       "provenance_level": "rice-derived-structural-fact",
       "source_id": "rice-five-element-zobel-graph-s-dual-report",
@@ -1958,10 +1976,14 @@
           "matched": true,
           "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1"
         },
-        "subject_catalogue_ids": ["lh148-3bf13e1a1ad41cd5"]
+        "subject_catalogue_ids": [
+          "lh148-3bf13e1a1ad41cd5"
+        ]
       },
       "evidence_id": "rice-lh148-3bf13e1a1ad41cd5-graph-s-dual-match",
-      "locator": {"repository_path": "docs/comparisons/ladenheim-five-element-zobel-graph-s-dual-evidence.md"},
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-five-element-zobel-graph-s-dual-evidence.md"
+      },
       "paraphrase": "The complete 85-record census, 15-member graph-S-dual population, and exact coloured signature uniquely match the R3L1C1 fixture C parallel with R followed by (R parallel with (R followed by L)) to this RICE subject.",
       "provenance_level": "rice-derived-structural-fact",
       "source_id": "rice-five-element-zobel-graph-s-dual-report",
@@ -1976,55 +1998,104 @@
           "matched": true,
           "structural_relation": "colour-preserving-port-augmented-cycle-matroid-v1"
         },
-        "subject_catalogue_ids": ["lh148-aefb4b8fe01749c6"]
+        "subject_catalogue_ids": [
+          "lh148-aefb4b8fe01749c6"
+        ]
       },
       "evidence_id": "rice-lh148-aefb4b8fe01749c6-graph-s-dual-match",
-      "locator": {"repository_path": "docs/comparisons/ladenheim-five-element-zobel-graph-s-dual-evidence.md"},
+      "locator": {
+        "repository_path": "docs/comparisons/ladenheim-five-element-zobel-graph-s-dual-evidence.md"
+      },
       "paraphrase": "The complete 85-record census, 15-member graph-S-dual population, and exact coloured signature uniquely match the R3L1C1 fixture R parallel with R followed by (R parallel with the composite series L-C arm) to this RICE subject.",
       "provenance_level": "rice-derived-structural-fact",
       "source_id": "rice-five-element-zobel-graph-s-dual-report",
       "verification_state": "cross-checked"
     },
     {
-      "claim": {"claim_type": "reduction-target-match", "subject_catalogue_ids": ["lh148-84fedcab1cc7f77d"], "target_network_number": 37},
+      "claim": {
+        "claim_type": "reduction-target-match",
+        "subject_catalogue_ids": [
+          "lh148-84fedcab1cc7f77d"
+        ],
+        "target_network_number": 37
+      },
       "evidence_id": "rice-lh148-84fedcab1cc7f77d-target-37",
-      "locator": {"network_number": 37, "repository_path": "docs/comparisons/ladenheim-five-element-zobel-graph-s-dual-evidence.md"},
+      "locator": {
+        "network_number": 37,
+        "repository_path": "docs/comparisons/ladenheim-five-element-zobel-graph-s-dual-evidence.md"
+      },
       "paraphrase": "The reviewed pathway starts from L parallel with R followed by (R parallel with (R followed by L)), applies the inverse Figure 5.2 coefficient map for a, b, and c recorded in the report, merges the resulting series resistors, obtains graph G-dual as L parallel with R followed by (R parallel L), and matches canonical network 37 with positive finite coefficients in both directions and exact immittance checks.",
       "provenance_level": "rice-derived-network-equivalence-fact",
       "source_id": "rice-five-element-zobel-graph-s-dual-report",
       "verification_state": "cross-checked"
     },
     {
-      "claim": {"claim_type": "reduction-target-match", "subject_catalogue_ids": ["lh148-81ffdfa53c07c484"], "target_network_number": 40},
+      "claim": {
+        "claim_type": "reduction-target-match",
+        "subject_catalogue_ids": [
+          "lh148-81ffdfa53c07c484"
+        ],
+        "target_network_number": 40
+      },
       "evidence_id": "rice-lh148-81ffdfa53c07c484-target-40",
-      "locator": {"network_number": 40, "repository_path": "docs/comparisons/ladenheim-five-element-zobel-graph-s-dual-evidence.md"},
+      "locator": {
+        "network_number": 40,
+        "repository_path": "docs/comparisons/ladenheim-five-element-zobel-graph-s-dual-evidence.md"
+      },
       "paraphrase": "The reviewed pathway starts from L parallel with R followed by (R parallel with (R followed by C)), applies the inverse Figure 5.2 coefficient map for a, b, and c recorded in the report, merges the resulting series resistors, obtains graph G-dual as L parallel with R followed by (R parallel C), and matches canonical network 40 with positive finite coefficients in both directions and exact immittance checks.",
       "provenance_level": "rice-derived-network-equivalence-fact",
       "source_id": "rice-five-element-zobel-graph-s-dual-report",
       "verification_state": "cross-checked"
     },
     {
-      "claim": {"claim_type": "reduction-target-match", "subject_catalogue_ids": ["lh148-4cf39db00710fb1c"], "target_network_number": 45},
+      "claim": {
+        "claim_type": "reduction-target-match",
+        "subject_catalogue_ids": [
+          "lh148-4cf39db00710fb1c"
+        ],
+        "target_network_number": 45
+      },
       "evidence_id": "rice-lh148-4cf39db00710fb1c-target-45",
-      "locator": {"network_number": 45, "repository_path": "docs/comparisons/ladenheim-five-element-zobel-graph-s-dual-evidence.md"},
+      "locator": {
+        "network_number": 45,
+        "repository_path": "docs/comparisons/ladenheim-five-element-zobel-graph-s-dual-evidence.md"
+      },
       "paraphrase": "The reviewed pathway starts from C parallel with R followed by (R parallel with (R followed by C)), applies the inverse Figure 5.2 coefficient map for a, b, and c recorded in the report, merges the resulting series resistors, obtains graph G-dual as C parallel with R followed by (R parallel C), and matches canonical network 45 with positive finite coefficients in both directions and exact immittance checks.",
       "provenance_level": "rice-derived-network-equivalence-fact",
       "source_id": "rice-five-element-zobel-graph-s-dual-report",
       "verification_state": "cross-checked"
     },
     {
-      "claim": {"claim_type": "reduction-target-match", "subject_catalogue_ids": ["lh148-3bf13e1a1ad41cd5"], "target_network_number": 48},
+      "claim": {
+        "claim_type": "reduction-target-match",
+        "subject_catalogue_ids": [
+          "lh148-3bf13e1a1ad41cd5"
+        ],
+        "target_network_number": 48
+      },
       "evidence_id": "rice-lh148-3bf13e1a1ad41cd5-target-48",
-      "locator": {"network_number": 48, "repository_path": "docs/comparisons/ladenheim-five-element-zobel-graph-s-dual-evidence.md"},
+      "locator": {
+        "network_number": 48,
+        "repository_path": "docs/comparisons/ladenheim-five-element-zobel-graph-s-dual-evidence.md"
+      },
       "paraphrase": "The reviewed pathway starts from C parallel with R followed by (R parallel with (R followed by L)), applies the inverse Figure 5.2 coefficient map for a, b, and c recorded in the report, merges the resulting series resistors, obtains graph G-dual as C parallel with R followed by (R parallel L), and matches canonical network 48 with positive finite coefficients in both directions and exact immittance checks.",
       "provenance_level": "rice-derived-network-equivalence-fact",
       "source_id": "rice-five-element-zobel-graph-s-dual-report",
       "verification_state": "cross-checked"
     },
     {
-      "claim": {"claim_type": "reduction-target-match", "subject_catalogue_ids": ["lh148-aefb4b8fe01749c6"], "target_network_number": 72},
+      "claim": {
+        "claim_type": "reduction-target-match",
+        "subject_catalogue_ids": [
+          "lh148-aefb4b8fe01749c6"
+        ],
+        "target_network_number": 72
+      },
       "evidence_id": "rice-lh148-aefb4b8fe01749c6-target-72",
-      "locator": {"network_number": 72, "repository_path": "docs/comparisons/ladenheim-five-element-zobel-graph-s-dual-evidence.md"},
+      "locator": {
+        "network_number": 72,
+        "repository_path": "docs/comparisons/ladenheim-five-element-zobel-graph-s-dual-evidence.md"
+      },
       "paraphrase": "The reviewed pathway starts from R parallel with R followed by (R parallel with the composite series L-C arm), applies the forward Figure 5.2 coefficient map for a-prime, b-prime, and c-prime recorded in the report to that composite arm, merges the untouched and transformed parallel resistors, obtains graph H as R parallel with the series R-L-C branch, and matches canonical network 72 with positive finite coefficients in both directions and exact immittance checks.",
       "provenance_level": "rice-derived-network-equivalence-fact",
       "source_id": "rice-five-element-zobel-graph-s-dual-report",
@@ -11122,7 +11193,9 @@
       "catalogue_id": "lh148-84fedcab1cc7f77d",
       "basic_graph_assignment": null,
       "comparison_status": "derived-structural-match",
-      "computational_cross_check_ids": ["rice-five-element-zobel-graph-s-dual-report-reproduction"],
+      "computational_cross_check_ids": [
+        "rice-five-element-zobel-graph-s-dual-report-reproduction"
+      ],
       "confidence": "high",
       "evidence_basis": [
         "aggregate-historical-graph-group-plus-subject-bound-rice-match",
@@ -11137,8 +11210,12 @@
       "exclusion_category": "zobel-five-element-series-parallel",
       "exclusion_reason": "The source collectively excludes five graph-S-dual networks to the stated target set; the complete RICE census independently selects this direct-L/transformed-L subject, and the reviewed pathway applies the inverse Figure 5.2 coefficient map, merges series resistors, obtains graph G-dual as L parallel with R followed by (R parallel L), and checks canonical network 37 with exact positive immittance verification in both directions.",
       "historical_identifiers": [],
-      "notes": ["The RICE-ID correspondence and target allocation are independently checked repository evidence, not an individual historical source statement; canonical network 37 is a reduction target only."],
-      "open_questions": ["Which of the final eight O/O-dual and bridge exclusions can be established under a separate evidence goal?"],
+      "notes": [
+        "The RICE-ID correspondence and target allocation are independently checked repository evidence, not an individual historical source statement; canonical network 37 is a reduction target only."
+      ],
+      "open_questions": [
+        "Which of the final eight O/O-dual and bridge exclusions can be established under a separate evidence goal?"
+      ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "exclude"
     },
@@ -11146,15 +11223,29 @@
       "catalogue_id": "lh148-81ffdfa53c07c484",
       "basic_graph_assignment": null,
       "comparison_status": "derived-structural-match",
-      "computational_cross_check_ids": ["rice-five-element-zobel-graph-s-dual-report-reproduction"],
+      "computational_cross_check_ids": [
+        "rice-five-element-zobel-graph-s-dual-report-reproduction"
+      ],
       "confidence": "high",
-      "evidence_basis": ["aggregate-historical-graph-group-plus-subject-bound-rice-match", "mechanically-derived-rice-structural-fact"],
-      "evidence_record_ids": ["ms-2019-five-element-zobel-graph-s-dual-group", "ms-2019-basic-graph-s-dual-definition", "rice-lh148-81ffdfa53c07c484-graph-s-dual-match", "rice-lh148-81ffdfa53c07c484-target-40"],
+      "evidence_basis": [
+        "aggregate-historical-graph-group-plus-subject-bound-rice-match",
+        "mechanically-derived-rice-structural-fact"
+      ],
+      "evidence_record_ids": [
+        "ms-2019-five-element-zobel-graph-s-dual-group",
+        "ms-2019-basic-graph-s-dual-definition",
+        "rice-lh148-81ffdfa53c07c484-graph-s-dual-match",
+        "rice-lh148-81ffdfa53c07c484-target-40"
+      ],
       "exclusion_category": "zobel-five-element-series-parallel",
       "exclusion_reason": "The source collectively excludes five graph-S-dual networks to the stated target set; the complete RICE census independently selects this direct-L/transformed-C subject, and the reviewed pathway applies the inverse Figure 5.2 coefficient map, merges series resistors, obtains graph G-dual as L parallel with R followed by (R parallel C), and checks canonical network 40 with exact positive immittance verification in both directions.",
       "historical_identifiers": [],
-      "notes": ["The RICE-ID correspondence and target allocation are independently checked repository evidence, not an individual historical source statement; canonical network 40 is a reduction target only."],
-      "open_questions": ["Which of the final eight O/O-dual and bridge exclusions can be established under a separate evidence goal?"],
+      "notes": [
+        "The RICE-ID correspondence and target allocation are independently checked repository evidence, not an individual historical source statement; canonical network 40 is a reduction target only."
+      ],
+      "open_questions": [
+        "Which of the final eight O/O-dual and bridge exclusions can be established under a separate evidence goal?"
+      ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "exclude"
     },
@@ -11162,15 +11253,29 @@
       "catalogue_id": "lh148-4cf39db00710fb1c",
       "basic_graph_assignment": null,
       "comparison_status": "derived-structural-match",
-      "computational_cross_check_ids": ["rice-five-element-zobel-graph-s-dual-report-reproduction"],
+      "computational_cross_check_ids": [
+        "rice-five-element-zobel-graph-s-dual-report-reproduction"
+      ],
       "confidence": "high",
-      "evidence_basis": ["aggregate-historical-graph-group-plus-subject-bound-rice-match", "mechanically-derived-rice-structural-fact"],
-      "evidence_record_ids": ["ms-2019-five-element-zobel-graph-s-dual-group", "ms-2019-basic-graph-s-dual-definition", "rice-lh148-4cf39db00710fb1c-graph-s-dual-match", "rice-lh148-4cf39db00710fb1c-target-45"],
+      "evidence_basis": [
+        "aggregate-historical-graph-group-plus-subject-bound-rice-match",
+        "mechanically-derived-rice-structural-fact"
+      ],
+      "evidence_record_ids": [
+        "ms-2019-five-element-zobel-graph-s-dual-group",
+        "ms-2019-basic-graph-s-dual-definition",
+        "rice-lh148-4cf39db00710fb1c-graph-s-dual-match",
+        "rice-lh148-4cf39db00710fb1c-target-45"
+      ],
       "exclusion_category": "zobel-five-element-series-parallel",
       "exclusion_reason": "The source collectively excludes five graph-S-dual networks to the stated target set; the complete RICE census independently selects this direct-C/transformed-C subject, and the reviewed pathway applies the inverse Figure 5.2 coefficient map, merges series resistors, obtains graph G-dual as C parallel with R followed by (R parallel C), and checks canonical network 45 with exact positive immittance verification in both directions.",
       "historical_identifiers": [],
-      "notes": ["The RICE-ID correspondence and target allocation are independently checked repository evidence, not an individual historical source statement; canonical network 45 is a reduction target only."],
-      "open_questions": ["Which of the final eight O/O-dual and bridge exclusions can be established under a separate evidence goal?"],
+      "notes": [
+        "The RICE-ID correspondence and target allocation are independently checked repository evidence, not an individual historical source statement; canonical network 45 is a reduction target only."
+      ],
+      "open_questions": [
+        "Which of the final eight O/O-dual and bridge exclusions can be established under a separate evidence goal?"
+      ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "exclude"
     },
@@ -11178,15 +11283,29 @@
       "catalogue_id": "lh148-3bf13e1a1ad41cd5",
       "basic_graph_assignment": null,
       "comparison_status": "derived-structural-match",
-      "computational_cross_check_ids": ["rice-five-element-zobel-graph-s-dual-report-reproduction"],
+      "computational_cross_check_ids": [
+        "rice-five-element-zobel-graph-s-dual-report-reproduction"
+      ],
       "confidence": "high",
-      "evidence_basis": ["aggregate-historical-graph-group-plus-subject-bound-rice-match", "mechanically-derived-rice-structural-fact"],
-      "evidence_record_ids": ["ms-2019-five-element-zobel-graph-s-dual-group", "ms-2019-basic-graph-s-dual-definition", "rice-lh148-3bf13e1a1ad41cd5-graph-s-dual-match", "rice-lh148-3bf13e1a1ad41cd5-target-48"],
+      "evidence_basis": [
+        "aggregate-historical-graph-group-plus-subject-bound-rice-match",
+        "mechanically-derived-rice-structural-fact"
+      ],
+      "evidence_record_ids": [
+        "ms-2019-five-element-zobel-graph-s-dual-group",
+        "ms-2019-basic-graph-s-dual-definition",
+        "rice-lh148-3bf13e1a1ad41cd5-graph-s-dual-match",
+        "rice-lh148-3bf13e1a1ad41cd5-target-48"
+      ],
       "exclusion_category": "zobel-five-element-series-parallel",
       "exclusion_reason": "The source collectively excludes five graph-S-dual networks to the stated target set; the complete RICE census independently selects this direct-C/transformed-L subject, and the reviewed pathway applies the inverse Figure 5.2 coefficient map, merges series resistors, obtains graph G-dual as C parallel with R followed by (R parallel L), and checks canonical network 48 with exact positive immittance verification in both directions.",
       "historical_identifiers": [],
-      "notes": ["The RICE-ID correspondence and target allocation are independently checked repository evidence, not an individual historical source statement; canonical network 48 is a reduction target only."],
-      "open_questions": ["Which of the final eight O/O-dual and bridge exclusions can be established under a separate evidence goal?"],
+      "notes": [
+        "The RICE-ID correspondence and target allocation are independently checked repository evidence, not an individual historical source statement; canonical network 48 is a reduction target only."
+      ],
+      "open_questions": [
+        "Which of the final eight O/O-dual and bridge exclusions can be established under a separate evidence goal?"
+      ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "exclude"
     },
@@ -11194,15 +11313,29 @@
       "catalogue_id": "lh148-aefb4b8fe01749c6",
       "basic_graph_assignment": null,
       "comparison_status": "derived-structural-match",
-      "computational_cross_check_ids": ["rice-five-element-zobel-graph-s-dual-report-reproduction"],
+      "computational_cross_check_ids": [
+        "rice-five-element-zobel-graph-s-dual-report-reproduction"
+      ],
       "confidence": "high",
-      "evidence_basis": ["aggregate-historical-graph-group-plus-subject-bound-rice-match", "mechanically-derived-rice-structural-fact"],
-      "evidence_record_ids": ["ms-2019-five-element-zobel-graph-s-dual-group", "ms-2019-basic-graph-s-dual-definition", "rice-lh148-aefb4b8fe01749c6-graph-s-dual-match", "rice-lh148-aefb4b8fe01749c6-target-72"],
+      "evidence_basis": [
+        "aggregate-historical-graph-group-plus-subject-bound-rice-match",
+        "mechanically-derived-rice-structural-fact"
+      ],
+      "evidence_record_ids": [
+        "ms-2019-five-element-zobel-graph-s-dual-group",
+        "ms-2019-basic-graph-s-dual-definition",
+        "rice-lh148-aefb4b8fe01749c6-graph-s-dual-match",
+        "rice-lh148-aefb4b8fe01749c6-target-72"
+      ],
       "exclusion_category": "zobel-five-element-series-parallel",
       "exclusion_reason": "The source collectively excludes five graph-S-dual networks to the stated target set; the complete RICE census independently selects this composite-series-L-C-arm subject, and the reviewed pathway applies the forward Figure 5.2 coefficient map, merges parallel resistors, obtains graph H as R parallel with the series R-L-C branch, and checks canonical network 72 with exact positive immittance verification in both directions.",
       "historical_identifiers": [],
-      "notes": ["The RICE-ID correspondence and target allocation are independently checked repository evidence, not an individual historical source statement; canonical network 72 is a reduction target only."],
-      "open_questions": ["Which of the final eight O/O-dual and bridge exclusions can be established under a separate evidence goal?"],
+      "notes": [
+        "The RICE-ID correspondence and target allocation are independently checked repository evidence, not an individual historical source statement; canonical network 72 is a reduction target only."
+      ],
+      "open_questions": [
+        "Which of the final eight O/O-dual and bridge exclusions can be established under a separate evidence goal?"
+      ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "exclude"
     },
@@ -11210,14 +11343,26 @@
       "catalogue_id": "lh148-4a925dd55dc8da19",
       "basic_graph_assignment": null,
       "comparison_status": "derived-nongeneric-simplification-match",
-      "computational_cross_check_ids": ["rice-final-eight-o-bridge-report-reproduction"],
+      "computational_cross_check_ids": [
+        "rice-final-eight-o-bridge-report-reproduction"
+      ],
       "confidence": "high",
-      "evidence_basis": ["aggregate-historical-nongeneric-group-plus-subject-bound-rice-facts"],
-      "evidence_record_ids": ["ms-2019-final-eight-nongeneric-exclusion-group", "rice-lh148-4a925dd55dc8da19-graph-o-match", "rice-y-delta-o-c-v-terminal-c", "rice-lh148-4a925dd55dc8da19-forced-f-zero", "rice-lh148-4a925dd55dc8da19-conditional-target-21"],
+      "evidence_basis": [
+        "aggregate-historical-nongeneric-group-plus-subject-bound-rice-facts"
+      ],
+      "evidence_record_ids": [
+        "ms-2019-final-eight-nongeneric-exclusion-group",
+        "rice-lh148-4a925dd55dc8da19-graph-o-match",
+        "rice-y-delta-o-c-v-terminal-c",
+        "rice-lh148-4a925dd55dc8da19-forced-f-zero",
+        "rice-lh148-4a925dd55dc8da19-conditional-target-21"
+      ],
       "exclusion_category": "other-canonical-exclusion",
       "exclusion_reason": "The authoritative aggregate excludes the complete final-eight nongeneric group. The reviewed subject-bound graph and Y-delta evidence establishes this subject's pair; its forced F=0 fact makes the five-element realization nongeneric, and its conditional route gives a positive-finite Cauer-Foster realization associated with canonical network 21 for delta > 0 and a separate two-element R-X realization for delta = 0. The target is a simpler-realisation destination, not a network-equivalence, unconditional containment, or historical-identity claim.",
       "historical_identifiers": [],
-      "notes": ["Applied through the complete reviewed format-version-4 final-eight evidence group."],
+      "notes": [
+        "Applied through the complete reviewed format-version-4 final-eight evidence group."
+      ],
       "open_questions": [],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "exclude"
@@ -11226,14 +11371,26 @@
       "catalogue_id": "lh148-47ee32380ab1b406",
       "basic_graph_assignment": null,
       "comparison_status": "derived-nongeneric-simplification-match",
-      "computational_cross_check_ids": ["rice-final-eight-o-bridge-report-reproduction"],
+      "computational_cross_check_ids": [
+        "rice-final-eight-o-bridge-report-reproduction"
+      ],
       "confidence": "high",
-      "evidence_basis": ["aggregate-historical-nongeneric-group-plus-subject-bound-rice-facts"],
-      "evidence_record_ids": ["ms-2019-final-eight-nongeneric-exclusion-group", "rice-lh148-47ee32380ab1b406-graph-v-match", "rice-y-delta-o-c-v-terminal-c", "rice-lh148-47ee32380ab1b406-forced-f-zero", "rice-lh148-47ee32380ab1b406-conditional-target-21"],
+      "evidence_basis": [
+        "aggregate-historical-nongeneric-group-plus-subject-bound-rice-facts"
+      ],
+      "evidence_record_ids": [
+        "ms-2019-final-eight-nongeneric-exclusion-group",
+        "rice-lh148-47ee32380ab1b406-graph-v-match",
+        "rice-y-delta-o-c-v-terminal-c",
+        "rice-lh148-47ee32380ab1b406-forced-f-zero",
+        "rice-lh148-47ee32380ab1b406-conditional-target-21"
+      ],
       "exclusion_category": "other-canonical-exclusion",
       "exclusion_reason": "The authoritative aggregate excludes the complete final-eight nongeneric group. The reviewed subject-bound graph and Y-delta evidence establishes this subject's pair; its forced F=0 fact makes the five-element realization nongeneric, and its conditional route gives a positive-finite Cauer-Foster realization associated with canonical network 21 for delta > 0 and a separate two-element R-X realization for delta = 0. The target is a simpler-realisation destination, not a network-equivalence, unconditional containment, or historical-identity claim.",
       "historical_identifiers": [],
-      "notes": ["Applied through the complete reviewed format-version-4 final-eight evidence group."],
+      "notes": [
+        "Applied through the complete reviewed format-version-4 final-eight evidence group."
+      ],
       "open_questions": [],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "exclude"
@@ -11242,14 +11399,26 @@
       "catalogue_id": "lh148-68430bbb448b9991",
       "basic_graph_assignment": null,
       "comparison_status": "derived-nongeneric-simplification-match",
-      "computational_cross_check_ids": ["rice-final-eight-o-bridge-report-reproduction"],
+      "computational_cross_check_ids": [
+        "rice-final-eight-o-bridge-report-reproduction"
+      ],
       "confidence": "high",
-      "evidence_basis": ["aggregate-historical-nongeneric-group-plus-subject-bound-rice-facts"],
-      "evidence_record_ids": ["ms-2019-final-eight-nongeneric-exclusion-group", "rice-lh148-68430bbb448b9991-graph-o-match", "rice-y-delta-o-l-v-terminal-l", "rice-lh148-68430bbb448b9991-forced-d-zero", "rice-lh148-68430bbb448b9991-conditional-target-29"],
+      "evidence_basis": [
+        "aggregate-historical-nongeneric-group-plus-subject-bound-rice-facts"
+      ],
+      "evidence_record_ids": [
+        "ms-2019-final-eight-nongeneric-exclusion-group",
+        "rice-lh148-68430bbb448b9991-graph-o-match",
+        "rice-y-delta-o-l-v-terminal-l",
+        "rice-lh148-68430bbb448b9991-forced-d-zero",
+        "rice-lh148-68430bbb448b9991-conditional-target-29"
+      ],
       "exclusion_category": "other-canonical-exclusion",
       "exclusion_reason": "The authoritative aggregate excludes the complete final-eight nongeneric group. The reviewed subject-bound graph and Y-delta evidence establishes this subject's pair; its forced D=0 fact makes the five-element realization nongeneric, and its conditional route gives a positive-finite Cauer-Foster realization associated with canonical network 29 for delta > 0 and a separate two-element R-X realization for delta = 0. The target is a simpler-realisation destination, not a network-equivalence, unconditional containment, or historical-identity claim.",
       "historical_identifiers": [],
-      "notes": ["Applied through the complete reviewed format-version-4 final-eight evidence group."],
+      "notes": [
+        "Applied through the complete reviewed format-version-4 final-eight evidence group."
+      ],
       "open_questions": [],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "exclude"
@@ -11258,14 +11427,26 @@
       "catalogue_id": "lh148-7e24311a6fea4531",
       "basic_graph_assignment": null,
       "comparison_status": "derived-nongeneric-simplification-match",
-      "computational_cross_check_ids": ["rice-final-eight-o-bridge-report-reproduction"],
+      "computational_cross_check_ids": [
+        "rice-final-eight-o-bridge-report-reproduction"
+      ],
       "confidence": "high",
-      "evidence_basis": ["aggregate-historical-nongeneric-group-plus-subject-bound-rice-facts"],
-      "evidence_record_ids": ["ms-2019-final-eight-nongeneric-exclusion-group", "rice-lh148-7e24311a6fea4531-graph-v-match", "rice-y-delta-o-l-v-terminal-l", "rice-lh148-7e24311a6fea4531-forced-d-zero", "rice-lh148-7e24311a6fea4531-conditional-target-29"],
+      "evidence_basis": [
+        "aggregate-historical-nongeneric-group-plus-subject-bound-rice-facts"
+      ],
+      "evidence_record_ids": [
+        "ms-2019-final-eight-nongeneric-exclusion-group",
+        "rice-lh148-7e24311a6fea4531-graph-v-match",
+        "rice-y-delta-o-l-v-terminal-l",
+        "rice-lh148-7e24311a6fea4531-forced-d-zero",
+        "rice-lh148-7e24311a6fea4531-conditional-target-29"
+      ],
       "exclusion_category": "other-canonical-exclusion",
       "exclusion_reason": "The authoritative aggregate excludes the complete final-eight nongeneric group. The reviewed subject-bound graph and Y-delta evidence establishes this subject's pair; its forced D=0 fact makes the five-element realization nongeneric, and its conditional route gives a positive-finite Cauer-Foster realization associated with canonical network 29 for delta > 0 and a separate two-element R-X realization for delta = 0. The target is a simpler-realisation destination, not a network-equivalence, unconditional containment, or historical-identity claim.",
       "historical_identifiers": [],
-      "notes": ["Applied through the complete reviewed format-version-4 final-eight evidence group."],
+      "notes": [
+        "Applied through the complete reviewed format-version-4 final-eight evidence group."
+      ],
       "open_questions": [],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "exclude"
@@ -11274,14 +11455,26 @@
       "catalogue_id": "lh148-debfbc02c5650a94",
       "basic_graph_assignment": null,
       "comparison_status": "derived-nongeneric-simplification-match",
-      "computational_cross_check_ids": ["rice-final-eight-o-bridge-report-reproduction"],
+      "computational_cross_check_ids": [
+        "rice-final-eight-o-bridge-report-reproduction"
+      ],
       "confidence": "high",
-      "evidence_basis": ["aggregate-historical-nongeneric-group-plus-subject-bound-rice-facts"],
-      "evidence_record_ids": ["ms-2019-final-eight-nongeneric-exclusion-group", "rice-lh148-debfbc02c5650a94-graph-o-dual-match", "rice-y-delta-o-dual-l-v-path-l", "rice-lh148-debfbc02c5650a94-forced-c-zero", "rice-lh148-debfbc02c5650a94-conditional-target-36"],
+      "evidence_basis": [
+        "aggregate-historical-nongeneric-group-plus-subject-bound-rice-facts"
+      ],
+      "evidence_record_ids": [
+        "ms-2019-final-eight-nongeneric-exclusion-group",
+        "rice-lh148-debfbc02c5650a94-graph-o-dual-match",
+        "rice-y-delta-o-dual-l-v-path-l",
+        "rice-lh148-debfbc02c5650a94-forced-c-zero",
+        "rice-lh148-debfbc02c5650a94-conditional-target-36"
+      ],
       "exclusion_category": "other-canonical-exclusion",
       "exclusion_reason": "The authoritative aggregate excludes the complete final-eight nongeneric group. The reviewed subject-bound graph and Y-delta evidence establishes this subject's pair; its forced C=0 fact makes the five-element realization nongeneric, and its conditional route gives a positive-finite Cauer-Foster realization associated with canonical network 36 for delta > 0 and a separate two-element R-X realization for delta = 0. The target is a simpler-realisation destination, not a network-equivalence, unconditional containment, or historical-identity claim.",
       "historical_identifiers": [],
-      "notes": ["Applied through the complete reviewed format-version-4 final-eight evidence group."],
+      "notes": [
+        "Applied through the complete reviewed format-version-4 final-eight evidence group."
+      ],
       "open_questions": [],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "exclude"
@@ -11290,14 +11483,26 @@
       "catalogue_id": "lh148-f40bfca59082ff8d",
       "basic_graph_assignment": null,
       "comparison_status": "derived-nongeneric-simplification-match",
-      "computational_cross_check_ids": ["rice-final-eight-o-bridge-report-reproduction"],
+      "computational_cross_check_ids": [
+        "rice-final-eight-o-bridge-report-reproduction"
+      ],
       "confidence": "high",
-      "evidence_basis": ["aggregate-historical-nongeneric-group-plus-subject-bound-rice-facts"],
-      "evidence_record_ids": ["ms-2019-final-eight-nongeneric-exclusion-group", "rice-lh148-f40bfca59082ff8d-graph-v-match", "rice-y-delta-o-dual-l-v-path-l", "rice-lh148-f40bfca59082ff8d-forced-c-zero", "rice-lh148-f40bfca59082ff8d-conditional-target-36"],
+      "evidence_basis": [
+        "aggregate-historical-nongeneric-group-plus-subject-bound-rice-facts"
+      ],
+      "evidence_record_ids": [
+        "ms-2019-final-eight-nongeneric-exclusion-group",
+        "rice-lh148-f40bfca59082ff8d-graph-v-match",
+        "rice-y-delta-o-dual-l-v-path-l",
+        "rice-lh148-f40bfca59082ff8d-forced-c-zero",
+        "rice-lh148-f40bfca59082ff8d-conditional-target-36"
+      ],
       "exclusion_category": "other-canonical-exclusion",
       "exclusion_reason": "The authoritative aggregate excludes the complete final-eight nongeneric group. The reviewed subject-bound graph and Y-delta evidence establishes this subject's pair; its forced C=0 fact makes the five-element realization nongeneric, and its conditional route gives a positive-finite Cauer-Foster realization associated with canonical network 36 for delta > 0 and a separate two-element R-X realization for delta = 0. The target is a simpler-realisation destination, not a network-equivalence, unconditional containment, or historical-identity claim.",
       "historical_identifiers": [],
-      "notes": ["Applied through the complete reviewed format-version-4 final-eight evidence group."],
+      "notes": [
+        "Applied through the complete reviewed format-version-4 final-eight evidence group."
+      ],
       "open_questions": [],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "exclude"
@@ -11306,14 +11511,26 @@
       "catalogue_id": "lh148-5278112fab778336",
       "basic_graph_assignment": null,
       "comparison_status": "derived-nongeneric-simplification-match",
-      "computational_cross_check_ids": ["rice-final-eight-o-bridge-report-reproduction"],
+      "computational_cross_check_ids": [
+        "rice-final-eight-o-bridge-report-reproduction"
+      ],
       "confidence": "high",
-      "evidence_basis": ["aggregate-historical-nongeneric-group-plus-subject-bound-rice-facts"],
-      "evidence_record_ids": ["ms-2019-final-eight-nongeneric-exclusion-group", "rice-lh148-5278112fab778336-graph-o-dual-match", "rice-y-delta-o-dual-c-v-path-c", "rice-lh148-5278112fab778336-forced-a-zero", "rice-lh148-5278112fab778336-conditional-target-44"],
+      "evidence_basis": [
+        "aggregate-historical-nongeneric-group-plus-subject-bound-rice-facts"
+      ],
+      "evidence_record_ids": [
+        "ms-2019-final-eight-nongeneric-exclusion-group",
+        "rice-lh148-5278112fab778336-graph-o-dual-match",
+        "rice-y-delta-o-dual-c-v-path-c",
+        "rice-lh148-5278112fab778336-forced-a-zero",
+        "rice-lh148-5278112fab778336-conditional-target-44"
+      ],
       "exclusion_category": "other-canonical-exclusion",
       "exclusion_reason": "The authoritative aggregate excludes the complete final-eight nongeneric group. The reviewed subject-bound graph and Y-delta evidence establishes this subject's pair; its forced A=0 fact makes the five-element realization nongeneric, and its conditional route gives a positive-finite Cauer-Foster realization associated with canonical network 44 for delta > 0 and a separate two-element R-X realization for delta = 0. The target is a simpler-realisation destination, not a network-equivalence, unconditional containment, or historical-identity claim.",
       "historical_identifiers": [],
-      "notes": ["Applied through the complete reviewed format-version-4 final-eight evidence group."],
+      "notes": [
+        "Applied through the complete reviewed format-version-4 final-eight evidence group."
+      ],
       "open_questions": [],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "exclude"
@@ -11322,14 +11539,26 @@
       "catalogue_id": "lh148-f942f37eed38400a",
       "basic_graph_assignment": null,
       "comparison_status": "derived-nongeneric-simplification-match",
-      "computational_cross_check_ids": ["rice-final-eight-o-bridge-report-reproduction"],
+      "computational_cross_check_ids": [
+        "rice-final-eight-o-bridge-report-reproduction"
+      ],
       "confidence": "high",
-      "evidence_basis": ["aggregate-historical-nongeneric-group-plus-subject-bound-rice-facts"],
-      "evidence_record_ids": ["ms-2019-final-eight-nongeneric-exclusion-group", "rice-lh148-f942f37eed38400a-graph-v-match", "rice-y-delta-o-dual-c-v-path-c", "rice-lh148-f942f37eed38400a-forced-a-zero", "rice-lh148-f942f37eed38400a-conditional-target-44"],
+      "evidence_basis": [
+        "aggregate-historical-nongeneric-group-plus-subject-bound-rice-facts"
+      ],
+      "evidence_record_ids": [
+        "ms-2019-final-eight-nongeneric-exclusion-group",
+        "rice-lh148-f942f37eed38400a-graph-v-match",
+        "rice-y-delta-o-dual-c-v-path-c",
+        "rice-lh148-f942f37eed38400a-forced-a-zero",
+        "rice-lh148-f942f37eed38400a-conditional-target-44"
+      ],
       "exclusion_category": "other-canonical-exclusion",
       "exclusion_reason": "The authoritative aggregate excludes the complete final-eight nongeneric group. The reviewed subject-bound graph and Y-delta evidence establishes this subject's pair; its forced A=0 fact makes the five-element realization nongeneric, and its conditional route gives a positive-finite Cauer-Foster realization associated with canonical network 44 for delta > 0 and a separate two-element R-X realization for delta = 0. The target is a simpler-realisation destination, not a network-equivalence, unconditional containment, or historical-identity claim.",
       "historical_identifiers": [],
-      "notes": ["Applied through the complete reviewed format-version-4 final-eight evidence group."],
+      "notes": [
+        "Applied through the complete reviewed format-version-4 final-eight evidence group."
+      ],
       "open_questions": [],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "exclude"
@@ -11367,7 +11596,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -11405,7 +11634,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -11443,7 +11672,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -11481,7 +11710,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -11519,7 +11748,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -11557,7 +11786,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -11595,7 +11824,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -11633,7 +11862,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -11671,7 +11900,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -11709,7 +11938,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -11747,7 +11976,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -11785,7 +12014,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -11823,7 +12052,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -11861,7 +12090,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -11899,7 +12128,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -11937,7 +12166,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -11975,7 +12204,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -12013,7 +12242,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -12051,7 +12280,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -12089,7 +12318,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -12127,7 +12356,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -12165,7 +12394,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -12203,7 +12432,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -12241,7 +12470,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -12279,7 +12508,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -12317,7 +12546,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining 49 five-element canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -12355,7 +12584,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining 49 five-element canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -12393,7 +12622,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining 49 five-element canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -12431,7 +12660,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining 49 five-element canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -12469,7 +12698,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining 49 five-element canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -12507,7 +12736,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining 49 five-element canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -12545,7 +12774,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining 49 five-element canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -12583,7 +12812,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining 49 five-element canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -12621,7 +12850,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining 49 five-element canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -12659,7 +12888,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining 49 five-element canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -12697,7 +12926,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining 49 five-element canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -12735,7 +12964,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining 49 five-element canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -12773,7 +13002,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining 49 five-element canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -12811,7 +13040,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining 49 five-element canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -12849,7 +13078,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining 49 five-element canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -12887,7 +13116,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining 49 five-element canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -12925,7 +13154,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining 49 five-element canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -12963,7 +13192,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining 49 five-element canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -13001,7 +13230,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining 49 five-element canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -13039,7 +13268,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining 49 five-element canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -13077,7 +13306,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining 49 five-element canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -13115,7 +13344,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining 49 five-element canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -13153,7 +13382,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining 49 five-element canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -13191,7 +13420,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining 49 five-element canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -13229,7 +13458,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining 49 five-element canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -13267,7 +13496,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining 49 five-element canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -13305,7 +13534,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining 49 five-element canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -13343,7 +13572,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining 49 five-element canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -13381,7 +13610,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining 49 five-element canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -13419,7 +13648,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining 49 five-element canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -13457,7 +13686,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining 49 five-element canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -13495,7 +13724,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining 49 five-element canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -13533,7 +13762,7 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining 49 five-element canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"
@@ -13571,7 +13800,1869 @@
         "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
       ],
       "open_questions": [
-        "How do the remaining 49 five-element canonical networks map to the unresolved RICE subjects, and how do the completed identities participate in the later realizability-set classification?"
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
+      ],
+      "previous_workspace_record_ids": [],
+      "proposed_disposition": "retain"
+    },
+    {
+      "catalogue_id": "lh148-18bfb3d8c33bbf58",
+      "basic_graph_assignment": null,
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-canonical-report-reproduction"
+      ],
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-five-element-canonical-network-group",
+        "ms-2019-canonical-network-50-definition",
+        "rice-lh148-18bfb3d8c33bbf58-canonical-network-50-match"
+      ],
+      "exclusion_category": "none",
+      "exclusion_reason": null,
+      "historical_identifiers": [
+        {
+          "scheme": "morelli-smith-canonical-network",
+          "value": 50,
+          "verification_state": "cross-checked",
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-50-definition",
+            "rice-lh148-18bfb3d8c33bbf58-canonical-network-50-match"
+          ]
+        }
+      ],
+      "notes": [
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
+      ],
+      "open_questions": [
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
+      ],
+      "previous_workspace_record_ids": [],
+      "proposed_disposition": "retain"
+    },
+    {
+      "catalogue_id": "lh148-3ae4767397da2b12",
+      "basic_graph_assignment": null,
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-canonical-report-reproduction"
+      ],
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-five-element-canonical-network-group",
+        "ms-2019-canonical-network-51-definition",
+        "rice-lh148-3ae4767397da2b12-canonical-network-51-match"
+      ],
+      "exclusion_category": "none",
+      "exclusion_reason": null,
+      "historical_identifiers": [
+        {
+          "scheme": "morelli-smith-canonical-network",
+          "value": 51,
+          "verification_state": "cross-checked",
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-51-definition",
+            "rice-lh148-3ae4767397da2b12-canonical-network-51-match"
+          ]
+        }
+      ],
+      "notes": [
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
+      ],
+      "open_questions": [
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
+      ],
+      "previous_workspace_record_ids": [],
+      "proposed_disposition": "retain"
+    },
+    {
+      "catalogue_id": "lh148-3a5b171b0d2af32a",
+      "basic_graph_assignment": null,
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-canonical-report-reproduction"
+      ],
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-five-element-canonical-network-group",
+        "ms-2019-canonical-network-52-definition",
+        "rice-lh148-3a5b171b0d2af32a-canonical-network-52-match"
+      ],
+      "exclusion_category": "none",
+      "exclusion_reason": null,
+      "historical_identifiers": [
+        {
+          "scheme": "morelli-smith-canonical-network",
+          "value": 52,
+          "verification_state": "cross-checked",
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-52-definition",
+            "rice-lh148-3a5b171b0d2af32a-canonical-network-52-match"
+          ]
+        }
+      ],
+      "notes": [
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
+      ],
+      "open_questions": [
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
+      ],
+      "previous_workspace_record_ids": [],
+      "proposed_disposition": "retain"
+    },
+    {
+      "catalogue_id": "lh148-4e1e2e1aa376f921",
+      "basic_graph_assignment": null,
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-canonical-report-reproduction"
+      ],
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-five-element-canonical-network-group",
+        "ms-2019-canonical-network-53-definition",
+        "rice-lh148-4e1e2e1aa376f921-canonical-network-53-match"
+      ],
+      "exclusion_category": "none",
+      "exclusion_reason": null,
+      "historical_identifiers": [
+        {
+          "scheme": "morelli-smith-canonical-network",
+          "value": 53,
+          "verification_state": "cross-checked",
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-53-definition",
+            "rice-lh148-4e1e2e1aa376f921-canonical-network-53-match"
+          ]
+        }
+      ],
+      "notes": [
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
+      ],
+      "open_questions": [
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
+      ],
+      "previous_workspace_record_ids": [],
+      "proposed_disposition": "retain"
+    },
+    {
+      "catalogue_id": "lh148-1928fc6c03828cba",
+      "basic_graph_assignment": null,
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-canonical-report-reproduction"
+      ],
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-five-element-canonical-network-group",
+        "ms-2019-canonical-network-54-definition",
+        "rice-lh148-1928fc6c03828cba-canonical-network-54-match"
+      ],
+      "exclusion_category": "none",
+      "exclusion_reason": null,
+      "historical_identifiers": [
+        {
+          "scheme": "morelli-smith-canonical-network",
+          "value": 54,
+          "verification_state": "cross-checked",
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-54-definition",
+            "rice-lh148-1928fc6c03828cba-canonical-network-54-match"
+          ]
+        }
+      ],
+      "notes": [
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
+      ],
+      "open_questions": [
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
+      ],
+      "previous_workspace_record_ids": [],
+      "proposed_disposition": "retain"
+    },
+    {
+      "catalogue_id": "lh148-ceda8e624931aa86",
+      "basic_graph_assignment": null,
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-canonical-report-reproduction"
+      ],
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-five-element-canonical-network-group",
+        "ms-2019-canonical-network-55-definition",
+        "rice-lh148-ceda8e624931aa86-canonical-network-55-match"
+      ],
+      "exclusion_category": "none",
+      "exclusion_reason": null,
+      "historical_identifiers": [
+        {
+          "scheme": "morelli-smith-canonical-network",
+          "value": 55,
+          "verification_state": "cross-checked",
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-55-definition",
+            "rice-lh148-ceda8e624931aa86-canonical-network-55-match"
+          ]
+        }
+      ],
+      "notes": [
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
+      ],
+      "open_questions": [
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
+      ],
+      "previous_workspace_record_ids": [],
+      "proposed_disposition": "retain"
+    },
+    {
+      "catalogue_id": "lh148-44baa015c7dbccf2",
+      "basic_graph_assignment": null,
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-canonical-report-reproduction"
+      ],
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-five-element-canonical-network-group",
+        "ms-2019-canonical-network-56-definition",
+        "rice-lh148-44baa015c7dbccf2-canonical-network-56-match"
+      ],
+      "exclusion_category": "none",
+      "exclusion_reason": null,
+      "historical_identifiers": [
+        {
+          "scheme": "morelli-smith-canonical-network",
+          "value": 56,
+          "verification_state": "cross-checked",
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-56-definition",
+            "rice-lh148-44baa015c7dbccf2-canonical-network-56-match"
+          ]
+        }
+      ],
+      "notes": [
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
+      ],
+      "open_questions": [
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
+      ],
+      "previous_workspace_record_ids": [],
+      "proposed_disposition": "retain"
+    },
+    {
+      "catalogue_id": "lh148-369eb555ae634258",
+      "basic_graph_assignment": null,
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-canonical-report-reproduction"
+      ],
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-five-element-canonical-network-group",
+        "ms-2019-canonical-network-57-definition",
+        "rice-lh148-369eb555ae634258-canonical-network-57-match"
+      ],
+      "exclusion_category": "none",
+      "exclusion_reason": null,
+      "historical_identifiers": [
+        {
+          "scheme": "morelli-smith-canonical-network",
+          "value": 57,
+          "verification_state": "cross-checked",
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-57-definition",
+            "rice-lh148-369eb555ae634258-canonical-network-57-match"
+          ]
+        }
+      ],
+      "notes": [
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
+      ],
+      "open_questions": [
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
+      ],
+      "previous_workspace_record_ids": [],
+      "proposed_disposition": "retain"
+    },
+    {
+      "catalogue_id": "lh148-44371b2082f84fcf",
+      "basic_graph_assignment": null,
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-canonical-report-reproduction"
+      ],
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-five-element-canonical-network-group",
+        "ms-2019-canonical-network-58-definition",
+        "rice-lh148-44371b2082f84fcf-canonical-network-58-match"
+      ],
+      "exclusion_category": "none",
+      "exclusion_reason": null,
+      "historical_identifiers": [
+        {
+          "scheme": "morelli-smith-canonical-network",
+          "value": 58,
+          "verification_state": "cross-checked",
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-58-definition",
+            "rice-lh148-44371b2082f84fcf-canonical-network-58-match"
+          ]
+        }
+      ],
+      "notes": [
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
+      ],
+      "open_questions": [
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
+      ],
+      "previous_workspace_record_ids": [],
+      "proposed_disposition": "retain"
+    },
+    {
+      "catalogue_id": "lh148-a33c22b118699e51",
+      "basic_graph_assignment": null,
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-canonical-report-reproduction"
+      ],
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-five-element-canonical-network-group",
+        "ms-2019-canonical-network-59-definition",
+        "rice-lh148-a33c22b118699e51-canonical-network-59-match"
+      ],
+      "exclusion_category": "none",
+      "exclusion_reason": null,
+      "historical_identifiers": [
+        {
+          "scheme": "morelli-smith-canonical-network",
+          "value": 59,
+          "verification_state": "cross-checked",
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-59-definition",
+            "rice-lh148-a33c22b118699e51-canonical-network-59-match"
+          ]
+        }
+      ],
+      "notes": [
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
+      ],
+      "open_questions": [
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
+      ],
+      "previous_workspace_record_ids": [],
+      "proposed_disposition": "retain"
+    },
+    {
+      "catalogue_id": "lh148-2f4c974bc7831e4a",
+      "basic_graph_assignment": null,
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-canonical-report-reproduction"
+      ],
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-five-element-canonical-network-group",
+        "ms-2019-canonical-network-60-definition",
+        "rice-lh148-2f4c974bc7831e4a-canonical-network-60-match"
+      ],
+      "exclusion_category": "none",
+      "exclusion_reason": null,
+      "historical_identifiers": [
+        {
+          "scheme": "morelli-smith-canonical-network",
+          "value": 60,
+          "verification_state": "cross-checked",
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-60-definition",
+            "rice-lh148-2f4c974bc7831e4a-canonical-network-60-match"
+          ]
+        }
+      ],
+      "notes": [
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
+      ],
+      "open_questions": [
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
+      ],
+      "previous_workspace_record_ids": [],
+      "proposed_disposition": "retain"
+    },
+    {
+      "catalogue_id": "lh148-c27124d195b882ef",
+      "basic_graph_assignment": null,
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-canonical-report-reproduction"
+      ],
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-five-element-canonical-network-group",
+        "ms-2019-canonical-network-61-definition",
+        "rice-lh148-c27124d195b882ef-canonical-network-61-match"
+      ],
+      "exclusion_category": "none",
+      "exclusion_reason": null,
+      "historical_identifiers": [
+        {
+          "scheme": "morelli-smith-canonical-network",
+          "value": 61,
+          "verification_state": "cross-checked",
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-61-definition",
+            "rice-lh148-c27124d195b882ef-canonical-network-61-match"
+          ]
+        }
+      ],
+      "notes": [
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
+      ],
+      "open_questions": [
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
+      ],
+      "previous_workspace_record_ids": [],
+      "proposed_disposition": "retain"
+    },
+    {
+      "catalogue_id": "lh148-66a0391fd4dc6879",
+      "basic_graph_assignment": null,
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-canonical-report-reproduction"
+      ],
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-five-element-canonical-network-group",
+        "ms-2019-canonical-network-64-definition",
+        "rice-lh148-66a0391fd4dc6879-canonical-network-64-match"
+      ],
+      "exclusion_category": "none",
+      "exclusion_reason": null,
+      "historical_identifiers": [
+        {
+          "scheme": "morelli-smith-canonical-network",
+          "value": 64,
+          "verification_state": "cross-checked",
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-64-definition",
+            "rice-lh148-66a0391fd4dc6879-canonical-network-64-match"
+          ]
+        }
+      ],
+      "notes": [
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
+      ],
+      "open_questions": [
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
+      ],
+      "previous_workspace_record_ids": [],
+      "proposed_disposition": "retain"
+    },
+    {
+      "catalogue_id": "lh148-8324b82e90bde552",
+      "basic_graph_assignment": null,
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-canonical-report-reproduction"
+      ],
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-five-element-canonical-network-group",
+        "ms-2019-canonical-network-65-definition",
+        "rice-lh148-8324b82e90bde552-canonical-network-65-match"
+      ],
+      "exclusion_category": "none",
+      "exclusion_reason": null,
+      "historical_identifiers": [
+        {
+          "scheme": "morelli-smith-canonical-network",
+          "value": 65,
+          "verification_state": "cross-checked",
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-65-definition",
+            "rice-lh148-8324b82e90bde552-canonical-network-65-match"
+          ]
+        }
+      ],
+      "notes": [
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
+      ],
+      "open_questions": [
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
+      ],
+      "previous_workspace_record_ids": [],
+      "proposed_disposition": "retain"
+    },
+    {
+      "catalogue_id": "lh148-6456494eb91d8897",
+      "basic_graph_assignment": null,
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-canonical-report-reproduction"
+      ],
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-five-element-canonical-network-group",
+        "ms-2019-canonical-network-66-definition",
+        "rice-lh148-6456494eb91d8897-canonical-network-66-match"
+      ],
+      "exclusion_category": "none",
+      "exclusion_reason": null,
+      "historical_identifiers": [
+        {
+          "scheme": "morelli-smith-canonical-network",
+          "value": 66,
+          "verification_state": "cross-checked",
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-66-definition",
+            "rice-lh148-6456494eb91d8897-canonical-network-66-match"
+          ]
+        }
+      ],
+      "notes": [
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
+      ],
+      "open_questions": [
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
+      ],
+      "previous_workspace_record_ids": [],
+      "proposed_disposition": "retain"
+    },
+    {
+      "catalogue_id": "lh148-e965ee7277ab24b2",
+      "basic_graph_assignment": null,
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-canonical-report-reproduction"
+      ],
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-five-element-canonical-network-group",
+        "ms-2019-canonical-network-67-definition",
+        "rice-lh148-e965ee7277ab24b2-canonical-network-67-match"
+      ],
+      "exclusion_category": "none",
+      "exclusion_reason": null,
+      "historical_identifiers": [
+        {
+          "scheme": "morelli-smith-canonical-network",
+          "value": 67,
+          "verification_state": "cross-checked",
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-67-definition",
+            "rice-lh148-e965ee7277ab24b2-canonical-network-67-match"
+          ]
+        }
+      ],
+      "notes": [
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
+      ],
+      "open_questions": [
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
+      ],
+      "previous_workspace_record_ids": [],
+      "proposed_disposition": "retain"
+    },
+    {
+      "catalogue_id": "lh148-6bd2964e8fab676a",
+      "basic_graph_assignment": null,
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-canonical-report-reproduction"
+      ],
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-five-element-canonical-network-group",
+        "ms-2019-canonical-network-68-definition",
+        "rice-lh148-6bd2964e8fab676a-canonical-network-68-match"
+      ],
+      "exclusion_category": "none",
+      "exclusion_reason": null,
+      "historical_identifiers": [
+        {
+          "scheme": "morelli-smith-canonical-network",
+          "value": 68,
+          "verification_state": "cross-checked",
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-68-definition",
+            "rice-lh148-6bd2964e8fab676a-canonical-network-68-match"
+          ]
+        }
+      ],
+      "notes": [
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
+      ],
+      "open_questions": [
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
+      ],
+      "previous_workspace_record_ids": [],
+      "proposed_disposition": "retain"
+    },
+    {
+      "catalogue_id": "lh148-e5953a9cf3d9cfa6",
+      "basic_graph_assignment": null,
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-canonical-report-reproduction"
+      ],
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-five-element-canonical-network-group",
+        "ms-2019-canonical-network-69-definition",
+        "rice-lh148-e5953a9cf3d9cfa6-canonical-network-69-match"
+      ],
+      "exclusion_category": "none",
+      "exclusion_reason": null,
+      "historical_identifiers": [
+        {
+          "scheme": "morelli-smith-canonical-network",
+          "value": 69,
+          "verification_state": "cross-checked",
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-69-definition",
+            "rice-lh148-e5953a9cf3d9cfa6-canonical-network-69-match"
+          ]
+        }
+      ],
+      "notes": [
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
+      ],
+      "open_questions": [
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
+      ],
+      "previous_workspace_record_ids": [],
+      "proposed_disposition": "retain"
+    },
+    {
+      "catalogue_id": "lh148-1ea888a6b965ac39",
+      "basic_graph_assignment": null,
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-canonical-report-reproduction"
+      ],
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-five-element-canonical-network-group",
+        "ms-2019-canonical-network-70-definition",
+        "rice-lh148-1ea888a6b965ac39-canonical-network-70-match"
+      ],
+      "exclusion_category": "none",
+      "exclusion_reason": null,
+      "historical_identifiers": [
+        {
+          "scheme": "morelli-smith-canonical-network",
+          "value": 70,
+          "verification_state": "cross-checked",
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-70-definition",
+            "rice-lh148-1ea888a6b965ac39-canonical-network-70-match"
+          ]
+        }
+      ],
+      "notes": [
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
+      ],
+      "open_questions": [
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
+      ],
+      "previous_workspace_record_ids": [],
+      "proposed_disposition": "retain"
+    },
+    {
+      "catalogue_id": "lh148-e7e64ac1f0778b53",
+      "basic_graph_assignment": null,
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-canonical-report-reproduction"
+      ],
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-five-element-canonical-network-group",
+        "ms-2019-canonical-network-75-definition",
+        "rice-lh148-e7e64ac1f0778b53-canonical-network-75-match"
+      ],
+      "exclusion_category": "none",
+      "exclusion_reason": null,
+      "historical_identifiers": [
+        {
+          "scheme": "morelli-smith-canonical-network",
+          "value": 75,
+          "verification_state": "cross-checked",
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-75-definition",
+            "rice-lh148-e7e64ac1f0778b53-canonical-network-75-match"
+          ]
+        }
+      ],
+      "notes": [
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
+      ],
+      "open_questions": [
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
+      ],
+      "previous_workspace_record_ids": [],
+      "proposed_disposition": "retain"
+    },
+    {
+      "catalogue_id": "lh148-0c94f62def7dc462",
+      "basic_graph_assignment": null,
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-canonical-report-reproduction"
+      ],
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-five-element-canonical-network-group",
+        "ms-2019-canonical-network-76-definition",
+        "rice-lh148-0c94f62def7dc462-canonical-network-76-match"
+      ],
+      "exclusion_category": "none",
+      "exclusion_reason": null,
+      "historical_identifiers": [
+        {
+          "scheme": "morelli-smith-canonical-network",
+          "value": 76,
+          "verification_state": "cross-checked",
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-76-definition",
+            "rice-lh148-0c94f62def7dc462-canonical-network-76-match"
+          ]
+        }
+      ],
+      "notes": [
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
+      ],
+      "open_questions": [
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
+      ],
+      "previous_workspace_record_ids": [],
+      "proposed_disposition": "retain"
+    },
+    {
+      "catalogue_id": "lh148-90a706c48f568ac5",
+      "basic_graph_assignment": null,
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-canonical-report-reproduction"
+      ],
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-five-element-canonical-network-group",
+        "ms-2019-canonical-network-77-definition",
+        "rice-lh148-90a706c48f568ac5-canonical-network-77-match"
+      ],
+      "exclusion_category": "none",
+      "exclusion_reason": null,
+      "historical_identifiers": [
+        {
+          "scheme": "morelli-smith-canonical-network",
+          "value": 77,
+          "verification_state": "cross-checked",
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-77-definition",
+            "rice-lh148-90a706c48f568ac5-canonical-network-77-match"
+          ]
+        }
+      ],
+      "notes": [
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
+      ],
+      "open_questions": [
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
+      ],
+      "previous_workspace_record_ids": [],
+      "proposed_disposition": "retain"
+    },
+    {
+      "catalogue_id": "lh148-3398b6c5b497ac1f",
+      "basic_graph_assignment": null,
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-canonical-report-reproduction"
+      ],
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-five-element-canonical-network-group",
+        "ms-2019-canonical-network-78-definition",
+        "rice-lh148-3398b6c5b497ac1f-canonical-network-78-match"
+      ],
+      "exclusion_category": "none",
+      "exclusion_reason": null,
+      "historical_identifiers": [
+        {
+          "scheme": "morelli-smith-canonical-network",
+          "value": 78,
+          "verification_state": "cross-checked",
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-78-definition",
+            "rice-lh148-3398b6c5b497ac1f-canonical-network-78-match"
+          ]
+        }
+      ],
+      "notes": [
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
+      ],
+      "open_questions": [
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
+      ],
+      "previous_workspace_record_ids": [],
+      "proposed_disposition": "retain"
+    },
+    {
+      "catalogue_id": "lh148-5c71fb151bc82017",
+      "basic_graph_assignment": null,
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-canonical-report-reproduction"
+      ],
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-five-element-canonical-network-group",
+        "ms-2019-canonical-network-79-definition",
+        "rice-lh148-5c71fb151bc82017-canonical-network-79-match"
+      ],
+      "exclusion_category": "none",
+      "exclusion_reason": null,
+      "historical_identifiers": [
+        {
+          "scheme": "morelli-smith-canonical-network",
+          "value": 79,
+          "verification_state": "cross-checked",
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-79-definition",
+            "rice-lh148-5c71fb151bc82017-canonical-network-79-match"
+          ]
+        }
+      ],
+      "notes": [
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
+      ],
+      "open_questions": [
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
+      ],
+      "previous_workspace_record_ids": [],
+      "proposed_disposition": "retain"
+    },
+    {
+      "catalogue_id": "lh148-a99495648823d8f1",
+      "basic_graph_assignment": null,
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-canonical-report-reproduction"
+      ],
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-five-element-canonical-network-group",
+        "ms-2019-canonical-network-80-definition",
+        "rice-lh148-a99495648823d8f1-canonical-network-80-match"
+      ],
+      "exclusion_category": "none",
+      "exclusion_reason": null,
+      "historical_identifiers": [
+        {
+          "scheme": "morelli-smith-canonical-network",
+          "value": 80,
+          "verification_state": "cross-checked",
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-80-definition",
+            "rice-lh148-a99495648823d8f1-canonical-network-80-match"
+          ]
+        }
+      ],
+      "notes": [
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
+      ],
+      "open_questions": [
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
+      ],
+      "previous_workspace_record_ids": [],
+      "proposed_disposition": "retain"
+    },
+    {
+      "catalogue_id": "lh148-0d78e9c38dc5b94e",
+      "basic_graph_assignment": null,
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-canonical-report-reproduction"
+      ],
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-five-element-canonical-network-group",
+        "ms-2019-canonical-network-81-definition",
+        "rice-lh148-0d78e9c38dc5b94e-canonical-network-81-match"
+      ],
+      "exclusion_category": "none",
+      "exclusion_reason": null,
+      "historical_identifiers": [
+        {
+          "scheme": "morelli-smith-canonical-network",
+          "value": 81,
+          "verification_state": "cross-checked",
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-81-definition",
+            "rice-lh148-0d78e9c38dc5b94e-canonical-network-81-match"
+          ]
+        }
+      ],
+      "notes": [
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
+      ],
+      "open_questions": [
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
+      ],
+      "previous_workspace_record_ids": [],
+      "proposed_disposition": "retain"
+    },
+    {
+      "catalogue_id": "lh148-5af86517070376b6",
+      "basic_graph_assignment": null,
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-canonical-report-reproduction"
+      ],
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-five-element-canonical-network-group",
+        "ms-2019-canonical-network-82-definition",
+        "rice-lh148-5af86517070376b6-canonical-network-82-match"
+      ],
+      "exclusion_category": "none",
+      "exclusion_reason": null,
+      "historical_identifiers": [
+        {
+          "scheme": "morelli-smith-canonical-network",
+          "value": 82,
+          "verification_state": "cross-checked",
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-82-definition",
+            "rice-lh148-5af86517070376b6-canonical-network-82-match"
+          ]
+        }
+      ],
+      "notes": [
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
+      ],
+      "open_questions": [
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
+      ],
+      "previous_workspace_record_ids": [],
+      "proposed_disposition": "retain"
+    },
+    {
+      "catalogue_id": "lh148-f54f327274744e9f",
+      "basic_graph_assignment": null,
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-canonical-report-reproduction"
+      ],
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-five-element-canonical-network-group",
+        "ms-2019-canonical-network-83-definition",
+        "rice-lh148-f54f327274744e9f-canonical-network-83-match"
+      ],
+      "exclusion_category": "none",
+      "exclusion_reason": null,
+      "historical_identifiers": [
+        {
+          "scheme": "morelli-smith-canonical-network",
+          "value": 83,
+          "verification_state": "cross-checked",
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-83-definition",
+            "rice-lh148-f54f327274744e9f-canonical-network-83-match"
+          ]
+        }
+      ],
+      "notes": [
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
+      ],
+      "open_questions": [
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
+      ],
+      "previous_workspace_record_ids": [],
+      "proposed_disposition": "retain"
+    },
+    {
+      "catalogue_id": "lh148-cd4b770f5478f872",
+      "basic_graph_assignment": null,
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-canonical-report-reproduction"
+      ],
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-five-element-canonical-network-group",
+        "ms-2019-canonical-network-84-definition",
+        "rice-lh148-cd4b770f5478f872-canonical-network-84-match"
+      ],
+      "exclusion_category": "none",
+      "exclusion_reason": null,
+      "historical_identifiers": [
+        {
+          "scheme": "morelli-smith-canonical-network",
+          "value": 84,
+          "verification_state": "cross-checked",
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-84-definition",
+            "rice-lh148-cd4b770f5478f872-canonical-network-84-match"
+          ]
+        }
+      ],
+      "notes": [
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
+      ],
+      "open_questions": [
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
+      ],
+      "previous_workspace_record_ids": [],
+      "proposed_disposition": "retain"
+    },
+    {
+      "catalogue_id": "lh148-9c9bca1b4c7a5c48",
+      "basic_graph_assignment": null,
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-canonical-report-reproduction"
+      ],
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-five-element-canonical-network-group",
+        "ms-2019-canonical-network-85-definition",
+        "rice-lh148-9c9bca1b4c7a5c48-canonical-network-85-match"
+      ],
+      "exclusion_category": "none",
+      "exclusion_reason": null,
+      "historical_identifiers": [
+        {
+          "scheme": "morelli-smith-canonical-network",
+          "value": 85,
+          "verification_state": "cross-checked",
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-85-definition",
+            "rice-lh148-9c9bca1b4c7a5c48-canonical-network-85-match"
+          ]
+        }
+      ],
+      "notes": [
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
+      ],
+      "open_questions": [
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
+      ],
+      "previous_workspace_record_ids": [],
+      "proposed_disposition": "retain"
+    },
+    {
+      "catalogue_id": "lh148-5d2f2ceb56fb8299",
+      "basic_graph_assignment": null,
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-canonical-report-reproduction"
+      ],
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-five-element-canonical-network-group",
+        "ms-2019-canonical-network-86-definition",
+        "rice-lh148-5d2f2ceb56fb8299-canonical-network-86-match"
+      ],
+      "exclusion_category": "none",
+      "exclusion_reason": null,
+      "historical_identifiers": [
+        {
+          "scheme": "morelli-smith-canonical-network",
+          "value": 86,
+          "verification_state": "cross-checked",
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-86-definition",
+            "rice-lh148-5d2f2ceb56fb8299-canonical-network-86-match"
+          ]
+        }
+      ],
+      "notes": [
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
+      ],
+      "open_questions": [
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
+      ],
+      "previous_workspace_record_ids": [],
+      "proposed_disposition": "retain"
+    },
+    {
+      "catalogue_id": "lh148-6601ce95cb4866ea",
+      "basic_graph_assignment": null,
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-canonical-report-reproduction"
+      ],
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-five-element-canonical-network-group",
+        "ms-2019-canonical-network-89-definition",
+        "rice-lh148-6601ce95cb4866ea-canonical-network-89-match"
+      ],
+      "exclusion_category": "none",
+      "exclusion_reason": null,
+      "historical_identifiers": [
+        {
+          "scheme": "morelli-smith-canonical-network",
+          "value": 89,
+          "verification_state": "cross-checked",
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-89-definition",
+            "rice-lh148-6601ce95cb4866ea-canonical-network-89-match"
+          ]
+        }
+      ],
+      "notes": [
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
+      ],
+      "open_questions": [
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
+      ],
+      "previous_workspace_record_ids": [],
+      "proposed_disposition": "retain"
+    },
+    {
+      "catalogue_id": "lh148-d640e5a51b7f9267",
+      "basic_graph_assignment": null,
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-canonical-report-reproduction"
+      ],
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-five-element-canonical-network-group",
+        "ms-2019-canonical-network-90-definition",
+        "rice-lh148-d640e5a51b7f9267-canonical-network-90-match"
+      ],
+      "exclusion_category": "none",
+      "exclusion_reason": null,
+      "historical_identifiers": [
+        {
+          "scheme": "morelli-smith-canonical-network",
+          "value": 90,
+          "verification_state": "cross-checked",
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-90-definition",
+            "rice-lh148-d640e5a51b7f9267-canonical-network-90-match"
+          ]
+        }
+      ],
+      "notes": [
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
+      ],
+      "open_questions": [
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
+      ],
+      "previous_workspace_record_ids": [],
+      "proposed_disposition": "retain"
+    },
+    {
+      "catalogue_id": "lh148-7f69006023a9ba91",
+      "basic_graph_assignment": null,
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-canonical-report-reproduction"
+      ],
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-five-element-canonical-network-group",
+        "ms-2019-canonical-network-91-definition",
+        "rice-lh148-7f69006023a9ba91-canonical-network-91-match"
+      ],
+      "exclusion_category": "none",
+      "exclusion_reason": null,
+      "historical_identifiers": [
+        {
+          "scheme": "morelli-smith-canonical-network",
+          "value": 91,
+          "verification_state": "cross-checked",
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-91-definition",
+            "rice-lh148-7f69006023a9ba91-canonical-network-91-match"
+          ]
+        }
+      ],
+      "notes": [
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
+      ],
+      "open_questions": [
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
+      ],
+      "previous_workspace_record_ids": [],
+      "proposed_disposition": "retain"
+    },
+    {
+      "catalogue_id": "lh148-d83685d4a7f0cd41",
+      "basic_graph_assignment": null,
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-canonical-report-reproduction"
+      ],
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-five-element-canonical-network-group",
+        "ms-2019-canonical-network-92-definition",
+        "rice-lh148-d83685d4a7f0cd41-canonical-network-92-match"
+      ],
+      "exclusion_category": "none",
+      "exclusion_reason": null,
+      "historical_identifiers": [
+        {
+          "scheme": "morelli-smith-canonical-network",
+          "value": 92,
+          "verification_state": "cross-checked",
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-92-definition",
+            "rice-lh148-d83685d4a7f0cd41-canonical-network-92-match"
+          ]
+        }
+      ],
+      "notes": [
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
+      ],
+      "open_questions": [
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
+      ],
+      "previous_workspace_record_ids": [],
+      "proposed_disposition": "retain"
+    },
+    {
+      "catalogue_id": "lh148-cd27971291cfaf9a",
+      "basic_graph_assignment": null,
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-canonical-report-reproduction"
+      ],
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-five-element-canonical-network-group",
+        "ms-2019-canonical-network-93-definition",
+        "rice-lh148-cd27971291cfaf9a-canonical-network-93-match"
+      ],
+      "exclusion_category": "none",
+      "exclusion_reason": null,
+      "historical_identifiers": [
+        {
+          "scheme": "morelli-smith-canonical-network",
+          "value": 93,
+          "verification_state": "cross-checked",
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-93-definition",
+            "rice-lh148-cd27971291cfaf9a-canonical-network-93-match"
+          ]
+        }
+      ],
+      "notes": [
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
+      ],
+      "open_questions": [
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
+      ],
+      "previous_workspace_record_ids": [],
+      "proposed_disposition": "retain"
+    },
+    {
+      "catalogue_id": "lh148-75a667eae30e9bd2",
+      "basic_graph_assignment": null,
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-canonical-report-reproduction"
+      ],
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-five-element-canonical-network-group",
+        "ms-2019-canonical-network-94-definition",
+        "rice-lh148-75a667eae30e9bd2-canonical-network-94-match"
+      ],
+      "exclusion_category": "none",
+      "exclusion_reason": null,
+      "historical_identifiers": [
+        {
+          "scheme": "morelli-smith-canonical-network",
+          "value": 94,
+          "verification_state": "cross-checked",
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-94-definition",
+            "rice-lh148-75a667eae30e9bd2-canonical-network-94-match"
+          ]
+        }
+      ],
+      "notes": [
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
+      ],
+      "open_questions": [
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
+      ],
+      "previous_workspace_record_ids": [],
+      "proposed_disposition": "retain"
+    },
+    {
+      "catalogue_id": "lh148-6ce044778ba295df",
+      "basic_graph_assignment": null,
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-canonical-report-reproduction"
+      ],
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-five-element-canonical-network-group",
+        "ms-2019-canonical-network-95-definition",
+        "rice-lh148-6ce044778ba295df-canonical-network-95-match"
+      ],
+      "exclusion_category": "none",
+      "exclusion_reason": null,
+      "historical_identifiers": [
+        {
+          "scheme": "morelli-smith-canonical-network",
+          "value": 95,
+          "verification_state": "cross-checked",
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-95-definition",
+            "rice-lh148-6ce044778ba295df-canonical-network-95-match"
+          ]
+        }
+      ],
+      "notes": [
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
+      ],
+      "open_questions": [
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
+      ],
+      "previous_workspace_record_ids": [],
+      "proposed_disposition": "retain"
+    },
+    {
+      "catalogue_id": "lh148-ce4e4bbc3cb5bc7b",
+      "basic_graph_assignment": null,
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-canonical-report-reproduction"
+      ],
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-five-element-canonical-network-group",
+        "ms-2019-canonical-network-98-definition",
+        "rice-lh148-ce4e4bbc3cb5bc7b-canonical-network-98-match"
+      ],
+      "exclusion_category": "none",
+      "exclusion_reason": null,
+      "historical_identifiers": [
+        {
+          "scheme": "morelli-smith-canonical-network",
+          "value": 98,
+          "verification_state": "cross-checked",
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-98-definition",
+            "rice-lh148-ce4e4bbc3cb5bc7b-canonical-network-98-match"
+          ]
+        }
+      ],
+      "notes": [
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
+      ],
+      "open_questions": [
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
+      ],
+      "previous_workspace_record_ids": [],
+      "proposed_disposition": "retain"
+    },
+    {
+      "catalogue_id": "lh148-ee8c722fe8f18278",
+      "basic_graph_assignment": null,
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-canonical-report-reproduction"
+      ],
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-five-element-canonical-network-group",
+        "ms-2019-canonical-network-99-definition",
+        "rice-lh148-ee8c722fe8f18278-canonical-network-99-match"
+      ],
+      "exclusion_category": "none",
+      "exclusion_reason": null,
+      "historical_identifiers": [
+        {
+          "scheme": "morelli-smith-canonical-network",
+          "value": 99,
+          "verification_state": "cross-checked",
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-99-definition",
+            "rice-lh148-ee8c722fe8f18278-canonical-network-99-match"
+          ]
+        }
+      ],
+      "notes": [
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
+      ],
+      "open_questions": [
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
+      ],
+      "previous_workspace_record_ids": [],
+      "proposed_disposition": "retain"
+    },
+    {
+      "catalogue_id": "lh148-061515c41719c7cc",
+      "basic_graph_assignment": null,
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-canonical-report-reproduction"
+      ],
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-five-element-canonical-network-group",
+        "ms-2019-canonical-network-100-definition",
+        "rice-lh148-061515c41719c7cc-canonical-network-100-match"
+      ],
+      "exclusion_category": "none",
+      "exclusion_reason": null,
+      "historical_identifiers": [
+        {
+          "scheme": "morelli-smith-canonical-network",
+          "value": 100,
+          "verification_state": "cross-checked",
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-100-definition",
+            "rice-lh148-061515c41719c7cc-canonical-network-100-match"
+          ]
+        }
+      ],
+      "notes": [
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
+      ],
+      "open_questions": [
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
+      ],
+      "previous_workspace_record_ids": [],
+      "proposed_disposition": "retain"
+    },
+    {
+      "catalogue_id": "lh148-1c63245475d83fd7",
+      "basic_graph_assignment": null,
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-canonical-report-reproduction"
+      ],
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-five-element-canonical-network-group",
+        "ms-2019-canonical-network-101-definition",
+        "rice-lh148-1c63245475d83fd7-canonical-network-101-match"
+      ],
+      "exclusion_category": "none",
+      "exclusion_reason": null,
+      "historical_identifiers": [
+        {
+          "scheme": "morelli-smith-canonical-network",
+          "value": 101,
+          "verification_state": "cross-checked",
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-101-definition",
+            "rice-lh148-1c63245475d83fd7-canonical-network-101-match"
+          ]
+        }
+      ],
+      "notes": [
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
+      ],
+      "open_questions": [
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
+      ],
+      "previous_workspace_record_ids": [],
+      "proposed_disposition": "retain"
+    },
+    {
+      "catalogue_id": "lh148-d7f4be8bd126187c",
+      "basic_graph_assignment": null,
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-canonical-report-reproduction"
+      ],
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-five-element-canonical-network-group",
+        "ms-2019-canonical-network-102-definition",
+        "rice-lh148-d7f4be8bd126187c-canonical-network-102-match"
+      ],
+      "exclusion_category": "none",
+      "exclusion_reason": null,
+      "historical_identifiers": [
+        {
+          "scheme": "morelli-smith-canonical-network",
+          "value": 102,
+          "verification_state": "cross-checked",
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-102-definition",
+            "rice-lh148-d7f4be8bd126187c-canonical-network-102-match"
+          ]
+        }
+      ],
+      "notes": [
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
+      ],
+      "open_questions": [
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
+      ],
+      "previous_workspace_record_ids": [],
+      "proposed_disposition": "retain"
+    },
+    {
+      "catalogue_id": "lh148-4b5da2aa5cfac0cc",
+      "basic_graph_assignment": null,
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-canonical-report-reproduction"
+      ],
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-five-element-canonical-network-group",
+        "ms-2019-canonical-network-103-definition",
+        "rice-lh148-4b5da2aa5cfac0cc-canonical-network-103-match"
+      ],
+      "exclusion_category": "none",
+      "exclusion_reason": null,
+      "historical_identifiers": [
+        {
+          "scheme": "morelli-smith-canonical-network",
+          "value": 103,
+          "verification_state": "cross-checked",
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-103-definition",
+            "rice-lh148-4b5da2aa5cfac0cc-canonical-network-103-match"
+          ]
+        }
+      ],
+      "notes": [
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
+      ],
+      "open_questions": [
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
+      ],
+      "previous_workspace_record_ids": [],
+      "proposed_disposition": "retain"
+    },
+    {
+      "catalogue_id": "lh148-539216b2b01390c9",
+      "basic_graph_assignment": null,
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-canonical-report-reproduction"
+      ],
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-five-element-canonical-network-group",
+        "ms-2019-canonical-network-104-definition",
+        "rice-lh148-539216b2b01390c9-canonical-network-104-match"
+      ],
+      "exclusion_category": "none",
+      "exclusion_reason": null,
+      "historical_identifiers": [
+        {
+          "scheme": "morelli-smith-canonical-network",
+          "value": 104,
+          "verification_state": "cross-checked",
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-104-definition",
+            "rice-lh148-539216b2b01390c9-canonical-network-104-match"
+          ]
+        }
+      ],
+      "notes": [
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
+      ],
+      "open_questions": [
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
+      ],
+      "previous_workspace_record_ids": [],
+      "proposed_disposition": "retain"
+    },
+    {
+      "catalogue_id": "lh148-4ce178b19ddf0bc8",
+      "basic_graph_assignment": null,
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-canonical-report-reproduction"
+      ],
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-five-element-canonical-network-group",
+        "ms-2019-canonical-network-105-definition",
+        "rice-lh148-4ce178b19ddf0bc8-canonical-network-105-match"
+      ],
+      "exclusion_category": "none",
+      "exclusion_reason": null,
+      "historical_identifiers": [
+        {
+          "scheme": "morelli-smith-canonical-network",
+          "value": 105,
+          "verification_state": "cross-checked",
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-105-definition",
+            "rice-lh148-4ce178b19ddf0bc8-canonical-network-105-match"
+          ]
+        }
+      ],
+      "notes": [
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
+      ],
+      "open_questions": [
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
+      ],
+      "previous_workspace_record_ids": [],
+      "proposed_disposition": "retain"
+    },
+    {
+      "catalogue_id": "lh148-0d128fdfe5562143",
+      "basic_graph_assignment": null,
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-canonical-report-reproduction"
+      ],
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-five-element-canonical-network-group",
+        "ms-2019-canonical-network-106-definition",
+        "rice-lh148-0d128fdfe5562143-canonical-network-106-match"
+      ],
+      "exclusion_category": "none",
+      "exclusion_reason": null,
+      "historical_identifiers": [
+        {
+          "scheme": "morelli-smith-canonical-network",
+          "value": 106,
+          "verification_state": "cross-checked",
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-106-definition",
+            "rice-lh148-0d128fdfe5562143-canonical-network-106-match"
+          ]
+        }
+      ],
+      "notes": [
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
+      ],
+      "open_questions": [
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
+      ],
+      "previous_workspace_record_ids": [],
+      "proposed_disposition": "retain"
+    },
+    {
+      "catalogue_id": "lh148-226210ea8617797f",
+      "basic_graph_assignment": null,
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-canonical-report-reproduction"
+      ],
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-five-element-canonical-network-group",
+        "ms-2019-canonical-network-107-definition",
+        "rice-lh148-226210ea8617797f-canonical-network-107-match"
+      ],
+      "exclusion_category": "none",
+      "exclusion_reason": null,
+      "historical_identifiers": [
+        {
+          "scheme": "morelli-smith-canonical-network",
+          "value": 107,
+          "verification_state": "cross-checked",
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-107-definition",
+            "rice-lh148-226210ea8617797f-canonical-network-107-match"
+          ]
+        }
+      ],
+      "notes": [
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
+      ],
+      "open_questions": [
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
+      ],
+      "previous_workspace_record_ids": [],
+      "proposed_disposition": "retain"
+    },
+    {
+      "catalogue_id": "lh148-11e619a8865be381",
+      "basic_graph_assignment": null,
+      "comparison_status": "derived-canonical-identity-match",
+      "computational_cross_check_ids": [
+        "rice-five-element-canonical-report-reproduction"
+      ],
+      "confidence": "high",
+      "evidence_basis": [
+        "authoritative-canonical-diagram-plus-subject-bound-rice-match"
+      ],
+      "evidence_record_ids": [
+        "rice-five-element-canonical-network-group",
+        "ms-2019-canonical-network-108-definition",
+        "rice-lh148-11e619a8865be381-canonical-network-108-match"
+      ],
+      "exclusion_category": "none",
+      "exclusion_reason": null,
+      "historical_identifiers": [
+        {
+          "scheme": "morelli-smith-canonical-network",
+          "value": 108,
+          "verification_state": "cross-checked",
+          "evidence_record_ids": [
+            "ms-2019-canonical-network-108-definition",
+            "rice-lh148-11e619a8865be381-canonical-network-108-match"
+          ]
+        }
+      ],
+      "notes": [
+        "The authoritative numbered diagram is joined to the independently reproduced subject-bound RICE structural match; the publication does not print the lh148 catalogue ID."
+      ],
+      "open_questions": [
+        "How do the 108 identified canonical networks partition into the 62 realizability-set equivalence classes under an independently reproduced RICE classification?"
       ],
       "previous_workspace_record_ids": [],
       "proposed_disposition": "retain"

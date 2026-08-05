@@ -1,6 +1,6 @@
 # 04-ladenheim / 05 — Map descriptors to Morelli/Ladenheim numbering
 
-Status: `prog`
+Status: `done`
 
 ## Goal
 
@@ -77,3 +77,9 @@ once the cited sources and reduction definitions are aligned.
   numbers and subjects, but only the existing 59 identifiers are populated;
   the five-element group remains unapplied pending a separate all-or-nothing
   application. The numbering task therefore remains `prog`.
+- Applied the complete five-element group. Canonical numbers 1 through 108 are
+  now populated and searchable from each RICE subject and representative. Every
+  mapping joins authoritative numbered-diagram provenance to its exact
+  subject-bound RICE match, with no ambiguous or unmapped canonical number.
+  Basic-graph letters remain a separate deferred field and do not prevent the
+  canonical-numbering task from being `done`.

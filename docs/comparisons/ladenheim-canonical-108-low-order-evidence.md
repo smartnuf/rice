@@ -19,12 +19,13 @@ The subsequent format-version-5 application retained and numbered all 25
 reviewed subjects. At that application milestone, production became 40
 excluded, 83 unresolved, and 25 retained.
 
-The later complete four-element application retains and numbers another 34
-reviewed subjects. Current production is 40 excluded, 49 unresolved, and 59
-retained, with 59 unique canonical identifiers and all 148
-`basic_graph_assignment` values still null. The remaining 49 unresolved
-survivors are five-element networks. Neither application begins the 108-to-62
-classification.
+The later complete four-element application retained and numbered another 34
+reviewed subjects. At that milestone production became 40 excluded, 49
+unresolved, and 59 retained. The subsequent complete five-element application
+retains and numbers the remaining 49 canonical subjects. Current production is
+40 excluded, 0 unresolved, and 108 retained, with 108 unique canonical
+identifiers and all 148 `basic_graph_assignment` values still null. None of
+these identity applications begins the 108-to-62 classification.
 
 ## 2. Source identity and exact locators
 
@@ -184,6 +185,8 @@ classification.
 
 The subsequent four-element application raises the positively identified total
 to 59 without changing the durable low-order structural matches reported here.
+The later five-element application completes the 108 identified canonical
+subjects without changing those durable low-order matches.
 
 ## 9. Reproduction commands
 
@@ -194,10 +197,11 @@ checks. The reusable computation result is the unique structural
 correspondence, descriptors, and component inventories. After a later identity
 application, reproducing this historical block requires checking out the pinned
 commit. After the low-order application, production was 40 excluded, 83
-unresolved, and 25 retained. Current production after the later four-element
-application is 40 excluded, 49 unresolved, and 59 retained. The current state
-is validated separately by the current canonical-identity contract, generator,
-and tests.
+unresolved, and 25 retained; after the four-element application it was 40
+excluded, 49 unresolved, and 59 retained. Current production after the complete
+five-element application is 40 excluded, 0 unresolved, and 108 retained. The
+current state is validated separately by the current canonical-identity
+contract, generator, and tests.
 
 Run this paste-ready block from the RICE repository root. It uses only existing
 RICE APIs and the Python standard library, scans all 148 catalogue rows, and

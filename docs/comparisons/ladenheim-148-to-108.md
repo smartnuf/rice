@@ -2,11 +2,10 @@
 
 This is an evidence ledger for comparing RICE's reproduced structural
 148-record catalogue with the reported canonical 108-network catalogue. It is
-not a reproduction of the complete 108 catalogue. The committed evidence maps
-all forty proposed exclusions and now positively identifies the complete
-reviewed 25-member one-, two-, and three-element group together with the
-complete reviewed 34-member four-element group. The remaining 49 survivors are
-unresolved five-element networks.
+not an independent reproduction of the 62 realizability-set classes. The
+committed evidence maps all forty exclusions and positively identifies and
+numbers all 108 nonexcluded canonical subjects through the complete reviewed
+low-order, four-element, and five-element groups.
 
 ## Two different catalogue layers
 
@@ -121,9 +120,10 @@ visually transcribes all 49 five-element diagrams across nine subfamilies, 21
 source equivalence classes, and 16 source orbits, and independently obtains 49
 distinct unique RICE structural matches. Together the three canonical-identity
 reports now cover all 108 numbered source diagrams and transcribe all 62 source
-class labels. Only 59 identities are applied: the five-element mappings remain
-evidence-only, unresolved, and unnumbered in production. The source class
-coverage is not an independent RICE reproduction of 62 realizability sets.
+class labels. All three controlled groups are now applied, so all 108
+nonexcluded subjects are retained and carry unique canonical identifiers. The
+source class coverage is not an independent RICE reproduction of 62
+realizability sets.
 
 Previous research workspaces contain useful graph descriptions, images,
 descriptor transcriptions, and computational results. Those artefacts can help
@@ -205,13 +205,15 @@ Historical identifiers are structured by scheme, value, verification state,
 and evidence-record IDs. A source-verified identifier requires precise
 authoritative evidence. The nullable `basic_graph_assignment` contract can
 later record a label, base label, dual designation, fixture, matching relation,
-verification state, and evidence references. Exactly 59 current rows carry one
+verification state, and evidence references. Exactly 108 current rows carry one
 cross-checked `morelli-smith-canonical-network` identifier: 25 from the
-low-order group and 34 from the four-element group. Morelli and Smith provide
+low-order group, 34 from the four-element group, and 49 from the five-element
+group. Morelli and Smith provide
 the authoritative numbered diagrams, while the corresponding `lh148-*`
 identities are independently reproduced through the reviewed canonical-identity
-route; the publication does not print those RICE IDs. The other 89 historical-
-identifier lists are empty, and every `basic_graph_assignment` remains null.
+route; the publication does not print those RICE IDs. The forty excluded rows'
+historical-identifier lists are empty, and every `basic_graph_assignment`
+remains null.
 
 A future source-verified basic-graph assignment must cite authoritative
 evidence for the exact historical graph definition and fixture. It must also
@@ -329,8 +331,8 @@ four-element report; all 34 identities are applied. A third controlled group
 now encodes 49 authoritative five-element definitions, 49 exact subject-bound
 matches, its aggregate inventory, and its pinned report computation. Across the
 three groups, 108 definitions and 108 matches cover the complete nonexcluded
-population. Each group remains independently all-or-nothing: the five-element
-group is structured and complete but has no production consumers yet.
+population. Each group remains independently all-or-nothing, and all three
+complete groups are now applied in production.
 
 ## Version 6 validation boundary
 
@@ -345,7 +347,7 @@ copied into the ledger.
 Version 6 does not represent ambiguous candidate mappings. A later extension
 must record the finite candidate set, evidence for each candidate, the comparison
 relation, and why the evidence does not distinguish them. Also deferred are real
-basic-graph assignments, application of the 49 five-element identities, and transformation
+basic-graph assignments and transformation
 proofs beyond the reviewed reports. Absence of those schema
 objects establishes none of those claims.
 
@@ -356,15 +358,13 @@ objects establishes none of those claims.
 | `derived-unique-match` | 12 |
 | `derived-structural-match` | 20 |
 | `derived-nongeneric-simplification-match` | 8 |
-| `derived-canonical-identity-match` | 59 |
-| `unresolved` | 49 |
+| `derived-canonical-identity-match` | 108 |
 | **Total** | **148** |
 
 | Proposed disposition | Rows |
 |---|---:|
 | `exclude` | 40 |
-| `retain` | 59 |
-| `unresolved` | 49 |
+| `retain` | 108 |
 | **Total** | **148** |
 
 | Exclusion category | Rows |
@@ -373,8 +373,7 @@ objects establishes none of those claims.
 | `zobel-four-element` | 4 |
 | `zobel-five-element-series-parallel` | 20 |
 | `other-canonical-exclusion` | 8 |
-| `none` | 59 |
-| `unresolved` | 49 |
+| `none` | 108 |
 | **Total** | **148** |
 
 The structural catalogue contains exactly eight records with `R=4` and
@@ -454,22 +453,28 @@ asserts network equivalence or unconditional named-target containment.
 The complete reviewed low-order group contributes 25 retained rows with exact
 cross-checked canonical network identifiers. The complete reviewed
 four-element group contributes another 34 retained rows with the same
-authoritative-definition-plus-subject-match boundary. The remaining 49
-survivors are unresolved five-element networks. The third controlled group now
-supplies exact definitions, subject matches, aggregate scope, and computation
-for all 49, but this ledger does not yet apply those identities.
+authoritative-definition-plus-subject-match boundary. The third controlled
+group contributes the remaining 49 retained rows through its exact
+definitions, subject matches, aggregate scope, and computation. The retained
+subject set is therefore exactly the complete nonexcluded population.
 
 The controlled four-element group contributes structured evidence for all 34
 four-element identities: six subfamilies, 20 source equivalence classes, ten
 source orbits, and one exact-scope computation. Its complete production
-application now retains and numbers all 34 reviewed subjects. The remaining 49
-five-element subjects have a complete structured identity group but remain
-unresolved pending a separate all-or-nothing production application.
+application now retains and numbers all 34 reviewed subjects. The complete
+five-element application likewise retains and numbers all 49 reviewed subjects.
+All canonical numbers 1 through 108 are now populated and searchable.
 
 Production basic-graph assignments remain deferred: every
-`basic_graph_assignment` is null. Exactly 25 historical identifier lists are
-populated by the reviewed low-order application and another 34 by the reviewed
-four-element application, for 59 total; the other 89 remain empty.
+`basic_graph_assignment` is null. All 108 retained rows carry exactly one
+cross-checked `morelli-smith-canonical-network` identifier, while the forty
+excluded rows have empty historical-identifier lists.
+
+The structural 148-to-canonical-108 comparison is complete: forty reviewed
+exclusions and 108 positively identified canonical members account for every
+catalogue row. The source-labelled inventory of 62 equivalence classes has been
+transcribed, but RICE has not yet independently reproduced those 62
+realizability-set classes. That classification remains a separate task.
 
 Mapped exclusion counts are consistency-checked against the evidence-linked
 historical targets. The total may not exceed forty, and no controlled category

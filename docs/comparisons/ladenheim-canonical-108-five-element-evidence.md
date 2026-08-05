@@ -17,13 +17,14 @@ unresolved and carry no historical identifiers. All 148
 structured annotation evidence, production disposition, or 108-to-62
 classification was changed at that milestone.
 
-Subsequently, format version 6 has encoded the complete controlled 49-member
+Subsequently, format version 6 encoded the complete controlled 49-member
 five-element group: 49 authoritative definitions, 49 exact subject-bound RICE
-matches, one aggregate, and one pinned computation. None of its identities is
-applied. Current production remains 40 excluded, 49 unresolved, and 59
-retained; all 49 five-element rows remain unresolved, and later application is
-a separate PR. The reproduction block below remains a historical record pinned
-to accepted evidence revision `b64946fd9ddcae6f764921d082b315affb9e233e`.
+matches, one aggregate, and one pinned computation. The later complete
+application now retains and numbers all 49 subjects through that group. Current
+production is 40 excluded, 0 unresolved, and 108 retained, with 108 unique
+canonical identifiers and all 148 graph assignments null. The reproduction
+block below remains a historical record pinned to accepted evidence revision
+`b64946fd9ddcae6f764921d082b315affb9e233e`.
 
 ## 2. Source identity and exact locators
 
@@ -154,7 +155,8 @@ Each source topology above was independently encoded as a
 `PrimitiveNetwork`, then compared with all 148 committed catalogue rows under
 `colour-preserving-port-augmented-cycle-matroid-v1`. Descriptor text and list
 order were not matching predicates. `Card.` is the signature-match
-cardinality; every production disposition shown here is `unresolved`.
+cardinality; every production disposition shown here records the historical
+evidence-only milestone, when all 49 subjects were `unresolved`.
 
 | No. | Fixture | RICE catalogue ID | Representative descriptor | R/L/C | Relation | Card. | Disposition | Evidence locator |
 |---:|---|---|---|---|---|---:|---|---|
@@ -208,11 +210,13 @@ cardinality; every production disposition shown here is `unresolved`.
 | 107 | ms-c108-five-107 | lh148-226210ea8617797f | `0-2:C;0-3:R;1-2:L;1-3:R;2-3:R` | 3/1/1 | colour-preserving-port-augmented-cycle-matroid-v1 | 1 | unresolved | this report, section 4 |
 | 108 | ms-c108-five-108 | lh148-11e619a8865be381 | `0-2:C;0-3:R;1-2:R;1-3:L;2-3:R` | 3/1/1 | colour-preserving-port-augmented-cycle-matroid-v1 | 1 | unresolved | this report, section 4 |
 
-The 49 IDs are distinct and exhaust the current unresolved population. The
-union with the 25 applied low-order and 34 applied four-element identities has
+At the evidence-only milestone, the 49 IDs were distinct and exhausted the
+unresolved population. The union with the 25 applied low-order and 34 applied
+four-element identities had
 108 distinct canonical numbers and 108 distinct nonexcluded RICE subjects,
-exactly the nonexcluded side of the 148-row catalogue. This is evidence-level
-identity coverage; only 59 identities are applied in production.
+exactly the nonexcluded side of the 148-row catalogue. The later complete
+application now applies all 108 identities without changing that structural
+coverage result.
 
 ## 6. Reduction-target and historical-identity separation
 
@@ -253,11 +257,14 @@ unresolved production population. Together with the prior 59 reviewed
 identities, they provide evidence-level coverage of all canonical 108 numbers
 and all 108 nonexcluded RICE subjects.
 
-The 49 mappings remain evidence-only and unresolved. This report does not add a
-structured canonical group, apply identifiers or retention, independently
-reproduce the source orbits or realizability classes, or begin the 108-to-62
-production classification. The complete five-element contract and application
-remain separate review milestones.
+At the report milestone the 49 mappings were evidence-only and unresolved. The
+subsequent format-version-6 group encoded them, and the later complete
+application now retains and numbers all 49 subjects. Current production is 40
+excluded, 0 unresolved, and 108 retained. The historical unresolved-state
+checks below remain pinned to the accepted evidence revision, and the durable
+structural-match result is unchanged. Neither the report nor the application
+independently reproduces the source realizability classes or begins the
+108-to-62 production classification.
 
 ## 9. Reproduction commands
 

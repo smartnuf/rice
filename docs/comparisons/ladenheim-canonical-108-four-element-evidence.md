@@ -19,11 +19,13 @@ remained empty, and every
 The subsequent format-version-6 contract milestone encodes all 34 reviewed
 mappings as one controlled canonical-identity evidence group, including their
 authoritative definitions, subject-bound matches, aggregate inventory, and
-pinned computation. The subsequent complete production application now retains
-and numbers all 34 subjects through that reviewed group. Current production is
-40 excluded, 49 unresolved, and 59 retained; exactly 59 canonical historical-
-identifier lists are populated, and every `basic_graph_assignment` remains
-null. The original reproduction below remains pinned to accepted revision
+pinned computation. The subsequent complete production application retained
+and numbered all 34 subjects through that reviewed group. At that milestone
+production was 40 excluded, 49 unresolved, and 59 retained. The later complete
+five-element application brings current production to 40 excluded, 0
+unresolved, and 108 retained; exactly 108 canonical historical-identifier lists
+are populated, and every `basic_graph_assignment` remains null. The original
+reproduction below remains pinned to accepted revision
 `b499f0340771feaacb535fb987a45754dbeb050e`.
 
 ## 2. Source identity and exact locators
@@ -200,8 +202,10 @@ Every fixture has exactly one matching RICE row. The 34 rows are distinct and
 have four elements and the source-drawn inventories. At the evidence-only
 acceptance revision they were all `unresolved`, none was among the forty
 exclusions or 25 retained low-order rows, and they exhausted the ledger's
-unresolved four-element population. The later complete application now retains
-and numbers all 34. The remaining 49 unresolved rows all have five elements.
+unresolved four-element population. The later complete application retained
+and numbered all 34. The subsequent five-element application retains and
+numbers the other 49 nonexcluded subjects without changing these four-element
+structural matches.
 
 Earlier evidence records use several of these canonical numbers as reduction
 or conditional simpler-realisation destinations. The reproduction audit reads
@@ -252,9 +256,10 @@ At its original evidence-only milestone, this report supplied the basis for the
 later identity contract and production application. The format-version-6
 contract now encodes the complete reviewed 34-member group, and the subsequent
 production application has populated all 34 historical identifiers and retained
-dispositions through that group. Current production is 40 excluded, 49
-unresolved, and 59 retained. This work does not claim that the full canonical
-108 has been reproduced or begin the 108-to-62 classification. The publication
+dispositions through that group. The later five-element application completes
+the production identity census, so current production is 40 excluded, 0
+unresolved, and 108 retained. This does not begin or complete the 108-to-62
+classification. The publication
 prints canonical diagrams and numbers, not `lh148-*` catalogue IDs; each RICE
 correspondence above is an independently reproduced conclusion.
 
