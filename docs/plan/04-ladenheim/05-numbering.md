@@ -65,3 +65,10 @@ once the cited sources and reduction definitions are aligned.
   searchable `morelli-smith-canonical-network` identifiers: the unchanged 25
   low-order identifiers plus 34 four-element identifiers. The remaining 49
   five-element canonical numbers are unmapped, so this task remains `prog`.
+- The evidence-only report
+  [`docs/comparisons/ladenheim-canonical-108-five-element-evidence.md`](../../comparisons/ladenheim-canonical-108-five-element-evidence.md)
+  now records exact number-to-subject mappings for all remaining 49
+  five-element networks. Those mappings are not yet populated as production
+  historical identifiers: production still contains 59 searchable canonical
+  identifiers, and the five-element contract and application remain pending.
+  The numbering task therefore remains `prog`.

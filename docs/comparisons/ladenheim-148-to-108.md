@@ -115,6 +115,16 @@ preserved as the evidence basis for the now-applied complete 34-member group;
 that application does not complete the canonical 108 or reproduce the 62
 classes.
 
+The five-element evidence report at
+[`docs/comparisons/ladenheim-canonical-108-five-element-evidence.md`](ladenheim-canonical-108-five-element-evidence.md)
+visually transcribes all 49 five-element diagrams across nine subfamilies, 21
+source equivalence classes, and 16 source orbits, and independently obtains 49
+distinct unique RICE structural matches. Together the three canonical-identity
+reports now cover all 108 numbered source diagrams and transcribe all 62 source
+class labels. Only 59 identities are applied: the five-element mappings remain
+evidence-only, unresolved, and unnumbered in production. The source class
+coverage is not an independent RICE reproduction of 62 realizability sets.
+
 Previous research workspaces contain useful graph descriptions, images,
 descriptor transcriptions, and computational results. Those artefacts can help
 later transcription and cross-checking, but they are not authoritative
@@ -442,14 +452,16 @@ The complete reviewed low-order group contributes 25 retained rows with exact
 cross-checked canonical network identifiers. The complete reviewed
 four-element group contributes another 34 retained rows with the same
 authoritative-definition-plus-subject-match boundary. The remaining 49
-survivors are unresolved five-element networks; this ledger therefore does not
-positively identify the complete canonical catalogue.
+survivors are unresolved five-element networks. The five-element report now
+supplies unique structural matches for all 49 at the evidence layer, but this
+ledger does not yet apply those identities.
 
 The controlled four-element group contributes structured evidence for all 34
 four-element identities: six subfamilies, 20 source equivalence classes, ten
 source orbits, and one exact-scope computation. Its complete production
 application now retains and numbers all 34 reviewed subjects. The remaining 49
-five-element subjects remain uninvestigated and unresolved.
+five-element subjects have complete evidence-only identity matches but remain
+unresolved pending a structured contract and production application.
 
 Production basic-graph assignments remain deferred: every
 `basic_graph_assignment` is null. Exactly 25 historical identifier lists are
@@ -481,9 +493,9 @@ paths, or unstable metadata. `--check` fails if the committed ledger differs.
 
 ## Next evidence work
 
-1. Transcribe and validate the remaining 49 five-element canonical network
-   numbers from the authoritative catalogue diagrams.
-2. Add independently checked subject-bound matches without treating
-   previous-workspace graph files as authoritative.
-3. Only after all 108 survivors have positive identity evidence, assess whether
-   the complete canonical catalogue has been reproduced.
+1. Encode the reviewed 49-member five-element identity evidence in a controlled
+   structured contract without treating source classes or targets as identity.
+2. Apply the complete five-element group only after that separate contract is
+   reviewed.
+3. Keep the source-labelled 62-class coverage distinct from an independent
+   RICE reproduction of the 62 realizability sets.
