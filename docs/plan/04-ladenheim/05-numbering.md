@@ -61,3 +61,7 @@ once the cited sources and reduction definitions are aligned.
   contains only the 25 applied low-order canonical identifiers. The 34
   four-element identities remain unapplied and 49 five-element identities
   remain to be investigated, so this task remains `prog`.
+- Applied the complete reviewed four-element group. Production now contains 59
+  searchable `morelli-smith-canonical-network` identifiers: the unchanged 25
+  low-order identifiers plus 34 four-element identifiers. The remaining 49
+  five-element canonical numbers are unmapped, so this task remains `prog`.

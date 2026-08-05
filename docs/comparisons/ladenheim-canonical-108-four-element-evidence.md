@@ -19,12 +19,11 @@ remained empty, and every
 The subsequent format-version-6 contract milestone encodes all 34 reviewed
 mappings as one controlled canonical-identity evidence group, including their
 authoritative definitions, subject-bound matches, aggregate inventory, and
-pinned computation. None of the 34 mappings is applied in production: all 34
-subjects remain unresolved, production remains 40 excluded, 83 unresolved,
-and 25 retained, exactly 25 canonical historical-identifier lists remain
-populated, and every `basic_graph_assignment` remains null. A later production
-application requires a separate pull request. The original reproduction below
-remains pinned to accepted revision
+pinned computation. The subsequent complete production application now retains
+and numbers all 34 subjects through that reviewed group. Current production is
+40 excluded, 49 unresolved, and 59 retained; exactly 59 canonical historical-
+identifier lists are populated, and every `basic_graph_assignment` remains
+null. The original reproduction below remains pinned to accepted revision
 `b499f0340771feaacb535fb987a45754dbeb050e`.
 
 ## 2. Source identity and exact locators
@@ -151,7 +150,11 @@ has a different order along a series arm, agreement is exact under the named
 cycle-matroid relation, which includes series interchange; it is not asserted
 as descriptor-text equality.
 
-| Canonical network | Fixture ID | Unique RICE catalogue ID | Representative descriptor | Inventory | Relation | Cardinality | Current disposition | Evidence locator |
+The disposition column records the historical evidence-only state at the
+pinned report-acceptance revision; the later production application is recorded
+in Sections 1, 6, and 9.
+
+| Canonical network | Fixture ID | Unique RICE catalogue ID | Representative descriptor | Inventory | Relation | Cardinality | Disposition at evidence acceptance | Evidence locator |
 |---:|---|---|---|---|---|---:|---|---|
 | 20 | `ms-c108-four-20` | `lh148-e4990ea5b5b75ace` | `0-2:C;0-2:R;1-3:C;2-3:R` | R2 C2 | named relation | 1 | unresolved | Appendix D p. 138 / index 144; reproduction below |
 | 21 | `ms-c108-four-21` | `lh148-79cf9dd24646a1a1` | `0-2:C;0-3:C;1-2:R;2-3:R` | R2 C2 | named relation | 1 | unresolved | Appendix D p. 138 / index 144; reproduction below |
@@ -193,11 +196,12 @@ as descriptor-text equality.
 
 ## 6. Census result and reduction-target boundary
 
-Every fixture has exactly one matching RICE row. The 34 rows are distinct,
-have four elements and the source-drawn inventories, and are all currently
-`unresolved`; none is among the forty exclusions or 25 retained low-order
-rows. They exhaust the ledger's unresolved four-element population. The other
-49 unresolved rows all have five elements.
+Every fixture has exactly one matching RICE row. The 34 rows are distinct and
+have four elements and the source-drawn inventories. At the evidence-only
+acceptance revision they were all `unresolved`, none was among the forty
+exclusions or 25 retained low-order rows, and they exhausted the ledger's
+unresolved four-element population. The later complete application now retains
+and numbers all 34. The remaining 49 unresolved rows all have five elements.
 
 Earlier evidence records use several of these canonical numbers as reduction
 or conditional simpler-realisation destinations. The reproduction audit reads
@@ -205,7 +209,8 @@ all historical identifiers and confirms that none of the 34 identities was
 obtained from such a target: the mapping dictionary is built only from each
 rendered fixture's structural signature. A five-element subject reducing to
 canonical network 72, for example, does not identify that excluded subject as
-network 72 and did not supply `lh148-67980e5858742b26`.
+network 72 and did not supply `lh148-67980e5858742b26`; the later application
+uses the reviewed canonical definition and subject-bound match instead.
 
 ## 7. Equivalence and orbit boundary
 
@@ -239,23 +244,31 @@ orbit, or RICE ID used in this report.
 
 The authoritative four-element inventory is 34 networks in six subfamilies,
 20 equivalence classes, and ten orbits. The independently transcribed fixtures
-select exactly 34 distinct RICE subjects, one per source diagram, and exhaust
-the current unresolved four-element population.
+select exactly 34 distinct RICE subjects, one per source diagram. At report
+acceptance they exhausted the unresolved four-element population; the later
+complete application now retains and numbers all 34.
 
 At its original evidence-only milestone, this report supplied the basis for the
 later identity contract and production application. The format-version-6
-contract now encodes the complete reviewed 34-member group. Only production
-application remains deferred: the 34 historical identifiers and retained
-dispositions are not yet populated. This work does not claim that the full
-canonical 108 has been reproduced or begin the 108-to-62 classification. The
-publication prints canonical diagrams and numbers, not `lh148-*` catalogue IDs;
-each RICE correspondence above is an independently reproduced conclusion.
+contract now encodes the complete reviewed 34-member group, and the subsequent
+production application has populated all 34 historical identifiers and retained
+dispositions through that group. Current production is 40 excluded, 49
+unresolved, and 59 retained. This work does not claim that the full canonical
+108 has been reproduced or begin the 108-to-62 classification. The publication
+prints canonical diagrams and numbers, not `lh148-*` catalogue IDs; each RICE
+correspondence above is an independently reproduced conclusion.
 
 ## 10. Reproduction commands
 
-Run this paste-ready block from the RICE repository root. It uses only existing
-RICE APIs and the Python standard library, scans all 148 catalogue rows, and
-fails on a missing, duplicate, excluded, retained, or non-unique match.
+The exact paste-ready block below records the historical evidence-only state at
+accepted revision `b499f0340771feaacb535fb987a45754dbeb050e`. Reproducing its
+unresolved-state and 40 / 83 / 25 assertions unchanged requires checking out
+that pinned revision. Its durable result is the 34 unique structural matches,
+descriptors, and inventories; the later retained production state is validated
+separately by the current contract, generator, and tests. Run it from the RICE
+repository root at the pinned revision. It uses only existing RICE APIs and the
+Python standard library, scans all 148 catalogue rows, and fails on a missing,
+duplicate, excluded, retained, or non-unique match.
 
 ```bash
 .venv/bin/python - <<'PY'

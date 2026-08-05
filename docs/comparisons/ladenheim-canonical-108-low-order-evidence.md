@@ -15,11 +15,16 @@ historical-identifier list was empty. The structural matches below did not
 mark the 25 subjects retained, establish the complementary 108 as the
 canonical catalogue, or begin the 108-to-62 classification.
 
-The subsequent format-version-5 application now retains and numbers all 25
-reviewed subjects. Current production has 40 excluded, 83 unresolved, and 25
-retained rows; every `basic_graph_assignment` remains null. The remaining 83
-survivors are not thereby identified with the canonical catalogue, and the
-108-to-62 classification has not begun.
+The subsequent format-version-5 application retained and numbered all 25
+reviewed subjects. At that application milestone, production became 40
+excluded, 83 unresolved, and 25 retained.
+
+The later complete four-element application retains and numbers another 34
+reviewed subjects. Current production is 40 excluded, 49 unresolved, and 59
+retained, with 59 unique canonical identifiers and all 148
+`basic_graph_assignment` values still null. The remaining 49 unresolved
+survivors are five-element networks. Neither application begins the 108-to-62
+classification.
 
 ## 2. Source identity and exact locators
 
@@ -177,6 +182,9 @@ without changing the durable structural result reported here. It does not make
 a complete canonical-108 reproduction claim or begin the 108-to-62 behavioural
 classification.
 
+The subsequent four-element application raises the positively identified total
+to 59 without changing the durable low-order structural matches reported here.
+
 ## 9. Reproduction commands
 
 The exact block below records the evidence-only state at accepted commit
@@ -185,8 +193,11 @@ The exact block below records the evidence-only state at accepted commit
 checks. The reusable computation result is the unique structural
 correspondence, descriptors, and component inventories. After a later identity
 application, reproducing this historical block requires checking out the pinned
-commit. The current 40 excluded / 83 unresolved / 25 retained production state
-is validated separately by the format-version-5 contract and generator.
+commit. After the low-order application, production was 40 excluded, 83
+unresolved, and 25 retained. Current production after the later four-element
+application is 40 excluded, 49 unresolved, and 59 retained. The current state
+is validated separately by the current canonical-identity contract, generator,
+and tests.
 
 Run this paste-ready block from the RICE repository root. It uses only existing
 RICE APIs and the Python standard library, scans all 148 catalogue rows, and

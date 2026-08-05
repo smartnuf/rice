@@ -4,8 +4,9 @@ This is an evidence ledger for comparing RICE's reproduced structural
 148-record catalogue with the reported canonical 108-network catalogue. It is
 not a reproduction of the complete 108 catalogue. The committed evidence maps
 all forty proposed exclusions and now positively identifies the complete
-reviewed 25-member one-, two-, and three-element group. The other 83 survivors
-remain unresolved.
+reviewed 25-member one-, two-, and three-element group together with the
+complete reviewed 34-member four-element group. The remaining 49 survivors are
+unresolved five-element networks.
 
 ## Two different catalogue layers
 
@@ -110,8 +111,9 @@ visually transcribes all 34 four-element canonical diagrams across six source
 subfamilies, 20 source equivalence classes, and ten source orbits. It
 independently obtains 34 distinct unique RICE structural matches while keeping
 identity, orbit, and realizability-set equivalence separate. The report is
-evidence only: none of those identities is applied in production, it does not
-complete the canonical 108, and it does not reproduce the 62 classes.
+preserved as the evidence basis for the now-applied complete 34-member group;
+that application does not complete the canonical 108 or reproduce the 62
+classes.
 
 Previous research workspaces contain useful graph descriptions, images,
 descriptor transcriptions, and computational results. Those artefacts can help
@@ -193,8 +195,13 @@ Historical identifiers are structured by scheme, value, verification state,
 and evidence-record IDs. A source-verified identifier requires precise
 authoritative evidence. The nullable `basic_graph_assignment` contract can
 later record a label, base label, dual designation, fixture, matching relation,
-verification state, and evidence references. Every current identifier list is
-empty and every basic-graph assignment is null.
+verification state, and evidence references. Exactly 59 current rows carry one
+cross-checked `morelli-smith-canonical-network` identifier: 25 from the
+low-order group and 34 from the four-element group. Morelli and Smith provide
+the authoritative numbered diagrams, while the corresponding `lh148-*`
+identities are independently reproduced through the reviewed canonical-identity
+route; the publication does not print those RICE IDs. The other 89 historical-
+identifier lists are empty, and every `basic_graph_assignment` remains null.
 
 A future source-verified basic-graph assignment must cite authoritative
 evidence for the exact historical graph definition and fixture. It must also
@@ -210,18 +217,25 @@ invalid.
 |---|---|
 | `source-backed` | A source explicitly identifies this entry or its checked mapping. |
 | `derived-unique-match` | An aggregate historical category has one logically unique set of RICE matches, with the inference recorded. |
+| `derived-structural-match` | A complete authoritative graph-family exclusion is joined to exact subject-bound RICE structural and reduction-target evidence. |
+| `derived-nongeneric-simplification-match` | A complete reviewed nongeneric group is joined to subject-bound coefficient, transformation, and conditional simpler-realisation evidence. |
+| `derived-canonical-identity-match` | An authoritative numbered canonical diagram is joined to an exact subject-bound RICE structural match through a complete controlled identity group. |
 | `working-hypothesis` | A researcher proposal not yet established by adequate source evidence. |
 | `unresolved` | No adequate entry-level mapping is available. |
 
 `proposed_disposition` is `exclude`, `retain`, or `unresolved`. Unresolved does
-not mean retained. Retention requires a resolved status and evidence basis plus
-authoritative, source-verified individual-record evidence for that exact
-catalogue ID and retained disposition. It is never inferred merely because an
-exclusion has not yet been found. An exclusion requires a controlled category,
-a reason, an evidence basis, and source references. No entries are currently
-marked `retain`.
-Any future retained row and its supporting individual claim must use category
-`none` and a null exclusion reason.
+not mean retained. Retention requires a resolved positive status and that
+status's exact evidence contract. Source-backed retention requires exact
+authoritative, source-verified individual-record evidence. A
+`derived-canonical-identity-match` retention requires the complete controlled
+group route: its authoritative canonical definition, exact subject-bound RICE
+match, controlled aggregate, exact group computation, and one exact
+cross-checked canonical historical identifier. Retention is never inferred
+merely because an exclusion has not yet been found. An exclusion requires a
+controlled category, a reason, an evidence basis, and source references.
+Fifty-nine entries are currently marked `retain` through the two complete
+controlled canonical-identity groups. Every retained row and its supporting
+claim use category `none` and a null exclusion reason.
 An unresolved comparison status must use the complete default unresolved
 contract; it cannot carry either an exclusion or retention disposition.
 
@@ -233,8 +247,10 @@ contract; it cannot carry either an exclusion or retention disposition.
 `evidence_basis` distinguishes an explicit historical entry statement, an
 explicit table/figure mapping, an aggregate category plus a logically unique
 RICE match, an aggregate historical graph group plus subject-bound RICE
-matches, a mechanically derived RICE structural fact, a researcher hypothesis,
-or no evidence yet. Mechanically derived facts establish only the stated RICE
+matches, an aggregate historical nongeneric group plus subject-bound RICE
+facts, an authoritative canonical diagram plus a subject-bound RICE match, a
+mechanically derived RICE structural fact, a researcher hypothesis, or no
+evidence yet. Mechanically derived facts establish only the stated RICE
 property; they are not historical evidence by themselves.
 `no-evidence-yet` is exclusive to unresolved assertions, and positive statuses
 must use the basis values appropriate to their source-backed, unique-match, or
@@ -300,8 +316,8 @@ remains fully applied and unchanged. A second group encodes 34 authoritative
 four-element definitions, 34 unique subject-bound RICE matches, its exact
 aggregate inventory, and its pinned computation from the reviewed
 four-element report. Each group is independently all-or-nothing: the
-four-element evidence is complete, but none of its 34 identities or retained
-dispositions is applied in this revision.
+four-element evidence is complete, and all 34 identities and retained
+dispositions are now applied together.
 
 ## Version 6 validation boundary
 
@@ -327,15 +343,15 @@ objects establishes none of those claims.
 | `derived-unique-match` | 12 |
 | `derived-structural-match` | 20 |
 | `derived-nongeneric-simplification-match` | 8 |
-| `derived-canonical-identity-match` | 25 |
-| `unresolved` | 83 |
+| `derived-canonical-identity-match` | 59 |
+| `unresolved` | 49 |
 | **Total** | **148** |
 
 | Proposed disposition | Rows |
 |---|---:|
 | `exclude` | 40 |
-| `retain` | 25 |
-| `unresolved` | 83 |
+| `retain` | 59 |
+| `unresolved` | 49 |
 | **Total** | **148** |
 
 | Exclusion category | Rows |
@@ -344,8 +360,8 @@ objects establishes none of those claims.
 | `zobel-four-element` | 4 |
 | `zobel-five-element-series-parallel` | 20 |
 | `other-canonical-exclusion` | 8 |
-| `none` | 25 |
-| `unresolved` | 83 |
+| `none` | 59 |
+| `unresolved` | 49 |
 | **Total** | **148** |
 
 The structural catalogue contains exactly eight records with `R=4` and
@@ -423,20 +439,22 @@ the route records a positive-finite four-element Cauer--Foster realisation; on
 asserts network equivalence or unconditional named-target containment.
 
 The complete reviewed low-order group contributes 25 retained rows with exact
-cross-checked canonical network identifiers. The remaining 83 survivors are
-unresolved rather than retained; this ledger therefore does not positively
-identify the complete canonical catalogue.
+cross-checked canonical network identifiers. The complete reviewed
+four-element group contributes another 34 retained rows with the same
+authoritative-definition-plus-subject-match boundary. The remaining 49
+survivors are unresolved five-element networks; this ledger therefore does not
+positively identify the complete canonical catalogue.
 
 The controlled four-element group contributes structured evidence for all 34
 four-element identities: six subfamilies, 20 source equivalence classes, ten
-source orbits, and one exact-scope computation. It has no production consumers
-in this revision. All 34 subjects therefore remain within the 83 unresolved
-survivors, alongside the 49 five-element subjects that remain uninvestigated.
+source orbits, and one exact-scope computation. Its complete production
+application now retains and numbers all 34 reviewed subjects. The remaining 49
+five-element subjects remain uninvestigated and unresolved.
 
 Production basic-graph assignments remain deferred: every
 `basic_graph_assignment` is null. Exactly 25 historical identifier lists are
-populated by the reviewed low-order application, and the other 123 remain
-empty.
+populated by the reviewed low-order application and another 34 by the reviewed
+four-element application, for 59 total; the other 89 remain empty.
 
 Mapped exclusion counts are consistency-checked against the evidence-linked
 historical targets. The total may not exceed forty, and no controlled category
@@ -463,8 +481,8 @@ paths, or unstable metadata. `--check` fails if the committed ledger differs.
 
 ## Next evidence work
 
-1. Transcribe and validate the remaining 83 canonical network numbers from the
-   authoritative catalogue diagrams.
+1. Transcribe and validate the remaining 49 five-element canonical network
+   numbers from the authoritative catalogue diagrams.
 2. Add independently checked subject-bound matches without treating
    previous-workspace graph files as authoritative.
 3. Only after all 108 survivors have positive identity evidence, assess whether

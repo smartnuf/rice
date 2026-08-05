@@ -21,6 +21,9 @@ from rice.ladenheim_evidence import (
 CATALOGUE_PATH = Path("data/counts/ladenheim-148.json")
 ANNOTATION_PATH = Path("data/comparisons/ladenheim-108-annotations.json")
 LEDGER_PATH = Path("data/comparisons/ladenheim-148-to-108.json")
+FOUR_ELEMENT_REPORT_PATH = Path(
+    "docs/comparisons/ladenheim-canonical-108-four-element-evidence.md"
+)
 ZOBEL_FOUR_ELEMENT_IDS = {
     "lh148-d5533186cc51bbab",
     "lh148-92649d60cfda8308",
@@ -543,12 +546,11 @@ def test_unique_match_rejects_mismatched_claim_metadata(
 def test_unique_match_cannot_replace_historical_component_predicate(
     catalogue, annotations
 ):
-    annotations["rules"][0]["selector"] = {"r": 2, "l": 2}
+    annotations["rules"][0]["selector"] = {"r": 6}
     annotations["evidence_records"][2]["claim"]["supported_selector"] = {
-        "r": 2,
-        "l": 2,
+        "r": 6,
     }
-    with pytest.raises(ValueError, match="matching aggregate authoritative"):
+    with pytest.raises(ValueError, match="unique-component-match count differs"):
         generate_evidence_ledger(catalogue, annotations)
 
 
@@ -1137,20 +1139,23 @@ def test_boolean_cannot_bypass_canonical_number_uniqueness(catalogue, annotation
         generate_evidence_ledger(catalogue, annotations)
 
 
-def test_committed_ledger_has_exact_low_order_historical_identifiers():
+def test_committed_ledger_has_exact_reviewed_canonical_identifiers():
     ledger = json.loads(LEDGER_PATH.read_text(encoding="utf-8"))
     identifiers = [
         (row["catalogue_id"], identifier)
         for row in ledger["records"]
         for identifier in row["historical_identifiers"]
     ]
-    assert len(identifiers) == 25
+    assert len(identifiers) == 59
     assert {
         (row_id, identifier["value"])
         for row_id, identifier in identifiers
     } == {
         (payload[0], number)
         for number, payload in REVIEWED_LOW_ORDER_CANONICAL_NETWORKS.items()
+    } | {
+        (payload[0], number)
+        for number, payload in REVIEWED_FOUR_ELEMENT_CANONICAL_NETWORKS.items()
     }
     assert all(
         identifier["scheme"] == "morelli-smith-canonical-network"
@@ -1590,38 +1595,38 @@ def test_unresolved_entry_needs_no_fabricated_evidence(catalogue, annotations):
     assert row["computational_cross_check_ids"] == []
 
 
-def test_exact_forty_83_and_25_distribution(catalogue, annotations):
+def test_exact_forty_49_and_59_distribution(catalogue, annotations):
     ledger = generate_evidence_ledger(catalogue, annotations)
     assert ledger["summary"]["by_comparison_status"] == {
         "derived-nongeneric-simplification-match": 8,
         "derived-structural-match": 20,
         "derived-unique-match": 12,
-        "derived-canonical-identity-match": 25,
-        "unresolved": 83,
+        "derived-canonical-identity-match": 59,
+        "unresolved": 49,
     }
     assert ledger["summary"]["by_proposed_disposition"] == {
         "exclude": 40,
-        "retain": 25,
-        "unresolved": 83,
+        "retain": 59,
+        "unresolved": 49,
     }
     assert ledger["summary"]["by_exclusion_category"] == {
         "other-canonical-exclusion": 8,
         "simpler-bilinear-realisation": 8,
-        "none": 25,
-        "unresolved": 83,
+        "none": 59,
+        "unresolved": 49,
         "zobel-five-element-series-parallel": 20,
         "zobel-four-element": 4,
     }
     assert ledger["summary"]["mapped_exclusions"] == 40
-    assert ledger["summary"]["unresolved_dispositions"] == 83
+    assert ledger["summary"]["unresolved_dispositions"] == 49
     assert sum(
         row["proposed_disposition"] == "retain" for row in ledger["records"]
-    ) == 25
+    ) == 59
     mapped = [row for row in ledger["records"] if row["proposed_disposition"] == "exclude"]
     assert len(mapped) == 40
     assert all(row["comparison_status"] != "ambiguous" for row in ledger["records"])
     assert ledger["target"]["reproduction_claimed"] is False
-    assert sum(bool(row["historical_identifiers"]) for row in ledger["records"]) == 25
+    assert sum(bool(row["historical_identifiers"]) for row in ledger["records"]) == 59
     assert all(row["basic_graph_assignment"] is None for row in ledger["records"])
 
 
@@ -2997,6 +3002,10 @@ def test_only_reviewed_exclusions_are_resolved(catalogue, annotations):
             payload[0]
             for payload in REVIEWED_LOW_ORDER_CANONICAL_NETWORKS.values()
         }
+        | {
+            payload[0]
+            for payload in REVIEWED_FOUR_ELEMENT_CANONICAL_NETWORKS.values()
+        }
     )
     resolved = {
         row["catalogue_id"]
@@ -3038,10 +3047,10 @@ def test_exclusion_category_population_and_identity_boundary(catalogue, annotati
     assert categories["zobel-four-element"] == 4
     assert categories["zobel-five-element-series-parallel"] == 20
     assert categories["other-canonical-exclusion"] == 8
-    assert categories["none"] == 25
-    assert categories["unresolved"] == 83
+    assert categories["none"] == 59
+    assert categories["unresolved"] == 49
     assert all(row["basic_graph_assignment"] is None for row in ledger["records"])
-    assert sum(bool(row["historical_identifiers"]) for row in ledger["records"]) == 25
+    assert sum(bool(row["historical_identifiers"]) for row in ledger["records"]) == 59
     assert all(
         not any(
             identifier.get("value") in {15, 17}
@@ -3797,8 +3806,8 @@ def test_final_eight_structured_evidence_is_complete_and_applied(
     assert ledger["format_version"] == 6
     assert ledger["summary"]["by_proposed_disposition"] == {
         "exclude": 40,
-        "retain": 25,
-        "unresolved": 83,
+        "retain": 59,
+        "unresolved": 49,
     }
     assert len(_evidence_of_type(annotations, "aggregate-nongeneric-exclusion-group")) == 1
     assert len(_evidence_of_type(annotations, "y-delta-partner-match")) == 4
@@ -3847,8 +3856,8 @@ def test_complete_final_eight_explicit_group_can_apply(catalogue, annotations):
     records = {row["catalogue_id"]: row for row in ledger["records"]}
     assert ledger["summary"]["by_proposed_disposition"] == {
         "exclude": 40,
-        "retain": 25,
-        "unresolved": 83,
+        "retain": 59,
+        "unresolved": 49,
     }
     assert all(
         records[subject]["comparison_status"]
@@ -4819,7 +4828,7 @@ def _populate_low_order_identity_records(annotations):
         for record in annotations["records"]
         if record["comparison_status"] == "derived-canonical-identity-match"
     }
-    if existing_subjects == expected_subjects:
+    if expected_subjects <= existing_subjects:
         return
     for number in aggregate["claim"]["canonical_network_numbers"]:
         definition = definitions[number]
@@ -4857,6 +4866,36 @@ def _populate_low_order_identity_records(annotations):
         })
 
 
+def _low_order_identity_row(annotations, number=49):
+    subject = REVIEWED_LOW_ORDER_CANONICAL_NETWORKS[number][0]
+    row = next(
+        record
+        for record in annotations["records"]
+        if record["catalogue_id"] == subject
+        and record["comparison_status"] == "derived-canonical-identity-match"
+    )
+    assert row["catalogue_id"] == subject
+    assert row["historical_identifiers"][0]["value"] == number
+    assert subject not in {
+        reviewed[0]
+        for reviewed in REVIEWED_FOUR_ELEMENT_CANONICAL_NETWORKS.values()
+    }
+    assert LOW_ORDER_AGGREGATE_ID in row["evidence_record_ids"]
+    assert row["computational_cross_check_ids"] == [LOW_ORDER_COMPUTATION_ID]
+    return row
+
+
+def _four_element_identity_row(annotations, number=97):
+    subject = REVIEWED_FOUR_ELEMENT_CANONICAL_NETWORKS[number][0]
+    row = next(
+        record
+        for record in annotations["records"]
+        if record["catalogue_id"] == subject
+        and record["comparison_status"] == "derived-canonical-identity-match"
+    )
+    assert row["historical_identifiers"][0]["value"] == number
+    return row
+
 
 def _populate_four_element_identity_records(annotations):
     definitions = {
@@ -4867,6 +4906,17 @@ def _populate_four_element_identity_records(annotations):
         record["claim"]["canonical_network_number"]: record
         for record in _four_element_matches(annotations)
     }
+    expected_subjects = {
+        record["claim"]["subject_catalogue_ids"][0]
+        for record in matches.values()
+    }
+    existing_subjects = {
+        record["catalogue_id"]
+        for record in annotations["records"]
+        if record["comparison_status"] == "derived-canonical-identity-match"
+    }
+    if expected_subjects <= existing_subjects:
+        return
     for number in _four_element_aggregate(annotations)["claim"][
         "canonical_network_numbers"
     ]:
@@ -4919,13 +4969,17 @@ def test_low_order_contract_group_is_complete_and_applied(catalogue, annotations
     assert ledger["format_version"] == 6
     assert ledger["summary"]["by_proposed_disposition"] == {
         "exclude": 40,
-        "retain": 25,
-        "unresolved": 83,
+        "retain": 59,
+        "unresolved": 49,
     }
     assert all(row["basic_graph_assignment"] is None for row in ledger["records"])
+    low_order_subjects = {
+        payload[0] for payload in REVIEWED_LOW_ORDER_CANONICAL_NETWORKS.values()
+    }
     retained = [
         row for row in ledger["records"]
         if row["comparison_status"] == "derived-canonical-identity-match"
+        and row["catalogue_id"] in low_order_subjects
     ]
     assert len(retained) == 25
     assert {
@@ -5156,8 +5210,8 @@ def test_complete_low_order_identity_application_can_pass(catalogue, annotations
     ledger = generate_evidence_ledger(catalogue, annotations)
     assert ledger["summary"]["by_proposed_disposition"] == {
         "exclude": 40,
-        "retain": 25,
-        "unresolved": 83,
+        "retain": 59,
+        "unresolved": 49,
     }
 
 
@@ -5426,21 +5480,29 @@ def test_direct_low_order_evidence_citation_requires_the_grouped_status(
 
 def test_partial_low_order_identity_application_is_rejected(catalogue, annotations):
     _populate_low_order_identity_records(annotations)
-    annotations["records"].pop()
+    removed_subject = next(iter(REVIEWED_LOW_ORDER_CANONICAL_NETWORKS.values()))[0]
+    annotations["records"] = [
+        record
+        for record in annotations["records"]
+        if record["catalogue_id"] != removed_subject
+    ]
     with pytest.raises(ValueError, match="complete 25-row group"):
         generate_evidence_ledger(catalogue, annotations)
 
 
 def test_low_order_retention_requires_its_identifier(catalogue, annotations):
     _populate_low_order_identity_records(annotations)
-    annotations["records"][-1]["historical_identifiers"] = []
+    row = _low_order_identity_row(annotations)
+    row["historical_identifiers"] = []
     with pytest.raises(ValueError, match="exact cross-checked canonical"):
         generate_evidence_ledger(catalogue, annotations)
 
 
 def test_low_order_identifier_requires_its_own_number(catalogue, annotations):
     _populate_low_order_identity_records(annotations)
-    annotations["records"][-1]["historical_identifiers"][0]["value"] = 1
+    row = _low_order_identity_row(annotations)
+    assert row["historical_identifiers"][0]["value"] == 49
+    row["historical_identifiers"][0]["value"] = 1
     with pytest.raises(ValueError, match="exact cross-checked canonical"):
         generate_evidence_ledger(catalogue, annotations)
 
@@ -5454,7 +5516,7 @@ def test_low_order_status_rejects_nonretention_dispositions(
     catalogue, annotations, disposition, category, reason
 ):
     _populate_low_order_identity_records(annotations)
-    row = annotations["records"][-1]
+    row = _low_order_identity_row(annotations)
     row["proposed_disposition"] = disposition
     row["exclusion_category"] = category
     row["exclusion_reason"] = reason
@@ -5580,7 +5642,7 @@ def test_all_low_order_identity_consumption_is_invalid_for_rules(
         generate_evidence_ledger(catalogue, annotations)
 
 
-def test_four_element_canonical_group_is_complete_and_unapplied(catalogue, annotations):
+def test_four_element_canonical_group_is_complete_and_applied(catalogue, annotations):
     ledger = generate_evidence_ledger(catalogue, annotations)
     definitions = _four_element_definitions(annotations)
     matches = _four_element_matches(annotations)
@@ -5599,11 +5661,85 @@ def test_four_element_canonical_group_is_complete_and_unapplied(catalogue, annot
     four_subjects = {
         reviewed[0] for reviewed in REVIEWED_FOUR_ELEMENT_CANONICAL_NETWORKS.values()
     }
-    assert all(
-        row["comparison_status"] == "unresolved"
+    applied = {
+        row["catalogue_id"]: row
         for row in ledger["records"]
         if row["catalogue_id"] in four_subjects
+    }
+    assert set(applied) == four_subjects
+    for number, reviewed in REVIEWED_FOUR_ELEMENT_CANONICAL_NETWORKS.items():
+        subject = reviewed[0]
+        row = applied[subject]
+        definition_id = f"ms-2019-canonical-network-{number}-definition"
+        match_id = f"rice-{subject}-canonical-network-{number}-match"
+        assert row["comparison_status"] == "derived-canonical-identity-match"
+        assert row["proposed_disposition"] == "retain"
+        assert row["exclusion_category"] == "none"
+        assert row["evidence_record_ids"] == [
+            FOUR_ELEMENT_AGGREGATE_ID,
+            definition_id,
+            match_id,
+        ]
+        assert row["computational_cross_check_ids"] == [
+            FOUR_ELEMENT_COMPUTATION_ID
+        ]
+        assert row["historical_identifiers"] == [{
+            "evidence_record_ids": [definition_id, match_id],
+            "scheme": "morelli-smith-canonical-network",
+            "value": number,
+            "verification_state": "cross-checked",
+        }]
+        assert row["basic_graph_assignment"] is None
+
+
+def test_committed_canonical_identity_application_is_complete(catalogue, annotations):
+    ledger = generate_evidence_ledger(catalogue, annotations)
+    rows = ledger["records"]
+    canonical_rows = [
+        row
+        for row in rows
+        if row["comparison_status"] == "derived-canonical-identity-match"
+    ]
+    expected = {
+        (payload[0], number)
+        for number, payload in REVIEWED_LOW_ORDER_CANONICAL_NETWORKS.items()
+    } | {
+        (payload[0], number)
+        for number, payload in REVIEWED_FOUR_ELEMENT_CANONICAL_NETWORKS.items()
+    }
+    actual = {
+        (row["catalogue_id"], row["historical_identifiers"][0]["value"])
+        for row in canonical_rows
+    }
+    assert len(canonical_rows) == 59
+    assert actual == expected
+    assert len({number for _, number in actual}) == 59
+    assert all(
+        row["proposed_disposition"] == "retain"
+        and row["exclusion_category"] == "none"
+        and row["basic_graph_assignment"] is None
+        for row in canonical_rows
     )
+    unresolved = [row for row in rows if row["proposed_disposition"] == "unresolved"]
+    assert len(unresolved) == 49
+    assert all(row["rlc"] == 5 for row in unresolved)
+    assert sum(row["proposed_disposition"] == "exclude" for row in rows) == 40
+    assert all(row["basic_graph_assignment"] is None for row in rows)
+
+
+def test_four_element_computation_and_report_keep_historical_boundary(annotations):
+    computation = _four_element_computation(annotations)
+    result = computation["result"].lower()
+    assert all(word not in result for word in ("unresolved", "retained", "excluded"))
+    assert computation["commit_sha"] == (
+        "b499f0340771feaacb535fb987a45754dbeb050e"
+    )
+    report = FOUR_ELEMENT_REPORT_PATH.read_text(encoding="utf-8")
+    assert "At that evidence-only milestone" in report
+    assert "historical evidence-only state" in report
+    assert "production unchanged: 40 excluded / 83 unresolved / 25 retained" in report
+    assert "current production is 40 excluded, 49" in report.lower()
+    assert "unresolved, and 59 retained" in report.lower()
 
 
 @pytest.mark.parametrize("claim_type", ["definition", "match"])
@@ -5624,7 +5760,11 @@ def test_four_element_group_rejects_missing_inventory(
     )
     _four_element_computation(annotations)[field].remove(record["evidence_id"])
     with pytest.raises(
-        ValueError, match="four-element canonical .* inventory is incomplete"
+        ValueError,
+        match=(
+            "unknown evidence_record_ids|"
+            "four-element canonical .* inventory is incomplete"
+        ),
     ):
         generate_evidence_ledger(catalogue, annotations)
 
@@ -5757,7 +5897,7 @@ def test_partial_four_element_identity_application_is_rejected(
 
 def test_four_element_identifier_cannot_use_low_order_evidence(catalogue, annotations):
     _populate_four_element_identity_records(annotations)
-    row = annotations["records"][-1]
+    row = _four_element_identity_row(annotations)
     row["historical_identifiers"][0]["evidence_record_ids"][0] = _low_order_definitions(
         annotations
     )[0]["evidence_id"]
@@ -5786,7 +5926,7 @@ def test_prior_reduction_target_evidence_cannot_replace_canonical_identity_evide
     catalogue, annotations
 ):
     _populate_four_element_identity_records(annotations)
-    row = annotations["records"][-1]
+    row = _four_element_identity_row(annotations)
     reduction_target = next(
         record
         for record in annotations["evidence_records"]
