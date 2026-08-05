@@ -245,9 +245,9 @@ match, controlled aggregate, exact group computation, and one exact
 cross-checked canonical historical identifier. Retention is never inferred
 merely because an exclusion has not yet been found. An exclusion requires a
 controlled category, a reason, an evidence basis, and source references.
-Fifty-nine entries are currently marked `retain` through the two complete
-controlled canonical-identity groups. Every retained row and its supporting
-claim use category `none` and a null exclusion reason.
+All 108 nonexcluded entries are currently marked `retain` through the three
+complete controlled canonical-identity groups. Every retained row and its
+supporting claim use category `none` and a null exclusion reason.
 An unresolved comparison status must use the complete default unresolved
 contract; it cannot carry either an exclusion or retention disposition.
 
