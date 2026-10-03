@@ -68,6 +68,38 @@ not create issue or pull-request autolinks. Explicit wording may still be
 preferred there for clarity, but existing domain-number references need not be
 migrated.
 
+## Research and bounded engineering review
+
+Exploratory research follows question, framing, experiment, observation,
+interpretation and next question; it need not have predetermined implementation
+acceptance criteria. Preserve provenance, assumptions, limitations and significant
+failed hypotheses, and distinguish observations, conjectures and claimed results.
+Strong claims need appropriate independent mathematical or evidential checking;
+Codex code review alone does not establish a research claim.
+
+When a research question produces a bounded library, generator, CLI or CI work
+item, use a purpose-specific branch from the current default branch, following
+the plan-record rules above. Research-only notes do not require Codex code review
+merely because they are submitted as a PR.
+
+Automatic Codex review is not assumed. After implementation, affected validation
+and self-review of the complete diff, push a genuine candidate HEAD and ensure
+its PR is open and ready for review. The authoring agent should post
+`@codex review` itself when it has comment permission; otherwise report that
+permission gap. This request means the author considers this exact commit ready
+for independent integration review. Do not request review for routine
+intermediate pushes.
+
+Record the candidate SHA and wait for completed review of that exact commit.
+Explicitly disposition material findings with fixes or evidence-backed reasons.
+After material changes, rerun affected validation and self-review. Every commit
+pushed after review creates a new candidate HEAD and requires fresh
+`@codex review`, including a non-material edit; an older review is not evidence
+for the new HEAD. Inspect and check non-material edits proportionately before
+pushing them. Avoid duplicate requests while review is running. A clean review
+does not replace tests, CI, domain validation or owner-reserved approval. Merge
+only with the repository's required evidence and owner/authorised merge authority.
+
 ## Development environment
 
 Use Python 3.11 or newer.
