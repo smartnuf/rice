@@ -41,3 +41,8 @@ Make the development workflow easy to follow.
   separate mathematical/evidential checking. Automatic review is not assumed;
   the author requests review of a genuine candidate and revalidates material
   corrections. Broader developer-workflow documentation remains in progress.
+
+- 2026-10-03: Reconciled the checkpoint so every post-review commit requires
+  fresh independent review of its exact HEAD, including non-material edits.
+  Materiality determines affected validation and self-review, not whether the
+  new candidate needs review. The broader documentation task remains in progress.
